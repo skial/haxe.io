@@ -1,0 +1,3 @@
+-cp src
+-js bin/haxeio.js
+-main Main
