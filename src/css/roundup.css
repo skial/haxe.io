@@ -1,0 +1,29 @@
+html, body {
+	font-size: 1.05em;
+	font-family: 'Bitter', serif;
+}
+
+p {
+	line-height: 1.55em;
+	color: rgb(31, 28, 28);
+}
+
+p img[alt] {
+	width: 1em;
+	height: 1em;
+	display: inline-block;
+}
+
+@media all and (min-width: 699px) {
+	body {
+		margin: 0 auto;
+		max-width: 80vw;
+	}
+}
+
+@media all and (min-width: 899px) {
+	body {
+		margin: 0 auto;
+		max-width: 70vw;
+	}
+}

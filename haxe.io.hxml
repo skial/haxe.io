@@ -1,5 +1,10 @@
+-lib tuli
 -lib tem
 -lib mo
+-lib detox
+-lib beanhx
 -cp src
 -js bin/haxeio.js
 -main Main
+--macro uhx.macro.KlasImp.initalize()
+--macro Main.Markdown.initialize()
