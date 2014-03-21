@@ -29,12 +29,12 @@ class Markdown implements Klas {
 	
 	#if macro
 	public static function initialize() {
-		Tuli.onExtension('md', mdHandler);
+		Tuli.onExtension('md', handler);
 	}
 	
 	private static var fileCache:Map<String, String> = new Map();
 	
-	public static function mdHandler(path:String, content:String):String {
+	public static function handler(path:String, content:String):String {
 		// I hate this, need to spend some time on UTF8 so I dont have to manually
 		// add international characters.
 		var characters = ['№' => '&#8470;', 'ê' => '&ecirc;', 'ä'=>'&auml;', 'é'=>'&eacute;'];
@@ -50,6 +50,7 @@ class Markdown implements Klas {
 		var template = resources.exists('_template') ? resources.get('_template') : { url:'', title:'' };
 		var location = (path.directory() + '/${template.url}').normalize();
 		
+		// Look for a template in the markdown `[_template]: /path/file.html`
 		if (template.title == null || template.title == '') {
 			template.title = switch (tokens.filter(function(t) return switch (t.token) {
 				case Keyword(Header(_, _, _)): true;
@@ -93,12 +94,62 @@ class Markdown implements Klas {
 		
 		var dom = content.parse();
 		dom.find('title').setText( data.file.title );
-		dom.find('body').setInnerHTML( data.file.content );
+		dom.find('main').setInnerHTML( data.file.content );
 		content = dom.html().replace('&amp;', '&').replace('&amp;', '&');
 		
 		// Add the new file location and contents into Tuli's `fileCache` which
 		// it will save for us.
 		Tuli.fileCache.set( path.withoutExtension() + '/index.html', content );
+		
+		return content;
+	}
+	#end
+	
+}
+
+class SocialMetadata implements Klas {
+	
+	#if macro
+	public static function initialize() {
+		Tuli.onExtension( 'html', handler, After );
+	}
+	
+	public static function handler(path:String, content:String):String {
+		var dom = content.parse();
+		var head = dom.find('head');
+		
+		if (head != null) {
+			
+			
+			
+		}
+		
+		return content;
+	}
+	#end
+	
+}
+
+class ImportHTML implements Klas {
+	
+	#if macro
+	public static var partialCache:Map<String, String> = null;
+	
+	public static function initialize() {
+		partialCache = new Map();
+		Tuli.onExtension( 'html', handler, After );
+	}
+	
+	public static function handler(path:String, content:String):String {
+		var dom = content.parse();
+		var head = dom.find('head');
+		var isPartial = head == null;
+		
+		
+		
+		if (isPartial && !partialCache.exists(path)) {
+			partialCache.set( path, content );
+		}
 		
 		return content;
 	}

@@ -8,3 +8,5 @@
 -main Main
 --macro uhx.macro.KlasImp.initalize()
 --macro Main.Markdown.initialize()
+--macro Main.ImportHTML.initialize()
+--macro Main.SocialMetadata.initialize()

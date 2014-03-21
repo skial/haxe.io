@@ -3,8 +3,13 @@ html, body {
 	font-family: 'Bitter', serif;
 }
 
+body {
+	margin: 0 auto;
+}
+
 p {
-	line-height: 1.55em;
+	line-height: 1.7em;
+	margin-bottom: 1.3em;
 	color: rgb(31, 28, 28);
 }
 
@@ -16,14 +21,12 @@ p img[alt] {
 
 @media all and (min-width: 699px) {
 	body {
-		margin: 0 auto;
 		max-width: 80vw;
 	}
 }
 
 @media all and (min-width: 899px) {
 	body {
-		margin: 0 auto;
 		max-width: 70vw;
 	}
 }
