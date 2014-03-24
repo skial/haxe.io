@@ -4,6 +4,7 @@ import byte.ByteData;
 import uhx.lexer.MarkdownParser;
 
 #if macro
+import sys.FileSystem;
 import uhx.macro.Tuli;
 import haxe.macro.Context;
 import haxe.macro.Expr.ExprOf;
@@ -29,10 +30,14 @@ class Markdown implements Klas {
 	
 	#if macro
 	public static function initialize() {
-		Tuli.onExtension('md', handler);
+		remove = [];
+		fileCache = new Map();
+		Tuli.onExtension('md', handler, After);
+		Tuli.onFinish( finish, After );
 	}
 	
-	private static var fileCache:Map<String, String> = new Map();
+	private static var remove:Array<String> = null;
+	private static var fileCache:Map<String, String> = null;
 	
 	public static function handler(path:String, content:String):String {
 		// I hate this, need to spend some time on UTF8 so I dont have to manually
@@ -63,18 +68,17 @@ class Markdown implements Klas {
 		
 		var content = '';
 		
+		// Remove location from `Tuli.files`.
+		//Tuli.files.remove( location );
+		remove.push( location );
+		
 		if (!fileCache.exists( location )) {
-			// Remove `template` from the list of files Tuli has found.
-			if (Tuli.files.indexOf( location ) > -1) {
-				Tuli.files.remove( location );
-			}
-			
-			// If `template` has been loaded into the Tuli's `fileCache` remove it.
-			// But not before getting its content for later use.
+			// Grab the templates content. Then remove it
+			// from `Tuli.fileCache`.
 			if (Tuli.fileCache.exists( location )) {
 				content = Tuli.fileCache.get(location);
 				fileCache.set(location, content);
-				Tuli.fileCache.remove( location );
+				//Tuli.fileCache.remove( location );
 			}
 			
 			// Tell Tuli to ignore this extension.
@@ -95,7 +99,7 @@ class Markdown implements Klas {
 		var dom = content.parse();
 		dom.find('title').setText( data.file.title );
 		dom.find('main').setInnerHTML( data.file.content );
-		content = dom.html().replace('&amp;', '&').replace('&amp;', '&');
+		content = dom.html();
 		
 		// Add the new file location and contents into Tuli's `fileCache` which
 		// it will save for us.
@@ -103,28 +107,13 @@ class Markdown implements Klas {
 		
 		return content;
 	}
-	#end
 	
-}
-
-class SocialMetadata implements Klas {
-	
-	#if macro
-	public static function initialize() {
-		Tuli.onExtension( 'html', handler, After );
-	}
-	
-	public static function handler(path:String, content:String):String {
-		var dom = content.parse();
-		var head = dom.find('head');
-		
-		if (head != null) {
-			
-			
-			
+	public static function finish() {
+		for (r in remove) {
+			if (Tuli.files.indexOf( r ) > -1) Tuli.files.remove( r );
+			if (Tuli.fileCache.exists( r )) Tuli.fileCache.remove( r );
 		}
-		
-		return content;
+		remove = [];
 	}
 	#end
 	
@@ -133,25 +122,158 @@ class SocialMetadata implements Klas {
 class ImportHTML implements Klas {
 	
 	#if macro
-	public static var partialCache:Map<String, String> = null;
+	public static var partials:Array<String> = null;
+	public static var templates:Array<String> = null;
 	
 	public static function initialize() {
-		partialCache = new Map();
-		Tuli.onExtension( 'html', handler, After );
+		partials = [];
+		templates = [];
+		Tuli.onExtension( 'html', handler, Before );
+		Tuli.onFinish( finish, Before );
 	}
 	
 	public static function handler(path:String, content:String):String {
 		var dom = content.parse();
 		var head = dom.find('head');
-		var isPartial = head == null;
+		var isPartial = head.length == 0;
+		var hasInjectPoint = dom.find('content[select]').length > 0;
 		
-		
-		
-		if (isPartial && !partialCache.exists(path)) {
-			partialCache.set( path, content );
+		if (isPartial) {
+			partials.push( path );
+		} else if (hasInjectPoint) {
+			templates.push( path );
 		}
 		
 		return content;
+	}
+	
+	public static function finish() {
+		trace( partials );
+		trace( templates );
+		for (template in templates) {
+			var dom = Tuli.fileCache.get( template ).parse();
+			var contents = dom.find('content[select]');
+			
+			for (content in contents) {
+				var selector = content.get('select');
+				
+				if (selector.startsWith('#')) {
+					selector = selector.substring(1);
+					var key = '$selector.html';
+					var partial = Tuli.fileCache.get( key ).parse();
+					
+					content = content.replaceWith(null, partial.first().children());
+					
+				} else {
+					// You have to be fecking difficult, we got to
+					// loop through EACH partial and check the top
+					// most element for a match. Thanks.
+				}
+				
+			}
+			dom.find('link[rel="import"]').remove();
+			
+			Tuli.fileCache.set( template, dom.html() );
+			
+		}
+		
+		for (partial in partials) {
+			Tuli.files.remove(partial);
+			Tuli.fileCache.remove(partial);
+		}
+	}
+	#end
+	
+}
+
+class SocialMetadata implements Klas {
+	
+	#if macro
+	private static var files:Array<String> = null;
+	
+	public static function initialize() {
+		files = [];
+		Tuli.onExtension( 'html', handler, After );
+		Tuli.onFinish( finish, After );
+	}
+	
+	public static function handler(path:String, content:String):String {
+		var dom = content.parse();
+		var head = dom.find('head');
+		var isPartial = head.length == 0;
+		
+		if (!isPartial) {
+			files.push( path );
+		}
+		
+		return content;
+	}
+	
+	public static function finish() {
+		for (file in files) {
+			var dom = Tuli.fileCache.get( file ).parse();
+			var metaTitle = dom.find('meta[property="og:title"]');
+			var metaDesc = dom.find('meta[property="og:description"]');
+			var metaUrl = dom.find('meta[property="og:url"]');
+			
+			if (metaTitle.length > 0) metaTitle.setAttr('content', dom.find('title').text());
+			
+			if (metaDesc.length > 0) {
+				var paragraphs = dom.find('p');
+				var desc = ~/\s+/g.replace(paragraphs.text(), ' ').substring(0, 200);
+				desc = desc.substring(0, desc.lastIndexOf(' '));
+				metaDesc.setAttr('content', '$desc...');
+			}
+			
+			if (metaUrl.length > 0) {
+				var url = 'http://haxe.io/$file'.normalize();
+				if (url.endsWith('index.html')) url = url.directory().addTrailingSlash();
+				metaUrl.setAttr('content', url);
+			}
+			
+			Tuli.fileCache.set( file, dom.html() );
+		}
+	}
+	#end
+	
+}
+
+// Hate this.
+class Finish implements Klas {
+	
+	#if macro
+	private static var files:Array<String> = null;
+	
+	public static function initialize() {
+		files = [];
+		Tuli.onExtension( 'html', handler, After );
+		Tuli.onFinish( finish, After );
+	}
+	
+	public static function handler(path:String, content:String) {
+		files.push( path );
+		return content;
+	}
+	
+	public static function finish() {
+		for (file in files) if (Tuli.fileCache.exists( file )) {
+			var c = Tuli.fileCache.get(file);
+			while (c.indexOf('&amp;') > -1) {
+				c = c.replace('&amp;', '&');
+			}
+			// HTML5 tidy application during html=>xml conversion
+			// wraps javascript wrapped in <script> tags with CDATA.
+			// Adding type="text/javascript" seems to force the CDATA
+			// to be commented out.
+			/*while (c.indexOf('<![CDATA[') > -1) {
+				c = c.replace('<![CDATA[', '');
+			}
+			while (c.indexOf(']]>') > -1) {
+				c = c.replace(']]>', '');
+			}*/
+			
+			Tuli.fileCache.set( file, c );
+		}
 	}
 	#end
 	
