@@ -7,7 +7,7 @@
 -js bin/haxeio.js
 -main Main
 --macro uhx.macro.KlasImp.initalize()
+--macro Main.Markdown.initialize()
 --macro Main.ImportHTML.initialize()
 --macro Main.SocialMetadata.initialize()
---macro Main.Markdown.initialize()
 --macro Main.Finish.initialize()

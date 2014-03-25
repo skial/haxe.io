@@ -97,7 +97,7 @@ class Markdown implements Klas {
 		}
 		
 		var dom = content.parse();
-		dom.find('title').setText( data.file.title );
+		//dom.find('title').setText( data.file.title );
 		dom.find('main').setInnerHTML( data.file.content );
 		content = dom.html();
 		
@@ -128,8 +128,8 @@ class ImportHTML implements Klas {
 	public static function initialize() {
 		partials = [];
 		templates = [];
-		Tuli.onExtension( 'html', handler, Before );
-		Tuli.onFinish( finish, Before );
+		Tuli.onExtension( 'html', handler, After );
+		Tuli.onFinish( finish, After );
 	}
 	
 	public static function handler(path:String, content:String):String {
@@ -148,8 +148,8 @@ class ImportHTML implements Klas {
 	}
 	
 	public static function finish() {
-		trace( partials );
-		trace( templates );
+		// Loop through and replace any `<content select="*" />` with
+		// a matching `<link rel="import" />`.
 		for (template in templates) {
 			var dom = Tuli.fileCache.get( template ).parse();
 			var contents = dom.find('content[select]');
@@ -165,13 +165,35 @@ class ImportHTML implements Klas {
 					content = content.replaceWith(null, partial.first().children());
 					
 				} else {
-					// You have to be fecking difficult, we got to
+					// You have to be fecking difficult, we have to
 					// loop through EACH partial and check the top
 					// most element for a match. Thanks.
 				}
 				
 			}
 			dom.find('link[rel="import"]').remove();
+			
+			// Find any remaining `<content />` and try filling them
+			// with anything that matches their own selector.
+			// TODO Either move this part to another "plugin" or move the markdown renderer before this plugin runs.
+			contents = dom.find('content[select]');
+			
+			for (content in contents) {
+				var selector = content.get('select');
+				var items = dom.children(false).find( selector );
+				trace( selector );
+				trace( items );
+				if (items.length > 0) {
+					if ([for (att in content.attributes()) att].indexOf('data-text') == -1) {
+						content = content.replaceWith(null, items);
+					} else {
+						content = content.replaceWith(items.text().parse());
+					}
+				}
+			}
+			
+			// Remove all '<content />` from the DOM.
+			dom.find('content[select]').remove();
 			
 			Tuli.fileCache.set( template, dom.html() );
 			
