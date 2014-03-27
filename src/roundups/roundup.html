@@ -10,11 +10,20 @@
 	<link rel="import" href="/social_meta.html" />
 	<link rel="import" href="/head_scripts.html" />
 	<link rel="import" href="/stylesheets.html" />
+	<link rel="import" href="/roundup_footer.html" />
 	
 	<content select="#stylesheets" />
 	<content select="#head_scripts" />
 </head>
 <body>
-	<main></main>
+	<main>
+		<content select="h1:first-of-type" />
+		<div class="article details">
+			<div>Written by <a rel="author" href="http://twitter.com/skial" title="@skial">Skial Bainn</a></div>
+			<div><a href="https://github.com/skial/haxe.io/tree/master/src/" title="Contribute or fix">Edit</a></div>
+		</div>
+		<content select="markdown" />
+	</main>
+	<content select="#roundup_footer" />
 </body>
 </html>

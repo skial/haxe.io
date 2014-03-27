@@ -1,16 +1,23 @@
+/*
+rgb(241,89,34) - http://www.colorhexa.com/f15922
+complementary colour 
+rgb(34,186,241) - http://www.colorhexa.com/22baf1
+*/
+
 html, body {
+	color: #333332;
 	font-size: 1.05em;
 	font-family: 'Bitter', serif;
 }
 
-body {
+main {
 	margin: 0 auto;
+	max-width: 80vw;
 }
 
 p {
 	line-height: 1.7em;
 	margin-bottom: 1.3em;
-	color: rgb(31, 28, 28);
 }
 
 p img[alt] {
@@ -19,14 +26,60 @@ p img[alt] {
 	display: inline-block;
 }
 
+h1 {
+	margin-bottom: 0.1em;
+}
+
+a {
+	color: rgb(34,186,241);
+	text-decoration: none;
+	padding-bottom: 0.1em;
+	border-bottom: 1px solid rgba(34,186,241, 0.2);
+}
+
+a:hover {
+	color: rgb(34,186,241);
+	text-decoration: none;
+	padding-bottom: 0.1em;
+	border-bottom: 1px solid;
+}
+
+a:active {
+	color: rgb(241,34,82);
+	text-decoration: none;
+	padding-bottom: 0.1em;
+	border-bottom: 1px solid;
+}
+
+.article.details {
+	font-size: 0.9em;
+	font-variant: small-caps;
+	padding-bottom: 2em;
+}
+
+.article.details div {
+	margin: 0;
+	color: #525252;
+	display: inline-block;
+}
+
+.article.details div:last-of-type {
+	float: right;
+}
+
+footer {
+	min-height: 10em;
+	background-color: rgb(241,89,34);
+}
+
 @media all and (min-width: 699px) {
-	body {
-		max-width: 80vw;
+	main {
+		max-width: 70vw;
 	}
 }
 
 @media all and (min-width: 899px) {
-	body {
-		max-width: 70vw;
+	main {
+		max-width: 60vw;
 	}
 }

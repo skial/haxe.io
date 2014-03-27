@@ -98,7 +98,9 @@ class Markdown implements Klas {
 		
 		var dom = content.parse();
 		//dom.find('title').setText( data.file.title );
-		dom.find('main').setInnerHTML( data.file.content );
+		dom.find('content[select="markdown"]').replaceWith( null, dtx.Tools.parse(data.file.content) );
+		var edit = dom.find('.article.details div:last-of-type a');
+		edit.setAttr('href', (edit.attr('href') + path).normalize());
 		content = dom.html();
 		
 		// Add the new file location and contents into Tuli's `fileCache` which
@@ -176,13 +178,13 @@ class ImportHTML implements Klas {
 			// Find any remaining `<content />` and try filling them
 			// with anything that matches their own selector.
 			// TODO Either move this part to another "plugin" or move the markdown renderer before this plugin runs.
-			contents = dom.find('content[select]');
+			contents = dom.find('content[select]:not(content[data-targets])');
 			
 			for (content in contents) {
 				var selector = content.get('select');
-				var items = dom.children(false).find( selector );
-				trace( selector );
-				trace( items );
+				var items = dom.find( selector );
+				/*trace( selector );
+				trace( items );*/
 				if (items.length > 0) {
 					if ([for (att in content.attributes()) att].indexOf('data-text') == -1) {
 						content = content.replaceWith(null, items);
@@ -207,6 +209,44 @@ class ImportHTML implements Klas {
 	#end
 	
 }
+
+/*class RoundupFooter implements Klas {
+	
+	#if macro
+	public static function initialize() {
+		Tuli.onExtension( 'html', handler, After );
+	}
+	
+	public static function handler(path:String, content:String):String {
+		if (path.indexOf('roundups') > -1) {
+			// Remove the `index.html` and `roundups` which should
+			// leave the issue number `193`.
+			var issue = path.directory().withoutDirectory();
+			
+			if (issue != '' && issue != 'roundups') {
+				var dom = content.parse();
+				var footer = dom.find('footer');
+				
+				var prevPath = path.replace(issue, '' + (Std.parseInt(issue) - 1));
+				var hasPrev = Tuli.fileCache.exists( prevPath );
+				
+				var nextPath = path.replace(issue, '' + (Std.parseInt(issue) + 1));
+				var hasNext = Tuli.fileCache.exists( nextPath );
+				
+				if (hasPrev) {
+					var dom = Tuli.fileCache.get( prevPath ).parse();
+					var title = dom.find('h1:first-of-type');
+					footer.find('ul').addCollection( '<li>${title.html()}</li>'.parse() );
+				}
+				
+				trace( content = dom.html() );
+			}
+		}
+		return content;
+	}
+	#end
+	
+}*/
 
 class SocialMetadata implements Klas {
 	
