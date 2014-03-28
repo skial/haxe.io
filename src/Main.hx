@@ -70,69 +70,99 @@ class GithubInformation implements Klas {
 	
 	public static function dataHandler(data:Dynamic):Dynamic {
 		var process:Process;
-		var directory = Tuli.config.input.normalize().replace(Sys.getCwd().normalize(), '');
+		var directory = Tuli.config.input.addTrailingSlash().normalize().replace(Sys.getCwd().normalize(), '');
+		
 		for (file in Tuli.config.files) {
+			if (file.extra.github == null) {
+				file.extra.github = { };
+			}
+			
+			var url = 'https://api.github.com/repos/skial/haxe.io/commits?path=' + '/$directory${file.path}'.normalize();
+			
+			// If OAuth token and secret have been placed in
+			// `secrets.json` then pass them along as this
+			// increases the rate limit from 60 reqs per hour
+			// to 5000.
+			if (Tuli.secrets.github != null) {
+				url += '&client_id=' + Tuli.secrets.github.id + '&client_secret=' + Tuli.secrets.github.secret;
+			}
+			
+			// I'm only interested in the latest commits.
+			if (file.extra.github.modified != null) {
+				url += '&since=' + file.extra.github.modified;
+			}
+			trace(url);
 			process = new Process('curl', [
-				// On windows, curl fails on checking the ssl cert.
+				// On windows at least, curl fails when checking the ssl cert.
 				// This forces it to be ignored.
 				'-k',
-				// Github needs a `User-Agent:` header to access the api.
+				// Github needs a `User-Agent:` header to allow access to 
+				// the api.
 				'-A', 'skial/haxe.io tuli static site generator', 
-				'https://api.github.com/repos/skial/haxe.io/commits?path=' + '/$directory/${file.path}'.normalize()
+				url
 			]);
 			
 			var commits:Array<Commit> = Json.parse( process.stdout.readAll().toString() );
-			var first = commits[commits.length-1];
-			
-			// The first commit should be set as the author of the file.
-			file.extra.author = first.commit.author.name;
-			// Every other commit author to be listed as a contributor.
-			file.extra.contributors = commits
-			.map( function(s) return s.commit.author.name )
-			.filter( function(s) return s != file.extra.author );
-			
-			var user_map = new Map<String, Commit>();
-			for (entry in commits) if (!user_map.exists(entry.commit.author.name)) {
-				user_map.set(entry.commit.author.name, entry);
-			}
-			
-			var field_map = [
-				'login' => 'name',
-				'url' => 'api_url',
-				'html_url' => 'html_url',
-				'gravatar_id' => 'gravatar_url',
-			];
-			
-			for (contributor in (file.extra.contributors:Array<String>)) {
-				var entry = user_map.get(contributor);
+			if (commits.length > 0) {
+				var first = commits[commits.length-1];
 				
-				if (Tuli.config.users.filter( function(s) return s.name == contributor ).length == 0) {
-					Tuli.config.users.push( {
-						name: contributor, 
-						email: entry.commit.author.email, 
-						avatar_url: 'https://secure.gravatar.com/avatar/' + entry.author.gravatar_id + '.png',
-						profiles: [],
-					} );
+				// The first commit should be set as the author of the file.
+				if (file.extra.github.modified == null) {
+					file.extra.author = first.commit.author.name;
 				}
 				
-				for (user in Tuli.config.users) {
-					var profiles = user.profiles.filter( function(s) return s.service == 'github' && user.name == contributor );
+				// Every other commit author to be listed as a contributor.
+				file.extra.contributors = commits
+					.map( function(s) return s.commit.author.name )
+					.filter( function(s) return s != file.extra.author );
+				
+				// Set the github modified field to the last commit date.
+				file.extra.github.modified = commits[0].commit.author.date;
+				
+				var userMap = new Map<String, Commit>();
+				for (entry in commits) if (!userMap.exists(entry.commit.author.name)) {
+					userMap.set(entry.commit.author.name, entry);
+				}
+				
+				var fieldMap = [
+					'login' => 'name',
+					'url' => 'api_url',
+					'html_url' => 'html_url',
+					'gravatar_id' => 'gravatar_url',
+				];
+				
+				for (contributor in (file.extra.contributors:Array<String>)) {
+					var entry = userMap.get(contributor);
+					var user = Tuli.config.users.filter( function(s) return s.name == contributor )[0];
 					
-					if (profiles.length == 0) {
-						user.profiles.push( { service: 'github', data: { name: contributor } } );
-						profiles = user.profiles.filter( function(s) return s.service == 'github' );
+					if (user == null) {
+						user =  {
+							name: contributor, 
+							email: entry.commit.author.email, 
+							avatar_url: 'https://secure.gravatar.com/avatar/' + entry.author.gravatar_id + '.png',
+							profiles: [],
+						};
+						Tuli.config.users.push(user);
 					}
 					
-					for (profile in profiles) {
-						var author = entry.author;
+					//for (user in Tuli.config.users) {
+						var profiles = user.profiles.filter( function(s) return s.service == 'github' && user.name == contributor );
 						
-						for (key in field_map.keys()) {
-							profile.data.setField( field_map.get(key), author.field(key) );
+						if (profiles.length == 0) {
+							user.profiles.push( { service: 'github', data: { name: contributor } } );
+							profiles = user.profiles.filter( function(s) return s.service == 'github' );
 						}
-					}
+						
+						for (profile in profiles) {
+							var author = entry.author;
+							
+							for (key in fieldMap.keys()) {
+								profile.data.setField( fieldMap.get(key), author.field(key) );
+							}
+						}
+					//}
 				}
 			}
-			//file.extra.github = ;
 		}
 		return data;
 	}
