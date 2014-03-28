@@ -3,10 +3,12 @@
 -lib mo
 -lib detox
 -lib beanhx
+-lib tjson
 -cp src
 -js bin/haxeio.js
 -main Main
 --macro uhx.macro.KlasImp.initalize()
+--macro Main.GithubInformation.initialize()
 --macro Main.Markdown.initialize()
 --macro Main.ImportHTML.initialize()
 --macro Main.SocialMetadata.initialize()

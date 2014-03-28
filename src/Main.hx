@@ -1,9 +1,11 @@
 package ;
 
+import haxe.Json;
 import byte.ByteData;
 import uhx.lexer.MarkdownParser;
 
 #if macro
+import sys.io.Process;
 import sys.FileSystem;
 import uhx.macro.Tuli;
 import haxe.macro.Context;
@@ -11,6 +13,7 @@ import haxe.macro.Expr.ExprOf;
 #end
 
 using Detox;
+using Reflect;
 using StringTools;
 using haxe.io.Path;
 
@@ -23,6 +26,117 @@ class Main {
 	public static function main() {
 		
 	}
+	
+}
+
+private typedef Commit = {
+	var sha:String;
+	var commit: {
+		author: { name:String, email:String, date:String },
+		committer: { name:String, email:String, date:String },
+		message:String,
+		tree: { sha:String, url:String },
+		url:String,
+		comment_count:Int
+	};
+	var url:String;
+	var html_url:String;
+	var comments_url:String;
+	var author: {
+		login:String, id:String, avatar_url:String, gravatar_id:String,
+		url:String, html_url:String, followers_url:String, following_url:String,
+		gists_url:String, starred_url:String, subscriptions_url:String,
+		organizations_url:String, repos_url:String, events_url:String,
+		received_events_url:String, type:String, site_admin:Bool
+	};
+	var committer: {
+		login:String, id:String, avatar_url:String, gravatar_id:String,
+		url:String, html_url:String, followers_url:String, following_url:String,
+		gists_url:String, starred_url:String, subscriptions_url:String,
+		organizations_url:String, repos_url:String, events_url:String,
+		received_events_url:String, type:String, site_admin:Bool
+	};
+	var parents: {
+		sha:String, url:String, html_url:String
+	};
+}
+
+class GithubInformation implements Klas {
+	
+	#if macro
+	public static function initialize() {
+		Tuli.onData(dataHandler, Before);
+	}
+	
+	public static function dataHandler(data:Dynamic):Dynamic {
+		var process:Process;
+		var directory = Tuli.config.input.normalize().replace(Sys.getCwd().normalize(), '');
+		for (file in Tuli.config.files) {
+			process = new Process('curl', [
+				// On windows, curl fails on checking the ssl cert.
+				// This forces it to be ignored.
+				'-k',
+				// Github needs a `User-Agent:` header to access the api.
+				'-A', 'skial/haxe.io tuli static site generator', 
+				'https://api.github.com/repos/skial/haxe.io/commits?path=' + '/$directory/${file.path}'.normalize()
+			]);
+			
+			var commits:Array<Commit> = Json.parse( process.stdout.readAll().toString() );
+			var first = commits[commits.length-1];
+			
+			// The first commit should be set as the author of the file.
+			file.extra.author = first.commit.author.name;
+			// Every other commit author to be listed as a contributor.
+			file.extra.contributors = commits
+			.map( function(s) return s.commit.author.name )
+			.filter( function(s) return s != file.extra.author );
+			
+			var user_map = new Map<String, Commit>();
+			for (entry in commits) if (!user_map.exists(entry.commit.author.name)) {
+				user_map.set(entry.commit.author.name, entry);
+			}
+			
+			var field_map = [
+				'login' => 'name',
+				'url' => 'api_url',
+				'html_url' => 'html_url',
+				'gravatar_id' => 'gravatar_url',
+			];
+			
+			for (contributor in (file.extra.contributors:Array<String>)) {
+				var entry = user_map.get(contributor);
+				
+				if (Tuli.config.users.filter( function(s) return s.name == contributor ).length == 0) {
+					Tuli.config.users.push( {
+						name: contributor, 
+						email: entry.commit.author.email, 
+						avatar_url: 'https://secure.gravatar.com/avatar/' + entry.author.gravatar_id + '.png',
+						profiles: [],
+					} );
+				}
+				
+				for (user in Tuli.config.users) {
+					var profiles = user.profiles.filter( function(s) return s.service == 'github' && user.name == contributor );
+					
+					if (profiles.length == 0) {
+						user.profiles.push( { service: 'github', data: { name: contributor } } );
+						profiles = user.profiles.filter( function(s) return s.service == 'github' );
+					}
+					
+					for (profile in profiles) {
+						var author = entry.author;
+						
+						for (key in field_map.keys()) {
+							profile.data.setField( field_map.get(key), author.field(key) );
+						}
+					}
+				}
+			}
+			//file.extra.github = ;
+		}
+		return data;
+	}
+	#end
 	
 }
 
