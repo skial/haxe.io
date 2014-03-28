@@ -91,7 +91,9 @@ class GithubInformation implements Klas {
 			if (file.extra.github.modified != null) {
 				url += '&since=' + file.extra.github.modified;
 			}
-			trace(url);
+			
+			// We use `curl` as https connections cant be requested
+			// during macro mode.
 			process = new Process('curl', [
 				// On windows at least, curl fails when checking the ssl cert.
 				// This forces it to be ignored.
@@ -128,10 +130,9 @@ class GithubInformation implements Klas {
 					'login' => 'name',
 					'url' => 'api_url',
 					'html_url' => 'html_url',
-					'gravatar_id' => 'gravatar_url',
 				];
 				
-				for (contributor in (file.extra.contributors:Array<String>)) {
+				for (contributor in (file.extra.contributors:Array<String>).concat([file.extra.author])) {
 					var entry = userMap.get(contributor);
 					var user = Tuli.config.users.filter( function(s) return s.name == contributor )[0];
 					
@@ -141,26 +142,32 @@ class GithubInformation implements Klas {
 							email: entry.commit.author.email, 
 							avatar_url: 'https://secure.gravatar.com/avatar/' + entry.author.gravatar_id + '.png',
 							profiles: [],
+							isAuthor: false,
+							isContributor: false,
 						};
 						Tuli.config.users.push(user);
 					}
 					
-					//for (user in Tuli.config.users) {
-						var profiles = user.profiles.filter( function(s) return s.service == 'github' && user.name == contributor );
+					if (!user.isAuthor) user.isAuthor = file.extra.author == contributor;
+					if (!user.isContributor) user.isContributor = (file.extra.contributors:Array<String>).indexOf(user.name) > -1;
+					if (user.avatar_url == null || user.avatar_url == '') {
+						user.avatar_url = 'https://secure.gravatar.com/avatar/' + entry.author.gravatar_id + '.png';
+					}
+					
+					var profiles = user.profiles.filter( function(s) return s.service == 'github' && user.name == contributor );
+					
+					if (profiles.length == 0) {
+						user.profiles.push( { service: 'github', data: { name: contributor } } );
+						profiles = user.profiles.filter( function(s) return s.service == 'github' );
+					}
+					
+					for (profile in profiles) {
+						var author = entry.author;
 						
-						if (profiles.length == 0) {
-							user.profiles.push( { service: 'github', data: { name: contributor } } );
-							profiles = user.profiles.filter( function(s) return s.service == 'github' );
+						for (key in fieldMap.keys()) {
+							profile.data.setField( fieldMap.get(key), author.field(key) );
 						}
-						
-						for (profile in profiles) {
-							var author = entry.author;
-							
-							for (key in fieldMap.keys()) {
-								profile.data.setField( fieldMap.get(key), author.field(key) );
-							}
-						}
-					//}
+					}
 				}
 			}
 		}
