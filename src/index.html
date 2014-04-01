@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="/">
 <head>
 	<meta charset="utf-8" />
-	<title></title>
+	<title>Haxe.io — News And Information For Haxe Developers</title>
 	
 	<link rel="import" href="head_scripts.html" />
 	<link rel="import" href="stylesheets.html" />
@@ -13,8 +13,31 @@
 	<content select="#head_scripts" />
 </head>
 <body>
-	<content select="#header" />
-	<main class="Content" data-text></main>
+	<!--<content select="#header" />-->
+	<main>
+		<ol>
+			<!--<li select="[path*='roundups'][path$='index.html']:nth-child(-n+4)" data-json>
+				<h1><content select="" data-text /></h1>
+				<p><content select="" data-text /></p>
+			</li>-->
+			<li>
+				<h1><a href="/roundups/193/" title="Haxe Roundup № 193">Haxe Roundup № 193</a></h1>
+				<p><a href="http://dukope.com/" title="Papers, Please">Papers, Please</a> has swept the IGF awards at GDC this year, winning 3 out of 8 categories, <em>Excellence in Narrative</em>, <em>Excellence in Design</em> and the <em>Seumas McNally Grand Prize</em>! Congratulations to <a href="https://twitter.com/dukope" title="@dukope">Lucas Pope</a> for the great success.</p>
+			</li>
+			<li>
+				<h1><a href="/roundups/192/" title="Haxe Roundup № 191">Haxe Roundup № 192</a></h1>
+				<p>A couple of weeks ago, Haxe <code>3.1.0</code> was released. Well, Haxe <code>3.1.1</code> <del>bugfix</del> release has been made available for <a href="http://haxe.org/download">download</a>. Three new features have made there way into this release, with the more notable being you can now embed unicode values into your strings. <code>var unicode = "\u4DF1";</code> will return <img alt="unicode" src="/svg/Iching-hexagram-50.svg">. Checkout the <a href="http://haxe.org/file/CHANGES.txt" title="Haxe 3.1.1 changelog">changelog</a> for the full details.</p>
+			</li>
+			<li>
+				<h1><a href="/roundups/191/" title="Haxe Roundup № 191">Haxe Roundup № 191</a></h1>
+				<p><a href="https://twitter.com/emibap" title="@emibap">Emiliano Angelini</a> has created and released another OpenFL native extension, this time for Google Analytics v3, called <a href="https://github.com/emibap/ganalytics" title="Google Analytics native extension for OpenFL">GAnalytics</a>. The currently supported targets are iOS and Android. Its based on Hyperfiction's <a href="https://github.com/hyperfiction/HypGA" title="Google Analytics native extension for OpenFL">HypGA</a> repository.</p>
+			</li>
+			<li>
+				<h1><a href="/roundups/190/" title="Haxe Roundup № 190">Haxe Roundup № 190</a></h1>
+				<p>On Tuesday, the Haxe Foundation released version <code>3.1.0</code> with its main focus being on improved stability and bug fixes.</p>
+			</li>
+		</ol>
+	</main>
 	<content select="#footer" />
 </body>
 </html>

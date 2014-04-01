@@ -10,9 +10,33 @@ html, body {
 	font-family: 'Bitter', serif;
 }
 
+nav {
+	margin: 0;
+	display: inline-block;
+}
+
+nav ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+nav ul li {
+	width: 20vw;
+	display: inline-block;
+}
+
 main {
 	margin: 0 auto;
 	max-width: 80vw;
+}
+
+html[class="/"] main li {
+	list-style-type: none;
+}
+
+html[class="/"] main h1 {
+	padding-top: 1.5em;
 }
 
 p {

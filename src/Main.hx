@@ -12,6 +12,7 @@ import haxe.macro.Context;
 import haxe.macro.Expr.ExprOf;
 #end
 
+using Lambda;
 using Detox;
 using Reflect;
 using StringTools;
@@ -65,7 +66,7 @@ class GithubInformation implements Klas {
 	
 	#if macro
 	public static function initialize() {
-		Tuli.onData(dataHandler, Before);
+		//Tuli.onData(dataHandler, Before);
 	}
 	
 	public static function dataHandler(data:Dynamic):Dynamic {
@@ -181,92 +182,89 @@ class Markdown implements Klas {
 	
 	#if macro
 	public static function initialize() {
-		remove = [];
 		fileCache = new Map();
 		Tuli.onExtension('md', handler, After);
-		Tuli.onFinish( finish, After );
 	}
 	
-	private static var remove:Array<String> = null;
 	private static var fileCache:Map<String, String> = null;
 	
-	public static function handler(path:String, content:String):String {
+	public static function handler(file:TuliFile, content:String):String {
 		// I hate this, need to spend some time on UTF8 so I dont have to manually
 		// add international characters.
 		var characters = ['№' => '&#8470;', 'ê' => '&ecirc;', 'ä'=>'&auml;', 'é'=>'&eacute;'];
 		for (key in characters.keys()) content = content.replace(key, characters.get(key));
 		
 		var parser = new MarkdownParser();
-		var tokens = parser.toTokens( ByteData.ofString( content ), path );
+		var tokens = parser.toTokens( ByteData.ofString( content ), file.path );
 		var resources = new Map<String, {url:String,title:String}>();
 		parser.filterResources( tokens, resources );
 		
 		var html = [for (token in tokens) parser.printHTML( token, resources )].join('');
 		
 		var template = resources.exists('_template') ? resources.get('_template') : { url:'', title:'' };
-		var location = (path.directory() + '/${template.url}').normalize();
+		var location = (file.path.directory() + '/${template.url}').normalize();
 		
 		// Look for a template in the markdown `[_template]: /path/file.html`
 		if (template.title == null || template.title == '') {
-			template.title = switch (tokens.filter(function(t) return switch (t.token) {
+			var token = tokens.filter(function(t) return switch (t.token) {
 				case Keyword(Header(_, _, _)): true;
 				case _: false;
-			})[0].token) {
-				case Keyword(Header(_, _, t)): t;
-				case _: '';
+			})[0];
+			
+			if (token != null) {
+				template.title = switch (token.token) {
+					case Keyword(Header(_, _, t)): t;
+					case _: '';
+				}
 			}
 		}
 		
 		var content = '';
 		
-		// Remove location from `Tuli.files`.
-		//Tuli.files.remove( location );
-		remove.push( location );
+		var tuliFiles = Tuli.config.files.filter( function(f) return [location, file.path].indexOf( f.path ) > -1 );
+		for (tuliFile in tuliFiles) tuliFile.ignore = true;
 		
 		if (!fileCache.exists( location )) {
-			// Grab the templates content. Then remove it
-			// from `Tuli.fileCache`.
+			// Grab the templates content.
 			if (Tuli.fileCache.exists( location )) {
 				content = Tuli.fileCache.get(location);
 				fileCache.set(location, content);
-				//Tuli.fileCache.remove( location );
-			}
-			
-			// Tell Tuli to ignore this extension.
-			if (Tuli.config.ignore.indexOf('md') == -1) {
-				Tuli.config.ignore.push( 'md' );
 			}
 		} else {
 			content = fileCache.get( location );
 		}
 		
-		var data:Dynamic = Reflect.copy( Tuli.config );
-		data.file = {
-			name: path.withoutExtension().withoutDirectory(),
-			title: template.title,
-			content: html,
-		}
-		
 		var dom = content.parse();
-		//dom.find('title').setText( data.file.title );
-		dom.find('content[select="markdown"]').replaceWith( null, dtx.Tools.parse(data.file.content) );
+		dom.find('content[select="markdown"]').replaceWith( null, dtx.Tools.parse( html ) );
 		var edit = dom.find('.article.details div:last-of-type a');
-		edit.setAttr('href', (edit.attr('href') + path).normalize());
+		edit.setAttr('href', (edit.attr('href') + file.path).normalize());
 		content = dom.html();
 		
 		// Add the new file location and contents into Tuli's `fileCache` which
 		// it will save for us.
-		Tuli.fileCache.set( path.withoutExtension() + '/index.html', content );
+		var spawned = file.path.withoutExtension() + '/index.html';
+		Tuli.fileCache.set( spawned, content );
+		
+		var tuliFile = tuliFiles.filter( function(f) return f.path == file.path );
+		if (tuliFile.length > 0) {
+			if (tuliFile[0].spawned.indexOf( spawned ) == -1) {
+				tuliFile[0].spawned.push( spawned );
+				Tuli.config.spawn.push( {
+					size: 0,
+					extra: {},
+					spawned: [],
+					ext: 'html',
+					ignore: false,
+					path: spawned,
+					parent: tuliFile[0].path,
+					created: Tuli.asISO8601(Date.now()),
+					modified: Tuli.asISO8601(Date.now()),
+					name: spawned.withoutDirectory().withoutExtension(),
+				} );
+			}
+		}
 		
 		return content;
-	}
-	
-	public static function finish() {
-		for (r in remove) {
-			if (Tuli.files.indexOf( r ) > -1) Tuli.files.remove( r );
-			if (Tuli.fileCache.exists( r )) Tuli.fileCache.remove( r );
-		}
-		remove = [];
 	}
 	#end
 	
@@ -275,8 +273,8 @@ class Markdown implements Klas {
 class ImportHTML implements Klas {
 	
 	#if macro
-	public static var partials:Array<String> = null;
-	public static var templates:Array<String> = null;
+	public static var partials:Array<TuliFile> = null;
+	public static var templates:Array<TuliFile> = null;
 	
 	public static function initialize() {
 		partials = [];
@@ -285,16 +283,16 @@ class ImportHTML implements Klas {
 		Tuli.onFinish( finish, After );
 	}
 	
-	public static function handler(path:String, content:String):String {
+	public static function handler(file:TuliFile, content:String):String {
 		var dom = content.parse();
 		var head = dom.find('head');
 		var isPartial = head.length == 0;
 		var hasInjectPoint = dom.find('content[select]').length > 0;
 		
 		if (isPartial) {
-			partials.push( path );
+			partials.push( file );
 		} else if (hasInjectPoint) {
-			templates.push( path );
+			templates.push( file );
 		}
 		
 		return content;
@@ -304,7 +302,7 @@ class ImportHTML implements Klas {
 		// Loop through and replace any `<content select="*" />` with
 		// a matching `<link rel="import" />`.
 		for (template in templates) {
-			var dom = Tuli.fileCache.get( template ).parse();
+			var dom = Tuli.fileCache.get( template.path ).parse();
 			var contents = dom.find('content[select]');
 			
 			for (content in contents) {
@@ -328,8 +326,8 @@ class ImportHTML implements Klas {
 			
 			// Find any remaining `<content />` and try filling them
 			// with anything that matches their own selector.
-			// TODO Either move this part to another "plugin" or move the markdown renderer before this plugin runs.
-			contents = dom.find('content[select]:not(content[data-targets])');
+			contents = dom.find('content[select]:not(content[targets])');
+
 			
 			for (content in contents) {
 				var selector = content.get('select');
@@ -337,7 +335,7 @@ class ImportHTML implements Klas {
 				/*trace( selector );
 				trace( items );*/
 				if (items.length > 0) {
-					if ([for (att in content.attributes()) att].indexOf('data-text') == -1) {
+					if ([for (att in content.attributes()) att].indexOf('text') == -1) {
 						content = content.replaceWith(null, items);
 					} else {
 						content = content.replaceWith(items.text().parse());
@@ -348,13 +346,12 @@ class ImportHTML implements Klas {
 			// Remove all '<content />` from the DOM.
 			dom.find('content[select]').remove();
 			
-			Tuli.fileCache.set( template, dom.html() );
+			Tuli.fileCache.set( template.path, dom.html() );
 			
 		}
 		
 		for (partial in partials) {
-			Tuli.files.remove(partial);
-			Tuli.fileCache.remove(partial);
+			partial.ignore = true;
 		}
 	}
 	#end
@@ -410,13 +407,13 @@ class SocialMetadata implements Klas {
 		Tuli.onFinish( finish, After );
 	}
 	
-	public static function handler(path:String, content:String):String {
+	public static function handler(file:TuliFile, content:String):String {
 		var dom = content.parse();
 		var head = dom.find('head');
 		var isPartial = head.length == 0;
 		
 		if (!isPartial) {
-			files.push( path );
+			files.push( file.path );
 		}
 		
 		return content;
@@ -463,8 +460,8 @@ class Finish implements Klas {
 		Tuli.onFinish( finish, After );
 	}
 	
-	public static function handler(path:String, content:String) {
-		files.push( path );
+	public static function handler(file:TuliFile, content:String) {
+		files.push( file.path );
 		return content;
 	}
 	
