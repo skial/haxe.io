@@ -6,7 +6,7 @@ rgb(34,186,241) - http://www.colorhexa.com/22baf1
 
 html, body {
 	color: #333332;
-	font-size: 1.05em;
+	font-size: 1em;
 	font-family: 'Bitter', serif;
 }
 
@@ -31,14 +31,6 @@ main {
 	max-width: 80vw;
 }
 
-html[class="/"] main li {
-	list-style-type: none;
-}
-
-html[class="/"] main h1 {
-	padding-top: 1.5em;
-}
-
 p {
 	line-height: 1.7em;
 	margin-bottom: 2em;
@@ -51,6 +43,7 @@ p img[alt] {
 }
 
 h1 {
+	font-size: 1.7em;
 	margin-bottom: 0.1em;
 }
 
@@ -96,13 +89,38 @@ footer {
 	background-color: rgb(241,89,34);
 }
 
+html[class="/"] main ol {
+	margin: 0;
+	padding: 0;
+}
+
+html[class="/"] main li {
+	list-style-type: none;
+}
+
+html[class="/"] main h1 {
+	padding-top: 1.5em;
+}
+
 @media all and (min-width: 699px) {
+	html, body {
+		font-size: 1.05em;
+	}
+
+	h1 {
+		font-size: 2em;
+	}
+	
 	main {
 		max-width: 70vw;
 	}
 }
 
 @media all and (min-width: 899px) {
+	h1 {
+		font-size: 2.3em;
+	}
+	
 	main {
 		max-width: 60vw;
 	}
