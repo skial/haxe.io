@@ -5,6 +5,7 @@ import byte.ByteData;
 import uhx.lexer.MarkdownParser;
 
 #if macro
+import sys.io.File;
 import sys.io.Process;
 import sys.FileSystem;
 import uhx.macro.Tuli;
@@ -191,7 +192,7 @@ class Markdown implements Klas {
 	public static function handler(file:TuliFile, content:String):String {
 		// I hate this, need to spend some time on UTF8 so I dont have to manually
 		// add international characters.
-		var characters = ['№' => '&#8470;', 'ê' => '&ecirc;', 'ä'=>'&auml;', 'é'=>'&eacute;'];
+		var characters = ['№' => '&#8470;', 'ê' => '&ecirc;', 'ä'=>'&auml;', 'é'=>'&eacute;', '“'=>'&ldquo;', '”'=>'&rdquo;' ];
 		for (key in characters.keys()) content = content.replace(key, characters.get(key));
 		
 		var parser = new MarkdownParser();
@@ -201,10 +202,14 @@ class Markdown implements Klas {
 		
 		var html = [for (token in tokens) parser.printHTML( token, resources )].join('');
 		
-		var template = resources.exists('_template') ? resources.get('_template') : { url:'', title:'' };
-		var location = (file.path.directory() + '/${template.url}').normalize();
-		
 		// Look for a template in the markdown `[_template]: /path/file.html`
+		var template = resources.exists('_template') ? resources.get('_template') : { url:'', title:'' };
+		var location = if (template.url == '') {
+			'/_template.html';
+		} else {
+			(file.path.directory() + '/${template.url}').normalize();
+		}
+		
 		if (template.title == null || template.title == '') {
 			var token = tokens.filter(function(t) return switch (t.token) {
 				case Keyword(Header(_, _, _)): true;
@@ -229,6 +234,10 @@ class Markdown implements Klas {
 			if (Tuli.fileCache.exists( location )) {
 				content = Tuli.fileCache.get(location);
 				fileCache.set(location, content);
+			} else {
+				content = File.getContent( (Tuli.config.input + location).normalize() );
+				Tuli.fileCache.set( location, content );
+				fileCache.set( location, content );
 			}
 		} else {
 			content = fileCache.get( location );
