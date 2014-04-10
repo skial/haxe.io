@@ -125,3 +125,9 @@ html[class="/"] main h1 {
 		max-width: 60vw;
 	}
 }
+
+@media all and (min-width: 1099px) {
+	main {
+		max-width: 50vw;
+	}
+}
