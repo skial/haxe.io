@@ -1,9 +1,9 @@
 -lib tuli
--lib tem
 -lib mo
 -lib detox
 -lib beanhx
 -lib tjson
+-lib selecthxml
 -cp src
 -js bin/haxeio.js
 -main Main
