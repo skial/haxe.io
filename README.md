@@ -2,56 +2,43 @@
 
 The new home of the Haxe Roundups.
 
-## Installation
+## Contributing...
 
-Using Haxe Compiler `3.1.3 git build a21691a`.
+### to the Haxe Roundups
 
-You will need to install the following libraries
+If you have an link you would like to be included in the the next
+roundup and it was published since the last roundup was released, you
+can add it to the latest issue, named `Haxe Roundup ###` where `###` is
+the next roundup issue number.
 
-1. detox - `haxelib install detox`
-2. selecthxml - `haxelib install selecthxml`
-3. tjson - `haxelib install tjson`
-4. hxparse - `haxelib install hxparse`
+The link should include, the link url, _pretty obvious_, and if possible, 
+the authors social handle. Any social account can be used.
 
-You will need to install the following libraries through `haxelib git <name> <url>
-<branch> <folder>` or clone them locally and run `haxelib local <zip>`
+### an article
 
-1. [uhu]: 
-	+ git - `haxelib git uhu https://github.com/skial/uhu experimental src`
-	+ zip:
-		* download - `https://github.com/skial/uhu/archive/experimental.zip`
-		* install - `haxelib local experimental.zip`
-2. [klas]:
-	+ git - `haxelib git klas https://github.com/skial/klas master src`
-	+ zip:
-		* download - `https://github.com/skial/klas/archive/master.zip`
-		* install - `haxelib local master.zip`
-3. [mo]:
-	+ git - `haxelib git mo https://github.com/skial/mo master src`
-	+ zip:
-		* download - `https://github.com/skial/mo/archive/master.zip`
-		* install - `haxelib local master.zip`
-4. [tuli]:
-	+ git - `haxelib git tuli https://github.com/skial/tuli master src`
-	+ zip:
-		* download - `https://github.com/skial/tuli/archive/master.zip`
-		* install - `haxelib local master.zip`
-		
-You will also need some programs due to the macro system not being able to load
-ndlls and other reasons.
+If you have tips, tricks, ideas, or techniques to contribute to Haxe.io,
+then you're more than welcome to help provide others with solid and useful
+articles. Just fork the repository and add your article to the `articles` 
+folder.
 
-1. tidy - `http://w3c.github.io/tidy-html5/`
-2. curl - `http://curl.haxx.se/`
-	
-## Setup
+The file format should be markdown, but if you can justify your reason
+for using a different format, go for it.
 
-None, if you have all the libraries and programs installed and available from
-PATH, then compiling `haxe.io.hxml` should _work_.
+### your personal opinion (_related to the Haxe ecosystem_)
 
-If not, open an [issue]. I might have missed something!?!
+You're more than welcome to write about your personal opinion. Just fork the
+repository and create a folder using your name or a social handle, prefixed
+with `@`. Eg `@skial`. Then create a markdown file and get writing.
 
-[uhu]: http://github.com/skial/uhu/tree/experimental "The Uhu/Uhx Collection"
-[klas]: http://github.com/skial/klas "The Ordered Macro Builder"
-[mo]: http://github.com/skial/mo "Syntax highlighter"
-[tuli]: http://github.com/skial/tuli "Static site generator"
-[issue]: http://github.com/skial/haxe.io/issues "Haxe.io Issues"
+I'm fine with cross site publishing and do **not** personally attack anyone. It
+won't be accepted.
+
+### to the site
+
+The site is tricky to get setup locally, I am working on making it easier. For those
+that feel brave, you can follow the [Installation and Setup][wiki 1] guide.
+
+Don't hesitate to file a new [issue] or join in on an existing [issue].
+
+[wiki 1]: https://github.com/skial/haxe.io/wiki/Installation-and-Setup "Installtion and Setup"
+[issue]: http://github.com/skial/haxe.io/issues
