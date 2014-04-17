@@ -26,7 +26,7 @@ nav ul li {
 	display: inline-block;
 }
 
-main {
+main, p > img:first-child {
 	margin: 0 auto;
 	max-width: 80vw;
 }
@@ -36,7 +36,11 @@ p {
 	margin-bottom: 1.7em;
 }
 
-p img[alt] {
+p > img {
+	display: block;
+}
+
+p img[alt*=inline] {
 	width: 1em;
 	height: 1em;
 	display: inline-block;
@@ -111,7 +115,7 @@ html[class="/"] main h1 {
 		font-size: 2em;
 	}
 	
-	main {
+	main, p > img:first-child {
 		max-width: 70vw;
 	}
 }
@@ -121,13 +125,13 @@ html[class="/"] main h1 {
 		font-size: 2.3em;
 	}
 	
-	main {
+	main, p > img:first-child {
 		max-width: 60vw;
 	}
 }
 
 @media all and (min-width: 1099px) {
-	main {
+	main, p > img:first-child {
 		max-width: 50vw;
 	}
 }

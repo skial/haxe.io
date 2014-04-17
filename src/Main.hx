@@ -192,7 +192,7 @@ class Markdown implements Klas {
 	public static function handler(file:TuliFile, content:String):String {
 		// I hate this, need to spend some time on UTF8 so I dont have to manually
 		// add international characters.
-		var characters = ['№' => '&#8470;', 'ê' => '&ecirc;', 'ä'=>'&auml;', 'é'=>'&eacute;', '“'=>'&ldquo;', '”'=>'&rdquo;' ];
+		var characters = ['ş' => '&#x015F;', '№' => '&#8470;', 'ê' => '&ecirc;', 'ä'=>'&auml;', 'é'=>'&eacute;', 'ø' => '&oslash;', '“'=>'&ldquo;', '”'=>'&rdquo;' ];
 		for (key in characters.keys()) content = content.replace(key, characters.get(key));
 		
 		var parser = new MarkdownParser();
@@ -244,6 +244,7 @@ class Markdown implements Klas {
 		}
 		
 		var dom = content.parse();
+		
 		dom.find('content[select="markdown"]').replaceWith( null, dtx.Tools.parse( html ) );
 		var edit = dom.find('.article.details div:last-of-type a');
 		edit.setAttr('href', (edit.attr('href') + file.path).normalize());
@@ -312,6 +313,9 @@ class ImportHTML implements Klas {
 		// a matching `<link rel="import" />`.
 		for (template in templates) {
 			var dom = Tuli.fileCache.get( template.path ).parse();
+			if (template.path == 'index.html') {
+				trace(dom.length);
+			}
 			var contents = dom.find('content[select]');
 			
 			for (content in contents) {
@@ -354,7 +358,10 @@ class ImportHTML implements Klas {
 			
 			// Remove all '<content />` from the DOM.
 			dom.find('content[select]').remove();
-			
+			if (template.path == 'index.html') {
+				trace( template );
+				trace(dom.html());
+			}
 			Tuli.fileCache.set( template.path, dom.html() );
 			
 		}
