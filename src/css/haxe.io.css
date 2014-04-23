@@ -26,7 +26,7 @@ nav ul li {
 	display: inline-block;
 }
 
-main, p > img:first-child {
+main, img:first-child {
 	margin: 0 auto;
 	max-width: 80vw;
 }
@@ -51,21 +51,21 @@ h1 {
 	margin-bottom: 0.1em;
 }
 
-a {
+a:not([type*="image"]) {
 	color: rgb(34,186,241);
 	text-decoration: none;
 	padding-bottom: 0.1em;
 	border-bottom: 1px solid rgba(34,186,241, 0.2);
 }
 
-a:hover {
+a:hover:not([type*="image"]) {
 	color: rgb(34,186,241);
 	text-decoration: none;
 	padding-bottom: 0.1em;
 	border-bottom: 1px solid;
 }
 
-a:active {
+a:active:not([type*="image"]) {
 	color: rgb(241,34,82);
 	text-decoration: none;
 	padding-bottom: 0.1em;
@@ -102,6 +102,10 @@ html[class="/"] main li {
 	list-style-type: none;
 }
 
+html[class="/"] li:first-child {
+	padding-top: 2em;
+}
+
 html[class="/"] main h1 {
 	padding-top: 1.5em;
 }
@@ -115,7 +119,7 @@ html[class="/"] main h1 {
 		font-size: 2em;
 	}
 	
-	main, p > img:first-child {
+	main, img:first-child {
 		max-width: 70vw;
 	}
 }
@@ -125,13 +129,13 @@ html[class="/"] main h1 {
 		font-size: 2.3em;
 	}
 	
-	main, p > img:first-child {
+	main, img:first-child {
 		max-width: 60vw;
 	}
 }
 
 @media all and (min-width: 1099px) {
-	main, p > img:first-child {
+	main, img:first-child {
 		max-width: 50vw;
 	}
 }
