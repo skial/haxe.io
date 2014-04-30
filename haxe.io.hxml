@@ -4,12 +4,8 @@
 -lib beanhx
 -lib tjson
 -lib selecthxml
+-lib tappi
 -cp src
--js bin/haxeio.js
+-neko bin/haxeio.js
 -main Main
 --macro uhx.macro.KlasImp.initalize()
---macro Main.GithubInformation.initialize()
---macro Main.Markdown.initialize()
---macro Main.ImportHTML.initialize()
---macro Main.SocialMetadata.initialize()
---macro Main.Finish.initialize()

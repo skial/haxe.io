@@ -10,7 +10,7 @@
     <movie height="0" />
     <movie version="1" />
     <movie minorVersion="0" />
-    <movie platform="JavaScript" />
+    <movie platform="Neko" />
     <movie background="#FFFFFF" />
   </output>
   <!-- Other classes to be compiled into your SWF -->
@@ -24,7 +24,7 @@
     <option noInlineOnDebug="False" />
     <option mainClass="Main" />
     <option enabledebug="False" />
-    <option additional="--macro uhx.macro.KlasImp.initalize()&#xA;--macro Main.GithubInformation.initialize()&#xA;--macro Main.Markdown.initialize()&#xA;--macro Main.ImportHTML.initialize()&#xA;--macro Main.SocialMetadata.initialize()&#xA;#--macro Main.RoundupFooter.initialize()&#xA;--macro Main.Finish.initialize()" />
+    <option additional="--macro uhx.macro.KlasImp.initalize()&#xA;#--macro Main.GithubInformation.initialize()&#xA;#--macro Main.Markdown.initialize()&#xA;#--macro Main.ImportHTML.initialize()&#xA;#--macro Main.SocialMetadata.initialize()&#xA;#--macro Main.RoundupFooter.initialize()&#xA;#--macro Main.Finish.initialize()" />
   </build>
   <!-- haxelib libraries -->
   <haxelib>
@@ -34,6 +34,7 @@
     <library name="beanhx" />
     <library name="tjson" />
     <library name="selecthxml" />
+    <library name="tappi" />
   </haxelib>
   <!-- Class files to compile (other referenced classes will automatically be included) -->
   <compileTargets>
