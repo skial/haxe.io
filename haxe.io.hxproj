@@ -35,6 +35,7 @@
     <library name="tjson" />
     <library name="selecthxml" />
     <library name="tappi" />
+    <library name="imagemagick" />
   </haxelib>
   <!-- Class files to compile (other referenced classes will automatically be included) -->
   <compileTargets>

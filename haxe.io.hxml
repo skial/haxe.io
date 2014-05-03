@@ -5,6 +5,7 @@
 -lib tjson
 -lib selecthxml
 -lib tappi
+-lib imagemagick
 -cp src
 -neko bin/haxeio.js
 -main Main

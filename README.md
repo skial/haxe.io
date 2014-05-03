@@ -11,8 +11,14 @@ roundup and it was published since the last roundup was released, you
 can add it to the latest issue, named `Haxe Roundup ###` where `###` is
 the next roundup issue number.
 
-The link should include, the link url, _pretty obvious_, and if possible, 
-the authors social handle. Any social account can be used.
+The link should include, the link url, _which is pretty obvious_, and if possible
+the authors social handle, any social account can be used.
+
+When adding a link to a roundup todo list please use the following mardown.
+
+```
+- [ ] optional description [link name](/link/to/item) by [Persons Name](link/to/person)
+```
 
 ### an article
 

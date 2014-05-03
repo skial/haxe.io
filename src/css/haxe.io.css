@@ -4,7 +4,8 @@ complementary colour
 rgb(34,186,241) - http://www.colorhexa.com/22baf1
 */
 
-html, body {
+html, 
+body {
 	color: #333332;
 	font-size: 1em;
 	font-family: 'Bitter', serif;
@@ -26,7 +27,8 @@ nav ul li {
 	display: inline-block;
 }
 
-main, img:first-child {
+main, 
+figure > img {
 	margin: 0 auto;
 	max-width: 80vw;
 }
@@ -36,8 +38,45 @@ p {
 	margin-bottom: 1.7em;
 }
 
-p > img {
+/*p > img {
 	display: block;
+}*/
+
+figure {
+	margin: 0;
+	max-height: 10vh;
+	overflow: hidden;
+	-webkit-transition: all 0.4s ease; 
+    -moz-transition: all 0.4s ease;
+	-o-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+}
+
+figure > img {
+	display: block;
+	margin: 0 auto;
+}
+
+input[id*="pic"] {
+	opacity: 0;
+	position: absolute;
+}
+
+label[for*="pic"] {
+	z-index: 3;
+	display: block;
+	cursor: pointer;
+	min-width: 80vw;
+	min-height: 10vh;
+	position: absolute;
+}
+
+input:checked ~ figure {
+	max-height: 100vh;
+}
+
+input:checked ~ label[for*="pic"] {
+	min-height: 21%;
 }
 
 p img[alt*=inline] {
@@ -93,6 +132,10 @@ footer {
 	background-color: rgb(241,89,34);
 }
 
+li {
+	padding-bottom: 0.7em;
+}
+
 html[class="/"] main ol {
 	margin: 0;
 	padding: 0;
@@ -119,8 +162,22 @@ html[class="/"] main h1 {
 		font-size: 2em;
 	}
 	
-	main, img:first-child {
+	main, 
+	figure > img {
 		max-width: 70vw;
+	}
+	
+	figure {
+		max-height: 15vh;
+	}
+	
+	label[for*="pic"] {
+		min-width: 70vw;
+		min-height: 15vh;
+	}
+	
+	input:checked ~ label[for*="pic"] {
+		min-height: 35%;
 	}
 }
 
@@ -129,13 +186,42 @@ html[class="/"] main h1 {
 		font-size: 2.3em;
 	}
 	
-	main, img:first-child {
+	main, 
+	figure > img {
 		max-width: 60vw;
+	}
+	
+	figure {
+		max-height: 20vh;
+	}
+	
+	label[for*="pic"] {
+		min-width: 60vw;
+		min-height: 20vh;
+	}
+	
+	input:checked ~ label[for*="pic"] {
+		min-height: 40%;
 	}
 }
 
 @media all and (min-width: 1099px) {
-	main, img:first-child {
+	main, 
+	figure > img {
 		max-width: 50vw;
 	}
+	
+	figure {
+		max-height: 15vh;
+	}
+	
+	label[for*="pic"] {
+		min-width: 50vw;
+		min-height: 15vh;
+	}
+	
+	input:checked ~ label[for*="pic"] {
+		min-height: 48%;
+	}
+	
 }
