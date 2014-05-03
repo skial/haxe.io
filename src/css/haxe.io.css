@@ -29,9 +29,13 @@ nav ul li {
 
 main, 
 img:first-child,
-figure > img {
+figure {
 	margin: 0 auto;
 	max-width: 80vw;
+}
+
+h2 {
+	position: relative;
 }
 
 p {
@@ -44,7 +48,24 @@ p {
 }*/
 
 figure {
-	margin: 0;
+	margin: 0 auto;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #f5f5f5;
+}
+
+figcaption {
+	color: #40403f;
+	font-size: 0.77em;
+	font-style: italic;
+	padding-top: 0.55em;
+	padding-bottom: 0.55em;
+	padding-left: 0.77em;
+}
+
+figure > div {
+	margin: 0 auto;
+	display: block;
 	max-height: 10vh;
 	overflow: hidden;
 	-webkit-transition: all 0.4s ease; 
@@ -53,9 +74,8 @@ figure {
 	transition: all 0.4s ease;
 }
 
-figure > img {
-	display: block;
-	margin: 0 auto;
+figure > div > img {
+	width: 100%;
 }
 
 input[id*="pic"] {
@@ -72,7 +92,7 @@ label[for*="pic"] {
 	position: absolute;
 }
 
-input:checked ~ figure {
+input:checked ~ div {
 	max-height: 100vh;
 }
 
@@ -91,25 +111,53 @@ h1 {
 	margin-bottom: 0.1em;
 }
 
-a:not([type*="image"]) {
+a:not([type]) {
 	color: rgb(34,186,241);
 	text-decoration: none;
 	padding-bottom: 0.1em;
 	border-bottom: 1px solid rgba(34,186,241, 0.2);
 }
 
-a:hover:not([type*="image"]) {
+a:hover:not([type]) {
 	color: rgb(34,186,241);
 	text-decoration: none;
 	padding-bottom: 0.1em;
 	border-bottom: 1px solid;
 }
 
-a:active:not([type*="image"]) {
+a:active:not([type]) {
 	color: rgb(241,34,82);
 	text-decoration: none;
 	padding-bottom: 0.1em;
 	border-bottom: 1px solid;
+}
+
+h2 > a {
+	display: block;
+	position: absolute;
+	
+	margin-left: -1.5em;
+	padding-right: 1em;
+	padding-bottom: 1em;
+	padding-top: 1em;
+	margin-top: -1em;
+	
+	border: none;
+	visibility: hidden;
+	
+	color: #333332;
+	text-decoration: none;
+}
+
+h2:hover > a {
+	visibility: visible;
+}
+
+h2 > a > span::before {
+	cursor: pointer;
+	content: "\0000A7";
+	font-size: 0.8em;
+	margin-left: 0.6em;
 }
 
 .article.details {
@@ -165,11 +213,11 @@ html[class="/"] main h1 {
 	
 	main, 
 	img:first-child,
-	figure > img {
+	figure {
 		max-width: 70vw;
 	}
 	
-	figure {
+	figure > div {
 		max-height: 15vh;
 	}
 	
@@ -190,11 +238,11 @@ html[class="/"] main h1 {
 	
 	main, 
 	img:first-child,
-	figure > img {
+	figure {
 		max-width: 60vw;
 	}
 	
-	figure {
+	figure > div {
 		max-height: 20vh;
 	}
 	
@@ -211,11 +259,11 @@ html[class="/"] main h1 {
 @media all and (min-width: 1099px) {
 	main, 
 	img:first-child,
-	figure > img {
+	figure {
 		max-width: 50vw;
 	}
 	
-	figure {
+	figure > div {
 		max-height: 15vh;
 	}
 	
