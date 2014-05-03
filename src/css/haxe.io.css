@@ -28,6 +28,7 @@ nav ul li {
 }
 
 main, 
+img:first-child,
 figure > img {
 	margin: 0 auto;
 	max-width: 80vw;
@@ -163,6 +164,7 @@ html[class="/"] main h1 {
 	}
 	
 	main, 
+	img:first-child,
 	figure > img {
 		max-width: 70vw;
 	}
@@ -187,6 +189,7 @@ html[class="/"] main h1 {
 	}
 	
 	main, 
+	img:first-child,
 	figure > img {
 		max-width: 60vw;
 	}
@@ -207,6 +210,7 @@ html[class="/"] main h1 {
 
 @media all and (min-width: 1099px) {
 	main, 
+	img:first-child,
 	figure > img {
 		max-width: 50vw;
 	}
