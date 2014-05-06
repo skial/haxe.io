@@ -11,6 +11,30 @@
     ,"spawn" : [
 
     ]
+    ,"plugins" : [
+         {
+             "uhu" : [
+
+            ]
+        }
+        ,{
+             "tuli" : [
+                 "markdown"
+                ,"rss"
+                ,"atom"
+                ,"importhtml"
+                ,"socialmetadata"
+                ,"nofollow"
+                ,"titlelinks"
+                ,"boxedimages"
+            ]
+        }
+        ,{
+             "haxe.io" : [
+                 "finish"
+            ]
+        }
+    ]
     ,"output" : "C:/Users/Skial/Dropbox/dev/haxe.io/bin/"
     ,"ignore" : [
          "hx"

@@ -4,15 +4,6 @@ import haxe.Json;
 import byte.ByteData;
 import uhx.lexer.MarkdownParser;
 
-#if macro
-import sys.io.File;
-import sys.io.Process;
-import sys.FileSystem;
-//import uhx.macro.Tuli;
-import haxe.macro.Context;
-import haxe.macro.Expr.ExprOf;
-#end
-
 using Lambda;
 using Detox;
 using Reflect;
@@ -34,6 +25,9 @@ class Main {
 	}
 	
 }
+
+
+
 /*
 private typedef Commit = {
 	var sha:String;

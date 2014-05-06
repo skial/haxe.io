@@ -1,0 +1,14 @@
+-lib tuli
+-lib mo
+-lib detox
+-lib beanhx
+-lib tjson
+-lib selecthxml
+-debug
+#-dce no
+-cp src
+
+--each
+
+-neko finish.n
+-main Finish

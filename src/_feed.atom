@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<id>http://haxe.io/</id>
+	<title>Haxe.io — News And Information For Haxe Developers</title>
+	<updated></updated>
+	<link rel="self" href="" />
+	<author>
+		<name>Skial Bainn</name>
+		<uri>http://twitter.com/skial</uri>
+	</author>
+</feed>
