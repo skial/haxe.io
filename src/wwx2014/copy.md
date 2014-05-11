@@ -12,7 +12,7 @@ About yourself...
 ## Where do you get your inspiration?
 
 
-## Which creatives/developers/artists you admire most?
+## Which creatives/developers/artists do you admire most?
 
 
 ## What contributions are you proud of?
