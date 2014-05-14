@@ -29,6 +29,7 @@
   <!-- haxelib libraries -->
   <haxelib>
     <library name="tuli" />
+    <library name="uhu" />
     <library name="mo" />
     <library name="detox" />
     <library name="beanhx" />

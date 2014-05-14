@@ -1,5 +1,4 @@
 [_template]: ../interview.html
-# Your name
 
 Hugh Sanderson
 
