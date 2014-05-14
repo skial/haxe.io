@@ -1,6 +1,7 @@
-[_template]: ../interview.html
+[_template]: ../../interview.html
+[_author]: https://twitter.com/gamehaxe "@gamehaxe"
 
-Hugh Sanderson
+# Hugh Sanderson
 
 ## What hardware do you use?
 
@@ -19,7 +20,7 @@ Not sure - I seem to have a "mental stack" of things I would like to try, and ge
 
 ## Which creatives/developers/artists do you admire most?
 
-I admire John Carmack for his early work 3d graphics, and Steve Wozniak because I cut my teeth on an apple ][.
+I admire John Carmack for his early work 3d graphics, and Steve Wozniak because I cut my teeth on an apple.
 
 
 ## What contributions are you proud of?

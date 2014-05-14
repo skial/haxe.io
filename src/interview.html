@@ -16,6 +16,13 @@
 	<content select="#head_scripts" />
 </head>
 <body>
-
+	<main>
+		<content select="h1:first-of-type" />
+		<div class="article details">
+			<div>Written by <a rel="author" href="" title=""><content select="h1:first-of-type" text="" /></a></div>
+			<div><a href="https://github.com/skial/haxe.io/tree/master/src/" title="Correct this post">Edit</a></div>
+		</div>
+		<content select="markdown" />
+	</main>
 </body>
 </html>

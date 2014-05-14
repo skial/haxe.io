@@ -1,4 +1,4 @@
-[_template]: ../interview.html
+[_template]: ../../interview.html
 
 ## About yourself
 
