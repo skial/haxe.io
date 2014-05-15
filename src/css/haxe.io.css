@@ -202,6 +202,14 @@ html[class="/"] main h1 {
 	padding-top: 1.5em;
 }
 
+html[class="/interview"] h2 {
+	font-size: 1.4em;
+}
+
+html[class="/interview"] p img {
+	width: 100%;
+}
+
 @media all and (min-width: 699px) {
 	html, body {
 		font-size: 1.05em;

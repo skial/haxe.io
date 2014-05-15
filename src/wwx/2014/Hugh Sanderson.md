@@ -3,6 +3,8 @@
 
 # Hugh Sanderson
 
+![Hugh Sanderson WWX 2014 skip-lb social](/img/hugh_sanderson_wwx_2012_3.jpg "Hugh Sanderson")
+
 ## What hardware do you use?
 
 I use all sorts of hardware.  I mainly use a desktop PC (which I can boot to Linux) and Macbook air.  But I also have various Android devices and an iPad(1), and a Mac-mini I use for builds.
@@ -10,12 +12,12 @@ I use all sorts of hardware.  I mainly use a desktop PC (which I can boot to Lin
 
 ## What software do you use?
 
-I spend most of my time in "vi", and I also really like tcsh for windows, which allows me to switch between all my dev machines without any friction.
+I spend most of my time in "vi", and I also really like [tcsh] for windows, which allows me to switch between all my dev machines without any friction.
 
 
 ## Where do you get your inspiration?
 
-Not sure - I seem to have a "mental stack" of things I would like to try, and get to the one that seems most fun at the time.
+Not sure, I seem to have a "mental stack" of things I would like to try, and get to the one that seems most fun at the time.
 
 
 ## Which creatives/developers/artists do you admire most?
@@ -25,7 +27,7 @@ I admire John Carmack for his early work 3d graphics, and Steve Wozniak because 
 
 ## What contributions are you proud of?
 
-I am pretty happy the hxcpp and NME.
+I am pretty happy the Hxcpp and NME.
 
 
 ## Did your contributions bring you work opportunities?
@@ -35,12 +37,12 @@ I have had some contracts, and suspect I could get more if I tried harder.
 
 ## Do you use them in your projects?
 
-I have a few projects on the go, all of which use NME and hxcpp one way or another.
+I have a few projects on the go, all of which use NME and Hxcpp one way or another.
 
 
 ## How did you get started with Haxe?
 
-Initially for web/pc game dev - read about it here http://gamehaxe.com/2007/01/27/the-plan/ (has it really been 7 years?)
+Initially for web/pc game dev, you can read about it here [http://gamehaxe.com/2007/01/27/the-plan/] (has it really been 7 years?)
 
 
 ## What problem does Haxe solve for you?
@@ -54,7 +56,7 @@ Just start writing code.  There is a small hump to get over, but you can be very
 
 ## What Haxe libraries are you impressed by?
 
-I like the design of the Haxe Fixel and haxeui libraries.
+I like the design of the [Haxe Fixel] and [haxeui] libraries.
 
 ## What problem would you like to see solved by a new or existing Haxe library?
 
@@ -79,3 +81,7 @@ I've recently made big steps to help with native code integration.  These includ
 
 The party.  Oh, and meeting all the people you only know from twitter or github handles.
 
+[tcsh]: https://en.wikipedia.org/wiki/Tcsh "tcsh on Wikipedia"
+[http://gamehaxe.com/2007/01/27/the-plan/]: http://gamehaxe.com/2007/01/27/the-plan/ "The Plan | GameHaxe"
+[haxe flixel]: http://haxeflixel.com/ "HaxeFlixel"
+[haxeui]: http://haxeui.org/ "Rich cross-platform user interfaces  | HaxeUI"

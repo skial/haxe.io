@@ -3,17 +3,17 @@
 
 # Franco Ponticelli
 	
-## About yourself
+![Franco Ponticelli WWX 2014 skip-lb social](/img/franco_ponticelli_wwx_2011_1.jpg "Franco Ponticelli")
 
-Old, very old, but only on the outside. Long time computer geek, developer by trade and passionate about so many things that it is way too easy to lose count.
+I'm old, very old, but only on the outside. Long time computer geek, developer by trade and passionate about so many things that it is way too easy to lose count.
 
 ## What hardware do you use?
 
-Mac Book Pro
+Mac Book Pro.
 
 ## What software do you use?
 
-Chrome + Sublime Text is all I need lately.
+Chrome and Sublime Text is all I need lately.
 
 ## Where do you get your inspiration?
 
@@ -29,11 +29,11 @@ I am certainly proud of writing the first Haxe book (Professional Haxe and Neko)
 
 ## Did your contributions bring you work opportunities?
 
-Yes. I got a pretty long and enjoyable contract with an awesome italian company (Visup). I am pretty sure that the book was a big factor in their decision to hire me.
+Yes. I got a pretty long and enjoyable contract with an awesome italian company, [Visup]. I am pretty sure that the book was a big factor in their decision to hire me.
 
 ## Do you use them in your projects?
 
-I contributed several Haxe libraries and there two that I constantly use in all of them: utest and thx.core. They are my staples for Haxe development. They are simple and not fancy but they are easy to use. They certainly could get more love.
+I contribute to several Haxe libraries and the two that I constantly use in all of them: [utest] and [thx.core]. They are my staples for Haxe development. They are simple and not fancy but they are easy to use. They certainly could get more love.
 
 ## How did you get started with Haxe?
 
@@ -49,8 +49,8 @@ Don't stick to what you know and embrace what Haxe has to offer. Haxe is mature 
 
 ## What Haxe libraries are you impressed by?
 
-I love everything that is visual (who doesn't?) so I will pick haxeui. It is really impressive to see how the project evolved essentially in the hands of just one developer.
-Another library that always amazes me because of the amount of features and quality you can find in it is Prime. Impressive.
+I love everything that is visual (who doesn't?) so I will pick [haxeui]. It is really impressive to see how the project evolved essentially in the hands of just one developer.
+Another library that always amazes me because of the amount of features and quality you can find in it is [Prime]. Impressive.
 
 ## What problem would you like to see solved by a new or existing Haxe library?
 
@@ -63,7 +63,10 @@ I've seen plenty but I think the best is still to come.
 ## What do you see for the future for Haxe/OpenFL?
 
 I am not in the game business but I am in the UI/UX one. So I am not sure it will happen but I would love to see OpenFL excelling outside the game-making world.
-Regarding more strictly the language I believe that it needs some make-up. I know that Nicholas strongly believe that syntax sugar is not important and I also recognize that his resilience has been favorable to get where the language is at the moment. On the other hand software development is not, or should not, be considered a static thing and adding some "color" can make big differences. Adding syntax-sugar can encourage people to embrace some best practices.
+
+Regarding more strictly the language I believe that it needs some make-up. I know that Nicholas strongly believe that syntax sugar is not important and I also recognize that his resilience has been favorable to get where the language is at the moment. 
+
+On the other hand software development is not, or should not, be considered a static thing and adding some "color" can make big differences. Adding syntax-sugar can encourage people to embrace some best practices.
 
 ## Sell your wwx2014 session!
 
@@ -73,4 +76,8 @@ I don't have too. Haxers and Makers ... it is sold already!
 
 Meeting Haxers. The Haxe community is really amazing and I am really proud to say that I have several good friends in there.
 
-
+[visup]: http://www.visup.it/ "Visup.it"
+[utest]: https://github.com/fponticelli/utest "Cross-platform unit testing | Utest"
+[thx.core]: https://github.com/fponticelli/thx.core "Thx Core on Github"
+[haxeui]: http://haxeui.org/ "Rich cross-platform user interfaces  | HaxeUI"
+[prime]: http://prime.vc/ "Data driven GUI application libraries, for human beings and Haxe"

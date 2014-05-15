@@ -3,7 +3,7 @@
 
 # Andreas Söderlund
 
-## About yourself
+![Andreas Soderlund WWX 2014 skip-lb social](/img/andreas_soderlund_wwx_2014.jpg "Andreas Söderlund")
 
 It's kind of hard to describe myself, since I don't enjoy putting labels on someone, but also because I embrace change, which can happen so fast. Some things I try to maintain and improve with myself though is to be genuine, caring and spiritual.
 
@@ -25,7 +25,7 @@ Definitely the creators of DCI, Trygve Reenskaug and James Coplien. They have a 
 
 ## What contributions are you proud of?
 
-For Haxe, I'm glad to have put down some of the groundwork to ufront and erazor (even though they have changed and improved a lot since I contributed!)
+For Haxe, I'm glad to have put down some of the groundwork to [ufront] and [erazor] (even though they have changed and improved a lot since I contributed!)
 
 ## Did your contributions bring you work opportunities?
 
@@ -37,7 +37,7 @@ When I do a Haxe web project, I definitely use ufront and erazor.
 
 ## How did you get started with Haxe?
 
-I started back in 2009 as an escape from PHP, and soon I wanted a web framework so I wasn't forced to use PHP ever again! I created Haxigniter based on the Codeigniter framework, and from there many other tools and libraries.
+I started back in 2009 as an escape from PHP, and soon I wanted a web framework so I wasn't forced to use PHP ever again! I created [Haxigniter] based on the Codeigniter framework, and from there many other tools and libraries.
 
 ## What problem does Haxe solve for you?
 
@@ -53,11 +53,11 @@ Hats off to OpenFL and Lime!
 
 ## What problem would you like to see solved by a new or existing Haxe library?
 
-I'm hoping my DCI library will solve some of the problems present in programming projects today: Separating what the system is from what it does (very different rates of change), aligning the code with end-user mental models, and many other things... come and hear the talk! :)
+I'm hoping my [DCI library] will solve some of the problems present in programming projects today: Separating what the system is from what it does (very different rates of change), aligning the code with end-user mental models, and many other things... come and hear the talk! :)
 
 ## What is the best use of Haxe you've come across?
 
-My friend Jonas has created an amazing library for displaying and interacting with sheet music. He's compiling it to several platforms, and it looks (and sounds) beautiful! He'll be at WWX too, so make sure you ask him for a demo!
+My friend [Jonas] has created an amazing library for displaying and interacting with sheet music. He's compiling it to several platforms, and it looks (and sounds) beautiful! He'll be at WWX too, so make sure you ask him for a demo!
 
 ## What do you see for the future for Haxe/OpenFL?
 
@@ -69,4 +69,10 @@ Well, it's the way forward in system development. If you're interested in how to
 
 ## What is the best part of wwx for you?
 
-First time for me, but I'm looking forward to some great company and many interesting discussions! Not too many programming nerds up here in the north... :)
+Its the first time for me, but I'm looking forward to some great company and many interesting discussions! Not too many programming nerds up here in the north... :)
+
+[ufront]: https://github.com/ufront/ufront "ufront on Github"
+[erazor]: https://github.com/ciscoheat/erazor "erazor on Github"
+[haxigniter]: https://github.com/ciscoheat/haxigniter "Haxigniter on Github"
+[dci library]: https://github.com/ciscoheat/haxedci "DCI in Haxe"
+[jonas]: https://github.com/cambiata "Jonas Nyström"
