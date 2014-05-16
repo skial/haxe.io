@@ -207,7 +207,11 @@ html[class="/interview"] h2 {
 }
 
 html[class="/interview"] p img {
-	width: 100%;
+	display: block;
+}
+
+html[class="/interview"] p img[data-height*="gt700"] {
+	max-width: 75%;
 }
 
 @media all and (min-width: 699px) {

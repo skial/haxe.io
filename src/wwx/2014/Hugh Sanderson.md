@@ -27,7 +27,7 @@ I admire John Carmack for his early work 3d graphics, and Steve Wozniak because 
 
 ## What contributions are you proud of?
 
-I am pretty happy the Hxcpp and NME.
+I am pretty happy with Hxcpp and NME.
 
 
 ## Did your contributions bring you work opportunities?
@@ -56,7 +56,7 @@ Just start writing code.  There is a small hump to get over, but you can be very
 
 ## What Haxe libraries are you impressed by?
 
-I like the design of the [Haxe Fixel] and [haxeui] libraries.
+I like the design of the [Haxe Flixel] and [haxeui] libraries.
 
 ## What problem would you like to see solved by a new or existing Haxe library?
 
