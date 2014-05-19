@@ -5,8 +5,6 @@
 
 ![Justin Donaldson WWX 2014 skip-lb social](/img/jjd-sailing.png "Justin Donaldson")
 
-## About yourself
-
 I'm constantly learning: programming languages, data science, machine learning,
 music.  You see that sailing pic?  I have no idea what I'm doing there.  But,
 I haven't drowned yet, or wrecked the boat.  So it goes... 
@@ -23,7 +21,7 @@ You can see my entire collection of software, tools, knives, and lint in my
 [dotfiles repo][dotfiles].
 
 In terms of editors, I'm a somewhat recent vim convert, and use it for Haxe.
-I've caught up with it pretty quickly, and have even written a nice haxe plugin
+I've caught up with it pretty quickly, and have even written a nice Haxe plugin
 for it called "[vaxe]".  I like the ideas and apis behind git and bitcoin as
 well.  Great opportunities to do some hacking.
 
@@ -41,15 +39,16 @@ data, so I tend to draw more from the "data science" side of things.
 There's a few folks that I follow ahead of topical interests.  That means, if
 they do something, I'll check it out even if I'm not interested in the subject.
 To that end, [Mike Bostock][ocks] is a pretty amazing combination of coding data
-science, and aesthetics.  His d3 library is great.   [Tim
-Pope][tpope] has some wonderful vim tools that I didn't even
+science, and aesthetics.  His d3 library is great.   
+
+[Tim Pope][tpope] has some wonderful vim tools that I didn't even
 realize that I needed.  [Hadley Wickham][co], likewise, has some
 wonderful data manipulation tools that have made certain aspects of my work much
 easier. 
 
 ## What contributions are you proud of?
 
-I've done a lot of things I'm proud of with Haxe, but I've not always able to
+I've done a lot of things I'm proud of with Haxe, but I'm not always able to
 share it as I wished.  I've contributed to some of Franco's work with thx, and
 contributed a lot of plugins for the editors I've used over the years, including
 textmate and vim.  
@@ -93,7 +92,7 @@ platforms.  You may have to "unlearn" some things from other languages, but
 once you do a unified picture of web development becomes much clearer.
 
 I would also recommend [thx] and [polygonal ds][polygonal-ds]
-for folks wanting to see how to write "idiomatic haxe" to solve familiar data
+for folks wanting to see how to write "idiomatic Haxe" to solve familiar data
 structure and algorithm problems.
 I'd also recommend [tink][tink_core] for folks wanting to move beyond that.
 
@@ -145,7 +144,7 @@ There's a couple of solid benefits to this approach. The results of an
 asynchronous operation are separated from the operations that rely on it.  This
 lets developers avoid binding all of the logic for a conventional asynchronous
 operation inside a single callback.  The second benefit is an error handling
-mechanism that allows for flexible error management - a common pain point in
+mechanism that allows for flexible error management, a common pain point in
 asynchronous programming.  Finally, a full suite of utilities and methods enable
 developers to reason about asynchronous workflows without getting bogged down in
 syntax and callback indentation.

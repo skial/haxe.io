@@ -4,7 +4,7 @@
 	<content select="#defaults" />
 	<content select="#social_meta" />
 	
-	<title><content select="h1:first-of-type" text="" /></title>
+	<title><content select="h1:nth-of-type(2)" data-text="" />'s Haxe WWX 2014 Speaker Interview</title>
 	
 	<link rel="import" href="/defaults.html" />
 	<link rel="import" href="/social_meta.html" />
@@ -20,9 +20,9 @@
 		<a href="http://wwx.silexlabs.org/2014/" title="The 4th International Haxe Conference - WWX2014">
 			<img alt="wwx2014 logo" src="/img/wwx2014-logo.png" title="World Wide Haxe Conference 2014" />
 		</a>
-		<content select="h1:first-of-type" />
+		<h1><content select="h1:nth-of-type(2)" data-text="" />'s WWX 2014 Speaker Interview</h1>
 		<div class="article details">
-			<div>Written by <a rel="author" href="" title=""><content select="h1:first-of-type" text="" /></a></div>
+			<div>Written by <a rel="author" href="" title=""><content select="h1:nth-of-type(2)" data-text="" data-match="remove" /></a></div>
 			<div><a href="https://github.com/skial/haxe.io/tree/master/src/" title="Correct this post">Fix</a></div>
 		</div>
 		<content select="markdown" />
