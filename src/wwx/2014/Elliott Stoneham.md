@@ -93,4 +93,4 @@ If you're interested in making Haxe a more significant force in the software ind
 As I've not attended WWX before, please come and ask me this question during the event, I'm looking forward to meeting you!
 
 [Go]: http://golang.org "#golang"
-[TARDIS Go]: http//tardisgo.github.io "@tardisgo"
+[TARDIS Go]: http://tardisgo.github.io "@tardisgo"

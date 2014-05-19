@@ -26,7 +26,7 @@ For years I've spend many if not most of my waking hours answering questions in 
 
 Haxe is also something I feel a part of ever so slightly. Not in the sense that I consider my contribution outstanding in any way. But I do take pride in having stuck to Haxe for almost 5 years now and being one of the many who makes this community a crowd. And occasionally managing to propose a decent idea to the compiler team.
 
-I also like to think that some things I was able to implement in [Tinkerbell](//github.com/haxe_tink/) are actually useful and quite well executed.
+I also like to think that some things I was able to implement in [Tinkerbell](http://github.com/haxetink/) are actually useful and quite well executed.
 
 ## Did your contributions bring you work opportunities?
 
