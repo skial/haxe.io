@@ -4,6 +4,10 @@ complementary colour
 rgb(34,186,241) - http://www.colorhexa.com/22baf1
 */
 
+*, *:after, *:before {
+	display: border-box;
+}
+
 html, 
 body {
 	color: #333332;
