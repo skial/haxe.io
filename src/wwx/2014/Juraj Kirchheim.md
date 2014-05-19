@@ -3,6 +3,9 @@
 
 ## About yourself
 
+![At the WWX 2013](https://lh3.googleusercontent.com/--uKWUMFrbUo/UadZaFewewI/AAAAAAAAAGw/4TUq8IpV23E/w911-h607-no/IMG_1068.jpg)
+
+
 I love playing music, having a good argument, writing decent code, spending time with all kinds of people. I hate writing self-descriptions.
 
 ## Where do you get your inspiration?
