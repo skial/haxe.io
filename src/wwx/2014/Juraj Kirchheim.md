@@ -1,9 +1,9 @@
 [_template]: ../../interview.html
 [_author_]: https://twitter.com/back2dos
 
-## About yourself
-
-![At the WWX 2013](https://lh3.googleusercontent.com/--uKWUMFrbUo/UadZaFewewI/AAAAAAAAAGw/4TUq8IpV23E/w911-h607-no/IMG_1068.jpg)
+# Juraj Kirchheim
+	
+![At the WWX 2013 WWX 2014 skip-lb social](/img/Juraj_Kirchheim_wwx_2013.jpg)
 
 
 I love playing music, having a good argument, writing decent code, spending time with all kinds of people. I hate writing self-descriptions.
@@ -42,7 +42,7 @@ Regarding Tinkerbell, it is my personal utility belt for almost everything I do.
 
 ## How did you get started with Haxe?
 
-For a couple of years AS2 + PHP was my main language stack. And particularly PHP was killing me. Haxe was really exciting and I had finally managed to transition my commercial work with haxe/php. Oh the irony.
+For a couple of years AS2 and PHP was my main language stack. And particularly PHP was killing me. Haxe was really exciting and I had finally managed to transition my commercial work with Haxe/php. Oh the irony.
 
 ## What problem does Haxe solve for you?
 
