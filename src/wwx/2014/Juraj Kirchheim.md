@@ -77,7 +77,8 @@ I hope we can keep up the sense of community that we have now as we expand.
 ## Sell your wwx2014 session!
 
 I am really not a sales person, as you may have noticed if you've read this far.
-Uhm, let me try: Order now and lose 50% code in under a week!!!
+
+But, let me try: Order now and lose 50% code in under a week!!!
 
 ## What is the best part of wwx for you?
 
