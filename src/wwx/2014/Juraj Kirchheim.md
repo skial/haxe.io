@@ -42,7 +42,7 @@ Regarding Tinkerbell, it is my personal utility belt for almost everything I do.
 
 ## How did you get started with Haxe?
 
-For a couple of years AS2 and PHP was my main language stack. And particularly PHP was killing me. Haxe was really exciting and I had finally managed to transition my commercial work with Haxe/php. Oh the irony.
+For a couple of years AS2 and PHP were my main language stack. And particularly PHP was killing me. Haxe was really exciting and I had finally managed to transition my commercial work with Haxe/php. Oh the irony.
 
 ## What problem does Haxe solve for you?
 
