@@ -11,18 +11,73 @@
 	<link rel="import" href="footer.html" />
 	
 	<content select="#stylesheets" />
+	<style>
+		section {
+			padding-bottom: 3em;
+		}
+		
+		[class*="grid-"] .example {
+			background-color: grey;
+		}
+	</style>
 	<content select="#head_scripts" />
 </head>
 <body>
-	<content select="#header" />
-	<main>
-		<section>
-			<h1>Typeface</h1>
+	<div class="grid">
+		<aside class="grid-1-3">
+			1
+		</aside>
+		<section class="grid-2-3">
+			<h1>Typography</h1>
+			
+			<h1>Header Level 1</h1>
+			<h2>Header Level 2</h2>
+			<h3>Header Level 3</h3>
+			<h4>Header Level 4</h4>
 		</section>
-		<section>
+	</div>
+	
+	<div class="grid">
+		<aside class="grid-1-3">
+			2
+		</aside>
+		<section class="grid-2-3">
+			<h1>Links</h1>
+			
+			<a href="#">External Link</a>
+			<a href="#">Internal Link</a>
+		</section>
+	</div>
+	
+	<div class="grid">
+		<aside class="grid-1-3">
+			3
+		</aside>
+		<section class="grid-2-3">
 			<h1>Grid</h1>
+			
+			<div class="grid-1 example">100%</div>
+			<div class="grid-1-2 example">50%</div>
+			<div class="grid-1-4 example">25%</div>
+			<div class="grid-1-8 example">12.5%</div>
+			<div class="grid-1-8 example">12.5%</div>
+			<div class="grid-2-3 example">66.6%</div>
+			<div class="grid-1-3 example">33.3%</div>
 		</section>
-	</main>
-	<content select="#footer" />
+	</div>
+	
+	<div class="grid">
+		<aside class="grid-1-3">
+			4
+		</aside>
+		<section class="grid-2-3">
+			<h1>Article Details</h1>
+			<h1>Haxe Roundup № 200</h1>
+			<div class="article details">
+				<div>written by <a rel="author" href="http://twitter.com/skial" title="">Skial Bainn</a> on <time datetime="2014-5-20 10:00">20th May 2014</time></div>
+				<div><a href="https://github.com/skial/haxe.io/tree/master/src/" title="Correct this post">Correct this article</a></div>
+			</div>
+		</section>
+	</div>
 </body>
 </html>
