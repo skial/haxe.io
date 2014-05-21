@@ -63,11 +63,8 @@ figure,
 
 [class*="grid-"] {
 	float: left;
-	padding-right: 1.25em;
-}
-
-.grid *:last-child {
-	padding-right: 0;
+	padding-left: 0.625em;
+	padding-right: 0.625em;
 }
 
 .article.details > div {
