@@ -12,72 +12,136 @@
 	
 	<content select="#stylesheets" />
 	<style>
+		body main {
+			width: 100%;
+			padding-left: 1.5em;
+			padding-right: 1.5em;
+		}
 		section {
 			padding-bottom: 3em;
 		}
 		
 		[class*="grid-"] .example {
-			background-color: grey;
+			background-color: lightgrey;
+			background-clip: content-box;
+			text-align: center;
+			padding-bottom: 1.25em;
 		}
 	</style>
 	<content select="#head_scripts" />
 </head>
 <body>
-	<div class="grid">
-		<aside class="grid-1-3">
-			1
-		</aside>
-		<section class="grid-2-3">
-			<h1>Typography</h1>
-			
-			<h1>Header Level 1</h1>
-			<h2>Header Level 2</h2>
-			<h3>Header Level 3</h3>
-			<h4>Header Level 4</h4>
-		</section>
-	</div>
-	
-	<div class="grid">
-		<aside class="grid-1-3">
-			2
-		</aside>
-		<section class="grid-2-3">
-			<h1>Links</h1>
-			
-			<a href="#">External Link</a>
-			<a href="#">Internal Link</a>
-		</section>
-	</div>
-	
-	<div class="grid">
-		<aside class="grid-1-3">
-			3
-		</aside>
-		<section class="grid-2-3">
-			<h1>Grid</h1>
-			
-			<div class="grid-1 example">100%</div>
-			<div class="grid-1-2 example">50%</div>
-			<div class="grid-1-4 example">25%</div>
-			<div class="grid-1-8 example">12.5%</div>
-			<div class="grid-1-8 example">12.5%</div>
-			<div class="grid-2-3 example">66.6%</div>
-			<div class="grid-1-3 example">33.3%</div>
-		</section>
-	</div>
-	
-	<div class="grid">
-		<aside class="grid-1-3">
-			4
-		</aside>
-		<section class="grid-2-3">
-			<h1>Article Details</h1>
-			<h1>Haxe Roundup № 200</h1>
-			<div class="article details">
-				<div>written by <a rel="author" href="http://twitter.com/skial" title="">Skial Bainn</a> on <time datetime="2014-5-20 10:00">20th May 2014</time></div>
-				<div><a href="https://github.com/skial/haxe.io/tree/master/src/" title="Correct this post">Correct this article</a></div>
-			</div>
-		</section>
-	</div>
+	<main>
+		<div class="grid">
+			<aside class="grid-1-3">
+				<h1>Typography</h1>
+			</aside>
+			<section class="grid-2-3">
+				<h1>Header Level 1</h1>
+				<h2>Header Level 2</h2>
+				<h3>Header Level 3</h3>
+				<h4>Header Level 4</h4>
+			</section>
+		</div>
+		
+		<div class="grid">
+			<aside class="grid-1-3">
+				<h1>Links</h1>
+			</aside>
+			<section class="grid-2-3">
+				<a rel="nofollow" href="">External Link</a>
+				<a rel="nofollow author" href="">Author Full Name</a>
+				<a href="">Internal Link</a>
+			</section>
+		</div>
+		
+		<div class="grid">
+			<aside class="grid-1-3">
+				<h1>Grid</h1>
+			</aside>
+			<section class="grid-2-3">
+				<div>
+					<div class="grid-1-12 example">12%</div>
+					<div class="grid-1-12 example">12%</div>
+					<div class="grid-1-12 example">12%</div>
+					<div class="grid-1-12 example">12%</div>
+					<div class="grid-1-12 example">12%</div>
+					<div class="grid-1-12 example">12%</div>
+					<div class="grid-1-12 example">12%</div>
+					<div class="grid-1-12 example">12%</div>
+					<div class="grid-1-12 example">12%</div>
+					<div class="grid-1-12 example">12%</div>
+					<div class="grid-1-12 example">12%</div>
+					<div class="grid-1-12 example">12%</div>
+				</div>
+				
+				<div>
+					<div class="grid-1-2 example">50%</div>
+					<div class="grid-1-4 example">25%</div>
+					<div class="grid-1-8 example">12.5%</div>
+					<div class="grid-1-8 example">12.5%</div>
+				</div>
+				
+				<div>
+					<div class="grid-2-3 example">66.6%</div>
+					<div class="grid-1-3 example">33.3%</div>
+				</div>
+				
+				<div>
+					<div class="grid-3-4 example">75%</div>
+					<div class="grid-1-4 example">25%</div>
+				</div>
+				
+				<div>
+					<div class="grid-1 example">100%</div>
+				</div>
+			</section>
+		</div>
+		
+		<div class="grid">
+			<aside class="grid-1-3">
+				<h1>Images</h1>
+			</aside>
+			<section class="grid-2-3">
+				<figure>
+					<input type="checkbox" id="pic0" />
+					<label for="pic0">
+						<img alt="lich king img haxe social" src="/img/ld-lich-king.png" title="A Glorious Escape for A Lich King" />
+					</label>
+					<figcaption>A Glorious Escape for A Lich King</figcaption>
+				</figure>
+			</section>
+		</div>
+		
+		<div class="grid">
+			<aside class="grid-1-3">
+				<h1>Articles</h1>
+			</aside>
+			<section class="grid-2-3">
+				<aside class="grid-1-3">
+					
+				</aside>
+				<article class="grid-2-3">
+					<h1>Haxe Roundup &#8470; 200</h1>
+					<div class="article details">
+						<div>written by <a href="http://twitter.com/skial" rel="author nofollow" title="@skial">Skial Bainn</a> on <time datetime="2014-5-20 10:00">May 20th 2014</time></div>
+						<div><a href="https://github.com/skial/haxe.io/tree/master/src/roundups/200.md" title="Correct this article">Correct this article</a></div>
+					</div>
+					<p><a href="https://github.com/larsiusprime" rel="nofollow" title="@larsiusprime">Lars Doucet</a> has released his light weight localization library <a href="https://github.com/larsiusprime/firetongue/tree/master" rel="nofollow" title="Fire Tongue">Fire Tongue</a>  onto <a href="http://lib.haxe.org/p/firetongue" rel="nofollow" title="A localization/translation library for OpenFL">haxelib</a>. The github <a href="https://github.com/larsiusprime/firetongue/tree/master" rel="nofollow" title="Fire Tongue">repository</a> README file is full of   setup instructions, asset setup, formatting instructions, a <a href="http://www.yodaspeak.co.uk/" rel="nofollow" title="Yoda Speak">yoda-ish</a> advanced use  guide, HaxeFlixel UI integration and more.    </p>
+					<p>Lars has also written about <a href="http://www.fortressofdoors.com/2014/05/defenders-quest-2-engine-progress.html" rel="nofollow" title="Defender">Defenders Quest 2 Engine Progress - Resolution!</a> in  which he states how much effort he is putting into HaxeFlixel UI to get the user  interface to scale properly all the way up to 1080p, as DQ1 was hard locked at 800x600.    </p>
+					<p><a href="http://haxe.io/roundups/199/" title="Haxe Roundup &#8470; 199">Last week</a> I linked to the HaxeFlixel <a href="http://gme.kasoki.de/" rel="nofollow" title="HaxeFlixel Game Mechanic Explorer">Game Mechanic Explorer</a>, which  this week has been updated with a series of <a href="http://gme.kasoki.de/examples/bullets/" rel="nofollow" title="HaxeFlixel GME Bullet Examples">Bullet</a> and <a href="http://gme.kasoki.de/examples/spaceship-motion/" rel="nofollow" title="HaxeFlixel GME Spaceship Motion Examples">Spaceship Motion</a>  examples.    </p>
+					<p><figure><input type="checkbox" id="pic2" /><label for="pic2"><img data-height="gt700" data-width="lt1000" alt="HaxeFlixel Haxe teaching students" src="/img/BnVihhcIgAEtXK1.jpg" title="HaxeFlixel being taught!" /></label><figcaption>HaxeFlixel being taught!</figcaption></figure>    </p>
+					<p><a href="https://twitter.com/luboslenco" rel="nofollow" title="@luboslenco">Lubos Lenco</a> has created and published a frame animation <a href="https://googledrive.com/host/0B22ElR_OUmfdRF81YnFHOUR1T2M/index.html" rel="nofollow" title="Kha Frame Animation Demo">demo</a> written in Haxe  using the Kha framework.    </p>
+					<p><figure><input type="checkbox" id="pic3" /><label for="pic3"><img data-height="lt600" data-width="gt1000" alt="Kha Haxe Frame Animation social" src="/img/BnXzIAqCMAEL5bc.png" title="Kha Frame Animation Demo" /></label><figcaption>Kha Frame Animation Demo</figcaption></figure></p>
+					<p>And the <a href="https://twitter.com/HaxorEngine" rel="nofollow" title="@HaxorEngine">Haxor Engine</a> has a new demo, the <a href="https://dl.dropboxusercontent.com/u/20655747/haxor/dungeon_v0_4_1/index.html" rel="nofollow" title="Dungeon Demo">Dungeon Demo</a> which has <em>&ldquo;gizmos&rdquo;</em>  on keys 1-5, <code>X</code> toggles FXAA and <code>Z</code> turns fog on or off.</p>
+					<p>The <a href="https://twitter.com/Boltmade" rel="nofollow" title="@Boltmade">Boltmade</a> team have written the article <a href="http://www.boltmade.com/blog/instructional/haxe-android" rel="nofollow" title="Android Development: Beyond Java">Android Development: Beyond Java</a>  in which they tested the waters by using Haxe to compile down to Java in a simple app.  Even though they were happy with the results they ended up translating the app back  to Java for the client.</p>
+					<p><a href="https://github.com/andyli" rel="nofollow" title="@AndyLi">Andy Li</a> continues to improve Haxes syntax highlighting across the web by  maintaining the Haxe highlighter in <a href="https://bitbucket.org/birkenfeld/pygments-main/pull-request/354/haxe-fixes/diff" rel="nofollow" title="Update Haxe highlighting in Pygments">Pygments</a> which is responsible for  Github's and Bitbucket's syntax highlighting.</p>
+					<p>And with the recent news that TravisCI now supports OSX through their multi-os   beta feature Andy Li is working on getting Haxe and HXCPP to build successfully  on OSX.</p>
+					<p><a href="https://twitter.com/misterpah" rel="nofollow" title="@misterpah">Pah Arif</a> has released Haxe Studio <code>0.2</code> ready for <a href="http://www.haxestudio.com/dist/" rel="nofollow" title="Download HaxeStudio 0.2">download</a> for Windows,  Linux and OSX. If you have any feedback post them to repository <a href="https://github.com/misterpah/Haxe-Studio/issues" rel="nofollow" title="Haxe Studio Issues">issue tracker</a>.</p>
+					<p>And to finish up, <a href="https://twitter.com/mknol" rel="nofollow" title="@mknol">Mark Knol</a> and his team have released <a href="http://www.ahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh.com/" rel="nofollow" title="AHH Boom Shakalakahh">AHH</a> which is   their latest Flambe project, which runs very smooth. It should definitely go into  the Flambe showcase. Great work.</p>
+				</article>
+			</section>
+		</div>
+	</main>
 </body>
 </html>
