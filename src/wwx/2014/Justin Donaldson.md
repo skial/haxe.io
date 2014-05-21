@@ -9,7 +9,7 @@
 
 I'm constantly learning: programming languages, data science, machine learning,
 music.  You see that sailing pic?  I have no idea what I'm doing there.  But,
-I haven't drowned yet, or wrecked the boat.  So it goes... 
+I haven't drowned yet, or wrecked the boat.  So it goes with learning... 
 
 
 ## What hardware do you use?
@@ -121,18 +121,20 @@ understandable, but not what most users on those platforms expect.
 ## What is the best use of Haxe you've come across?
 
 Some of the games have been amazing.  [Papers, Please][papersplea] was a great
-use of Haxe, although perhaps Haxe just lets the creativity of the author shine
+use of Haxe. Perhaps Haxe just lets the creativity of the author shine
 through. 
 
 ## What do you see for the future for Haxe/OpenFL?
 
 A cross platform IDE suite for Haxe is about 75% there.  We're missing good ways
 of refactoring, and some other common IDE utilities that rely on deep compiler
-integration. After that I'll be completely happy.  After that,  I think we'll
-see some great test/deployment functionality.  Andy Li has already done Haxe a
-great service by setting up a testing profile for Haxe on [travis-ci].
+integration. After that I'll be completely happy. 
 
-Once we have that, I think we will see Haxe developer working together more
+I also think we'll see some great test/deployment functionality.  Andy Li has
+already done Haxe a great service by setting up a testing profile for Haxe on
+[travis-ci].
+
+Once we have all that, I think we will see Haxe developer working together more
 easily in business contexts, and a whole different side of Haxe will emerge.
 
 ## Sell your wwx2014 session!
