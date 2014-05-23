@@ -17,10 +17,10 @@ body {
 }
 
 p {
-	
+	line-height: 1.6em;
 }
 
-.grid {
+.grid::after {
 	content: "";
 	display: table;
 	clear: both;
@@ -65,6 +65,14 @@ figure,
 	float: left;
 	padding-left: 0.625em;
 	padding-right: 0.625em;
+}
+
+[class*="grid-"]:first-child {
+	padding-left: 0;
+}
+
+[class*="grid-"]:last-child {
+	padding-right: 0;
 }
 
 .article.details > div {
