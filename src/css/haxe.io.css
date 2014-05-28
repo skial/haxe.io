@@ -63,7 +63,21 @@ figcaption {
 	padding-left: 0.77em;
 }
 
-figure > div {
+.half,
+video[alt*="half"],
+img[alt*="half"] {
+	width: 50%;
+	float: left;
+}
+
+.third,
+video[alt*="third"],
+img[alt*="third"] {
+	width: 33.33%;
+	float: left;
+}
+
+/*figure > div {
 	margin: 0 auto;
 	display: block;
 	max-height: 10vh;
@@ -72,7 +86,7 @@ figure > div {
     -moz-transition: all 0.4s ease;
 	-o-transition: all 0.4s ease;
 	transition: all 0.4s ease;
-}
+}*/
 
 figure > div > img {
 	width: 100%;
@@ -83,7 +97,7 @@ input[id*="pic"] {
 	position: absolute;
 }
 
-label[for*="pic"] {
+/*label[for*="pic"] {
 	z-index: 3;
 	display: block;
 	cursor: pointer;
@@ -98,7 +112,7 @@ input:checked ~ div {
 
 input:checked ~ label[for*="pic"] {
 	min-height: 21%;
-}
+}*/
 
 p img[alt*=inline] {
 	width: 1em;
@@ -229,7 +243,7 @@ html[class="/interview"] p img[data-height*="gt700"] {
 		max-width: 70vw;
 	}
 	
-	figure > div {
+	/*figure > div {
 		max-height: 15vh;
 	}
 	
@@ -240,7 +254,7 @@ html[class="/interview"] p img[data-height*="gt700"] {
 	
 	input:checked ~ label[for*="pic"] {
 		min-height: 35%;
-	}
+	}*/
 }
 
 @media all and (min-width: 899px) {
@@ -254,7 +268,7 @@ html[class="/interview"] p img[data-height*="gt700"] {
 		max-width: 60vw;
 	}
 	
-	figure > div {
+	/*figure > div {
 		max-height: 20vh;
 	}
 	
@@ -265,7 +279,7 @@ html[class="/interview"] p img[data-height*="gt700"] {
 	
 	input:checked ~ label[for*="pic"] {
 		min-height: 40%;
-	}
+	}*/
 }
 
 @media all and (min-width: 1099px) {
@@ -275,7 +289,7 @@ html[class="/interview"] p img[data-height*="gt700"] {
 		max-width: 50vw;
 	}
 	
-	figure > div {
+	/*figure > div {
 		max-height: 15vh;
 	}
 	
@@ -286,6 +300,6 @@ html[class="/interview"] p img[data-height*="gt700"] {
 	
 	input:checked ~ label[for*="pic"] {
 		min-height: 48%;
-	}
+	}*/
 	
 }
