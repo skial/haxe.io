@@ -127,3 +127,7 @@ input:checked ~ label {
 figure > label > img {
 	width: 100%;
 }
+
+code {
+	display: block;
+}
