@@ -12,3 +12,8 @@
 
 -neko finish.n
 -main Finish
+
+--next
+
+-neko imagefigure.n
+-main ImageFigure
