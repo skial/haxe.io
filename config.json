@@ -26,8 +26,7 @@
         }
         ,{
              "tuli" : [
-                 "imageresize"
-                ,"markdown"
+                 "markdown"
                 ,"rss"
                 ,"atom"
                 ,"importhtml"
