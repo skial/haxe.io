@@ -63,16 +63,16 @@ figcaption {
 	padding-left: 0.77em;
 }
 
-.half,
-video[alt*="half"],
-img[alt*="half"] {
+.grid-1-2,
+video[alt*="grid-1-2"],
+img[alt*="grid-1-2"] {
 	width: 50%;
 	float: left;
 }
 
-.third,
-video[alt*="third"],
-img[alt*="third"] {
+.grid-1-3,
+video[alt*="grid-1-3"],
+img[alt*="grid-1-3"] {
 	width: 33.33%;
 	float: left;
 }

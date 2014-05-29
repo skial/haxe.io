@@ -39,7 +39,8 @@
         }
         ,{
              "haxe.io" : [
-                 "finish"
+                 "imagefigure"
+                ,"finish"
             ]
         }
     ]
