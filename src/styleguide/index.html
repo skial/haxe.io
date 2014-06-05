@@ -34,16 +34,25 @@
 		}
 		
 		.links section a {
-			display: block;
+			display: table;
 		}
 	</style>
 	<content select="#head_scripts" />
 </head>
 <body>
 	<main>
+		<div class="grid logo">
+			<aside class="grid-1-3">
+				<h1 id="Logo">Logo</h1>
+			</aside>
+			<section class="grid-2-3">
+				<img src="/svg/logo.min.svg" />
+			</section>
+		</div>
+		
 		<div class="grid">
 			<aside class="grid-1-3">
-				<h1>Grid</h1>
+				<h1 id="Grid">Grid</h1>
 			</aside>
 			<section class="grid-2-3">
 				<div class="grid">
@@ -86,7 +95,7 @@
 		
 		<div class="grid typography">
 			<aside class="grid-1-3">
-				<h1>Typography</h1>
+				<h1 id="Typography">Typography</h1>
 			</aside>
 			<section class="grid-2-3">
 				<h1>Header Level 1</h1>
@@ -98,7 +107,7 @@
 		
 		<div class="grid text">
 			<aside class="grid-1-3">
-				<h1>Text</h1>
+				<h1 id="Text">Text</h1>
 			</aside>
 			<section class="grid-2-3">
 				<p>Lars Doucet has released his light weight localization library Fire Tongue onto haxelib. The github repository README file is full of setup instructions, asset setup, formatting instructions, a yoda-ish advanced use guide, HaxeFlixel UI integration and more.</p>
@@ -108,7 +117,7 @@
 		
 		<div class="grid links">
 			<aside class="grid-1-3">
-				<h1>Links</h1>
+				<h1 id="Links">Links</h1>
 			</aside>
 			<section class="grid-2-3">
 				<a rel="nofollow" href="">External Link</a>
@@ -119,7 +128,7 @@
 		
 		<div class="grid code">
 			<aside class="grid-1-3">
-				<h1>Code</h1>
+				<h1 id="Code">Code</h1>
 			</aside>
 			<section class="grid-2-3">
 				<pre>
@@ -136,7 +145,7 @@ body {
 		
 		<div class="grid images">
 			<aside class="grid-1-3">
-				<h1>Images</h1>
+				<h1 id="Images">Images</h1>
 			</aside>
 			<section class="grid-2-3">
 				<div class="grid">
@@ -175,7 +184,58 @@ body {
 			</section>
 		</div>
 		
+		<div class="grid article details">
+			<aside class="grid-1-3">
+				<h1 id="Article-Details">Article Details</h1>
+			</aside>
+			<section class="grid-2-3">
+				<div class="details">by <a href="http://twitter.com/skial">Skial Bainn</a> published on <time datetime="2014-06-05 19:00">June 5th, 2014</time></div>
+			</section>
+		</div>
 		
+		<div class="grid article sidebar">
+			<aside class="grid-1-3">
+				<h1 id="Article-Sidebar">Article Sidebar</h1>
+			</aside>
+			<section class="grid-2-3">
+				<aside>
+					<nav>
+						<ul>
+							<li>
+								<a href="#Logo">Logo</a>
+							</li>
+							<li>
+								<a href="#Grid">Grid</a>
+							</li>
+							<li>
+								<a href="#Typography">Typography</a>
+							</li>
+							<li>
+								<a href="#Text">Text</a>
+							</li>
+							<li>
+								<a href="#Links">Links</a>
+							</li>
+							<li>
+								<a href="#Code">Code</a>
+							</li>
+							<li>
+								<a href="#Images">Images</a>
+							</li>
+							<li>
+								<a href="#Article-Sidebar">Article Sidebar</a>
+							</li>
+							<li>
+								<a href="#Article-Info">Article Info</a>
+							</li>
+						</ul>
+					</nav>
+					<div>
+						
+					</div>
+				</aside>
+			</section>
+		</div>
 	</main>
 </body>
 </html>
