@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="iching-hexagram-30"
+   width="70"
+   height="70"
+   version="1.0" >
+  <metadata
+     id="md-hexagram">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <cc:license
+           rdf:resource="http://web.resource.org/cc/PublicDomain">
+          <cc:permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+          <cc:permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+          <cc:permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/>
+        </cc:license>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>I Ching hexagram 30: ䷝</dc:title>
+        <dc:description>
+          Image of I Ching hexagram 30: ䷝
+          (離, “Radiance”)
+        </dc:description>
+        <dc:creator>
+          <cc:Agent
+             rdf:resource="http://bignose.whitetree.org/">
+            <dc:title>Ben Finney</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent
+             rdf:resource="http://web.resource.org/cc/PublicDomain">
+            <dc:title>Public Domain</dc:title>
+          </cc:Agent>
+        </dc:rights>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="g-hexagram">
+    <g
+       id="g-line1"
+       transform="translate(0,0)">
+      <rect
+         id="r-line1-yang"
+         width="66" height="6"
+         x="2" y="62"
+         style="fill:#000000;fill-opacity:1;stroke:none" />
+    </g>
+    <g
+       id="g-line2"
+       transform="translate(0,-12)">
+      <rect
+         id="r-line2-yinleft"
+         width="28" height="6"
+         x="2" y="62"
+         style="fill:#000000;fill-opacity:1;stroke:none" />
+      <rect
+         id="r-line2-yinright"
+         width="28" height="6"
+         x="40" y="62"
+         style="fill:#000000;fill-opacity:1;stroke:none" />
+    </g>
+    <g
+       id="g-line3"
+       transform="translate(0,-24)">
+      <rect
+         id="r-line3-yang"
+         width="66" height="6"
+         x="2" y="62"
+         style="fill:#000000;fill-opacity:1;stroke:none" />
+    </g>
+    <g
+       id="g-line4"
+       transform="translate(0,-36)">
+      <rect
+         id="r-line4-yang"
+         width="66" height="6"
+         x="2" y="62"
+         style="fill:#000000;fill-opacity:1;stroke:none" />
+    </g>
+    <g
+       id="g-line5"
+       transform="translate(0,-48)">
+      <rect
+         id="r-line5-yinleft"
+         width="28" height="6"
+         x="2" y="62"
+         style="fill:#000000;fill-opacity:1;stroke:none" />
+      <rect
+         id="r-line5-yinright"
+         width="28" height="6"
+         x="40" y="62"
+         style="fill:#000000;fill-opacity:1;stroke:none" />
+    </g>
+    <g
+       id="g-line6"
+       transform="translate(0,-60)">
+      <rect
+         id="r-line6-yang"
+         width="66" height="6"
+         x="2" y="62"
+         style="fill:#000000;fill-opacity:1;stroke:none" />
+    </g>
+  </g>
+</svg>
