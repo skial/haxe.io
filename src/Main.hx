@@ -21,7 +21,11 @@ using haxe.io.Path;
 class Main {
 	
 	public static function main() {
-		
+		/**
+scour --create-groups --enable-comment-stripp
+ing --enable-id-stripping --indent=tab --remove-metadata --shorten-ids --set-pre
+cision=3 --enable-viewboxing -i ./src/svg/logo.svg -o ./src/svg/logo.min.svg
+		 */
 	}
 	
 }
