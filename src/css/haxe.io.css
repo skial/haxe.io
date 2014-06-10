@@ -78,7 +78,29 @@ p:empty {
 }
 
 /* Links */
+header a:not([type]),
+article section a:not([type]) {
+	color: rgb(34,186,241);
+	text-decoration: none;
+	padding-bottom: 0.1em;
+	border-bottom: 1px solid rgba(34,186,241, 0.2);
+}
 
+header a:hover:not([type]),
+article section a:hover:not([type]) {
+	color: rgb(34,186,241);
+	text-decoration: none;
+	padding-bottom: 0.1em;
+	border-bottom: 1px solid;
+}
+
+header a:active:not([type]),
+article section a:active:not([type]) {
+	color: rgb(241,34,82);
+	text-decoration: none;
+	padding-bottom: 0.1em;
+	border-bottom: 1px solid;
+}
 
 /* Code */
 pre > code {
@@ -256,30 +278,6 @@ article section > h2 > a > span::before {
 	content: "\0000A7";
 	font-size: 0.8em;
 	margin-left: 0.6em;
-}
-
-header a:not([type]),
-article section a:not([type]) {
-	color: rgb(34,186,241);
-	text-decoration: none;
-	padding-bottom: 0.1em;
-	border-bottom: 1px solid rgba(34,186,241, 0.2);
-}
-
-header a:hover:not([type]),
-article section a:hover:not([type]) {
-	color: rgb(34,186,241);
-	text-decoration: none;
-	padding-bottom: 0.1em;
-	border-bottom: 1px solid;
-}
-
-header a:active:not([type]),
-article section a:active:not([type]) {
-	color: rgb(241,34,82);
-	text-decoration: none;
-	padding-bottom: 0.1em;
-	border-bottom: 1px solid;
 }
 
 @media all and (min-width: 770px) {
