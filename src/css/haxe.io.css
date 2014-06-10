@@ -115,8 +115,29 @@ figure,
 	padding-right: 0;
 }
 
+/* Header */
+
+header > div:first-child {
+	background-color: rgb(241,89,34);
+}
+
+header svg {
+	width: 6.25em;
+	margin: 0.625em;
+}
+
+header svg path {
+	stroke: white;
+}
+
+/* Typography */
+
 p {
 	line-height: 1.6em;
+}
+
+p:empty {
+	display: none;
 }
 
 /* Links */
@@ -171,9 +192,21 @@ figure > label > img {
 
 /* Article Details */
 
-article .details {
+.hero {
+	display: table;
+	margin: 0 auto;
+}
+
+.hero h1 {
+	margin: 0;
+	padding-top: 0.625em;
+	font-size: 4em;
+}
+
+.details {
 	font-size: 0.9em;
 	font-variant: small-caps;
+	padding-bottom: 2.5em;
 }
 
 /* Article Sidebar */
@@ -194,16 +227,19 @@ aside > nav {
 
 aside > nav h1 {
 	font-size: 1em;
+	margin: 0;
+	padding-bottom: 0.625em;
 	border-bottom: 1px grey solid;
 }
 
 aside > nav ul {
+	color: #5a5a58;
 	padding-left: 0;
 }
 
 aside > nav li {
-	font-size: 0.93em;
-	padding-bottom: 0.2em;
+	font-size: 0.8em;
+	padding-bottom: 0.625em;
 	list-style-type: none;
 }
 
@@ -238,16 +274,16 @@ aside > a {
 }
 
 aside > a[href*="next-roundup"] {
-	background-color: #f15922;
+	background-color: #22baf1;
 }
 
 aside > a[href$=".md"] {
-	background-color: #22baf1;
+	background-color: #f15922;
 }
 
 /* Article Anchor */
 
-article > section > h2 > a {
+article section > h2 > a {
 	display: block;
 	position: absolute;
 
@@ -264,11 +300,11 @@ article > section > h2 > a {
 	text-decoration: none;
 }
 
-article > section > h2:hover > a {
+article section > h2:hover > a {
 	visibility: visible;
 }
 
-article > section > h2 > a > span::before {
+article section > h2 > a > span::before {
 	cursor: pointer;
 	content: "\0000A7";
 	font-size: 0.8em;
@@ -296,6 +332,59 @@ article section a:active:not([type]) {
 	border-bottom: 1px solid;
 }
 
-@media all and (min-width: 700px) {
-	
+@media all and (min-width: 850px) {
+	header,
+	article {
+		width: 95%;
+		margin: 0 auto;
+	}
+}
+
+@media all and (min-width: 900px) {
+	header,
+	article {
+		width: 90%;
+	}
+}
+
+@media all and (min-width: 950px) {
+	header,
+	article {
+		width: 85%;
+	}
+}
+
+@media all and (min-width: 1020px) {
+	header,
+	article {
+		width: 80%;
+	}
+}
+
+@media all and (min-width: 1080px) {
+	header,
+	article {
+		width: 75%;
+	}
+}
+
+@media all and (min-width: 1156px) {
+	header,
+	article {
+		width: 70%;
+	}
+}
+
+@media all and (min-width: 1235px) {
+	header,
+	article {
+		width: 65%;
+	}
+}
+
+@media all and (min-width: 1325px) {
+	header,
+	article {
+		width: 60%;
+	}
 }
