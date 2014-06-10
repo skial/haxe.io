@@ -17,3 +17,8 @@
 
 -neko imagefigure.n
 -main ImageFigure
+
+--next
+
+-neko articledetails.n
+-main ArticleDetails
