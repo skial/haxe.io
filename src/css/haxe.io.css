@@ -32,73 +32,9 @@ body {
 body,
 figure,
 .grid,
-.grid-1-1,
+[class*="grid-"],
 .whole {
 	width: 100%;
-}
-
-.grid-2-3,
-.two-thirds {
-	width: 66.66%;
-}
-
-.grid-1-2,
-.half,
-.two-quarters,
-.two-fourths {
-	width: 50%;
-}
-
-.grid-1-3,
-.one-third {
-	width: 33.33%;
-}
-
-.grid-2-3,
-.two-thirds {
-	width: 66.66%;
-}
-
-.grid-1-4,
-.one-quarter,
-.one-fourth {
-	width: 25%;
-}
-
-.grid-3-4,
-.three-quarters,
-.three-fourths {
-	width: 75%;
-}
-
-.grid-1-5,
-.one-fifth {
-	width: 20%;
-}
-
-.grid-2-5,
-.two-fifths {
-	width: 40%;
-}
-
-.grid-3-5,
-.three-fifths {
-	width: 60%;
-}
-
-.grid-4-5,
-.four-fifths {
-	width: 80%;
-}
-
-.grid-1-8,
-.one-eighth {
-	width: 12.5%;
-}
-
-.grid-1-12,
-.one-twelfth {
-	width: 8.33%;
 }
 
 [class*="grid-"] {
@@ -123,6 +59,7 @@ header > div:first-child {
 
 header svg {
 	width: 6.25em;
+	height: 6.25em;
 	margin: 0.625em;
 }
 
@@ -200,7 +137,7 @@ figure > label > img {
 .hero h1 {
 	margin: 0;
 	padding-top: 0.625em;
-	font-size: 4em;
+	font-size: 3em;
 }
 
 .details {
@@ -211,13 +148,8 @@ figure > label > img {
 
 /* Article Sidebar */
 
-article > aside {
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-	border-width: 1px;
-	border-style: solid;
-	border-color: white;
+article aside {
+	display: none;
 	overflow: hidden;
 }
 
@@ -265,6 +197,9 @@ aside > a {
 	display: block;
 	padding-top: 1em;
 	padding-bottom: 1em;
+	
+	border-width: 0;
+	border-style: none;
 }
 
 aside > a {
@@ -279,6 +214,18 @@ aside > a[href*="next-roundup"] {
 
 aside > a[href$=".md"] {
 	background-color: #f15922;
+}
+
+aside > a:first-of-type {
+	-webkit-border-radius: 4px 4px 0 0;
+	-moz-border-radius: 4px 4px 0 0;
+	border-radius: 4px 4px 0 0;
+}
+
+aside > a:last-of-type {
+	-webkit-border-radius: 0 0 4px 4px;
+	-moz-border-radius: 0 0 4px 4px;
+	border-radius: 0 0 4px 4px;
 }
 
 /* Article Anchor */
@@ -311,6 +258,7 @@ article section > h2 > a > span::before {
 	margin-left: 0.6em;
 }
 
+header a:not([type]),
 article section a:not([type]) {
 	color: rgb(34,186,241);
 	text-decoration: none;
@@ -318,6 +266,7 @@ article section a:not([type]) {
 	border-bottom: 1px solid rgba(34,186,241, 0.2);
 }
 
+header a:hover:not([type]),
 article section a:hover:not([type]) {
 	color: rgb(34,186,241);
 	text-decoration: none;
@@ -325,6 +274,7 @@ article section a:hover:not([type]) {
 	border-bottom: 1px solid;
 }
 
+header a:active:not([type]),
 article section a:active:not([type]) {
 	color: rgb(241,34,82);
 	text-decoration: none;
@@ -332,11 +282,79 @@ article section a:active:not([type]) {
 	border-bottom: 1px solid;
 }
 
-@media all and (min-width: 850px) {
-	header,
-	article {
-		width: 95%;
-		margin: 0 auto;
+@media all and (min-width: 770px) {
+	.grid-2-3,
+	.two-thirds {
+		width: 66.66%;
+	}
+
+	.grid-1-2,
+	.half,
+	.two-quarters,
+	.two-fourths {
+		width: 50%;
+	}
+
+	.grid-1-3,
+	.one-third {
+		width: 33.33%;
+	}
+
+	.grid-2-3,
+	.two-thirds {
+		width: 66.66%;
+	}
+
+	.grid-1-4,
+	.one-quarter,
+	.one-fourth {
+		width: 25%;
+	}
+
+	.grid-3-4,
+	.three-quarters,
+	.three-fourths {
+		width: 75%;
+	}
+
+	.grid-1-5,
+	.one-fifth {
+		width: 20%;
+	}
+
+	.grid-2-5,
+	.two-fifths {
+		width: 40%;
+	}
+
+	.grid-3-5,
+	.three-fifths {
+		width: 60%;
+	}
+
+	.grid-4-5,
+	.four-fifths {
+		width: 80%;
+	}
+
+	.grid-1-8,
+	.one-eighth {
+		width: 12.5%;
+	}
+
+	.grid-1-12,
+	.one-twelfth {
+		width: 8.33%;
+	}
+
+	.hero h1 {
+		margin: 0;
+		padding-top: 0.625em;
+		font-size: 3.5em;
+	}
+	
+	article aside {
+		display: inherit;
 	}
 }
 
@@ -344,13 +362,13 @@ article section a:active:not([type]) {
 	header,
 	article {
 		width: 90%;
+		margin: 0 auto;
 	}
-}
-
-@media all and (min-width: 950px) {
-	header,
-	article {
-		width: 85%;
+	
+	.hero h1 {
+		margin: 0;
+		padding-top: 0.625em;
+		font-size: 4em;
 	}
 }
 
@@ -361,30 +379,9 @@ article section a:active:not([type]) {
 	}
 }
 
-@media all and (min-width: 1080px) {
-	header,
-	article {
-		width: 75%;
-	}
-}
-
 @media all and (min-width: 1156px) {
 	header,
 	article {
 		width: 70%;
-	}
-}
-
-@media all and (min-width: 1235px) {
-	header,
-	article {
-		width: 65%;
-	}
-}
-
-@media all and (min-width: 1325px) {
-	header,
-	article {
-		width: 60%;
 	}
 }
