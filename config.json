@@ -33,6 +33,7 @@
                 ,"socialmetadata"
                 ,"nofollow"
                 ,"titlelinks"
+                ,"tablecontents"
                 ,"imagegroup"
                 ,"boxedimages"
                 ,"imagemeta"
@@ -41,7 +42,8 @@
         }
         ,{
              "haxe.io" : [
-                 "imagefigure"
+                 "articledetails"
+                ,"imagefigure"
                 ,"finish"
             ]
         }

@@ -35,12 +35,11 @@ class Finish {
 		for (file in files) if (Tuli.fileCache.exists( file )) {
 			var c = Tuli.fileCache.get(file);
 			
-			var dom = c.parse();
-			// Strip all empty <p> elements.
-			var ps = dom.find('p').filter( function(n) return n.children(true).length == 0 );
-			ps.remove();
 			
-			c = dom.html();
+			/*var dom = c.parse();
+			
+			
+			c = dom.html();*/
 			
 			while (c.indexOf('&amp;') > -1) {
 				c = c.replace('&amp;', '&');
