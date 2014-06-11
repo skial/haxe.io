@@ -4,6 +4,7 @@
              "repo" : "http://github.com/skial/haxe.io"
             ,"branch" : "master"
         }
+        ,"git" : false
         ,"plugins" : {
              "nofollow" : {
                  "skip" : [
