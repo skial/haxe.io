@@ -47,10 +47,13 @@ class ArticleDetails {
 			
 			var time = dom.find('.details time');
 			if (time.length > 0) {
-				time.setAttr( 'datetime', DateTools.format(file.stats.ctime, '%Y-%m-%d %H:%M') );
+				//time.setAttr( 'datetime', DateTools.format(file.stats.ctime, '%Y-%m-%d %H:%M') );
+				time.setAttr( 'datetime', DateTools.format(file.created(), '%Y-%m-%d %H:%M') );
 				// For some reason file.stats.ctime.getDate() throws an error...
-				var day = Std.parseInt( DateTools.format(file.stats.ctime, '%d') );
-				var value = DateTools.format(file.stats.ctime, '%A :: %B %Y');
+				//var day = Std.parseInt( DateTools.format(file.stats.ctime, '%d') );
+				var day = Std.parseInt( DateTools.format(file.created(), '%d') );
+				//var value = DateTools.format(file.stats.ctime, '%A :: %B %Y');
+				var value = DateTools.format(file.created(), '%A :: %B %Y');
 				// http://www.if-not-true-then-false.com/2010/php-1st-2nd-3rd-4th-5th-6th-php-add-ordinal-number-suffix/
 				value = value.replace( '::', switch (day % 10) {
 					case 1: '${day}st';
