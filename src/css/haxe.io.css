@@ -13,7 +13,7 @@ rgb(34,186,241) - http://www.colorhexa.com/22baf1
 body {
 	color: #333332;
 	font-size: 1.1em;
-	font-family: 'Bitter', serif;
+	font-family: 'Bitter', Georgia, serif;
 }
 
 .grid,
@@ -51,30 +51,47 @@ figure,
 	padding-right: 0;
 }
 
-/* Header */
+/* Header & Footer */
 
+footer > div:first-child,
 header > div:first-child {
 	background-color: rgb(241,89,34);
 }
 
+footer svg,
 header svg {
 	width: 6.25em;
 	height: 6.25em;
 	margin: 0.625em;
 }
 
+footer svg path,
 header svg path {
 	stroke: white;
 }
 
+/* Footer */
+
+footer {
+	padding-top: 4.5em;
+}
+
+footer svg {
+	float: right;
+}
+
 /* Typography */
+
+p:empty {
+	display: none;
+}
 
 p {
 	line-height: 1.6em;
 }
 
-p:empty {
-	display: none;
+p:first-child {
+	margin-top: 0;
 }
 
 /* Links */
@@ -158,14 +175,18 @@ figure > label > img {
 
 .hero h1 {
 	margin: 0;
+	font-size: 2.5em;
 	padding-top: 0.625em;
-	font-size: 3em;
+	padding-left: 0.325em;
+	padding-right: 0.325em;
 }
 
 .details {
-	font-size: 0.9em;
+	font-size: 0.75em;
 	font-variant: small-caps;
-	padding-bottom: 2.5em;
+	padding-left: 1em;
+	padding-right: 1em;
+	padding-bottom: 5em;
 }
 
 /* Article Sidebar */
@@ -173,6 +194,7 @@ figure > label > img {
 article aside {
 	display: none;
 	overflow: hidden;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 aside > nav {
@@ -231,10 +253,20 @@ aside > a {
 }
 
 aside > a[href*="next-roundup"] {
+	/*background-color: #22baf1;*/
+	background-color: #52c9f4;
+}
+
+aside > a[href*="next-roundup"]:hover {
 	background-color: #22baf1;
 }
 
 aside > a[href$=".md"] {
+	/*background-color: #f15922;*/
+	background-color: #f47d52;
+}
+
+aside > a[href$=".md"]:hover {
 	background-color: #f15922;
 }
 
@@ -278,6 +310,20 @@ article section > h2 > a > span::before {
 	content: "\0000A7";
 	font-size: 0.8em;
 	margin-left: 0.6em;
+}
+
+@media all and (min-width: 700px) {
+	.hero h1 {
+		font-size: 3.5em;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	
+	.details {
+		font-size: 0.9em;
+		padding-left: 0;
+		padding-right: 0;
+	}
 }
 
 @media all and (min-width: 770px) {
@@ -348,7 +394,12 @@ article section > h2 > a > span::before {
 	.hero h1 {
 		margin: 0;
 		padding-top: 0.625em;
-		font-size: 3.5em;
+	}
+	
+	header,
+	article {
+		width: 90%;
+		margin: 0 auto;
 	}
 	
 	article aside {
@@ -357,12 +408,6 @@ article section > h2 > a > span::before {
 }
 
 @media all and (min-width: 900px) {
-	header,
-	article {
-		width: 90%;
-		margin: 0 auto;
-	}
-	
 	.hero h1 {
 		margin: 0;
 		padding-top: 0.625em;
