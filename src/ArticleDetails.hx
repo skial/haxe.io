@@ -55,7 +55,7 @@ class ArticleDetails {
 				//var value = DateTools.format(file.stats.ctime, '%A :: %B %Y');
 				var value = DateTools.format(file.created(), '%A :: %B %Y');
 				// http://www.if-not-true-then-false.com/2010/php-1st-2nd-3rd-4th-5th-6th-php-add-ordinal-number-suffix/
-				value = value.replace( '::', switch (day % 10) {
+				value = value.replace( '::', switch ([11, 12, 13].indexOf(day) == -1 ? day % 10 : -1) {
 					case 1: '${day}st';
 					case 2: '${day}nd';
 					case 3: '${day}rd';
