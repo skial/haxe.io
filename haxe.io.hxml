@@ -10,5 +10,4 @@
 -cp src
 -neko bin/haxeio.js
 -main Main
---macro uhx.macro.KlasImp.initalize()
 -cmd "haxe plugins.hxml"
