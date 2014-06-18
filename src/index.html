@@ -18,7 +18,15 @@
 <body>
 	<content select="#header" />
 	<main>
-		
+		<ul>
+			<li itemscope="" itemtype="http://schema.org/Article">
+				<h1 itemprop="headline">
+					<a itemprop="url" href="/$path" title="$title">$title</a>
+				</h1>
+				<time pubdate="" datetime="$date" dateCreated="$date"></time>
+				$social
+			</li>
+		</ul>
 	</main>
 	<content select="#footer" />
 </body>
