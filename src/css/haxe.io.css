@@ -312,6 +312,132 @@ article section > h2 > a > span::before {
 	margin-left: 0.6em;
 }
 
+/* Front Page */
+
+html main ul {
+	margin: 0;
+	padding: 0;
+}
+
+html[class="/"] main li,
+html[class="/"] main li:first-child {
+	display: block;
+	position: relative;
+	width: 100%;
+	float: left;
+}
+
+html[class="/"] main li:first-child {
+	height: 10.5em;
+}
+
+html[class="/"] main li a {
+	display: block;
+}
+
+html[class="/"] main li a,
+html[class="/"] main li p {
+	z-index: 1;
+	
+	padding-left: 0.625em;
+	padding-right: 0.625em;
+	color: white;
+}
+
+html[class="/"] main a {
+	text-decoration: none;
+}
+
+html[class="/"] main li:nth-child(3n+2):not(id) {
+	/*background-image: linear-gradient(rgba(82,244,206,0.5),rgba(82,244,206,0.5));*/
+	background: rgba(82,244,206,0.5);
+}
+
+html[class="/"] main li:nth-child(3n+3):not(id) {
+	/*background: linear-gradient(rgba(241,228,34,0.5),rgba(241,228,34,0.5));*/
+	background: rgba(241,228,34,0.5);
+}
+
+html[class="/"] main li:nth-child(3n+4):not(id) {
+	/*background: linear-gradient(rgba(82,201,244,0.5),rgba(82,201,244,0.5));*/
+	background: rgba(82,201,244,0.5);
+}
+
+#r204 {
+	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/204/bronko.png);
+}
+
+#r203 {
+	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/203/kha-demo.png);
+	background-position: center;
+}
+
+#r202 {
+	background-image: linear-gradient(rgba(241,228,34,0.3),rgba(241,228,34,0.3)), url(/img/202/zombiedelivery.png);
+}
+
+#r201 {
+	background-image: linear-gradient(rgba(82,201,244,0.3),rgba(82,201,244,0.3)), url(/img/january-haxeflixel.png);
+}
+
+#speaker_juraj {
+	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/Juraj_Kirchheim_wwx_2013.jpg);
+	background-position: center;
+}
+
+#speaker_elliott {
+	background-image: linear-gradient(rgba(241,228,34,0.3),rgba(241,228,34,0.3)), url(/img/ElliottStoneham2014.jpg);
+}
+
+#speaker_justin {
+	background-image: linear-gradient(rgba(82,201,244,0.3),rgba(82,201,244,0.3)), url(/img/jjd-sailing.png);
+}
+
+#speaker_caue {
+	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/caue_waneck_wwx_2011_1.jpg);
+	background-position: center;
+}
+
+#speaker_franco {
+	background-image: linear-gradient(rgba(241,228,34,0.3),rgba(241,228,34,0.3)), url(/img/franco_ponticelli_wwx_2011_3.jpg);
+}
+
+#speaker_andreas {
+	background-image: linear-gradient(rgba(82,201,244,0.3),rgba(82,201,244,0.3)), url(/img/andreas_soderlund_wwx_2014.jpg);
+}
+
+#speaker_hugh {
+	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/hugh_sanderson_wwx_2012_3.jpg);
+	background-position: center;
+}
+
+#r200 {
+	background-image: linear-gradient(rgba(241,228,34,0.3),rgba(241,228,34,0.3)), url(/img/BnXzIAqCMAEL5bc.png);
+	background-position: center;
+}
+
+#r199 {
+	background-image: linear-gradient(rgba(82,201,244,0.3),rgba(82,201,244,0.3)), url(/img/haxor-knight.png);
+	background-position: center;
+}
+
+#ld29 {
+	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/ld-lich-king.png);
+}
+
+#r198 {
+	background-image: linear-gradient(rgba(241,228,34,0.3),rgba(241,228,34,0.3)), url(/img/2982-shot1.png);
+	background-position: center;
+}
+
+#r197 {
+	background-image: linear-gradient(rgba(82,201,244,0.3),rgba(82,201,244,0.3)), url(/img/Bl5DTmyCUAAiNC7.png);
+}
+
+#r196 {
+	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/BlWDWimCIAANSq0.png);
+}
+
 @media all and (min-width: 700px) {
 	.hero h1 {
 		font-size: 3.5em;
@@ -323,6 +449,15 @@ article section > h2 > a > span::before {
 		font-size: 0.9em;
 		padding-left: 0;
 		padding-right: 0;
+	}
+	
+	html[class="/"] main li:not(:first-child) {
+		height: 21em;
+		overflow: hidden;
+	}
+
+	html[class="/"] main li {
+		width: 50%;
 	}
 }
 
@@ -413,6 +548,15 @@ article section > h2 > a > span::before {
 		padding-top: 0.625em;
 		font-size: 4em;
 	}
+	
+	html[class="/"] main li {
+		width: 33.33%;
+	}
+	
+	html[class="/"] main li:first-child {
+		width: 66.66%;
+		height: 21em;
+	}
 }
 
 @media all and (min-width: 1020px) {
@@ -426,5 +570,13 @@ article section > h2 > a > span::before {
 	header,
 	article {
 		width: 70%;
+	}
+	
+	html[class="/"] main li {
+		width: 25%;
+	}
+	
+	html[class="/"] main li:first-child {
+		width: 75%;
 	}
 }
