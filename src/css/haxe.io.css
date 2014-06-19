@@ -321,10 +321,12 @@ html main ul {
 
 html[class="/"] main li,
 html[class="/"] main li:first-child {
+	height: 10.5em;
 	display: block;
 	position: relative;
 	width: 100%;
 	float: left;
+	overflow: hidden;
 }
 
 html[class="/"] main li:first-child {
@@ -333,34 +335,53 @@ html[class="/"] main li:first-child {
 
 html[class="/"] main li a {
 	display: block;
+	padding-top: 0.625em;
+	text-decoration: none;
 }
 
 html[class="/"] main li a,
 html[class="/"] main li p {
-	z-index: 1;
-	
 	padding-left: 0.625em;
 	padding-right: 0.625em;
 	color: white;
 }
 
-html[class="/"] main a {
-	text-decoration: none;
+html[class="/"] main li h1,
+html[class="/"] main li p {
+	font-weight: normal;
+	margin: 0;
 }
+
+html[class="/"] main li h1 {
+	font-family: Arial;
+	padding-bottom: 0.625em;
+}
+
+/*html[class="/"] main li:not(:first-child) p {
+	padding-top: 21em;
+}*/
 
 html[class="/"] main li:nth-child(3n+2):not(id) {
 	/*background-image: linear-gradient(rgba(82,244,206,0.5),rgba(82,244,206,0.5));*/
-	background: rgba(82,244,206,0.5);
+	background: rgba(82,244,206,1);
 }
 
 html[class="/"] main li:nth-child(3n+3):not(id) {
 	/*background: linear-gradient(rgba(241,228,34,0.5),rgba(241,228,34,0.5));*/
-	background: rgba(241,228,34,0.5);
+	background: rgba(241,228,34,1);
 }
 
 html[class="/"] main li:nth-child(3n+4):not(id) {
 	/*background: linear-gradient(rgba(82,201,244,0.5),rgba(82,201,244,0.5));*/
-	background: rgba(82,201,244,0.5);
+	background: rgba(82,201,244,1);
+}
+
+html[class="/"] main li:first-child {
+	background-size: cover;
+}
+
+html[class="/"] footer {
+	padding: 0;
 }
 
 #r204 {
@@ -453,7 +474,6 @@ html[class="/"] main li:nth-child(3n+4):not(id) {
 	
 	html[class="/"] main li:not(:first-child) {
 		height: 21em;
-		overflow: hidden;
 	}
 
 	html[class="/"] main li {
