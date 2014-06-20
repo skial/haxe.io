@@ -23,7 +23,7 @@ class ImageFigure {
 		
 		for (img in dom.find( 'p > img:not([alt*="grid"])' )) {
 			var caption = img.attr( 'title' );
-			img = img.replaceWith( null, '<figure>${img.html()}<figcaption>$caption</figcaption></figure>'.parse() );
+			img = img.replaceWith( '<figure>${img.html()}<figcaption>$caption</figcaption></figure>'.parse() );
 		}
 		
 		return dom.html();

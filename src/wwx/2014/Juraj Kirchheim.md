@@ -1,9 +1,9 @@
 [_template]: ../../interview.html
-[_author_]: https://twitter.com/back2dos
+[_author]: https://twitter.com/back2dos "@back2dos"
 
 # Juraj Kirchheim
 	
-![At the WWX 2013 WWX 2014 skip-lb social](/img/Juraj_Kirchheim_wwx_2013.jpg)
+![At the WWX 2013 WWX 2014 skip-lb social](/img/Juraj_Kirchheim_wwx_2013.jpg "Juraj Kirchheim")
 
 
 I love playing music, having a good argument, writing decent code, spending time with all kinds of people. I hate writing self-descriptions.

@@ -1,9 +1,12 @@
 -lib tuli
+-lib uhu
 -lib mo
 -lib detox
 -lib beanhx
 -lib tjson
 -lib selecthxml
+-lib imagemagick
+-lib tappi
 -debug
 #-dce no
 -cp src
@@ -17,3 +20,8 @@
 
 -neko imagefigure.n
 -main ImageFigure
+
+--next
+
+-neko articledetails.n
+-main ArticleDetails

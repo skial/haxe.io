@@ -34,19 +34,16 @@ class Finish {
 	public function finish() {
 		for (file in files) if (Tuli.fileCache.exists( file )) {
 			var c = Tuli.fileCache.get(file);
+			
+			
+			/*var dom = c.parse();
+			
+			
+			c = dom.html();*/
+			
 			while (c.indexOf('&amp;') > -1) {
 				c = c.replace('&amp;', '&');
 			}
-			// HTML5 tidy application during html=>xml conversion
-			// wraps javascript wrapped in <script> tags with CDATA.
-			// Adding type="text/javascript" seems to force the CDATA
-			// to be commented out.
-			/*while (c.indexOf('<![CDATA[') > -1) {
-				c = c.replace('<![CDATA[', '');
-			}
-			while (c.indexOf(']]>') > -1) {
-				c = c.replace(']]>', '');
-			}*/
 			
 			Tuli.fileCache.set( file, c );
 		}

@@ -4,6 +4,7 @@
              "repo" : "http://github.com/skial/haxe.io"
             ,"branch" : "master"
         }
+        ,"git" : false
         ,"plugins" : {
              "nofollow" : {
                  "skip" : [
@@ -33,13 +34,17 @@
                 ,"socialmetadata"
                 ,"nofollow"
                 ,"titlelinks"
+                ,"tablecontents"
+                ,"imagegroup"
                 ,"boxedimages"
                 ,"imagemeta"
+                ,"codehighlighter"
             ]
         }
         ,{
              "haxe.io" : [
-                 "imagefigure"
+                 "articledetails"
+                ,"imagefigure"
                 ,"finish"
             ]
         }
