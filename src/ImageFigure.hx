@@ -1,6 +1,7 @@
 package ;
 
 import uhx.sys.Tuli;
+import uhx.tuli.util.File;
 
 using Detox;
 
@@ -18,15 +19,15 @@ class ImageFigure {
 		Tuli.onExtension( 'html', handler, After );
 	}
 	
-	public function handler(file:TuliFile, content:String):String {
-		var dom = content.parse();
+	public function handler(file:File) {
+		var dom = file.content.parse();
 		
 		for (img in dom.find( 'p > img:not([alt*="grid"])' )) {
 			var caption = img.attr( 'title' );
 			img = img.replaceWith( '<figure>${img.html()}<figcaption>$caption</figcaption></figure>'.parse() );
 		}
 		
-		return dom.html();
+		file.content = dom.html();
 	}
 	
 }

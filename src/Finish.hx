@@ -1,12 +1,13 @@
 package ;
 
-import sys.io.File;
 import uhx.sys.Tuli;
+import uhx.tuli.util.File;
 
 using Detox;
 using StringTools;
 using haxe.io.Path;
 using sys.FileSystem;
+using uhx.tuli.util.File.Util;
 
 /**
  * ...
@@ -22,19 +23,18 @@ class Finish {
 		untyped Tuli = tuli;
 		
 		Tuli.onExtension( 'html', handler, After );
-		trace('adding fin after');
 		Tuli.onFinish( finish, After );
 	}
 	
-	public function handler(file:TuliFile, content:String) {
+	public function handler(file:File) {
 		files.push( file.path );
-		return content;
+		
 	}
 	
 	public function finish() {
-		for (file in files) if (Tuli.fileCache.exists( file )) {
-			var c = Tuli.fileCache.get(file);
-			
+		for (file in files) if (Tuli.files.exists( file )) {
+			var f = Tuli.files.get( file );
+			var c = f.content;
 			
 			/*var dom = c.parse();
 			
@@ -45,7 +45,7 @@ class Finish {
 				c = c.replace('&amp;', '&');
 			}
 			
-			Tuli.fileCache.set( file, c );
+			f.content = c;
 		}
 	}
 	
