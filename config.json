@@ -21,11 +21,6 @@
     ]
     ,"plugins" : [
          {
-             "uhu" : [
-
-            ]
-        }
-        ,{
              "tuli" : [
                  "markdown"
                 ,"rss"

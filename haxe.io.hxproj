@@ -638,6 +638,16 @@
     <hidden path="bin\roundups\97.md" />
     <hidden path="bin\roundups\98.md" />
     <hidden path="bin\roundups\99.md" />
+    <hidden path="src\roundups\190.md" />
+    <hidden path="src\roundups\191.md" />
+    <hidden path="src\roundups\192.md" />
+    <hidden path="src\roundups\193.md" />
+    <hidden path="src\roundups\194.md" />
+    <hidden path="src\roundups\195.md" />
+    <hidden path="src\roundups\196.md" />
+    <hidden path="src\roundups\197.md" />
+    <hidden path="src\roundups\198.md" />
+    <hidden path="src\roundups\199.md" />
   </hiddenPaths>
   <!-- Executed before build -->
   <preBuildCommand />
