@@ -31,6 +31,7 @@ body {
 
 body,
 figure,
+video,
 .grid,
 [class*="grid-"],
 .whole {
@@ -41,14 +42,6 @@ figure,
 	float: left;
 	padding-left: 0.625em;
 	padding-right: 0.625em;
-}
-
-[class*="grid-"]:first-child {
-	padding-left: 0;
-}
-
-[class*="grid-"]:last-child {
-	padding-right: 0;
 }
 
 /* Header & Footer */
@@ -384,6 +377,10 @@ html[class="/"] footer {
 	padding: 0;
 }
 
+#r206 {
+	background-image: linear-gradient(rgba(244,82,201,0.5),rgba(244,82,201,0.5)), url(/img/206/uppercup.png);
+}
+
 #r205 {
 	/*background-image: linear-gradient(rgba(241,228,34,0.3),rgba(241,228,34,0.3)), url(/img/205/pewma.jpg);*/
 	background-image: linear-gradient(rgba(82,244,125,0.3),rgba(82,244,125,0.3)), url(/img/205/pewma.jpg);
@@ -488,6 +485,14 @@ html[class="/"] footer {
 }
 
 @media all and (min-width: 770px) {
+	[class*="grid-"]:first-child {
+		padding-left: 0;
+	}
+
+	[class*="grid-"]:last-child {
+		padding-right: 0;
+	}
+	
 	.grid-2-3,
 	.two-thirds {
 		width: 66.66%;
