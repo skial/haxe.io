@@ -401,65 +401,65 @@ html[class="/"] footer {
 }
 
 #r201 {
-	background-image: linear-gradient(rgba(82,201,244,0.3),rgba(82,201,244,0.3)), url(/img/january-haxeflixel.png);
+	background-image: linear-gradient(rgba(82,201,244,0.3),rgba(82,201,244,0.3)), url(/img/201/january-haxeflixel.png);
 }
 
 #speaker_juraj {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/Juraj_Kirchheim_wwx_2013.jpg);
+	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/wwx/2014/Juraj_Kirchheim_wwx_2013.jpg);
 	background-position: center;
 }
 
 #speaker_elliott {
-	background-image: linear-gradient(rgba(244,82,201,0.3),rgba(244,82,201,0.3)), url(/img/ElliottStoneham2014.jpg);
+	background-image: linear-gradient(rgba(244,82,201,0.3),rgba(244,82,201,0.3)), url(/img/wwx/2014/ElliottStoneham2014.jpg);
 }
 
 #speaker_justin {
-	background-image: linear-gradient(rgba(82,201,244,0.3),rgba(82,201,244,0.3)), url(/img/jjd-sailing.png);
+	background-image: linear-gradient(rgba(82,201,244,0.3),rgba(82,201,244,0.3)), url(/img/wwx/2014/jjd-sailing.png);
 }
 
 #speaker_caue {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/caue_waneck_wwx_2011_1.jpg);
+	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/wwx/2014/caue_waneck_wwx_2011_1.jpg);
 	background-position: center;
 }
 
 #speaker_franco {
-	background-image: linear-gradient(rgba(244,82,201,0.3),rgba(244,82,201,0.3)), url(/img/franco_ponticelli_wwx_2011_3.jpg);
+	background-image: linear-gradient(rgba(244,82,201,0.3),rgba(244,82,201,0.3)), url(/img/wwx/2014/franco_ponticelli_wwx_2011_3.jpg);
 }
 
 #speaker_andreas {
-	background-image: linear-gradient(rgba(82,201,244,0.3),rgba(82,201,244,0.3)), url(/img/andreas_soderlund_wwx_2014.jpg);
+	background-image: linear-gradient(rgba(82,201,244,0.3),rgba(82,201,244,0.3)), url(/img/wwx/2014/andreas_soderlund_wwx_2014.jpg);
 }
 
 #speaker_hugh {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/hugh_sanderson_wwx_2012_3.jpg);
+	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/wwx/2014/hugh_sanderson_wwx_2012_3.jpg);
 	background-position: center;
 }
 
 #r200 {
-	background-image: linear-gradient(rgba(244,82,201,0.3),rgba(244,82,201,0.3)), url(/img/BnXzIAqCMAEL5bc.png);
+	background-image: linear-gradient(rgba(244,82,201,0.3),rgba(244,82,201,0.3)), url(/img/200/kha.png);
 	background-position: center;
 }
 
 #r199 {
-	background-image: linear-gradient(rgba(82,201,244,0.3),rgba(82,201,244,0.3)), url(/img/haxor-knight.png);
+	background-image: linear-gradient(rgba(82,201,244,0.3),rgba(82,201,244,0.3)), url(/img/199/haxor-knight.png);
 	background-position: center;
 }
 
 #ld29 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/ld-lich-king.png);
+	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/ld/29/ld-lich-king.png);
 }
 
 #r198 {
-	background-image: linear-gradient(rgba(244,82,201,0.3),rgba(244,82,201,0.3)), url(/img/2982-shot1.png);
+	background-image: linear-gradient(rgba(244,82,201,0.3),rgba(244,82,201,0.3)), url(/img/198/beneath.png);
 	background-position: center;
 }
 
 #r197 {
-	background-image: linear-gradient(rgba(82,201,244,0.3),rgba(82,201,244,0.3)), url(/img/Bl5DTmyCUAAiNC7.png);
+	background-image: linear-gradient(rgba(82,201,244,0.3),rgba(82,201,244,0.3)), url(/img/197/netwars.png);
 }
 
 #r196 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/BlWDWimCIAANSq0.png);
+	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/196/alleycats.png);
 }
 
 @media all and (min-width: 700px) {
