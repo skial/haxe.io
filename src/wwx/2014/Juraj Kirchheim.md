@@ -3,7 +3,7 @@
 
 # Juraj Kirchheim
 	
-![At the WWX 2013 WWX 2014 skip-lb social](/img/Juraj_Kirchheim_wwx_2013.jpg "Juraj Kirchheim")
+![At the WWX 2013 WWX 2014 skip-lb social](/img/wwx/2014/Juraj_Kirchheim_wwx_2013.jpg "Juraj Kirchheim")
 
 
 I love playing music, having a good argument, writing decent code, spending time with all kinds of people. I hate writing self-descriptions.

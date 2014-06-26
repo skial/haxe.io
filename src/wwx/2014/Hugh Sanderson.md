@@ -3,7 +3,7 @@
 
 # Hugh Sanderson
 
-![Hugh Sanderson WWX 2014 skip-lb social](/img/hugh_sanderson_wwx_2012_3.jpg "Hugh Sanderson")
+![Hugh Sanderson WWX 2014 skip-lb social](/img/wwx/2014/hugh_sanderson_wwx_2012_3.jpg "Hugh Sanderson")
 
 ## What hardware do you use?
 

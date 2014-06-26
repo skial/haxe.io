@@ -3,7 +3,7 @@
 
 # Cauê Waneck
 
-![Caue Waneck WWX 2014 skip-lb social](/img/caue_waneck_wwx_2011_1.jpg "Cauê Waneck")
+![Caue Waneck WWX 2014 skip-lb social](/img/wwx/2014/caue_waneck_wwx_2011_1.jpg "Cauê Waneck")
 
 I'm a sleep deprived programmer that really like working on tools, game programming and optimization.
 

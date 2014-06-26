@@ -3,7 +3,7 @@
 
 # Andreas Söderlund
 
-![Andreas Soderlund WWX 2014 skip-lb social](/img/andreas_soderlund_wwx_2014.jpg "Andreas Söderlund")
+![Andreas Soderlund WWX 2014 skip-lb social](/img/wwx/2014/andreas_soderlund_wwx_2014.jpg "Andreas Söderlund")
 
 It's kind of hard to describe myself, since I don't enjoy putting labels on someone, but also because I embrace change, which can happen so fast. Some things I try to maintain and improve with myself though is to be genuine, caring and spiritual.
 

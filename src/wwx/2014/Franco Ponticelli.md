@@ -3,7 +3,7 @@
 
 # Franco Ponticelli
 	
-![Franco Ponticelli WWX 2014 skip-lb social](/img/franco_ponticelli_wwx_2011_3.jpg "Franco Ponticelli")
+![Franco Ponticelli WWX 2014 skip-lb social](/img/wwx/2014/franco_ponticelli_wwx_2011_3.jpg "Franco Ponticelli")
 
 I'm old, very old, but only on the outside. Long time computer geek, developer by trade and passionate about so many things that it is way too easy to lose count.
 

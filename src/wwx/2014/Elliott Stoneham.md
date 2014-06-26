@@ -3,7 +3,7 @@
 
 # Elliott Stoneham
 
-![Elliott Stoneham WWX 2014 skip-lb social](/img/ElliottStoneham2014.jpg "Elliott Stoneham")
+![Elliott Stoneham WWX 2014 skip-lb social](/img/wwx/2014/ElliottStoneham2014.jpg "Elliott Stoneham")
 
 At the moment I'm a full-time [Go] developer and part-time Haxe enthusiast. But a year ago my life was entirely different. I was a retired business executive, who hadn't programmed for ten years. The Go and Haxe languages led me to fall in love with programming again. I am grateful to them both.
 

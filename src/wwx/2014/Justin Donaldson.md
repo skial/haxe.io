@@ -3,7 +3,7 @@
 
 # Justin Donaldson
 
-![Justin Donaldson WWX 2014 skip-lb social](/img/jjd-sailing.png "Justin Donaldson")
+![Justin Donaldson WWX 2014 skip-lb social](/img/wwx/2014/jjd-sailing.png "Justin Donaldson")
 
 I'm constantly learning: programming languages, data science, machine learning,
 music.  You see that sailing pic?  I have no idea what I'm doing there.  But,
