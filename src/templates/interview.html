@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" class="/roundups">
+<html lang="en" class="/interview">
 <head>
 	<content select="#defaults" />
 	<content select="#social_meta" />
+	<content select="#favicon" />
 	
-	<title><content select="article section h1" text="" /> | Haxe.io</title>
+	<title><content select="article section h1" text="" />'s Haxe WWX 2014 Speaker Interview</title>
 	
-	<!--<link rel="import" href="/articleHeader.html" />-->
-	<link rel="import" href="/defaults.html" />
-	<link rel="import" href="/social_meta.html" />
-	<link rel="import" href="/head_scripts.html" />
-	<link rel="import" href="/stylesheets.html" />
-	<link rel="import" href="/footer.html" />
+	<link rel="import" href="defaults.html" />
+	<link rel="import" href="favicon.html" />
+	<link rel="import" href="social_meta.html" />
+	<link rel="import" href="head_scripts.html" />
+	<link rel="import" href="stylesheets.html" />
+	<link rel="import" href="roundup_footer.html" />
 	
 	<content select="#stylesheets" />
 	<content select="#head_scripts" />
 </head>
 <body>
-	<!--<content select="#articleHeader" />-->
 	<header class="grid">
 		<div class="grid-1-1">
 			<a href="/" type="image/logo">
@@ -35,15 +35,14 @@
 			</a>
 		</div>
 		<div class="hero">
-			<content select="article section h1" />
-			<div class="details">by <a rel="author" href="http://twitter.com/skial" title="@skial">Skial Bainn</a> published on <time pubdate="" datetime=""></time></div>
-		</div>		
+			<h1><content select="article section h1" text="" /></h1>
+			<div class="details">by <a rel="author" href="" title=""><content select="article section h1" data-text="" data-match="remove" /></a> published on <time pubdate="" datetime=""></time></div>
+		</div>
 	</header>
 	<article>
 		<div class="grid">
 			<aside class="grid-1-3">
-				<a href="https://github.com/skial/haxe.io/issues?labels=next-roundup&page=1&state=open">Suggest a link</a>
-				<a href="https://github.com/skial/haxe.io/tree/master/src/">Correct this issue</a>
+				<a href="https://github.com/skial/haxe.io/tree/master/src/">Correct this article</a>
 			</aside>
 			<section class="grid-2-3">
 				<content select="markdown" />

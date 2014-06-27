@@ -1,4 +1,4 @@
-[_template]: ../../interview.html
+[_template]: ../../templates/interview.html
 [_author]: https://github.com/ciscoheat "@ciscoheat"
 
 # Andreas Söderlund

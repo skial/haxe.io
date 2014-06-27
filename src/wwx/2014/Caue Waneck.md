@@ -1,4 +1,4 @@
-[_template]: ../../interview.html
+[_template]: ../../templates/interview.html
 [_author]: https://twitter.com/cwaneck "@cwaneck"
 
 # Cauê Waneck
