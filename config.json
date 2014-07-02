@@ -6,10 +6,49 @@
         }
         ,"git" : false
         ,"plugins" : {
-             "nofollow" : {
+             "atom" : {
+                 "entry_template" : "/templates/_entry.atom"
+                ,"feed_template" : "/templates/_feed.atom"
+            }
+            ,"boxedimages" : {
+                 "selectors" : {
+                     "image" : [
+                         "img[alt*=\"letterbox\"]"
+                    ]
+                }
+            }
+            ,"rss" : {
+                 "entry_template" : "/templates/_entry.rss"
+                ,"feed_template" : "/templates/_feed.rss"
+            }
+            ,"markdown" : {
+
+            }
+            ,"imagegroup" : {
+                 "selectors" : {
+                     "image" : [
+                         "p>img"
+                    ]
+                }
+            }
+            ,"nofollow" : {
                  "skip" : [
                      "haxe.io"
                 ]
+            }
+            ,"frontpage" : {
+                 "selectors" : {
+                     "date" : [
+                         "time"
+                        ,"datetime"
+                    ]
+                    ,"title" : [
+                         "article h1:first-of-type"
+                    ]
+                    ,"social" : [
+                         "[alt*=\"social\"]"
+                    ]
+                }
             }
         }
     }

@@ -377,6 +377,10 @@ html[class="/"] footer {
 	padding: 0;
 }
 
+#r207 {
+	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.5)), url(/img/207/Beacon.png);
+}
+
 #r206 {
 	background-image: linear-gradient(rgba(244,82,201,0.5),rgba(244,82,201,0.5)), url(/img/206/uppercup.png);
 }
