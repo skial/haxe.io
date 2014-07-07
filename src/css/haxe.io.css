@@ -466,6 +466,27 @@ html[class="/"] footer {
 	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/196/alleycats.png);
 }
 
+/* Responsive Embedding */
+
+.embed-container { 
+	position: relative; 
+	padding-bottom: 56.25%; 
+	height: 0; 
+	overflow: hidden; 
+	max-width: 100%; 
+	height: auto;
+} 
+
+.embed-container iframe, 
+.embed-container object, 
+.embed-container embed { 
+	position: absolute; 
+	top: 0; 
+	left: 0; 
+	width: 100%; 
+	height: 100%; 
+}
+
 @media all and (min-width: 700px) {
 	.hero h1 {
 		font-size: 3.5em;
@@ -566,6 +587,7 @@ html[class="/"] footer {
 		padding-top: 0.625em;
 	}
 	
+	.hero,
 	header,
 	article {
 		width: 90%;
@@ -595,6 +617,7 @@ html[class="/"] footer {
 }
 
 @media all and (min-width: 1020px) {
+	.hero,
 	header,
 	article {
 		width: 80%;
@@ -602,6 +625,7 @@ html[class="/"] footer {
 }
 
 @media all and (min-width: 1156px) {
+	.hero,
 	header,
 	article {
 		width: 70%;
