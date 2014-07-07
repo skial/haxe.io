@@ -1,4 +1,4 @@
-[_template]: ../../templates/roundup.html
+[_template]: ../../templates/wwx/video.html
 [“”]: a ""
 # One Year Of Haxe by Nicolas Cannasse
 
@@ -11,24 +11,26 @@
 speed improvements.
 
 He continues by explaining the future plans for Haxe `3.2`. This includes
-completing the `haxe.io.Bytes` API by adding additional accessors and using 
-Typed Arrays on the JavaScript target which will provide a huge speed
-improvement. Simon Krajewski's [hxparse][l2] library might provide a hint of what's to
-come as it includes its own [byte][l3] class which uses the best underlying object
+completing the `haxe.io.Bytes` API by adding additional assessors and using 
+[Typed Arrays] on the JavaScript target which will provide a huge speed
+improvement. 
+
+Simon Krajewski's [hxparse][l2] library might provide a hint of what's to
+come as it includes its own [byte][l3] class which uses the optimal underlying method
 on each platform to get the best speed available.
 
-The next feature planned is full Unicode support by providing `haxe.Ucs2`,
-`haxe.Utf8` and `haxe.Utf16` which can automatically convert between each
-other, full cross-platform conformity and the best performance available
-for the underlying platform.
+The next feature planned is full Unicode support by providing a `haxe.Ucs2`,
+`haxe.Utf8` and `haxe.Utf16` abstract classes which can automatically convert
+between each other, full cross-platform conformity and the best performance available
+on the underlying platform.
 
 A few other features are also planned, to improve macro support, additional improvements
-to `Date` by adding UTC support, moving SPOD to `haxe.db` and continue to improve
-the Python target.
+to the `Date` class by adding UTC support, moving SPOD to the `haxe.db` package and 
+continuing to improve the Python target.
 
-Nicolas goes onto describing who makes up the Haxe Foundation and what they do. The
+Nicolas continues by describing who makes up the Haxe Foundation and what they do. The
 Haxe Foundation have sponsored a handful of projects, from HIDE, WWX, UFront and
-the new [Haxe][l4] website created by [Jason O'Neil][tw2] who's also handling 
+the new [Haxe][l4] website created by [Jason O'Neil][tw2] who's also leading 
 the development of UFront.
 
 ![wwx 2014 haxe new website](/img/wwx/2014/new-haxe-site.jpg "The New Haxe Website")
@@ -59,3 +61,4 @@ review changes and additions to the site.
 [l4]: http://haxe.org "The New Haxe Website"
 	
 [ufront]: https://github.com/ufront "UFront on GitHub"
+[typed arrays]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays "JavaScript Typed Arrays"
