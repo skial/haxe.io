@@ -1,6 +1,10 @@
 [_template]: ../../templates/wwx/video.html
 [“”]: a ""
-# One Year Of Haxe by Nicolas Cannasse
+# One Year of Haxe by Nicolas Cannasse
+
+> [Silex Labs] originally posted the article [WWX 2014 Speech: Nicolas Cannasse One
+> Year of Haxe][sl1] which links to the YouTube videos, Nicolas's slides and a brief
+> synopsis of the talk. Below are the videos and my own overview of the talk.
 
 ![youtube](u2k08FIiGqI)
 
@@ -62,3 +66,5 @@ review changes and additions to the site.
 	
 [ufront]: https://github.com/ufront "UFront on GitHub"
 [typed arrays]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays "JavaScript Typed Arrays"
+[silex labs]: http://www.silexlabs.org/ "Silex Labs"
+[sl1]: http://www.silexlabs.org/202725/the-blog/wwx2014-speech-nicolas-cannasse-one-year-of-haxe/ "WWX 2014 Speech: Nicolas Cannasse One Year of Haxe"
