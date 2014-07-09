@@ -89,6 +89,7 @@ p:empty {
 }
 
 p {
+	font-size: 1.1em;
 	line-height: 1.5em;
 	margin-bottom: 1.25em;
 }
@@ -151,11 +152,11 @@ label[for*="pic"] {
 
 figcaption {
 	color: #40403f;
-	font-size: 0.77em;
+	font-size: 0.9em;
 	font-style: italic;
 	padding-top: 0.55em;
 	padding-bottom: 0.55em;
-	padding-left: 0.77em;
+	padding-left: 0.9em;
 }
 
 input:checked ~ label {
@@ -199,6 +200,8 @@ figure > label > img {
 article section blockquote {
 	color: #5a5a58;
 	font-style: italic;
+	margin-left: 0;
+	margin-right: 0;
 }
 
 article aside {
@@ -519,6 +522,15 @@ from : http://embedresponsively.com/
 	left: 0; 
 	width: 100%; 
 	height: 100%; 
+}
+
+@media all and (min-width: 550px) {
+	article section blockquote {
+		color: #5a5a58;
+		font-style: italic;
+		margin-left: inherit;
+		margin-right: inherit;
+	}
 }
 
 @media all and (min-width: 700px) {
