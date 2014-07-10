@@ -37,7 +37,7 @@ Haxe Foundation have sponsored a handful of projects, from HIDE, WWX, UFront and
 the new [Haxe][l4] website created by [Jason O'Neil][tw2] who's also leading 
 the development of UFront.
 
-![wwx 2014 haxe new website](/img/wwx/2014/new-haxe-site.jpg "The New Haxe Website")
+![wwx 2014 haxe new website social](/img/wwx/2014/new-haxe-site.jpg "The New Haxe Website")
 
 The new site uses [UFront], but without a database, instead relying on GitHub for all its
 content. Clicking any `contribute` link at the bottom of a page will take you to the
