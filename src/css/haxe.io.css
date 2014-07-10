@@ -420,6 +420,14 @@ html[class="/"] footer {
 	padding: 0;
 }
 
+#r208 {
+	background-image: linear-gradient(rgba(82,244,125,0.3),rgba(82,244,125,0.3)), url(/img/208/hide.png);
+}
+
+#one-year-of-haxe {
+	background-image: linear-gradient(rgba(82,201,244,0.3),rgba(82,201,244,0.3)), url(/img/wwx/2014/new-haxe-site.jpg);
+}
+
 #r207 {
 	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.5)), url(/img/207/Beacon.png);
 }
