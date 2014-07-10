@@ -65,7 +65,6 @@
                 ,"rss"
                 ,"atom"
                 ,"importhtml"
-                ,"socialmetadata"
                 ,"nofollow"
                 ,"titlelinks"
                 ,"tablecontents"
@@ -74,6 +73,7 @@
                 ,"imagemeta"
                 ,"codehighlighter"
                 ,"responsiveembed"
+                ,"socialmetadata"
             ]
         }
         ,{
