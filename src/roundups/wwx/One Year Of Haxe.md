@@ -1,6 +1,6 @@
 [_template]: ../../templates/wwx/video.html
 [“”]: a ""
-# One Year of Haxe by Nicolas Cannasse
+# One Year of Haxe _by_ Nicolas Cannasse
 
 > [Silex Labs] originally posted the article [WWX 2014 Speech: Nicolas Cannasse One
 > Year of Haxe][sl1] which links to the YouTube videos, Nicolas's slides and a brief

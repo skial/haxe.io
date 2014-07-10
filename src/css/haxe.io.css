@@ -25,6 +25,15 @@ h6 {
 	font-family: 'Open Sans', sans-serif;
 }
 
+h1 em,
+h2 em,
+h3 em,
+h4 em,
+h5 em,
+h6 em {
+	font-family: 'Gentium Book Basic', serif;
+}
+
 .grid,
 .grid::after {
 	display: block;
