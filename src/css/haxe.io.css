@@ -134,7 +134,7 @@ article section a:active:not([type]) {
 
 /* Code */
 pre > code {
-	display: block;
+	display: table;
 }
 
 /* Images */
