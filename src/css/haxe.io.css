@@ -133,8 +133,17 @@ article section a:active:not([type]) {
 }
 
 /* Code */
-pre > code {
+pre,
+code {
+	font-size: initial;
+}
+pre[language] {
+	overflow: scroll;
+}
+
+code[language] {
 	display: table;
+	tab-size: 2;
 }
 
 /* Images */
@@ -563,6 +572,11 @@ from : http://embedresponsively.com/
 		padding-right: 0;
 	}
 	
+	pre[language], 
+	code[language] {
+		tab-size: 3;
+	}
+	
 	html[class="/"] main li {
 		min-height: 21em;
 	}
@@ -663,6 +677,11 @@ from : http://embedresponsively.com/
 	
 	article aside {
 		display: inherit;
+	}
+	
+	pre[language], 
+	code[language] {
+		tab-size: 4;
 	}
 }
 
