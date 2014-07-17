@@ -429,6 +429,14 @@ html[class="/"] footer {
 	padding: 0;
 }
 
+#r209 {
+	background-image: linear-gradient(rgba(82,244,125,0.3),rgba(82,244,125,0.3)), url(/img/209/weblog.png);
+}
+
+#cpp-magic {
+	background-image: linear-gradient(rgba(82,201,244,0.3),rgba(82,201,244,0.3)), url(/img/wwx/2014/hugh-magic.jpg);
+}
+
 #r208 {
 	background-image: linear-gradient(rgba(82,244,125,0.3),rgba(82,244,125,0.3)), url(/img/208/hide.png);
 }
