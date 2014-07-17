@@ -53,7 +53,8 @@ instead.
 
 The next section is on `extern` magic. The C++ target has never supported
 extern classes like the other compiler targets, until now. This is now possible 
-because of all the new features introduced above. Here is an example from Hugh's slides.
+because of all the new features introduced above. Here is an example taken from 
+Hugh's slides.
 
 ```Haxe
 // Avoids generating dynamic accessors.
@@ -93,7 +94,7 @@ build it yourself head over to Hugh's website for [instructions][l23].
 
 ## Slides
 
-![iframe](haxe.io/@gamehaxe/slides/hxcpp-magic/wwx2014.swf)
+[Hugh Sanderson's C++ Magic Slides](/@gamehaxe/slides/hxcpp-magic/wwx2014.swf "Hugh Sandersons WWX 2014 Speech Slide: C++ Magic")
 
 [tw4]: https://twitter.com/GameHaxe "@GameHaxe"
 
