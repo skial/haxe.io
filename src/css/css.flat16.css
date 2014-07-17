@@ -1,0 +1,25 @@
+pre[language="css"] {
+	background-color: #2C3E50;
+	color: #f5f5f5;
+}
+
+code[language="css"] .comment {
+	color: #95A5A6;
+}
+
+code[language="css"] .type {
+	color: #F1C40F;
+}
+
+code[language="css"] .keyword.declaration {
+	color: #E74C3C;
+}
+
+code[language="css"] .keyword.declaration .colon,
+code[language="css"] .keyword.declaration .semicolon {
+	color: #f5f5f5;
+}
+
+code[language="css"] .keyword.declaration .colon + span {
+	color: #3498DB;
+}
