@@ -10,7 +10,8 @@
 	<link rel="import" href="/stylesheets.html" />
 	<link rel="import" href="/header.html" />
 	<link rel="import" href="/footer.html" />
-	
+	<link rel="stylesheet" type="text/css" href="/css/css.flat16.css" />
+	<link rel="stylesheet" type="text/css" href="/css/haxe.flat16.css" />
 	<content select="#stylesheets" />
 	<style>
 		body main {
@@ -138,12 +139,37 @@
 				<h1 id="Code">Code</h1>
 			</aside>
 			<section class="grid-2-3">
-				<pre>
-					<code class="language css">
+				<pre language="css">
+					<code language="css">
 body {
 	color: #333332;
 	font-size: 1.1em;
 	font-family: 'Bitter', serif;
+}
+					</code>
+				</pre>
+				<pre language="haxe">
+					<code language="haxe">
+// Avoids generating dynamic accessors.
+@:unreflective
+// Marks an extern class as using struct access(".") not pointer("-&gt;").
+@:structAccess
+@:include("string")
+@:native("std::string")
+extern class StdString {
+	@:native("new std::string")
+	public static function create(inString:String):cpp.Pointer&lt;StdString&gt;;
+	public function size():Int;
+	public function find(str:String):Int;
+}
+
+class Main {
+	
+	public static function main() {
+		var std = StdString.create("my std::string");
+		trace( std.value.size() );
+		std.destroy();
+	}
 }
 					</code>
 				</pre>
