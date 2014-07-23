@@ -1,7 +1,7 @@
 [_template]: ../../templates/wwx/video.html
 [“”]: a ""
 
-# Development Workflow with Cocktail and NME by Thomas Fétiveau
+# Development Workflow _with_ Cocktail and NME _by_ Thomas Fétiveau
 
 > [Silex Labs] originally posted the article [WWX 2014 Speech: Thomas Fétiveau : Development workflow with Cocktail and NME][sl1]
 > which links to the YouTube videos, Thomas's slides and a brief
