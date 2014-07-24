@@ -429,6 +429,16 @@ html[class="/"] footer {
 	padding: 0;
 }
 
+#r210 {
+	background-image: linear-gradient(rgba(82,244,125,0.3),rgba(82,244,125,0.3)), url(/img/210/haxe-license-plate.jpg);
+}
+
+#cocktail-nme {
+	background-image: linear-gradient(rgba(82,201,244,0.3),rgba(82,201,244,0.3)), url(/img/wwx/2014/thomas_fetiveau.jpg);
+	background-position-x: 50%;
+	background-position-y: 15%;
+}
+
 #r209 {
 	background-image: linear-gradient(rgba(82,244,125,0.3),rgba(82,244,125,0.3)), url(/img/209/weblog.png);
 }
