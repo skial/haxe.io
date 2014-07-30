@@ -62,8 +62,6 @@
          {
              "tuli" : [
                  "markdown"
-                ,"rss"
-                ,"atom"
                 ,"importhtml"
                 ,"nofollow"
                 ,"titlelinks"
