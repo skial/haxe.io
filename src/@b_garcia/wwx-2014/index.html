@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<!-- saved from url=(0030)https://aduros.com/wwx-2014/#/ -->
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		
+		<title>WWX 2014: Flambe</title>
+		
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		
+		<link rel="stylesheet" href="./css/reveal.min.css" />
+		<link rel="stylesheet" href="./css/theme/default.css" id="theme" />
+		
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="./lib/css/zenburn.css" />
+		
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+		
+		<!--[if lt IE 9]>
+		<script src="./lib/js/html5shiv.js"></script>
+		<![endif]-->
+		
+        <link rel="stylesheet" type="text/css" href="./wwx2014Flambe_files/sunburst.css" />
+		
+        <style>
+            .haxe-logo {
+              width: 24px; height: 24px;
+              background: url(./bruno/haxe.png);
+              display: inline-block;
+            }
+            .muted {
+              color: #999999;
+            }
+        </style>
+	<style type="text/css"></style><script>window["_GOOG_TRANS_EXT_VER"] = "1";</script></head>
+
+	<body style="transition: -webkit-transform 0.8s ease; -webkit-transition: -webkit-transform 0.8s ease;">
+		
+		<div class="reveal default center" data-transition-speed="default" data-background-transition="default">
+			
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides" style="width: 960px; height: 700px; zoom: 0.656458333333333;">
+                <section class="present" style="top: -137.5px; display: block;">
+                  <h1>Flambe</h1>
+                  <p>
+                    <small>by <a href="https://aduros.com/">Bruno Garcia</a> /
+                      <a href="https://twitter.com/b_garcia">@b_garcia</a> /
+                      <a href="https://github.com/aduros">@aduros</a>
+                    </small>
+                  </p>
+                </section>
+				
+                <section hidden="" class="future" style="top: -232.5px; display: block;">
+                  <h2>Quick Bio</h2>
+                  <ul>
+                    <li class="fragment" data-fragment-index="0">Game developer, ex-Three Rings (SEGA), ex-Zynga.</li>
+                    <li class="fragment" data-fragment-index="1">Haxe compiler team member dedicated to JS target. Work on js.html.* externs, source mapping, optimizations, etc.</li>
+                    <li class="fragment" data-fragment-index="2">Still can't figure out OCaml.</li>
+                    <li class="fragment" data-fragment-index="3">Co-authored a <a href="http://www.amazon.com/HTML5-Game-Development-Insights-McAnlis/dp/143026697X/">book</a> on HTML5 game development.</li>
+                    <li class="fragment" data-fragment-index="4">Started <a href="http://haxememes.tumblr.com/">haxememes.tumblr.com</a>.</li>
+                    <li class="fragment" data-fragment-index="5">Also wrote Flambe.</li>
+                  </ul>
+                </section>
+				
+                <section hidden="" class="future" style="top: -254.5px; display: block;">
+                  <h2>What's Flambe?</h2>
+                  <ul>
+                    <li>A game engine written in Haxe.</li>
+                    <li>Strong focus on HTML5, tools integration, and rapid development.</li>
+                    <li>WebGL renderer with Canvas fallback. Flash support too, rendered with Stage3D.</li>
+                    <li>Started off as a hobby project in 2011.</li>
+                    <li>Now used in 200+ commercial games!</li>
+                    <li>Let's look at a typical <a href="http://www.ahhhhhhhhhhhhhhhhhhhhhhhhh.com/">example game</a>.</li>
+                  </ul>
+                </section>
+				
+                <section hidden="" class="future" style="top: -190.5px; display: block;">
+                  <h2>Ground Zero: Children's Media</h2>
+                  <ul>
+                    <li class="fragment" data-fragment-index="0">Push for HTML5 games at Nickelodeon started in 2012.</li>
+                    <li class="fragment" data-fragment-index="1">Evaluated 10+ game engines.</li>
+                    <li class="fragment" data-fragment-index="2">Today, all new games built with Flambe.</li>
+                    <li class="fragment" data-fragment-index="3">Developers trained in Flambe continue using it in other projects, going viral across industry.</li>
+                  </ul>
+                </section>
+				
+                <section hidden="" class="future" style="top: -20px; display: none;">
+                  <h2>Flambe + Haxe Powered</h2>
+                  <h3>Top 4 Media Companies Worldwide</h3>
+                  <ol style="white-space: nowrap">
+                    <li class="muted">Comcast</li>
+                    <li>Disney <div class="haxe-logo"></div></li>
+                    <li class="muted">Time Warner</li>
+                    <li>Viacom <div class="haxe-logo"></div></li>
+                  </ol>
+                </section>
+				
+                <section hidden="" class="future" style="top: -20px; display: none;">
+                  <h2>Flambe + Haxe Powered</h2>
+                  <h3>Top 3 Toy Companies Worldwide</h3>
+                  <ol style="white-space: nowrap">
+                    <li>Hasbro <div class="haxe-logo"></div></li>
+                    <li>Mattel <div class="haxe-logo"></div></li>
+                    <li class="muted">Bandai</li>
+                  </ol>
+                </section>
+				
+                <section hidden="" class="future" style="top: -20px; display: none;">
+                  <h2>Flambe + Haxe Powered</h2>
+                  <h3>Yet More Name Dropping</h3>
+                  <ul style="white-space: nowrap">
+                    <li>Coca Cola <div class="haxe-logo"></div></li>
+                    <li>Toyota <div class="haxe-logo"></div></li>
+                    <li>Spil Games <div class="haxe-logo"></div></li>
+                    <li>Mozilla <div class="haxe-logo"></div></li>
+                  </ul>
+                </section>
+				
+                <section hidden="" class="future" style="top: -20px; display: none;">
+                  <img src="./wwx2014Flambe_files/ariel.jpg">
+                </section>
+
+                <section hidden="" class="future" style="top: -20px; display: none;">
+                  <h2>Why Are They Choosing Haxe + Flambe?</h2>
+                  <ol>
+                    <li>Good HTML5 support.</li>
+                    <li>Flump.</li>
+                    <li>High performance.</li>
+                    <li>Native extensions.</li>
+                    <li>Developer UX.</li>
+                  </ol>
+                </section>
+
+                <section hidden="" class="future" style="top: -20px; display: none;">
+                  <h2>1. Good HTML5 Support</h2>
+                  <p>Flambe API was designed with capabilities of HTML5 in mind.</p>
+                  <ul>
+                    <li class="fragment" data-fragment-index="0">Avoids performance and compatibility traps (drawText).</li>
+                    <li class="fragment" data-fragment-index="1">Modular asset loading.</li>
+                    <li class="fragment" data-fragment-index="2">Graceful enhancement (HTML5 canvas to WebGL, HTML5 audio to Web Audio). Feature set remains the same.</li>
+                    <li class="fragment" data-fragment-index="3">Can still deploy to Flash. Kids are slow to upgrade their browser (dependent on parents).</li>
+                  </ul>
+                </section>
+
+                <section hidden="" class="future" style="top: -20px; display: none;">
+                  <h2>2. Flump</h2>
+                  <p>Imports animations from Flash. (<a href="http://threerings.github.io/flump/">website</a>)</p>
+                  <ul>
+                    <li class="fragment" data-fragment-index="0">Converts Flash vector animation to cutout animation.</li>
+                    <li class="fragment" data-fragment-index="1">High performance on all platforms.</li>
+                    <li class="fragment" data-fragment-index="2">Not as feature rich as vector, but almost all animations can be converted.</li>
+                    <li class="fragment" data-fragment-index="3">Leverage huge time investment artists have already put into learning Flash.</li>
+                  </ul>
+                </section>
+
+                <section hidden="" class="future" style="top: -20px; display: none;">
+                  <h2>3. High Performance</h2>
+                  <p>What makes Flambe fast?</p>
+                  <ul>
+                    <li class="fragment" data-fragment-index="0">Lots of time spent optimizing rendering and asset loading.</li>
+                    <li class="fragment" data-fragment-index="1">Avoids allocation.</li>
+                    <li class="fragment" data-fragment-index="2">Dead code elimination by default. Avoids reflection.</li>
+                    <li class="fragment" data-fragment-index="3">Designed around HTML5 performance limitations.</li>
+                  </ul>
+                </section>
+				
+                <section hidden="" class="future" style="top: -20px; display: none;">
+                  <h2>4. Native Extensions</h2>
+                  <ul>
+                    <li class="fragment" data-fragment-index="0">For many companies, integrating with several native extensions is a hard requirement.</li>
+                    <li class="fragment" data-fragment-index="1">Flurry, Google Analytics, Game Center, AdMob, social, etc.</li>
+                    <li class="fragment" data-fragment-index="2">Since Flambe supports AIR, can use ANEs that already exist... mostly.</li>
+                  </ul>
+                </section>
+				
+                <section hidden="" class="future" style="top: -20px; display: none;">
+                  <h2>5. Developer UX</h2>
+                  <ul>
+                    <li class="fragment" data-fragment-index="0">Focus on rapid development.</li>
+                    <li class="fragment" data-fragment-index="1">Code is decently documented. All new APIs must have documentation.</li>
+                    <li class="fragment" data-fragment-index="2">Improved <a href="https://aduros.com/flambe/api/flambe/util/Pool.html">dox template</a>, open sourcing soon.</li>
+                    <li class="fragment" data-fragment-index="3">Install process is (somewhat) easy.</li>
+                    <li class="fragment" data-fragment-index="4">Automated Selenium tests improve stability.</li>
+                    <li class="fragment" data-fragment-index="5">Lots of tutorials out there at this point: <a href="https://github.com/markknol/flambe-guide/wiki">Mark Knol's guide</a>,
+                      <a href="https://hacks.mozilla.org/2014/03/flambe-provides-support-for-firefox-os">Mozilla blog post</a>,
+                      other new <a href="http://seanodowd.me/flambe-is-awesome/">blog posts</a>.
+                    </li><li class="fragment" data-fragment-index="6">flambe.System class is an intuitive entry point to most Flambe functionality.</li>
+                    <li class="fragment" data-fragment-index="7">API will give you warm fuzzy feelings! (Yeah, I'm a little biased)</li>
+                  </ul>
+                </section>
+				
+                <section hidden="" class="future" style="top: -20px; display: none;">
+                  <h2>Code Time: Event vs Value</h2>
+                  <pre class="prettyprint prettyprinted"><span class="com">// AS3</span><span class="pln">
+</span><span class="pun">[</span><span class="typ">Event</span><span class="pun">(</span><span class="pln">name</span><span class="pun">=</span><span class="str">"fullscreenChanged"</span><span class="pun">,</span><span class="pln"> type</span><span class="pun">=</span><span class="str">"FullscreenEvent"</span><span class="pun">)]</span><span class="pln">
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">Stage</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">EventDispatcher</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">var</span><span class="pln"> fullscreen </span><span class="pun">:</span><span class="typ">Boolean</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">FullscreenEvent</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">Event</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="kwd">final</span><span class="pln"> </span><span class="kwd">var</span><span class="pln"> FULLSCREEN_CHANGED </span><span class="pun">:</span><span class="typ">String</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="str">"fullscreenChanged"</span><span class="pun">;</span><span class="pln">
+
+  </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">var</span><span class="pln"> fullscreen </span><span class="pun">:</span><span class="typ">Boolean</span><span class="pun">;</span><span class="pln">
+
+  </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="typ">FullscreenEvent</span><span class="pln"> </span><span class="pun">(</span><span class="pln">type </span><span class="pun">:</span><span class="typ">String</span><span class="pun">,</span><span class="pln"> fullscreen </span><span class="pun">:</span><span class="typ">Boolean</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">super</span><span class="pun">(</span><span class="pln">type</span><span class="pun">);</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">fullscreen </span><span class="pun">=</span><span class="pln"> fullscreen</span><span class="pun">;</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></pre>
+                  <pre class="fragment prettyprint prettyprinted" data-fragment-index="0"><span class="com">// Haxe + Flambe</span><span class="pln">
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">Stage</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">var</span><span class="pln"> fullscreen </span><span class="pun">:</span><span class="typ">Value</span><span class="pun">&lt;</span><span class="typ">Bool</span><span class="pun">&gt;;</span><span class="pln">
+</span><span class="pun">}</span></pre>
+                </section>
+
+                <section hidden="" class="future" style="top: -20px; display: none;">
+                  <h2>Code Time: Adding a Listener</h2>
+                  <pre class="prettyprint prettyprinted"><span class="com">// AS3</span><span class="pln">
+trace</span><span class="pun">(</span><span class="str">"Fullscreen is currently "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> stage</span><span class="pun">.</span><span class="pln">fullscreen</span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// Add a listener</span><span class="pln">
+stage</span><span class="pun">.</span><span class="pln">addEventListener</span><span class="pun">(</span><span class="typ">FullscreenEvent</span><span class="pun">.</span><span class="pln">FULLSCREEN_CHANGED</span><span class="pun">,</span><span class="pln">
+  </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">event</span><span class="pln"> </span><span class="pun">:</span><span class="typ">FullscreenEvent</span><span class="pun">)</span><span class="pln"> </span><span class="pun">:</span><span class="kwd">void</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="com">// ...do something with event.fullscreen</span><span class="pln">
+  </span><span class="pun">});</span><span class="pln">
+
+</span><span class="com">// Update and notify listeners</span><span class="pln">
+stage</span><span class="pun">.</span><span class="pln">fullscreen </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">;</span><span class="pln">
+stage</span><span class="pun">.</span><span class="pln">dispatchEvent</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">FullscreenEvent</span><span class="pun">(</span><span class="typ">FullscreenEvent</span><span class="pun">.</span><span class="pln">FULLSCREEN_CHANGED</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">));</span></pre>
+                  <pre class="fragment prettyprint prettyprinted" data-fragment-index="0"><span class="com">// Haxe + Flambe</span><span class="pln">
+trace</span><span class="pun">(</span><span class="str">"Fullscreen is currently "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> stage</span><span class="pun">.</span><span class="pln">fullscreen</span><span class="pun">.</span><span class="kwd">get</span><span class="pun">());</span><span class="pln">
+
+</span><span class="com">// Add a listener</span><span class="pln">
+stage</span><span class="pun">.</span><span class="pln">fullscreen</span><span class="pun">.</span><span class="pln">connect</span><span class="pun">(</span><span class="kwd">function</span><span class="pln"> </span><span class="pun">(</span><span class="pln">fullscreen</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="com">// ...do something with fullscreen</span><span class="pln">
+</span><span class="pun">});</span><span class="pln">
+
+</span><span class="com">// Update and notify listeners</span><span class="pln">
+stage</span><span class="pun">.</span><span class="pln">fullscreen</span><span class="pun">.</span><span class="kwd">set</span><span class="pun">(</span><span class="kwd">true</span><span class="pun">);</span></pre>
+                </section>
+
+                <section hidden="" class="future" style="top: -279.5px; display: block;">
+                  <h2>Code Time: Everything is Animatable</h2>
+
+                  <pre class="prettyprint prettyprinted" style=""><span class="kwd">class</span><span class="pln"> </span><span class="typ">AnimatedFloat</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">Value</span><span class="pun">&lt;</span><span class="typ">Float</span><span class="pun">&gt;</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> animate </span><span class="pun">(</span><span class="kwd">from</span><span class="pln"> </span><span class="pun">:</span><span class="typ">Float</span><span class="pun">,</span><span class="pln"> to </span><span class="pun">:</span><span class="typ">Float</span><span class="pun">,</span><span class="pln"> duration </span><span class="pun">:</span><span class="typ">Float</span><span class="pun">)</span><span class="pln">
+  </span><span class="pun">{</span><span class="pln">
+    </span><span class="com">// ...</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></pre>
+                  <pre class="fragment prettyprint prettyprinted" data-fragment-index="0" style=""><span class="com">// Move a sprite from x=0 to x=100 over 5 seconds</span><span class="pln">
+sprite</span><span class="pun">.</span><span class="pln">x</span><span class="pun">.</span><span class="pln">animate</span><span class="pun">(</span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">100</span><span class="pun">,</span><span class="pln"> </span><span class="lit">5</span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// Fade a sound from volume=1 to volume=0 over 3 seconds</span><span class="pln">
+sound</span><span class="pun">.</span><span class="pln">volume</span><span class="pun">.</span><span class="pln">animate</span><span class="pun">(</span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">3</span><span class="pun">);</span></pre>
+                </section>
+				
+                <section hidden="" class="future" style="top: -190.5px; display: block;">
+                  <h2>Future Plans</h2>
+                  <ul>
+                    <li class="fragment" data-fragment-index="0">Features users have been asking for: tilemap loading, polygon rendering, video playback.</li>
+                    <li class="fragment" data-fragment-index="1">Further simplify installation process.</li>
+                    <li class="fragment" data-fragment-index="2">Dedicated (minimal) Flambe IDE.</li>
+                    <li class="fragment" data-fragment-index="3">New native app backend built on Lime or CocoonJS?</li>
+                  </ul>
+                </section>
+
+				<section hidden="" class="future" style="top: -158.5px; display: block;">
+                    <h1>THE END</h1>
+					<p>presentation.dispose();</p>
+                    <small>by <a href="https://aduros.com/">Bruno Garcia</a> /
+                      <a href="https://twitter.com/b_garcia">@b_garcia</a> /
+                      <a href="https://github.com/aduros">@aduros</a>
+                    </small>
+				</section>
+			</div>
+
+		<div class="backgrounds"><div class="slide-background present"></div><div class="slide-background future"></div><div class="slide-background future"></div><div class="slide-background future"></div><div class="slide-background future"></div><div class="slide-background future"></div><div class="slide-background future"></div><div class="slide-background future"></div><div class="slide-background future"></div><div class="slide-background future"></div><div class="slide-background future"></div><div class="slide-background future"></div><div class="slide-background future"></div><div class="slide-background future"></div><div class="slide-background future"></div><div class="slide-background future"></div><div class="slide-background future"></div><div class="slide-background future"></div><div class="slide-background future"></div></div><div class="progress" style="display: block;"><span style="width: 0px;"></span></div><aside class="controls" style="display: block;"><div class="navigate-left"></div><div class="navigate-right enabled"></div><div class="navigate-up"></div><div class="navigate-down"></div></aside><div class="slide-number"></div><div class="state-background"></div><div class="pause-overlay"></div></div>
+
+		<script src="./wwx2014Flambe_files/head.min.js"></script>
+		<script src="./wwx2014Flambe_files/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script><script type="text/javascript" src="./wwx2014Flambe_files/highlight.js"></script><script type="text/javascript" src="./wwx2014Flambe_files/zoom.js"></script><script type="text/javascript" src="./wwx2014Flambe_files/notes.js"></script>
+
+	
+
+</body></html>
