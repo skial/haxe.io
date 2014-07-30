@@ -12,11 +12,12 @@ using Detox;
 class ImageFigure {
 	
 	public static function main() return ImageFigure;
+	private static var tuli:Tuli;
 
-	public function new(tuli:Class<Tuli>) {
-		untyped Tuli = tuli;
+	public function new(t:Tuli) {
+		tuli = t;
 		
-		Tuli.onExtension( 'html', handler, After );
+		tuli.onExtension( 'html', handler, After );
 	}
 	
 	public function handler(file:File) {

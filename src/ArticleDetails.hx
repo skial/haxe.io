@@ -15,13 +15,14 @@ using haxe.io.Path;
 class ArticleDetails {
 
 	public static function main() return ArticleDetails;
+	private static var tuli:Tuli;
 	
 	public var processed:Array<String> = [];
 	
-	public function new(tuli:Tuli) {
-		untyped Tuli = tuli;
+	public function new(t:Tuli) {
+		tuli = t;
 		
-		Tuli.onExtension( 'html', handler, After );
+		tuli.onExtension( 'html', handler, After );
 	}
 	
 	public function handler(file:File) {
@@ -32,7 +33,7 @@ class ArticleDetails {
 			var edit = dom.find('article aside > a:last-of-type');
 			var path = Reflect.hasField(file, 'parent') ? Reflect.field(file, 'parent') : file.path;
 			edit.setAttr('href', (
-				edit.attr('href') + path.replace( Tuli.config.input, '' ).replace( Tuli.config.output, '' )
+				edit.attr('href') + path.replace( tuli.config.input, '' ).replace( tuli.config.output, '' )
 			).normalize());
 			
 			var handle = '@skial';

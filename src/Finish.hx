@@ -18,12 +18,13 @@ class Finish {
 	private static var files:Array<String> = [];
 	
 	public static function main() return Finish;
+	private static var tuli:Tuli;
 	
-	public function new(tuli:Class<Tuli>) {
-		untyped Tuli = tuli;
+	public function new(t:Tuli) {
+		tuli = t;
 		
-		Tuli.onExtension( 'html', handler, After );
-		Tuli.onFinish( finish, After );
+		tuli.onExtension( 'html', handler, After );
+		tuli.onFinish( finish, After );
 	}
 	
 	public function handler(file:File) {
@@ -32,8 +33,8 @@ class Finish {
 	}
 	
 	public function finish() {
-		for (file in files) if (Tuli.files.exists( file )) {
-			var f = Tuli.files.get( file );
+		for (file in files) if (tuli.config.files.exists( file )) {
+			var f = tuli.config.files.get( file );
 			var c = f.content;
 			
 			/*var dom = c.parse();
