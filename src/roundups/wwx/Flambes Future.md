@@ -12,7 +12,7 @@
 [Haxe Meme][l9] and wrote [Flambe][l10], a 2D game engine starts off by stating how
 Flambe has had amazing growth and adoption with over 200 commercial games built 
 with Flambe. Bruno has a strong focus on developer UX, focused on tool integration
-and rapid development, which have undoubtly contributed to its success.
+and rapid development, which have undoubtedly contributed to its success.
 
 Nickelodeon started evaluating HTML5 game engines in 2012 and today all new games
 are built with Flambe which has helped it go viral across the industry. Disney and
@@ -29,7 +29,7 @@ __must__ be documented.
 
 He goes onto demonstrate a few code examples in AS3 versus Haxe & Flambe. The Haxe & Flambe
 versions are considerably shorter and succulent compared to their AS3 versions. He plans
-to implement features which users have been asking for, tilemap loading, polygon 
+to implement features which users have been asking for, tile map loading, polygon 
 rendering and video playback. One of the more interesting areas for me would be a
 new native app backend built with Lime.
 
