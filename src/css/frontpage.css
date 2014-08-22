@@ -1,3 +1,7 @@
+#r214 {
+	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/214/hordeszero.png);
+}
+
 #r213 {
 	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/213/haxor.png);
 }
