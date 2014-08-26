@@ -1,7 +1,7 @@
 [_template]: ../templates/video_noc.html
 [_author]: https://twitter.com/zionviller "@zionviller"
 [date]: / "2014-08-26 14:37:00"
-[modified]: / "2014-08-26 14:37:00"
+[modified]: / "2014-08-26 16:01:00"
 [“”]: a ""
 # What is _“The Nature of Code”_?
 

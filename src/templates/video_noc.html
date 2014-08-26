@@ -3,14 +3,34 @@
 <head>
 	<content select="#defaults" />
 	<content select="#stylesheets" />
-	<content select="#social_meta" />
 	<content select="#favicon" />
 	
 	<title><content select="article section h1" text="" /> | Haxe.io</title>
 	
 	<link rel="import" href="defaults.html" />
 	<link rel="import" href="favicon.html" />
-	<link rel="import" href="social_meta.html" />
+	
+	<content select="h1:first-of-type" targets="meta[property='og:title'][content]" />
+	<content select="h1:first-of-type" targets="meta[name='twitter:title'][content]" />
+	<!-- Twitter Meta -->
+	<meta name="twitter:card" content="player" />
+	<meta name="twitter:site" content="@skial" />
+	<meta name="twitter:creator" content="@skial" />
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:description" content="" />
+	<meta name="twitter:image:src" content="" />
+	<!-- Google+, Facebook, OpenGraph Meta -->
+	<meta property="og:title" content="" />
+	<meta property="og:image" content="" />
+	<meta property="og:url" content="" />
+	<meta property="og:description" content="" />
+	<meta property="og:type" content="article" />
+	<meta property="og:site_name" content="Haxe.io — News And Information For Haxe Developers" />
+	<!---- Extra -->
+	<meta name="description" content="" />
+	<!-- Google Authorship and Publisher Data -->
+	<link rel="author" href="https://plus.google.com/+SkialBainn/posts"/>
+	
 	<link rel="import" href="head_scripts.html" />
 	<link rel="import" href="stylesheets.html" />
 	<link rel="import" href="footer.html" />
