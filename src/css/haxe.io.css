@@ -578,6 +578,10 @@ from : http://embedresponsively.com/
 		padding-bottom: 5em;
 	}
 	
+	html[class="/videos"] .details {
+		padding-bottom: 2.5em;
+	}
+	
 	article aside {
 		display: inherit;
 	}

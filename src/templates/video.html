@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" class="/videos">
+<head>
+	<content select="#defaults" />
+	<content select="#stylesheets" />
+	<content select="#social_meta" />
+	<content select="#favicon" />
+	
+	<title><content select="article section h1" text="" /> | Haxe.io</title>
+	
+	<link rel="import" href="defaults.html" />
+	<link rel="import" href="favicon.html" />
+	<link rel="import" href="social_meta.html" />
+	<link rel="import" href="head_scripts.html" />
+	<link rel="import" href="stylesheets.html" />
+	<link rel="import" href="footer.html" />
+	
+	<content select="#head_scripts" />
+</head>
+<body>
+	<header class="grid">
+		<div class="grid-1-1">
+			<a href="/" type="image/logo">
+				<svg enable-background="new" viewBox="0 0 320 320">
+					<g>
+						<g id="a" transform="translate(-2,-2)">
+							<path d="m93.7 25.3-68.4 68.3" stroke="#000" stroke-linecap="round" stroke-width="15.6" fill="none"/>
+							<path id="b" d="m52.4 153 36.6-37" transform="translate(2)" stroke="#000" stroke-linecap="round" stroke-width="15.3" fill="none"/>
+							<path d="m271 22.5-246 246" stroke="#000" stroke-linecap="round" stroke-width="14" fill="none"/>
+							<use xlink:href="#b" transform="translate(60,-60)" height="1052.3622" width="744.09448" y="0" x="0"/>
+						</g>
+						<use xlink:href="#a" transform="matrix(-1 0 0 -1 332 331)" height="1052.3622" width="744.09448" y="0" x="0"/>
+					</g>
+				</svg>
+			</a>
+		</div>
+		<div class="hero">
+			<content select="article section h1" />
+			<div class="details">by <a rel="author" href="http://twitter.com/skial" title="@skial">Skial Bainn</a> published on <time pubdate="" datetime=""></time></div>
+		</div>		
+	</header>
+	<article>
+		<div class="grid">
+			<aside class="grid-1-1">
+				<a href="https://github.com/skial/haxe.io/issues?labels=next-roundup&page=1&state=open">Suggest a link</a>
+				<a href="https://github.com/skial/haxe.io/tree/master/src/">Correct this issue</a>
+			</aside>
+			<section class="grid-1-1">
+				<content select="markdown" />
+			</section>
+		</div>
+	</article>
+	<content select="#footer" />
+</body>
+</html>
