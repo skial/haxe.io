@@ -1,14 +1,15 @@
-[_template]: ../templates/video_noc.html
+[_template]: ../templates/nature-of-haxe/video.html
 [_author]: https://twitter.com/zionviller "@zionviller"
 [date]: / "2014-08-26 14:37:00"
-[modified]: / "2014-08-26 16:01:00"
+[modified]: / "2014-08-27 14:15:00"
 [“”]: a ""
-# What is _“The Nature of Code”_?
+# What is<br/> _“The Nature of Code”_?
 
-> The first in the series of The Nature of Haxe and OpenFL videos
+> The first in the series of __The Nature of Haxe and OpenFL__ videos
 > based on the book [The Nature of Code][l1] written by [Daniel Shiffman][tw1]
-> using [Processing][l2], which takes you through programming strategies and 
-> techniques behind computer simulations of natural systems.
+> originally using [Processing][l2]. Christopher will take you through 
+> programming strategies and techniques behind computer simulations of
+> natural systems.
 
 ![youtube](x9U-Du9lazU)
 
