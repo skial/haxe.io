@@ -56,16 +56,40 @@
 		</div>
 		<div class="hero">
 			<content select="article section h1" />
-			<div class="details">by <a rel="author" href="https://twitter.com/zionviller" title="@zionviller">Christopher Butler</a> published on <time pubdate="" datetime=""></time></div>
-		</div>		
+			<div class="details">by <a rel="author" href="https://twitter.com/zionviller" title="@zionviller">Christopher Butler</a></div>
+		</div>
 	</header>
 	<article>
-		<div class="grid">
-			<section class="grid-1-1">
-				<content select="markdown" />
-			</section>
-		</div>
+		<section class="grid-1-1">
+			<content select="markdown" />
+		</section>
 	</article>
+	<div class="grid">
+		<div class="row">
+			<div class="playlist grid-1-5">
+				<ol>
+					<h2>Prologue</h2>
+					<li>What is The Nature of Code</li>
+					<li>Variables</li>
+					<li>Data Types</li>
+					<li>If Statements</li>
+					<li>Loops</li>
+					<li>Functions</li>
+					<li>Objects</li>
+					<li>Processing-like Setup</li>
+				</ol>
+				<ol>
+					<h2>Introduction</h2>
+					<li>The Random Walker</li>
+					<li>Uniform Distribution</li>
+					<li>Non-Uniform Distribution</li>
+				</ol>
+			</div>
+			<div class="grid-4-5">
+				<content select="article section iframe" />
+			</div>
+		</div>
+	</div>
 	<content select="#footer" />
 </body>
 </html>
