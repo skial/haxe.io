@@ -578,10 +578,6 @@ from : http://embedresponsively.com/
 		padding-bottom: 5em;
 	}
 	
-	html[class="/videos"] .details {
-		padding-bottom: 2.5em;
-	}
-	
 	article aside {
 		display: inherit;
 	}
@@ -589,6 +585,28 @@ from : http://embedresponsively.com/
 	pre[language], 
 	code[language] {
 		tab-size: 4;
+	}
+	
+	html[class="/videos"] .details {
+		padding-bottom: 2.5em;
+	}
+	
+	html[class="/videos"] body > div.grid {
+		display: table;
+		height: 100%;
+	}
+	
+	html[class="/videos"] body > div.grid > .row {
+		display: table-row;
+	}
+	
+	html[class="/videos"] body > div.grid > .row > div {
+		display: table-cell;
+	}
+	
+	html[class="/videos"] body > div.grid > .row > .playlist {
+		overflow-y: scroll;
+		height: 100%;
 	}
 }
 
