@@ -228,10 +228,12 @@ article aside {
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+html[class="/videos"] body > div nav,
 aside > nav {
 	margin-bottom: 0.2em;
 }
 
+html[class="/videos"] body > div nav h1,
 aside > nav h1 {
 	font-size: 1em;
 	margin: 0;
@@ -258,11 +260,13 @@ aside > nav li::before {
 	margin-right: 0.2em;
 }
 
+html[class="/videos"] body > div nav li a,
 aside > nav li a {
 	color: inherit;
 	text-decoration: none;
 }
 
+html[class="/videos"] body > div nav li a:hover,
 aside > nav li a:hover {
 	text-decoration: underline;
 }
@@ -604,9 +608,9 @@ from : http://embedresponsively.com/
 		display: table-cell;
 	}
 	
-	html[class="/videos"] body > div.grid > .row > .playlist {
+	html[class="/videos"] body > div.grid > .row > nav {
 		overflow-y: scroll;
-		height: 100%;
+		height: 92%;
 	}
 }
 
