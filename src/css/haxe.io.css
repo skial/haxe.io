@@ -83,7 +83,7 @@ header svg path {
 
 /* Footer */
 
-footer {
+footer::not(html[class="/videos"]) {
 	padding-top: 4.5em;
 }
 
@@ -597,7 +597,6 @@ from : http://embedresponsively.com/
 	
 	html[class="/videos"] body > div.grid {
 		display: table;
-		height: 100%;
 	}
 	
 	html[class="/videos"] body > div.grid > .row {
@@ -610,7 +609,7 @@ from : http://embedresponsively.com/
 	
 	html[class="/videos"] body > div.grid > .row > nav {
 		overflow-y: scroll;
-		height: 92%;
+		height: 100%;
 	}
 }
 
