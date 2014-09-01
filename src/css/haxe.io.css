@@ -433,6 +433,32 @@ html[class="/"] footer {
 	padding: 0;
 }
 
+/*
+Video CSS
+*/
+html[class="/videos"] article,
+html[class="/videos"] body > div {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: flex;
+}
+
+html[class="/videos"] body > div {
+	-webkit-flex-direction: column-reverse;
+	-moz-flex-direction: column-reverse;
+	-ms-flex-direction: column-reverse;
+	flex-direction: column-reverse;
+}
+
+html[class="/videos"] body > div > div,
+html[class="/videos"] body > div > nav {
+	-webkit-flex-grow: 1;
+	-moz-flex-grow: 1;
+	-ms-flex-grow: 1;
+	flex-grow: 1;
+}
+
 /* 
 Responsive Embedding 
 from : http://embedresponsively.com/
@@ -595,22 +621,38 @@ from : http://embedresponsively.com/
 		padding-bottom: 2.5em;
 	}
 	
-	html[class="/videos"] body > div.grid {
-		display: table;
-		height: 100;
+	html[class="/videos"] body > div {
+		display: -webkit-flex;
+		display: -moz-flex;
+		display: -ms-flex;
+		display: flex;
+		-webkit-flex-direction: row;
+		-moz-flex-direction: row;
+		-ms-flex-direction: row;
+		flex-direction: row;
 	}
 	
-	html[class="/videos"] body > div.grid > .row {
-		display: table-row;
+	html[class="/videos"] body > div > div {
+		-webkit-flex-grow: 4;
+		-moz-flex-grow: 4;
+		-ms-flex-grow: 4;
+		flex-grow: 4;
+		-webkit-flex-basis: 80%;
+		-moz-flex-basis: 80%;
+		-ms-flex-basis: 80%;
+		flex-basis: 80%;
 	}
 	
-	html[class="/videos"] body > div.grid > .row > div {
-		display: table-cell;
-	}
-	
-	html[class="/videos"] body > div.grid > .row > nav {
+	html[class="/videos"] body > div > nav {
+		-webkit-flex-grow: 1;
+		-moz-flex-grow: 1;
+		-ms-flex-grow: 1;
+		flex-grow: 1;
+		-webkit-flex-basis: 20%;
+		-moz-flex-basis: 20%;
+		-ms-flex-basis: 20%;
+		flex-basis: 20%;
 		overflow-y: scroll;
-		height: 100%;
 	}
 }
 
