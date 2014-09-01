@@ -73,6 +73,8 @@ class ArticleDetails {
 				meta.setAttr('content', 'https:' + iframe.attr('src') );
 				meta.afterThisInsert('<meta />'.parse().setAttr('name', 'twitter:player:height').setAttr('content', '360'));
 				meta.afterThisInsert('<meta />'.parse().setAttr('name', 'twitter:player:width').setAttr('content', '640'));
+				var src = iframe.attr('src').withoutDirectory();
+				dom.find('meta[property="og:image"]').setAttr('content', 'http://img.youtube.com/vi/$src/0.jpg');
 			}
 			
 			file.content = dom.html();
