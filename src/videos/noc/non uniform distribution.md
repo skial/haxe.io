@@ -3,7 +3,7 @@
 [date]: / "2014-08-29 14:48:00"
 [modified]: / "2014-08-29 14:48:00"
 [“”]: a ""
-# The Nature of Haxe<br/> _“Non Uniform Distribution”_
+# The Nature of Haxe<br/> _“Non-Uniform Distribution”_
 
 > The eleventh in the series of __The Nature of Haxe and OpenFL__ videos
 > based on the book [The Nature of Code][l1] written by [Daniel Shiffman][tw1]
