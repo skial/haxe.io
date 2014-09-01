@@ -66,6 +66,15 @@ class ArticleDetails {
 				time.setText( value );
 			}
 			
+			// Video specific changes
+			var meta = dom.find('meta[name="twitter:player"]');
+			var iframe = dom.find('iframe[src*="youtube"]');
+			if (meta.length > 0 && iframe.length > 0) {
+				meta.setAttr('content', 'https:' + iframe.attr('src') );
+				meta.afterThisInsert('<meta />'.parse().setAttr('name', 'twitter:player:height').setAttr('content', '360'));
+				meta.afterThisInsert('<meta />'.parse().setAttr('name', 'twitter:player:width').setAttr('content', '640'));
+			}
+			
 			file.content = dom.html();
 			
 		}
