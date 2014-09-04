@@ -83,7 +83,7 @@ header svg path {
 
 /* Footer */
 
-footer::not(html[class="/videos"]) {
+footer::not(html[class*="/videos"]) {
 	padding-top: 4.5em;
 }
 
@@ -228,12 +228,12 @@ article aside {
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-html[class="/videos"] body > div nav,
+html[class*="/videos"] body > div nav,
 aside > nav {
 	margin-bottom: 0.2em;
 }
 
-html[class="/videos"] body > div nav h1,
+html[class*="/videos"] body > div nav h1,
 aside > nav h1 {
 	font-size: 1em;
 	margin: 0;
@@ -260,13 +260,13 @@ aside > nav li::before {
 	margin-right: 0.2em;
 }
 
-html[class="/videos"] body > div nav li a,
+html[class*="/videos"] body > div nav li a,
 aside > nav li a {
 	color: inherit;
 	text-decoration: none;
 }
 
-html[class="/videos"] body > div nav li a:hover,
+html[class*="/videos"] body > div nav li a:hover,
 aside > nav li a:hover {
 	text-decoration: underline;
 }
@@ -436,23 +436,23 @@ html[class="/"] footer {
 /*
 Video CSS
 */
-html[class="/videos"] article,
-html[class="/videos"] body > div {
+html[class*="/videos"] article,
+html[class*="/videos"] body > div {
 	display: -webkit-flex;
 	display: -moz-flex;
 	display: -ms-flex;
 	display: flex;
 }
 
-html[class="/videos"] body > div {
+html[class*="/videos"] body > div {
 	-webkit-flex-direction: column-reverse;
 	-moz-flex-direction: column-reverse;
 	-ms-flex-direction: column-reverse;
 	flex-direction: column-reverse;
 }
 
-html[class="/videos"] body > div > div,
-html[class="/videos"] body > div > nav {
+html[class*="/videos"] body > div > div,
+html[class*="/videos"] body > div > nav {
 	-webkit-flex-grow: 1;
 	-moz-flex-grow: 1;
 	-ms-flex-grow: 1;
@@ -617,11 +617,11 @@ from : http://embedresponsively.com/
 		tab-size: 4;
 	}
 	
-	html[class="/videos"] .details {
+	html[class*="/videos"] .details {
 		padding-bottom: 2.5em;
 	}
 	
-	html[class="/videos"] body > div {
+	html[class*="/videos"] body > div {
 		display: -webkit-flex;
 		display: -moz-flex;
 		display: -ms-flex;
@@ -632,7 +632,7 @@ from : http://embedresponsively.com/
 		flex-direction: row;
 	}
 	
-	html[class="/videos"] body > div > div {
+	html[class*="/videos"] body > div > div {
 		-webkit-flex-grow: 4;
 		-moz-flex-grow: 4;
 		-ms-flex-grow: 4;
@@ -643,7 +643,7 @@ from : http://embedresponsively.com/
 		flex-basis: 80%;
 	}
 	
-	html[class="/videos"] body > div > nav {
+	html[class*="/videos"] body > div > nav {
 		-webkit-flex-grow: 1;
 		-moz-flex-grow: 1;
 		-ms-flex-grow: 1;
