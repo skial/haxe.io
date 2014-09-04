@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" class="/videos /series">
+<head>
+	<!-- Templates -->
+	<link rel="import" href="defaults.html" />
+	<link rel="import" href="favicon.html" />
+	<link rel="import" href="head_scripts.html" />
+	<link rel="import" href="stylesheets.html" />
+	<link rel="import" href="footer.html" />
+	<link rel="import" href="nature-of-haxe/nocnav.html" />
+	
+	<content select="#defaults" />
+	<content select="#stylesheets" />
+	<content select="#favicon" />
+	
+	<title><content select="article section h1" text="" /> | Haxe.io</title>
+	
+	<content select="h1:first-of-type" targets="meta[property='og:title'][content]" />
+	<content select="h1:first-of-type" targets="meta[name='twitter:title'][content]" />
+	<!-- Twitter Meta -->
+	<meta name="twitter:card" content="player" />
+	<meta name="twitter:site" content="@skial" />
+	<meta name="twitter:creator" content="@zionviller" />
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:description" content="" />
+	<meta name="twitter:player" content="https:" />
+	<!-- Google+, Facebook, OpenGraph Meta -->
+	<meta property="og:title" content="" />
+	<meta property="og:image" content="" />
+	<meta property="og:url" content="" />
+	<meta property="og:description" content="" />
+	<meta property="og:type" content="video.other" />
+	<meta property="og:site_name" content="Haxe.io — News And Information For Haxe Developers" />
+	<!-- Extra -->
+	<meta name="description" content="" />
+	<!-- Google Authorship and Publisher Data -->
+	<link rel="author" href="https://plus.google.com/+SkialBainn/posts"/>
+	
+	<content select="#head_scripts" />
+</head>
+<body>
+	<header class="grid">
+		<div class="grid-1-1">
+			<a href="/" type="image/logo">
+				<svg enable-background="new" viewBox="0 0 320 320">
+					<g>
+						<g id="a" transform="translate(-2,-2)">
+							<path d="m93.7 25.3-68.4 68.3" stroke="#000" stroke-linecap="round" stroke-width="15.6" fill="none"/>
+							<path id="b" d="m52.4 153 36.6-37" transform="translate(2)" stroke="#000" stroke-linecap="round" stroke-width="15.3" fill="none"/>
+							<path d="m271 22.5-246 246" stroke="#000" stroke-linecap="round" stroke-width="14" fill="none"/>
+							<use xlink:href="#b" transform="translate(60,-60)" height="1052.3622" width="744.09448" y="0" x="0"/>
+						</g>
+						<use xlink:href="#a" transform="matrix(-1 0 0 -1 332 331)" height="1052.3622" width="744.09448" y="0" x="0"/>
+					</g>
+				</svg>
+			</a>
+		</div>
+		<div class="hero">
+			<content select="article section h1" />
+			<div class="details">by <a rel="author" href="https://twitter.com/zionviller" title="@zionviller">Christopher Butler</a></div>
+		</div>
+	</header>
+	<article>
+		<section class="grid-1-1">
+			<content select="markdown" />
+		</section>
+	</article>
+	<div class="">
+		<!--<div class="row">-->
+			<nav class="">
+				<content select="#nocnav" />
+			</nav>
+			<div class="">
+				<content select="article section iframe" />
+			</div>
+		<!--</div>-->
+	</div>
+	<content select="#footer" />
+</body>
+</html>
