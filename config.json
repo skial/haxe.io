@@ -4,7 +4,7 @@
              "repo" : "http://github.com/skial/haxe.io"
             ,"branch" : "master"
         }
-        ,"git" : false
+        ,"git" : true
         ,"plugins" : {
              "atom" : {
                  "entry_template" : "/templates/_entry.atom"

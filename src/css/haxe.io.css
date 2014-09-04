@@ -103,6 +103,10 @@ p {
 	margin-bottom: 1.25em;
 }
 
+li {
+	line-height: 1.5em;
+}
+
 p:first-child {
 	margin-top: 0;
 }
