@@ -634,6 +634,7 @@ from : http://embedresponsively.com/
 		-moz-flex-direction: row;
 		-ms-flex-direction: row;
 		flex-direction: row;
+		flex-wrap: wrap-reverse;
 	}
 	
 	html[class*="/videos"] body > div > div {
@@ -657,6 +658,7 @@ from : http://embedresponsively.com/
 		-ms-flex-basis: 20%;
 		flex-basis: 20%;
 		overflow-y: scroll;
+		min-width: 13em;
 	}
 }
 
