@@ -6,7 +6,7 @@
 # Upcoming Event<br/> _“Game Dev 101 - Level 1”_
 
 Game Dev 101 is a one-day games development course that teaches the 
-fundamentals of creating videogames completely from scratch using Stencyl.
+fundamentals of creating video games completely from scratch using Stencyl.
 
 Over the day-long course Dan will introduce you to the world of video
 games through both the creative elements and the technical.
@@ -19,7 +19,7 @@ why games are enjoyable as well as technically sound – why does Sonic
 jump the way he does? Why is it fun to play? How can we replicate this?
 
 The course centres around participant discussion and Dan regularly 
-makes comparisons to videogames that are known and loved by all. You’ll
+makes comparisons to video games that are known and loved by all. You’ll
 learn why the simplest games can still be a joy to play (and how easy 
 they are to make).
 
