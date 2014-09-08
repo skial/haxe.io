@@ -1,4 +1,4 @@
-[_template]: ../templates/events.html
+[_template]: ../../templates/events.html
 [_author]: https://twitter.com/danhett "@danhett"
 [date]: / "2014-09-06 15:50:00"
 [modified]: / "2014-09-06 15:50:00"
