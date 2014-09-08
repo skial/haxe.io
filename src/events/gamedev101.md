@@ -1,11 +1,12 @@
 [_template]: ../templates/events.html
+[_author]: https://twitter.com/danhett "@danhett"
 [date]: / "2014-09-06 15:50:00"
 [modified]: / "2014-09-06 15:50:00"
 [“”]: a ""
-# Upcoming Event<br/> _“Game Dev 101”_
+# Upcoming Event<br/> _“Game Dev 101 - Level 1”_
 
 Game Dev 101 is a one-day games development course that teaches the 
-fundamentals of creating videogames completely from scratch.
+fundamentals of creating videogames completely from scratch using Stencyl.
 
 Over the day-long course Dan will introduce you to the world of video
 games through both the creative elements and the technical.
