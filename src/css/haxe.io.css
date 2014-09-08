@@ -58,6 +58,10 @@ video,
 
 [class*="grid-"] {
 	float: left;
+}
+
+section,
+[class*="grid-"] {
 	padding-left: 0.625em;
 	padding-right: 0.625em;
 }
@@ -499,6 +503,14 @@ from : http://embedresponsively.com/
 	height: 100%; 
 }
 
+/*
+Extra
+*/
+
+iframe[src*="eventbrite.com"] {
+	min-height: 20em;
+}
+
 @media all and (min-width: 550px) {
 	article section blockquote {
 		color: #5a5a58;
@@ -720,6 +732,10 @@ from : http://embedresponsively.com/
 		-moz-flex-basis: 55%;
 		-ms-flex-basis: 55%;
 		flex-basis: 55%;
+	}
+	
+	iframe[src*="eventbrite.com"] {
+		min-height: 24em;
 	}
 }
 
