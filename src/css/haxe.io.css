@@ -58,6 +58,10 @@ video,
 
 [class*="grid-"] {
 	float: left;
+}
+
+section,
+[class*="grid-"] {
 	padding-left: 0.625em;
 	padding-right: 0.625em;
 }
@@ -226,7 +230,7 @@ article section blockquote {
 	margin-right: 0;
 }
 
-article aside {
+article aside:not(html[class*="/events"]) {
 	display: none;
 	overflow: hidden;
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -438,8 +442,9 @@ html[class="/"] footer {
 }
 
 /*
-Video CSS
+Video & Event CSS
 */
+html[class*="/events"] article,
 html[class*="/videos"] article,
 html[class*="/videos"] body > div {
 	display: -webkit-flex;
@@ -448,6 +453,7 @@ html[class*="/videos"] body > div {
 	display: flex;
 }
 
+html[class*="/events"] article,
 html[class*="/videos"] body > div {
 	-webkit-flex-direction: column-reverse;
 	-moz-flex-direction: column-reverse;
@@ -455,12 +461,22 @@ html[class*="/videos"] body > div {
 	flex-direction: column-reverse;
 }
 
+html[class*="/events"] article aside,
+html[class*="/events"] article section,
 html[class*="/videos"] body > div > div,
 html[class*="/videos"] body > div > nav {
 	-webkit-flex-grow: 1;
 	-moz-flex-grow: 1;
 	-ms-flex-grow: 1;
 	flex-grow: 1;
+}
+
+html[class*="/videos"] body > div > div,
+html[class*="/videos"] body > div > nav {
+	-webkit-flex-basis: 100%;
+	-moz-flex-basis: 100%;
+	-ms-flex-basis: 100%;
+	flex-basis: 100%;
 }
 
 /* 
@@ -470,7 +486,7 @@ from : http://embedresponsively.com/
 
 .embed-container { 
 	position: relative; 
-	padding-bottom: 56.25%; 
+	padding-bottom: 100%; 
 	height: 0; 
 	overflow: hidden; 
 	max-width: 100%; 
@@ -487,12 +503,24 @@ from : http://embedresponsively.com/
 	height: 100%; 
 }
 
+/*
+Extra
+*/
+
+iframe[src*="eventbrite.com"] {
+	min-height: 20em;
+}
+
 @media all and (min-width: 550px) {
 	article section blockquote {
 		color: #5a5a58;
 		font-style: italic;
 		margin-left: inherit;
 		margin-right: inherit;
+	}
+	
+	.embed-container {
+		padding-bottom: 56.25%; 
 	}
 }
 
@@ -603,8 +631,13 @@ from : http://embedresponsively.com/
 	
 	.hero,
 	header,
-	article {
+	article:not(html[class*="/events"]) {
 		width: 90%;
+	}
+	
+	.hero,
+	header,
+	article {
 		margin: 0 auto;
 	}
 	
@@ -613,7 +646,7 @@ from : http://embedresponsively.com/
 	}
 	
 	article aside {
-		display: inherit;
+		display: block;
 	}
 	
 	pre[language], 
@@ -625,6 +658,12 @@ from : http://embedresponsively.com/
 		padding-bottom: 2.5em;
 	}
 	
+	html[class*="/events"] article,
+	/*
+	Enabling this breaks rendering of these 
+	elements in this media query.
+	*/
+	/*html[class*="/events"] article aside,*/
 	html[class*="/videos"] body > div {
 		display: -webkit-flex;
 		display: -moz-flex;
@@ -634,6 +673,9 @@ from : http://embedresponsively.com/
 		-moz-flex-direction: row;
 		-ms-flex-direction: row;
 		flex-direction: row;
+		-webkit-flex-wrap: wrap-reverse;
+		-moz-flex-wrap: wrap-reverse;
+		-ms-flex-wrap: wrap-reverse;
 		flex-wrap: wrap-reverse;
 	}
 	
@@ -660,6 +702,52 @@ from : http://embedresponsively.com/
 		overflow-y: scroll;
 		min-width: 13em;
 	}
+	
+	html[class*="/events"] article aside div {
+		-webkit-flex-grow: 1;
+		-moz-flex-grow: 1;
+		-ms-flex-grow: 1;
+		flex-grow: 1;
+		-webkit-flex-basis: 50%;
+		-moz-flex-basis: 50%;
+		-ms-flex-basis: 50%;
+		flex-basis: 50%;
+	}
+}
+
+@media all and (min-width: 881px) {
+	html[class*="/events"] article aside {
+		display: block;
+		-webkit-flex-grow: 1;
+		-moz-flex-grow: 1;
+		-ms-flex-grow: 1;
+		flex-grow: 1;
+		-webkit-flex-basis: 45%;
+		-moz-flex-basis: 45%;
+		-ms-flex-basis: 45%;
+		flex-basis: 45%;
+		padding-right: 1.25em;
+	}
+	
+	html[class*="/events"] article aside div {
+		min-height: 55vh;
+		margin-bottom: 1.25em;
+	}
+	
+	html[class*="/events"] article section {
+		-webkit-flex-grow: 2;
+		-moz-flex-grow: 2;
+		-ms-flex-grow: 2;
+		flex-grow: 2;
+		-webkit-flex-basis: 55%;
+		-moz-flex-basis: 55%;
+		-ms-flex-basis: 55%;
+		flex-basis: 55%;
+	}
+	
+	iframe[src*="eventbrite.com"] {
+		min-height: 24em;
+	}
 }
 
 @media all and (min-width: 900px) {
@@ -685,6 +773,11 @@ from : http://embedresponsively.com/
 	article {
 		width: 80%;
 	}
+	
+	html[class*="/events"] .hero,
+	html[class*="/events"] article {
+		width: 90%;
+	}
 }
 
 @media all and (min-width: 1156px) {
@@ -692,6 +785,11 @@ from : http://embedresponsively.com/
 	header,
 	article {
 		width: 70%;
+	}
+	
+	html[class*="/events"] .hero,
+	html[class*="/events"] article {
+		width: 80%;
 	}
 	
 	html[class="/"] main li {
@@ -708,5 +806,10 @@ from : http://embedresponsively.com/
 	header,
 	article {
 		width: 65%;
+	}
+	
+	html[class*="/events"] .hero,
+	html[class*="/events"] article {
+		width: 75%;
 	}
 }
