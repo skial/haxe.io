@@ -1,5 +1,7 @@
 [_template]: ../../templates/interview.html
 [_author]: https://twitter.com/elliottstoneham "@ElliottStoneham"
+[date]: / "2014-05-19T09:05:16+01:00"
+[modified]: / "2014-06-27T15:38:50+01:00"
 
 # Elliott Stoneham
 

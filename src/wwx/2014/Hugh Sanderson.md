@@ -1,5 +1,7 @@
 [_template]: ../../templates/interview.html
 [_author]: https://twitter.com/gamehaxe "@gamehaxe"
+[date]: / "2014-05-14T13:45:29+01:00"
+[modified]: / "2014-06-27T15:38:50+01:00"
 
 # Hugh Sanderson
 
