@@ -1,4 +1,6 @@
 [_template]: ../../templates/wwx/video.html
+[date]: / "2014-07-07T15:18:52+01:00"
+[modified]: / "2014-07-10T14:49:39+01:00"
 [“”]: a ""
 # One Year of Haxe _by_ Nicolas Cannasse
 

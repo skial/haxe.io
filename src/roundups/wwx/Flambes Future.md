@@ -1,4 +1,6 @@
 [_template]: ../../templates/wwx/video.html
+[date]: / "2014-07-07T15:18:52+01:00"
+[modified]: / "2014-08-01T15:26:57+01:00"
 [“”]: a ""
 # Flambes Future _by_ Bruno Garcia
 

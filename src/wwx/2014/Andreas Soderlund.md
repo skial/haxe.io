@@ -1,5 +1,7 @@
 [_template]: ../../templates/interview.html
 [_author]: https://github.com/ciscoheat "@ciscoheat"
+[date]: / "2014-05-15T09:57:53+01:00"
+[modified]: / "2014-06-27T15:38:50+01:00"
 
 # Andreas Söderlund
 

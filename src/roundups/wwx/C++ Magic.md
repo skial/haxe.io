@@ -1,4 +1,6 @@
 [_template]: ../../templates/wwx/video.html
+[date]: / "2014-07-07T15:18:52+01:00"
+[modified]: / "2014-07-17T14:16:23+01:00"
 [“”]: a ""
 # C++ Magic _by_ Hugh Sanderson
 

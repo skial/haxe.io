@@ -1,4 +1,6 @@
 [_template]: ../../templates/wwx/video.html
+[date]: / "2014-07-23T13:49:12+01:00"
+[modified]: / "2014-07-23T13:53:04+01:00"
 [“”]: a ""
 
 # Development Workflow _with_ Cocktail and NME _by_ Thomas Fétiveau

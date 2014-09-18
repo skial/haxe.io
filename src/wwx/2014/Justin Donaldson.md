@@ -1,5 +1,7 @@
 [_template]: ../../templates/interview.html
 [_author]: https://twitter.com/omgjjd "@omgjjd"
+[date]: / "2014-05-18T18:32:41-07:00"
+[modified]: / "2014-06-27T15:38:50+01:00"
 
 # Justin Donaldson
 

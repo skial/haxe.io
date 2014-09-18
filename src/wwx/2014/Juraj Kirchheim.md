@@ -1,5 +1,7 @@
 [_template]: ../../templates/interview.html
 [_author]: https://twitter.com/back2dos "@back2dos"
+[date]: / "2014-05-19T11:56:44+02:00"
+[modified]: / "2014-06-27T15:38:50+01:00"
 
 # Juraj Kirchheim
 	
