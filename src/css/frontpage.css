@@ -3,6 +3,10 @@ main h1 {
 	text-shadow: 1px 1px 2px #393977;
 }
 
+#r218 {
+	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/218/devices.jpg);
+}
+
 #r217 {
 	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/217/gameduell.jpg);
 }
