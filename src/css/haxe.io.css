@@ -561,11 +561,13 @@ iframe[src*="eventbrite.com"] {
 	}
 	
 	.grid-2-3,
+	[alt*="grid-2-3"],
 	.two-thirds {
 		width: 66.66%;
 	}
 
 	.grid-1-2,
+	[alt*="grid-1-2"],
 	.half,
 	.two-quarters,
 	.two-fourths {
@@ -573,53 +575,63 @@ iframe[src*="eventbrite.com"] {
 	}
 
 	.grid-1-3,
+	[alt*="grid-1-3"],
 	.one-third {
 		width: 33.33%;
 	}
 
 	.grid-2-3,
+	[alt*="grid-2-3"],
 	.two-thirds {
 		width: 66.66%;
 	}
 
 	.grid-1-4,
+	[alt*="grid-1-4"],
 	.one-quarter,
 	.one-fourth {
 		width: 25%;
 	}
 
 	.grid-3-4,
+	[alt*="grid-3-4"],
 	.three-quarters,
 	.three-fourths {
 		width: 75%;
 	}
 
 	.grid-1-5,
+	[alt*="grid-1-5"],
 	.one-fifth {
 		width: 20%;
 	}
 
 	.grid-2-5,
+	[alt*="grid-2-5"],
 	.two-fifths {
 		width: 40%;
 	}
 
 	.grid-3-5,
+	[alt*="grid-3-5"],
 	.three-fifths {
 		width: 60%;
 	}
 
 	.grid-4-5,
+	[alt*="grid-4-5"],
 	.four-fifths {
 		width: 80%;
 	}
 
 	.grid-1-8,
+	[alt*="grid-1-8"],
 	.one-eighth {
 		width: 12.5%;
 	}
 
 	.grid-1-12,
+	[alt*="grid-1-12"],
 	.one-twelfth {
 		width: 8.33%;
 	}
