@@ -34,6 +34,11 @@ h6 em {
 	font-family: 'Gentium Book Basic', serif;
 }
 
+blockquote {
+	border-left: 0.625em solid #f47d52;
+	padding-left: 0.625em;
+}
+
 .grid,
 .grid::after {
 	display: block;
