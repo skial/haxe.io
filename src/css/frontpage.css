@@ -3,6 +3,10 @@ main h1 {
 	text-shadow: 1px 1px 2px #393977;
 }
 
+#r307 {
+	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/305/wwx2015.png);
+}
+
 #r306 {
 	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/306/harfbuzz.png);
 }
