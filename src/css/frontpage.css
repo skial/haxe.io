@@ -3,6 +3,10 @@ main h1 {
 	text-shadow: 1px 1px 2px #393977;
 }
 
+#r308 {
+	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/308/sing.png);
+}
+
 #r307 {
 	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/305/wwx2015.png);
 }
