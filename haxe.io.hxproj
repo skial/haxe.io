@@ -794,6 +794,17 @@
     <hidden path="src\roundups\308.md" />
     <hidden path="src\roundups\309.md" />
     <hidden path="src\roundups\310.md" />
+    <hidden path="bin\roundups\300" />
+    <hidden path="bin\roundups\301" />
+    <hidden path="bin\roundups\302" />
+    <hidden path="bin\roundups\303" />
+    <hidden path="bin\roundups\304" />
+    <hidden path="bin\roundups\305" />
+    <hidden path="bin\roundups\306" />
+    <hidden path="bin\roundups\307" />
+    <hidden path="bin\roundups\308" />
+    <hidden path="bin\roundups\309" />
+    <hidden path="bin\roundups\310" />
   </hiddenPaths>
   <!-- Executed before build -->
   <preBuildCommand />
