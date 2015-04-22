@@ -805,6 +805,15 @@
     <hidden path="bin\roundups\308" />
     <hidden path="bin\roundups\309" />
     <hidden path="bin\roundups\310" />
+    <hidden path="bin\img\300" />
+    <hidden path="bin\img\301" />
+    <hidden path="bin\img\302" />
+    <hidden path="bin\img\303" />
+    <hidden path="bin\img\304" />
+    <hidden path="bin\img\305" />
+    <hidden path="bin\img\306" />
+    <hidden path="bin\img\308" />
+    <hidden path="bin\img\309" />
   </hiddenPaths>
   <!-- Executed before build -->
   <preBuildCommand />
