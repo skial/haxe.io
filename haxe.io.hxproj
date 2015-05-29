@@ -814,6 +814,33 @@
     <hidden path="bin\img\306" />
     <hidden path="bin\img\308" />
     <hidden path="bin\img\309" />
+    <hidden path="bin\roundups\311" />
+    <hidden path="bin\roundups\312" />
+    <hidden path="bin\roundups\313" />
+    <hidden path="bin\roundups\314" />
+    <hidden path="bin\roundups\315" />
+    <hidden path="bin\roundups\316" />
+    <hidden path="bin\roundups\317" />
+    <hidden path="bin\roundups\318" />
+    <hidden path="bin\roundups\319" />
+    <hidden path="src\img\311" />
+    <hidden path="src\img\312" />
+    <hidden path="src\img\313" />
+    <hidden path="src\img\314" />
+    <hidden path="src\img\315" />
+    <hidden path="src\img\316" />
+    <hidden path="src\img\317" />
+    <hidden path="src\img\318" />
+    <hidden path="src\img\319" />
+    <hidden path="src\roundups\311.md" />
+    <hidden path="src\roundups\312.md" />
+    <hidden path="src\roundups\313.md" />
+    <hidden path="src\roundups\314.md" />
+    <hidden path="src\roundups\315.md" />
+    <hidden path="src\roundups\316.md" />
+    <hidden path="src\roundups\317.md" />
+    <hidden path="src\roundups\318.md" />
+    <hidden path="src\roundups\319.md" />
   </hiddenPaths>
   <!-- Executed before build -->
   <preBuildCommand />
