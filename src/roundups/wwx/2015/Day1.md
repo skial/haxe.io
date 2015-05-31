@@ -68,12 +68,28 @@ to target.
 
 ## Isomorphic Haxe - Ufront
 
+Ufront has been marked as the official web framework for Haxe which was originally
+created by [Franco Ponticelli][tw4] and [Andreas Söderlund][g+1], but now in its
+current form [Jason O'Neil][tw5] leads its development.
+
+And with Jason at the helm, it powers [Haxe.org][l7], the brand new [lib.haxe.org][l8],
+_of course_ the [Ufront.net][l9] website and afew client projects Jason has worked on.
+
+![wwx ufront](/img/wwx/2015/ufront.jpg "Ufront Reborn!")
+
 ## Drakarnage - Slapping data from your web server to your GPU
 
+[g+1]: https://plus.google.com/u/0/+AndreasSöderlund/about "@AndreasSöderlund"
+
+[tw5]: https://twitter.com/jasonaoneil "@jasonaoneil"
+[tw4]: https://twitter.com/fponticelli "@fponticelli"
 [tw3]: https://twitter.com/luboslenco "@luboslenco"
 [tw2]: https://twitter.com/ncannasse "@ncannasse"
 [tw1]: https://twitter.com/robdangerous "@robdangerous"
-	
+
+[l9]: http://ufront.net "The client-server web framework for Haxe"
+[l8]: http://lib.haxe.org "HaxeLib - The Haxe Package Manager"
+[l7]: http://haxe.org "Haxe - The Cross-Platform ToolKit"
 [l6]: https://github.com/KTXSoftware/MampfMonster "MampfMonster on GitHub"
 [l5]: http://zblend.org/docs/ "ZBlend | Kha + Blender == ZBlend"
 [l4]: https://github.com/KTXSoftware/kraffiti "Kraffiti on GitHub"
