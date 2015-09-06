@@ -3,6 +3,10 @@ main h1 {
 	text-shadow: 1px 1px 2px #393977;
 }
 
+#r334 {
+	background-image: linear-gradient(rgba(82,244,206,0.6),rgba(82,244,206,0.6)), url(/img/334/kha-haxeui.png);
+}
+
 #r333 {
 	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/333/evoland2.jpg);
 }
