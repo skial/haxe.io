@@ -3,12 +3,16 @@ main h1 {
 	text-shadow: 1px 1px 2px #393977;
 }
 
+#r336 {
+	background-image: linear-gradient(rgba(82,244,206,0.5),rgba(82,244,206,0.5)), url(/img/336/hxscout0.4.0.png);
+}
+
 #r335 {
-	background-image: linear-gradient(rgba(82,244,206,0.6),rgba(82,244,206,0.6)), url(/img/335/haxeuiv2.png);
+	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/335/haxeuiv2.png);
 }
 
 #r334 {
-	background-image: linear-gradient(rgba(82,244,206,0.6),rgba(82,244,206,0.6)), url(/img/334/kha-haxeui.png);
+	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/334/kha-haxeui.png);
 }
 
 #ld33 {
