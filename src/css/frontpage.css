@@ -3,6 +3,30 @@ main h1 {
 	text-shadow: 1px 1px 2px #393977;
 }
 
+#r339 {
+	background-image: linear-gradient(rgba(82,244,206,0.5),rgba(82,244,206,0.5)), url(/img/339/haxeui.png);
+}
+
+#r338 {
+	background-image: linear-gradient(rgba(82,244,206,0.5),rgba(82,244,206,0.5)), url(/img/338/tvos.jpg);
+}
+
+#r337 {
+	background-image: linear-gradient(rgba(82,244,206,0.5),rgba(82,244,206,0.5)), url(/img/337/foo3d.jpg);
+}
+
+#r336 {
+	background-image: linear-gradient(rgba(82,244,206,0.5),rgba(82,244,206,0.5)), url(/img/336/hxscout0.4.0.png);
+}
+
+#r335 {
+	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/335/haxeuiv2.png);
+}
+
+#r334 {
+	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/334/kha-haxeui.png);
+}
+
 #ld33 {
 	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/ld/33/SLIME_TIME.gif);
 }
