@@ -3,6 +3,10 @@ main h1 {
 	text-shadow: 1px 1px 2px #393977;
 }
 
+#release321 {
+	background-image: linear-gradient(rgba(82,244,206,0.5),rgba(82,244,206,0.5)), url(/img/releases/3.2.1/site.jpg);
+}
+
 #r339 {
 	background-image: linear-gradient(rgba(82,244,206,0.5),rgba(82,244,206,0.5)), url(/img/339/haxeui.png);
 }
