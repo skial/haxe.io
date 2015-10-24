@@ -3,6 +3,10 @@ main h1 {
 	text-shadow: 1px 1px 2px #393977;
 }
 
+#r341 {
+	background-image: linear-gradient(rgba(82,244,206,0.5),rgba(82,244,206,0.5)), url(/img/341/mug.png);
+}
+
 #r340 {
 	background-image: linear-gradient(rgba(82,244,206,0.5),rgba(82,244,206,0.5)), url(/img/340/secret.png);
 }
