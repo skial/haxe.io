@@ -1,6 +1,6 @@
 # Haxe.io
 
-The new home of the Haxe Roundups.
+The home of the Haxe Roundups.
 
 ## Contributing...
 
@@ -24,7 +24,7 @@ When adding a link to a roundup todo list please use the following markdown.
 
 If you have tips, tricks, ideas, or techniques to contribute to Haxe.io,
 then you're more than welcome to help provide others with solid and useful
-articles. Just fork the repository and add your article to the `articles` 
+articles. Just fork the repository and add your article to the `articles`
 folder.
 
 The file format should be markdown, but if you can justify your reason
@@ -39,12 +39,13 @@ with `@`. Eg `@skial`. Then create a markdown file and get writing.
 I'm fine with cross site publishing and do **not** personally attack anyone. It
 won't be accepted.
 
-### ...to the site
-
-The site is tricky to get setup locally, I am working on making it easier. For those
-that feel brave, you can follow the [Installation and Setup][wiki 1] guide.
+## Issues
 
 Don't hesitate to file a new [issue] or join in on an existing [issue].
 
-[wiki 1]: https://github.com/skial/haxe.io/wiki/Installation-and-Setup "Installtion and Setup"
+## Extras
+
+[SSL Labs Report](https://www.ssllabs.com/ssltest/analyze.html?d=haxe.io)
+
+[wiki 1]: https://github.com/skial/haxe.io/wiki/Installation-and-Setup "Installation and Setup"
 [issue]: http://github.com/skial/haxe.io/issues
