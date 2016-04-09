@@ -1,6 +1,22 @@
-main p,
 main h1 {
-	text-shadow: 1px 1px 2px #393977;
+	background: rgba(20, 20, 20, 1);
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	padding-top: 20px;
+	padding-left: 15px;
+	margin-bottom: 0px;
+	width: 100%
+}
+
+main p {
+	background: rgba(20, 20, 20, 0.8);
+	position: absolute;
+	bottom: 0px;
+	font-size: 0.9em;
+	font-family: Sans-Serif;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 #ld34 {
@@ -108,300 +124,299 @@ main h1 {
 }
 
 #r321 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/321/students.jpg);
+	background-image: url(/img/321/students.jpg);
 }
 
 #r320 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/320/dash.png);
+	background-image: url(/img/320/dash.png);
 }
 
 #release320 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/releases/3.2.0/api.jpg);
+	background-image: url(/img/releases/3.2.0/api.jpg);
 }
 
 #r319 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/319/westport.png);
+	background-image: url(/img/319/westport.png);
 }
 
 #r318 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/318/papertoy.jpg);
+	background-image: url(/img/318/papertoy.jpg);
 }
 
 #r317 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/317/sillytrees.png);
+	background-image: url(/img/317/sillytrees.png);
 }
 
 #ld32 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/ld/32/badass.gif);
+	background-image: url(/img/ld/32/badass.gif);
 }
 
 #r316 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/316/zblend.png);
+	background-image: url(/img/316/zblend.png);
 }
 
 #r315 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/315/wiiu.jpg);
+	background-image: url(/img/315/wiiu.jpg);
 }
 
 #r314 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/314/hxscout.png);
+	background-image: url(/img/314/hxscout.png);
 }
 
 #r313 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/313/unicycles.png);
+	background-image: url(/img/313/unicycles.png);
 }
 
 #r312 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/312/scribbler.jpg);
+	background-image: url(/img/312/scribbler.jpg);
 }
 
 #r311 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/311/origami.jpg);
+	background-image: url(/img/311/origami.jpg);
 }
 
 #r309 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/309/zblend.jpg);
+	background-image: url(/img/309/zblend.jpg);
 }
 
 #r308 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/308/sing.png);
+	background-image: url(/img/308/sing.png);
 }
 
 #r307 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/305/wwx2015.png);
+	background-image: url(/img/305/wwx2015.png);
 }
 
 #r306 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/306/harfbuzz.png);
+	background-image: url(/img/306/harfbuzz.png);
 }
 
 #r305 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/305/wwx2015.png);
+	background-image: url(/img/305/wwx2015.png);
 }
 
 #r304 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/304/harfbuzz.png);
+	background-image: url(/img/304/harfbuzz.png);
 }
 
 #r303 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/303/ec2.png);
+	background-image: url(/img/303/ec2.png);
 }
 
 #r302 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/302/hxscout.png);
+	background-image: url(/img/302/hxscout.png);
 }
 
 #r301 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/301/hxdaedalus.png);
+	background-image: url(/img/301/hxdaedalus.png);
 }
 
 #r300 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/300/neo.png);
+	background-image: url(/img/300/neo.png);
 }
 
 #r229 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/229/papers.jpg);
+	background-image: url(/img/229/papers.jpg);
 }
 
 #r228 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/228/ghost.png);
+	background-image: url(/img/228/ghost.png);
 }
 
 #r227 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/227/headless_nme.png);
+	background-image: url(/img/227/headless_nme.png);
 }
 
 #r226 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/226/ios_blender_kha.jpg);
+	background-image: url(/img/226/ios_blender_kha.jpg);
 }
 
 #r225 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/225/blender.png);
+	background-image: url(/img/225/blender.png);
 }
 
 #r224 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/224/evoland2.jpg);
+	background-image: url(/img/224/evoland2.jpg);
 }
 
 #r223 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/223/swan.png);
+	background-image: url(/img/223/swan.png);
 }
 
 #r222 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/222/deadcells.png);
+	background-image: url(/img/222/deadcells.png);
 }
 
 #r221 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/221/haxeflixel.png);
+	background-image: url(/img/221/haxeflixel.png);
 }
 
 #r220 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/220/kha.png);
+	background-image: url(/img/220/kha.png);
 }
 
 #r219 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/219/spacespuds.png);
+	background-image: url(/img/219/spacespuds.png);
 }
 
 #r218 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/218/devices.jpg);
+	background-image: url(/img/218/devices.jpg);
 }
 
 #r217 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/217/gameduell.jpg);
+	background-image: url(/img/217/gameduell.jpg);
 }
 
 #eLevel1 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/events/gamedev101/header.png);
+	background-image: url(/img/events/gamedev101/header.png);
 }
 
 #r216 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/216/blender.png);
+	background-image: url(/img/216/blender.png);
 }
 
 #noc {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/videos/noc/what-is-it.jpg);
+	background-image: url(/img/videos/noc/what-is-it.jpg);
 }
 
 #ld30 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/ld/30/sinister.png);
+	background-image: url(/img/ld/30/sinister.png);
 }
 
 #r215 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/215/nano.jpg);
+	background-image: url(/img/215/nano.jpg);
 }
 
 #r214 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/214/hordeszero.png);
+	background-image: url(/img/214/hordeszero.png);
 }
 
 #r213 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/213/haxor.png);
+	background-image: url(/img/213/haxor.png);
 }
 
 #r212 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/212/gain.png);
+	background-image: url(/img/212/gain.png);
 }
 
 #r211 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/211/sunset.jpg);
+	background-image: url(/img/211/sunset.jpg);
 }
 
 #flambes-future {
-	background-image: linear-gradient(rgba(244,82,201,0.3),rgba(244,82,201,0.3)), url(/img/wwx/2014/switching-to-dart.jpg);
+	background-image: url(/img/wwx/2014/switching-to-dart.jpg);
 }
 
 #r210 {
-	background-image: linear-gradient(rgba(82,244,125,0.3),rgba(82,244,125,0.3)), url(/img/210/haxe-license-plate.jpg);
+	background-image: url(/img/210/haxe-license-plate.jpg);
 }
 
 #cocktail-nme {
-	background-image: linear-gradient(rgba(82,201,244,0.3),rgba(82,201,244,0.3)), url(/img/wwx/2014/thomas_fetiveau.jpg);
+	background-image: url(/img/wwx/2014/thomas_fetiveau.jpg);
 	background-position-x: 50%;
 	background-position-y: 15%;
 }
 
 #r209 {
-	background-image: linear-gradient(rgba(82,244,125,0.3),rgba(82,244,125,0.3)), url(/img/209/weblog.png);
+	background-image: url(/img/209/weblog.png);
 }
 
 #cpp-magic {
-	background-image: linear-gradient(rgba(82,201,244,0.3),rgba(82,201,244,0.3)), url(/img/wwx/2014/hugh-magic.jpg);
+	background-image: url(/img/wwx/2014/hugh-magic.jpg);
 }
 
 #r208 {
-	background-image: linear-gradient(rgba(82,244,125,0.3),rgba(82,244,125,0.3)), url(/img/208/hide.png);
+	background-image: url(/img/208/hide.png);
 }
 
 #one-year-of-haxe {
-	background-image: linear-gradient(rgba(82,201,244,0.3),rgba(82,201,244,0.3)), url(/img/wwx/2014/new-haxe-site.jpg);
+	background-image: url(/img/wwx/2014/new-haxe-site.jpg);
 }
 
 #r207 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.5)), url(/img/207/Beacon.png);
+	background-image: url(/img/207/Beacon.png);
 }
 
 #r206 {
-	background-image: linear-gradient(rgba(244,82,201,0.5),rgba(244,82,201,0.5)), url(/img/206/uppercup.png);
+	background-image: url(/img/206/uppercup.png);
 }
 
 #r205 {
-	/*background-image: linear-gradient(rgba(241,228,34,0.3),rgba(241,228,34,0.3)), url(/img/205/pewma.jpg);*/
-	background-image: linear-gradient(rgba(82,244,125,0.3),rgba(82,244,125,0.3)), url(/img/205/pewma.jpg);
+	background-image:  url(/img/205/pewma.jpg);
 	background-position: bottom;
 }
 
 #r204 {
-	background-image: linear-gradient(rgba(82,201,244,0.3),rgba(82,201,244,0.3)), url(/img/204/bronko.png);
+	background-image: url(/img/204/bronko.png);
 }
 
 #r203 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/203/kha-demo.png);
+	background-image: url(/img/203/kha-demo.png);
 	background-position: center;
 }
 
 #r202 {
-	background-image: linear-gradient(rgba(244,82,201,0.3),rgba(244,82,201,0.3)), url(/img/202/zombiedelivery.png);
+	background-image: url(/img/202/zombiedelivery.png);
 }
 
 #r201 {
-	background-image: linear-gradient(rgba(82,201,244,0.3),rgba(82,201,244,0.3)), url(/img/201/january-haxeflixel.png);
+	background-image: url(/img/201/january-haxeflixel.png);
 }
 
 #speaker_juraj {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/wwx/2014/Juraj_Kirchheim_wwx_2013.jpg);
+	background-image: url(/img/wwx/2014/Juraj_Kirchheim_wwx_2013.jpg);
 	background-position: center;
 }
 
 #speaker_elliott {
-	background-image: linear-gradient(rgba(244,82,201,0.3),rgba(244,82,201,0.3)), url(/img/wwx/2014/ElliottStoneham2014.jpg);
+	background-image: url(/img/wwx/2014/ElliottStoneham2014.jpg);
 }
 
 #speaker_justin {
-	background-image: linear-gradient(rgba(82,201,244,0.3),rgba(82,201,244,0.3)), url(/img/wwx/2014/jjd-sailing.png);
+	background-image: url(/img/wwx/2014/jjd-sailing.png);
 }
 
 #speaker_caue {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/wwx/2014/caue_waneck_wwx_2011_1.jpg);
+	background-image: url(/img/wwx/2014/caue_waneck_wwx_2011_1.jpg);
 	background-position: center;
 }
 
 #speaker_franco {
-	background-image: linear-gradient(rgba(244,82,201,0.3),rgba(244,82,201,0.3)), url(/img/wwx/2014/franco_ponticelli_wwx_2011_3.jpg);
+	background-image: url(/img/wwx/2014/franco_ponticelli_wwx_2011_3.jpg);
 }
 
 #speaker_andreas {
-	background-image: linear-gradient(rgba(82,201,244,0.3),rgba(82,201,244,0.3)), url(/img/wwx/2014/andreas_soderlund_wwx_2014.jpg);
+	background-image: url(/img/wwx/2014/andreas_soderlund_wwx_2014.jpg);
 }
 
 #speaker_hugh {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/wwx/2014/hugh_sanderson_wwx_2012_3.jpg);
+	background-image: url(/img/wwx/2014/hugh_sanderson_wwx_2012_3.jpg);
 	background-position: center;
 }
 
 #r200 {
-	background-image: linear-gradient(rgba(244,82,201,0.3),rgba(244,82,201,0.3)), url(/img/200/kha.png);
+	background-image: url(/img/200/kha.png);
 	background-position: center;
 }
 
 #r199 {
-	background-image: linear-gradient(rgba(82,201,244,0.3),rgba(82,201,244,0.3)), url(/img/199/haxor-knight.png);
+	background-image: url(/img/199/haxor-knight.png);
 	background-position: center;
 }
 
 #ld29 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/ld/29/ld-lich-king.png);
+	background-image: url(/img/ld/29/ld-lich-king.png);
 }
 
 #r198 {
-	background-image: linear-gradient(rgba(244,82,201,0.3),rgba(244,82,201,0.3)), url(/img/198/beneath.png);
+	background-image: url(/img/198/beneath.png);
 	background-position: center;
 }
 
 #r197 {
-	background-image: linear-gradient(rgba(82,201,244,0.3),rgba(82,201,244,0.3)), url(/img/197/netwars.png);
+	background-image: url(/img/197/netwars.png);
 }
 
 #r196 {
-	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/196/alleycats.png);
+	background-image: url(/img/196/alleycats.png);
 }
