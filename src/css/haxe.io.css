@@ -350,26 +350,34 @@ aside > a {
 }
 
 aside > a {
-	/*color: white;*/
+	color: #F7F5F4;
+	width: 50%;
+	margin: 0 auto;
 	text-align: center;
 	text-decoration: none;
 }
 
+aside > a:hover {
+	color: white;
+}
+
 aside > a[href*="next-roundup"] {
-	/*background-color: #22baf1;*/
+	background-color: rgba(108,198,68,0.8);
 	/*background-color: #52c9f4;*/
 }
 
 aside > a[href*="next-roundup"]:hover {
+	background-color: rgba(108,198,68,1);
 	/*background-color: #22baf1;*/
 }
 
 aside > a[href$=".md"] {
-	/*background-color: #f15922;*/
+	background-color: rgba(110,84,148,0.8);
 	/*background-color: #f47d52;*/
 }
 
 aside > a[href$=".md"]:hover {
+	background-color: rgba(110,84,148,1);
 	/*background-color: #f15922;*/
 }
 
