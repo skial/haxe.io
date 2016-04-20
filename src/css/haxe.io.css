@@ -26,14 +26,23 @@ h6 {
 	font-family: 'Open Sans', sans-serif;
 }
 
-h1 em,
+h1 a:empty,
+h2 a:empty,
+h3 a:empty,
+h4 a:empty,
+h5 a:empty,
+h6 a:empty {
+	display: none;
+}
+
+/*h1 em,
 h2 em,
 h3 em,
 h4 em,
 h5 em,
 h6 em {
 	font-family: 'Gentium Book Basic', serif;
-}
+}*/
 
 blockquote {
 	/*border-left: 0.625em solid #f47d52;*/
@@ -122,39 +131,71 @@ p:first-child {
 	margin-top: 0;
 }
 
+/* Code */
+pre,
+code {
+	/*font-size: initial;*/
+	font-size: 85%;
+	padding: 0 0.2em;
+	background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+a code {
+	background-color: initial;
+}
+
+pre[language] {
+	overflow: scroll;
+}
+
+code[language] {
+	display: table;
+	tab-size: 2;
+}
+
 /* Links */
+
 header a:not([type]),
 article section a:not([type]) {
-	/*color: rgb(34,186,241);*/
+	color: #333;
 	text-decoration: none;
-	padding-bottom: 0.1em;
 	/*border-bottom: 1px solid rgba(34,186,241, 0.2);*/
-	border-bottom: 1px solid;
+	padding: 0.1em 0.12em;
+	background-color: rgba(51 ,51, 51, 0.1);
 }
 
-article section a[href*="//twitter.com"]:not([type]),
-article section a[href*="//www.twitter.com"]:not([type]) {
-	border-bottom: 1px solid #55acee;
+article section a[href*="twitter.com"]:not([type]),
+article section a[href*="www.twitter.com"]:not([type]) {
+	/*border-bottom: 1px solid #55acee;*/
+	color: rgb(85, 172, 238);
+	background-color: rgba(85, 172, 238, 0.1);
 }
 
-article section a[href*="//github.com"]:not([type]),
-article section a[href*="//www.github.com"]:not([type]) {
-	border-bottom: 1px solid #333;
+article section a[href*="github.com"]:not([type]),
+article section a[href*="www.github.com"]:not([type]) {
+	/*border-bottom: 1px solid #333;*/
 }
 
-article section a[href*="//haxe.org"]:not([type]),
-article section a[href*="//www.haxe.org"]:not([type]) {
-	border-bottom: 1px solid rgb(234,130,32);
+article section a[href*="haxe.org"]:not([type]),
+article section a[href*="www.haxe.org"]:not([type]) {
+	/*border-bottom: 1px solid rgb(234,130,32);*/
+	color: rgb(234, 130, 32);
+	background-color: rgba(234, 130, 32, 0.1);
 }
 
-article section a[href*="//patreon.com"]:not([type]),
-article section a[href*="//www.patreon.com"]:not([type]) {
-	border-bottom: 1px solid #E6461A;
+article section a[href*="patreon.com"]:not([type]),
+article section a[href*="www.patreon.com"]:not([type]) {
+	/*border-bottom: 1px solid #E6461A;*/
+	color: rgb(230, 70, 26);
+	background-color: rgba(230, 70, 26, 0.1);
 }
 
-article section a[href*="//youtube.com"]:not([type]),
-article section a[href*="//www.youtube.com"]:not([type]) {
-	border-bottom: 1px solid #e52d27;
+article section a[href*="youtube.com"]:not([type]),
+article section a[href*="www.youtube.com"]:not([type]) {
+	/*border-bottom: 1px solid #e52d27;*/
+	color: rgb(205, 32, 31);
+	background-color: rgba(205, 32, 31, 0.1);
 }
 
 header a:hover:not([type]),
@@ -171,20 +212,6 @@ article section a:active:not([type]) {
 	text-decoration: none;
 	padding-bottom: 0.1em;
 	border-bottom: 1px solid;
-}
-
-/* Code */
-pre,
-code {
-	font-size: initial;
-}
-pre[language] {
-	overflow: scroll;
-}
-
-code[language] {
-	display: table;
-	tab-size: 2;
 }
 
 /* Images */
@@ -293,13 +320,13 @@ aside > nav li {
 	list-style-type: none;
 }
 
-aside > nav li::before {
+/*aside > nav li::before {
 	/*content: '\00002B';	/*http://codepoints.net/U+002B*/
-	content: '\00FF0B';	/*http://codepoints.net/U+FF0B*/
-	font-weight: bold;
+	/*content: '\00FF0B';	/*http://codepoints.net/U+FF0B*/
+	/*font-weight: bold;
 	font-size: 1em;
 	margin-right: 0.2em;
-}
+}*/
 
 html[class*="/videos"] body > div nav li a,
 aside > nav li a {
@@ -374,7 +401,7 @@ aside > a:last-of-type {
 
 /* Article Anchor */
 
-article section > h2 > a {
+/*article section > h2 > a {
 	display: block;
 	position: absolute;
 
@@ -388,19 +415,19 @@ article section > h2 > a {
 	visibility: hidden;
 
 	/*color: #333332;*/
-	text-decoration: none;
-}
+	/*text-decoration: none;
+}*/
 
-article section > h2:hover > a {
+/*article section > h2:hover > a {
 	visibility: visible;
-}
+*/
 
-article section > h2 > a > span::before {
+/*article section > h2 > a > span::before {
 	cursor: pointer;
 	content: "\0000A7";
 	font-size: 0.8em;
 	margin-left: 0.6em;
-}
+}*/
 
 /* Front Page */
 
