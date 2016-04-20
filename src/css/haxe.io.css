@@ -12,6 +12,7 @@ rgb(34,186,241) - http://www.colorhexa.com/22baf1
 
 body {
 	color: #333332;
+	background-color: #F7F5F4;
 	font-size: 1.1em;
 	font-family: 'Gentium Book Basic', serif;
 }
@@ -35,7 +36,8 @@ h6 em {
 }
 
 blockquote {
-	border-left: 0.625em solid #f47d52;
+	/*border-left: 0.625em solid #f47d52;*/
+	border-left: 0.625em solid;
 	padding-left: 0.625em;
 }
 
@@ -75,7 +77,7 @@ section,
 
 footer > div:first-child,
 header > div:first-child {
-	background-color: rgb(241,89,34);
+	/*background-color: rgb(241,89,34);*/
 }
 
 footer svg,
@@ -123,15 +125,41 @@ p:first-child {
 /* Links */
 header a:not([type]),
 article section a:not([type]) {
-	color: rgb(34,186,241);
+	/*color: rgb(34,186,241);*/
 	text-decoration: none;
 	padding-bottom: 0.1em;
-	border-bottom: 1px solid rgba(34,186,241, 0.2);
+	/*border-bottom: 1px solid rgba(34,186,241, 0.2);*/
+	border-bottom: 1px solid;
+}
+
+article section a[href*="//twitter.com"]:not([type]),
+article section a[href*="//www.twitter.com"]:not([type]) {
+	border-bottom: 1px solid #55acee;
+}
+
+article section a[href*="//github.com"]:not([type]),
+article section a[href*="//www.github.com"]:not([type]) {
+	border-bottom: 1px solid #333;
+}
+
+article section a[href*="//haxe.org"]:not([type]),
+article section a[href*="//www.haxe.org"]:not([type]) {
+	border-bottom: 1px solid rgb(234,130,32);
+}
+
+article section a[href*="//patreon.com"]:not([type]),
+article section a[href*="//www.patreon.com"]:not([type]) {
+	border-bottom: 1px solid #E6461A;
+}
+
+article section a[href*="//youtube.com"]:not([type]),
+article section a[href*="//www.youtube.com"]:not([type]) {
+	border-bottom: 1px solid #e52d27;
 }
 
 header a:hover:not([type]),
 article section a:hover:not([type]) {
-	color: rgb(34,186,241);
+	/*color: rgb(34,186,241);*/
 	text-decoration: none;
 	padding-bottom: 0.1em;
 	border-bottom: 1px solid;
@@ -139,7 +167,7 @@ article section a:hover:not([type]) {
 
 header a:active:not([type]),
 article section a:active:not([type]) {
-	color: rgb(241,34,82);
+	/*color: rgb(241,34,82);*/
 	text-decoration: none;
 	padding-bottom: 0.1em;
 	border-bottom: 1px solid;
@@ -164,7 +192,7 @@ figure {
 	margin: 0 auto;
 	border-width: 1px;
 	border-style: solid;
-	border-color: #f5f5f5;
+	/*border-color: #f5f5f5;*/
 }
 
 input[id*="pic"] {
@@ -182,7 +210,7 @@ label[for*="pic"] {
 }
 
 figcaption {
-	color: #40403f;
+	/*color: #40403f;*/
 	font-size: 0.9em;
 	font-style: italic;
 	padding-top: 0.55em;
@@ -218,7 +246,7 @@ figure > label > img {
 }
 
 .details {
-	color: #5a5a58;
+	/*color: #5a5a58;*/
 	font-size: 0.9em;
 	font-variant: small-caps;
 	padding-left: 1em;
@@ -229,7 +257,7 @@ figure > label > img {
 /* Article Sidebar */
 
 article section blockquote {
-	color: #5a5a58;
+	/*color: #5a5a58;*/
 	font-style: italic;
 	margin-left: 0;
 	margin-right: 0;
@@ -255,7 +283,7 @@ aside > nav h1 {
 }
 
 aside > nav ul {
-	color: #5a5a58;
+	/*color: #5a5a58;*/
 	padding-left: 0;
 }
 
@@ -295,27 +323,27 @@ aside > a {
 }
 
 aside > a {
-	color: white;
+	/*color: white;*/
 	text-align: center;
 	text-decoration: none;
 }
 
 aside > a[href*="next-roundup"] {
 	/*background-color: #22baf1;*/
-	background-color: #52c9f4;
+	/*background-color: #52c9f4;*/
 }
 
 aside > a[href*="next-roundup"]:hover {
-	background-color: #22baf1;
+	/*background-color: #22baf1;*/
 }
 
 aside > a[href$=".md"] {
 	/*background-color: #f15922;*/
-	background-color: #f47d52;
+	/*background-color: #f47d52;*/
 }
 
 aside > a[href$=".md"]:hover {
-	background-color: #f15922;
+	/*background-color: #f15922;*/
 }
 
 aside > a:first-of-type {
@@ -359,7 +387,7 @@ article section > h2 > a {
 	border: none;
 	visibility: hidden;
 
-	color: #333332;
+	/*color: #333332;*/
 	text-decoration: none;
 }
 
@@ -405,7 +433,7 @@ html[class="/"] main li a,
 html[class="/"] main li p {
 	padding-left: 0.625em;
 	padding-right: 0.625em;
-	color: white;
+	/*color: white;*/
 }
 
 html[class="/"] main li h1,
@@ -518,7 +546,7 @@ iframe[src*="eventbrite.com"] {
 
 @media all and (min-width: 550px) {
 	article section blockquote {
-		color: #5a5a58;
+		/*color: #5a5a58;*/
 		font-style: italic;
 		margin-left: inherit;
 		margin-right: inherit;
