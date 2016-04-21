@@ -79,7 +79,7 @@ video,
 }
 
 article {
-	margin: 1rem;
+	margin: 0 1rem;
 }
 
 section {
@@ -267,13 +267,14 @@ figure > label > img {
 .hero h1 {
 	font-size: 3.1rem;
 	text-align: center;
+	margin-bottom: 1.1rem;
 }
 
 .details {
 	color: #5a5a58;
 	font-size: 0.94rem;
 	font-variant: small-caps;
-	padding-bottom: 1rem;
+	padding-bottom: 2rem;
 }
 
 /* Article Sidebar */
@@ -402,18 +403,53 @@ iframe[src*="eventbrite.com"] {
 }
 
 @media (min-width: 400px) {
+	.hero {
+		margin: 1rem;
+	}
+	
 	.hero h1 {
 		font-size: 4rem;
 	}
 }
 
-@media (min-width: 500px) {
-	.hero {
-		margin: 1rem;
+@media (min-width: 650px) {
+	body {
+		font-size: 1.1rem;
 	}
+	
+	.hero h1 {
+		font-size: 4.2rem;
+	}
+	
+	.details {
+		font-size: 1.04rem;
+		padding-bottom: 3rem;
+	}
+	
+	article {
+		margin: 0 5rem;
+	}
+	
+	section {
+		line-height: 1.5rem;
+	}
+	
 }
 
 @media (min-width: 900px) {
+	body {
+		font-size: 1.2rem;
+	}
+	
+	.hero h1 {
+		font-size: 5rem;
+	}
+	
+	.details {
+		font-size: 1.14rem;
+		padding-bottom: 4rem;
+	}
+	
 	article .grid {
 		flex-direction: row;
 	}
@@ -483,4 +519,69 @@ iframe[src*="eventbrite.com"] {
 		min-height: 6rem;
 	}
 
+}
+
+@media (min-width: 1100px) {
+	.hero h1 {
+		font-size: 6rem;
+	}
+	
+	.details {
+		padding-bottom: 3rem;
+	}
+	
+	article {
+		margin: 0 10rem;
+	}
+	
+	article [class*="grid-"] {
+		padding: 0 1.5rem;
+	}
+	
+}
+
+@media (min-width: 1400px) {
+	.hero h1 {
+		font-size: 7rem;
+	}
+	
+	.details {
+		padding-bottom: 5rem;
+	}
+	
+	article {
+		margin: 0 17rem;
+	}
+	
+	article [class*="grid-"] {
+		padding: 0 2.5rem;
+	}
+	
+}
+
+@media (min-width: 1700px) {
+	body {
+		font-size: 1.3rem;
+	}
+	
+	.hero h1 {
+		font-size: 9rem;
+	}
+	
+	.details {
+		padding-bottom: 8rem;
+	}
+	
+	article {
+		margin: 0 20rem;
+	}
+	
+	article [class*="grid-"] {
+		padding: 0 4rem;
+	}
+	
+	section {
+		line-height: 1.7rem;
+	}
+	
 }
