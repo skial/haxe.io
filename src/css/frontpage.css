@@ -1,5 +1,99 @@
+html[class="/"] main {
+	padding: 0 1vw;
+}
 
+html[class="/"] main a {
+	color: inherit;
+	text-decoration: none;
+}
 
+html[class="/"] main a:hover {
+	text-decoration: underline;
+}
+
+html[class="/"] ul {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0;
+	padding: 0;
+}
+
+html[class="/"] ul li {
+	flex-grow: 1;
+	flex-basis: 100%;
+	margin: 0.5%;
+	padding: 0.5rem 2rem;
+	list-style-type: none;
+	border: 1px solid #333332;
+	min-height: 15vh;
+}
+
+html[class="/"] ul li:nth-child(5n+5) {
+	/*min-width: 33%;
+	max-width: 33%;*/
+	/*flex-basis: 75%;*/
+	background-color: pink;
+}
+
+html[class="/"] ul li:first-child,
+html[class="/"] ul li[id*="release"] {
+	padding: 2rem;
+}
+
+html[class="/"] ul li[id*="release"] {
+	text-align: center;
+	background-color: blue;
+}
+
+html[class="/"] li > *:not(h1):not(a) {
+	display: none;
+}
+
+@media (min-width: 400px) {
+	html[class="/"] ul li {
+		flex-basis: 49%;
+	}
+
+	html[class="/"] ul li:first-child,
+	html[class="/"] ul li[id*="release"] {
+		flex-basis: 100%;
+	}
+}
+
+@media (min-width: 650px) {
+	html[class="/"] ul li {
+		flex-basis: 31.83%;
+	}
+	
+	html[class="/"] ul li[id*="ld"]/*,
+	/*html[class="/"] ul li:nth-child(5n+5)*/ {
+		flex-basis: 65.16%;
+	}
+}
+
+@media (min-width: 900px) {
+	html[class="/"] ul li {
+		flex-basis: 23%;
+	}
+	
+	html[class="/"] ul li[id*="ld"]/*,
+	/*html[class="/"] ul li:nth-child(5n+5)*/ {
+		flex-basis: 48%;
+	}
+}
+
+@media (min-width: 1100px) {
+	html[class="/"] ul li {
+		flex-basis: 17.5%;
+	}
+	
+	html[class="/"] ul li[id*="ld"]/*,
+	/*html[class="/"] ul li:nth-child(5n+5)*/ {
+		flex-basis: 37.5%;
+	}
+}
+
+/*
 #ld34 {
 	background-image: linear-gradient(rgba(82,244,206,0.5),rgba(82,244,206,0.5)), url(/img/ld/34/ld34.gif);
 }
@@ -324,7 +418,7 @@
 
 #r205 {
 	/*background-image: linear-gradient(rgba(241,228,34,0.3),rgba(241,228,34,0.3)), url(/img/205/pewma.jpg);*/
-	background-image: linear-gradient(rgba(82,244,125,0.3),rgba(82,244,125,0.3)), url(/img/205/pewma.jpg);
+	/*background-image: linear-gradient(rgba(82,244,125,0.3),rgba(82,244,125,0.3)), url(/img/205/pewma.jpg);
 	background-position: bottom;
 }
 
@@ -401,4 +495,4 @@
 
 #r196 {
 	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/196/alleycats.png);
-}
+}*/
