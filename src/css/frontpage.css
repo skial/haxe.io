@@ -1,23 +1,4 @@
-main h1 {
-	background: rgba(20, 20, 20, 0.4);
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	padding-top: 20px;
-	padding-left: 15px;
-	margin-bottom: 0px;
-	width: 100%
-}
 
-main p {
-	background: rgba(20, 20, 20, 0.6);
-	position: absolute;
-	bottom: 0px;
-	font-size: 0.9em;
-	font-family: Sans-Serif;
-	padding-top: 5px;
-	padding-bottom: 5px;
-}
 
 #ld34 {
 	background-image: linear-gradient(rgba(82,244,206,0.5),rgba(82,244,206,0.5)), url(/img/ld/34/ld34.gif);
