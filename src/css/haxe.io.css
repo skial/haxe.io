@@ -78,11 +78,13 @@ video,
 	max-width: 100%
 }
 
-article {
+header, article {
 	margin: 0 1rem;
 }
 
 section {
+	display: table;	/* Fixes an odd clipping issue in single column mode. */
+	margin-bottom: 2rem;
 	line-height: 1.3rem;
 }
 
@@ -128,12 +130,12 @@ p {
 	
 }
 
-li {
-	
-}
-
 p:first-child {
 	margin-top: 0;
+}
+
+li {
+	
 }
 
 /* Code */
@@ -221,7 +223,10 @@ article section a:active:not([type]) {
 
 /* Images */
 figure {
-	
+	display: flex;
+	margin: 0 1rem;
+	flex-direction: column;
+	align-items: center;
 }
 
 input[id*="pic"] {
@@ -253,6 +258,12 @@ input:checked ~ label {
 	cursor: zoom-out;
 }
 
+figure > img {
+	max-width: 75vw;
+	max-height: 25vh;
+	object-fit: contain;
+}
+
 figure > img,
 figure > label > img {
 	
@@ -272,6 +283,7 @@ figure > label > img {
 
 .details {
 	color: #5a5a58;
+	text-align: center;
 	font-size: 0.94rem;
 	font-variant: small-caps;
 	padding-bottom: 2rem;
@@ -304,12 +316,12 @@ aside > nav h1 {
 }
 
 aside > nav ul {
-	/*color: #5a5a58;*/
-	padding-left: 0;
+	color: #5a5a58;
+	
 }
 
 aside > nav li {
-	list-style-type: none;
+	list-style-type: square;
 }
 
 /*aside > nav li::before {
@@ -409,6 +421,11 @@ iframe[src*="eventbrite.com"] {
 	
 	.hero h1 {
 		font-size: 4rem;
+	}
+	
+	figure > img {
+		max-width: 90vw;
+		max-height: 90vh;
 	}
 }
 
@@ -513,6 +530,11 @@ iframe[src*="eventbrite.com"] {
 		border-bottom-right-radius: 4px;
 	}
 	
+	figure > img {
+		max-width: 54vw;
+		max-height: 34vh;
+	}
+	
 	footer svg,
 	header svg {
 		max-width: 6rem;
@@ -582,6 +604,19 @@ iframe[src*="eventbrite.com"] {
 	
 	section {
 		line-height: 1.7rem;
+	}
+	
+	figure > img {
+		max-height: 44vh;
+	}
+	
+	aside > nav ul {
+		font-size: 1.2rem;
+	}
+	
+	aside > nav li {
+		list-style-type: disc;
+		line-height: 1.8rem;
 	}
 	
 }
