@@ -424,7 +424,7 @@ iframe[src*="eventbrite.com"] {
 	}
 	
 	figure > img {
-		max-width: 90vw;
+		max-width: 80vw;
 		max-height: 90vh;
 	}
 }
@@ -432,6 +432,10 @@ iframe[src*="eventbrite.com"] {
 @media (min-width: 650px) {
 	body {
 		font-size: 1.1rem;
+	}
+	
+	article {
+		margin: 0 2rem;
 	}
 	
 	.hero h1 {
@@ -443,10 +447,6 @@ iframe[src*="eventbrite.com"] {
 		padding-bottom: 3rem;
 	}
 	
-	article {
-		margin: 0 5rem;
-	}
-	
 	section {
 		line-height: 1.5rem;
 	}
@@ -456,6 +456,10 @@ iframe[src*="eventbrite.com"] {
 @media (min-width: 900px) {
 	body {
 		font-size: 1.2rem;
+	}
+	
+	article {
+		margin: 0 5rem;
 	}
 	
 	.hero h1 {
