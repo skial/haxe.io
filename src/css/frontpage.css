@@ -19,6 +19,10 @@ main p {
 	padding-bottom: 5px;
 }
 
+#ld35 {
+	background-image: linear-gradient(rgba(82,244,206,0.5),rgba(82,244,206,0.5)), url(/img/ld/35/subdragon.png);
+}
+
 #ld34 {
 	background-image: linear-gradient(rgba(82,244,206,0.5),rgba(82,244,206,0.5)), url(/img/ld/34/ld34.gif);
 }
