@@ -12,7 +12,7 @@ rgb(34,186,241) - http://www.colorhexa.com/22baf1
 
 body {
 	color: #333332;
-	background-color: #F7F5F4;
+	background-color: rgba(255,253,249,1);
 	font-family: 'Gentium Book Basic', serif;
 }
 
