@@ -1,5 +1,5 @@
 html[class="/"] main {
-	padding: 0 1vw;
+	padding: 0 5vw;
 }
 
 html[class="/"] main a {
@@ -21,11 +21,16 @@ html[class="/"] ul {
 html[class="/"] ul li {
 	flex-grow: 1;
 	flex-basis: 100%;
-	margin: 0.5%;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 1vh 1vw;
 	padding: 0.5rem 2rem;
 	list-style-type: none;
-	min-height: 15vh;
-	background-color: rgb(245, 238, 237);
+	min-height: 20vh;
+	border-radius: 0.1rem;
+	background-color: rgb(249, 245, 236);
 	border-left: 0.2rem solid rgba(241,89,34, 0.4);
 	box-shadow: -0.2rem 0 0 0 rgba(241,89,34, 0.8);
 }
@@ -41,7 +46,6 @@ html[class="/"] ul li:first-child,
 html[class="/"] ul li[id*="ld"],
 html[class="/"] ul li[id*="release"] {
 	padding: 2rem;
-	text-align: center;
 }
 
 html[class="/"] ul li[id*="release"] {
@@ -60,7 +64,7 @@ html[class="/"] li > *:not(h1):not(a) {
 
 @media (min-width: 400px) {
 	html[class="/"] ul li {
-		flex-basis: 49%;
+		flex-basis: calc(50% - 0.5vw);
 	}
 
 	html[class="/"] ul li:first-child,
@@ -70,35 +74,53 @@ html[class="/"] li > *:not(h1):not(a) {
 }
 
 @media (min-width: 650px) {
-	html[class="/"] ul li {
-		flex-basis: 31.83%;
+	html[class="/"] main {
+		padding: 0 6vw;
 	}
 	
-	html[class="/"] ul li[id*="ld"]/*,
+	html[class="/"] ul li {
+		flex-basis: calc(33.33% - 3vw);
+	}
+	
+	html[class="/"] ul li:nth-child(1n+2)[id*="ld"]/*,
 	/*html[class="/"] ul li:nth-child(5n+5)*/ {
-		flex-basis: 65.16%;
+		flex-basis: calc(66.66% - 3vw);
 	}
 }
 
 @media (min-width: 900px) {
-	html[class="/"] ul li {
-		flex-basis: 23%;
+	html[class="/"] main {
+		padding: 0 7vw;
 	}
 	
-	html[class="/"] ul li[id*="ld"]/*,
+	html[class="/"] ul li {
+		flex-basis: calc(25% - 3.5vw);
+	}
+	
+	html[class="/"] ul li:nth-child(1n+2)[id*="ld"]/*,
 	/*html[class="/"] ul li:nth-child(5n+5)*/ {
-		flex-basis: 48%;
+		flex-basis: calc(75% - 3.5vw)
 	}
 }
 
 @media (min-width: 1100px) {
-	html[class="/"] ul li {
-		flex-basis: 17.5%;
+	html[class="/"] main {
+		padding: 0 8vw;
 	}
 	
-	html[class="/"] ul li[id*="ld"]/*,
+	html[class="/"] ul li {
+		flex-basis: calc(20% - 4vw);
+	}
+	
+	html[class="/"] ul li:nth-child(1n+2)[id*="ld"]/*,
 	/*html[class="/"] ul li:nth-child(5n+5)*/ {
-		flex-basis: 37.5%;
+		flex-basis: calc(60% - 4vw);
+	}
+}
+
+@media (min-width: 1400px) {
+	html[class="/"] main {
+		/*padding: 0 9vw;*/
 	}
 }
 
