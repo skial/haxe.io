@@ -145,6 +145,42 @@ article section a:active:not([type]) {
 	border-bottom: 1px solid;
 }
 
+html[class*="/ld"] li a:not([type]) {
+	border-bottom: none;
+}
+
+html[class*="/ld"] li a:not([type]):hover {
+	text-decoration: underline;
+}
+
+html[class*="/ld"] li a:not([type])[href*="//ludumdare.com/compo/"]:before {
+	content: "COMPO";
+  margin-left: 0.1rem;
+  margin-right: 0.2rem;
+  padding: 0.2rem;
+  padding-right: 0.4rem;
+  font-size: 0.9rem;
+	font-family: monospace;
+	font-weight: bold;
+  border-radius: 0.2rem;
+	color: rgb(108,198,68);
+	background-color: rgba(108,198,68,0.4)
+}
+
+html[class*="/ld"] li a:not([type])[href*="?jam"]:before {
+	content: "JAM";
+  /*margin-left: 0.1rem;
+  margin-right: 0.2rem;
+  padding: 0.2rem;
+  padding-right: 0.4rem;
+  font-size: 0.9rem;
+	font-family: monospace;
+	font-weight: bold;
+  border-radius: 0.2rem;*/
+	color: rgb(29, 185, 245);
+	background-color: rgba(29, 185, 245, 0.4);
+}
+
 /* Code */
 pre,
 code {
