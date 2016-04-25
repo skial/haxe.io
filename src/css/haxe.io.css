@@ -221,6 +221,43 @@ article section a:active:not([type]) {
 	border-bottom: 1px solid;
 }
 
+html[class*="/ld"] li a:not([type]) {
+	border-bottom: none;
+}
+
+html[class*="/ld"] li a:not([type]):hover {
+	text-decoration: underline;
+}
+
+html[class*="/ld"] li a:not([type])[href*="//ludumdare.com/compo/"] {
+	
+}
+
+html[class*="/ld"] li a:not([type])[href*="//ludumdare.com/compo/"]:after {
+	content: "c";
+  padding: 0 0.3rem;
+  font-size: 1rem;
+	font-weight: bold;
+	font-family: monospace;
+	text-transform: capitalize;
+  border-radius: 0.2rem;
+	color: rgb(108,198,68);
+	background-color: rgba(108,198,68,0.4);
+	float: right;
+	line-height: 1.1rem;
+	pointer-events: none;
+}
+
+html[class*="/ld"] li a:not([type])[href*="?jam"] {
+	
+}
+
+html[class*="/ld"] li a:not([type])[href*="?jam"]:after {
+	content: "j";
+	color: rgb(29, 185, 245);
+	background-color: rgba(29, 185, 245, 0.4);
+}
+
 /* Images */
 figure {
 	display: flex;
@@ -427,6 +464,15 @@ iframe[src*="eventbrite.com"] {
 		max-width: 80vw;
 		max-height: 90vh;
 	}
+	
+	html[class*="/ld"] li a:not([type])[href*="//ludumdare.com/compo/"]:after {
+		content: "compo";
+	}
+	
+	html[class*="/ld"] li a:not([type])[href*="?jam"]:after {
+		content: "jam";
+	}
+
 }
 
 @media (min-width: 650px) {
