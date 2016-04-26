@@ -84,20 +84,35 @@ html[class="/"] .tabs li {
 	list-style: none;
 }
 
-#roundups:target ~ main li:not([id^="r"]):not([id^="ld"]),
-#roundups:target ~ main li[id^="release"] {
+html[class="/"] [name="nav-group"][type="radio"] {
 	display: none;
 }
 
-#ludumdare:target ~ main li:not([id^="ld"]) {
+html[class="/"] .tabs li label {
+	cursor: pointer;
+}
+
+#roundups:checked ~ header .tabs label[for="roundups"],
+#ludumdare:checked ~ header .tabs label[for="ludumdare"],
+#releases:checked ~ header .tabs label[for="releases"],
+#events:checked ~ header .tabs label[for="events"] {
+	background-color: pink;
+}
+
+#roundups:checked ~ main li:not([id^="r"]):not([id^="ld"]),
+#roundups:checked ~ main li[id^="release"] {
 	display: none;
 }
 
-#releases:target ~ main li:not([id^="release"]) {
+#ludumdare:checked ~ main li:not([id^="ld"]) {
 	display: none;
 }
 
-#events:target ~ main li:not([id^="e"]) {
+#releases:checked ~ main li:not([id^="release"]) {
+	display: none;
+}
+
+#events:checked ~ main li:not([id^="e"]) {
 	display: none;
 }
 
