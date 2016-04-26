@@ -11,14 +11,14 @@ html[class="/"] main a:hover {
 	text-decoration: underline;
 }
 
-html[class="/"] ul {
+html[class="/"] main ul {
 	display: flex;
 	flex-wrap: wrap;
 	margin: 0;
 	padding: 0;
 }
 
-html[class="/"] ul li {
+html[class="/"] main ul li {
 	flex-grow: 1;
 	flex-basis: 100%;
 	text-align: center;
@@ -35,40 +35,79 @@ html[class="/"] ul li {
 	box-shadow: -0.2rem 0 0 0 rgba(241,89,34, 0.8);
 }
 
-html[class="/"] ul li:nth-child(5n+5) {
+html[class="/"] main ul li:nth-child(5n+5) {
 	/*min-width: 33%;
 	max-width: 33%;*/
 	/*flex-basis: 75%;*/
 	/*background-color: pink;*/
 }
 
-html[class="/"] ul li:first-child,
-html[class="/"] ul li[id*="ld"],
-html[class="/"] ul li[id*="release"] {
+html[class="/"] main ul li:first-child,
+html[class="/"] main ul li[id*="ld"],
+html[class="/"] main ul li[id*="release"] {
 	padding: 2rem;
 }
 
-html[class="/"] ul li[id*="release"] {
+html[class="/"] main ul li[id*="release"] {
 	border-color: rgba(108,198,68,0.4);
 	box-shadow: -0.2rem 0 0 0 rgba(108,198,68,0.8);
 }
 
-html[class="/"] ul li[id*="ld"] {
+html[class="/"] main ul li[id*="ld"] {
 	border-color: rgba(119, 68, 204,0.4);
 	box-shadow: -0.2rem 0 0 0 rgba(119, 68, 204,0.8);
 }
 
-html[class="/"] li > *:not(h1):not(a) {
+html[class="/"] main li > *:not(h1):not(a) {
+	display: none;
+}
+
+html[class="/"] span[id] {
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: block;
+}
+
+html[class="/"] .tabs ul {
+	display: flex;
+	flex-grow: 1;
+	flex-direction: row;
+}
+
+html[class="/"] .tabs li {
+	flex-grow: 1;
+	flex-basis: auto;
+}
+
+html[class="/"] .tabs li {
+	list-style: none;
+}
+
+#roundups:target ~ main li:not([id^="r"]):not([id^="ld"]),
+#roundups:target ~ main li[id^="release"] {
+	display: none;
+}
+
+#ludumdare:target ~ main li:not([id^="ld"]) {
+	display: none;
+}
+
+#releases:target ~ main li:not([id^="release"]) {
+	display: none;
+}
+
+#events:target ~ main li:not([id^="e"]) {
 	display: none;
 }
 
 @media (min-width: 400px) {
-	html[class="/"] ul li {
+	html[class="/"] main ul li {
 		flex-basis: calc(50% - 0.5vw);
 	}
 
-	html[class="/"] ul li:first-child,
-	html[class="/"] ul li[id*="release"] {
+	html[class="/"] main ul li:first-child,
+	html[class="/"] main ul li[id*="release"] {
 		flex-basis: 100%;
 	}
 }
@@ -78,11 +117,11 @@ html[class="/"] li > *:not(h1):not(a) {
 		padding: 0 6vw;
 	}
 	
-	html[class="/"] ul li {
+	html[class="/"] main ul li {
 		flex-basis: calc(33.33% - 3vw);
 	}
 	
-	html[class="/"] ul li:nth-child(1n+2)[id*="ld"]/*,
+	html[class="/"] main ul li:nth-child(1n+2)[id*="ld"]/*,
 	/*html[class="/"] ul li:nth-child(5n+5)*/ {
 		flex-basis: calc(66.66% - 3vw);
 	}
@@ -93,11 +132,11 @@ html[class="/"] li > *:not(h1):not(a) {
 		padding: 0 7vw;
 	}
 	
-	html[class="/"] ul li {
+	html[class="/"] main ul li {
 		flex-basis: calc(25% - 3.5vw);
 	}
 	
-	html[class="/"] ul li:nth-child(1n+2)[id*="ld"]/*,
+	html[class="/"] main ul li:nth-child(1n+2)[id*="ld"]/*,
 	/*html[class="/"] ul li:nth-child(5n+5)*/ {
 		flex-basis: calc(75% - 3.5vw)
 	}
@@ -108,11 +147,11 @@ html[class="/"] li > *:not(h1):not(a) {
 		padding: 0 8vw;
 	}
 	
-	html[class="/"] ul li {
+	html[class="/"] main ul li {
 		flex-basis: calc(20% - 4vw);
 	}
 	
-	html[class="/"] ul li:nth-child(1n+2)[id*="ld"]/*,
+	html[class="/"] main ul li:nth-child(1n+2)[id*="ld"]/*,
 	/*html[class="/"] ul li:nth-child(5n+5)*/ {
 		flex-basis: calc(60% - 4vw);
 	}
