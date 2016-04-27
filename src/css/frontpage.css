@@ -1,3 +1,7 @@
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 1px 1px rgba(0,0,0,0.1);
+}
+
 html[class="/"] main, header nav {
 	padding: 0 5vw;
 }
@@ -30,9 +34,11 @@ html[class="/"] main ul li {
 	list-style-type: none;
 	min-height: 20vh;
 	border-radius: 0.1rem;
-	background-color: rgb(249, 245, 236);
+	/*background-color: rgba(249,244,234,0.6);*/
+	/*background-color: rgba(245, 245, 241, 0.7);*/
+	background-color: rgba(247,245,238,0.8);
 	border-left: 0.2rem solid rgba(241,89,34, 0.4);
-	box-shadow: -0.2rem 0 0 0 rgba(241,89,34, 0.8);
+	box-shadow: -0.2rem 0 0 0 rgba(241,89,34, 0.8), 1px 1px rgba(239,239,239,0.7);
 }
 
 html[class="/"] main ul li:nth-child(5n+5) {
@@ -50,12 +56,12 @@ html[class="/"] main ul li[id*="release"] {
 
 html[class="/"] main ul li[id*="release"] {
 	border-color: rgba(108,198,68,0.4);
-	box-shadow: -0.2rem 0 0 0 rgba(108,198,68,0.8);
+	box-shadow: -0.2rem 0 0 0 rgba(108,198,68,0.8), 1px 1px rgba(239,239,239,0.7);
 }
 
 html[class="/"] main ul li[id*="ld"] {
 	border-color: rgba(119, 68, 204,0.4);
-	box-shadow: -0.2rem 0 0 0 rgba(119, 68, 204,0.8);
+	box-shadow: -0.2rem 0 0 0 rgba(119, 68, 204,0.8), 1px 1px rgba(239,239,239,0.7);
 }
 
 html[class="/"] main li > *:not(h1):not(a) {
@@ -94,19 +100,19 @@ html[class="/"] .tabs li label {
 	cursor: pointer;
 }
 
-#roundups:checked ~ header .tabs label[for="roundups"],
+#news:checked ~ header .tabs label[for="news"],
 #ludumdare:checked ~ header .tabs label[for="ludumdare"],
 #releases:checked ~ header .tabs label[for="releases"],
 #events:checked ~ header .tabs label[for="events"] {
 	background-color: pink;
 }
 
-#roundups:checked ~ main li:not([id^="r"]),
-#roundups:checked ~ main li[id^="release"] {
+#news:checked ~ main li:not([id^="r"]),
+#news:checked ~ main li[id^="release"] {
 	display: none;
 }
 
-#roundups:checked ~ main li[id^="e"] {
+#news:checked ~ main li[id^="e"] {
 	display: none;
 }
 
@@ -122,8 +128,8 @@ html[class="/"] .tabs li label {
 	display: none;
 }
 
-#roundups:checked ~ main li[id^="r"]:not([id^="release"]),
-#roundups:checked ~ main li[id^="ld"],
+#news:checked ~ main li[id^="r"]:not([id^="release"]),
+/*#weekly-news:checked ~ main li[id^="ld"],*/
 #ludumdare:checked ~ main li[id^="ld"],
 #releases:checked ~ main li[id^="release"],
 #events:checked ~ main li[id^="e"] {
