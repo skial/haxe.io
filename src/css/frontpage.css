@@ -15,7 +15,7 @@ html[class="/"] main a:hover {
 	text-decoration: underline;
 }
 
-html[class="/"] main ul {
+html[class="/"] main ul, html[class="/"] .tabs ul {
 	display: flex;
 	flex-wrap: wrap;
 	margin: 0;
@@ -38,14 +38,7 @@ html[class="/"] main ul li {
 	/*background-color: rgba(245, 245, 241, 0.7);*/
 	background-color: rgba(247,245,238,0.8);
 	border-left: 0.2rem solid rgba(241,89,34, 0.4);
-	box-shadow: -0.2rem 0 0 0 rgba(241,89,34, 0.8), 1px 1px 1px 0px rgba(239,239,239,0.9);
-}
-
-html[class="/"] main ul li:nth-child(5n+5) {
-	/*min-width: 33%;
-	max-width: 33%;*/
-	/*flex-basis: 75%;*/
-	/*background-color: pink;*/
+	box-shadow: -0.2rem 0 0 0 rgba(241,89,34, 0.8), 1px 1px 1px 0px rgba(189, 189, 189, 0.3);
 }
 
 html[class="/"] main ul li:first-child,
@@ -55,13 +48,18 @@ html[class="/"] main ul li[id*="release"] {
 }
 
 html[class="/"] main ul li[id*="release"] {
-	border-color: rgba(108,198,68,0.4);
-	box-shadow: -0.2rem 0 0 0 rgba(108,198,68,0.8), 1px 1px 1px 0px rgba(239,239,239,0.9);
+	border-color: rgba(108, 198, 68, 0.4);
+	box-shadow: -0.2rem 0 0 0 rgba(108,198,68,0.8), 1px 1px 1px 0px rgba(189, 189, 189, 0.3);
 }
 
 html[class="/"] main ul li[id*="ld"] {
-	border-color: rgba(119, 68, 204,0.4);
-	box-shadow: -0.2rem 0 0 0 rgba(119, 68, 204,0.8), 1px 1px 1px 0px rgba(239,239,239,0.9);
+	border-color: rgba(119, 68, 204, 0.4);
+	box-shadow: -0.2rem 0 0 0 rgba(119, 68, 204,0.8), 1px 1px 1px 0px rgba(189, 189, 189, 0.3);
+}
+
+html[class="/"] main ul li[id^="e"] {
+	border-color: rgba(255, 128, 0, 0.4);
+	box-shadow: -0.2rem 0 0 0 rgba(255, 128, 0, 0.8), 1px 1px 1px 0px rgba(189, 189, 189, 0.3);
 }
 
 html[class="/"] main li > *:not(h1):not(a) {
@@ -77,6 +75,7 @@ html[class="/"] span[id] {
 
 html[class="/"] .tabs ul {
 	display: flex;
+	align-items: center;
 	flex-grow: 1;
 	flex-direction: row;
 }
@@ -84,12 +83,13 @@ html[class="/"] .tabs ul {
 html[class="/"] .tabs li {
 	flex-grow: 1;
 	flex-basis: auto;
-}
-
-html[class="/"] .tabs li {
 	display: flex;
 	justify-content: center;
 	list-style: none;
+}
+
+html[class="/"] .tabs li:first-child {
+	border-right: 1px solid rgba(189, 189, 189, 0.6);
 }
 
 html[class="/"] [name="nav-group"][type="checkbox"] {
@@ -98,13 +98,35 @@ html[class="/"] [name="nav-group"][type="checkbox"] {
 
 html[class="/"] .tabs li label {
 	cursor: pointer;
+	padding: 0.4rem;
+	border-radius: 3px;
+	font-family: monospace;
+	color: rgba(189, 189, 189, 0.6);
+  border: 1px solid rgba(189, 189, 189, 0.6);
 }
 
-#news:checked ~ header .tabs label[for="news"],
-#ludumdare:checked ~ header .tabs label[for="ludumdare"],
-#releases:checked ~ header .tabs label[for="releases"],
+#news:checked ~ header .tabs label[for="news"] {
+	color: rgba(241,89,34, 1);
+	border-color: rgba(241,89,34, 0.4);
+	background-color: rgba(241,89,34, 0.4);
+}
+
+#ludumdare:checked ~ header .tabs label[for="ludumdare"] {
+	color: rgba(119, 68, 204, 1);
+	border-color: rgba(119, 68, 204, 0.4);
+	background-color: rgba(119, 68, 204, 0.4);
+}
+
+#releases:checked ~ header .tabs label[for="releases"] {
+	color: rgba(108, 198, 68, 1);
+	border-color: rgba(108, 198, 68, 0.4);
+	background-color: rgba(108, 198, 68, 0.4);
+}
+
 #events:checked ~ header .tabs label[for="events"] {
-	background-color: pink;
+	color: rgba(255, 128, 0, 1);
+	border-color: rgba(255, 128, 0, 0.4);
+	background-color: rgba(255, 128, 0, 0.4);
 }
 
 #news:checked ~ main li:not([id^="r"]),
@@ -151,11 +173,11 @@ html[class="/"] .tabs li label {
 	html[class="/"] main, header nav {
 		padding: 0 6vw;
 	}
-	
+
 	html[class="/"] main ul li {
 		flex-basis: calc(33.33% - 3vw);
 	}
-	
+
 	html[class="/"] main ul li:nth-child(1n+2)[id*="ld"]/*,
 	/*html[class="/"] ul li:nth-child(5n+5)*/ {
 		flex-basis: calc(66.66% - 3vw);
@@ -166,11 +188,11 @@ html[class="/"] .tabs li label {
 	html[class="/"] main, header nav {
 		padding: 0 7vw;
 	}
-	
+
 	html[class="/"] main ul li {
 		flex-basis: calc(25% - 3.5vw);
 	}
-	
+
 	html[class="/"] main ul li:nth-child(1n+2)[id*="ld"]/*,
 	/*html[class="/"] ul li:nth-child(5n+5)*/ {
 		flex-basis: calc(75% - 3.5vw)
@@ -181,11 +203,11 @@ html[class="/"] .tabs li label {
 	html[class="/"] main, header nav {
 		padding: 0 8vw;
 	}
-	
+
 	html[class="/"] main ul li {
 		flex-basis: calc(20% - 4vw);
 	}
-	
+
 	html[class="/"] main ul li:nth-child(1n+2)[id*="ld"]/*,
 	/*html[class="/"] ul li:nth-child(5n+5)*/ {
 		flex-basis: calc(60% - 4vw);
