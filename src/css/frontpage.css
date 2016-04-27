@@ -2,6 +2,10 @@ h1, h2, h3, h4, h5, h6 {
 	text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
+header {
+	margin: 0;
+}
+
 html[class="/"] main, header nav {
 	padding: 0 5vw;
 }
@@ -89,7 +93,45 @@ html[class="/"] .tabs li {
 }
 
 html[class="/"] .tabs li:first-child {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 	border-right: 1px solid rgba(189, 189, 189, 0.6);
+}
+
+html[class="/"] .tabs li:first-child p,
+html[class="/"] .tabs li:first-child svg {
+	flex-grow: 1;
+}
+
+html[class="/"] .tabs li:first-child p {
+	margin: 0;
+	display: none;
+	text-align: center;
+}
+
+html[class="/"] .tabs li:first-child svg {
+	min-height: 1.3rem;
+	max-height: 1.3rem;
+	min-width: 1.3rem;
+	max-width: 1.3rem;
+}
+
+html[class="/"] .tabs li:first-child .filter.enabled {
+	display: none;
+}
+
+[type="checkbox"]:checked ~ header .tabs li:first-child .filter.enabled {
+	display: block;
+}
+
+[type="checkbox"]:checked ~ header .tabs li:first-child .filter.disabled {
+	display: none;
+}
+
+/* Include credit for Noun project svg files else where */
+html[class="/"] .tabs li:first-child svg text {
+	display: none;
 }
 
 html[class="/"] [name="nav-group"][type="checkbox"] {
@@ -98,7 +140,7 @@ html[class="/"] [name="nav-group"][type="checkbox"] {
 
 html[class="/"] .tabs li label {
 	cursor: pointer;
-	padding: 0.4rem;
+	padding: 0.2rem;
 	border-radius: 3px;
 	font-family: monospace;
 	color: rgba(189, 189, 189, 0.6);
@@ -162,6 +204,18 @@ html[class="/"] .tabs li label {
 	html[class="/"] main ul li {
 		flex-basis: calc(50% - 0.5vw);
 	}
+	
+	html[class="/"] .tabs li:first-child svg {
+		min-height: 1.5rem;
+		max-height: 1.5rem;
+		min-width: 1.5rem;
+		max-width: 1.5rem;
+	}
+	
+	html[class="/"] .tabs li label {
+		cursor: pointer;
+		padding: 0.4rem;
+	}
 
 	html[class="/"] main ul li:first-child,
 	html[class="/"] main ul li[id*="release"] {
@@ -172,6 +226,13 @@ html[class="/"] .tabs li label {
 @media (min-width: 650px) {
 	html[class="/"] main, header nav {
 		padding: 0 6vw;
+	}
+	
+	html[class="/"] .tabs li:first-child svg {
+		min-height: 1.7rem;
+		max-height: 1.7rem;
+		min-width: 1.7rem;
+		max-width: 1.7rem;
 	}
 
 	html[class="/"] main ul li {
@@ -187,6 +248,15 @@ html[class="/"] .tabs li label {
 @media (min-width: 900px) {
 	html[class="/"] main, header nav {
 		padding: 0 7vw;
+	}
+	
+	html[class="/"] .tabs li:first-child p {
+		display: block;
+	}
+	
+	html[class="/"] .tabs li:first-child .filter,
+	[type="checkbox"]:checked ~ header .tabs li:first-child .filter.enabled {
+		display: none;
 	}
 
 	html[class="/"] main ul li {
