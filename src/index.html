@@ -52,15 +52,37 @@
 	<header class="grid">
 		<div class="grid-1-1">
 			<a type="image/logo" href="/">
-				<svg viewBox="0 0 320 320" enable-background="new">
-					<g>
-						<g id="a" transform="translate(-2,-2)">
-							<path stroke-width="15.6" stroke="#000" d="m93.7 25.3-68.4 68.3" stroke-linecap="round" fill="none"></path>
-							<path stroke-width="15.3" stroke="#000" id="b" d="m52.4 153 36.6-37" stroke-linecap="round" transform="translate(2)" fill="none"></path>
-							<path stroke-width="14" stroke="#000" d="m271 22.5-246 246" stroke-linecap="round" fill="none"></path>
-							<use height="1052.3622" y="0" x="0" xlink:href="#b" width="744.09448" transform="translate(60,-60)"></use>
+				<svg viewBox="0 0 230 230" enable-background="new">
+					<defs>
+						<filter id="filter">
+							<!-- Adapted from https://www.smashingmagazine.com/2015/05/why-the-svg-filter-is-awesome/ -->
+		          <feImage xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="data:image/svg+xml;charset=utf-8,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%22100px%22%20height%3D%22200px%22%20%20%3E%0A%09%3Cdefs%3E%0A%09%09%3Cpattern%20id%3D%22pattern%22%20patternUnits%3D%22userSpaceOnUse%22%20width%3D%225px%22%20height%3D%225px%22%20viewBox%3D%220%200%205%205%22%20%3E%0A%09%09%09%3Cpolygon%20points%3D%225%2C0%204.012%2C0%205%2C0.989%20%09%22%2F%3E%0A%09%09%09%3Cpolygon%20points%3D%225%2C5%200%2C0%200%2C0.989%204.01%2C5%20%09%22%2F%3E%0A%09%09%3C%2Fpattern%3E%0A%09%3C%2Fdefs%3E%0A%09%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22url(%23pattern)%22%20%2F%3E%0A%3C%2Fsvg%3E" x="0" y="2" width="100" height="200" result="STRIPED-SHADOW"></feImage>
+		          <feTile in="STRIPED-SHADOW" result="STRIPED-SHADOW_1"></feTile>
+		          <feOffset dx="4" dy="4" in="SourceGraphic" result="STRIPED-SHADOW_2"></feOffset>
+		          <feComposite operator="in" in="STRIPED-SHADOW_1" in2="STRIPED-SHADOW_2" result="STRIPED-SHADOW_3"></feComposite>
+		          <feComposite operator="in" in="STRIPED-SHADOW_3" result="STRIPED-SHADOW_4"></feComposite>
+		          <feMerge result="merge2">
+		            <feMergeNode in="STRIPED-SHADOW_4"></feMergeNode>
+								<feMergeNode in="SourceGraphic"></feMergeNode>
+		          </feMerge>
+	        	</filter>
+					</defs>
+					<g id="g10" transform="matrix(1.25,0,0,-1.25,0,229.99999)" inkscape:label="ink_ext_XXXXXX" inkscape:groupmode="layer">
+						<g id="g12" transform="matrix(0.14704825,0,0,0.14704825,0,-66.754179)">
+							<path id="path24" inkscape:connector-curvature="0" fill="#FBC707" d="M625.646 1548.821L269.3 1588.285L0 1705.233h312.812 L625.646 1548.8"/>
+							<path id="path26" inkscape:connector-curvature="0" fill="#FBC707" d="M625.646 1548.821l364.507 31.304l261.139 125.108H938.458 L625.646 1548.8"/>
+							<path id="path28" inkscape:connector-curvature="0" fill="#F68712" d="M625.646 610.373l340.025-12.241l285.621-144.171H938.458 L625.646 610.4"/>
+							<path id="path30" inkscape:connector-curvature="0" fill="#F25C19" d="M625.646 610.373H282.901L0 453.962h312.812 L625.646 610.4"/>
+							<path id="path32" inkscape:connector-curvature="0" fill="#FFF200" d="M156.406 1079.592V750.464L0 453.962v312.812 L156.406 1079.6"/>
+							<path id="path34" inkscape:connector-curvature="0" fill="#FFF200" d="M156.406 1079.592l-25.837 326.44L0 1705.233v-312.81 L156.406 1079.6"/>
+							<path id="path36" inkscape:connector-curvature="0" fill="#F1471D" d="M1094.859 1079.592l34.024 342.761l122.409 282.88v-312.81 L1094.859 1079.6"/>
+							<path id="path38" inkscape:connector-curvature="0" fill="#F1471D" d="M1094.859 1079.592l28.583-367.211l127.849-258.419v312.812 L1094.859 1079.6"/>
+							<path id="path16" inkscape:connector-curvature="0" fill="#FAB20B" d="M0 1705.233l625.646-156.412l-100.647-398.488 l-368.593-70.741L0 1705.2"/>
+							<path id="path18" inkscape:connector-curvature="0" fill="#F47216" d="M1251.292 1705.233l-156.433-625.641l-420.25 76.2 l-48.964 393.048L1251.292 1705.2"/>
+							<path id="path20" inkscape:connector-curvature="0" fill="#F25C19" d="M1251.292 453.962L625.646 610.373l70.725 414.8 l398.488 54.388L1251.292 454"/>
+							<path id="path22" inkscape:connector-curvature="0" fill="#F89C0E" d="M0 453.962l156.406 625.63l376.753-84.31l92.487-384.908 L0 454"/>
+							<path id="path14" inkscape:connector-curvature="0" fill="#F68712" d="M625.646 1548.821l-469.24-469.229l469.24-469.219 l469.213 469.219L625.646 1548.8"/>
 						</g>
-						<use height="1052.3622" y="0" x="0" xlink:href="#a" width="744.09448" transform="matrix(-1 0 0 -1 332 331)"></use>
 					</g>
 				</svg>
 			</a>

@@ -7,6 +7,23 @@ header {
 	padding-bottom: 1.5rem;
 }
 
+header div {
+	display: flex;
+	justify-content: center;
+}
+
+[type="image/logo"] {
+	padding-top: 1rem;
+	padding-bottom: 1.5rem;
+	min-width: 4rem;
+	min-height: 4rem;
+}
+
+[type="image/logo"] svg * {
+	fill: black;
+	stroke: black;
+}
+
 html[class="/"] main, header nav {
 	padding: 0 5vw;
 }
@@ -239,6 +256,18 @@ html[class="/"] .tabs li label {
 		padding-bottom: 2rem;
 	}
 	
+	[type="image/logo"] {
+		padding-top: 1rem;
+		padding-bottom: 1.5rem;
+		min-width: 6rem;
+		min-height: 6rem;
+	}
+	
+	[type="image/logo"] svg {
+		filter: url(#filter);
+	  -webkit-filter: url(#filter);
+	}
+	
 	html[class="/"] main, header nav {
 		padding: 0 6vw;
 	}
@@ -273,6 +302,13 @@ html[class="/"] .tabs li label {
 }
 
 @media (min-width: 900px) {
+	[type="image/logo"] {
+		padding-top: 2rem;
+		padding-bottom: 3rem;
+		min-width: 6rem;
+		min-height: 6rem;
+	}
+	
 	html[class="/"] main, header nav {
 		padding: 0 7vw;
 	}
