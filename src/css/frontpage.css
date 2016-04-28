@@ -9,14 +9,21 @@ header {
 
 header div {
 	display: flex;
+	align-items: center;
 	justify-content: center;
+}
+
+header .name {
+	font-size: 3rem;
+	padding-left: 1rem;
 }
 
 [type="image/logo"] {
 	padding-top: 1rem;
 	padding-bottom: 1.5rem;
-	min-width: 4rem;
-	min-height: 4rem;
+	min-width: 3rem;
+	min-height: 3rem;
+	max-width: 3rem;
 }
 
 [type="image/logo"] svg * {
@@ -24,7 +31,8 @@ header div {
 	stroke: black;
 }
 
-html[class="/"] main, header nav {
+html[class="/"] main, 
+header nav {
 	padding: 0 5vw;
 }
 
@@ -112,7 +120,7 @@ html[class="/"] .tabs li {
 	list-style: none;
 }
 
-html[class="/"] .tabs .long {
+html[class="/"] .long {
 	display: none;
 }
 
@@ -256,16 +264,23 @@ html[class="/"] .tabs li label {
 		padding-bottom: 2rem;
 	}
 	
+	header .name {
+		font-size: 5rem;
+		padding-left: 2.5rem;
+	}
+	
 	[type="image/logo"] {
 		padding-top: 1rem;
 		padding-bottom: 1.5rem;
-		min-width: 6rem;
-		min-height: 6rem;
+		min-width: 5rem;
+		min-height: 5rem;
+		max-width: 5rem;
 	}
 	
 	[type="image/logo"] svg {
-		filter: url(#filter);
 	  -webkit-filter: url(#filter);
+		/* Disabled for FireFox. Check `frontpage.html::<style>` tag for _inline_ css! */
+		/*filter: url(#filter);*/
 	}
 	
 	html[class="/"] main, header nav {
@@ -276,11 +291,11 @@ html[class="/"] .tabs li label {
 		padding-bottom: 2rem;
 	}
 	
-	html[class="/"] .tabs .long {
+	html[class="/"] .long {
 		display: initial;
 	}
 	
-	html[class="/"] .tabs .short {
+	html[class="/"] .short {
 		display: none;
 	}
 	
@@ -302,11 +317,17 @@ html[class="/"] .tabs li label {
 }
 
 @media (min-width: 900px) {
+	header .name {
+		font-size: 6rem;
+		padding-left: 3rem;
+	}
+	
 	[type="image/logo"] {
 		padding-top: 2rem;
 		padding-bottom: 3rem;
 		min-width: 6rem;
 		min-height: 6rem;
+		max-width: 6rem;
 	}
 	
 	html[class="/"] main, header nav {
