@@ -4,6 +4,7 @@ h1, h2, h3, h4, h5, h6 {
 
 header {
 	margin: 0;
+	padding-bottom: 1.5rem;
 }
 
 html[class="/"] main, header nav {
@@ -82,6 +83,8 @@ html[class="/"] .tabs ul {
 	align-items: center;
 	flex-grow: 1;
 	flex-direction: row;
+	padding-bottom: 1.5rem;
+	border-bottom: 1px solid rgba(189, 189, 189, 0.6);
 }
 
 html[class="/"] .tabs li {
@@ -90,6 +93,10 @@ html[class="/"] .tabs li {
 	display: flex;
 	justify-content: center;
 	list-style: none;
+}
+
+html[class="/"] .tabs .long {
+	display: none;
 }
 
 html[class="/"] .tabs li:first-child {
@@ -115,6 +122,10 @@ html[class="/"] .tabs li:first-child svg {
 	max-height: 1.3rem;
 	min-width: 1.3rem;
 	max-width: 1.3rem;
+}
+
+html[class="/"] .tabs li:first-child .filter.disabled {
+	opacity: 0.6;
 }
 
 html[class="/"] .tabs li:first-child .filter.enabled {
@@ -224,8 +235,24 @@ html[class="/"] .tabs li label {
 }
 
 @media (min-width: 650px) {
+	header {
+		padding-bottom: 2rem;
+	}
+	
 	html[class="/"] main, header nav {
 		padding: 0 6vw;
+	}
+	
+	html[class="/"] .tabs ul {
+		padding-bottom: 2rem;
+	}
+	
+	html[class="/"] .tabs .long {
+		display: initial;
+	}
+	
+	html[class="/"] .tabs .short {
+		display: none;
 	}
 	
 	html[class="/"] .tabs li:first-child svg {
