@@ -94,23 +94,38 @@ section {
 
 /* Header & Footer */
 
-header, footer {
+header .name {
+	font-size: 3rem;
+	padding-left: 1rem;
+}
+
+html:not([class="/"] ) footer * {
+	display: none;
+}
+
+header, html[class="/"] footer {
 	margin: 0;
 	padding-bottom: 1.5rem;
 }
 
-header div, footer div {
+header div, html[class="/"] footer div {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
-header [type="image/logo"], footer .logo svg {
+header [type="image/logo"],
+header [type="image/logo"] svg,
+html[class="/"] footer .logo svg {
 	margin-top: 1rem;
 	margin-bottom: 1.5rem;
 	min-width: 3rem;
 	min-height: 3rem;
 	max-width: 3rem;
+}
+
+html:not([class="/"]) header [type="image/logo"] {
+	margin-bottom: 0;
 }
 
 [type="image/logo"] svg * {
@@ -125,18 +140,18 @@ footer {
 	padding-bottom: 0;
 }
 
-footer div {
+html[class="/"] footer div {
 	flex-grow: 1;
 	opacity: 0.8;
 }
 
-footer .logo {
+html[class="/"] footer .logo {
 	margin: 0;
 }
 
-footer .logo div {
+html[class="/"] footer .logo div {
 	align-items: stretch;
-	border-top: 1px solid rgba(189, 189, 189, 0.6);
+	border-top: 1px solid rgb(189, 189, 189);
 }
 
 footer::not(html[class*="/videos"]) {
@@ -348,6 +363,7 @@ figure > label > img {
 }
 
 .details {
+	display: block;
 	color: #5a5a58;
 	text-align: center;
 	font-size: 0.94rem;
@@ -482,11 +498,12 @@ iframe[src*="eventbrite.com"] {
 
 @media (min-width: 400px) {
 	.hero {
-		margin: 1rem;
+		/*margin: 1rem;*/
 	}
 	
 	.hero h1 {
 		font-size: 4rem;
+		margin-top: 1rem;
 	}
 	
 	figure > img {
@@ -513,12 +530,18 @@ iframe[src*="eventbrite.com"] {
 		padding-bottom: 2rem;
 	}
 	
+	footer {
+		padding-top: 2rem;
+	}
+	
 	header .name {
 		font-size: 5rem;
 		padding-left: 2.5rem;
 	}
 	
-	header [type="image/logo"], footer .logo svg {
+	html[class="/"] header [type="image/logo"], 
+	html[class="/"] header [type="image/logo"] svg,
+	html[class="/"] footer .logo svg {
 		margin-top: 1rem;
 		margin-bottom: 1.5rem;
 		min-width: 5rem;
@@ -561,7 +584,9 @@ iframe[src*="eventbrite.com"] {
 		padding-left: 3rem;
 	}
 	
-	header [type="image/logo"], footer .logo svg {
+	html[class="/"] header [type="image/logo"],
+	html[class="/"] header [type="image/logo"] svg,
+	html[class="/"] footer .logo svg {
 		margin-top: 2rem;
 		margin-bottom: 3rem;
 		min-width: 6rem;
@@ -650,8 +675,8 @@ iframe[src*="eventbrite.com"] {
 		max-height: 34vh;
 	}
 	
-	footer svg,
-	header svg {
+	header svg,
+	html[class="/"] footer svg {
 		min-width: 6rem;
 		max-width: 6rem;
 		min-height: 6rem;

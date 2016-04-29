@@ -2,11 +2,6 @@ h1, h2, h3, h4, h5, h6 {
 	text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
-header .name {
-	font-size: 3rem;
-	padding-left: 1rem;
-}
-
 html[class="/"] main, 
 header nav, footer .logo {
 	padding: 0 5vw;
@@ -187,6 +182,12 @@ html[class="/"] .tabs li label {
 	background-color: rgba(255, 128, 0, 0.4);
 }
 
+#speaker:checked ~ header .tabs label[for="speaker"] {
+	color: rgba(255, 128, 0, 1);
+	border-color: rgba(255, 128, 0, 0.4);
+	background-color: rgba(255, 128, 0, 0.4);
+}
+
 #news:checked ~ main li:not([id^="r"]),
 #news:checked ~ main li[id^="release"] {
 	display: none;
@@ -208,11 +209,16 @@ html[class="/"] .tabs li label {
 	display: none;
 }
 
+#speaker:checked ~ main li:not([id^="speaker"]) {
+	display: none;
+}
+
 #news:checked ~ main li[id^="r"]:not([id^="release"]),
 /*#weekly-news:checked ~ main li[id^="ld"],*/
 #ludumdare:checked ~ main li[id^="ld"],
 #releases:checked ~ main li[id^="release"],
-#events:checked ~ main li[id^="e"] {
+#events:checked ~ main li[id^="e"],
+#speaker:checked ~ main li[id^="speaker"] {
 	display: flex;
 }
 
