@@ -94,6 +94,30 @@ section {
 
 /* Header & Footer */
 
+header {
+	margin: 0;
+	padding-bottom: 1.5rem;
+}
+
+header div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+[type="image/logo"] {
+	margin-top: 1rem;
+	margin-bottom: 1.5rem;
+	min-width: 3rem;
+	min-height: 3rem;
+	max-width: 3rem;
+}
+
+[type="image/logo"] svg * {
+	fill: black;
+	stroke: black;
+}
+
 footer > div:first-child,
 header > div:first-child {
 	/*background-color: rgb(241,89,34);*/
@@ -101,13 +125,13 @@ header > div:first-child {
 
 footer svg,
 header svg {
-	max-width: 4rem;
-	min-height: 4rem;
+	/*max-width: 4rem;
+	min-height: 4rem;*/
 }
 
 footer svg path,
 header svg path {
-	stroke: white;
+	/*stroke: white;*/
 }
 
 /* Footer */
@@ -235,7 +259,10 @@ html[class*="/ld"] li a:not([type])[href*="//ludumdare.com/compo/"] {
 
 html[class*="/ld"] li a:not([type])[href*="//ludumdare.com/compo/"]:after {
 	content: "c";
+  /*margin-left: 0.1rem;*/
+  /*margin-right: 0.2rem;*/
   padding: 0 0.3rem;
+  /*padding-right: 0.4rem;*/
   font-size: 1rem;
 	font-weight: bold;
 	font-family: monospace;
@@ -243,19 +270,22 @@ html[class*="/ld"] li a:not([type])[href*="//ludumdare.com/compo/"]:after {
   border-radius: 0.2rem;
 	color: rgb(108,198,68);
 	background-color: rgba(108,198,68,0.4);
-	float: right;
+	/*margin-left: -3.5rem;*/
 	line-height: 1.1rem;
+	/*display: inline-block;*/
 	pointer-events: none;
+	float: right;
 }
 
 html[class*="/ld"] li a:not([type])[href*="?jam"] {
-	
+	/*margin-left: 4rem;*/
 }
 
 html[class*="/ld"] li a:not([type])[href*="?jam"]:after {
 	content: "j";
 	color: rgb(29, 185, 245);
 	background-color: rgba(29, 185, 245, 0.4);
+	/*margin-left: -4rem;*/
 }
 
 /* Images */
@@ -480,6 +510,29 @@ iframe[src*="eventbrite.com"] {
 		font-size: 1.1rem;
 	}
 	
+	header {
+		padding-bottom: 2rem;
+	}
+	
+	header .name {
+		font-size: 5rem;
+		padding-left: 2.5rem;
+	}
+	
+	[type="image/logo"] {
+		margin-top: 1rem;
+		margin-bottom: 1.5rem;
+		min-width: 5rem;
+		min-height: 5rem;
+		max-width: 5rem;
+	}
+	
+	[type="image/logo"] svg {
+	  -webkit-filter: url(#filter);
+		/* Disabled for FireFox. Check `frontpage.html::<style>` tag for _inline_ css! */
+		/*filter: url(#filter);*/
+	}
+	
 	article {
 		margin: 0 2rem;
 	}
@@ -502,6 +555,19 @@ iframe[src*="eventbrite.com"] {
 @media (min-width: 900px) {
 	body {
 		font-size: 1.2rem;
+	}
+	
+	header .name {
+		font-size: 6rem;
+		padding-left: 3rem;
+	}
+	
+	[type="image/logo"] {
+		margin-top: 2rem;
+		margin-bottom: 3rem;
+		min-width: 6rem;
+		min-height: 6rem;
+		max-width: 6rem;
 	}
 	
 	article {
