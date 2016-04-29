@@ -94,18 +94,18 @@ section {
 
 /* Header & Footer */
 
-header {
+header, footer {
 	margin: 0;
 	padding-bottom: 1.5rem;
 }
 
-header div {
+header div, footer div {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
-[type="image/logo"] {
+header [type="image/logo"], footer .logo svg {
 	margin-top: 1rem;
 	margin-bottom: 1.5rem;
 	min-width: 3rem;
@@ -114,33 +114,32 @@ header div {
 }
 
 [type="image/logo"] svg * {
-	fill: black;
-	stroke: black;
-}
-
-footer > div:first-child,
-header > div:first-child {
-	/*background-color: rgb(241,89,34);*/
-}
-
-footer svg,
-header svg {
-	/*max-width: 4rem;
-	min-height: 4rem;*/
-}
-
-footer svg path,
-header svg path {
-	/*stroke: white;*/
+	fill: #333332;
+	stroke: #333332;
 }
 
 /* Footer */
 
-footer::not(html[class*="/videos"]) {
-	
+footer {
+	padding-top: 1.5rem;
+	padding-bottom: 0;
 }
 
-footer svg {
+footer div {
+	flex-grow: 1;
+	opacity: 0.8;
+}
+
+footer .logo {
+	margin: 0;
+}
+
+footer .logo div {
+	align-items: stretch;
+	border-top: 1px solid rgba(189, 189, 189, 0.6);
+}
+
+footer::not(html[class*="/videos"]) {
 	
 }
 
@@ -519,7 +518,7 @@ iframe[src*="eventbrite.com"] {
 		padding-left: 2.5rem;
 	}
 	
-	[type="image/logo"] {
+	header [type="image/logo"], footer .logo svg {
 		margin-top: 1rem;
 		margin-bottom: 1.5rem;
 		min-width: 5rem;
@@ -562,7 +561,7 @@ iframe[src*="eventbrite.com"] {
 		padding-left: 3rem;
 	}
 	
-	[type="image/logo"] {
+	header [type="image/logo"], footer .logo svg {
 		margin-top: 2rem;
 		margin-bottom: 3rem;
 		min-width: 6rem;
@@ -653,6 +652,7 @@ iframe[src*="eventbrite.com"] {
 	
 	footer svg,
 	header svg {
+		min-width: 6rem;
 		max-width: 6rem;
 		min-height: 6rem;
 	}

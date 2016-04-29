@@ -8,7 +8,7 @@ header .name {
 }
 
 html[class="/"] main, 
-header nav {
+header nav, footer .logo {
 	padding: 0 5vw;
 }
 
@@ -240,7 +240,7 @@ html[class="/"] .tabs li label {
 }
 
 @media (min-width: 650px) {
-	html[class="/"] main, header nav {
+	html[class="/"] main, header nav, footer .logo {
 		padding: 0 6vw;
 	}
 	
@@ -274,7 +274,7 @@ html[class="/"] .tabs li label {
 }
 
 @media (min-width: 900px) {
-	html[class="/"] main, header nav {
+	html[class="/"] main, header nav, footer .logo {
 		padding: 0 7vw;
 	}
 	
@@ -298,7 +298,7 @@ html[class="/"] .tabs li label {
 }
 
 @media (min-width: 1100px) {
-	html[class="/"] main, header nav {
+	html[class="/"] main, header nav, footer .logo {
 		padding: 0 8vw;
 	}
 
@@ -313,7 +313,7 @@ html[class="/"] .tabs li label {
 }
 
 @media (min-width: 1400px) {
-	html[class="/"] main, header nav {
+	html[class="/"] main, header nav, footer .logo {
 		/*padding: 0 9vw;*/
 	}
 }
