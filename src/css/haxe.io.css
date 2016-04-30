@@ -550,7 +550,7 @@ iframe[src*="eventbrite.com"] {
 	}
 	
 	[type="image/logo"] svg {
-	  -webkit-filter: url(#filter);
+	  /*-webkit-filter: url(#filter);*/
 		/* Disabled for FireFox. Check `frontpage.html::<style>` tag for _inline_ css! */
 		/*filter: url(#filter);*/
 	}
