@@ -47,7 +47,8 @@ blockquote {
 }
 
 article .grid {
-	flex-direction: column-reverse;;
+	align-items: inherit;
+	flex-direction: column-reverse;
 }
 
 .grid::after {
@@ -83,8 +84,8 @@ header, article {
 }
 
 section {
-	display: table;	/* Fixes an odd clipping issue in single column mode. */
-	margin-bottom: 2rem;
+	/*display: table;	/* Fixes an odd clipping issue in single column mode. */
+	/*margin-bottom: 2rem;*/
 	line-height: 1.3rem;
 }
 
@@ -199,6 +200,10 @@ code[language] {
 	tab-size: 2;
 }
 
+.gist {
+	
+}
+
 /* Links */
 
 header a:not([type]),
@@ -304,10 +309,10 @@ html[class*="/ld"] li a:not([type])[href*="?jam"]:after {
 
 /* Images */
 figure {
-	display: flex;
+	/*display: flex;*/
 	margin: 0 1rem;
-	flex-direction: column;
-	align-items: center;
+	/*flex-direction: column;
+	align-items: center;*/
 }
 
 input[id*="pic"] {
@@ -341,7 +346,7 @@ input:checked ~ label {
 
 figure > img {
 	max-width: 75vw;
-	max-height: 25vh;
+	/*max-height: 25vh;*/
 	object-fit: contain;
 }
 
@@ -378,15 +383,15 @@ article section blockquote {
 	font-style: italic;
 }
 
-article aside:not(html[class*="/events"]) {
+/*article aside:not(html[class*="/events"]) {
 	display: none;
 	overflow: hidden;
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
+}*/
 
 html[class*="/videos"] body > div nav,
 aside > nav {
-	margin-bottom: 0.2em;
+	margin-bottom: 1rem;
 }
 
 html[class*="/videos"] body > div nav h1,
@@ -394,7 +399,7 @@ aside > nav h1 {
 	font-size: 1em;
 	margin: 0;
 	padding-bottom: 0.625em;
-	border-bottom: 1px grey solid;
+	border-bottom: 1px solid rgba(189, 189, 189, 0.6);
 }
 
 aside > nav ul {
