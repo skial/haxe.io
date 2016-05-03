@@ -309,10 +309,10 @@ html[class*="/ld"] li a:not([type])[href*="?jam"]:after {
 
 /* Images */
 figure {
-	/*display: flex;*/
+	display: flex;
 	margin: 0 1rem;
-	/*flex-direction: column;
-	align-items: center;*/
+	flex-direction: column;
+	align-items: center;
 }
 
 input[id*="pic"] {
@@ -388,6 +388,10 @@ article section blockquote {
 	overflow: hidden;
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }*/
+
+aside {
+	display: none;
+}
 
 html[class*="/videos"] body > div nav,
 aside > nav {
@@ -599,6 +603,11 @@ iframe[src*="eventbrite.com"] {
 		max-width: 6rem;
 	}
 	
+	aside {
+		display: block;
+		font-size: 1.1rem;
+	}
+	
 	article {
 		margin: 0 5rem;
 	}
@@ -715,6 +724,10 @@ iframe[src*="eventbrite.com"] {
 	
 	.details {
 		padding-bottom: 5rem;
+	}
+	
+	aside {
+		font-size: 1.2rem;
 	}
 	
 	article {
