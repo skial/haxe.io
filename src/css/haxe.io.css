@@ -34,6 +34,12 @@ h6 a:empty {
 	display: none;
 }
 
+html[class*="interview"] h2 {
+	font-size: 1.1rem;
+  font-style: italic;
+  color: rgba(241,89,34, 1);
+}
+
 blockquote {
 	
 }
@@ -398,12 +404,26 @@ aside > nav {
 	margin-bottom: 1rem;
 }
 
+html[class*="/videos"] body > div nav {
+	flex-basis: 25%;
+}
+
+html[class*="/videos"] body > div nav + div {
+	flex-basis: 75%;
+}
+
 html[class*="/videos"] body > div nav h1,
 aside > nav h1 {
 	font-size: 1em;
 	margin: 0;
 	padding-bottom: 0.625em;
 	border-bottom: 1px solid rgba(189, 189, 189, 0.6);
+}
+
+html[class*="videos"][class*="series"] body article + div {
+    display: flex;
+    flex-direction: row;
+    margin: 0 5rem;
 }
 
 aside > nav ul {
@@ -480,7 +500,7 @@ from : http://embedresponsively.com/
 
 .embed-container { 
 	position: relative; 
-	padding-bottom: 100%; 
+	padding-bottom: 56.25%; 
 	height: 0; 
 	overflow: hidden; 
 	max-width: 100%; 
