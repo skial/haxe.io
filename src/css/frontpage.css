@@ -97,6 +97,13 @@ html[class="/"] .tabs li {
 	padding: 0.25rem;
 }
 
+html[class="/"] .tabs li label * {
+	/* see https://stackoverflow.com/a/30170745 */
+	/*display: block;*/
+	/* see : http://stackoverflow.com/a/34810294 */
+	pointer-events: none;
+}
+
 html[class="/"] .long {
 	display: none;
 }
@@ -254,7 +261,6 @@ html[class="/"] .tabs li label {
 	}
 	
 	html[class="/"] .tabs li label {
-		cursor: pointer;
 		padding: 0.4rem;
 	}
 
