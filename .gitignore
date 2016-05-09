@@ -1,2 +1,4 @@
 bin/*
+min/*
+opt/*
 secrets.json
