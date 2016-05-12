@@ -85,7 +85,7 @@ video,
 	max-width: 100%
 }
 
-header, article {
+html:not([class="/"]) header, article {
 	margin: 0 1rem;
 }
 
@@ -111,7 +111,6 @@ html:not([class="/"] ) footer * {
 }
 
 header, html[class="/"] footer {
-	margin: 0;
 	padding-bottom: 1.5rem;
 }
 
@@ -590,7 +589,7 @@ iframe[src*="eventbrite.com"] {
 		/*filter: url(#filter);*/
 	}
 	
-	article {
+	html:not([class="/"]) header, article {
 		margin: 0 2rem;
 	}
 	
@@ -634,7 +633,7 @@ iframe[src*="eventbrite.com"] {
 		font-size: 1.1rem;
 	}
 	
-	article {
+	html:not([class="/"]) header, article {
 		margin: 0 5rem;
 	}
 	
@@ -734,7 +733,7 @@ iframe[src*="eventbrite.com"] {
 		padding-bottom: 3rem;
 	}
 	
-	article {
+	html:not([class="/"]) header, article {
 		margin: 0 10rem;
 	}
 	
@@ -757,7 +756,7 @@ iframe[src*="eventbrite.com"] {
 		font-size: 1.2rem;
 	}
 	
-	article {
+	html:not([class="/"]) header, article {
 		margin: 0 17rem;
 	}
 	
@@ -772,15 +771,15 @@ iframe[src*="eventbrite.com"] {
 		font-size: 1.3rem;
 	}
 	
-	.hero h1 {
+	/*.hero h1 {
 		font-size: 8rem;
-	}
+	}*/
 	
-	.details {
+	/*.details {
 		padding-bottom: 8rem;
-	}
+	}*/
 	
-	article {
+	html:not([class="/"]) header, article {
 		margin: 0 20rem;
 	}
 	
