@@ -314,11 +314,11 @@ html[class*="/ld"] li a:not([type])[href*="?jam"]:after {
 }
 
 /* Images */
-figure {
+figure, video {
 	display: flex;
 	margin: 0 1rem;
 	flex-direction: column;
-	align-items: center;
+	/*align-items: center;*/
 }
 
 input[id*="pic"] {
@@ -342,6 +342,7 @@ figcaption {
 	padding-top: 0.55em;
 	padding-bottom: 0.55em;
 	padding-left: 0.9em;
+	align-self: center;
 }
 
 input:checked ~ label {
@@ -535,6 +536,7 @@ iframe[src*="eventbrite.com"] {
 		margin-top: 1rem;
 	}
 	
+	video,
 	figure > img {
 		max-width: 80vw;
 		max-height: 90vh;
@@ -546,6 +548,10 @@ iframe[src*="eventbrite.com"] {
 	
 	html[class*="/ld"] li a:not([type])[href*="?jam"]:after {
 		content: "jam";
+	}
+	
+	html[class*="/roundup"] video {
+		margin: 0 auto;
 	}
 
 }
@@ -704,6 +710,7 @@ iframe[src*="eventbrite.com"] {
 		border-bottom-right-radius: 4px;
 	}
 	
+	video,
 	figure > img {
 		max-width: 54vw;
 		max-height: 34vh;
@@ -785,6 +792,7 @@ iframe[src*="eventbrite.com"] {
 		line-height: 1.7rem;
 	}
 	
+	video,
 	figure > img {
 		max-height: 44vh;
 	}
