@@ -26,6 +26,6 @@ mkdir -p $OPT_DIR
 #cp -u $BIN $MIN
 #cp $MIN $OPT
 
-postcss -u autoprefixer -o $BIN $INPUT
-postcss -u autoprefixer -u cssnano -o $MIN $BIN
+postcss -u autoprefixer --autoprefixer.browsers "> 5% in my stats" --autoprefixer.stats "./browserstats/latest.json" -o $BIN $INPUT
+cssnano $BIN $MIN
 cp $MIN $OPT
