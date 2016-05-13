@@ -68,6 +68,23 @@ html[class="/"] main ul li[id^="noc"] {
 	box-shadow: -0.2rem 0 0 0 rgba(205, 32, 31, 0.8), 1px 1px 1px 0px rgba(189, 189, 189, 0.3);
 }
 
+html[class="/"] main ul li[id^="link"] {
+	border-color: rgba(51 ,51, 51, 0.4);
+	box-shadow: -0.2rem 0 0 0 rgba(51 ,51, 51, 0.8), 1px 1px 1px 0px rgba(189, 189, 189, 0.3);
+	flex-direction: row;
+	align-items: center;
+}
+
+html[class="/"] main ul li[id^="link"]::after {
+	content: url("/svg/external-link.min.svg");
+	position: relative;
+	display: inline-block;
+	width: 1.5rem;
+	height: 1.5rem;
+	margin-left: 1rem;
+	color: rgba(51 ,51, 51, 1);
+}
+
 html[class="/"] main li > *:not(h1):not(a) {
 	display: none;
 }
@@ -179,6 +196,12 @@ html[class="/"] .tabs li label {
 	background-color: rgba(241,89,34, 0.4);
 }
 
+#articles:checked ~ header .tabs label[for="articles"] {
+	color: rgba(71, 99, 152, 1);
+	border-color: rgba(71, 99, 152, 0.4);
+	background-color: rgba(71, 99, 152, 0.4);
+}
+
 #ludumdare:checked ~ header .tabs label[for="ludumdare"] {
 	color: rgba(119, 68, 204, 1);
 	border-color: rgba(119, 68, 204, 0.4);
@@ -218,6 +241,11 @@ html[class="/"] .tabs li label {
 	display: none;
 }
 
+#articles:checked ~ main li:not([itemtype*="Article"]),
+#articles:checked ~ main li[id^="ld"] {
+	display: none;
+}
+
 #ludumdare:checked ~ main li:not([id^="ld"]) {
 	display: none;
 }
@@ -244,7 +272,8 @@ html[class="/"] .tabs li label {
 #releases:checked ~ main li[id^="release"],
 #events:checked ~ main li[id^="e"],
 #speaker:checked ~ main li[id^="speaker"],
-#videos:checked ~ main li[id^="noc"] {
+#videos:checked ~ main li[id^="noc"], 
+#articles:checked ~ main li[itemtype*="Article"]:not([id^="ld"]) {
 	display: flex;
 }
 

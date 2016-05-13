@@ -40,9 +40,9 @@ class Main {
 			width:800, height:600, show:show, center:true, 
 		};
 		
-		trace( (Sys.getCwd() + '$input').normalize() );
-		trace( (Sys.getCwd() + '$outputDir').normalize() );
-		trace( (Sys.getCwd() + '/$script').normalize() );
+		trace( 'input::', (Sys.getCwd() + '$input').normalize() );
+		trace( 'output::', (Sys.getCwd() + '$outputDir').normalize() );
+		trace( 'script::', (Sys.getCwd() + '/$script').normalize() );
 		
 		if (script != null) config.webPreferences = { 
 			preload:( Sys.getCwd() + '/$script' ).normalize() 
