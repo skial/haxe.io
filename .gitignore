@@ -1,4 +1,5 @@
 bin/*
 min/*
 opt/*
+node_modules/*
 secrets.json
