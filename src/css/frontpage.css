@@ -293,8 +293,8 @@ html[class="/"] .tabs li label {
 		padding: 0.4rem;
 	}
 
-	html[class="/"] main ul li:first-child,
-	html[class="/"] main ul li[id*="release"] {
+	html[class="/"] [type="checkbox"]:not(:checked) ~ main ul li:first-child
+	/*html[class="/"] [type="checkbox"] ~ main ul li[id*="release"] */{
 		flex-basis: 100%;
 	}
 }
@@ -328,9 +328,36 @@ html[class="/"] .tabs li label {
 		flex-basis: calc(33.33% - 3vw);
 	}
 
-	html[class="/"] main ul li:nth-child(1n+2)[id*="ld"]/*,
+	input:checked ~ html[class="/"] main ul li:nth-child(1n+2)[id*="ld"]/*,
 	/*html[class="/"] ul li:nth-child(5n+5)*/ {
 		flex-basis: calc(66.66% - 3vw);
+	}
+	
+	html[class="/"] [type="checkbox"]:checked ~ main ul li~#link,
+	html[class="/"] [type="checkbox"]:checked ~ main ul li~[id*="ld"],
+	html[class="/"] [type="checkbox"]:checked ~ main ul li~[id^="noc"],
+	html[class="/"] [type="checkbox"]:checked ~ main ul li~[id^="e"],
+	html[class="/"] [type="checkbox"]:checked ~ main ul li~[id^="speaker"],
+	html[class="/"] [type="checkbox"]:checked ~ main ul li~[id^="release"],
+	html[class="/"] [type="checkbox"]:checked ~ main ul li~[itemtype*="Series"] {
+		flex-basis: 100%;
+	}
+	
+	html[class="/"] #news:checked ~ :checked ~ main ul [itemtype*="Series"] ~ li,
+	html[class="/"] #ludumdare:checked ~ :checked ~ main ul [id*="ld"] ~ li,
+	html[class="/"] #releases:checked ~ :checked ~ main ul [id^="release"] ~ li,
+	html[class="/"] #events:checked ~ :checked ~ main ul [id^="e"] ~ li,
+	html[class="/"] #videos:checked ~ :checked ~ main ul [id^="noc"] ~ li,
+	html[class="/"] #speaker:checked ~ :checked ~ main ul [id^="speaker"] ~ li,
+	html[class="/"] #articles:checked ~ :checked ~ main ul [itemtype*="Article"] ~ li,
+	/*html[class="/"] [type="checkbox"]:checked ~ main ul #link ~ li,*/
+	html[class="/"] #ludumdare:checked ~ main ul [id*="ld"]~[id*="ld"],
+	html[class="/"] #videos:checked ~ main ul [id^="noc"]~[id^="noc"],
+	html[class="/"] #events:checked ~ main ul [id^="e"]~[id^="e"],
+	html[class="/"] #speaker:checked ~ main ul [id^="speaker"]~[id^="speaker"],
+	html[class="/"] #releases:checked ~ main ul [id^="release"]~[id^="release"],
+	html[class="/"] [type="checkbox"]:checked ~ main ul [itemtype*="Series"]~[itemtype*="Series"] {
+		flex-basis: calc(33.33% - 3vw);
 	}
 }
 
@@ -354,7 +381,24 @@ html[class="/"] .tabs li label {
 
 	html[class="/"] main ul li:nth-child(1n+2)[id*="ld"]/*,
 	/*html[class="/"] ul li:nth-child(5n+5)*/ {
-		flex-basis: calc(75% - 3.5vw)
+		flex-basis: calc(75% - 3.5vw);
+	}
+	
+	html[class="/"] #news:checked ~ :checked ~ main ul [itemtype*="Series"] ~ li,
+	html[class="/"] #ludumdare:checked ~ :checked ~ main ul [id*="ld"] ~ li,
+	html[class="/"] #releases:checked ~ :checked ~ main ul [id^="release"] ~ li,
+	html[class="/"] #events:checked ~ :checked ~ main ul [id^="e"] ~ li,
+	html[class="/"] #videos:checked ~ :checked ~ main ul [id^="noc"] ~ li,
+	html[class="/"] #speaker:checked ~ :checked ~ main ul [id^="speaker"] ~ li,
+	html[class="/"] #articles:checked ~ :checked ~ main ul [itemtype*="Article"] ~ li,
+	/*html[class="/"] [type="checkbox"]:checked ~ main ul #link ~ li,*/
+	html[class="/"] #ludumdare:checked ~ main ul [id*="ld"]~[id*="ld"],
+	html[class="/"] #videos:checked ~ main ul [id^="noc"]~[id^="noc"],
+	html[class="/"] #events:checked ~ main ul [id^="e"]~[id^="e"],
+	html[class="/"] #speaker:checked ~ main ul [id^="speaker"]~[id^="speaker"],
+	html[class="/"] #releases:checked ~ main ul [id^="release"]~[id^="release"],
+	html[class="/"] [type="checkbox"]:checked ~ main ul [itemtype*="Series"]~[itemtype*="Series"] {
+		flex-basis: calc(25% - 3.5vw);
 	}
 }
 
@@ -370,6 +414,23 @@ html[class="/"] .tabs li label {
 	html[class="/"] main ul li:nth-child(1n+2)[id*="ld"]/*,
 	/*html[class="/"] ul li:nth-child(5n+5)*/ {
 		flex-basis: calc(60% - 4vw);
+	}
+	
+	html[class="/"] #news:checked ~ :checked ~ main ul [itemtype*="Series"] ~ li,
+	html[class="/"] #ludumdare:checked ~ :checked ~ main ul [id*="ld"] ~ li,
+	html[class="/"] #releases:checked ~ :checked ~ main ul [id^="release"] ~ li,
+	html[class="/"] #events:checked ~ :checked ~ main ul [id^="e"] ~ li,
+	html[class="/"] #videos:checked ~ :checked ~ main ul [id^="noc"] ~ li,
+	html[class="/"] #speaker:checked ~ :checked ~ main ul [id^="speaker"] ~ li,
+	html[class="/"] #articles:checked ~ :checked ~ main ul [itemtype*="Article"] ~ li,
+	/*html[class="/"] [type="checkbox"]:checked ~ main ul #link ~ li,*/
+	html[class="/"] #ludumdare:checked ~ main ul [id*="ld"]~[id*="ld"],
+	html[class="/"] #videos:checked ~ main ul [id^="noc"]~[id^="noc"],
+	html[class="/"] #events:checked ~ main ul [id^="e"]~[id^="e"],
+	html[class="/"] #speaker:checked ~ main ul [id^="speaker"]~[id^="speaker"],
+	html[class="/"] #releases:checked ~ main ul [id^="release"]~[id^="release"],
+	html[class="/"] [type="checkbox"]:checked ~ main ul [itemtype*="Series"]~[itemtype*="Series"] {
+		flex-basis: calc(20% - 4vw);
 	}
 }
 
