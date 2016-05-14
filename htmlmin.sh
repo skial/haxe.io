@@ -59,7 +59,7 @@ html-minifier \
 --remove-script-type-attributes -o "$MIN" "$BIN"
 cp -u $MIN $OPT
 # saving from $OPT to $DIR/$BASE.opt.html and back to $OPT prevents `invalid filename $OPT` error.
-critical $MIN --src $MIN --minify true --base ./min/ --inline --dest $OPT_CRIT 
+critical $MIN --src $MIN --minify true --base ./min/ --ignore "@font-face" --inline --dest $OPT_CRIT 
 if [ ! -f $OPT_CRIT ]; then
 	cp $OPT $OPT_CRIT
 fi
