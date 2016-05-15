@@ -120,6 +120,10 @@ header div, html[class="/"] footer div {
 	justify-content: center;
 }
 
+html[class="/"] footer div {
+	align-items: inherit;
+}
+
 header [type="image/logo"],
 header [type="image/logo"] svg,
 html[class="/"] footer .logo svg {
