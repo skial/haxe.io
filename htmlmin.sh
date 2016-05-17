@@ -1,13 +1,20 @@
 INPUT="$@"
 INPUT_DIR=${INPUT%/*}
+echo $INPUT
+echo $INPUT_DIR
+if [ "$INPUT_DIR" == "$INPUT" ]; then
+	echo "correcting path"
+	INPUT="${INPUT/\\//}"
+	INPUT_DIR=${INPUT%/*}
+fi
 #INPUT_BASE="${INPUT/$INPUT_DIR/}"
 #INPUT_BASE="${INPUT_BASE/.html/}"
 INPUT_FILE="${INPUT##*/}"
 INPUT_BASE="${INPUT_FILE%%.*}"
-#echo $INPUT
-#echo $INPUT_DIR
-#echo $INPUT_FILE
-#echo $INPUT_BASE
+echo $INPUT
+echo $INPUT_DIR
+echo $INPUT_FILE
+echo $INPUT_BASE
 STR="${INPUT:3}"
 BIN=./bin$STR
 BIN_DIR=${BIN%/*}
@@ -15,10 +22,10 @@ BIN_DIR=${BIN%/*}
 #BIN_BASE="${BIN_BASE/.html/}"
 BIN_FILE="${BIN##*/}"
 BIN_BASE="${BIN_FILE%%.*}"
-#echo $BIN
-#echo $BIN_DIR
-#echo $BIN_FILE
-#echo $BIN_BASE
+echo $BIN
+echo $BIN_DIR
+echo $BIN_FILE
+echo $BIN_BASE
 MIN=./min$STR
 MIN_DIR=${MIN%/*}
 #MIN_BASE="${MIN/$MIN_DIR/}"
@@ -57,12 +64,13 @@ html-minifier \
 --collapse-boolean-attributes --remove-comments --remove-empty-attributes --remove-redundant-attributes \
 --collapse-whitespace --preserve-line-breaks --decode-entities --minify-js  --remove-style-link-type-attributes \
 --remove-script-type-attributes -o "$MIN" "$BIN"
-cp -u $MIN $OPT
+cp $MIN $OPT
 # saving from $OPT to $DIR/$BASE.opt.html and back to $OPT prevents `invalid filename $OPT` error.
-critical $MIN --src $MIN --minify true --base ./min/ --ignore "@font-face" --inline --dest $OPT_CRIT 
-if [ ! -f $OPT_CRIT ]; then
+#critical "$MIN" --minify true --base ./min/ --ignore "@font-face" --ignore "fonts.google" --inline > $OPT_CRIT 
+#inline-critical "$MIN" --base ./min/ --ignore "@font-face" --ignore "/fonts.google/" > $OPT_CRIT 
+#if [ ! -f $OPT_CRIT ]; then
 	cp $OPT $OPT_CRIT
-fi
+#fi
 html-minifier \
 --collapse-boolean-attributes --remove-comments --remove-empty-attributes --remove-redundant-attributes \
 --collapse-whitespace --decode-entities --minify-js  --remove-style-link-type-attributes \

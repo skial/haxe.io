@@ -17,6 +17,7 @@ class Main {
 	public var input:String;
 	public var script:String;
 	public var show:Bool = false;
+	public var wait:Bool = false;
 	public var outputDir:String;
 	
 	private var contents:WebContents;
@@ -69,7 +70,7 @@ class Main {
 	  });
 		
 		ipcMain.on('haxeCharacterList', function(event, arg) {
-			trace( arg );
+			//trace( arg );
 			var path = window.webContents.getUrl().replace( 'http://localhost:${ns.address().port}', '' );
 			var dirname = path.directory();
 			if (dirname == '') dirname == '/';
@@ -81,7 +82,7 @@ class Main {
 					if (error == null) trace( 'it saved!' );
 					if (!show) App.quit();
 				} );*/
-				App.quit();
+				if (!wait) App.quit();
 			} catch (e:Dynamic) {
 				App.quit();
 			}
@@ -93,6 +94,7 @@ class Main {
 		trace( 'loading url http://localhost:${ns.address().port}/$filename' );
 		window.loadURL( 'http://localhost:${ns.address().port}/$filename' );
 		window.webContents.openDevTools();
+		untyped window.webContents.debugger.on('detach', function(_) App.quit());
 	}
 	
 }

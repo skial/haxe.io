@@ -3,6 +3,7 @@ package ;
 import js.Node.*;
 import js.Browser.*;
 import js.html.Node;
+import thx.Url;
 import js.html.Element;
 import js.html.DOMElement;
 import js.Node.process;
@@ -33,14 +34,33 @@ class Script {
 			var link = window.document.querySelectorAll( 'head link[href*="fonts.googleapis.com/css"]' );
 			
 			if (link.length > 0) {
-				cast (link[0],DOMElement).setAttribute('href', cast (link[0],DOMElement).getAttribute('href') + '&text=' +charList.join(''));
+				var url:Url = cast(link[0],DOMElement).getAttribute('href');
+				var queryString = url.queryString;
+				if (queryString != null) trace( 'exists', queryString.exist('text') );
+				if (queryString != null && queryString.exist('text')) {
+					queryString.set( 'text', charList.join('') );
+					trace( 'search', url.search );
+					var search = queryString.toStringWithSymbols('&', '=', function(s)return s);
+					var path = url.pathName + '?$search';
+					var string = (url.isAbsolute) ?
+			      '${url.hasProtocol ? url.protocol + ":" : ""}${url.slashes?"//":""}${url.hasAuth?url.auth+"@":""}${url.host}${path}${url.hasHash?"#"+url.hash:""}'
+			    :
+			      '${path}${url.hasHash?"#"+url.hash:""}';
+						
+					trace( 'search', search );
+					trace( 'path', path );
+					trace( 'thx-core', string );
+					//cast (link[0],DOMElement).setAttribute('href', cast (link[0],DOMElement).getAttribute('href') + '&text=' +charList.join(''));
+					cast (link[0],DOMElement).setAttribute('href', string);
+					
+				}
 				
 			} else {
-				trace( link.length );
+				trace( 'link length', link.length );
 				
 			}
 			
-			trace( charList.join('') );
+			trace( 'char list', charList.join('') );
 			var node = window.document.doctype;
 			
 			var doctype = node != null ? "<!DOCTYPE "
@@ -51,7 +71,7 @@ class Script {
 					 + '>\n' : '';
 					 
 			var html = window.document.documentElement.outerHTML;
-			if (html != '<html><head></head><body></body></html>') {
+			if (html != null && html != '<html><head></head><body></body></html>') {
 				require('electron').ipcRenderer.send('haxeCharacterList', doctype + window.document.documentElement.outerHTML);
 				
 			} else {

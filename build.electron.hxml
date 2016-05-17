@@ -1,5 +1,6 @@
 -lib electron
 -lib hxnodejs
+-lib thx.core
 -lib cmd
 -D dce=full
 -cp ./src-electron

@@ -9,14 +9,14 @@
 		"html-minifier": "latest",
     "postcss": "latest",
     "cssnano": "latest",
-		"critical": "latest",
+		"critical": "addyosmani/critical",
 		"node-static": "latest",
 		"electron-prebuilt": "latest",
 		"electron-spawn": "latest"
   },
   "scripts": {				
-		"watch:htmlmin": "onchange \"./src/**/*.html\" -v -w -- htmlmin.sh {{changed}}",
-		"watch:cssmin": "onchange \"./src/css/*.css\" -v -w -- cssmin.sh {{changed}}",
+		"watch:htmlmin": "onchange \"./src/**/*.html\" -w -- htmlmin.sh {{changed}}",
+		"watch:cssmin": "onchange \"./src/css/*.css\" -w -- cssmin.sh {{changed}}",
 		"watch": "npm-run-all -p watch:cssmin watch:htmlmin"
   }
 }
