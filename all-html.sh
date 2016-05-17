@@ -1,2 +1,2 @@
 INPUT="$@"
-find $INPUT -name "*.html" | xargs -P 7 -n 1 htmlmin.sh
+find $INPUT -name "*.html" | xargs -P 6 -n 1 htmlmin.sh

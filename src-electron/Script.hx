@@ -55,6 +55,14 @@ class Script {
 					
 				}
 				
+				//'<script async="" src="https://www.google-analytics.com/analytics.js"></script>';
+				var head = window.document.getElementsByTagName( 'head' )[0];
+				
+				if (head != null) {
+					var ga = window.document.querySelectorAll( 'head script[src*="google"]');
+					for (_ga in ga) head.removeChild( _ga );
+				}
+				
 			} else {
 				trace( 'link length', link.length );
 				

@@ -94,6 +94,8 @@ class Main {
 		trace( 'loading url http://localhost:${ns.address().port}/$filename' );
 		window.loadURL( 'http://localhost:${ns.address().port}/$filename' );
 		window.webContents.openDevTools();
+		window.webContents.on('crashed', function(_) App.quit());
+		window.webContents.on('devtools-closed', function(_) App.quit());
 		untyped window.webContents.debugger.on('detach', function(_) App.quit());
 	}
 	
