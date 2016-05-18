@@ -61,8 +61,8 @@ class Main {
 		trace( 'output::', (Sys.getCwd() + '$outputDir').normalize() );
 		trace( 'script::', (Sys.getCwd() + '/$script').normalize() );
 		
+		ipcMain.on('save::file', saveFile);
 		ipcMain.on('final::html', handleHTML);
-		
 		ipcMain.on('final::failed', function() {
 			trace( 'sending html failed' );
 			App.quit();
@@ -125,15 +125,41 @@ class Main {
 	}
 	
 	private function handleHTML(event:String, arg:String):Void {
+		try {
+			saveFile(event, Serializer.run( { filename: filename, content: arg.replace('\n', '\r\n') } ));
+			if (!wait) App.quit();
+			
+		} catch (e:Dynamic) {
+			trace( e );
+			App.quit();
+			
+		}
+	}
+	
+	private function saveFile(event:String, arg:String):Void {
+		var data:{filename:String, content:String} = Unserializer.run( arg );
 		var path = window.webContents.getUrl().replace( 'http://localhost:${port}', '' );
 		var dirname = path.directory();
+		
+		if (data.filename == null || data.filename == '') {
+			trace( 'data filename cannot be empty.' );
+			return;
+		}
+		
+		if (data.content == null || data.content == '') {
+			trace( 'data content cannot be empty.' );
+			return;
+		}
+		
 		if (dirname == '') dirname == '/';
-		trace( (Sys.getCwd() + '/$outputDir/$dirname/$filename').normalize() );
+		trace( 'saving file to::', (Sys.getCwd() + '/$outputDir/$dirname/${data.filename}').normalize() );
+		
 		try {
-			writeFileSync( (Sys.getCwd() + '/$outputDir/$dirname/$filename').normalize(), arg.replace('\n', '\r\n'), 'utf8' );
-			if (!wait) App.quit();
+			writeFileSync( (Sys.getCwd() + '/$outputDir/$dirname/${data.filename}').normalize(), data.content, 'utf8' );
+			
 		} catch (e:Dynamic) {
-			App.quit();
+			trace( e );
+			
 		}
 	}
 	
