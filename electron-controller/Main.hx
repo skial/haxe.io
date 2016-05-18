@@ -33,6 +33,7 @@ class Main {
 	private var window:BrowserWindow;
 	private var filename:String;
 	private var port:Int;
+	private var queue:StringMap<Bool> = new StringMap();
 	
 	public static function main() {
 		App.on('ready', function() {
@@ -61,6 +62,7 @@ class Main {
 		trace( 'output::', (Sys.getCwd() + '$outputDir').normalize() );
 		trace( 'script::', (Sys.getCwd() + '/$script').normalize() );
 		
+		ipcMain.on('queue::add', modifyQueue);
 		ipcMain.on('save::file', saveFile);
 		ipcMain.on('final::html', handleHTML);
 		ipcMain.on('final::failed', function() {
@@ -159,6 +161,16 @@ class Main {
 			
 		} catch (e:Dynamic) {
 			trace( e );
+			
+		}
+	}
+	
+	private function modifyQueue(event:String, arg:String):Void {
+		var links:Array<String> = [];
+		links = Unserializer.run(arg);
+		trace( links.length );
+		for (link in links) if (!queue.exists( link )) {
+			queue.set(link, false);
 			
 		}
 	}

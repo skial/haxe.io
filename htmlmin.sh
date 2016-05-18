@@ -59,7 +59,7 @@ mkdir -p $MIN_DIR
 mkdir -p $OPT_DIR
 cp -u $INPUT $BIN
 cp -u $BIN $MIN
-electron --enable-logging . --input "//$INPUT" --script ./script.js --outputDir "//$BIN_DIR" --show
+electron --enable-logging . --input "//$INPUT" --script ./script.js --outputDir "//$BIN_DIR" --show --scripts font.characters.js sitemap.js checkmissing.js
 html-minifier \
 --collapse-boolean-attributes --remove-comments --remove-empty-attributes --remove-redundant-attributes \
 --collapse-whitespace --preserve-line-breaks --decode-entities --minify-js  --remove-style-link-type-attributes \
