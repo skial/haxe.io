@@ -1,9 +1,9 @@
 package ;
 
+import thx.Url;
 import js.Node.*;
 import js.Browser.*;
 import js.html.Node;
-import thx.Url;
 import js.html.Element;
 import js.html.DOMElement;
 import js.Node.process;
@@ -29,15 +29,19 @@ class Script {
 		var body = window.document.getElementsByTagName('body')[0];
 		var charList = [];
 		
+		trace( body );
+		
 		if (body != null) {
 			charList = buildList( body );
 			var link = window.document.querySelectorAll( 'head link[href*="fonts.googleapis.com/css"]' );
+			
+			trace( charList );
 			
 			if (link.length > 0) {
 				var url:Url = cast(link[0],DOMElement).getAttribute('href');
 				var queryString = url.queryString;
 				if (queryString != null) trace( 'exists', queryString.exist('text') );
-				if (queryString != null && queryString.exist('text')) {
+				if (queryString != null && !queryString.exist('text')) {
 					queryString.set( 'text', charList.join('') );
 					trace( 'search', url.search );
 					var search = queryString.toStringWithSymbols('&', '=', function(s)return s);
@@ -63,12 +67,15 @@ class Script {
 					for (_ga in ga) head.removeChild( _ga );
 				}
 				
+				require('electron').ipcRenderer.send('font.characters::complete', 'true');
+				
 			} else {
 				trace( 'link length', link.length );
+				require('electron').ipcRenderer.send('font.characters::complete', 'false');
 				
 			}
 			
-			trace( 'char list', charList.join('') );
+			/*trace( 'char list', charList.join('') );
 			var node = window.document.doctype;
 			
 			var doctype = node != null ? "<!DOCTYPE "
@@ -85,11 +92,12 @@ class Script {
 			} else {
 				require('electron').ipcRenderer.send('haxeCharacterList-close', 'true');
 				
-			}
+			}*/
 			
 			
 		} else {
-			require('electron').ipcRenderer.send('haxeCharacterList-close', 'true');
+			//require('electron').ipcRenderer.send('haxeCharacterList-close', 'true');
+			require('electron').ipcRenderer.send('font.characters::complete', 'false');
 			
 		}
 		
