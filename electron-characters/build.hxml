@@ -7,5 +7,5 @@
 
 --each
 
--main Script
+-main FontCharacters
 -js ../font.characters.js

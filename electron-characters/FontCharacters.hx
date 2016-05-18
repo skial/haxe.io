@@ -9,7 +9,7 @@ import js.html.DOMElement;
 import js.Node.process;
 import electron.main.App;
 
-class Script {
+class FontCharacters {
 	
 	public static function main() {
 		console.log( 'loading...' );
