@@ -189,28 +189,29 @@ class Main {
 		if (allDone) {
 			trace( window.webContents.getUrl() );
 			window.webContents.send('scripts::completed', 'true');
-			trace( 'queue length', [for (k in queue.keys()) if (!queue.get(k)) k].length);
-			if ([for (k in queue.keys()) if (!queue.get(k)) k].length != 0) {
-				trace( 'still in queue', [for (k in queue.keys()) if (!queue.get(k)) k] );
-				setImmediate( processQueue );
-				
-			} else {
-				if (!wait) App.quit();
-				
-			}
 		
 		}
 		
 	}
 	
 	private function handleHTML(event:String, arg:String):Void {
-		try {
-			saveFile(event, Serializer.run( { filename: filename, content: arg.replace('\n', '\r\n') } ));
-			//if (!wait) App.quit();
+		if (arg == 'failed') {
+			continueOrQuit();
 			
-		} catch (e:Dynamic) {
-			trace( e );
-			//App.quit();
+		} else {
+			saveFile(event, Serializer.run( { filename: filename, content: arg.replace('\n', '\r\n') } ));
+			
+		}
+	}
+	
+	private function continueOrQuit():Void {
+		trace( 'queue length', [for (k in queue.keys()) if (!queue.get(k)) k].length);
+		if ([for (k in queue.keys()) if (!queue.get(k)) k].length != 0) {
+			trace( 'still in queue', [for (k in queue.keys()) if (!queue.get(k)) k] );
+			setImmediate( processQueue );
+			
+		} else {
+			if (!wait) App.quit();
 			
 		}
 	}
@@ -231,7 +232,6 @@ class Main {
 		}
 		
 		if (dirname == '') dirname == '/';
-		//trace( 'attempting to save file to::', (Sys.getCwd() + '/$outputDir/$dirname/${data.filename}').normalize() );
 		
 		try {
 			if (!sys.FileSystem.exists( Sys.getCwd() + '/$outputDir/$dirname/' )) {
@@ -239,14 +239,23 @@ class Main {
 					writeFile( (Sys.getCwd() + '/$outputDir/$dirname/${data.filename}').normalize(), data.content, 'utf8', function(error) {
 						if (error != null) trace( error );
 						trace( 'saved file ${data.filename} successfully.' );
+						continueOrQuit();
 					} );
 					
 				});
+				
+			} else {
+				writeFile( (Sys.getCwd() + '/$outputDir/$dirname/${data.filename}').normalize(), data.content, 'utf8', function(error) {
+					if (error != null) trace( error );
+					trace( 'saved file ${data.filename} successfully.' );
+					continueOrQuit();
+				} );
 				
 			}
 			
 		} catch (e:Dynamic) {
 			trace( e );
+			continueOrQuit();
 			
 		}
 	}

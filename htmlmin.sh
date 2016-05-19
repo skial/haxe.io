@@ -1,9 +1,9 @@
 INPUT="$@"
 INPUT_DIR=${INPUT%/*}
-echo $INPUT
-echo $INPUT_DIR
+#echo $INPUT
+#echo $INPUT_DIR
 if [ "$INPUT_DIR" == "$INPUT" ]; then
-	echo "correcting path"
+	#echo "correcting path"
 	INPUT="${INPUT/\\//}"
 	INPUT_DIR=${INPUT%/*}
 fi
@@ -11,10 +11,10 @@ fi
 #INPUT_BASE="${INPUT_BASE/.html/}"
 INPUT_FILE="${INPUT##*/}"
 INPUT_BASE="${INPUT_FILE%%.*}"
-echo $INPUT
-echo $INPUT_DIR
-echo $INPUT_FILE
-echo $INPUT_BASE
+#echo $INPUT
+#echo $INPUT_DIR
+#echo $INPUT_FILE
+#echo $INPUT_BASE
 STR="${INPUT:3}"
 BIN=./bin$STR
 BIN_DIR=${BIN%/*}
@@ -22,10 +22,10 @@ BIN_DIR=${BIN%/*}
 #BIN_BASE="${BIN_BASE/.html/}"
 BIN_FILE="${BIN##*/}"
 BIN_BASE="${BIN_FILE%%.*}"
-echo $BIN
-echo $BIN_DIR
-echo $BIN_FILE
-echo $BIN_BASE
+#echo $BIN
+#echo $BIN_DIR
+#echo $BIN_FILE
+#echo $BIN_BASE
 MIN=./min$STR
 MIN_DIR=${MIN%/*}
 #MIN_BASE="${MIN/$MIN_DIR/}"
@@ -59,7 +59,7 @@ mkdir -p $MIN_DIR
 mkdir -p $OPT_DIR
 cp -u $INPUT $BIN
 cp -u $BIN $MIN
-electron --enable-logging . --input "//$INPUT" --script ./script.js --outputDir "//$BIN_DIR" --show --scripts font.characters.js sitemap.js checkmissing.js
+#electron --enable-logging . --input "//$INPUT" --script ./script.js --outputDir "//$BIN_DIR" --show --scripts linkqueue.js font.characters.js sitemap.js checkmissing.js
 html-minifier \
 --collapse-boolean-attributes --remove-comments --remove-empty-attributes --remove-redundant-attributes \
 --collapse-whitespace --preserve-line-breaks --decode-entities --minify-js  --remove-style-link-type-attributes \
