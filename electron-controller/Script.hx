@@ -37,16 +37,18 @@ class Script {
 	public function new() {
 		electron = require('electron');
 		ipcRenderer = electron.ipcRenderer;
-		
-		ipcRenderer.on('scripts::required', recieveScripts);
-		ipcRenderer.on('scripts::completed', sendHTML);
+		if (window.document.documentElement.outerHTML != '<html><head></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;"></pre></body></html>') {
+			ipcRenderer.on('scripts::required', recieveScripts);
+			ipcRenderer.on('scripts::completed', sendHTML);
+			
+		}
 		
 	}
 	
 	private function recieveScripts(event:String, arg:String) {
 		var scripts:Array<String> = Unserializer.run( arg );
 		var loaded = new StringMap<Dynamic>();
-		trace( event, scripts );
+		trace( scripts );
 		
 		for (script in scripts) {
 			var name = script.withoutExtension();

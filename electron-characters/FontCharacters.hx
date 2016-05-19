@@ -13,16 +13,16 @@ class FontCharacters {
 	
 	public static function main() {
 		console.log( 'loading...' );
-		if( window.document.readyState == 'complete' ) {
+		/*if( window.document.readyState == 'complete' ) {
 			var m = new Script();
 			
 		} else {
 			window.document.addEventListener('DOMContentLoaded', function() {
-				trace( 'dom loaded' );
-				var m = new Script();
-			}, false);
+				trace( 'dom loaded' );*/
+				var fs = new FontCharacters();
+			/*}, false);
 			
-		}
+		}*/
 	}
 	
 	public function new() {

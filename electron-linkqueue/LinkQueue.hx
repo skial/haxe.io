@@ -13,6 +13,7 @@ import js.html.DOMElement;
 import js.node.Url.UrlData;
 import haxe.Constraints.Function;
 
+using StringTools;
 using haxe.io.Path;
 
 class LinkQueue {
@@ -38,11 +39,24 @@ class LinkQueue {
 			for (a in body.querySelectorAll('a[href]')) {
 				href = cast(a,DOMElement).getAttribute('href');
 				url = parse( href );
-				if (url.host == null || url.host == '') links.push( href );
+				if (!href.startsWith('#') && href.startsWith('/') && url.host == null || url.host == '') {
+					links.push( href );
+				
+				} else {
+					if (url.host != null && url.host.indexOf('haxe.io') > -1) trace( href );
+				
+				}
 				
 			};
 			
-			ipcRenderer.send('queue::add', Serializer.run( links ));
+			trace( 'link length::', links.length );
+			trace( links );
+			if (links.length > 0) ipcRenderer.send('queue::add', Serializer.run( links ));
+			ipcRenderer.send('linkqueue::complete', 'true');
+			
+		} else {
+			ipcRenderer.send('linkqueue::complete', 'false');
+			
 		}
 		
 	}

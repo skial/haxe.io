@@ -34,6 +34,7 @@ class Main {
 	private var filename:String;
 	private var port:Int;
 	private var queue:StringMap<Bool> = new StringMap();
+	private var queueKeys:Iterator<String>;
 	
 	public static function main() {
 		App.on('ready', function() {
@@ -61,6 +62,8 @@ class Main {
 		trace( 'input::', (Sys.getCwd() + '$input').normalize() );
 		trace( 'output::', (Sys.getCwd() + '$outputDir').normalize() );
 		trace( 'script::', (Sys.getCwd() + '/$script').normalize() );
+		
+		queueKeys = queue.keys();
 		
 		ipcMain.on('queue::add', modifyQueue);
 		ipcMain.on('save::file', saveFile);
@@ -105,35 +108,109 @@ class Main {
 	    window = null;
 	  });
 		
-		trace( 'loading url http://localhost:${ns.address().port}/$filename' );
-		window.loadURL( 'http://localhost:${ns.address().port}/$filename' );
-		window.webContents.on('did-finish-load', function() {
-			window.webContents.openDevTools();
-			untyped window.webContents.debugger.on('detach', function(_) App.quit());
-			window.webContents.on('crashed', function(_) App.quit());
-			window.webContents.on('devtools-closed', function(_) App.quit());
-			window.webContents.send('scripts::required', Serializer.run( scripts ));
+		/*trace( 'loading url http://localhost:${ns.address().port}/$filename' );
+		window.loadURL( 'http://localhost:${ns.address().port}/$filename' );*/
+		window.webContents.on('did-finish-load', onLoad);
+		//window.webContents.on('dom-ready', onLoad);
+		window.webContents.on('did-fail-load', function(e, c, d, u, b) {
+			trace( 'page failed', window.webContents.getUrl(), e, c, d, u, b );
+			//App.quit();
+			//trace( 'reloading $u' );
+			//window.webContents.reload();
+			/*
+			event Event
+			errorCode Integer
+			errorDescription String
+			validatedURL String
+			isMainFrame Boolean
+			*/
+			
+			//processQueue();
 			
 		});
+		window.webContents.on('did-get-response-details', function(e, s, nu, ou, c, m, r, h, t) {
+			/*
+			event Event
+			status Boolean
+			newURL String
+			originalURL String
+			httpResponseCode Integer
+			requestMethod String
+			referrer String
+			headers Object
+			resourceType String
+			*/
+			if (c == 404) {
+				trace(e, s, nu, ou, c, m, r, h, t);
+				var key = ou.replace( 'http://localhost:$port', '' );
+				if (queue.exists(key)) {
+					queue.set( key, true );
+					window.webContents.stop();
+					setImmediate( processQueue );
+					
+				}
+				
+			}
+			
+		});
+		
+		modifyQueue('manual', Serializer.run([filename]) );
+		setImmediate( processQueue );
+	}
+	
+	private function onLoad():Void {
+		var key = window.webContents.getUrl().replace( 'http://localhost:$port', '' );
+		trace( 'page loaded', window.webContents.getUrl(), key );
+		if (queue.exists(key)) {
+			queue.set( key, true );
+			window.webContents.openDevTools();
+			//untyped window.webContents.debugger.on('detach', function(_) App.quit());
+			//window.webContents.on('crashed', function(_) App.quit());
+			//window.webContents.on('devtools-closed', function(_) App.quit());
+			//while(true) if (!window.webContents.isLoading()) break;
+			
+			window.webContents.send('scripts::required', Serializer.run( scripts ));
+			
+		}
+		
 	}
 	
 	private function handleScriptCompletion(event:String, args:Array<String>, name:String, map:StringMap<Bool>):Void {
-		trace( name, 'completed with ', args );
 		map.set( name, true );
-		
+		trace( '$name is done' );
 		var allDone = false;
-		for (key in map.keys()) allDone = map.get( key );
-		if (allDone) window.webContents.send('scripts::completed', 'true');
+		for (key in map.keys()) {
+			var previous = allDone;
+			allDone = map.get( key );
+			if (previous && !allDone) break;
+			
+		}
+		trace( 'all done?', allDone );
+		if (allDone) {
+			trace( window.webContents.getUrl() );
+			window.webContents.send('scripts::completed', 'true');
+			trace( 'queue length', [for (k in queue.keys()) if (!queue.get(k)) k].length);
+			if ([for (k in queue.keys()) if (!queue.get(k)) k].length != 0) {
+				trace( 'still in queue', [for (k in queue.keys()) if (!queue.get(k)) k] );
+				setImmediate( processQueue );
+				
+			} else {
+				if (!wait) App.quit();
+				
+			}
+		
+		}
+		
 	}
 	
 	private function handleHTML(event:String, arg:String):Void {
 		try {
 			saveFile(event, Serializer.run( { filename: filename, content: arg.replace('\n', '\r\n') } ));
-			if (!wait) App.quit();
+			//if (!wait) App.quit();
 			
 		} catch (e:Dynamic) {
 			trace( e );
-			App.quit();
+			//App.quit();
 			
 		}
 	}
@@ -154,10 +231,19 @@ class Main {
 		}
 		
 		if (dirname == '') dirname == '/';
-		trace( 'saving file to::', (Sys.getCwd() + '/$outputDir/$dirname/${data.filename}').normalize() );
+		//trace( 'attempting to save file to::', (Sys.getCwd() + '/$outputDir/$dirname/${data.filename}').normalize() );
 		
 		try {
-			writeFileSync( (Sys.getCwd() + '/$outputDir/$dirname/${data.filename}').normalize(), data.content, 'utf8' );
+			if (!sys.FileSystem.exists( Sys.getCwd() + '/$outputDir/$dirname/' )) {
+				createDir( Sys.getCwd() + '/$outputDir/$dirname/', function() {
+					writeFile( (Sys.getCwd() + '/$outputDir/$dirname/${data.filename}').normalize(), data.content, 'utf8', function(error) {
+						if (error != null) trace( error );
+						trace( 'saved file ${data.filename} successfully.' );
+					} );
+					
+				});
+				
+			}
 			
 		} catch (e:Dynamic) {
 			trace( e );
@@ -165,14 +251,48 @@ class Main {
 		}
 	}
 	
+	private function createDir(path:String, cb:Function):Void {
+		untyped mkdir( path, function(error) {
+			if (error != null) {
+				var parts = path.split( '/' );
+				parts.pop();
+				createDir( parts.join( '/' ), cb );
+			} else {
+				cb();
+				
+			}
+			
+		});
+	}
+	
 	private function modifyQueue(event:String, arg:String):Void {
 		var links:Array<String> = [];
 		links = Unserializer.run(arg);
-		trace( links.length );
-		for (link in links) if (!queue.exists( link )) {
-			queue.set(link, false);
+		trace( 'recieved', links );
+		for (link in links) if (!link.endsWith('swf') && !queue.exists( link ) && !queue.exists( link.directory().addTrailingSlash() )) {
+			var key = link.endsWith( 'index.html' ) ? link.directory().addTrailingSlash() : link;
+			queue.set(key, false);
+			//trace( 'adding $key' );
+		}
+		
+	}
+	
+	private function processQueue():Void {
+		var key = '';
+		var keys = queue.keys();
+		
+		while (keys.hasNext()) {
+			key = keys.next();
+			if (!queue.get( key )) break;
+		}
+		
+		if (!queue.get( key )) {
+			//queue.set( key, true );
+			trace( 'attempting to load http://localhost:$port$key' );
+			window.loadURL( 'http://localhost:$port$key' );
 			
 		}
+		
 	}
 	
 }
