@@ -113,7 +113,7 @@ class Main {
 		window.webContents.on('did-finish-load', onLoad);
 		//window.webContents.on('dom-ready', onLoad);
 		window.webContents.on('did-fail-load', function(e, c, d, u, b) {
-			trace( 'page failed', window.webContents.getUrl(), e, c, d, u, b );
+		trace( 'page failed', window.webContents.getUrl()/*, e, c, d, u, b*/ );
 			//App.quit();
 			//trace( 'reloading $u' );
 			//window.webContents.reload();
@@ -141,7 +141,7 @@ class Main {
 			resourceType String
 			*/
 			if (c == 404) {
-				trace(e, s, nu, ou, c, m, r, h, t);
+				//trace(e, s, nu, ou, c, m, r, h, t);
 				var key = ou.replace( 'http://localhost:$port', '' );
 				if (queue.exists(key)) {
 					queue.set( key, true );
