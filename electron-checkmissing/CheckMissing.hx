@@ -28,7 +28,7 @@ class CheckMissing {
 		ipcRenderer = electron.ipcRenderer;
 		
 		var head = cast window.document.getElementsByTagName( 'head' )[0];
-		var script = window.document.querySelectorAll( 'head script[src*="haxe.io.js"]' )[0];
+		//var script = window.document.querySelectorAll( 'head script[src*="haxe.io.js"]' )[0];
 		var tags:Array<Array<Dynamic>> = [
 			[{tag:'link', rel:'apple-touch-icon', sizes:'57x57'/*, href:"/apple-touch-icon-57x57.png"*/}, {href:"/apple-touch-icon-57x57.png?v=wAANbdxLQn"}],
 			[{tag:'link', rel:'apple-touch-icon', sizes:'60x60'/*, href:"/apple-touch-icon-60x60.png"*/}, {href:"/apple-touch-icon-60x60.png?v=wAANbdxLQn"}],
@@ -50,7 +50,8 @@ class CheckMissing {
 			[{tag:'meta', name:'msapplication-TileColor', content:"#f15922"}, {}],
 			[{tag:'meta', name:'msapplication-TileImage'/*, content:"/mstile-144x144.png"*/}, {content:"/mstile-144x144.png?v=wAANbdxLQn"}],
 			[{tag:'meta', name:'theme-color', content:"#ffffff"}, {}],
-			[{tag:'script', src:'/js/haxe.io.js'}, {async:'async', defer:'defer'}]
+			[{tag:'script', src:'/js/haxe.io.js'}, {async:'async', defer:'defer'}],
+			[{tag:'meta', name:"twitter:image:src"}, {name:"twitter:image"}]
 		];
 		
 		for (array in tags) {
@@ -66,33 +67,14 @@ class CheckMissing {
 				
 			} else {
 				var element = cast(matches[0],DOMElement);
-				if (element.hasAttribute( 'tag')) element.removeAttribute( 'tag' );
+				if (element.hasAttribute('contents')) element.removeAttribute('contents');
+				if (element.hasAttribute('tag')) element.removeAttribute( 'tag' );
 				for (key in values.keys()) if (key != 'tag') element.setAttribute( key, values.get( key ) );
 				
 			}
 			
 		}
 		
-		/*if (script == null) {
-			
-			if (head != null) {
-				var element:DOMElement = window.document.createElement( 'script' );
-				element.setAttribute( 'src', '/js/haxe.io.js' );
-				element.setAttribute( 'async', 'async' );
-				element.setAttribute( 'defer', 'defer' );
-				cast(head,Node).appendChild( element );
-				
-				ipcRenderer.send('checkmissing::complete', 'true');
-				
-			} else {
-				ipcRenderer.send('checkmissing::complete', 'false');
-				
-			}
-			
-		} else {
-			ipcRenderer.send('checkmissing::complete', 'false');
-			
-		}*/
 		ipcRenderer.send('checkmissing::complete', 'true');
 		
 	}

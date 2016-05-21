@@ -39,7 +39,7 @@ class LinkQueue {
 			for (a in body.querySelectorAll('a[href]')) {
 				href = cast(a,DOMElement).getAttribute('href');
 				url = parse( href );
-				if (!href.startsWith('#') && href.startsWith('/') && url.host == null || url.host == '') {
+				if (!href.startsWith('//') && !href.startsWith('#') && href.startsWith('/') && url.host == null || url.host == '') {
 					links.push( href );
 				
 				} else {

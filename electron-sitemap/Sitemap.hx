@@ -56,18 +56,12 @@ class Sitemap {
 					
 					xml.add( '</urlset>' );
 					
-					ipcRenderer.send('save::file', Serializer.run( { filename: 'sitemap.xml', content: xml.toString() } ));
-					ipcRenderer.send('sitemap::complete', 'true');
+					ipcRenderer.on('sitemap::saved', function() ipcRenderer.send('sitemap::complete', 'true'));
+					ipcRenderer.send('save::file', Serializer.run( { filename: 'sitemap.xml', content: xml.toString(), reply:'sitemap::saved' } ));
 					
 				}
 				
-			} else {
-				ipcRenderer.send('sitemap::complete', 'false');
-				
 			}
-			
-		} else {
-			ipcRenderer.send('sitemap::complete', 'false');
 			
 		}
 		

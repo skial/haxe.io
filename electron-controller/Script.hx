@@ -14,7 +14,7 @@ using haxe.io.Path;
 class Script {
 	
 	private var electron:Dynamic;
-	private var ipcRenderer:{on:String->Function->Dynamic, send:String->Rest<Dynamic>->Void};
+	private var ipcRenderer:{on:String->Function->Dynamic, once:String->Function->Dynamic, send:String->Rest<Dynamic>->Void};
 	
 	public static function main() {
 		var con:Script = null;
@@ -40,6 +40,7 @@ class Script {
 		if (window.document.documentElement.outerHTML != '<html><head></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;"></pre></body></html>') {
 			ipcRenderer.on('scripts::required', recieveScripts);
 			ipcRenderer.on('scripts::completed', sendHTML);
+			ipcRenderer.on('continueOrQuit', function() ipcRenderer.send('continueOrQuit', ''));
 			
 		}
 		

@@ -5,12 +5,12 @@ import js.node.Fs.*;
 import js.Node.process;
 import haxe.Serializer;
 import haxe.Unserializer;
-import electron.main.App;
+//import electron.main.App;
 import haxe.ds.StringMap;
-import electron.main.WebContents;
+//import electron.main.WebContents;
 import haxe.Constraints.Function;
-import electron.main.BrowserWindow;
-import electron.main.BrowserWindowOptions;
+//import electron.main.BrowserWindow;
+//import electron.main.BrowserWindowOptions;
 
 using StringTools;
 using haxe.io.Path;
@@ -19,31 +19,36 @@ using haxe.io.Path;
 class Main {
 	
 	public var input:String;
-	@alias('w') public var width:Int = 800;
-	@alias('h') public var height:Int = 600;
+	@alias('w') public var width:Int;
+	@alias('h') public var height:Int;
 	public var script:String;
 	@alias('s') public var scripts:Array<String> = [];
 	public var show:Bool = false;
 	public var wait:Bool = false;
 	public var outputDir:String;
 
-	private var electron:Dynamic;
-	private var ipcMain:{on:String->Function->Dynamic};
-	private var contents:WebContents;
-	private var window:BrowserWindow;
+	private static var app:Dynamic;
+	private static var electron:Dynamic;
+	private static var ipcMain:{on:String->Function->Dynamic};
+	private var window:Dynamic;
+	private var contents:Dynamic;
 	private var filename:String;
 	private var port:Int;
 	private var queue:StringMap<Bool> = new StringMap();
 	private var queueKeys:Iterator<String>;
 	
 	public static function main() {
-		App.on('ready', function() {
+		electron = require('electron');
+		app = electron.app;
+		ipcMain = electron.ipcMain;
+		
+		app.on('ready', function() {
 			var m = new Main( Sys.args() );
 		} );
 		
-		App.on('window-all-closed', function() {
+		app.on('window-all-closed', function() {
 		  if (process.platform != 'darwin') {
-		    App.quit();
+		    app.quit();
 		  }
 		});
 	}
@@ -51,13 +56,21 @@ class Main {
 	public function new(args:Array<String>) {
 		@:cmd _;
 		
+		if (width == null) {
+			width = electron.screen.getPrimaryDisplay().workAreaSize.width;
+			
+		}
+		
+		if (height == null) {
+			height = electron.screen.getPrimaryDisplay().workAreaSize.height;
+			
+		}
+		
 		var config:Dynamic = { 
 			width: width, height: height, show: show, center:true, 
 		};
 		
-		electron = require('electron');
-		ipcMain = electron.ipcMain;
-		
+		trace( config );
 		trace( 'scripts::', scripts );
 		trace( 'input::', (Sys.getCwd() + '$input').normalize() );
 		trace( 'output::', (Sys.getCwd() + '$outputDir').normalize() );
@@ -65,12 +78,14 @@ class Main {
 		
 		queueKeys = queue.keys();
 		
+		ipcMain.on('continueOrQuit', continueOrQuit);
+		ipcMain.on('screenshot::init', screenshot);
 		ipcMain.on('queue::add', modifyQueue);
 		ipcMain.on('save::file', saveFile);
 		ipcMain.on('final::html', handleHTML);
 		ipcMain.on('final::failed', function() {
 			trace( 'sending html failed' );
-			App.quit();
+			app.quit();
 		});
 		
 		var completed = new StringMap<Bool>();
@@ -82,7 +97,7 @@ class Main {
 			ipcMain.on('$name::complete', handleScriptCompletion.bind(_, _, name, completed));
 			
 		}
-		
+		config.webPreferences = {};
 		if (script != null) config.webPreferences = { 
 			preload:( Sys.getCwd() + '/$script' ).normalize() 
 		};
@@ -102,73 +117,38 @@ class Main {
 		});
 		ns.listen(0);
 		port = ns.address().port;
-		trace( 'loading $filename' );
-		window = new BrowserWindow( cast config );
+		window = untyped __js__("new {0}", electron.BrowserWindow( config ));
 		window.on('closed', function() {
 	    window = null;
 	  });
 		
-		/*trace( 'loading url http://localhost:${ns.address().port}/$filename' );
-		window.loadURL( 'http://localhost:${ns.address().port}/$filename' );*/
-		window.webContents.on('did-finish-load', onLoad);
-		//window.webContents.on('dom-ready', onLoad);
-		window.webContents.on('did-fail-load', function(e, c, d, u, b) {
-		trace( 'page failed', window.webContents.getUrl()/*, e, c, d, u, b*/ );
-			//App.quit();
-			//trace( 'reloading $u' );
-			//window.webContents.reload();
-			/*
-			event Event
-			errorCode Integer
-			errorDescription String
-			validatedURL String
-			isMainFrame Boolean
-			*/
-			
-			//processQueue();
-			
-		});
-		window.webContents.on('did-get-response-details', function(e, s, nu, ou, c, m, r, h, t) {
-			/*
-			event Event
-			status Boolean
-			newURL String
-			originalURL String
-			httpResponseCode Integer
-			requestMethod String
-			referrer String
-			headers Object
-			resourceType String
-			*/
-			if (c == 404) {
-				//trace(e, s, nu, ou, c, m, r, h, t);
-				var key = ou.replace( 'http://localhost:$port', '' );
+		/*window.webContents.on('did-get-response-details', function(e, s, n, o, rc, rm, rf, h, rt) {
+			if (queue.exists( (o:String).replace('http://localhost:$port', '') ) ) {
+				var key = window.webContents.getURL().replace( 'http://localhost:$port', '' );
+				trace( 'resource failed', n, o, rc, window.webContents.getURL(), key );
 				if (queue.exists(key)) {
 					queue.set( key, true );
-					window.webContents.stop();
-					setImmediate( processQueue );
+					//window.webContents.openDevTools();
+					window.webContents.send('continueOrQuit', '');
 					
 				}
 				
 			}
 			
-		});
+		});*/
+		window.webContents.on('did-stop-loading', onLoad);
+		//window.webContents.on('dom-ready', onLoad);
 		
 		modifyQueue('manual', Serializer.run([filename]) );
-		setImmediate( processQueue );
+		process.nextTick( processQueue );
 	}
 	
 	private function onLoad():Void {
-		var key = window.webContents.getUrl().replace( 'http://localhost:$port', '' );
-		trace( 'page loaded', window.webContents.getUrl(), key );
+		var key = window.webContents.getURL().replace( 'http://localhost:$port', '' );
+		trace( 'page loaded', window.webContents.getURL(), key );
 		if (queue.exists(key)) {
 			queue.set( key, true );
 			window.webContents.openDevTools();
-			//untyped window.webContents.debugger.on('detach', function(_) App.quit());
-			//window.webContents.on('crashed', function(_) App.quit());
-			//window.webContents.on('devtools-closed', function(_) App.quit());
-			//while(true) if (!window.webContents.isLoading()) break;
-			
 			window.webContents.send('scripts::required', Serializer.run( scripts ));
 			
 		}
@@ -177,7 +157,7 @@ class Main {
 	
 	private function handleScriptCompletion(event:String, args:Array<String>, name:String, map:StringMap<Bool>):Void {
 		map.set( name, true );
-		trace( '$name is done' );
+		trace( '$name script has completed', args );
 		var allDone = false;
 		for (key in map.keys()) {
 			var previous = allDone;
@@ -187,7 +167,7 @@ class Main {
 		}
 		trace( 'all done?', allDone );
 		if (allDone) {
-			trace( window.webContents.getUrl() );
+			trace( 'completed!', window.webContents.getURL() );
 			window.webContents.send('scripts::completed', 'true');
 		
 		}
@@ -199,28 +179,29 @@ class Main {
 			continueOrQuit();
 			
 		} else {
-			saveFile(event, Serializer.run( { filename: filename, content: arg.replace('\n', '\r\n') } ));
+			saveFile(event, Serializer.run( { filename: filename, content: arg.replace('\n', '\r\n'), reply:'continueOrQuit' } ));
 			
 		}
 	}
 	
 	private function continueOrQuit():Void {
-		trace( 'queue length', [for (k in queue.keys()) if (!queue.get(k)) k].length);
+		//trace( 'queue length', [for (k in queue.keys()) if (!queue.get(k)) k].length);
 		if ([for (k in queue.keys()) if (!queue.get(k)) k].length != 0) {
-			trace( 'still in queue', [for (k in queue.keys()) if (!queue.get(k)) k] );
-			setImmediate( processQueue );
+			//trace( 'still in queue', [for (k in queue.keys()) if (!queue.get(k)) k] );
+			process.nextTick( processQueue );
 			
 		} else {
-			if (!wait) App.quit();
+			trace( queue );
+			if (!wait) app.quit();
 			
 		}
 	}
 	
 	private function saveFile(event:String, arg:String):Void {
-		var data:{filename:String, content:String} = Unserializer.run( arg );
-		var path = window.webContents.getUrl().replace( 'http://localhost:${port}', '' );
+		var data:{filename:String, content:String, reply:String} = Unserializer.run( arg );
+		var path:String = (window.webContents.getURL():String).replace( 'http://localhost:${port}', '' );
 		var dirname = path.directory();
-		
+		trace( 'saving file', path, dirname, data.filename, data.reply );
 		if (data.filename == null || data.filename == '') {
 			trace( 'data filename cannot be empty.' );
 			return;
@@ -233,13 +214,13 @@ class Main {
 		
 		if (dirname == '') dirname == '/';
 		
-		try {
+		//try {
 			if (!sys.FileSystem.exists( Sys.getCwd() + '/$outputDir/$dirname/' )) {
 				createDir( Sys.getCwd() + '/$outputDir/$dirname/', function() {
 					writeFile( (Sys.getCwd() + '/$outputDir/$dirname/${data.filename}').normalize(), data.content, 'utf8', function(error) {
 						if (error != null) trace( error );
-						trace( 'saved file ${data.filename} successfully.' );
-						continueOrQuit();
+						trace( 'saved file /$outputDir/$dirname/${data.filename} successfully.' );
+						window.webContents.send(data.reply, 'true');
 					} );
 					
 				});
@@ -247,17 +228,17 @@ class Main {
 			} else {
 				writeFile( (Sys.getCwd() + '/$outputDir/$dirname/${data.filename}').normalize(), data.content, 'utf8', function(error) {
 					if (error != null) trace( error );
-					trace( 'saved file ${data.filename} successfully.' );
-					continueOrQuit();
+					trace( 'saved file /$outputDir/$dirname/${data.filename} successfully.' );
+					window.webContents.send(data.reply, 'true');
 				} );
 				
 			}
 			
-		} catch (e:Dynamic) {
+		/*} catch (e:Dynamic) {
 			trace( e );
 			continueOrQuit();
 			
-		}
+		}*/
 	}
 	
 	private function createDir(path:String, cb:Function):Void {
@@ -267,7 +248,7 @@ class Main {
 				parts.pop();
 				createDir( parts.join( '/' ), cb );
 			} else {
-				cb();
+				trace( 'create directory', error );
 				
 			}
 			
@@ -277,7 +258,7 @@ class Main {
 	private function modifyQueue(event:String, arg:String):Void {
 		var links:Array<String> = [];
 		links = Unserializer.run(arg);
-		trace( 'recieved', links );
+		//trace( 'recieved', links );
 		for (link in links) if (!link.endsWith('swf') && !queue.exists( link ) && !queue.exists( link.directory().addTrailingSlash() )) {
 			var key = link.endsWith( 'index.html' ) ? link.directory().addTrailingSlash() : link;
 			queue.set(key, false);
@@ -299,6 +280,45 @@ class Main {
 			//queue.set( key, true );
 			trace( 'attempting to load http://localhost:$port$key' );
 			window.loadURL( 'http://localhost:$port$key' );
+			
+		}
+		
+	}
+	
+	private function screenshot(event:String, arg:String):Void {
+		trace( 'attempting screen grab of ' + window.webContents.getURL(), arg );
+		if (window != null && window.webContents != null) {
+			window.webContents.closeDevTools();
+			if (window.isFocused()) window.blur();
+			window.capturePage(function(image) {
+				var path:String = (window.webContents.getURL():String).replace( 'http://localhost:$port', '' );
+				var dirname = path.directory();
+				var output = '/img/$dirname/preview.png'.normalize();
+				var size:{width:Int,height:Int} = image.getSize();
+				trace( output, size );
+				var data = { width:size.width,height:size.height,path:output};
+				if (!sys.FileSystem.exists(Sys.getCwd() + '/$outputDir/img/$dirname/')) {
+					createDir( Sys.getCwd() + '/$outputDir/img/$dirname/', function () writeFile( Sys.getCwd() + '/$outputDir/$output'.normalize(), image.toPng(), function(error) {
+						if (error != null) trace( error );
+						trace( 'saving preview of ${window.webContents.getURL()} to ' + Sys.getCwd() + '/$outputDir/$output' );
+						window.webContents.openDevTools();
+						window.webContents.send('screenshot::complete', Serializer.run(data));
+					}));
+				
+				} else {
+					writeFile( Sys.getCwd() + '/$outputDir/$output'.normalize(), image.toPng(), function(error) {
+						if (error != null) trace( error );
+						trace( 'saving preview of ${window.webContents.getURL()} to ' + Sys.getCwd() + '/$outputDir/$output' );
+						window.webContents.openDevTools();
+						window.webContents.send('screenshot::complete', Serializer.run(data));
+					});
+					
+				}
+				
+			});
+			
+		} else {
+			window.webContents.send('screenshot::complete', 'false');
 			
 		}
 		

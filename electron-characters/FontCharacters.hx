@@ -67,11 +67,8 @@ class FontCharacters {
 					for (_ga in ga) head.removeChild( _ga );
 				}
 				
-				require('electron').ipcRenderer.send('font.characters::complete', 'true');
-				
 			} else {
 				trace( 'link length', link.length );
-				require('electron').ipcRenderer.send('font.characters::complete', 'false');
 				
 			}
 			
@@ -95,11 +92,9 @@ class FontCharacters {
 			}*/
 			
 			
-		} else {
-			//require('electron').ipcRenderer.send('haxeCharacterList-close', 'true');
-			require('electron').ipcRenderer.send('font.characters::complete', 'false');
-			
 		}
+		
+		require('electron').ipcRenderer.send('font.characters::complete', 'true');
 		
 	}
 	
