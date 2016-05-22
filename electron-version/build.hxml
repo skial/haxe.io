@@ -1,0 +1,12 @@
+-lib electron
+-lib hxnodejs
+-lib thx.core
+-lib cmd
+-D dce=full
+-cp .
+#--no-traces
+
+--each 
+
+-main Version
+-js ../version.js

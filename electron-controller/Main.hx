@@ -3,6 +3,7 @@ package ;
 import js.Node.*;
 import js.node.Fs.*;
 import js.Node.process;
+import js.node.Crypto.*;
 import haxe.Serializer;
 import haxe.Unserializer;
 //import electron.main.App;
@@ -78,6 +79,9 @@ class Main {
 		
 		queueKeys = queue.keys();
 		
+		ipcMain.on('fetch::data', function(event:String, arg:String) {
+			window.webContents.send('fetched::data::$arg', Serializer.run({input:input}));
+		});
 		ipcMain.on('continueOrQuit', continueOrQuit);
 		ipcMain.on('screenshot::init', screenshot);
 		ipcMain.on('queue::add', modifyQueue);
