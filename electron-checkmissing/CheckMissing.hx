@@ -51,7 +51,6 @@ class CheckMissing {
 			[{tag:'meta', name:'msapplication-TileImage'/*, content:"/mstile-144x144.png"*/}, {content:"/mstile-144x144.png?v=wAANbdxLQn"}],
 			[{tag:'meta', name:'theme-color', content:"#ffffff"}, {}],
 			[{tag:'script', src:'/js/haxe.io.js'}, {async:'async', defer:'defer'}],
-			[{tag:'meta', name:"twitter:image:src"}, {name:"twitter:image"}]
 		];
 		
 		for (array in tags) {
@@ -70,6 +69,9 @@ class CheckMissing {
 				if (element.hasAttribute('contents')) element.removeAttribute('contents');
 				if (element.hasAttribute('tag')) element.removeAttribute( 'tag' );
 				for (key in values.keys()) if (key != 'tag') element.setAttribute( key, values.get( key ) );
+				for (i in 1...matches.length) {
+					head.removeChild( matches[i] );
+				}
 				
 			}
 			
