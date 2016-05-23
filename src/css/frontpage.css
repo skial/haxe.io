@@ -1,28 +1,446 @@
-main h1 {
-	background: rgba(20, 20, 20, 0.4);
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	padding-top: 20px;
-	padding-left: 15px;
-	margin-bottom: 0px;
-	width: 100%
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
-main p {
-	background: rgba(20, 20, 20, 0.6);
-	position: absolute;
-	bottom: 0px;
-	font-size: 0.9em;
-	font-family: Sans-Serif;
-	padding-top: 5px;
-	padding-bottom: 5px;
+html[class="/"] main, 
+header nav, footer .logo {
+	padding: 0 5vw;
 }
 
-#ld35 {
-	background-image: linear-gradient(rgba(82,244,206,0.5),rgba(82,244,206,0.5)), url(/img/ld/35/subdragon.png);
+html[class="/"] main a {
+	color: inherit;
+	text-decoration: none;
 }
 
+html[class="/"] main a:hover {
+	text-decoration: underline;
+}
+
+html[class="/"] main ul, html[class="/"] .tabs ul {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0;
+	padding: 0;
+}
+
+html[class="/"] main ul li {
+	flex-grow: 1;
+	flex-basis: 100%;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 0.5rem 0.5rem;
+	padding: 0.5rem 2rem;
+	list-style-type: none;
+	min-height: 20vh;
+	border-radius: 0.1rem;
+	/*background-color: rgba(249,244,234,0.6);*/
+	/*background-color: rgba(245, 245, 241, 0.7);*/
+	background-color: rgba(247,245,238,0.8);
+	border-left: 0.2rem solid rgba(241,89,34, 0.4);
+	box-shadow: -0.2rem 0 0 0 rgba(241,89,34, 0.8), 1px 1px 1px 0px rgba(189, 189, 189, 0.3);
+}
+
+html[class="/"] main ul li:first-child,
+html[class="/"] main ul li[id*="ld"],
+html[class="/"] main ul li[id*="release"] {
+	padding: 2rem;
+}
+
+html[class="/"] main ul li[id*="release"] {
+	border-color: rgba(108, 198, 68, 0.4);
+	box-shadow: -0.2rem 0 0 0 rgba(108,198,68,0.8), 1px 1px 1px 0px rgba(189, 189, 189, 0.3);
+}
+
+html[class="/"] main ul li[id*="ld"] {
+	border-color: rgba(119, 68, 204, 0.4);
+	box-shadow: -0.2rem 0 0 0 rgba(119, 68, 204,0.8), 1px 1px 1px 0px rgba(189, 189, 189, 0.3);
+}
+
+html[class="/"] main ul li[id^="e"] {
+	border-color: rgba(255, 128, 0, 0.4);
+	box-shadow: -0.2rem 0 0 0 rgba(255, 128, 0, 0.8), 1px 1px 1px 0px rgba(189, 189, 189, 0.3);
+}
+
+html[class="/"] main ul li[id^="noc"] {
+	border-color: rgba(205, 32, 31, 0.4);
+	box-shadow: -0.2rem 0 0 0 rgba(205, 32, 31, 0.8), 1px 1px 1px 0px rgba(189, 189, 189, 0.3);
+}
+
+html[class="/"] main ul li[id^="link"] {
+	border-color: rgba(71, 99, 152, 0.4);
+	box-shadow: -0.2rem 0 0 0 rgba(71, 99, 152, 0.8), 1px 1px 1px 0px rgba(189, 189, 189, 0.3);
+	flex-direction: row;
+	align-items: center;
+}
+
+html[class="/"] main ul li[id^="link"]::after {
+	content: url("/svg/external-link.min.svg");
+	position: relative;
+	display: inline-block;
+	width: 1.5rem;
+	height: 1.5rem;
+	margin-left: 1rem;
+	color: rgba(51 ,51, 51, 1);
+}
+
+html[class="/"] main li > *:not(h1):not(a) {
+	display: none;
+}
+
+html[class="/"] span[id] {
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: block;
+}
+
+html[class="/"] .tabs ul {
+	display: flex;
+	align-items: center;
+	/*flex-grow: 1;*/
+	flex-direction: row;
+	padding-bottom: 1.5rem;
+	border-bottom: 1px solid rgba(189, 189, 189, 0.6);
+}
+
+html[class="/"] .tabs li {
+	flex-grow: 1;
+	/*flex-basis: auto;*/
+	display: flex;
+	justify-content: center;
+	list-style: none;
+	padding: 0.25rem;
+}
+
+html[class="/"] .tabs li label * {
+	/* see https://stackoverflow.com/a/30170745 */
+	/*display: block;*/
+	/* see : http://stackoverflow.com/a/34810294 */
+	pointer-events: none;
+}
+
+html[class="/"] .long {
+	display: none;
+}
+
+html[class="/"] .short.dot {
+	padding-top: 0.6rem;
+}
+
+html[class="/"] .tabs li:first-child {
+	padding: 0;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-right: 0.25rem;
+	border-right: 1px solid rgba(189, 189, 189, 0.6);
+}
+
+html[class="/"] .tabs li:first-child p,
+html[class="/"] .tabs li:first-child svg {
+	flex-grow: 1;
+}
+
+html[class="/"] .tabs li:first-child p {
+	margin: 0;
+	display: none;
+	text-align: center;
+}
+
+html[class="/"] .tabs li:first-child svg {
+	min-height: 1.3rem;
+	max-height: 1.3rem;
+	min-width: 1.3rem;
+	max-width: 1.3rem;
+}
+
+html[class="/"] .tabs li:first-child .filter.disabled {
+	opacity: 0.6;
+}
+
+html[class="/"] .tabs li:first-child .filter.enabled {
+	display: none;
+}
+
+[type="checkbox"]:checked ~ header .tabs li:first-child .filter.enabled {
+	display: block;
+}
+
+[type="checkbox"]:checked ~ header .tabs li:first-child .filter.disabled {
+	display: none;
+}
+
+/* Include credit for Noun project svg files else where */
+html[class="/"] .tabs li:first-child svg text {
+	display: none;
+}
+
+html[class="/"] [name="nav-group"][type="checkbox"] {
+	display: none;
+}
+
+html[class="/"] .tabs li label {
+	cursor: pointer;
+	padding: 0.2rem;
+	border-radius: 3px;
+	font-family: monospace;
+	color: rgba(189, 189, 189, 0.6);
+  border: 1px solid rgba(189, 189, 189, 0.6);
+}
+
+#news:checked ~ header .tabs label[for="news"] {
+	color: rgba(241,89,34, 1);
+	border-color: rgba(241,89,34, 0.4);
+	background-color: rgba(241,89,34, 0.4);
+}
+
+#articles:checked ~ header .tabs label[for="articles"] {
+	color: rgba(71, 99, 152, 1);
+	border-color: rgba(71, 99, 152, 0.4);
+	background-color: rgba(71, 99, 152, 0.4);
+}
+
+#ludumdare:checked ~ header .tabs label[for="ludumdare"] {
+	color: rgba(119, 68, 204, 1);
+	border-color: rgba(119, 68, 204, 0.4);
+	background-color: rgba(119, 68, 204, 0.4);
+}
+
+#releases:checked ~ header .tabs label[for="releases"] {
+	color: rgba(108, 198, 68, 1);
+	border-color: rgba(108, 198, 68, 0.4);
+	background-color: rgba(108, 198, 68, 0.4);
+}
+
+#events:checked ~ header .tabs label[for="events"] {
+	color: rgba(255, 128, 0, 1);
+	border-color: rgba(255, 128, 0, 0.4);
+	background-color: rgba(255, 128, 0, 0.4);
+}
+
+#speaker:checked ~ header .tabs label[for="speaker"] {
+	color: rgba(255, 128, 0, 1);
+	border-color: rgba(255, 128, 0, 0.4);
+	background-color: rgba(255, 128, 0, 0.4);
+}
+
+#videos:checked ~ header .tabs label[for="videos"] {
+	color: rgb(205, 32, 31);
+	border-color: rgba(205, 32, 31, 0.4);
+	background-color: rgba(205, 32, 31, 0.4);
+}
+
+#news:checked ~ main li:not([id^="r"]),
+#news:checked ~ main li[id^="release"] {
+	display: none;
+}
+
+#news:checked ~ main li[id^="e"] {
+	display: none;
+}
+
+#articles:checked ~ main li:not([itemtype*="Article"]),
+#articles:checked ~ main li[id^="ld"] {
+	display: none;
+}
+
+#ludumdare:checked ~ main li:not([id^="ld"]) {
+	display: none;
+}
+
+#releases:checked ~ main li:not([id^="release"]) {
+	display: none;
+}
+
+#events:checked ~ main li:not([id^="e"]) {
+	display: none;
+}
+
+#speaker:checked ~ main li:not([id^="speaker"]) {
+	display: none;
+}
+
+#videos:checked ~ main li:not([id^="noc"]) {
+	display: none;
+}
+
+#news:checked ~ main li[id^="r"]:not([id^="release"]),
+/*#weekly-news:checked ~ main li[id^="ld"],*/
+#ludumdare:checked ~ main li[id^="ld"],
+#releases:checked ~ main li[id^="release"],
+#events:checked ~ main li[id^="e"],
+#speaker:checked ~ main li[id^="speaker"],
+#videos:checked ~ main li[id^="noc"], 
+#articles:checked ~ main li[itemtype*="Article"]:not([id^="ld"]) {
+	display: flex;
+}
+
+@media (min-width: 400px) {
+	html[class="/"] main ul li {
+		flex-basis: calc(50% - 0.5vw);
+	}
+	
+	html[class="/"] .tabs li:first-child svg {
+		min-height: 1.5rem;
+		max-height: 1.5rem;
+		min-width: 1.5rem;
+		max-width: 1.5rem;
+	}
+	
+	html[class="/"] .tabs li label {
+		padding: 0.4rem;
+	}
+
+	html[class="/"] [type="checkbox"]:not(:checked) ~ main ul li:first-child
+	/*html[class="/"] [type="checkbox"] ~ main ul li[id*="release"] */{
+		flex-basis: 100%;
+	}
+}
+
+@media (min-width: 650px) {
+	html[class="/"] main, header nav, footer .logo {
+		padding: 0 6vw;
+	}
+	
+	html[class="/"] .tabs ul {
+		padding-bottom: 2rem;
+	}
+	
+	html[class="/"] .long {
+		display: initial;
+	}
+	
+	html[class="/"] .short {
+		display: none;
+	}
+	
+	html[class="/"] .tabs li:first-child svg {
+		min-height: 1.7rem;
+		max-height: 1.7rem;
+		min-width: 1.7rem;
+		max-width: 1.7rem;
+	}
+
+	html[class="/"] main ul li {
+		margin: 0.6rem 0.7rem;
+		flex-basis: calc(33.33% - 3vw);
+	}
+
+	input:checked ~ html[class="/"] main ul li:nth-child(1n+2)[id*="ld"]/*,
+	/*html[class="/"] ul li:nth-child(5n+5)*/ {
+		flex-basis: calc(66.66% - 3vw);
+	}
+	
+	html[class="/"] [type="checkbox"]:checked ~ main ul li~#link,
+	html[class="/"] [type="checkbox"]:checked ~ main ul li~[id*="ld"],
+	html[class="/"] [type="checkbox"]:checked ~ main ul li~[id^="noc"],
+	html[class="/"] [type="checkbox"]:checked ~ main ul li~[id^="e"],
+	html[class="/"] [type="checkbox"]:checked ~ main ul li~[id^="speaker"],
+	html[class="/"] [type="checkbox"]:checked ~ main ul li~[id^="release"],
+	html[class="/"] [type="checkbox"]:checked ~ main ul li~[itemtype*="Series"] {
+		flex-basis: 100%;
+	}
+	
+	html[class="/"] #news:checked ~ :checked ~ main ul [itemtype*="Series"] ~ li,
+	html[class="/"] #ludumdare:checked ~ :checked ~ main ul [id*="ld"] ~ li,
+	html[class="/"] #releases:checked ~ :checked ~ main ul [id^="release"] ~ li,
+	html[class="/"] #events:checked ~ :checked ~ main ul [id^="e"] ~ li,
+	html[class="/"] #videos:checked ~ :checked ~ main ul [id^="noc"] ~ li,
+	html[class="/"] #speaker:checked ~ :checked ~ main ul [id^="speaker"] ~ li,
+	html[class="/"] #articles:checked ~ :checked ~ main ul [itemtype*="Article"] ~ li,
+	/*html[class="/"] [type="checkbox"]:checked ~ main ul #link ~ li,*/
+	html[class="/"] #ludumdare:checked ~ main ul [id*="ld"]~[id*="ld"],
+	html[class="/"] #videos:checked ~ main ul [id^="noc"]~[id^="noc"],
+	html[class="/"] #events:checked ~ main ul [id^="e"]~[id^="e"],
+	html[class="/"] #speaker:checked ~ main ul [id^="speaker"]~[id^="speaker"],
+	html[class="/"] #releases:checked ~ main ul [id^="release"]~[id^="release"],
+	html[class="/"] [type="checkbox"]:checked ~ main ul [itemtype*="Series"]~[itemtype*="Series"] {
+		flex-basis: calc(33.33% - 3vw);
+	}
+}
+
+@media (min-width: 900px) {
+	html[class="/"] main, header nav, footer .logo {
+		padding: 0 7vw;
+	}
+	
+	html[class="/"] .tabs li:first-child p {
+		display: block;
+	}
+	
+	html[class="/"] .tabs li:first-child .filter,
+	[type="checkbox"]:checked ~ header .tabs li:first-child .filter.enabled {
+		display: none;
+	}
+
+	html[class="/"] main ul li {
+		flex-basis: calc(25% - 3.5vw);
+	}
+
+	html[class="/"] main ul li:nth-child(1n+2)[id*="ld"]/*,
+	/*html[class="/"] ul li:nth-child(5n+5)*/ {
+		flex-basis: calc(75% - 3.5vw);
+	}
+	
+	html[class="/"] #news:checked ~ :checked ~ main ul [itemtype*="Series"] ~ li,
+	html[class="/"] #ludumdare:checked ~ :checked ~ main ul [id*="ld"] ~ li,
+	html[class="/"] #releases:checked ~ :checked ~ main ul [id^="release"] ~ li,
+	html[class="/"] #events:checked ~ :checked ~ main ul [id^="e"] ~ li,
+	html[class="/"] #videos:checked ~ :checked ~ main ul [id^="noc"] ~ li,
+	html[class="/"] #speaker:checked ~ :checked ~ main ul [id^="speaker"] ~ li,
+	html[class="/"] #articles:checked ~ :checked ~ main ul [itemtype*="Article"] ~ li,
+	/*html[class="/"] [type="checkbox"]:checked ~ main ul #link ~ li,*/
+	html[class="/"] #ludumdare:checked ~ main ul [id*="ld"]~[id*="ld"],
+	html[class="/"] #videos:checked ~ main ul [id^="noc"]~[id^="noc"],
+	html[class="/"] #events:checked ~ main ul [id^="e"]~[id^="e"],
+	html[class="/"] #speaker:checked ~ main ul [id^="speaker"]~[id^="speaker"],
+	html[class="/"] #releases:checked ~ main ul [id^="release"]~[id^="release"],
+	html[class="/"] [type="checkbox"]:checked ~ main ul [itemtype*="Series"]~[itemtype*="Series"] {
+		flex-basis: calc(25% - 3.5vw);
+	}
+}
+
+@media (min-width: 1100px) {
+	html[class="/"] main, header nav, footer .logo {
+		padding: 0 8vw;
+	}
+
+	html[class="/"] main ul li {
+		flex-basis: calc(20% - 4vw);
+	}
+
+	html[class="/"] main ul li:nth-child(1n+2)[id*="ld"]/*,
+	/*html[class="/"] ul li:nth-child(5n+5)*/ {
+		flex-basis: calc(60% - 4vw);
+	}
+	
+	html[class="/"] #news:checked ~ :checked ~ main ul [itemtype*="Series"] ~ li,
+	html[class="/"] #ludumdare:checked ~ :checked ~ main ul [id*="ld"] ~ li,
+	html[class="/"] #releases:checked ~ :checked ~ main ul [id^="release"] ~ li,
+	html[class="/"] #events:checked ~ :checked ~ main ul [id^="e"] ~ li,
+	html[class="/"] #videos:checked ~ :checked ~ main ul [id^="noc"] ~ li,
+	html[class="/"] #speaker:checked ~ :checked ~ main ul [id^="speaker"] ~ li,
+	html[class="/"] #articles:checked ~ :checked ~ main ul [itemtype*="Article"] ~ li,
+	/*html[class="/"] [type="checkbox"]:checked ~ main ul #link ~ li,*/
+	html[class="/"] #ludumdare:checked ~ main ul [id*="ld"]~[id*="ld"],
+	html[class="/"] #videos:checked ~ main ul [id^="noc"]~[id^="noc"],
+	html[class="/"] #events:checked ~ main ul [id^="e"]~[id^="e"],
+	html[class="/"] #speaker:checked ~ main ul [id^="speaker"]~[id^="speaker"],
+	html[class="/"] #releases:checked ~ main ul [id^="release"]~[id^="release"],
+	html[class="/"] [type="checkbox"]:checked ~ main ul [itemtype*="Series"]~[itemtype*="Series"] {
+		flex-basis: calc(20% - 4vw);
+	}
+}
+
+@media (min-width: 1400px) {
+	html[class="/"] main, header nav, footer .logo {
+		/*padding: 0 9vw;*/
+	}
+}
+
+/*
 #ld34 {
 	background-image: linear-gradient(rgba(82,244,206,0.5),rgba(82,244,206,0.5)), url(/img/ld/34/ld34.gif);
 }
@@ -347,7 +765,7 @@ main p {
 
 #r205 {
 	/*background-image: linear-gradient(rgba(241,228,34,0.3),rgba(241,228,34,0.3)), url(/img/205/pewma.jpg);*/
-	background-image: linear-gradient(rgba(82,244,125,0.3),rgba(82,244,125,0.3)), url(/img/205/pewma.jpg);
+	/*background-image: linear-gradient(rgba(82,244,125,0.3),rgba(82,244,125,0.3)), url(/img/205/pewma.jpg);
 	background-position: bottom;
 }
 
@@ -424,4 +842,4 @@ main p {
 
 #r196 {
 	background-image: linear-gradient(rgba(82,244,206,0.3),rgba(82,244,206,0.3)), url(/img/196/alleycats.png);
-}
+}*/
