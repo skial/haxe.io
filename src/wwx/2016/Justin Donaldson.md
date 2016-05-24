@@ -34,9 +34,9 @@ I use Github and Travis pretty heavily. They've improved the quality of my code 
  
 # And what problem do they solve for you?
 
-Github is the social life blood for an open source project. Previously only large scale projects could expect to see contributions from random people.  Now it feels like anyone can contribute anywhere, which is incredible.  Having a well organized github project is a great sign of its quality.  Having a travis test suite for the library is another great sign, and it makes a lot of cross-platform dev transparent and sane.
+Github is the social life blood for an open source project. Previously only large scale projects could expect to see contributions from random people. Now it feels like anyone can contribute anywhere, which is incredible. Having a well organized Github project is a great sign of its quality. Having a Travis test suite for the library is another great sign, and it makes a lot of cross-platform dev transparent and sane.
 
-# Definitely, Andy Li's efforts in this area have been a great help for the community.
+# Definitely, [Andy Li's](https://twitter.com/andy_li) efforts in this area have been a great help for the community.
  
 # What hardware you do you use?
 
@@ -48,7 +48,7 @@ It's mostly work and various home laptops. I don't have a whole lot of structure
  
 # What problem does Haxe solve for you?
 
-Haxe helps me compose solutions to problems consistently, using a range of OOP, functional, and dynamic approaches. The compiler takes over a wide range of type checking and internal consistency checks without requiring a burden of verbose code.  It's wonderful to have the extra bandwidth back for my brain. 
+Haxe helps me compose solutions to problems consistently, using a range of OOP, functional, and dynamic approaches. The compiler takes over a wide range of type checking and internal consistency checks without requiring a burden of verbose code. It's wonderful to have the extra bandwidth back for my brain. 
 
 # Thats a great way of describing Haxe.
 
@@ -56,9 +56,9 @@ Haxe helps me compose solutions to problems consistently, using a range of OOP, 
 
 # Your currently [discussing adding multi returns](https://github.com/HaxeFoundation/haxe/issues/5114) for externs, is there anyway of it becoming a core Haxe feature?
 
-I haven't put much thought into new core features yet. Most of my wish list right now includes better tooling support, detecting unused imports and the like.  Some of that might involve compiler support though, since really only the compiler knows exactly where a given type came from, and where it was used in the current file.
+I haven't put much thought into new core features yet. Most of my wish list right now includes better tooling support, detecting unused imports and the like. Some of that might involve compiler support though, since really only the compiler knows exactly where a given type came from, and where it was used in the current file.
 
-I see multi returns as being a special case for a few targets that support them _(e.g. lua and python)_. For that reason, I don't think multi returns will become a core feature.  For targets that didn't support multi-returns natively, there would be no performance gain, and I don't believe multi-returns would add clarity or convenience to the type information for a given function.
+I see multi returns as being a special case for a few targets that support them _(e.g. Lua and Python)_. For that reason, I don't think multi returns will become a core feature. For targets that didn't support multi-returns natively, there would be no performance gain, and I don't believe multi-returns would add clarity or convenience to the type information for a given function.
 
 # While reading through the discussion that was my concern.
 
@@ -76,7 +76,7 @@ I use a lot of Java, Python, R, and they're good for certain situations.
  
 # Why didn't you choose them?
 
-Java is way too opinionated and verbose, Python is slow, but pretty decent for small-to-mid sized tasks.  R is very domain specific. 
+Java is way too opinionated and verbose, Python is slow, but pretty decent for small-to-mid sized tasks. R is very domain specific. 
 
 # What ticks you off about Haxe, if anything? Lack of feature? Something else?
 
@@ -160,7 +160,7 @@ The new docs and cookbooks… they're great!
 
 There's still not more US-side Haxe developers, especially in Seattle where I live.
  
-# At the WWX2014 conference you spoke about `promhx`, whats changed in the last two years?
+# At the WWX2014 conference you spoke about `promhx`, what's changed in the last two years?
 
 There's been some relatively minor improvements and updates. I've had several positive but time consuming life changes recently (I have a new 1.5 year old!). That coupled with the new Lua work has not left me much time to focus on some of my older libraries.
  
@@ -168,7 +168,7 @@ There's been some relatively minor improvements and updates. I've had several po
 
 OCaml is strikingly different than just about any language I've used. I'm still a beginner with it, and my code is not very elegant. However, I appreciate it more as I use it, and I definitely see precursors to some of my favorite Haxe features there _(ADT, helpful typo messages, etc)_. The compiler is comprised of several layers, and I believe the core team has laid out these modules in a sensible fashion. 
 
-I don't want to go into too many specifics, but one thing I personally would do differently now would be to rewrite unsupported target expressions where possible, instead of emitting source code directly _(as js and lua do currently)_. Hopefully that won't bite me to badly with support moving forward.
+I don't want to go into too many specifics, but one thing I personally would do differently now would be to rewrite unsupported target expressions where possible, instead of emitting source code directly _(as JavaScript and Lua do currently)_. Hopefully that won't bite me to badly with support moving forward.
 
 # Is this similar to Hugh's work on cppast?
 
@@ -190,7 +190,7 @@ The core team has been very supportive, but I tried hard not to add Lua specific
 
 # What use case does the new Lua target solve?
 
-Lua is particularly in vogue right now as a light weight scripting layer for more complex app logic. The Haxe Lua target is designed to go everywhere that the Lua target can go. From the speedy Luajit compiler, to the [Torch](http://torch.ch/) machine learning framework, to the [LÖVE](https://love2d.org/) game engine, to the [Corona](https://coronalabs.com/) cross-platform 2d mobile graphics SDK, to the WoW scripting client, to enumerable other editor and game plugin libraries, the Haxe Lua target extends Haxe's flexible and powerful language features to those areas.
+Lua is particularly in vogue right now as a lightweight scripting layer for more complex app logic. The Haxe Lua target is designed to go everywhere that the Lua target can go. From the speedy Luajit compiler, to the [Torch](http://torch.ch/) machine learning framework, to the [LÖVE](https://love2d.org/) game engine, to the [Corona](https://coronalabs.com/) cross-platform 2d mobile graphics SDK, to the WoW scripting client, to enumerable other editor and game plugin libraries, the Haxe Lua target extends Haxe's flexible and powerful language features to those areas.
 
 I would be quick to add that Lua also provides safe means of sandboxing third party code. For this reason, not all Haxe standard modules _(e.g. sys/net)_ may be available in a given context due to platform limitations _(e.g. WoW scripting)_. In addition, many of these sys modules rely on third party lib support. Accordingly, Lua is not as "batteries included" as many other Haxe targets, and may require some specific configuration that may or may not be possible. This is still an active area of development for the Lua target, and most of the current work for Lua involves development on these areas. Stay tuned for more details!
 
