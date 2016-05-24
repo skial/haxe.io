@@ -38,7 +38,7 @@ Github is the social life blood for an open source project. Previously only larg
 
 # Definitely, [Andy Li's](https://twitter.com/andy_li) efforts in this area have been a great help for the community.
  
-# What hardware you do you use?
+# Out of interest, what hardware you do you use?
 
 Mostly mac laptops. I have several.
 
@@ -122,7 +122,7 @@ I'm happy that Haxe has a foundation, and am increasingly impressed at how it ha
 
 # Areas you think they could improve?
 
-I'd just say _"stick to your guns"_.  Grow organically and keep the spirit that makes Haxe special.
+I'd just say _“stick to your guns”_.  Grow organically and keep the spirit that makes Haxe special.
  
 # Where do you get your inspiration? Music?
 
@@ -130,7 +130,7 @@ I listen to music constantly, too much to list here...
 
 # Any specific books you strongly recommend?
 
-I still like old fashioned books like _“Pragmatic Programmer”_ by Hunt and Thomas, and for interface design _“Don't Make Me Think (revisited)”_ by Krug is great. I'm a _"keep it simple"_ kind of guy for just about anything. 
+I still like old fashioned books like _“Pragmatic Programmer”_ by Hunt and Thomas, and for interface design _“Don't Make Me Think (revisited)”_ by Krug is great. I'm a _“keep it simple”_ kind of guy for just about anything. 
 
 # Which creatives/developers/artists do you admire most or impress you?
 
@@ -176,7 +176,7 @@ When I say rewrite expressions, I mean when the `genlua.ml` code encounters an e
 
 # What was your biggest challenge working on `genlau.ml`?
 
-I didn't know OCaml or Lua when I started out. So, this project has been a bit like trying to start translating Dothraki into Klingon after only watching a couple of shows. I wouldn't say that I was particularly efficient in making progress, as it is over a year since I started. However, I did take pretty good notes on my thought process along the way. They outline the challenges that I faced as I uncovered them. You can find these now in the commit messages for the Haxe compiler… just look for commits prefixed with "Lua". I plan on scraping these and publishing them somewhere. I hope they'll help someone else learn!
+I didn't know OCaml or Lua when I started out. So, this project has been a bit like trying to start translating Dothraki into Klingon after only watching a couple of shows. I wouldn't say that I was particularly efficient in making progress, as it is over a year since I started. However, I did take pretty good notes on my thought process along the way. They outline the challenges that I faced as I uncovered them. You can find these now in the commit messages for the Haxe compiler… just look for commits prefixed with “Lua”. I plan on scraping these and publishing them somewhere. I hope they'll help someone else learn!
 
 The biggest challenge overall has been how limited the Lua target is. It lacks boolean operators, integers, and uses a shared convention for arrays and hash tables. It indexes from 1, and scopes variables to functions, but does not auto-hoist them. It also is incredibly fragmented, having significant incompatibilities between `lua 5.2`, `luajit 5.2`, and `lua 5.3`. I'm trying to get `5.2` right (for lua and luajit) before tackling `5.3`. So, only `5.2` is supported for now. 
 
@@ -192,7 +192,7 @@ The core team has been very supportive, but I tried hard not to add Lua specific
 
 Lua is particularly in vogue right now as a lightweight scripting layer for more complex app logic. The Haxe Lua target is designed to go everywhere that the Lua target can go. From the speedy Luajit compiler, to the [Torch](http://torch.ch/) machine learning framework, to the [LÖVE](https://love2d.org/) game engine, to the [Corona](https://coronalabs.com/) cross-platform 2d mobile graphics SDK, to the WoW scripting client, to enumerable other editor and game plugin libraries, the Haxe Lua target extends Haxe's flexible and powerful language features to those areas.
 
-I would be quick to add that Lua also provides safe means of sandboxing third party code. For this reason, not all Haxe standard modules _(e.g. sys/net)_ may be available in a given context due to platform limitations _(e.g. WoW scripting)_. In addition, many of these sys modules rely on third party lib support. Accordingly, Lua is not as "batteries included" as many other Haxe targets, and may require some specific configuration that may or may not be possible. This is still an active area of development for the Lua target, and most of the current work for Lua involves development on these areas. Stay tuned for more details!
+I would be quick to add that Lua also provides safe means of sandboxing third party code. For this reason, not all Haxe standard modules _(e.g. sys/net)_ may be available in a given context due to platform limitations _(e.g. WoW scripting)_. In addition, many of these sys modules rely on third party lib support. Accordingly, Lua is not as “batteries included” as many other Haxe targets, and may require some specific configuration that may or may not be possible. This is still an active area of development for the Lua target, and most of the current work for Lua involves development on these areas. Stay tuned for more details!
 
 In closing, I wanted to say finishing the Lua target has been particularly satisfying. I came away more impressed with [Nicolas](https://twitter.com/ncannasse), [Hugh](https://twitter.com/GameHaxe), [Cauê](https://twitter.com/cwaneck), [Simn](https://github.com/simn), [Franco](https://twitter.com/fponticelli), [Frabbit](https://github.com/frabbit), and the core target developers during the process. In many ways they've tackled problems that were even more daunting than Lua. I'm happy to have done something that puts me in that group.
 
