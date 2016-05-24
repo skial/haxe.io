@@ -1,7 +1,7 @@
 [template]: ../../templates/interview.html
 [author]: https://twitter.com/omgjjd "@omgjjd"
 [date]: / "2016-05-24"
-[modified]: / "2016-05-27"
+[modified]: / "2016-05-24"
 
 # How did you get started in programming? and/or How did you get started in your specific field?
 
