@@ -3,15 +3,15 @@
 [date]: / "2016-05-24"
 [modified]: / "2016-05-24"
 
-## How did you get started in programming? and/or How did you get started in your specific field?
+![justin donaldson profile](/img/wwx/2016/Justin-Donaldson/Justin-Donaldson.jpg)
 
-I grew up in a small sized town in the midwest of the US. Computers were my way of connecting to like minded people, and learning new things in a relatively isolated hometown. I've also done a lot of graduate work, and was one of the first PhDs from Indiana University's new Informatics School _(Computer Science, BioInformatics, HCI, Cybersecurity, etc)_.
+I grew up in a small sized town in the mid-west of the US. Computers were my way of connecting to like minded people, and learning new things in a relatively isolated hometown. I've also done a lot of graduate work, and was one of the first PhDs from Indiana University's new Informatics School _(Computer Science, BioInformatics, HCI, Cybersecurity, etc)_.
 
 ## What is your job?
 
 My official title is Lead Data Scientist or Machine Learning engineer at [Salesforce.com](https://www.salesforce.com/), but I still specialize in being able to make engineering changes necessary for Machine Learning to be possible on large systems. So, it's a combination of coding and computational statistics.
 
-## Do you use Haxe at work?
+## Do get to use Haxe at work?
 
 No, or at least on very rare occasions :(
 	
@@ -19,7 +19,7 @@ No, or at least on very rare occasions :(
 
 There are plenty of in-house frameworks where we're trying to formalize JavaScript to make it amenable for giant multi-team efforts on client side apps. Haxe is a good fit in many ways for that, but is an unlikely choice for a giant enterprise software company that intends to stick with what it perceives as a safe choice. It doesn't stop me from trying to pitch Haxe there though :)
  
-## Out of the various Haxe IDE's available, which one(s) do you use?
+## Out of the various Haxe IDE's available, which one's do you use?
 
 I use my own [vaxe plugin](https://github.com/jdonaldson/vaxe) for vim exclusively 
 
@@ -30,11 +30,11 @@ protocols for databases, etc.
 
 ## Do you integrate any cloud based services while working with Haxe?
 
-I use Github and Travis pretty heavily. They've improved the quality of my code and workflow tremendously.
+I use GitHub and Travis pretty heavily. They've improved the quality of my code and work-flow tremendously.
  
 ## And what problem do they solve for you?
 
-Github is the social life blood for an open source project. Previously only large scale projects could expect to see contributions from random people. Now it feels like anyone can contribute anywhere, which is incredible. Having a well organized Github project is a great sign of its quality. Having a Travis test suite for the library is another great sign, and it makes a lot of cross-platform dev transparent and sane.
+GitHub is the social life blood for an open source project. Previously only large scale projects could expect to see contributions from random people. Now it feels like anyone can contribute anywhere, which is incredible. Having a well organized GitHub project is a great sign of its quality. Having a Travis test suite for the library is another great sign, and it makes a lot of cross-platform dev transparent and sane.
 
 ## Definitely, [Andy Li's](https://twitter.com/andy_li) efforts in this area have been a great help for the community.
  
@@ -52,9 +52,7 @@ Haxe helps me compose solutions to problems consistently, using a range of OOP, 
 
 ## Thats a great way of describing Haxe.
 
-## Now your a _“core”_ dev who has a greater understanding of the compiler's internals, are there any new features you have been thinking about that could be added to Haxe? Maybe from other statically typed languages?
-
-## Your currently [discussing adding multi returns](https://github.com/HaxeFoundation/haxe/issues/5114) for externs, is there anyway of it becoming a core Haxe feature?
+## Now that your a _“core”_ dev who has a greater understanding of the compiler's internals, are there any new features you've been thinking about that could be added to Haxe? Your currently [discussing adding multi returns](https://github.com/HaxeFoundation/haxe/issues/5114) for externs, is there anyway of it becoming a core Haxe feature?
 
 I haven't put much thought into new core features yet. Most of my wish list right now includes better tooling support, detecting unused imports and the like. Some of that might involve compiler support though, since really only the compiler knows exactly where a given type came from, and where it was used in the current file.
 
@@ -78,9 +76,9 @@ I use a lot of Java, Python, R, and they're good for certain situations.
 
 Java is way too opinionated and verbose, Python is slow, but pretty decent for small-to-mid sized tasks. R is very domain specific. 
 
-## What ticks you off about Haxe, if anything? Lack of feature? Something else?
+## What ticks you off about Haxe, if anything?
 
-Nothing really. My main complaint has always been the lack of good tutorials and documentation, but that's all been addressed now imho.
+Nothing really. My main complaint has always been the lack of good tutorials and documentation, but that's all been addressed now IMHO.
  
 ## What compiler targets do you use? And if you use more than one, for what reason?
 
@@ -88,7 +86,7 @@ JavaScript is good for client dev. I use JavaScript sometimes for node developme
  
 ## What platforms to do deploy to?
 
-Mobile, browser, embedded, server, etc and browser, server, editor plugins.
+Mobile, browser, embedded, server, etc and server, editor plugins.
  
 ## What would you like to see added to the Haxe compiler?
 
@@ -114,7 +112,9 @@ I think we need consistent cross platform `https` support wherever possible.
  
 ## What is the best use of Haxe you've come across?
 
-My favorite Haxe project is still [Papers Please](http://papersplea.se/).  I still play it from time to time.
+My favorite Haxe project is still [Papers Please](http://papersplea.se/). I still play it from time to time.
+
+![papers please European parliament](/img/wwx/2016/Justin-Donaldson/papersplease.jpg "35x Papers Please setup in the European Parliament.")
  
 ## What do you think of the Haxe Foundation?
 
@@ -122,11 +122,11 @@ I'm happy that Haxe has a foundation, and am increasingly impressed at how it ha
 
 ## Areas you think they could improve?
 
-I'd just say _“stick to your guns”_.  Grow organically and keep the spirit that makes Haxe special.
+I'd just say _“stick to your guns”_. Grow organically and keep the spirit that makes Haxe special.
  
 ## Where do you get your inspiration? Music?
 
-I listen to music constantly, too much to list here... 
+I listen to music constantly, too much to list here… 
 
 ## Any specific books you strongly recommend?
 
@@ -193,6 +193,8 @@ The core team has been very supportive, but I tried hard not to add Lua specific
 ## What use case does the new Lua target solve?
 
 Lua is particularly in vogue right now as a lightweight scripting layer for more complex app logic. The Haxe Lua target is designed to go everywhere that the Lua target can go. From the speedy Luajit compiler, to the [Torch](http://torch.ch/) machine learning framework, to the [LÖVE](https://love2d.org/) game engine, to the [Corona](https://coronalabs.com/) cross-platform 2d mobile graphics SDK, to the WoW scripting client, to enumerable other editor and game plugin libraries, the Haxe Lua target extends Haxe's flexible and powerful language features to those areas.
+
+![lua scripting world of warcraft justin donaldson](/img/wwx/2016/Justin-Donaldson/luawow.png "Wow scripting with the new Lua compile target.")
 
 I would be quick to add that Lua also provides safe means of sandboxing third party code. For this reason, not all Haxe standard modules _(e.g. sys/net)_ may be available in a given context due to platform limitations _(e.g. WoW scripting)_. In addition, many of these sys modules rely on third party lib support. Accordingly, Lua is not as _“batteries included”_ as many other Haxe targets, and may require some specific configuration that may or may not be possible. This is still an active area of development for the Lua target, and most of the current work for Lua involves development on these areas. Stay tuned for more details!
 
