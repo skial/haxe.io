@@ -35,9 +35,15 @@ h6 a:empty {
 }
 
 html[class*="interview"] h2 {
-	font-size: 1.1rem;
-  font-style: italic;
+	font-size: 1.2rem;
+  /*font-style: italic;*/
   color: rgba(241,89,34, 1);
+	line-height: 1.7rem;
+	font-family: inherit;
+}
+
+html[class*="interview"] h2 a[id] {
+	background-color: inherit;
 }
 
 blockquote {
@@ -437,6 +443,7 @@ aside > nav ul {
 
 aside > nav li {
 	list-style-type: square;
+	padding-bottom: 0.6rem;
 }
 
 /*aside > nav li::before {
