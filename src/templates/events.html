@@ -42,13 +42,15 @@
 		</div>
 	</header>
 	<article>
-		<aside>
-			<content select="iframe[src*='google.com/maps']" />
-			<content select="iframe[src*='eventbrite.com']" />
-		</aside>
-		<section>
-			<content select="markdown" />
-		</section>
+		<div class="grid">
+			<aside class="grid-1-3">
+				<content select="iframe[src*='google.com/maps']" />
+				<content select="iframe[src*='eventbrite.com']" />
+			</aside>
+			<section class="grid-2-3">
+				<content select="markdown" />
+			</section>
+		</div>
 	</article>
 	<content select="#footer" />
 </body>

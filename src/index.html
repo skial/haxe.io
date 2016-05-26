@@ -1,54 +1,103 @@
 <html class="/" lang="en">
 <head>
-	<meta charset="utf-8" /><meta content="width=device-width, initial-scale=1" name="viewport" />
+	<meta charset="utf-8" />  
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
+	<!--<style>  
+		/* CSS SVG filter support sucks */    
+		/*.name .long { filter: url(#filter); }*/  
+		/*@media (min-width: 650px) {       
+			[type="image/logo"] svg {  
+				filter: url(#filter);
+			}    
+		}*/   
+	</style>-->  
 	<link rel="stylesheet" type="text/css" href="/css/normalize.css" />
-	<link rel="stylesheet" type="text/css" href="/css/normalize-opentype.css" />
-	<link rel="stylesheet" type="text/css" href="/css/haxe.io.css" />
-	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans:600,400,700,800|Gentium+Book+Basic:400,700,400italic,700italic" />
 	<link rel="stylesheet" type="text/css" href="/css/frontpage.css" />
-	<meta content="summary_large_image" name="twitter:card" />
+	<link rel="stylesheet" type="text/css" href="/css/haxe.io.css" />
+	<link rel="stylesheet" type="text/css" href="/css/normalize-opentype.css" />
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans:600,400,700,800|Gentium+Book+Basic:400,700" />
+	<!-- Twitter -->
+	<meta content="summary_large_image" name="twitter:card" /> 
 	<meta content="@skial" name="twitter:site" />
-	<meta content="@skial" name="twitter:creator" />
-	<meta content="Haxe.io — News And Information For Haxe Developers" name="twitter:title" />
-	<meta content="After a short break from writing the roundup, lets get started with all the new library releases. Hugh Sanderson started the new year by releasing NME 5.2.7, NME dev-1.3.5 Waxe 3.1.1 and GM2D 3.2.5...." name="twitter:description" />
+	<meta content="@skial" name="twitter:creator" /> 
+	<meta content="Haxe.io — News & Information For Haxe Developers" name="twitter:title" />
+	<meta name="twitter:description" content="Handpicked news and resources for Haxe, a high level, cross-platform, statically and strongly typed programming language. Find the latest jobs, tutorials, videos, presentations and events covered weekly on the community blog." />
 	<meta content="https://haxe.io/img/skial.jpg" name="twitter:image:src" />
-	<meta property="og:title" content="Haxe.io — News And Information For Haxe Developers" />
+	<!-- Open Graph | Facebook -->
+	<meta property="og:title" content="Haxe.io — News & Information For Haxe Developers" />
 	<meta property="og:image" content="https://haxe.io/img/skial.jpg" />
 	<meta property="og:url" content="https://haxe.io/" />
-	<meta property="og:description" content="After a short break from writing the roundup, lets get started with all the new library releases. Hugh Sanderson started the new year by releasing NME 5.2.7, NME dev-1.3.5 Waxe 3.1.1 and GM2D 3.2.5...." />
-	<meta property="og:type" content="article" />
-	<meta property="og:site_name" content="Haxe.io — News And Information For Haxe Developers" />
-	<meta content="After a short break from writing the roundup, lets get started with all the new library releases. Hugh Sanderson started the new year by releasing NME 5.2.7, NME dev-1.3.5 Waxe 3.1.1 and GM2D 3.2.5...." name="description" />
+	<meta property="og:description" content="Handpicked news and resources for Haxe, a high level, cross-platform, statically and strongly typed programming language. Find the latest jobs, tutorials, videos, presentations and events covered weekly on the community blog." />
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="Haxe.io — News & Information For Haxe Developers" />
+	<!-- General -->
+	<meta name="description" content="Handpicked news and resources for Haxe, a high level, cross-platform, statically and strongly typed programming language. Find the latest jobs, tutorials, videos, presentations and events covered weekly on the community blog."  />
 	<link rel="author" href="https://plus.google.com/+SkialBainn/posts" />
 	<link title="Haxe.io Feed" rel="alternate" type="application/rss+xml" href="http://blog.skialbainn.com/rss" />
-	<link rel="apple-touch-icon-precomposed" href="/img/favicon/152.png" />
-	<meta content="#f15922" name="msapplication-TileColor" />
-	<meta content="/img/favicon/144.png" name="msapplication-TileImage" />
-	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/img/favicon/152.png" />
-	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/favicon/144.png" />
-	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/img/favicon/120.png" />
-	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/favicon/114.png" />
-	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/favicon/72.png" />
-	<link rel="apple-touch-icon-precomposed" href="/img/favicon/57.png" />
-	<link rel="icon" sizes="32x32" href="/img/favicon/32.png" />
+	<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png?v=wAANbdxLQn">
+	<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png?v=wAANbdxLQn">
+	<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png?v=wAANbdxLQn">
+	<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png?v=wAANbdxLQn">
+	<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png?v=wAANbdxLQn">
+	<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png?v=wAANbdxLQn">
+	<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png?v=wAANbdxLQn">
+	<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png?v=wAANbdxLQn">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png?v=wAANbdxLQn">
+	<link rel="icon" type="image/png" href="/favicon-32x32.png?v=wAANbdxLQn" sizes="32x32">
+	<link rel="icon" type="image/png" href="/favicon-194x194.png?v=wAANbdxLQn" sizes="194x194">
+	<link rel="icon" type="image/png" href="/favicon-96x96.png?v=wAANbdxLQn" sizes="96x96">
+	<link rel="icon" type="image/png" href="/android-chrome-192x192.png?v=wAANbdxLQn" sizes="192x192">
+	<link rel="icon" type="image/png" href="/favicon-16x16.png?v=wAANbdxLQn" sizes="16x16">
+	<link rel="manifest" href="/manifest.json?v=wAANbdxLQn">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg?v=wAANbdxLQn" color="#fffdf9">
+	<link rel="shortcut icon" href="/favicon.ico?v=wAANbdxLQn">
+	<meta name="msapplication-TileColor" content="#f15922">
+	<meta name="msapplication-TileImage" content="/mstile-144x144.png?v=wAANbdxLQn">
+	<meta name="theme-color" content="#ffffff">
 	<title>Haxe.io — News And Information For Haxe Developers</title>
 	<script type="text/javascript">
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','//ssl.google-analytics.com/analytics.js','ga');
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-		ga('create', 'UA-49222122-1', 'haxe.io');
+		ga('create', 'UA-49222122-1', 'auto');
 		ga('require', 'displayfeatures');
 		ga('set', 'forceSSL', true);
 		ga('send', 'pageview');
 	</script>
 </head>
 <body>
+	<input type="checkbox" id="news" name="nav-group">
+	<input type="checkbox" id="ludumdare" name="nav-group">
+	<input type="checkbox" id="releases" name="nav-group">
+	<input type="checkbox" id="events" name="nav-group">
+	<input type="checkbox" id="speaker" name="nav-group">
+	<input type="checkbox" id="videos" name="nav-group">
+	<input type="checkbox" id="articles" name="nav-group">
 	<header class="grid">
 		<div class="grid-1-1">
 			<a type="image/logo" href="/">
 				<svg viewBox="0 0 320 320" enable-background="new">
+					<defs>
+						<!--<filter id="filter"> 
+							<!-- Adapted from https://www.smashingmagazine.com/2015/05/why-the-svg-filter-is-awesome/ -->
+		          <!--<feImage xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="data:image/svg+xml;charset=utf-8,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%22100px%22%20height%3D%22200px%22%20%20%3E%0A%09%3Cdefs%3E%0A%09%09%3Cpattern%20id%3D%22pattern%22%20patternUnits%3D%22userSpaceOnUse%22%20width%3D%225px%22%20height%3D%225px%22%20viewBox%3D%220%200%205%205%22%20%3E%0A%09%09%09%3Cpolygon%20points%3D%225%2C0%204.012%2C0%205%2C0.989%20%09%22%2F%3E%0A%09%09%09%3Cpolygon%20points%3D%225%2C5%200%2C0%200%2C0.989%204.01%2C5%20%09%22%2F%3E%0A%09%09%3C%2Fpattern%3E%0A%09%3C%2Fdefs%3E%0A%09%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22url(%23pattern)%22%20%2F%3E%0A%3C%2Fsvg%3E" x="0" y="2" width="100" height="200" result="STRIPED-SHADOW"></feImage>
+		          <feTile in="STRIPED-SHADOW" result="STRIPED-SHADOW_1"></feTile>
+		          <feOffset dx="4" dy="4" in="SourceGraphic" result="STRIPED-SHADOW_2"></feOffset>
+		          <feComposite operator="in" in="STRIPED-SHADOW_1" in2="STRIPED-SHADOW_2" result="STRIPED-SHADOW_3"></feComposite>
+		          <feComposite operator="in" in="STRIPED-SHADOW_3" result="STRIPED-SHADOW_4"></feComposite>
+		          <feMerge result="merge2">
+		            <feMergeNode in="STRIPED-SHADOW_4"></feMergeNode>
+								<feMergeNode in="SourceGraphic"></feMergeNode>
+		          </feMerge>
+	        	</filter>-->
+						<!--<svg enable-background="new 0 0 100 100" version="1.1" x="0px" y="0px" viewBox="0 0 100 125" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">-->
+							<symbol id="external-link" viewBox="0 0 100 125">
+								<path d="m90.474 5.04h-28.685c-2.3 0-4.164 1.864-4.164 4.164s1.864 4.164 4.164 4.164h19.095l-40.864 40.864c-1.627 1.626-1.627 4.263 0 5.889 0.813 0.813 1.879 1.22 2.944 1.22s2.131-0.407 2.944-1.22l40.402-40.403v18.17c0 2.3 1.864 4.164 4.164 4.164s4.164-1.864 4.164-4.164v-28.684c0-2.3-1.864-4.164-4.164-4.164z"/><path d="m76.071 46.976c-2.3 0-4.164 1.864-4.164 4.164v32.852c0 1.505-1.271 2.776-2.776 2.776h-53.09c-1.505 0-2.776-1.271-2.776-2.776v-53.09c0-1.505 1.271-2.776 2.776-2.776h32.968c2.3 0 4.164-1.864 4.164-4.164s-1.864-4.164-4.164-4.164h-32.968c-6.123 0-11.104 4.981-11.104 11.104v53.09c0 6.123 4.981 11.104 11.104 11.104h53.09c6.123 0 11.104-4.981 11.104-11.104v-32.852c0-2.299-1.864-4.164-4.164-4.164z"/>
+							</symbol>
+						<!--</svg>-->
+					</defs>
 					<g>
 						<g id="a" transform="translate(-2,-2)">
 							<path stroke-width="15.6" stroke="#000" d="m93.7 25.3-68.4 68.3" stroke-linecap="round" fill="none"></path>
@@ -60,71 +109,139 @@
 					</g>
 				</svg>
 			</a>
+			<div class="name">
+				<span class="long">haxe</span><span class="short">h</span><span class="long">.</span><span class="short dot">&CenterDot;</span><span>io</span>
+			</div>
 		</div>
+		<nav class="tabs">
+			<ul>
+				<li>
+					<p>Filter by</p>
+					<svg class="filter enabled" viewBox="0 0 16 20">
+						<path d="m14.5 0h-12c-1.375 0-1.705 0.795-0.732 1.768l5.232 5.232v8c0 0.55 0.318 0.682 0.707 0.293l1.586-1.586c0.389-0.389 0.707-1.157 0.707-1.707v-5l5.232-5.232c0.972-0.973 0.643-1.768-0.732-1.768z"/>
+					</svg>
+					<svg class="filter disabled" viewBox="0 -1 16 20">
+						<g transform="translate(.25424 -.084746)">
+							<path d="m14.246 0.050847-7.5 7.5v5.5c0 0.55 0.375 0.75 0.832 0.445l1.336-0.891c0.458-0.304 0.832-1.004 0.832-1.554v-4l5.232-5.232c0.972-0.973 0.643-1.768-0.732-1.768z"/>
+							<path d="m12.152-0.85615c-0.048-0.108-0.11-0.211-0.199-0.3-0.391-0.391-1.023-0.391-1.414 0l-1.207 1.207h-7.086c-1.375 0-1.705 0.795-0.732 1.768l3.025 3.025-3.5 3.5c-0.391 0.391-0.391 1.023 0 1.414 0.195 0.195 0.451 0.293 0.707 0.293s0.512-0.098 0.707-0.293l0.707-0.707 8.793-8.793c0.302-0.302 0.364-0.746 0.199-1.114z"/>
+						</g>
+					</svg>
+				</li>
+				<li><label for="news" onclick=";"><span class="long">Weekly </span><span class="short">Wkly </span>News</label></li>
+				<li><label for="articles" onclick=";">Art<span class="short">.</span><span class="long">icles</span></label></li>
+				<li><label for="releases" onclick=";">Rel<span class="short">.</span><span class="long">eases</span></label></li>
+				<li><label for="events" onclick=";"><span class="short">Evnt</span><span class="long">Events</span></label></li>
+				<li><label for="ludumdare" onclick=";"><span class="long">Ludum Dare</span><span class="short">LD</span></label></li>
+				<li><label for="speaker" onclick=";"><span class="long">Developer Interviews</span><span class="short">Bios</span></li>
+				<li><label for="videos" onclick=";">Vid<span class="long">eo</span>s</li>
+			</ul>
+		</nav>
 	</header>
 	<main>
 		<ul>
-			<li itemtype="http://schema.org/Article" id="r311" style="background-position:center;" itemscope="">
+			<li itemtype="http://schema.org/Article" id="speaker_justin" itemscope="">
+				<a title="Justin Donaldson WWX 2016 Interview" href="/wwx/2016/Justin-Donaldson/">
+					<h1 itemprop="headline">Justin Donaldson WWX 2016 Interview</h1>
+				</a>
+				<time dateCreated="$date" pubdate="" datetime="$date"></time>
+			</li>
+			<li itemtype="http://schema.org/Article" id="link" itemscope="">
+				<a title="Hello Lua!" href="http://haxe.org/blog/hello-lua?utm_source=haxe.io">
+					<h1 itemprop="headline">Hello Lua!</h1>
+				</a>
+				<time dateCreated="$date" pubdate="" datetime="$date"></time>
+			</li>
+			<li itemtype="http://schema.org/Article" id="r303" style="background-position:center;" itemscope="">
+				<a title="Haxe Roundup № 363" href="/roundups/363/">
+					<h1 itemprop="headline">Haxe Roundup № 363</h1>
+				</a>
+				<time dateCreated="$date" pubdate="" datetime="$date"></time>
+			</li>
+			<li itemtype="http://schema.org/Article" id="r221" style="background-position:center;" itemscope="">
+				<a title="Haxe Roundup № 362" href="/roundups/362/">
+					<h1 itemprop="headline">Haxe Roundup № 362</h1>
+				</a>
+				<time dateCreated="$date" pubdate="" datetime="$date"></time>
+			</li>
+			<li itemtype="http://schema.org/Series" id="r228" style="background-position:center;" itemscope="">
+				<a title="Haxe Roundup № 361" href="/roundups/361/">
+					<h1 itemprop="headline">Haxe Roundup № 361</h1>
+				</a>
+				<time dateCreated="$date" pubdate="" datetime="$date"></time>
+			</li>
+			<li itemtype="http://schema.org/Article" id="ld35" style="background-position:center;" itemscope="">
+				<a title="The Haxe Ludum Dare 35 Roundup" href="/ld/35/">
+					<h1 itemprop="headline">The Haxe Ludum Dare 35 Roundup</h1>
+				</a>
+				<time dateCreated="$date" pubdate="" datetime="$date"></time>
+			</li>
+			<li itemtype="http://schema.org/Series" id="r228" style="background-position:center;" itemscope="">
+				<a title="Haxe Roundup № 360" href="/roundups/360/">
+					<h1 itemprop="headline">Haxe Roundup № 360</h1>
+				</a>
+				<time dateCreated="$date" pubdate="" datetime="$date"></time>
+			</li>
+			<li itemtype="http://schema.org/Series" id="r311" style="background-position:center;" itemscope="">
 				<a title="Haxe Roundup № 359" href="/roundups/359/">
 					<h1 itemprop="headline">Haxe Roundup № 359</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r319" style="background-position:center;" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r319" style="background-position:center;" itemscope="">
 				<a title="Haxe Roundup № 358" href="/roundups/358/">
 					<h1 itemprop="headline">Haxe Roundup № 358</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r224" style="background-position:center;" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r224" style="background-position:center;" itemscope="">
 				<a title="Haxe Roundup № 357" href="/roundups/357/">
 					<h1 itemprop="headline">Haxe Roundup № 357</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r303" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r303" itemscope="">
 				<a title="Haxe Roundup № 356" href="/roundups/356/">
 					<h1 itemprop="headline">Haxe Roundup № 356</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r309" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r309" itemscope="">
 				<a title="Haxe Roundup № 355" href="/roundups/355/">
 					<h1 itemprop="headline">Haxe Roundup № 355</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r317" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r317" itemscope="">
 				<a title="Haxe Roundup № 354" href="/roundups/354/">
 					<h1 itemprop="headline">Haxe Roundup № 354</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r328" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r328" itemscope="">
 				<a title="Haxe Roundup № 353" href="/roundups/353/">
 					<h1 itemprop="headline">Haxe Roundup № 353</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r324" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r324" itemscope="">
 				<a title="Haxe Roundup № 352" href="/roundups/352/">
 					<h1 itemprop="headline">Haxe Roundup № 352</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r325" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r325" itemscope="">
 				<a title="Haxe Roundup № 351" href="/roundups/351/">
 					<h1 itemprop="headline">Haxe Roundup № 351</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r318" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r318" itemscope="">
 				<a title="Haxe Roundup № 350" href="/roundups/350/">
 					<h1 itemprop="headline">Haxe Roundup № 350</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r330" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r330" itemscope="">
 				<a title="Haxe Roundup № 349" href="/roundups/349/">
 					<h1 itemprop="headline">Haxe Roundup № 349</h1>
 				</a>
@@ -137,61 +254,61 @@
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>This is the sixth dedicated Ludum Dare roundup for Haxe. Ludum Dare 34 took place between December 11th and 14th and the chosen theme was tied between Two Button Controls and Growing.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r331" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r331" itemscope="">
 				<a title="Haxe Roundup № 348" href="/roundups/348/">
 					<h1 itemprop="headline">Haxe Roundup № 348</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r332" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r332" itemscope="">
 				<a title="Haxe Roundup № 347" href="/roundups/347/">
 					<h1 itemprop="headline">Haxe Roundup № 347</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r342" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r342" itemscope="">
 				<a title="Haxe Roundup № 346" href="/roundups/346/">
 					<h1 itemprop="headline">Haxe Roundup № 346</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Franco’s thx.text library is an interesting library, adding the ability to pluralize or singularize almost any word. It also adds the Table class, which pretty prints your data via its toString method.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r337" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r337" itemscope="">
 				<a title="Haxe Roundup № 345" href="/roundups/345/">
 					<h1 itemprop="headline">Haxe Roundup № 345</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p></p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r342" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r342" itemscope="">
 				<a title="Haxe Roundup № 344" href="/roundups/344/">
 					<h1 itemprop="headline">Haxe Roundup № 344</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Philippe Elsass has tweeted that he has completed his current project at Massive Interactive, working on bringing a new YouView client to Sony Android TV’s.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r343" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r343" itemscope="">
 				<a title="Haxe Roundup № 343" href="/roundups/343/">
 					<h1 itemprop="headline">Haxe Roundup № 343</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Ian Harrigan starts this week’s roundup off with a Developer Spotlight interview over on the OpenFL blog, talking about his himself and HaxeUI. Ian continues to tease us on Twitter with upcoming HaxeUI features, with the latest sneak peak of a “very preliminary proof of concept backend using waxe and wxWidgets”!</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r342" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r342" itemscope="">
 				<a title="Haxe Roundup № 342" href="/roundups/342/">
 					<h1 itemprop="headline">Haxe Roundup № 342</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Andy Li continues to make Haxe available to everyone on Linux distros, with his latest efforts getting Haxe onto Fedora and openSUSE, jump on over to his post Haxe RPM Packages for Fedora and openSUSE for more details.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r341" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r341" itemscope="">
 				<a title="Haxe Roundup № 341" href="/roundups/341/">
 					<h1 itemprop="headline">Haxe Roundup № 341</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Darek Greenly at the beginning of the week released GrayScale dev log #3 in which Darek leads you through his luxe engine powered, GameBoy style game covering player input and visuals, with a little peek at the internals, some in-progress tools and more. Visually, it looks amazing.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r340" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r340" itemscope="">
 				<a title="Haxe Roundup № 340" href="/roundups/340/">
 					<h1 itemprop="headline">Haxe Roundup № 340</h1>
 				</a>
@@ -205,42 +322,42 @@
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>The Haxe Foundation officially released Haxe 3.2.1 on 13th October 2015. To read about all the fixes checkout the Haxe 3.2.1 release details.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r339" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r339" itemscope="">
 				<a title="Haxe Roundup № 339" href="/roundups/339/">
 					<h1 itemprop="headline">Haxe Roundup № 339</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Robert Konrad has released Kha 15.10, available from HaxeLib. In his announcement article, Robert has added Direct3D 12 support, OS X 10.11 support and direct AGAL support to Krafix.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r338" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r338" itemscope="">
 				<a title="Haxe Roundup № 338" href="/roundups/338/">
 					<h1 itemprop="headline">Haxe Roundup № 338</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Tong, aka disktree, released updated JavaScript type definitions for Chrome extensions and Chrome apps. Both support Chrome from version 35 up to 45. Also Tong has ported nekoboot.neko to pure Haxe. If you’ve never heard of nekoboot, it takes your .n bytecode and merges it with the Neko VM, creating a single executable ready for distribution.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r337" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r337" itemscope="">
 				<a title="Haxe Roundup № 337" href="/roundups/337/">
 					<h1 itemprop="headline">Haxe Roundup № 337</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Franco Ponticelli has posted that Pellucid Analytics, located in Boulder, Colorado, USA, are looking for a Senior Software Engineer to join the team. Knowing Haxe will be a big plus.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r336" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r336" itemscope="">
 				<a title="Haxe Roundup № 336" href="/roundups/336/">
 					<h1 itemprop="headline">Haxe Roundup № 336</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Jeff Ward has released version 0.4.0 of HxScout, which is built with the latest and greatest HXCPP to provide a faster app, new and improved File dialogs, thanks to the recent release of linc_dialogs, and so much more! With Jeff’s experience work with the HXCPP target, he has posted his knowledge of working with async sockets over on Stack Overflow.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r335" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r335" itemscope="">
 				<a title="Haxe Roundup № 335" href="/roundups/335/">
 					<h1 itemprop="headline">Haxe Roundup № 335</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Ian Harrigan starts this week’s roundup off with working demos of HaxeUI v2 demonstrating the OpenFL, Flambe, Kha and PixiJS backends. The amount of work involving in implementing each backend must be immense, very impressive!</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r334" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r334" itemscope="">
 				<a title="Haxe Roundup № 334" href="/roundups/334/">
 					<h1 itemprop="headline">Haxe Roundup № 334</h1>
 				</a>
@@ -254,77 +371,77 @@
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>This is the fifth dedicated Ludum Dare roundup for Haxe. Ludum Dare 33 took place between August 22th and 24th and the chosen theme was You are the Monster.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r333" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r333" itemscope="">
 				<a title="Haxe Roundup № 333" href="/roundups/333/">
 					<h1 itemprop="headline">Haxe Roundup № 333</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Over on the mailing list, Robert Konrad has brought up the idea to create a suite of benchmarks to help out not only the various frameworks improve their performance, but also the standard library. I agree with others in the thread, like Robert and Hugh, who suggest that non framework related tests should be included, so the core compiler targets can be improved, benefiting everyone.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r332" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r332" itemscope="">
 				<a title="Haxe Roundup № 332" href="/roundups/332/">
 					<h1 itemprop="headline">Haxe Roundup № 332</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>To start this weeks roundup off, Romuald Halasz has written an introductory post titled Haxe - A toolkit for cross-platform developement, useful for people unfamiliar with Haxe and transpilers in general.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r331" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r331" itemscope="">
 				<a title="Haxe Roundup № 331" href="/roundups/331/">
 					<h1 itemprop="headline">Haxe Roundup № 331</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Let’s start off with a thread that’s just starting over on the mailing list, with the outcome likely to affect every single Haxe developer using a framework.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r330" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r330" itemscope="">
 				<a title="Haxe Roundup № 330" href="/roundups/330/">
 					<h1 itemprop="headline">Haxe Roundup № 330</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>The Silex Lab’s team continues to steadily release WWX2015 recordings, with the last week seeing three talks released. Todd Kulick also published his slides from his talk onto GitHub. With the video being published, the Activity repository also has had its status defined.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r329" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r329" itemscope="">
 				<a title="Haxe Roundup № 329" href="/roundups/329/">
 					<h1 itemprop="headline">Haxe Roundup № 329</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>The Silex Labs team have started releasing the long awaited WWX2015 videos, preceded by the Wrapping up WWX2015 article, with the event hosted in the beautiful Mozilla Paris offices.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r328" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r328" itemscope="">
 				<a title="Haxe Roundup № 328" href="/roundups/328/">
 					<h1 itemprop="headline">Haxe Roundup № 328</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>While there is still time, the current Humble Bundle, the Game Making bundle, which contains 22 programs, including Stencyl which uses Haxe and OpenFL under the hood, is available in the bundle with an included Indie subscription worth $99.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r327" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r327" itemscope="">
 				<a title="Haxe Roundup № 327" href="/roundups/327/">
 					<h1 itemprop="headline">Haxe Roundup № 327</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Nico May has been using Abe, an API combining Haxe, NodeJS and Express by Franco Ponticelli and Michael Martin-Smucker, to create over several week's Slick Rock a simple, embeddable, “no username, no password and no room setup” chat app.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r326" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r326" itemscope="">
 				<a title="Haxe Roundup № 326" href="/roundups/326/">
 					<h1 itemprop="headline">Haxe Roundup № 326</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>This week's main news, in my opinion, is that Andy Li is now working for the Haxe Foundation! It's about time!</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r325" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r325" itemscope="">
 				<a title="Haxe Roundup № 325" href="/roundups/325/">
 					<h1 itemprop="headline">Haxe Roundup № 325</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Sven Bergström posted the article “Snõwkit Dev Log #5 phoenix”, the long awaited snõwkit collective update. This dev log focuses on alpha-3.0 new renderer, its past and future.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r324" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r324" itemscope="">
 				<a title="Haxe Roundup № 324" href="/roundups/324/">
 					<h1 itemprop="headline">Haxe Roundup № 324</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Kha has continued to gain attention since WWX2015. Dmitry Hryppa has been working on collecting data from the BunnyMark benchmark with implementations in OpenFL, Kha, MonoGame, XNA and LibGDX. With help from Robert Konrad, the creator of Kha, Kha's results have jumped from 61K, 75k to 131k.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r323" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r323" itemscope="">
 				<a title="Haxe Roundup № 323" href="/roundups/323/">
 					<h1 itemprop="headline">Haxe Roundup № 323</h1>
 				</a>
@@ -338,21 +455,21 @@
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>This post is a brief post on what I think were the main highlights from this years WWX2015, hosted at Mozilla Paris and organised by Silex Labs, even though I missed half of the second day.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r322" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r322" itemscope="">
 				<a title="Haxe Roundup № 322" href="/roundups/322/">
 					<h1 itemprop="headline">Haxe Roundup № 322</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>A Haxe ChromeCast multiplayer game created by Media Monks has been featured at Google IO 2015!</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r321" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r321" itemscope="">
 				<a title="Haxe Roundup № 321" href="/roundups/321/">
 					<h1 itemprop="headline">Haxe Roundup № 321</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>The Haxe World Wide Conference is almost upon us, which starts this Friday 29th May. I've kept quiet about so much news I've stumbled across which will come to light in the next few days, it's been difficult to keep quiet.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r320" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r320" itemscope="">
 				<a title="Haxe Roundup № 320" href="/roundups/320/">
 					<h1 itemprop="headline">Haxe Roundup № 320</h1>
 				</a>
@@ -360,27 +477,27 @@
 				<p>The biggest news this week is that Haxe 3.2.0 has been officially released! This release adds the Python target, an experimental static analyzer and a few breaking changes which you can find out more about from the release notes or from the article What's New in Haxe 3.2.0.</p>
 			</li>
 			<li itemtype="http://schema.org/Article" id="release320" itemscope="">
-				<a title="What's New in Haxe 3.2.0" href="/releases/3.2.0/">
-					<h1 itemprop="headline">What's New in Haxe 3.2.0</h1>
+				<a title="What's New in Haxe 3.2.0?" href="/releases/3.2.0/">
+					<h1 itemprop="headline">What's New in Haxe 3.2.0?</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>The Haxe Foundation officially released Haxe 3.2.0 on Tuesday 12th May 2015. To read about all the new features, fixes and breaking changes checkout the Haxe 3.2.0-rc2 and Haxe 3.2.0 release details.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r319" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r319" itemscope="">
 				<a title="Haxe Roundup № 319" href="/roundups/319/">
 					<h1 itemprop="headline">Haxe Roundup № 319</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>The HaxeFlixel team have finally launched their Patreon page, so if you're able to provide financially support to help cover hosting costs and fund future development costs, then seriously consider it.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r318" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r318" itemscope="">
 				<a title="Haxe Roundup № 318" href="/roundups/318/">
 					<h1 itemprop="headline">Haxe Roundup № 318</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Simone Cingano has, available from GitHub, TileCraft a 2.5D modeling program written with OpenFL. TileCraft is touted as being a “fast multi-platform modeling tool to make tiles for games, icons or whatever you want”. The project has decent documentation with a quick start guide, how to build from source, ready to use examples and more. This is one to watch.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r317" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r317" itemscope="">
 				<a title="Haxe Roundup № 317" href="/roundups/317/">
 					<h1 itemprop="headline">Haxe Roundup № 317</h1>
 				</a>
@@ -394,91 +511,91 @@
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>This is the fourth dedicated Ludum Dare roundup for Haxe. Ludum Dare 32 took place between April 17th and 20th and the chosen theme was An Unconventional Weapon.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r316" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r316" itemscope="">
 				<a title="Haxe Roundup № 316" href="/roundups/316/">
 					<h1 itemprop="headline">Haxe Roundup № 316</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Lars Doucet has posted HaxeFlixel bounties for several issues which need fixing to make HaxeFlixel compatible with OpenFL Next. There are currently only three items left to get HaxeFlixel up to date.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r315" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r315" itemscope="">
 				<a title="Haxe Roundup № 315" href="/roundups/315/">
 					<h1 itemprop="headline">Haxe Roundup № 315</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Andy Li has taken the lead in getting Haxe officially supported on Travis CI with help from Cauê Waneck and Simon Krajewski. Testing your Haxe project has been greatly simplified now, checked out the guide to using Haxe on Travis CI. Remember, if you want full, cross-platform testing consider travis-hx which provides helpers to test you project on Travis CI, Appveyor and SauceLabs.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r314" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r314" itemscope="">
 				<a title="Haxe Roundup № 314" href="/roundups/314/">
 					<h1 itemprop="headline">Haxe Roundup № 314</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>The Haxor team are back, releasing the Web Bundle library onto GitHub. This library isn't Haxe specific, written in JavaScript running through NodeJS, Web Bundle aims to “significantly reduce the number of HTTP requests allowing fast page loads” by compressing text data by at “least 40% compressed”.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r313" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r313" itemscope="">
 				<a title="Haxe Roundup № 313" href="/roundups/313/">
 					<h1 itemprop="headline">Haxe Roundup № 313</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>I'll start off with a project from Patrick Le Clec'h that's piqued my interest. Patrick has been releasing on twitter a bunch of experimental modifications to the Haxe compiler which you can try out over on hacking-haxe.atouchofcode.com.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r312" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r312" itemscope="">
 				<a title="Haxe Roundup № 312" href="/roundups/312/">
 					<h1 itemprop="headline">Haxe Roundup № 312</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Of course the biggest news this week is that Haxe 3.2.0-rc.2 has been officially released by the Haxe Foundation! This release introduces the new Python target which was developed by Heinz Hölzer and Dan Korostelev. As with any new target it should be considered to be in beta stage. There will be a handful of breaking changes when Haxe 3.2.0 is finally released, so you better check out what's changed to just be safe.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r311" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r311" itemscope="">
 				<a title="Haxe Roundup № 311" href="/roundups/311/">
 					<h1 itemprop="headline">Haxe Roundup № 311</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>The WWX 2015 team, Silex Labs, have launched their crowdfunding campaign which at the time of writing this roundup, stands at 38% funded.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r305" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r305" itemscope="">
 				<a title="Haxe Roundup № 310" href="/roundups/310/">
 					<h1 itemprop="headline">Haxe Roundup № 310</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>This years Haxe conference site has finally gone live! Checkout the hard work Silex Labs team have put into the site. They also have support from the Mozilla Foundation who will be hosting this years conference in Paris. There is also a crowdfunding campaign which will launch this Monday 9th March.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r309" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r309" itemscope="">
 				<a title="Haxe Roundup № 309" href="/roundups/309/">
 					<h1 itemprop="headline">Haxe Roundup № 309</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Slava Tretyak has written Fast Iterators for StringMap in which he benchmarks the StringMap Iterator implementation from Haxe 3.1.3, the Haxe GitHub repo and his own iterator implementation, all compiled to JavaScript running on Chrome, Safari and Firefox.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r308" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r308" itemscope="">
 				<a title="Haxe Roundup № 308" href="/roundups/308/">
 					<h1 itemprop="headline">Haxe Roundup № 308</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>This last week has had some pretty impressive posts, libraries and game releases. Sven Bergström has written, to date, the single best description of Haxe is in his post Haxe from 1000ft.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r307" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r307" itemscope="">
 				<a title="Haxe Roundup № 307" href="/roundups/307/">
 					<h1 itemprop="headline">Haxe Roundup № 307</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>The next Haxe release, version 3.2 is fast approaching, with the latest major change being merged, a cross-platform typed array implementation which follows the Javascript spec which “describes an array-like view of an underlying binary data buffer”. You can test it out via builds.haxe.org. New versions of Lime and OpenFL have been released, 2.1.1 and 2.2.6 respectively. Lime has added initial Emscripten support, allowing you to compile native code into optimised Javascript, asm.js, which gets a performance boost in Firefox since version 22.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r306" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r306" itemscope="">
 				<a title="Haxe Roundup № 306" href="/roundups/306/">
 					<h1 itemprop="headline">Haxe Roundup № 306</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>The Silex Labs folks have tweeted that they are looking for speakers for this years upcoming WWX2015 conference. If your interested, you should create a pitch over on the Thaxe Force mailing list.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r305" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r305" itemscope="">
 				<a title="Haxe Roundup № 305" href="/roundups/305/">
 					<h1 itemprop="headline">Haxe Roundup № 305</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Silex Labs have announced that the next Haxe Conference, WWX2015 will be hosted in Paris between the 29th May and 1st June!</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r304" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r304" itemscope="">
 				<a title="Haxe Roundup № 304" href="/roundups/304/">
 					<h1 itemprop="headline">Haxe Roundup № 304</h1>
 				</a>
@@ -487,21 +604,21 @@
 
 The second focus sheet has been published alpha-2.0+0010 which will sort out the asset management system and ensuring windowing events are consistent which will result in some API behavioural changes. Sven also takes the time to talk about some recent updates and snowkit related news. I'm particularly interested in the native sdk based on what Sven has written.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r303" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r303" itemscope="">
 				<a title="Haxe Roundup № 303" href="/roundups/303/">
 					<h1 itemprop="headline">Haxe Roundup № 303</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>HxLanguageServices is nothing but an amazingly ambitious project. Carlos Ballesteros Velasco describes HxLanguageServices over of the Haxe mailing list as a way to provide “tooling for Haxe in order to be productive”. As a proof of what the library can do, Carlos has created a demo IDE.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r302" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r302" itemscope="">
 				<a title="Haxe Roundup № 302" href="/roundups/302/">
 					<h1 itemprop="headline">Haxe Roundup № 302</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Jeff Ward has started working on adding HXCPP support to hxScout, allowing your native OpenFL, luxe engine or custom engine be to send telemetry data to hxScout. This is something the Haxe community has wanted for an unfathomable amount of time!</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r301" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r301" itemscope="">
 				<a title="Haxe Roundup № 301" href="/roundups/301/">
 					<h1 itemprop="headline">Haxe Roundup № 301</h1>
 				</a>
@@ -510,42 +627,42 @@ The second focus sheet has been published alpha-2.0+0010 which will sort out the
 
 Hugh Sanderson started the new year by releasing NME 5.2.7, NME dev-1.3.5 Waxe 3.1.1 and GM2D 3.2.5. The majority of changes appear in NME, a few of them being that NME is fully separated from Lime, building with MinGW is now possible and the text rendering has been reworked. You can find more detailed info in the announcement post.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r300" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r300" itemscope="">
 				<a title="Haxe Roundup № 300" href="/roundups/300/">
 					<h1 itemprop="headline">Haxe Roundup № 300</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>NEO Scavenger, a “game where you must survive in the wasteland long enough to figure out who you are” created by Daniel Fedor using Haxe and OpenFL has received great reviews. As of today, NEO Scavenger is the number one selling game on GOG.com and has been for the last few days.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r229" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r229" itemscope="">
 				<a title="Haxe Roundup № 229" href="/roundups/229/">
 					<h1 itemprop="headline">Haxe Roundup № 229</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Jason Sturges has written a new performance benchmark post covering float math, object instantiation, down casting, up casting, event dispatching, function overhead, function inlining, loops and finally Graphic drawing each compiled to Neko, Flash, HTML5 and Native (OSX).</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r228" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r228" itemscope="">
 				<a title="Haxe Roundup № 228" href="/roundups/228/">
 					<h1 itemprop="headline">Haxe Roundup № 228</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>The OpenFL team has created and released the feature matrix which shows the differences between OpenFLs targets, Flash, HTML5, Native and Native Next. The feature matrix appears to cover the entire API.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r227" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r227" itemscope="">
 				<a title="Haxe Roundup № 227" href="/roundups/227/">
 					<h1 itemprop="headline">Haxe Roundup № 227</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Lubos Lenco has published two demos this week, a custom water mesh shader and a interactive chesh board, both created with Lubos's own unreleased game framework which integrates Blender and Kha. Even though these demos run on WebGL, because of Kha, Lubos can compile the demos for Windows, OSX, Linux, Android, iOS, Xbox, PlayStation Vita which are just some of the compile platforms.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r226" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r226" itemscope="">
 				<a title="Haxe Roundup № 226" href="/roundups/226/">
 					<h1 itemprop="headline">Haxe Roundup № 226</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Infognition have written a great post titled From native code to browser: Flash, Haxe, Dart or asm.js? in which Dee Mon tests Flash, Haxe, Dart and asm.js in a computation intensive task, the decompression of a key frame to RGB24.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r225" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r225" itemscope="">
 				<a title="Haxe Roundup № 225" href="/roundups/225/">
 					<h1 itemprop="headline">Haxe Roundup № 225</h1>
 				</a>
@@ -554,7 +671,7 @@ Hugh Sanderson started the new year by releasing NME 5.2.7, NME dev-1.3.5 Waxe 3
 
 You can stay up todate with the development of Quaxe at its official site, where you can see that Daniel has implemented full support for Level 3 and partial Level 4 CSS selectors.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r224" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r224" itemscope="">
 				<a title="Haxe Roundup № 224" href="/roundups/224/">
 					<h1 itemprop="headline">Haxe Roundup № 224</h1>
 				</a>
@@ -563,49 +680,49 @@ You can stay up todate with the development of Quaxe at its official site, where
 
 With the release of the first focus sheet, Sven is setting a solid, strong and structured set of guidelines for the community to follow. Also by focusing on one problem at a time, he is enabling the community to have a discussion.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r223" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r223" itemscope="">
 				<a title="Haxe Roundup № 223" href="/roundups/223/">
 					<h1 itemprop="headline">Haxe Roundup № 223</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Papers, Please back in May swept the IGF awards at GDC and on the 29th October, Papers, Please the dystopian document thrill by Lucas Pope won the GameCity 2014 Prize, adding one more award to his collection. Papers, Please is probably the most successful Haxe and NME/OpenFL powered game.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r222" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r222" itemscope="">
 				<a title="Haxe Roundup № 222" href="/roundups/222/">
 					<h1 itemprop="headline">Haxe Roundup № 222</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Franco Ponticelli has written The Benefits of Transpiling to JavaScript over on io.pellucid.com which is a great introduction to Haxe for Javascript developers investigating various transpilers compilers. In the article Franco has been able to introduce a lot of Haxe's features but in small, easy to understand, effective chunks.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r221" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r221" itemscope="">
 				<a title="Haxe Roundup № 221" href="/roundups/221/">
 					<h1 itemprop="headline">Haxe Roundup № 221</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>OpenFL has received a lot of attention this last week with the news that Flash CC will support custom platforms. Joshua Granick, lead maintainer of OpenFL, helped present the new feature at Adobe Max 2014 in What's New and Upcoming in Flash Professional CC.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r220" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r220" itemscope="">
 				<a title="Haxe Roundup № 220" href="/roundups/220/">
 					<h1 itemprop="headline">Haxe Roundup № 220</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Sven Bergström has released an impressive set of brand new libraries for Haxe, flõw, snõw and luxe, all of which are part of Snõwkit. With the alpha release of Snõwkit, Sven has given the community a set of libraries which allow you to deploy to Windows, Linux, Mac, Android, iOS and WebGL, using Luxe, a high level game engine, or Snõw, a low level platform framework, both of which use Flõw, a build tool for Haxe.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r219" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r219" itemscope="">
 				<a title="Haxe Roundup № 219" href="/roundups/219/">
 					<h1 itemprop="headline">Haxe Roundup № 219</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Kirill Poletaev has created haxecoder.com, a tutorial site for Haxe and OpenFL, releasing a new tutorial nearly every day.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r218" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r218" itemscope="">
 				<a title="Haxe Roundup № 218" href="/roundups/218/">
 					<h1 itemprop="headline">Haxe Roundup № 218</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Jeremy Sachs ages ago released to GitHub Golems, “a macro-backed system for compiling and embedding workers into larger builds”, which works on Flash, JavaScript, Neko and C++ compile targets. Its now available from haxelib.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r217" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r217" itemscope="">
 				<a title="Haxe Roundup № 217" href="/roundups/217/">
 					<h1 itemprop="headline">Haxe Roundup № 217</h1>
 				</a>
@@ -619,7 +736,7 @@ With the release of the first focus sheet, Sven is setting a solid, strong and s
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Game Dev 101 is a one-day games development course that teaches the fundamentals of creating video games completely from scratch using Stencyl.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r216" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r216" itemscope="">
 				<a title="Haxe Roundup № 216" href="/roundups/216/">
 					<h1 itemprop="headline">Haxe Roundup № 216</h1>
 				</a>
@@ -640,35 +757,35 @@ With the release of the first focus sheet, Sven is setting a solid, strong and s
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>This is the second dedicated Ludum Dare roundup for Haxe. Ludum Dare 30 took place between August 22nd and 25th and the chosen theme was Connected Worlds.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r215" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r215" itemscope="">
 				<a title="Haxe Roundup № 215" href="/roundups/215/">
 					<h1 itemprop="headline">Haxe Roundup № 215</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Nicolas will be talking about Haxe at GameDuell on Wednesday 10th September in Berlin, so if you're able to attend, you need to register your interest in going. Also head over to the Haxe mailing list where some people attending the event have started a thread.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r214" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r214" itemscope="">
 				<a title="Haxe Roundup № 214" href="/roundups/214/">
 					<h1 itemprop="headline">Haxe Roundup № 214</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>There are two upcoming events, the first is the Haxe Meetup in London next Wednesday hosted by Massive Interactive. Remember to register your interest in attending.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r213" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r213" itemscope="">
 				<a title="Haxe Roundup № 213" href="/roundups/213/">
 					<h1 itemprop="headline">Haxe Roundup № 213</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>The Massive Interactive team are hosting a Haxe Meetup, on the 27th August 2014 at their London offices 10 Lower Thames Street, London EC3R 6AF. Head over to the Eventbrite page to register interest in attending.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r212" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r212" itemscope="">
 				<a title="Haxe Roundup № 212" href="/roundups/212/">
 					<h1 itemprop="headline">Haxe Roundup № 212</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>David Mouton has written Develop in Haxe with NPM in which he explains why you might want to use NPM and Haxe, how to get setup and started, then taking it further by configuring IntelliJ IDEA and Jenkins, an open source continuous integration server.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r211" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r211" itemscope="">
 				<a title="Haxe Roundup № 211" href="/roundups/211/">
 					<h1 itemprop="headline">Haxe Roundup № 211</h1>
 				</a>
@@ -682,7 +799,7 @@ With the release of the first focus sheet, Sven is setting a solid, strong and s
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Bruno who is the JavaScript target maintainer, who also started Haxe Meme and wrote Flambe, a 2D game engine starts off by stating how Flambe has had amazing growth and adoption with over 200 commercial games built with Flambe. Bruno has a strong focus on developer UX, focused on tool integration and rapid development, which have undoubtedly contributed to its success.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r210" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r210" itemscope="">
 				<a title="Haxe Roundup № 210" href="/roundups/210/">
 					<h1 itemprop="headline">Haxe Roundup № 210</h1>
 				</a>
@@ -696,7 +813,7 @@ With the release of the first focus sheet, Sven is setting a solid, strong and s
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Thomas shares his knowledge of using Cocktail, a HTML and CSS rendering engine by SilexLabs the hosts of WWX. He starts off with the development workflow that he uses, starting off by targeting any browser and once everything is working, compile using Cocktail to the Flash player to see if anything needs fixing.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r209" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r209" itemscope="">
 				<a title="Haxe Roundup № 209" href="/roundups/209/">
 					<h1 itemprop="headline">Haxe Roundup № 209</h1>
 				</a>
@@ -710,7 +827,7 @@ With the release of the first focus sheet, Sven is setting a solid, strong and s
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Hugh introduces “C++ Magic” which gives libraries access to platform specific functions.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r208" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r208" itemscope="">
 				<a title="Haxe Roundup № 208" href="/roundups/208/">
 					<h1 itemprop="headline">Haxe Roundup № 208</h1>
 				</a>
@@ -724,43 +841,43 @@ With the release of the first focus sheet, Sven is setting a solid, strong and s
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Nicolas opened the conference by going over what has changed in the last year, the various releases, new features, additional syntax and further speed improvements.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r207" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r207" itemscope="">
 				<a title="Haxe Roundup № 207" href="/roundups/207/">
 					<h1 itemprop="headline">Haxe Roundup № 207</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Highwayman Stars belong to you, created by Chau Guillaume and François Rousset using Haxe, OpenFL and HaxeFlixel have made a “space-opera RPG made by a small team of two french students”. Highwayman was made for the 2014 Indie Game Maker Contest where you can vote for them.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r206" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r206" itemscope="">
 				<a title="Haxe Roundup № 206" href="/roundups/206/">
 					<h1 itemprop="headline">Haxe Roundup № 206</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Lets start off with an article written by Lars Doucet titled  Dear Adobe: Support Haxe, save your Tools. With a great title, Lars goes into  how Adobe can profit big from depending on Haxe and all its awesome features and  name dropping big companies who already profit from using Haxe, TiVo, Nickelodeaon,   Disney, Toyota and more, articles like this help bring attention to Haxe, but   with some comments saying that associating with Flash is dragging down Haxe,  is it the correct type of attention that Haxe and the community needs?    </p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r205" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r205" itemscope="">
 				<a title="Haxe Roundup № 205" href="/roundups/205/">
 					<h1 itemprop="headline">Haxe Roundup № 205</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>The Chimango Games team have posted a youtube video of the visual evolution of their current game Pewma since they started working on it.    </p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r204" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r204" itemscope="">
 				<a title="Haxe Roundup № 204" href="/roundups/204/">
 					<h1 itemprop="headline">Haxe Roundup № 204</h1>
 				</a>
 				<time dateCreated="$date" pubdate="" datetime="$date"></time>
 				<p>Cristian Baluta has renamed his Objective-C Haxe compile target to Swift, I   wonder what its going be targeting now...    </p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r203" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r203" itemscope="">
 				<a title="Haxe Roundup № 203" href="/roundups/203/"><h1 itemprop="headline">Haxe Roundup № 203</h1></a>
 				<p>While I continue to work on the write up of WWX2014, which is insanely behind release, you  can browse the WWX2014 photo collection to tide you over. You can then checkout  Cristian Baluta's photo album. Then onto the SilexLabs youtube playlist of   past WWX videos.    </p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r202" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r202" itemscope="">
 				<a title="Haxe Roundup № 202" href="/roundups/202/"><h1 itemprop="headline">Haxe Roundup № 202</h1></a>
 				<p>Between the 23rd and 26th of May, last weekend, WWX 2014 took place with some impressive  talks and announcements. The easiest thing to notice is the brand new haxe.org website.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r201" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r201" itemscope="">
 				<a title="Haxe Roundup № 201" href="/roundups/201/"><h1 itemprop="headline">Haxe Roundup № 201</h1></a>
 				<p>With the WWX 2014 conference almost upon us, starting this Friday, how about getting to know some of the speakers? Checkout the following speaker interviews for more information on what impresses and inspires them, their opinions on the future of Haxe and OpenFL and a little more detail about their upcoming talks. </p>
 			</li>
@@ -792,11 +909,11 @@ With the release of the first focus sheet, Sven is setting a solid, strong and s
 				<a title="Hugh Sanderson&#039;s Haxe WWX 2014 Speaker Interview" href="/wwx/2014/Hugh-Sanderson/"><h1 itemprop="headline">Hugh Sanderson's WWX 2014 Speaker Interview</h1></a>
 				<p>I use all sorts of hardware.  I mainly use a desktop PC (which I can boot to Linux) and Macbook air.  But I also have various Android devices and an iPad(1), and a Mac-mini I use for builds.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r200" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r200" itemscope="">
 				<a title="Haxe Roundup № 200" href="/roundups/200/"><h1 itemprop="headline">Haxe Roundup № 200</h1></a>
 				<p>Lars Doucet has released his light weight localization library Fire Tongue  onto haxelib. The github repository README file is full of   setup instructions, asset setup, formatting instructions, a yoda-ish advanced use  guide, HaxeFlixel UI integration and more.    </p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r199" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r199" itemscope="">
 				<a title="Haxe Roundup № 199" href="/roundups/199/"><h1 itemprop="headline">Haxe Roundup № 199</h1></a>
 				<p>Haxor the HTML5 and WebGL engine has been released, currently as a direct   download, Haxor <em>“combines the power of [the] Haxe language, HTML5 [and]   WebGL to easily develop powerful applications that can run in any modern browser”</em>.    </p>
 			</li>
@@ -804,49 +921,49 @@ With the release of the first focus sheet, Sven is setting a solid, strong and s
 				<a title="The Haxe Ludum Dare 29 Roundup" href="/ld/29/"><h1 itemprop="headline">The Haxe Ludum Dare 29 Roundup</h1></a>
 				<p>This is the first dedicated Ludum Dare roundup for Haxe, as every other Ludum Dare list  has been rolled into the weekly Haxe Roundup as a small side addition, so its only fair  that all these Haxe games get their own roundup.    </p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r198" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r198" itemscope="">
 				<a title="Haxe Roundup № 198" href="/roundups/198/"><h1 itemprop="headline">Haxe Roundup № 198</h1></a>
 				<p>A brand new target has been added to Haxe, thanks to Frabbit and   Simon Krajewski who have created the Python target. You can grab   a nightly build to test it out.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r197" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r197" itemscope="">
 				<a title="Haxe Roundup № 197" href="/roundups/197/"><h1 itemprop="headline">Haxe Roundup № 197</h1></a>
 				<p>If your attending WWX2014 the 4th International Haxe Conference, then you're lucky. But you will likely need somewhere to stay, so checkout the details for the official WWX2014 Hotel. There is only a month until it kicks off!</p>
 			</li>
-			<li itemtype="http://schema.org/Article" id="r196" itemscope="">
+			<li itemtype="http://schema.org/Series" id="r196" itemscope="">
 				<a title="Haxe Roundup № 196" href="/roundups/196/"><h1 itemprop="headline">Haxe Roundup № 196</h1></a>
 				<p>The Haxe Foundation have released Haxe version <code>3.1.3</code>. This release is considered a bug fix release, but really its a sign of a closer community forming, as this release fixes an incompatibility between the standard library and OpenFL.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" itemscope="">
+			<li itemtype="http://schema.org/Series" itemscope="">
 				<h1 itemprop="headline">
 					<a title="Haxe Roundup № 195" href="/roundups/195/">Haxe Roundup № 195</a>
 				</h1>
 				<p>Lars Doucet has released some impressive news on the upcoming Defender's Quest 2 game. Nobua Uematsu, the world famous video game composer, will be working on the main theme.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" itemscope="">
+			<li itemtype="http://schema.org/Series" itemscope="">
 				<h1 itemprop="headline">
 					<a title="Haxe Roundup № 194" href="/roundups/194/">Haxe Roundup № 194</a>
 				</h1>
 				<p>Today is the last day to support Haxe, OpenFL, FlashDevelop and RenPy in this weeks Humble Bundle Weekly Sale celebrating open source!</p>
 			</li>
-			<li itemtype="http://schema.org/Article" itemscope="">
+			<li itemtype="http://schema.org/Series" itemscope="">
 				<h1 itemprop="headline">
 					<a title="Haxe Roundup № 193" href="/roundups/193/">Haxe Roundup № 193</a>
 				</h1>
 				<p>Papers, Please has swept the IGF awards at GDC this year, winning 3 out of 8 categories, <em>Excellence in Narrative</em>, <em>Excellence in Design</em> and the <em>Seumas McNally Grand Prize</em>! Congratulations to Lucas Pope for the great success.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" itemscope="">
+			<li itemtype="http://schema.org/Series" itemscope="">
 				<h1 itemprop="headline">
 					<a title="Haxe Roundup № 192" href="/roundups/192/">Haxe Roundup № 192</a>
 				</h1>
-				<p>A couple of weeks ago, Haxe <code>3.1.0</code> was released. Well, Haxe <code>3.1.1</code> <del>bugfix</del> release has been made available for download. Three new features have made there way into this release, with the more notable being you can now embed unicode values into your strings. <code>var unicode = "\u4DF1";</code> will return <figure><img src="/svg/Iching-hexagram-50.svg" alt="unicode inline skip-lb" /><figcaption></figcaption></figure>. Checkout the changelog for the full details.</p>
+				<p>A couple of weeks ago, Haxe <code>3.1.0</code> was released. Well, Haxe <code>3.1.1</code> <del>bugfix</del> release has been made available for download. Three new features have made there way into this release, with the more notable being you can now embed unicode values into your strings.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" itemscope="">
+			<li itemtype="http://schema.org/Series" itemscope="">
 				<h1 itemprop="headline">
 					<a title="Haxe Roundup № 191" href="/roundups/191/">Haxe Roundup № 191</a>
 				</h1>
 				<p>Emiliano Angelini has created and released another OpenFL native extension, this time for Google Analytics v3, called GAnalytics. The currently supported targets are iOS and Android. Its based on Hyperfiction's HypGA repository.</p>
 			</li>
-			<li itemtype="http://schema.org/Article" itemscope="">
+			<li itemtype="http://schema.org/Series" itemscope="">
 				<h1 itemprop="headline">
 					<a title="Haxe Roundup № 190" href="/roundups/190/">Haxe Roundup № 190</a>
 				</h1>
@@ -856,17 +973,49 @@ With the release of the first focus sheet, Sven is setting a solid, strong and s
 	</main>
 	<footer class="grid">
 		<div class="grid-1-1">
-			<svg viewBox="0 0 320 320" enable-background="new">
-				<g>
-					<g id="a" transform="translate(-2,-2)">
-						<path stroke-width="15.6" stroke="#000" d="m93.7 25.3-68.4 68.3" stroke-linecap="round" fill="none"></path>
-						<path stroke-width="15.3" stroke="#000" id="b" d="m52.4 153 36.6-37" stroke-linecap="round" transform="translate(2)" fill="none"></path>
-						<path stroke-width="14" stroke="#000" d="m271 22.5-246 246" stroke-linecap="round" fill="none"></path>
-						<use height="1052.3622" y="0" x="0" xlink:href="#b" width="744.09448" transform="translate(60,-60)"></use>
-					</g>
-					<use height="1052.3622" y="0" x="0" xlink:href="#a" width="744.09448" transform="matrix(-1 0 0 -1 332 331)"></use>
-				</g>
-			</svg>
+			<div class="logo">
+				<div>
+					<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 100 100" version="1.1" viewBox="0 0 100 125" y="0px" x="0px">
+						<g transform="rotate(180 50 50)">
+							 <path d="m78.674 49.87c-0.111-0.868-0.743-0.769-1.068-0.644-1.105 0.426-3.735 0.646-4.974 0.475-3.024-0.423-2.725-2.133-2.725-2.133s3.51 1.729 5.882 0.527c1.549-0.785 2.725-1.617 6.948-0.086 0 0 5.013 1.651 7.263 2.007v-0.032c-2.25 0.355-7.263 2.004-7.263 2.004-4.224 1.533-5.399 0.701-6.948-0.084-2.372-1.197-5.882 0.525-5.882 0.525s-0.3-1.707 2.725-2.13c1.238-0.174 3.868 0.049 4.974 0.475 0.342 0.13 1.022 0.231 1.08-0.783l-0.012-0.121zm1.287 0.13c0 0.546-0.339 1.011-0.817 1.199 0.148 0.058 0.307 0.091 0.474 0.091 0.713 0 1.289-0.579 1.289-1.29 0-0.713-0.576-1.289-1.289-1.289-0.167 0-0.325 0.033-0.474 0.093 0.478 0.188 0.817 0.65 0.817 1.196zm2.743 0c0 0.37-0.228 0.686-0.553 0.813 0.101 0.04 0.207 0.061 0.32 0.061 0.483 0 0.876-0.391 0.876-0.874 0-0.485-0.393-0.875-0.876-0.875-0.113 0-0.22 0.022-0.32 0.064 0.326 0.128 0.553 0.442 0.553 0.811zm-1.309 0.003c0 0.437-0.272 0.804-0.653 0.957 0.116 0.044 0.244 0.072 0.379 0.072 0.569 0 1.031-0.463 1.031-1.029 0-0.571-0.462-1.034-1.031-1.034-0.135 0-0.263 0.03-0.379 0.074 0.38 0.151 0.653 0.523 0.653 0.96z"/>
+							 <g>
+							  <line x1="10" y1="49.998" x2="54.026" y2="49.998"/>
+							  <path d="m10 49.998c3.67-0.084 7.338-0.123 11.009-0.158l11.004-0.049 11.007 0.049 5.503 0.059 5.503 0.1-5.503 0.103-5.503 0.058-11.007 0.047-11.004-0.047c-3.671-0.036-7.339-0.076-11.009-0.162z"/>
+							 </g>
+							 <g>
+							  <line x1="51.492" y1="49.998" x2="72.216" y2="49.998"/>
+							  <path d="m51.492 49.998c3.454-1.099 6.906-1.352 10.36-1.396 3.455 0.042 6.909 0.291 10.363 1.396-3.454 1.108-6.908 1.359-10.363 1.401-3.454-0.048-6.906-0.299-10.36-1.401z"/>
+							 </g>
+					 	</g>
+					</svg>
+				</div>
+				<div type="image/logo">
+					<svg viewBox="0 0 320 320" enable-background="new">
+						<g>
+							<g id="a" transform="translate(-2,-2)">
+								<path stroke-width="15.6" stroke="#000" d="m93.7 25.3-68.4 68.3" stroke-linecap="round" fill="none"></path>
+								<path stroke-width="15.3" stroke="#000" id="b" d="m52.4 153 36.6-37" stroke-linecap="round" transform="translate(2)" fill="none"></path>
+								<path stroke-width="14" stroke="#000" d="m271 22.5-246 246" stroke-linecap="round" fill="none"></path>
+								<use height="1052.3622" y="0" x="0" xlink:href="#b" width="744.09448" transform="translate(60,-60)"></use>
+							</g>
+							<use height="1052.3622" y="0" x="0" xlink:href="#a" width="744.09448" transform="matrix(-1 0 0 -1 332 331)"></use>
+						</g>
+					</svg>
+				</div>
+				<div>
+					<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 100 100" version="1.1" viewBox="0 0 100 125" y="0px" x="0px">
+					 <path d="m78.674 49.87c-0.111-0.868-0.743-0.769-1.068-0.644-1.105 0.426-3.735 0.646-4.974 0.475-3.024-0.423-2.725-2.133-2.725-2.133s3.51 1.729 5.882 0.527c1.549-0.785 2.725-1.617 6.948-0.086 0 0 5.013 1.651 7.263 2.007v-0.032c-2.25 0.355-7.263 2.004-7.263 2.004-4.224 1.533-5.399 0.701-6.948-0.084-2.372-1.197-5.882 0.525-5.882 0.525s-0.3-1.707 2.725-2.13c1.238-0.174 3.868 0.049 4.974 0.475 0.342 0.13 1.022 0.231 1.08-0.783l-0.012-0.121zm1.287 0.13c0 0.546-0.339 1.011-0.817 1.199 0.148 0.058 0.307 0.091 0.474 0.091 0.713 0 1.289-0.579 1.289-1.29 0-0.713-0.576-1.289-1.289-1.289-0.167 0-0.325 0.033-0.474 0.093 0.478 0.188 0.817 0.65 0.817 1.196zm2.743 0c0 0.37-0.228 0.686-0.553 0.813 0.101 0.04 0.207 0.061 0.32 0.061 0.483 0 0.876-0.391 0.876-0.874 0-0.485-0.393-0.875-0.876-0.875-0.113 0-0.22 0.022-0.32 0.064 0.326 0.128 0.553 0.442 0.553 0.811zm-1.309 0.003c0 0.437-0.272 0.804-0.653 0.957 0.116 0.044 0.244 0.072 0.379 0.072 0.569 0 1.031-0.463 1.031-1.029 0-0.571-0.462-1.034-1.031-1.034-0.135 0-0.263 0.03-0.379 0.074 0.38 0.151 0.653 0.523 0.653 0.96z"/>
+					 <g>
+					  <line x1="10" y1="49.998" x2="54.026" y2="49.998"/>
+					  <path d="m10 49.998c3.67-0.084 7.338-0.123 11.009-0.158l11.004-0.049 11.007 0.049 5.503 0.059 5.503 0.1-5.503 0.103-5.503 0.058-11.007 0.047-11.004-0.047c-3.671-0.036-7.339-0.076-11.009-0.162z"/>
+					 </g>
+					 <g>
+					  <line x1="51.492" y1="49.998" x2="72.216" y2="49.998"/>
+					  <path d="m51.492 49.998c3.454-1.099 6.906-1.352 10.36-1.396 3.455 0.042 6.909 0.291 10.363 1.396-3.454 1.108-6.908 1.359-10.363 1.401-3.454-0.048-6.906-0.299-10.36-1.401z"/>
+					 </g>
+					</svg>
+				</div>
+			</div>
 		</div>
 	</footer>
 </body>
