@@ -1,0 +1,16 @@
+-lib electron
+-lib hxnodejs
+-lib thx.core
+-lib cmd
+-D dce=full
+-cp .
+
+--each 
+
+-main Main
+-js ../index.js
+
+--next
+
+-main Script
+-js ../script.js
