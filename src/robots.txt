@@ -2,3 +2,6 @@ User-agent: *
 Disallow: /img/
 Disallow: /css/
 Sitemap: https://www.haxe.io/sitemap.xml
+
+User-agent: Twitterbot
+Allow: /img/
