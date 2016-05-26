@@ -1,68 +1,97 @@
-[_template]: ../../templates/interview.html
+[template]: ../../templates/interview.html
+[author]: https://github.com/klmsmb "@klmsmb"
+[date]: / "2016-05-26"
+[modified]: / "2016-05-26"
 
-## Tell us about yourself?
+I work in [Lanit Tercom](http://www.lanit-tercom.ru/en) company and take a part in developments at Area 9 and The McGraw Hill Education companies. The most successful products are [LearnSmart](https://www.mheducation.com/highered/platforms/learnsmart.html), [SmartBook](https://www.mheducation.com/highered/platforms/smartbook.html), SmartBuilder.
 
-_I work in Lanit Tercom company and take a part in developments for Area 9 and The McGraw Hill Education companies. The most successful products are LearnSmart, SmartBook, SmartBuilder._
-_I use haxe for my job. Area 9 create haxe library (and I take a part in this) called flow. Almost all our product use those library._
+I use Haxe for my job and at Area 9 we created a Haxe library called Flow, almost all our product use this library.
+
+## Are you able to tell us more about Flow?
+
+Flow is a statically typed functional language for building software with dynamic user interfaces. It has taken elements from Haxe, D, ML, Haskell, Lisp, and Pico (Prolog).
+
+It is a relatively small and low-level language, although it does have first-order functions, closures and simple pattern matching. The flow interpreter and bytecode compiler are implemented in Haxe, and targets Flash, Neko, CPP, and JavaScript. The compiler produces a simple bytecode, native Flash or native JavaScript.
+
+## That's really impressive, do you know why Area 9 decided to create their own interpreter and compiler? I assume none of Flow has been open sourced? 
+
+Yes, Flow is not open source. The main reason is that all products can only be supported by Area9.
 
 ## Out of the various Haxe IDE's available, which one(s) do you use?
 
-_I use IntelliJ IDEA. Because it works well with Mac and Windows and Linux. And it is good haxe plagin there. Last on - it supports XML schemes._
+I use IntelliJ IDEA, because it works well on Mac, Windows and Linux. Also it has a good Haxe plugin. Lastly, it supports XML schemes.
 
-## What other software do you find vital while working with Haxe?
+## Out of interest, what hardware you do you use?
 
-_Cannot find good answer for this :)_
-
-## What hardware you do you use?
-
-_Intel Core i5, 8 Gb RAM, GForce GTX 750Ti 1Gb_
+Intel Core i5, 8 Gb RAM, GForce GTX 750Ti 1Gb.
 
 ## What problem does Haxe solve for you?
 
-_Write mobile application, bacause Haxe works well with all platforms and devices. _
+Being able to write mobile application, because Haxe works well on all platforms and devices.
 
 ## What ticks you off about Haxe, if anything? Lack of feature? Something else?
 	
-_Bad work with threads. Like run hidden calculation what doesn't stop an application._
+Bad support for threads, for example, running hidden calculation that do not stop an application.
 
 ## What compiler targets do you use?
 
-_CPP, Flash, Neko. I use more than one because different tasks makes different solutions_
+CPP, Flash, PHP and Neko. I use more than one because different tasks require different solutions. Currently CPP is only used on mobile, Neko is used for building tools, Flash for the web and PHP on
+the server.
 
-## What platforms to do deploy to?
+## And what platforms to do deploy to?
 
-_Mobile, browser, server._
+Mobile, browser, server.
+
+## What does testing look like for you deploying across three platforms?
+
+We have several devices and test in each one manually. We've also use MUnit for some performance tests.
   
 ## What tips or resources would you recommend to a new Haxe user?
 
-_haxe.org, openfl.org_
+haxe.org, openfl.org
 
 ## What Haxe libraries and/or frameworks are you impressed by and use?
 
-_Jive, because it is our library. :)_
+Jive, because it is our library. :)
 
 ## What problem would you like to see solved by a new or existing Haxe library?
 
-_SSL for IOS and Android_
+SSL for IOS and Android!
 
-## What is the best use of Haxe you've come across?
+## Have you seen the [new SSL/TLS](https://github.com/HaxeFoundation/haxe/pull/5014) support coming to Haxe `3.3`?
 
-_In my main work we create products with millions subscribers._
+No :)
+
+## It's a great improvement over `hxssl` and will be included in the std library from `3.3` for CPP and Neko, at least.
+
+## For you, what is the best use of Haxe you've come across?
+
+In my main work, where we create products with millions subscribers.
 
 ## Where do you get your inspiration?
-_In games and sport._
 
-## Which creatives/developers/artists (do you admire most? and/or impress you)?
+In games and sport.
 
-_Notch, Darren Corb and Dan Abnett._
+## And which creatives/developers/artists (do you admire most? and/or impress you)?
+
+Notch for creating Minecraft and how he change the game industry, Darren Corb who writes awesome music for game like Bastion and Transistor and Dan Abnett, who has written lots of books in Warhammer 40K universe.
 
 ## What contributions are you proud of?
-_My work with Jive._
+
+My work and contributions to Jive.
+
+## What are you thoughts on the other UI libraries in Haxe, with StablexUI and HaxeUI properly being the other two well known libraries? How is Jive different?
+
+I worked with HaxeUI and I like it, but Jive is better for me. The two main reasons for it are we can compile all XML before building product, so it is faster, and the main idea in next version to do it very simple code, so each user can work with it. 
+
+Next idea will be to do some UI platform which will help to build applications like [wix.com](http://wix.com/) for sites. We have some awesome ideas in this direction.
 
 ## Tell us about your WWX talk?
 
-_It will be about Jive for mobile platforms. I'll show our mobile projects what we did last year. And will speak about Jive features and our ideas for the future._
+It will be about Jive for mobile platforms. I'll show our mobile projects which we created in the last year, and I will speak about Jive's features and our ideas for the future.
 
 ## What is the best part of WWX for you/are you looking forward too?
 
-_Party :) Seriously to listen all speaches and talk with good developers will be awesome._
+Party! :) 
+
+Seriously to listen to all the speeches and talks from good developers will be awesome.
