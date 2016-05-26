@@ -3,6 +3,8 @@
 [date]: / "2016-05-26"
 [modified]: / "2016-05-26"
 
+![profile Maxim Bekhterev](/img/wwx/2016/Maxim-Bekhterev/profile.jpg)
+
 I work in [Lanit Tercom](http://www.lanit-tercom.ru/en) company and take a part in developments at Area 9 and The McGraw Hill Education companies. The most successful products are [LearnSmart](https://www.mheducation.com/highered/platforms/learnsmart.html), [SmartBook](https://www.mheducation.com/highered/platforms/smartbook.html), SmartBuilder.
 
 I use Haxe for my job and at Area 9 we created a Haxe library called Flow, almost all our product use this library.
@@ -35,8 +37,7 @@ Bad support for threads, for example, running hidden calculation that do not sto
 
 ## What compiler targets do you use?
 
-CPP, Flash, PHP and Neko. I use more than one because different tasks require different solutions. Currently CPP is only used on mobile, Neko is used for building tools, Flash for the web and PHP on
-the server.
+CPP, Flash, PHP and Neko. I use more than one because different tasks require different solutions. Currently CPP is only used on mobile, Neko is used for building tools, Flash for the web and PHP on the server.
 
 ## And what platforms to do deploy to?
 
@@ -44,7 +45,7 @@ Mobile, browser, server.
 
 ## What does testing look like for you deploying across three platforms?
 
-We have several devices and test in each one manually. We've also use MUnit for some performance tests.
+We have several devices and test in each one manually. We've also use [MUnit](https://github.com/massiveinteractive/MassiveUnit) for some performance tests.
   
 ## What tips or resources would you recommend to a new Haxe user?
 
@@ -78,7 +79,7 @@ Notch for creating Minecraft and how he change the game industry, Darren Corb wh
 
 ## What contributions are you proud of?
 
-My work and contributions to Jive.
+My work and contributions to [Jive](https://github.com/jiveui/jive).
 
 ## What are you thoughts on the other UI libraries in Haxe, with StablexUI and HaxeUI properly being the other two well known libraries? How is Jive different?
 
@@ -88,7 +89,7 @@ Next idea will be to do some UI platform which will help to build applications l
 
 ## Tell us about your WWX talk?
 
-It will be about Jive for mobile platforms. I'll show our mobile projects which we created in the last year, and I will speak about Jive's features and our ideas for the future.
+It will be about [Jive](https://github.com/jiveui/jive) for mobile platforms. I'll show our mobile projects which we created in the last year, and I will speak about Jive's features and our ideas for the future.
 
 ## What is the best part of WWX for you/are you looking forward too?
 
