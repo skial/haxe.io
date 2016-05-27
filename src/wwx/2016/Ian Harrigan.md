@@ -1,9 +1,9 @@
 [template]: ../../templates/interview.html
 [author]: https://twitter.com/IanHarrigan1982 "@IanHarrigan1982"
-[date]: / "2016-05-26"
-[modified]: / "2016-05-26"
+[date]: / "2016-05-27"
+[modified]: / "2016-05-27"
 
-## Tell us about yourself?
+![haxeui 2 slick wwx 2016 preview](/img/wwx/2016/Ian-Harrigan/haxeuiv2.jpg "HaxeUI v2 at WWX2016")
 
 ## How did you get started in programming?
 
@@ -11,7 +11,7 @@ I actually started programming in a round about way; I really started by buildin
 
 I got a job straight out of college working for a small startup specializing in mobile applications, and this was way before mobiles were wide spread - were talking WindowsCE and PalmOS. After that job I started working in London for a medical company and finally decided to go freelance.
 
-## What is your job?_
+## What is your job?
 
 I still work for medical and pharmaceutical companies and so, by proxy, work for the NHS, _the United Kingdom's National Health Service_, but still in a freelance/contractor manner.
 
@@ -150,7 +150,7 @@ Once those three were functional I was pretty confident that I had a pretty flex
 
 There was also the standard developer despair of _“what am I even doing rewriting all of this”_ at 5 a.m. Thankfully that seems to have subsided mostly now. 
 
-![haxeui 2 slick wwx 2016 preview](/img/wwx/2016/haxeuiv2.jpg "HaxeUI v2 at WWX2016")
+![haxeui 2 slick wwx 2016 preview](/img/wwx/2016/Ian-Harrigan/native.jpg "Native dialog boxes in HaxeUI v2.")
 
 ## What backend has been the biggest pain to develop for?
 
