@@ -50,7 +50,7 @@ Speaking of language features I'd appreciate null-safety, short-lambdas and tupl
 ## What tips or resources would you recommend to a new Haxe user?
 
 The new code cookbook resource by [Mark Knol](https://twitter.com/mknol) is really awesome found at [`code.haxe.org`](http://code.haxe.org/).
-And of course one shouldn't forget the [good old manual](http://old.haxe.org/), which is really well written IMO.
+And of course one shouldn't forget the [good old manual](http://haxe.org/manual), which is really well written IMO.
 
 ## The cookbook is a great addition, lets hope people will contribute to it like they did on `old.haxe.org` open wiki.
 
