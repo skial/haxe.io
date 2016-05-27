@@ -3,7 +3,7 @@
 [date]: / "2016-05-26"
 [modified]: / "2016-05-26"
 
-![profile dan korostelev](/img/wwx/2016/Dan Korostelev/profile.jpg "Dan Korostelev")
+![profile dan korostelev](/img/wwx/2016/Dan-Korostelev/profile.jpg "Dan Korostelev")
 
 ## Can you tell us how you got started with programming?
 
