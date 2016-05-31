@@ -4,9 +4,9 @@
 -lib cmd
 -D dce=full
 -cp .
---no-traces
+#--no-traces
 
 --each 
 
--main Version
--js ../version.js
+-main StyleLift
+-js ../stylelift.js

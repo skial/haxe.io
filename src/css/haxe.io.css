@@ -42,10 +42,6 @@ html[class*="interview"] h2 {
 	font-family: inherit;
 }
 
-html[class*="interview"] h2 a[id] {
-	background-color: inherit;
-}
-
 blockquote {
 	
 }
@@ -222,7 +218,7 @@ code[language] {
 /* Links */
 
 header a:not([type]),
-article section a:not([type]) {
+article section p a:not([type]) {
 	color: #333;
 	text-decoration: none;
 	/*border-bottom: 1px solid rgba(34,186,241, 0.2);*/

@@ -37,6 +37,7 @@ class Main {
 	private var port:Int;
 	private var queue:StringMap<Bool> = new StringMap();
 	private var queueKeys:Iterator<String>;
+	private var running:StringMap<Bool> = new StringMap();
 	
 	public static function main() {
 		electron = require('electron');
@@ -97,8 +98,8 @@ class Main {
 		for (s in scripts) {
 			var name = s.withoutExtension();
 			
-			completed.set( name, false );
-			ipcMain.on('$name::complete', handleScriptCompletion.bind(_, _, name, completed));
+			running.set( name, false );
+			ipcMain.on('$name::complete', handleScriptCompletion.bind(_, _, name));
 			
 		}
 		config.webPreferences = {};
@@ -126,20 +127,6 @@ class Main {
 	    window = null;
 	  });
 		
-		/*window.webContents.on('did-get-response-details', function(e, s, n, o, rc, rm, rf, h, rt) {
-			if (queue.exists( (o:String).replace('http://localhost:$port', '') ) ) {
-				var key = window.webContents.getURL().replace( 'http://localhost:$port', '' );
-				trace( 'resource failed', n, o, rc, window.webContents.getURL(), key );
-				if (queue.exists(key)) {
-					queue.set( key, true );
-					//window.webContents.openDevTools();
-					window.webContents.send('continueOrQuit', '');
-					
-				}
-				
-			}
-			
-		});*/
 		window.webContents.on('did-stop-loading', onLoad);
 		//window.webContents.on('dom-ready', onLoad);
 		
@@ -159,19 +146,20 @@ class Main {
 		
 	}
 	
-	private function handleScriptCompletion(event:String, args:Array<String>, name:String, map:StringMap<Bool>):Void {
-		map.set( name, true );
+	private function handleScriptCompletion(event:String, args:Array<String>, name:String):Void {
+		running.set( name, true );
 		trace( '$name script has completed', args );
 		var allDone = false;
-		for (key in map.keys()) {
+		for (key in running.keys()) {
 			var previous = allDone;
-			allDone = map.get( key );
+			allDone = running.get( key );
 			if (previous && !allDone) break;
 			
 		}
 		trace( 'all done?', allDone );
 		if (allDone) {
 			trace( 'completed!', window.webContents.getURL() );
+			for (key in running.keys()) running.set( key, false );
 			window.webContents.send('scripts::completed', 'true');
 		
 		}
@@ -208,11 +196,13 @@ class Main {
 		trace( 'saving file', path, dirname, data.filename, data.reply );
 		if (data.filename == null || data.filename == '') {
 			trace( 'data filename cannot be empty.' );
+			window.webContents.send(data.reply, 'false');
 			return;
 		}
 		
 		if (data.content == null || data.content == '') {
 			trace( 'data content cannot be empty.' );
+			window.webContents.send(data.reply, 'false');
 			return;
 		}
 		
@@ -238,11 +228,6 @@ class Main {
 				
 			}
 			
-		/*} catch (e:Dynamic) {
-			trace( e );
-			continueOrQuit();
-			
-		}*/
 	}
 	
 	private function createDir(path:String, cb:Function):Void {
