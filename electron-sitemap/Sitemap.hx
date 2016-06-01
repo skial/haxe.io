@@ -63,6 +63,9 @@ class Sitemap {
 				
 			}
 			
+		} else {
+			ipcRenderer.send('sitemap::complete', 'false');
+			
 		}
 		
 	}
