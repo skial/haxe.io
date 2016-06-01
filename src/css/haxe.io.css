@@ -87,7 +87,7 @@ video,
 	max-width: 100%
 }
 
-html:not([class="/"]) header, article {
+html:not([class*="/frontpage"]) header, article {
 	margin: 0 1rem;
 }
 
@@ -108,27 +108,27 @@ header .name {
 	padding-left: 1rem;
 }
 
-html:not([class="/"] ) footer * {
+html:not([class*="/frontpage"] ) footer * {
 	display: none;
 }
 
-header, html[class="/"] footer {
+header, html[class*="/frontpage"] footer {
 	padding-bottom: 1.5rem;
 }
 
-header div, html[class="/"] footer div {
+header div, html[class*="/frontpage"] footer div {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
-html[class="/"] footer div {
+html[class*="/frontpage"] footer div {
 	align-items: inherit;
 }
 
 header [type="image/logo"],
 header [type="image/logo"] svg,
-html[class="/"] footer .logo svg {
+html[class*="/frontpage"] footer .logo svg {
 	margin-top: 1rem;
 	margin-bottom: 1.5rem;
 	min-width: 3rem;
@@ -136,7 +136,7 @@ html[class="/"] footer .logo svg {
 	max-width: 3rem;
 }
 
-html:not([class="/"]) header [type="image/logo"] {
+html:not([class*="/frontpage"]) header [type="image/logo"] {
 	margin-bottom: 0;
 }
 
@@ -152,16 +152,16 @@ footer {
 	padding-bottom: 0;
 }
 
-html[class="/"] footer div {
+html[class*="/frontpage"] footer div {
 	flex-grow: 1;
 	opacity: 0.8;
 }
 
-html[class="/"] footer .logo {
+html[class*="/frontpage"] footer .logo {
 	margin: 0;
 }
 
-html[class="/"] footer .logo div {
+html[class*="/frontpage"] footer .logo div {
 	align-items: stretch;
 	border-top: 1px solid rgb(189, 189, 189);
 }
@@ -580,9 +580,9 @@ iframe[src*="eventbrite.com"] {
 		padding-left: 2.5rem;
 	}
 	
-	html[class="/"] header [type="image/logo"], 
-	html[class="/"] header [type="image/logo"] svg,
-	html[class="/"] footer .logo svg {
+	html[class*="/frontpage"] header [type="image/logo"], 
+	html[class*="/frontpage"] header [type="image/logo"] svg,
+	html[class*="/frontpage"] footer .logo svg {
 		margin-top: 1rem;
 		margin-bottom: 1.5rem;
 		min-width: 5rem;
@@ -596,7 +596,7 @@ iframe[src*="eventbrite.com"] {
 		/*filter: url(#filter);*/
 	}
 	
-	html:not([class="/"]) header, article {
+	html:not([class*="/frontpage"]) header, article {
 		margin: 0 2rem;
 	}
 	
@@ -625,9 +625,9 @@ iframe[src*="eventbrite.com"] {
 		padding-left: 3rem;
 	}
 	
-	html[class="/"] header [type="image/logo"],
-	html[class="/"] header [type="image/logo"] svg,
-	html[class="/"] footer .logo svg {
+	html[class*="/frontpage"] header [type="image/logo"],
+	html[class*="/frontpage"] header [type="image/logo"] svg,
+	html[class*="/frontpage"] footer .logo svg {
 		margin-top: 2rem;
 		margin-bottom: 3rem;
 		min-width: 6rem;
@@ -640,7 +640,7 @@ iframe[src*="eventbrite.com"] {
 		font-size: 1.1rem;
 	}
 	
-	html:not([class="/"]) header, article {
+	html:not([class*="/frontpage"]) header, article {
 		margin: 0 5rem;
 	}
 	
@@ -723,7 +723,7 @@ iframe[src*="eventbrite.com"] {
 	}
 	
 	header svg,
-	html[class="/"] footer svg {
+	html[class*="/frontpage"] footer svg {
 		min-width: 6rem;
 		max-width: 6rem;
 		min-height: 6rem;
@@ -740,7 +740,7 @@ iframe[src*="eventbrite.com"] {
 		padding-bottom: 3rem;
 	}
 	
-	html:not([class="/"]) header, article {
+	html:not([class*="/frontpage"]) header, article {
 		margin: 0 10rem;
 	}
 	
@@ -763,7 +763,7 @@ iframe[src*="eventbrite.com"] {
 		font-size: 1.2rem;
 	}
 	
-	html:not([class="/"]) header, article {
+	html:not([class*="/frontpage"]) header, article {
 		margin: 0 17rem;
 	}
 	
@@ -786,7 +786,7 @@ iframe[src*="eventbrite.com"] {
 		padding-bottom: 8rem;
 	}*/
 	
-	html:not([class="/"]) header, article {
+	html:not([class*="/frontpage"]) header, article {
 		margin: 0 20rem;
 	}
 	
