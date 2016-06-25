@@ -74,5 +74,5 @@ cp $MIN $OPT
 html-minifier \
 --collapse-boolean-attributes --remove-comments --remove-empty-attributes --remove-redundant-attributes \
 --collapse-whitespace --decode-entities --minify-js  --remove-style-link-type-attributes \
---remove-script-type-attributes --minify-css -o $OPT $OPT_CRIT
+--remove-script-type-attributes --minify-css -o "$OPT" "$OPT_CRIT"
 #zopfli --i1000 $OPT

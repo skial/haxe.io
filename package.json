@@ -1,5 +1,7 @@
 {
   "name": "haxe.io",
+  "repo": "https://github.com/skial/haxe.io",
+  "version": "0.0.1",
   "devDependencies": {
 		"onchange": "latest",
 		"http-server": "latest",
@@ -12,11 +14,15 @@
 		"critical": "addyosmani/critical",
 		"node-static": "latest",
 		"electron-prebuilt": "latest",
-		"electron-spawn": "latest"
+		"electron-spawn": "latest",
+		"browserify": "latest",
+		"autotrack": "latest",
+		"google-closure-compiler": "latest"
   },
-  "scripts": {				
+  "scripts": {
+		"watch:jsmin": "onchange \"./src/js/*.js\" -w -- jsmin.sh {{changed}}",
 		"watch:htmlmin": "onchange \"./src/**/*.html\" -w -- htmlmin.sh {{changed}}",
 		"watch:cssmin": "onchange \"./src/css/*.css\" -w -- cssmin.sh {{changed}}",
-		"watch": "npm-run-all -p watch:cssmin watch:htmlmin"
+		"watch": "npm-run-all -p watch:jsmin watch:cssmin watch:htmlmin"
   }
 }
