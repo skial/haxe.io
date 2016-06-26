@@ -1,7 +1,8 @@
 {
   "name": "haxe.io",
-  "repo": "https://github.com/skial/haxe.io",
+  "repository": "https://github.com/skial/haxe.io",
   "version": "0.0.1",
+	"license": "GPL-3.0+",
   "devDependencies": {
 		"onchange": "latest",
 		"http-server": "latest",

@@ -9,4 +9,4 @@
 --each 
 
 -main CheckMissing
--js ../checkmissing.js
+-js ../site/checkmissing.js

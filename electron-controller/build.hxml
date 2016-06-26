@@ -8,9 +8,9 @@
 --each 
 
 -main Main
--js ../index.js
+-js ../site/index.js
 
 --next
 
 -main Script
--js ../script.js
+-js ../site/script.js

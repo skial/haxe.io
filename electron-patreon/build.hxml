@@ -1,0 +1,18 @@
+-cp ../js-community-patreon/
+-lib cmd
+-lib hxnodejs
+-lib thx.core
+-lib tink_json
+-D dce=full
+-cp .
+#--no-traces
+
+--each 
+
+-main PatreonController
+-js ../patreon/index.js
+
+--next
+
+-main PatreonScraper
+-js ../patreon/scraper.js

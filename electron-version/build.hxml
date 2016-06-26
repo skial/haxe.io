@@ -9,4 +9,4 @@
 --each 
 
 -main Version
--js ../version.js
+-js ../site/version.js

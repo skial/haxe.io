@@ -9,4 +9,4 @@
 --each 
 
 -main ScreenGrab
--js ../screengrab.js
+-js ../site/screengrab.js

@@ -9,4 +9,4 @@
 --each 
 
 -main Sitemap
--js ../sitemap.js
+-js ../site/sitemap.js

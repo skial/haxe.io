@@ -1,0 +1,4 @@
+-debug
+-lib tink_json
+-main CommunityPatreon
+-js ../src/js/communitypatreon.js
