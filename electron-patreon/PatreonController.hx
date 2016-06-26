@@ -40,7 +40,8 @@ class PatreonController {
 		});
 	}
 	
-	@alias('d') public var data:String;
+	@alias('i') public var input:String;
+	@alias('o') public var output:String;
 	@alias('s') public var script:String;
 	private var cwd = Sys.getCwd();
 	private var config:Dynamic = { webPreferences:{} };
@@ -51,9 +52,9 @@ class PatreonController {
 		@:cmd _;
 		
 		if (script != null) config.webPreferences.preload = '$cwd/$script'.normalize();
-		if (data == null) app.quit();
+		if (input == null) app.quit();
 		
-		readFile( '$cwd/$data'.normalize(), {encoding:'utf8'}, function(e, d) {
+		readFile( '$cwd/$input'.normalize(), {encoding:'utf8'}, function(e, d) {
 			if (e != null) throw e;
 			process( payload = parse(d) );
 		} );
@@ -88,8 +89,8 @@ class PatreonController {
 		counter--;
 		browser.close();
 		if (counter < 1) {
-			trace( 'saving $data' );
-			writeFile( '$cwd/$data'.normalize(), stringify(payload), function(error) {
+			trace( 'saving $input' );
+			writeFile( '$cwd/$output'.normalize(), stringify(payload), function(error) {
 				if (error != null) trace( error );
 				trace( 'exiting' );
 				app.quit();

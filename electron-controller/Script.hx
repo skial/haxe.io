@@ -53,7 +53,8 @@ class Script {
 		
 		for (script in scripts) {
 			var name = script.withoutExtension();
-			loaded.set( script, require( '$__dirname/$script' ) );
+			trace( name );
+			loaded.set( script, require( '$__dirname/$script'.normalize() ) );
 			
 		}
 

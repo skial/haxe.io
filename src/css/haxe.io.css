@@ -532,6 +532,47 @@ iframe[src*="eventbrite.com"] {
 	min-height: 20em;
 }
 
+.community.patreon {
+	padding: 0 1em;
+	background-color: rgba(230, 70, 26, 0.8);	
+}
+
+.community.patreon a, .community.patreon a:hover {
+	text-decoration: none;
+}
+
+.community.patreon h1, .community.patreon h2 {
+	font-size: 1.5em;
+	color: white;
+}
+
+.community.patreon a:hover h1, .community.patreon a:hover h2 {
+	text-decoration: underline;
+}
+
+html[class*="/frontpage"] .community.patreon {
+	box-shadow: 1px 1px 1px 0px rgba(189, 189, 189, 0.3);
+}
+
+html[class*="/roundups"] .community.patreon {
+	border-radius: 4px;
+	text-align: center;
+	background-color: rgba(230, 70, 26, 0.7);	
+}
+
+html[class*="/roundups"] .community.patreon:hover {
+	background-color: rgba(230, 70, 26, 0.8);	
+}
+
+
+html[class*="/roundups"] .community.patreon h1 {
+	padding-top: 2em;
+}
+
+html[class*="/roundups"] .community.patreon h2 {
+	padding-bottom: 2em;
+}
+
 @media (min-width: 400px) {
 	.hero {
 		/*margin: 1rem;*/

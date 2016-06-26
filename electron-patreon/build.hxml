@@ -3,6 +3,7 @@
 -lib hxnodejs
 -lib thx.core
 -lib tink_json
+-lib seri
 -D dce=full
 -cp .
 #--no-traces

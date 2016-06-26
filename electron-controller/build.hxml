@@ -12,5 +12,6 @@
 
 --next
 
+--no-traces
 -main Script
 -js ../site/script.js

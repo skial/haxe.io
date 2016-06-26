@@ -5,6 +5,7 @@ import js.node.Fs;
 import tink.Json.*;
 import js.Browser.*;
 import js.html.Node;
+import uhx.sys.Seri;
 import js.html.Element;
 import haxe.Serializer;
 import haxe.extern.Rest;
@@ -19,9 +20,11 @@ import CommunityPatreon.PatreonPayload;
 import CommunityPatreon.PatreonDuration;
 
 using StringTools;
+using unifill.Unifill;
 
 class PatreonScraper {
 	
+	private static var whitespace = [for (codepoint in Seri.getCategory('Zs')) codepoint];
 	private var electron:Dynamic;
 	private var ipcRenderer:{on:String->Function->Dynamic, once:String->Function->Dynamic, send:String->Rest<Dynamic>->Void};
 	
@@ -70,7 +73,7 @@ class PatreonScraper {
 				case [value = _.startsWith('$') => true, duration] | [duration, value = _.startsWith('$') => true]:
 					trace( pair[0], pair[1] );
 					data.income = Std.parseFloat( value.substring(1) );
-					data.duration = duration;
+					data.duration = cleanWhitespace( duration );
 					
 				case [_, _]:
 					trace( pair );
@@ -84,14 +87,23 @@ class PatreonScraper {
 		var socials = qsa( '[class*="social"][href]' );
 		var description = qsa( '[class*="ToggleableContent"][class*="stackable"]' )[0];
 		
-		if (name != null) data.name = name.textContent.htmlUnescape().trim();
-		if (isCreating != null) data.summary = isCreating.textContent.trim();
-		if (lastUpdated != null) data.update = lastUpdated.textContent.trim();
+		if (name != null) data.name = cleanWhitespace( name.textContent.trim() );
+		if (isCreating != null) data.summary = cleanWhitespace( isCreating.textContent.trim() );
+		if (lastUpdated != null) data.update = cleanWhitespace( lastUpdated.textContent.trim() );
 		data.links = [for (social in socials) cast (social,DOMElement).getAttribute('href')];
 		
 		trace( data );
 		trace( stringify(data) );
 		ipcRenderer.send(data.uri, stringify(data));
+	}
+	
+	private static function cleanWhitespace(value:String):String {
+		for (codepoint in whitespace) {
+			value = value.uSplit( codepoint ).join(' ');
+			
+		}
+		
+		return value.trim();
 	}
 	
 }
