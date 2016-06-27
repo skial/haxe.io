@@ -43,7 +43,7 @@ class CommunityPatreon {
 			var href = '';
 			var http = new Http( href = cast (url, DOMElement).getAttribute('data-community-patreons') );
 			trace( href );
-			locationSelectors = ['/frontpage' => 'main ul li:nth-child(5)', '/roundups' => 'article aside :last-child'];
+			locationSelectors = ['/frontpage' => 'main ul li:nth-child(5)', '/roundups' => 'article aside > :last-child'];
 			locationHandlers = [
 			'/frontpage' => function(data) {
 				trace( 'building /frontpage ${data.uri} dom' );
