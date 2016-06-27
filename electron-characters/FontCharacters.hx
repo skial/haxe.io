@@ -12,17 +12,8 @@ import electron.main.App;
 class FontCharacters {
 	
 	public static function main() {
-		console.log( 'loading...' );
-		/*if( window.document.readyState == 'complete' ) {
-			var m = new Script();
-			
-		} else {
-			window.document.addEventListener('DOMContentLoaded', function() {
-				trace( 'dom loaded' );*/
-				var fs = new FontCharacters();
-			/*}, false);
-			
-		}*/
+		trace( 'loading...' );
+		var fs = new FontCharacters();
 	}
 	
 	public function new() {

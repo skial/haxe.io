@@ -1,0 +1,11 @@
+-cp ../../js-community-patreon/
+-lib tink_json
+-lib tink_core
+-main SiteScript
+-dce full
+
+--each
+
+#-debug
+--no-traces
+-js haxe.io.js

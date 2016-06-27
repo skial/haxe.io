@@ -51,7 +51,7 @@ class CheckMissing {
 			[{tag:'meta', name:'msapplication-TileColor', content:"#f15922"}, {}],
 			[{tag:'meta', name:'msapplication-TileImage'}, {content:"/mstile-144x144.png?v=wAANbdxLQn"}],
 			[{tag:'meta', name:'theme-color', content:"#ffffff"}, {}],
-			[{tag:'script', src:'/js/haxe.io.js'}, {async:'async', defer:'defer'}],
+			[{tag:'script', src:'/js/haxe.io.js'}, {async:'async', defer:'defer', 'data-community-patreons':'/data/patreons.json'}],
 			[{tag:'script', src:'/js/outbound-link-tracker.js'}, {async:'async', defer:'defer'}],
 			[{tag:'script', type:'text/javascript'}, {innerHTML:"(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

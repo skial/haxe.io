@@ -4,9 +4,9 @@
 -lib cmd
 -D dce=full
 -cp .
---no-traces
+#--no-traces
 
 --each 
 
 -main LinkQueue
--js ../linkqueue.js
+-js ../site/linkqueue.js

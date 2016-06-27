@@ -9,4 +9,4 @@
 --each
 
 -main FontCharacters
--js ../font.characters.js
+-js ../site/font.characters.js

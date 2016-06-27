@@ -532,6 +532,66 @@ iframe[src*="eventbrite.com"] {
 	min-height: 20em;
 }
 
+.community.patreon {
+	padding: 0;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	font-family: 'Open Sans', sans-serif;
+	background-color: rgba(232, 81, 40, 0.9);	
+}
+
+.community.patreon p {
+	margin-top: 0.1em;
+}
+
+.community.patreon a {
+	flex-grow: 1;
+	display: flex;
+	color: inherit;
+	padding: 1.5em 1.5em 0;
+	flex-direction: column;
+	justify-content: center;
+	border-bottom-left-radius: inherit;
+	border-bottom-right-radius: inherit;
+}
+
+.community.patreon a, .community.patreon a:hover {
+	text-decoration: none;
+}
+
+.community.patreon a:hover h1, .community.patreon a:hover h2 {
+	text-decoration: underline;
+}
+
+.community.patreon .name, .community.patreon .patrons {
+	font-weight: bold;
+}
+
+.community.patreon .button {
+	width: 100%;
+	word-wrap: break-word;
+	word-break: break-word;
+	padding: 0 1.5em 0.5em;
+	background-color: #00a875;
+}
+
+.community.patreon:hover .button, .community.patreon .button:hover {
+		background-color: #00b780;
+	}
+
+html[class*="/frontpage"] .community.patreon {
+	border-left: none;
+	box-shadow: 1px 1px 1px 0px rgba(189, 189, 189, 0.3);
+}
+
+html[class*="/roundups"] .community.patreon {
+	margin-top: 1em;
+	min-height: 15em;
+	border-radius: 4px;
+	text-align: center;
+}
+
 @media (min-width: 400px) {
 	.hero {
 		/*margin: 1rem;*/
