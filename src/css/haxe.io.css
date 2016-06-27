@@ -551,8 +551,9 @@ iframe[src*="eventbrite.com"] {
 	color: inherit;
 	padding: 1.5em 1.5em 0;
 	flex-direction: column;
-	border-radius: inherit;
 	justify-content: center;
+	border-bottom-left-radius: inherit;
+	border-bottom-right-radius: inherit;
 }
 
 .community.patreon a, .community.patreon a:hover {
@@ -569,7 +570,9 @@ iframe[src*="eventbrite.com"] {
 
 .community.patreon .button {
 	width: 100%;
-	padding: 0 0 0.5em;
+	word-wrap: break-word;
+	word-break: break-word;
+	padding: 0 1.5em 0.5em;
 	background-color: #00a875;
 }
 
