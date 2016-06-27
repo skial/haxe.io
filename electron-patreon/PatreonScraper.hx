@@ -73,7 +73,7 @@ class PatreonScraper {
 				case [value = _.startsWith('$') => true, duration] | [duration, value = _.startsWith('$') => true]:
 					trace( pair[0], pair[1] );
 					data.income = Std.parseFloat( value.substring(1) );
-					data.duration = cleanWhitespace( duration );
+					data.duration = clean( duration );
 					
 				case [_, _]:
 					trace( pair );
@@ -87,9 +87,9 @@ class PatreonScraper {
 		var socials = qsa( '[class*="social"][href]' );
 		var description = qsa( '[class*="ToggleableContent"][class*="stackable"]' )[0];
 		
-		if (name != null) data.name = cleanWhitespace( name.textContent.trim() );
-		if (isCreating != null) data.summary = cleanWhitespace( isCreating.textContent.trim() );
-		if (lastUpdated != null) data.update = cleanWhitespace( lastUpdated.textContent.trim() );
+		if (name != null) data.name = clean( name.textContent.trim() );
+		if (isCreating != null) data.summary = clean( isCreating.textContent.trim() );
+		if (lastUpdated != null) data.update = clean( lastUpdated.textContent.trim() );
 		data.links = [for (social in socials) cast (social,DOMElement).getAttribute('href')];
 		
 		trace( data );
@@ -97,9 +97,14 @@ class PatreonScraper {
 		ipcRenderer.send(data.uri, stringify(data));
 	}
 	
-	private static function cleanWhitespace(value:String):String {
+	private static function clean(value:String):String {
 		for (codepoint in whitespace) {
 			value = value.uSplit( codepoint ).join(' ');
+			
+		}
+		
+		for (char in [',', '.']) if (value.endsWith(char)) {
+			value = value.substring(0, value.length-1);
 			
 		}
 		
