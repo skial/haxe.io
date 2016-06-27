@@ -28,5 +28,5 @@ cp $INPUT $BIN
 cp $BIN $MIN
 cp $MIN $OPT
 
-#java -jar $CLOSURE --js $INPUT --compilation_level SIMPLE_OPTIMIZATIONS --js_output_file $BIN
-#java -jar $CLOSURE --js $INPUT --compilation_level ADVANCED_OPTIMIZATIONS --js_output_file $OPT
+java -jar $CLOSURE --js $INPUT --compilation_level SIMPLE_OPTIMIZATIONS --js_output_file $BIN
+java -jar $CLOSURE --js $INPUT --compilation_level ADVANCED_OPTIMIZATIONS --js_output_file $OPT

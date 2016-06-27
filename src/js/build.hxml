@@ -6,5 +6,6 @@
 
 --each
 
--debug
+#-debug
+--no-traces
 -js haxe.io.js

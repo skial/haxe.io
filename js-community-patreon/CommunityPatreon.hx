@@ -47,20 +47,20 @@ class CommunityPatreon {
 			locationHandlers = [
 			'/frontpage' => function(data) {
 				trace( 'building /frontpage ${data.uri} dom' );
-				var action = data.patrons > 0 ? 'Become their next' : 'Be the first';
-				var supported = data.patrons > 0 ? 'currently unsupported.' : 'supported by <span class="patrons">${data.patrons}</span> people.';
+				var action = data.patrons > 0 ? 'Become their next' : 'Be their first';
+				var supported = data.patrons > 0 ? ', supported by <span class="patrons">${data.patrons}</span> people.' : '.';
 				var ele = window.document.createLIElement();
 				ele.setAttribute('class', 'community patreon');
-				ele.innerHTML = '<a href="${data.uri}"><div class="name">${data.name}</div><p>${data.summary}, $supported</p><a href="${data.uri}" class="button">$action Patron</a></a>';
+				ele.innerHTML = '<a href="${data.uri}"><div class="name">${data.name}</div><p>${data.summary}$supported</p><a href="${data.uri}" class="button">$action Patron</a></a>';
 				return ele;
 			},
 			'/roundups' => function (data) {
 				trace( 'building /roundups ${data.uri} dom' );
-				var action = data.patrons > 0 ? 'Become their next' : 'Be the first';
-				var supported = data.patrons > 0 ? 'currently unsupported.' : 'supported by <span class="patrons">${data.patrons}</span> people.';
+				var action = data.patrons > 0 ? 'Become their next' : 'Be their first';
+				var supported = data.patrons > 0 ? ', supported by <span class="patrons">${data.patrons}</span> people.' : '.';
 				var ele = window.document.createDivElement();
 				ele.setAttribute('class', 'community patreon');
-				ele.innerHTML = '<a href="${data.uri}"><div class="name">${data.name}</div><p>${data.summary}, $supported</p><a href="${data.uri}" class="button">$action Patron</a></a>';
+				ele.innerHTML = '<a href="${data.uri}"><div class="name">${data.name}</div><p>${data.summary}$supported</p><a href="${data.uri}" class="button">$action Patron</a></a>';
 				return ele;
 			}
 			];
@@ -80,6 +80,7 @@ class CommunityPatreon {
 		var match:String = '';
 		var target:Null<String> = null;
 		trace( location );
+		trace( payload );
 		if (location != null && location.length > 0) {
 			for (key in locationSelectors.keys()) if (location.contains( key )) {
 				target = locationSelectors.get( match = key );
@@ -94,8 +95,9 @@ class CommunityPatreon {
 			var builder = locationHandlers.get( match );
 			trace( target, match );
 			if (targetEle != null) {
-				trace( 'adding patreon dom' );
-				targetEle.parentNode.insertBefore( builder(payload.data[0]), targetEle.nextSibling );
+				var index = Math.round(Math.random() * (payload.data.length - 1));
+				trace( 'adding patreon dom', payload.data.length, index, payload.data[index] );
+				targetEle.parentNode.insertBefore( builder(payload.data[index]), targetEle.nextSibling );
 				
 			}
 			
