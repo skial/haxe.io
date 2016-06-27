@@ -49,14 +49,14 @@ class CommunityPatreon {
 				trace( 'building /frontpage ${data.uri} dom' );
 				var ele = window.document.createLIElement();
 				ele.setAttribute('class', 'community patreon');
-				ele.innerHTML = '<a href="${data.uri}"><h1>${data.name} ${data.summary}</h1><h2>on Patreon</h2></a>';
+				ele.innerHTML = '<a href="${data.uri}"><div class="name">${data.name}</div><p>${data.summary}, supported by <span class="patrons">${data.patrons}</span> people.</p><a href="${data.uri}" class="button">Become a Patron</a></a>';
 				return ele;
 			},
 			'/roundups' => function (data) {
 				trace( 'building /roundups ${data.uri} dom' );
 				var ele = window.document.createDivElement();
 				ele.setAttribute('class', 'community patreon');
-				ele.innerHTML = '<a href="${data.uri}"><h1>${data.name} ${data.summary}</h1><h2>on Patreon</h2></a>';
+				ele.innerHTML = '<a href="${data.uri}"><div class="name">${data.name}</div><p>${data.summary}, supported by <span class="patrons">${data.patrons}</span> people.</p><a href="${data.uri}" class="button">Become a Patron</a></a>';
 				return ele;
 			}
 			];
