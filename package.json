@@ -21,6 +21,13 @@
 		"google-closure-compiler": "latest"
   },
   "scripts": {
+		"copy:extras": "all-extras.sh \"src\"",
+		"build:js": "buildjs.sh",
+		"build:index": "electron --enable-logging ./site/ -w 1920 -h 1080 --input \"/src/index.html\" --script ./site/script.js --outputDir \"/bin\" --show --scripts checkmissing.js font.characters.js sitemap.js screengrab.js version.js",
+		"process:index": "htmlmin.sh bin/index.html",
+		"build:patreon": "patreonscraper.sh",
+		"build:patch": "all-html.sh \"bin\"",
+		"build:all": "npm-run-all -c build:patreon build:js copy:extras build:index process:index build:patch",
 		"watch:jsmin": "onchange \"./src/js/*.js\" -w -- jsmin.sh {{changed}}",
 		"watch:htmlmin": "onchange \"./src/**/*.html\" -w -- htmlmin.sh {{changed}}",
 		"watch:cssmin": "onchange \"./src/css/*.css\" -w -- cssmin.sh {{changed}}",
