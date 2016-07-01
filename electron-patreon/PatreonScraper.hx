@@ -66,7 +66,7 @@ class PatreonScraper {
 		while (status.length > 0) {
 			var pair = [status.pop().textContent, status.pop().textContent];
 			switch (pair) {
-				case [count, 'patrons'] | ['patrons', count]:
+				case [count, 'patrons'] | ['patrons', count] | [count, 'patron'] | ['patron', count]:
 					trace( count, 'patrons' );
 					data.patrons = Std.parseInt( count );
 					
