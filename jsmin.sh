@@ -5,7 +5,7 @@ STR="${INPUT:3}"
 BIN=./bin$STR
 BIN_DIR=${BIN%/*}
 BIN_BASE="${BIN/$BIN_DIR/}"
-BIN_BASE="${BIN_BASE/.css/}"
+BIN_BASE="${BIN_BASE/.js/}"
 
 MIN=./min$STR
 MIN_DIR=${MIN%/*}

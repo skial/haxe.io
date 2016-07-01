@@ -1,0 +1,16 @@
+-lib cmd
+-lib hxnodejs
+-lib tink_json
+
+-debug
+-dce full
+
+--each
+
+-main Controller
+-js ../render/index.js
+
+--next
+
+-main Builder
+-js ../render/build.js

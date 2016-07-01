@@ -1,5 +1,8 @@
 bin/*
 min/*
 opt/*
+site/*
+patreon/*
+render/*
 node_modules/*
 secrets.json
