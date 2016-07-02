@@ -112,7 +112,7 @@ class Controller {
 	private function processHtml(html:String):Void {
 		ipcMain.on('save', save);
 		trace( 'serving from ' + '$cwd/$root'.normalize() );
-		var files = untyped __js__("new {0}", server.Server('$cwd/$root'.normalize()) );
+		var files = untyped __js__("new {0}", server.Server('$cwd/$root'.normalize()), {headers:{'Content-Security-Policy': 'script-src \'none\';'}} );
 		var ns = require('http').createServer(function (request, response) {
 			request.addListener('end', function () {
 		      files.serve(request, response);
@@ -127,7 +127,8 @@ class Controller {
 		browser.webContents.on('did-finish-load', function() {
 			trace( 'page loaded', browser.webContents.getURL() );
 			browser.webContents.openDevTools();
-			browser.webContents.send('payload', haxe.Json.stringify( mdEnvironment ));
+			browser.webContents.send('html', html);
+			browser.webContents.send('json', haxe.Json.stringify( mdEnvironment ));
 		});
 		var url = (input.directory().addTrailingSlash() + mdEnvironment.get('references').get('_TEMPLATE').get('href')).replace(root, 'http://localhost:$port').normalize();
 		trace( url );

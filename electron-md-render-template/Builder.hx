@@ -2,9 +2,8 @@ package ;
 
 import js.Node.*;
 import js.node.Fs;
+import js.html.*;
 import js.Browser.*;
-import js.html.Node;
-import js.html.Element;
 import haxe.Serializer;
 import haxe.extern.Rest;
 import haxe.Unserializer;
@@ -41,12 +40,23 @@ class Builder {
 		trace( 'running script' );
 		electron = require('electron');
 		ipcRenderer = electron.ipcRenderer;
-		ipcRenderer.on('payload', function(e, d) process( haxe.Json.parse(d) ));
+		ipcRenderer.on('html', function(e, d) processHtml( d ));
+		ipcRenderer.on('json', function(e, d) processJson( haxe.Json.parse(d) ));
 	}
 	
-	public function process(data:DynamicAccess<DynamicAccess<String>>) {
-		trace( 'processing' );
+	public function processHtml(data:String) {
+		trace( 'processing html' );
+		var node = window.document.querySelector('#markdown');
+		var template:TemplateElement = cast window.document.createElement('template');
+		template.innerHTML = data;
+		node.parentNode.replaceChild( window.document.importNode(template.content, true), node );
+	}
+	
+	public function processJson(data:DynamicAccess<DynamicAccess<String>>) {
+		trace( 'processing json' );
 		trace( data );
+		
+		
 	}
 	
 }

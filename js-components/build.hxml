@@ -1,0 +1,9 @@
+-main Component
+
+--each
+
+-js component.js
+
+--next
+
+-js ../src/js/component.js
