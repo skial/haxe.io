@@ -37,6 +37,7 @@ class Controller {
 		});
 	}
 	
+	@alias('r') public var root:String;
 	@alias('i') public var input:String;
 	@alias('o') public var output:String;
 	@alias('s') public var script:String;
@@ -49,7 +50,11 @@ class Controller {
 	private var mdObject:DynamicAccess<Dynamic>;
 	
 	private var md:Dynamic;
+	private var mdEnvironment:DynamicAccess<DynamicAccess<DynamicAccess<String>>> = {};
 	private var markdownIt = require('markdown-it');
+	private var server = require('node-static');
+	private var port:Int = 8080;
+	private var browser:Dynamic;
 	
 	public function new(args:Array<String>) {
 		@:cmd _;
@@ -79,16 +84,81 @@ class Controller {
 		
 		readFile('$cwd/$input'.normalize(), {encoding:'utf8'}, function(error, content) {
 			if (error != null) throw error;
-			var ast = md.parse( content, {} );
-			var html = md.renderer.render( ast, options, {} );
-			trace( html );
-			app.quit();
+			var ast = preprocessAst( md.parse( content, mdEnvironment ) );
+			var html = md.renderer.render( ast, options, mdEnvironment );
+			processHtml( html );
+			
 		});
 		
 	}
 	
-	private function preprocessMD(ast:Array<{}>) {
+	private function preprocessAst(ast:Array<Token>):Array<Token> {
+		// Look for `[“”]: ""` and remove.
+		var slice = ast.slice(0,3);
+		switch (slice) {
+			case [{type:'paragraph_open'}, {content:_.startsWith('[“”]') => true}, {type:'paragraph_close'}]:
+				//trace( 'removing ast' );
+				//for (s in slice) trace( s );
+				ast = ast.splice( 3, ast.length );
+				
+			case _:
+				//trace( slice );
+				
+		}
 		
+		return ast;
 	}
 	
+	private function processHtml(html:String):Void {
+		ipcMain.on('save', save);
+		trace( 'serving from ' + '$cwd/$root'.normalize() );
+		var files = untyped __js__("new {0}", server.Server('$cwd/$root'.normalize()) );
+		var ns = require('http').createServer(function (request, response) {
+			request.addListener('end', function () {
+		      files.serve(request, response);
+					
+		  }).resume();
+		});
+		ns.listen(0);
+		port = ns.address().port;
+		
+		browser = untyped __js__("new {0}", electron.BrowserWindow)( config );
+		browser.on('closed', function() browser = null );
+		browser.webContents.on('did-finish-load', function() {
+			trace( 'page loaded', browser.webContents.getURL() );
+			browser.webContents.openDevTools();
+			browser.webContents.send('payload', haxe.Json.stringify( mdEnvironment ));
+		});
+		var url = (input.directory().addTrailingSlash() + mdEnvironment.get('references').get('_TEMPLATE').get('href')).replace(root, 'http://localhost:$port').normalize();
+		trace( url );
+		browser.loadURL( url );
+	}
+	
+	private function save() {
+		
+	}
+		
+}
+
+// @see https://github.com/markdown-it/markdown-it/blob/master/lib/token.js
+typedef Token = {
+	var type:String;
+	var tag:String;
+	var attrs:Array<Array<Dynamic>>;
+	var map:Array<Int>;
+	var nesting:NestingLevel;
+	var level:Int;
+	var children:Array<Token>;
+	var content:String;
+	var markup:String;
+	var info:String;
+	var meta:Dynamic;
+	var block:Bool;
+	var hidden:Bool;
+}
+
+@:enum abstract NestingLevel(Int) from Int to Int {
+	var Opening = 1;
+	var SelfClosing = 0;
+	var Closing = -1;
 }

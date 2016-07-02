@@ -25,4 +25,4 @@ mkdir -p $OPT_DIR
 electron --enable-logging ./render/index.js \
 -md markdown-it-abbr markdown-it-attrs markdown-it-emoji markdown-it-footnote \
 markdown-it-headinganchor \
--s ./render/build.js -i $INPUT -o $BIN.html
+-s ./render/build.js -r src -i $INPUT -o $BIN.html
