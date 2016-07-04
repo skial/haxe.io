@@ -47,9 +47,15 @@ class Builder {
 	public function processHtml(data:String) {
 		trace( 'processing html' );
 		var node = window.document.querySelector('#markdown');
-		var template:TemplateElement = cast window.document.createElement('template');
-		template.innerHTML = data;
-		node.parentNode.replaceChild( window.document.importNode(template.content, true), node );
+		
+		if (node != null) {
+			var template:TemplateElement = cast window.document.createElement('template');
+			template.innerHTML = data;
+			node.parentNode.replaceChild( window.document.importNode(template.content, true), node );
+			
+		}
+		sanatize([for (i in 0...window.document.children.length) window.document.children[i]]);
+		clean();
 	}
 	
 	public function processJson(data:DynamicAccess<DynamicAccess<String>>) {
@@ -57,6 +63,44 @@ class Builder {
 		trace( data );
 		
 		
+	}
+	
+	public function sanatize(children:Array<Element>):Void {
+		for (child in children) {
+			if (child.shadowRoot != null) {
+				trace( child.shadowRoot.children );
+				
+				if (child.shadowRoot.children.length == 1) {
+					child.parentNode.replaceChild(child.shadowRoot.children[0], child);
+					
+				} else if (child.shadowRoot.children.length > 1) {
+					var node = child.shadowRoot.children[0];
+					child.parentNode.replaceChild(node, child);
+					
+					for (i in 1...child.shadowRoot.children.length) if (child.shadowRoot.children[i] != null) {
+						node.parentNode.insertBefore(child.shadowRoot.children[i], node.nextSibling);
+						node = child.shadowRoot.children[i];
+						
+					}
+					
+				}
+				
+			}
+			
+			if (child.children != null && child.children.length > 0) {
+				sanatize( [for (i in 0...child.children.length) child.children[i]] );
+				
+			}
+			
+		}
+		
+	}
+	
+	public function clean():Void {
+		for (link in window.document.querySelectorAll( 'link[rel="import"]' )) {
+			link.parentNode.removeChild( link );
+			
+		}
 	}
 	
 }
