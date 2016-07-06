@@ -11,6 +11,7 @@ import haxe.ds.StringMap;
 import haxe.DynamicAccess;
 import js.html.DOMElement;
 import haxe.Constraints.Function;
+import Controller.Payload;
 
 using StringTools;
 
@@ -41,7 +42,7 @@ class Builder {
 		electron = require('electron');
 		ipcRenderer = electron.ipcRenderer;
 		ipcRenderer.on('html', function(e, d) processHtml( d ));
-		ipcRenderer.on('json', function(e, d) processJson( haxe.Json.parse(d) ));
+		ipcRenderer.on('json', function(e, d) processJson( tink.Json.parse(d) ));
 	}
 	
 	public function processHtml(data:String) {
@@ -54,11 +55,11 @@ class Builder {
 			node.parentNode.replaceChild( window.document.importNode(template.content, true), node );
 			
 		}
-		sanatize([for (i in 0...window.document.children.length) window.document.children[i]]);
-		clean();
+		//sanatize([for (i in 0...window.document.children.length) window.document.children[i]]);
+		//clean();
 	}
 	
-	public function processJson(data:DynamicAccess<DynamicAccess<String>>) {
+	public function processJson(data:Payload) {
 		trace( 'processing json' );
 		trace( data );
 		

@@ -1,9 +1,39 @@
--main Component
+-lib regle
+#-lib closure
+-D closure_advanced
+-D closure_overwrite
+#--no-traces
+-debug
 
 --each
 
+-main Component
 -js component.js
+
+--next 
+
+-main DocumentHeader
+-js document.head.js
 
 --next
 
+-main DocumentBody
+-js document.body.js
+
+--next
+
+-main Component
+
 -js ../src/js/component.js
+
+--next 
+
+-main DocumentHeader
+
+-js ../src/js/document.head.js
+
+--next
+
+-main DocumentBody
+
+-js ../src/js/document.body.js

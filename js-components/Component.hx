@@ -2,20 +2,27 @@ package ;
 
 import js.html.*;
 import js.Browser.*;
+import uhx.uid.Hashids;
 
 using haxe.io.Path;
 
 class Component extends Element {
 	
+	private static var counter:Int = 0;
+	private static var uidMapping:Map<String,Array<Node>> = new Map();
+	
 	public static function main() {
 		new Component();
 	}
 	
+	private var mutator:MutationObserver;
 	private var local:HTMLDocument;
 	private var htmlPrefix:String = 'hx';
 	private var htmlName:String = '';
 	private var template:TemplateElement;
 	private var root:ShadowRoot;
+	private var hash:Hashids = new Hashids();
+	private var _uid:String = '';
 	
 	public function new() {
 		local = window.document.currentScript.ownerDocument;
@@ -38,9 +45,25 @@ class Component extends Element {
 		
 	}
 	
+	public function uid(node:Node):String {
+		//console.log( node );
+		var result = '';
+		if (node.nodeName.indexOf('#text') > -1) {
+			result = node.textContent;
+			
+		} else {
+			var ele:Element = untyped node;
+			var stamp = ele.nodeName + [for (a in ele.attributes) if (a.name != 'uid') a.name + a.value].join('') + ele.getElementsByTagName('*').length;
+			result = hash.encode( [for (i in 0...stamp.length) stamp.charCodeAt(i)] );
+			
+		}
+		
+		return result;
+	}
+	
 	public function transplant(?parent:Node = null) {
 		var node = template.content;
-		var sections = node.querySelectorAll('document-head, document-body');
+		/*var sections = node.querySelectorAll('document-head, document-body');
 		
 	 	if (sections.length > 0) {
 			
@@ -92,23 +115,83 @@ class Component extends Element {
 					
 			}
 			
-		}
+		}*/
 		
 	}
 	
 	public function createdCallback() {
+		mutator = new MutationObserver(mutated);
+		mutator.observe( this, {childList:true} );
+		this.setAttribute('uid', _uid = uid( this ) );
 		var node = template.content;
-		var sections = node.querySelectorAll('document-head, document-body');
 		
-		if (sections.length == 0) {
-			root = this.createShadowRoot();
-			root.appendChild( window.document.importNode( node, true ) );
-			trace( 'cb called' );
+		root = this.createShadowRoot();
+		root.appendChild( window.document.importNode( node, true ) );
+		console.log( '$htmlName cb called' );
+		
+		var contents = root.querySelectorAll('content');
+		for (i in 0...contents.length) {
+			var content:ContentElement = untyped contents[i];
+			content.setAttribute('uid', '$_uid.$i' );
+			console.log( content );
+		}
+		
+	}
+	
+	public function attachedCallback() {
+		var parent = this.parentElement;
+		var shadowChildren = root.children;
+		
+		for (child in shadowChildren) {
+			if (parent.querySelectorAll(parent.nodeName + ' > ' + child.nodeName + [for (a in child.attributes) '[${a.name}="${a.value}"]'].join('')).length == 0) {
+				parent.insertBefore(local.importNode(child, true), this);
+				
+			}
 			
-		} else {
-			trace( htmlName );
-			var insertionPoints = window.document.querySelectorAll( htmlName );
-			for (point in insertionPoints) transplant(point);
+		}
+		
+		var shadowPoints = root.querySelectorAll('content');
+		for (point in shadowPoints) {
+			var point:ContentElement = untyped point;
+			var cuid = untyped point.getAttribute('uid');
+			var distributedNodes = point.getDistributedNodes();
+			var placeholder = window.document.querySelectorAll('[uid="$cuid"]')[0];
+			console.log( placeholder );
+			if (placeholder != null) for (node in distributedNodes) {
+				placeholder.parentElement.insertBefore(window.document.importNode(node, true), placeholder);
+				
+			}
+			
+		}
+		
+		#if !debug
+		var self = window.document.querySelector( '$htmlName[uid="$_uid"]' );
+		self.parentNode.removeChild( self );
+		#end
+	}
+	
+	public function detachedCallback() {
+		mutator.disconnect();
+	}
+	
+	public function mutated(records:Array<MutationRecord>, observer:MutationObserver) {
+		for (record in records) {
+			switch (record.type) {
+				case 'childList':
+					console.log( record );
+					for (child in record.addedNodes) {
+						var insertionPoint:ContentElement = untyped child.getDestinationInsertionPoints()[0];
+						if (insertionPoint != null) {
+							//console.log( insertionPoint.getAttribute('uid'), insertionPoint );
+							
+						}
+						
+					}
+					
+				case _:
+					
+					
+			}
 			
 		}
 		

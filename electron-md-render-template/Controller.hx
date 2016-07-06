@@ -14,6 +14,17 @@ import haxe.Constraints.Function;
 using StringTools;
 using haxe.io.Path;
 
+typedef Payload = {
+	var template:String;
+	var created:String;
+	var modified:String;
+	var published:String;
+	var edits:Array<String>;
+	var authors:Array<String>;
+	var contributors:Array<String>;
+}
+
+
 @:cmd
 class Controller {
 	
@@ -128,9 +139,17 @@ class Controller {
 			trace( 'page loaded', browser.webContents.getURL() );
 			browser.webContents.openDevTools();
 			browser.webContents.send('html', html);
-			browser.webContents.send('json', haxe.Json.stringify( mdEnvironment ));
+			browser.webContents.send('json', tink.Json.stringify(({
+				template: '' + mdEnvironment['references']['_TEMPLATE'],
+				created: '' + mdEnvironment['references']['DATE']['title'],
+				published: '' + mdEnvironment['references']['DATE']['title'],
+				modified: '' + mdEnvironment['references']['MODIFIED']['title'],
+				contributors: [],
+				authors: [],
+				edits: []
+			}:Payload)) );
 		});
-		var url = (input.directory().addTrailingSlash() + mdEnvironment.get('references').get('_TEMPLATE').get('href')).replace(root, 'http://localhost:$port').normalize();
+		var url = (input.directory().addTrailingSlash() + mdEnvironment['references']['_TEMPLATE']['href']).replace(root, 'http://localhost:$port').normalize();
 		trace( url );
 		browser.loadURL( url );
 	}

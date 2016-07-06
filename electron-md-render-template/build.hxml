@@ -1,6 +1,7 @@
 -lib cmd
 -lib hxnodejs
 -lib tink_json
+-lib jwenn
 
 -debug
 -dce full

@@ -1,14 +1,20 @@
+<link rel="import" href="document.head.html" />
+<link rel="import" href="document.body.html" />
+<link rel="import" href="header.html" />
+<link rel="import" href="defaults.html" />
+<link rel="import" href="favicon.html" />
+<link rel="import" href="social_meta.html" />
+<link rel="import" href="head_scripts.html" />
+<link rel="import" href="stylesheets.html" />
+<link rel="import" href="footer.html" />
 <template data-prefix="hio" data-name="article">
 	<document-head>
-		<title><span select="article section h1" text=""></span> | Haxe.io</title>
-		
-		<link rel="import" href="header.html" />
-		<link rel="import" href="defaults.html" />
-		<link rel="import" href="favicon.html" />
-		<link rel="import" href="social_meta.html" />
-		<link rel="import" href="head_scripts.html" />
-		<link rel="import" href="stylesheets.html" />
-		<link rel="import" href="footer.html" />
+		<hio-styles></hio-styles>
+		<hio-icons></hio-icons>
+		<hio-scripts></hio-scripts>
+		<title>
+			<content select="h1"></content> | Haxe.io
+		</title>
 	</document-head>
 	<document-body>
 		<hio-header></hio-header>
@@ -19,7 +25,7 @@
 					<a href="https://github.com/skial/haxe.io/tree/master/src/roundups/366.md">Correct this issue</a>
 				</aside>
 				<section class="grid-2-3">
-					<span id="markdown"></span>
+					<content></content>
 				</section>
 			</div>
 		</article>

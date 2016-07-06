@@ -11,6 +11,7 @@
     "cssnano": "latest",
     "electron-prebuilt": "latest",
     "electron-spawn": "latest",
+    "github": "^2.1.0",
     "google-closure-compiler": "latest",
     "html-minifier": "latest",
     "http-server": "latest",
