@@ -135,12 +135,13 @@ class Controller {
 		
 		browser = untyped __js__("new {0}", electron.BrowserWindow)( config );
 		browser.on('closed', function() browser = null );
+		browser.webContents.send('html', html);
 		browser.webContents.on('did-finish-load', function() {
 			trace( 'page loaded', browser.webContents.getURL() );
 			browser.webContents.openDevTools();
 			browser.webContents.send('html', html);
 			browser.webContents.send('json', tink.Json.stringify(({
-				template: '' + mdEnvironment['references']['_TEMPLATE'],
+				template: '' + mdEnvironment['references']['_TEMPLATE']['href'],
 				created: '' + mdEnvironment['references']['DATE']['title'],
 				published: '' + mdEnvironment['references']['DATE']['title'],
 				modified: '' + mdEnvironment['references']['MODIFIED']['title'],

@@ -3,7 +3,7 @@
 -D closure_advanced
 -D closure_overwrite
 #--no-traces
--debug
+#-debug
 
 --each
 
@@ -22,18 +22,26 @@
 
 --next
 
--main Component
+-main DocumentJson
+-js document.json.js
 
+--next
+
+-main Component
 -js ../src/js/component.js
 
 --next 
 
 -main DocumentHeader
-
 -js ../src/js/document.head.js
 
 --next
 
 -main DocumentBody
-
 -js ../src/js/document.body.js
+
+--next
+
+-debug
+-main DocumentJson
+-js ../src/js/document.json.js

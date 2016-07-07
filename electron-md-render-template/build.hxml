@@ -4,7 +4,7 @@
 -lib jwenn
 
 -debug
--dce full
+#-dce full
 
 --each
 

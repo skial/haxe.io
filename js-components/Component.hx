@@ -127,13 +127,13 @@ class Component extends Element {
 		
 		root = this.createShadowRoot();
 		root.appendChild( window.document.importNode( node, true ) );
-		console.log( '$htmlName cb called' );
+		trace( '$htmlName cb called' );
 		
 		var contents = root.querySelectorAll('content');
 		for (i in 0...contents.length) {
 			var content:ContentElement = untyped contents[i];
 			content.setAttribute('uid', '$_uid.$i' );
-			console.log( content );
+			trace( content );
 		}
 		
 	}
@@ -156,7 +156,7 @@ class Component extends Element {
 			var cuid = untyped point.getAttribute('uid');
 			var distributedNodes = point.getDistributedNodes();
 			var placeholder = window.document.querySelectorAll('[uid="$cuid"]')[0];
-			console.log( placeholder );
+			trace( placeholder );
 			if (placeholder != null) for (node in distributedNodes) {
 				placeholder.parentElement.insertBefore(window.document.importNode(node, true), placeholder);
 				
@@ -178,7 +178,7 @@ class Component extends Element {
 		for (record in records) {
 			switch (record.type) {
 				case 'childList':
-					console.log( record );
+					//console.log( record );
 					for (child in record.addedNodes) {
 						var insertionPoint:ContentElement = untyped child.getDestinationInsertionPoints()[0];
 						if (insertionPoint != null) {

@@ -6,10 +6,19 @@ import uhx.uid.Hashids;
 
 using haxe.io.Path;
 
-class DocumentBody extends Element {
+class DocumentJson extends Element {
+	
+	public static var data:Map<String, Dynamic> = new Map();
 	
 	public static function main() {
-		new DocumentBody();
+		window.document.addEventListener('DocumentJsonData', processJsonData);
+		new DocumentJson();
+	}
+	
+	public static function processJsonData(e:CustomEvent) {
+		console.log( e );
+		var stringly = haxe.Json.stringify(e.detail);
+		if (!data.exists(stringly)) data.set(stringly, e.detail);
 	}
 	
 	private var local:HTMLDocument;
@@ -18,7 +27,6 @@ class DocumentBody extends Element {
 	private var template:TemplateElement;
 	private var root:ShadowRoot;
 	private var hash:Hashids = new Hashids();
-	private var _uid:String = '';
 	
 	public function new() {
 		local = window.document.currentScript.ownerDocument;
@@ -56,49 +64,37 @@ class DocumentBody extends Element {
 	public function createdCallback() {
 		var node = template.content;
 		var copy = window.document.importNode( node, true );
-		this.setAttribute('uid', _uid = uid( this ) );
+		
+		this.setAttribute('uid', uid( this ) );
 		root = this.createShadowRoot();
 		root.appendChild( copy );
 		trace( '$htmlName cb called' );
-		
-		
+		trace( 'adding event listener for DocumentJsonData' );
+		window.document.addEventListener('DocumentJsonData', function(e){
+			processJsonData(e);
+			useJsonData(e.detail);
+		});
 	}
 	
 	public function attachedCallback() {
-		var parent = this.parentElement;
-		var self = window.document.querySelectorAll('[uid="$_uid"]');
-		//console.log( this.parentNode, self, '[uid="$_uid"]' );
-		var insertionPoints = root.querySelectorAll('content');
-		for (point in insertionPoints) {
-			var content:ContentElement = untyped point;
-			var distributed:Array<Node> = [for (node in content.getDistributedNodes()) node];
-			//console.log( distributed );
-			
-			for (child in distributed) {
-				var nodelist = parent.querySelectorAll( parent.nodeName + ' > ' + child.nodeName );
-				trace( parent.nodeName, child.nodeName, nodelist.length );
-				for (node in nodelist) trace( node );
-				
-				var match = false;
-				for (node in nodelist) {
-					match = node == child;
-					if (match) break;
-					
-				}
-				
-				if (!match) {
-					this.parentElement.insertBefore(window.document.importNode( child, true ), this);
-					
-				}
-				
-			}
+		for (key in data.keys()) {
+			trace( key );
+			useJsonData(data.get(key));
 			
 		}
 		
 		#if !debug
-		this.parentNode.removeChild( this );
+		/*for (node in window.document.querySelectorAll( '[uid="${this.getAttribute("uid")}"]' )) {
+			node.parentNode.removeChild( node );
+			
+		}*/
 		#end
 		
+	}
+	
+	public function useJsonData(data:Dynamic) {
+		trace( 'using json data' );
+		console.log( data );
 	}
 	
 }
