@@ -80,11 +80,6 @@ class JsonData extends Element {
 	private var pending:Int = 0;
 	
 	public function attachedCallback() {
-		/*for (key in data.keys()) {
-			trace( key );
-			useJsonData(data.get(key));
-			
-		}*/
 		var contents = root.querySelectorAll('content');
 		for (i in 0...contents.length) {
 			var content:ContentElement = untyped contents[i];
@@ -103,12 +98,6 @@ class JsonData extends Element {
 			process();
 			
 		}
-		#if !debug
-		/*for (node in window.document.querySelectorAll( '[uid="${this.getAttribute("uid")}"]' )) {
-			node.parentNode.removeChild( node );
-			
-		}*/
-		#end
 		
 	}
 	

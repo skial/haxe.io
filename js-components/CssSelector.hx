@@ -39,7 +39,6 @@ class CssSelector extends Element {
 	}
 	
 	public function uid(node:Node):String {
-		//console.log( node );
 		var result = '';
 		if (node.nodeName.indexOf('#text') > -1) {
 			result = node.textContent;
@@ -129,7 +128,6 @@ class CssSelector extends Element {
 	
 	public function detachedCallback() {
 		window.document.removeEventListener('DocumentHtmlData', process);
-		//this.removeEventListener('DOMCustomElementFinished', check);
 	}
 	
 }

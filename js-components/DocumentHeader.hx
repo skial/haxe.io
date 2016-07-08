@@ -38,7 +38,6 @@ class DocumentHeader extends Element {
 	}
 	
 	public function uid(node:Node):String {
-		//console.log( node );
 		var result = '';
 		if (node.nodeName.indexOf('#text') > -1) {
 			result = node.textContent;
@@ -68,15 +67,7 @@ class DocumentHeader extends Element {
 	private var pending:Int = 0;
 	
 	public function attachedCallback() {
-		/*var contents = root.querySelectorAll('content');
-		for (i in 0...contents.length) {
-			var content:ContentElement = untyped contents[i];
-			content.setAttribute('uid', '$_uid.$i' );
-			trace( content );
-		}*/
-		
 		var customElements = this.querySelectorAll(':root > [uid]:not(content)');
-		//console.log( customElements );
 		pending = max = customElements.length;
 		if (customElements.length > 0) {
 			trace(pending);
@@ -117,8 +108,6 @@ class DocumentHeader extends Element {
 			for (child in children) {
 				var childUid = uid( child );
 				var nodelist = parent.querySelectorAll( link.parentElement.nodeName + ' > ' + child.nodeName );
-				//trace( parent.nodeName + ' > ' + child.nodeName, parent.nodeName, child.nodeName, nodelist.length );
-				//for (node in nodelist) trace( node );
 				
 				var match = false;
 				for (node in nodelist) {
@@ -130,10 +119,6 @@ class DocumentHeader extends Element {
 				
 				if (!match) {
 					var clone = window.document.importNode( child, true );
-					if (child.nodeType == Node.ELEMENT_NODE) {
-						//untyped if (child.hasAttribute('uid')) child.detachedCallback();
-						
-					}
 					parent.insertBefore(clone, link);
 					
 				}

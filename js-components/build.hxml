@@ -23,12 +23,6 @@
 
 --next
 
--D shallow-expose
--main DocumentJson
--js document.json.js
-
---next
-
 -main ConvertTag
 -js convert.tag.js
 
@@ -56,13 +50,6 @@
 
 -main DocumentBody
 -js ../src/js/document.body.js
-
---next
-
-#-debug
--D shallow-expose
--main DocumentJson
--js ../src/js/document.json.js
 
 --next
 

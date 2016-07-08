@@ -39,7 +39,6 @@ class ConvertTag extends Element {
 	}
 	
 	public function uid(node:Node):String {
-		//console.log( node );
 		var result = '';
 		if (node.nodeName.indexOf('#text') > -1) {
 			result = node.textContent;
@@ -112,10 +111,6 @@ class ConvertTag extends Element {
 		var toElement = window.document.createElement( to );
 		for (child in this.childNodes) {
 			var clone = window.document.importNode( child, true );
-			if (child.nodeType == Node.ELEMENT_NODE) {
-				//untyped if (child.hasAttribute('uid')) child.detachedCallback();
-				
-			}
 			toElement.appendChild( clone );
 			
 		}

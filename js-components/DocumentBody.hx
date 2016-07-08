@@ -111,12 +111,10 @@ class DocumentBody extends Element {
 	public function process() {
 		var parent = this.parentElement;
 		var self = window.document.querySelectorAll('[uid="$_uid"]');
-		//console.log( this.parentNode, self, '[uid="$_uid"]' );
 		var insertionPoints = root.querySelectorAll('content');
 		for (point in insertionPoints) {
 			var content:ContentElement = untyped point;
 			var distributed:Array<Node> = [for (node in content.getDistributedNodes()) node];
-			//console.log( distributed );
 			
 			for (child in distributed) {
 				var nodelist = parent.querySelectorAll( parent.nodeName + ' > ' + child.nodeName );
@@ -132,10 +130,6 @@ class DocumentBody extends Element {
 				
 				if (!match) {
 					var clone = window.document.importNode( child, true );
-					if (child.nodeType == Node.ELEMENT_NODE) {
-						//untyped if (child.hasAttribute('uid')) child.detachedCallback();
-						
-					}
 					this.parentElement.insertBefore(clone, this);
 					
 				}
@@ -152,7 +146,6 @@ class DocumentBody extends Element {
 			pending = max = -1;
 			
 			#if !debug
-			//this.parentNode.removeChild( this );
 			var self = window.document.querySelectorAll( '[uid="$_uid"]' );
 			console.log( self );
 			for (s in self) s.parentNode.removeChild( s );
