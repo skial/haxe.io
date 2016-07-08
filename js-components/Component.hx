@@ -209,7 +209,7 @@ class Component extends Element {
 			
 			#if !debug
 			var self = window.document.querySelector( '$htmlName[uid="$_uid"]' );
-			self.parentNode.removeChild( self );
+			if (self != null) self.parentNode.removeChild( self );
 			#end
 			
 		}
