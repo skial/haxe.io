@@ -6,12 +6,13 @@ import uhx.uid.Hashids;
 
 using haxe.io.Path;
 
-class DocumentBody extends Element {
+class ConvertTag extends Element {
 	
 	public static function main() {
-		new DocumentBody();
+		new ConvertTag();
 	}
 	
+	private var to(get, set):String;
 	private var local:HTMLDocument;
 	private var htmlPrefix:String = 'hx';
 	private var htmlName:String = '';
@@ -27,11 +28,11 @@ class DocumentBody extends Element {
 			case [x, true]:
 				if (x) htmlPrefix = template.getAttribute('data-prefix');
 				htmlName = '$htmlPrefix-' + template.getAttribute('data-name');
-				trace( 'registering element <$htmlName>' );
+				trace( 'registering element <$htmlName>.' );
 				window.document.registerElement('$htmlName', {prototype:this});
 				
 			case _:
-				throw 'Define `data-prefix` and `data-name`.';
+				throw 'Define `data-prefix`, `data-name` and `data-extends`.';
 				
 		}
 		
@@ -56,6 +57,7 @@ class DocumentBody extends Element {
 	public function createdCallback() {
 		var node = template.content;
 		var copy = window.document.importNode( node, true );
+		
 		this.setAttribute('uid', _uid = uid( this ) );
 		root = this.createShadowRoot();
 		root.appendChild( copy );
@@ -106,40 +108,18 @@ class DocumentBody extends Element {
 	}
 	
 	public function process() {
-		var parent = this.parentElement;
-		var self = window.document.querySelectorAll('[uid="$_uid"]');
-		//console.log( this.parentNode, self, '[uid="$_uid"]' );
-		var insertionPoints = root.querySelectorAll('content');
-		for (point in insertionPoints) {
-			var content:ContentElement = untyped point;
-			var distributed:Array<Node> = [for (node in content.getDistributedNodes()) node];
-			//console.log( distributed );
-			
-			for (child in distributed) {
-				var nodelist = parent.querySelectorAll( parent.nodeName + ' > ' + child.nodeName );
-				trace( parent.nodeName, child.nodeName, nodelist.length );
-				for (node in nodelist) trace( node );
-				
-				var match = false;
-				for (node in nodelist) {
-					match = node == child;
-					if (match) break;
-					
-				}
-				
-				if (!match) {
-					var clone = window.document.importNode( child, true );
-					if (child.nodeType == Node.ELEMENT_NODE) {
-						untyped if (child.hasAttribute('uid')) child.detachedCallback();
-						
-					}
-					this.parentElement.insertBefore(clone, this);
-					
-				}
+		var toElement = window.document.createElement( to );
+		for (child in this.childNodes) {
+			var clone = window.document.importNode( child, true );
+			if (child.nodeType == Node.ELEMENT_NODE) {
+				untyped if (child.hasAttribute('uid')) child.detachedCallback();
 				
 			}
+			toElement.appendChild( clone );
 			
 		}
+		console.log( toElement );
+		this.parentNode.replaceChild(toElement, this);
 		
 		if (max > -1) {
 			this.removeEventListener('DOMCustomElementFinished', check);
@@ -148,12 +128,13 @@ class DocumentBody extends Element {
 			
 			pending = max = -1;
 			
-			#if !debug
-			this.parentNode.removeChild( this );
-			#end
-			
 		}
-		
+	}
+	
+	private function get_to():String return this.getAttribute('to');
+	private function set_to(v:String):String {
+		this.setAttribute('to', v);
+		return v;
 	}
 	
 }

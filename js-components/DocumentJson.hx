@@ -6,6 +6,7 @@ import uhx.uid.Hashids;
 
 using haxe.io.Path;
 
+@:expose
 class DocumentJson extends Element {
 	
 	public static var data:Map<String, Dynamic> = new Map();
@@ -95,6 +96,9 @@ class DocumentJson extends Element {
 	public function useJsonData(data:Dynamic) {
 		trace( 'using json data' );
 		console.log( data );
+		
+		var children = this.childNodes;
+		console.log( children );
 	}
 	
 }

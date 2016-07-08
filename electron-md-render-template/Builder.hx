@@ -21,8 +21,8 @@ class Builder {
 	private var ipcRenderer:{on:String->Function->Dynamic, once:String->Function->Dynamic, send:String->Rest<Dynamic>->Void};
 	
 	public static function main() {
-		var con:Builder = null;
-		trace( 'waiting to finish loading...' );
+		var con:Builder = new Builder();
+		/*trace( 'waiting to finish loading...' );
 		switch (window.document.readyState) {
 			case 'complete':
 				con = new Builder();
@@ -34,7 +34,7 @@ class Builder {
 					false
 				);
 				
-		}
+		}*/
 	}
 	
 	public function new() {
@@ -55,45 +55,27 @@ class Builder {
 			node.parentNode.replaceChild( window.document.importNode(template.content, true), node );
 			
 		}
-		//sanatize([for (i in 0...window.document.children.length) window.document.children[i]]);
 		//clean();
+		
 	}
 	
 	public function processJson(data:Payload) {
+		window.document.dispatchEvent( new CustomEvent('DocumentJsonData', {detail:data, bubbles:true}) );
 		trace( 'processing json' );
-		trace( data );
+		console.log( data );
 		
-		
-	}
-	
-	public function sanatize(children:Array<Element>):Void {
-		for (child in children) {
-			if (child.shadowRoot != null) {
-				trace( child.shadowRoot.children );
-				
-				if (child.shadowRoot.children.length == 1) {
-					child.parentNode.replaceChild(child.shadowRoot.children[0], child);
-					
-				} else if (child.shadowRoot.children.length > 1) {
-					var node = child.shadowRoot.children[0];
-					child.parentNode.replaceChild(node, child);
-					
-					for (i in 1...child.shadowRoot.children.length) if (child.shadowRoot.children[i] != null) {
-						node.parentNode.insertBefore(child.shadowRoot.children[i], node.nextSibling);
-						node = child.shadowRoot.children[i];
-						
-					}
-					
-				}
+		/*var shadowPoints = window.document.querySelectorAll('content[select]');
+		for (point in shadowPoints) {
+			var content:ContentElement = untyped point;
+			var parent = content.parentNode;
+			var selector = content.getAttribute('select');
+			var matches = window.document.querySelectorAll(selector);
+			for (match in matches) {
+				parent.insertBefore(window.document.importNode(match, true), content);
 				
 			}
 			
-			if (child.children != null && child.children.length > 0) {
-				sanatize( [for (i in 0...child.children.length) child.children[i]] );
-				
-			}
-			
-		}
+		}*/
 		
 	}
 	

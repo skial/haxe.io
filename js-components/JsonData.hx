@@ -3,15 +3,26 @@ package ;
 import js.html.*;
 import js.Browser.*;
 import uhx.uid.Hashids;
+import uhx.select.Json;
 
 using haxe.io.Path;
 
-class DocumentBody extends Element {
+class JsonData extends Element {
+	
+	public static var data:Map<String, Dynamic> = new Map();
 	
 	public static function main() {
-		new DocumentBody();
+		window.document.addEventListener('DocumentJsonData', processJsonData);
+		new JsonData();
 	}
 	
+	public static function processJsonData(e:CustomEvent) {
+		console.log( e );
+		var stringly = haxe.Json.stringify(e.detail);
+		if (!data.exists(stringly)) data.set(stringly, e.detail);
+	}
+	
+	private var extend:String = 'span';
 	private var local:HTMLDocument;
 	private var htmlPrefix:String = 'hx';
 	private var htmlName:String = '';
@@ -23,15 +34,16 @@ class DocumentBody extends Element {
 	public function new() {
 		local = window.document.currentScript.ownerDocument;
 		template = cast local.querySelector('template');
-		switch ([template.hasAttribute('data-prefix'), template.hasAttribute('data-name')]) {
-			case [x, true]:
+		switch ([template.hasAttribute('data-prefix'), template.hasAttribute('data-name'), template.hasAttribute('data-extends')]) {
+			case [x, true, true]:
 				if (x) htmlPrefix = template.getAttribute('data-prefix');
 				htmlName = '$htmlPrefix-' + template.getAttribute('data-name');
-				trace( 'registering element <$htmlName>' );
-				window.document.registerElement('$htmlName', {prototype:this});
+				extend = template.getAttribute('data-extends');
+				trace( 'registering element <$htmlName> extending $extend.' );
+				window.document.registerElement('$htmlName', {prototype:this, "extends":extend});
 				
 			case _:
-				throw 'Define `data-prefix` and `data-name`.';
+				throw 'Define `data-prefix`, `data-name` and `data-extends`.';
 				
 		}
 		
@@ -56,10 +68,13 @@ class DocumentBody extends Element {
 	public function createdCallback() {
 		var node = template.content;
 		var copy = window.document.importNode( node, true );
+		
 		this.setAttribute('uid', _uid = uid( this ) );
 		root = this.createShadowRoot();
 		root.appendChild( copy );
 		trace( '$htmlName cb called' );
+		
+		window.document.addEventListener('DocumentJsonData', storeAndUse);
 		
 	}
 	
@@ -67,6 +82,11 @@ class DocumentBody extends Element {
 	private var pending:Int = 0;
 	
 	public function attachedCallback() {
+		/*for (key in data.keys()) {
+			trace( key );
+			useJsonData(data.get(key));
+			
+		}*/
 		var contents = root.querySelectorAll('content');
 		for (i in 0...contents.length) {
 			var content:ContentElement = untyped contents[i];
@@ -85,10 +105,13 @@ class DocumentBody extends Element {
 			process();
 			
 		}
-	}
-	
-	public function detachedCallback() {
-		this.removeEventListener('DOMCustomElementFinished', check);
+		#if !debug
+		/*for (node in window.document.querySelectorAll( '[uid="${this.getAttribute("uid")}"]' )) {
+			node.parentNode.removeChild( node );
+			
+		}*/
+		#end
+		
 	}
 	
 	public function check(?e:CustomEvent) {
@@ -106,51 +129,52 @@ class DocumentBody extends Element {
 	}
 	
 	public function process() {
-		var parent = this.parentElement;
-		var self = window.document.querySelectorAll('[uid="$_uid"]');
-		//console.log( this.parentNode, self, '[uid="$_uid"]' );
-		var insertionPoints = root.querySelectorAll('content');
-		for (point in insertionPoints) {
-			var content:ContentElement = untyped point;
-			var distributed:Array<Node> = [for (node in content.getDistributedNodes()) node];
-			//console.log( distributed );
-			
-			for (child in distributed) {
-				var nodelist = parent.querySelectorAll( parent.nodeName + ' > ' + child.nodeName );
-				trace( parent.nodeName, child.nodeName, nodelist.length );
-				for (node in nodelist) trace( node );
-				
-				var match = false;
-				for (node in nodelist) {
-					match = node == child;
-					if (match) break;
-					
-				}
-				
-				if (!match) {
-					var clone = window.document.importNode( child, true );
-					if (child.nodeType == Node.ELEMENT_NODE) {
-						untyped if (child.hasAttribute('uid')) child.detachedCallback();
-						
-					}
-					this.parentElement.insertBefore(clone, this);
-					
-				}
-				
-			}
+		for (key in data.keys()) {
+			trace( key );
+			useJsonData(data.get(key));
 			
 		}
 		
-		if (max > -1) {
-			this.removeEventListener('DOMCustomElementFinished', check);
-			trace( 'dispatching DOMCustomElementFinished from $htmlName - $_uid' );
-			this.dispatchEvent( new CustomEvent('DOMCustomElementFinished', {detail:_uid, bubbles:true, cancelable:true}) );
+	}
+	
+	public function detachedCallback() {
+		this.removeEventListener('DOMCustomElementFinished', check);
+		window.document.removeEventListener('DocumentJsonData', storeAndUse);
+	}
+	
+	public function storeAndUse(e:CustomEvent) {
+		processJsonData(e);
+		useJsonData(e.detail);
+	}
+	
+	public function useJsonData(json:Dynamic) {
+		trace( 'using json data' );
+		console.log( json );
+		
+		var selector = this.getAttribute('select');
+		console.log( selector );
+		var results = [];
+		
+		for (key in data.keys()) {
+			results = results.concat( uhx.select.Json.find(data.get( key ), selector) );
 			
-			pending = max = -1;
+		}
+		
+		console.log( results );
+		
+		if (results.length > 0) {
 			
-			#if !debug
-			this.parentNode.removeChild( this );
-			#end
+			if (max > -1) {
+				this.removeEventListener('DOMCustomElementFinished', check);
+				trace( 'dispatching DOMCustomElementFinished from $htmlName - $_uid' );
+				this.dispatchEvent( new CustomEvent('DOMCustomElementFinished', {detail:_uid, bubbles:true, cancelable:true}) );
+				
+				pending = max = -1;
+				
+			}
+			
+			this.parentNode.insertBefore(window.document.createTextNode(results[0]), this);
+			this.parentNode.removeChild(this);
 			
 		}
 		

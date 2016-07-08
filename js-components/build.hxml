@@ -1,4 +1,5 @@
 -lib regle
+-lib jwenn
 #-lib closure
 -D closure_advanced
 -D closure_overwrite
@@ -22,8 +23,19 @@
 
 --next
 
+-D shallow-expose
 -main DocumentJson
 -js document.json.js
+
+--next
+
+-main ConvertTag
+-js convert.tag.js
+
+--next
+
+-main JsonData
+-js json.data.js
 
 --next
 
@@ -43,5 +55,18 @@
 --next
 
 -debug
+-D shallow-expose
 -main DocumentJson
 -js ../src/js/document.json.js
+
+--next
+
+-debug
+-main ConvertTag
+-js ../src/js/convert.tag.js
+
+--next
+
+-debug
+-main JsonData
+-js ../src/js/json.data.js

@@ -120,8 +120,8 @@ class Component extends Element {
 	}
 	
 	public function createdCallback() {
-		mutator = new MutationObserver(mutated);
-		mutator.observe( this, {childList:true} );
+		//mutator = new MutationObserver(mutated);
+		//mutator.observe( this, {childList:true} );
 		this.setAttribute('uid', _uid = uid( this ) );
 		var node = template.content;
 		
@@ -129,6 +129,12 @@ class Component extends Element {
 		root.appendChild( window.document.importNode( node, true ) );
 		trace( '$htmlName cb called' );
 		
+	}
+	
+	private var max:Int = 0;
+	private var pending:Int = 0;
+	
+	public function attachedCallback() {
 		var contents = root.querySelectorAll('content');
 		for (i in 0...contents.length) {
 			var content:ContentElement = untyped contents[i];
@@ -136,9 +142,39 @@ class Component extends Element {
 			trace( content );
 		}
 		
+		var customElements = this.querySelectorAll('[uid]:not(content)');
+		console.log( customElements );
+		pending = max = customElements.length;
+		if (customElements.length > 0) {
+			trace(pending);
+			this.addEventListener('DOMCustomElementFinished', check);
+			
+		} else {
+			process();
+			
+		}
 	}
 	
-	public function attachedCallback() {
+	public function check(?e:CustomEvent) {
+		trace( 'checking $htmlName $pending - $_uid' );
+		if (e != null) {
+			trace( e.detail );
+			e.stopPropagation();
+			--pending;
+		}
+		trace( '$htmlName $pending' );
+		if (pending < 1) {
+			process();
+			
+		}
+	}
+	
+	public function detachedCallback() {
+		//mutator.disconnect();
+		this.removeEventListener('DOMCustomElementFinished', check);
+	}
+	
+	public function process() {
 		var parent = this.parentElement;
 		var shadowChildren = root.children;
 		
@@ -164,17 +200,22 @@ class Component extends Element {
 			
 		}
 		
-		#if !debug
-		var self = window.document.querySelector( '$htmlName[uid="$_uid"]' );
-		self.parentNode.removeChild( self );
-		#end
+		if (max > -1) {
+			this.removeEventListener('DOMCustomElementFinished', check);
+			trace( 'dispatching DOMCustomElementFinished from $htmlName - $_uid' );
+			this.dispatchEvent( new CustomEvent('DOMCustomElementFinished', {detail:_uid, bubbles:true, cancelable:true}) );
+			
+			pending = max = -1;
+			
+			#if !debug
+			var self = window.document.querySelector( '$htmlName[uid="$_uid"]' );
+			self.parentNode.removeChild( self );
+			#end
+			
+		}
 	}
 	
-	public function detachedCallback() {
-		mutator.disconnect();
-	}
-	
-	public function mutated(records:Array<MutationRecord>, observer:MutationObserver) {
+	/*public function mutated(records:Array<MutationRecord>, observer:MutationObserver) {
 		for (record in records) {
 			switch (record.type) {
 				case 'childList':
@@ -195,6 +236,6 @@ class Component extends Element {
 			
 		}
 		
-	}
+	}*/
 	
 }
