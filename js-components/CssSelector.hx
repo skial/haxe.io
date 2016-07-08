@@ -3,16 +3,16 @@ package ;
 import js.html.*;
 import js.Browser.*;
 import uhx.uid.Hashids;
+import uhx.select.Json;
 
 using haxe.io.Path;
 
-class ConvertTag extends Element {
+class CssSelector extends Element {
 	
 	public static function main() {
-		new ConvertTag();
+		new CssSelector();
 	}
 	
-	private var to(get, set):String;
 	private var local:HTMLDocument;
 	private var htmlPrefix:String = 'hx';
 	private var htmlName:String = '';
@@ -32,7 +32,7 @@ class ConvertTag extends Element {
 				window.document.registerElement('$htmlName', {prototype:this});
 				
 			case _:
-				throw 'Define `data-prefix`, `data-name` and `data-extends`.';
+				throw 'Define `data-prefix` and `data-name`.';
 				
 		}
 		
@@ -63,6 +63,7 @@ class ConvertTag extends Element {
 		root.appendChild( copy );
 		trace( '$htmlName cb called' );
 		
+		window.document.addEventListener('DocumentHtmlData', process);
 	}
 	
 	private var max:Int = 0;
@@ -76,68 +77,59 @@ class ConvertTag extends Element {
 			trace( content );
 		}
 		
-		var customElements = this.querySelectorAll('[uid]:not(content)');
-		console.log( customElements );
-		pending = max = customElements.length;
-		if (customElements.length > 0) {
-			trace(pending);
-			this.addEventListener('DOMCustomElementFinished', check);
+	}
+	
+	public function process() {
+		var selector = this.getAttribute('select');
+		var matches = window.document.querySelectorAll(selector);
+		console.log( matches );
+		var attributes = this.attributes;
+		trace( [for( a in this.attributes) a.name => a.value] );
+		var results = [];
+		for (attribute in attributes) {
+			switch (attribute.name.toLowerCase()) {
+				case 'textcontent':
+					for (match in matches) results.push(window.document.createTextNode(match.textContent));
+					
+				case 'clone':
+					
+				case _:
+					
+			}
 			
-		} else {
-			process();
+		}
+		
+		console.log( results );
+		
+		for (result in results) {
+			this.parentNode.insertBefore(result, this);
+		}
+		
+		this.dispatchEvent( new CustomEvent('DOMCustomElementFinished', {detail:_uid, bubbles:true, cancelable:true}) );
+		window.document.removeEventListener('DocumentHtmlData', process);
+		
+		var self = window.document.querySelectorAll( '[uid="$_uid"]' );
+		console.log( self );
+		for (s in self) s.parentNode.removeChild( s );
+		
+		for (attribute in attributes) {
+			switch ([attribute.name.toLowerCase(), attribute.value.toLowerCase()]) {
+				case ['source', 'move']:
+					
+				case ['source', 'remove']:
+					for (match in matches) match.parentNode.removeChild( match );
+					
+				case _:
+					
+			}
 			
 		}
 		
 	}
 	
 	public function detachedCallback() {
-		this.removeEventListener('DOMCustomElementFinished', check);
-	}
-	
-	public function check(?e:CustomEvent) {
-		trace( 'checking $htmlName $pending - $_uid' );
-		if (e != null) {
-			trace( e.detail );
-			e.stopPropagation();
-			--pending;
-		}
-		trace( '$htmlName $pending' );
-		if (pending == 0) {
-			process();
-			
-		}
-	}
-	
-	public function process() {
-		var toElement = window.document.createElement( to );
-		for (child in this.childNodes) {
-			var clone = window.document.importNode( child, true );
-			if (child.nodeType == Node.ELEMENT_NODE) {
-				//untyped if (child.hasAttribute('uid')) child.detachedCallback();
-				
-			}
-			toElement.appendChild( clone );
-			
-		}
-		
-		if (max > -1) {
-			this.removeEventListener('DOMCustomElementFinished', check);
-			trace( 'dispatching DOMCustomElementFinished from $htmlName - $_uid' );
-			this.dispatchEvent( new CustomEvent('DOMCustomElementFinished', {detail:_uid, bubbles:true, cancelable:true}) );
-			
-			pending = max = -1;
-			
-		}
-		
-		console.log( toElement );
-		this.parentNode.replaceChild(toElement, this);
-		
-	}
-	
-	private function get_to():String return this.getAttribute('to');
-	private function set_to(v:String):String {
-		this.setAttribute('to', v);
-		return v;
+		window.document.removeEventListener('DocumentHtmlData', process);
+		//this.removeEventListener('DOMCustomElementFinished', check);
 	}
 	
 }

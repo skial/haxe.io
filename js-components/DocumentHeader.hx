@@ -45,7 +45,6 @@ class DocumentHeader extends Element {
 			
 		} else if (node.nodeType == Node.ELEMENT_NODE) {
 			var ele:Element = untyped node;
-			console.log( node );
 			var stamp = ele.nodeName + [for (a in ele.attributes) if (a.name != 'uid') a.name + a.value].join('') + ele.getElementsByTagName('*').length;
 			result = hash.encode( [for (i in 0...stamp.length) stamp.charCodeAt(i)] );
 			
@@ -69,15 +68,15 @@ class DocumentHeader extends Element {
 	private var pending:Int = 0;
 	
 	public function attachedCallback() {
-		var contents = root.querySelectorAll('content');
+		/*var contents = root.querySelectorAll('content');
 		for (i in 0...contents.length) {
 			var content:ContentElement = untyped contents[i];
 			content.setAttribute('uid', '$_uid.$i' );
 			trace( content );
-		}
+		}*/
 		
-		var customElements = this.querySelectorAll('[uid]:not(content)');
-		console.log( customElements );
+		var customElements = this.querySelectorAll(':root > [uid]:not(content)');
+		//console.log( customElements );
 		pending = max = customElements.length;
 		if (customElements.length > 0) {
 			trace(pending);
@@ -101,7 +100,7 @@ class DocumentHeader extends Element {
 			--pending;
 		}
 		trace( '$htmlName $pending' );
-		if (pending < 1) {
+		if (pending == 0) {
 			process();
 			
 		}
@@ -110,7 +109,7 @@ class DocumentHeader extends Element {
 	public function process() {
 		var link = window.document.querySelectorAll('link[href*="${local.URL.withoutDirectory()}"]')[0];
 		
-		for (insertion in root.querySelectorAll('content')) {
+		for (insertion in root.querySelectorAll('content:not([is])')) {
 			var point:ContentElement = untyped insertion;
 			var parent = link.parentElement;
 			var children = point.getDistributedNodes();
@@ -132,7 +131,7 @@ class DocumentHeader extends Element {
 				if (!match) {
 					var clone = window.document.importNode( child, true );
 					if (child.nodeType == Node.ELEMENT_NODE) {
-						untyped if (child.hasAttribute('uid')) child.detachedCallback();
+						//untyped if (child.hasAttribute('uid')) child.detachedCallback();
 						
 					}
 					parent.insertBefore(clone, link);

@@ -22,7 +22,6 @@ class JsonData extends Element {
 		if (!data.exists(stringly)) data.set(stringly, e.detail);
 	}
 	
-	private var extend:String = 'span';
 	private var local:HTMLDocument;
 	private var htmlPrefix:String = 'hx';
 	private var htmlName:String = '';
@@ -34,16 +33,15 @@ class JsonData extends Element {
 	public function new() {
 		local = window.document.currentScript.ownerDocument;
 		template = cast local.querySelector('template');
-		switch ([template.hasAttribute('data-prefix'), template.hasAttribute('data-name'), template.hasAttribute('data-extends')]) {
-			case [x, true, true]:
+		switch ([template.hasAttribute('data-prefix'), template.hasAttribute('data-name')]) {
+			case [x, true]:
 				if (x) htmlPrefix = template.getAttribute('data-prefix');
 				htmlName = '$htmlPrefix-' + template.getAttribute('data-name');
-				extend = template.getAttribute('data-extends');
-				trace( 'registering element <$htmlName> extending $extend.' );
-				window.document.registerElement('$htmlName', {prototype:this, "extends":extend});
+				trace( 'registering element <$htmlName>.' );
+				window.document.registerElement('$htmlName', {prototype:this});
 				
 			case _:
-				throw 'Define `data-prefix`, `data-name` and `data-extends`.';
+				throw 'Define `data-prefix` and `data-name`.';
 				
 		}
 		
@@ -122,7 +120,7 @@ class JsonData extends Element {
 			--pending;
 		}
 		trace( '$htmlName $pending' );
-		if (pending < 1) {
+		if (pending == 0) {
 			process();
 			
 		}

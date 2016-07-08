@@ -39,6 +39,11 @@
 
 --next
 
+-main CssSelector
+-js css.selector.js
+
+--next
+
 -main Component
 -js ../src/js/component.js
 
@@ -70,3 +75,9 @@
 #-debug
 -main JsonData
 -js ../src/js/json.data.js
+
+--next
+
+-debug
+-main CssSelector
+-js ../src/js/css.selector.js

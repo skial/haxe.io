@@ -67,15 +67,15 @@ class DocumentBody extends Element {
 	private var pending:Int = 0;
 	
 	public function attachedCallback() {
-		var contents = root.querySelectorAll('content');
+		var contents = root.querySelectorAll('content:not([uid])');
 		for (i in 0...contents.length) {
 			var content:ContentElement = untyped contents[i];
 			content.setAttribute('uid', '$_uid.$i' );
 			trace( content );
 		}
 		
-		var customElements = this.querySelectorAll('[uid]:not(content)');
-		console.log( customElements );
+		var customElements = this.querySelectorAll(':root > [uid]:not(content)');
+		//console.log( customElements );
 		pending = max = customElements.length;
 		if (customElements.length > 0) {
 			trace(pending);
@@ -99,8 +99,11 @@ class DocumentBody extends Element {
 			--pending;
 		}
 		trace( '$htmlName $pending' );
-		if (pending < 1) {
+		if (pending == 0) {
 			process();
+			
+		} else {
+			console.log(this.querySelectorAll(':root > [uid]:not(content)'));
 			
 		}
 	}
@@ -130,7 +133,7 @@ class DocumentBody extends Element {
 				if (!match) {
 					var clone = window.document.importNode( child, true );
 					if (child.nodeType == Node.ELEMENT_NODE) {
-						untyped if (child.hasAttribute('uid')) child.detachedCallback();
+						//untyped if (child.hasAttribute('uid')) child.detachedCallback();
 						
 					}
 					this.parentElement.insertBefore(clone, this);
@@ -149,7 +152,10 @@ class DocumentBody extends Element {
 			pending = max = -1;
 			
 			#if !debug
-			this.parentNode.removeChild( this );
+			//this.parentNode.removeChild( this );
+			var self = window.document.querySelectorAll( '[uid="$_uid"]' );
+			console.log( self );
+			for (s in self) s.parentNode.removeChild( s );
 			#end
 			
 		}

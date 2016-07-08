@@ -142,7 +142,7 @@ class Component extends Element {
 			trace( content );
 		}
 		
-		var customElements = this.querySelectorAll('[uid]:not(content)');
+		var customElements = this.querySelectorAll(':root > [uid]');
 		console.log( customElements );
 		pending = max = customElements.length;
 		if (customElements.length > 0) {
@@ -163,7 +163,7 @@ class Component extends Element {
 			--pending;
 		}
 		trace( '$htmlName $pending' );
-		if (pending < 1) {
+		if (pending == 0) {
 			process();
 			
 		}
@@ -208,7 +208,7 @@ class Component extends Element {
 			pending = max = -1;
 			
 			#if !debug
-			var self = window.document.querySelector( '$htmlName[uid="$_uid"]' );
+			var self = window.document.querySelector( '[uid="$_uid"]' );
 			if (self != null) self.parentNode.removeChild( self );
 			#end
 			

@@ -53,6 +53,7 @@ class Builder {
 			var template:TemplateElement = cast window.document.createElement('template');
 			template.innerHTML = data;
 			node.parentNode.replaceChild( window.document.importNode(template.content, true), node );
+			window.document.dispatchEvent( new CustomEvent('DocumentHtmlData', {detail:true, bubbles:true}) );
 			
 		}
 		//clean();
