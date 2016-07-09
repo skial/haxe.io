@@ -42,13 +42,13 @@ class CssSelector extends Component {
 	public override function process() {
 		var selector = this.getAttribute('select');
 		var matches = window.document.querySelectorAll(selector);
-		console.log( matches );
+		//console.log( matches );
 		var attributes = this.attributes;
 		trace( [for( a in this.attributes) a.name => a.value] );
 		var results = [];
 		for (attribute in attributes) {
 			switch (attribute.name.toLowerCase()) {
-				case 'textcontent':
+				case 'text':
 					for (match in matches) results.push(window.document.createTextNode(match.textContent));
 					
 				case 'clone':
@@ -59,7 +59,7 @@ class CssSelector extends Component {
 			
 		}
 		
-		console.log( results );
+		//console.log( results );
 		
 		for (result in results) {
 			this.parentNode.insertBefore(result, this);
@@ -69,7 +69,7 @@ class CssSelector extends Component {
 		window.document.removeEventListener('DocumentHtmlData', process);
 		
 		var self = window.document.querySelectorAll( '[uid="$_uid"]' );
-		console.log( self );
+		//console.log( self );
 		for (s in self) s.parentNode.removeChild( s );
 		
 		for (attribute in attributes) {

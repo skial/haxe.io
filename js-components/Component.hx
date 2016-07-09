@@ -81,7 +81,7 @@ class Component extends Element {
 		}
 		
 		var customElements = this.querySelectorAll(':root > [uid]:not(content)');
-		console.log( customElements );
+		//console.log( customElements );
 		pending = max = customElements.length;
 		if (customElements.length > 0) {
 			trace(pending);
@@ -144,10 +144,8 @@ class Component extends Element {
 			
 			pending = max = -1;
 			
-			#if !debug
 			var self = window.document.querySelector( '[uid="$_uid"]' );
 			if (self != null) self.parentNode.removeChild( self );
-			#end
 			
 		}
 	}

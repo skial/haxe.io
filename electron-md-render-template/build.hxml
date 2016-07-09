@@ -2,7 +2,7 @@
 -lib hxnodejs
 -lib tink_json
 -lib jwenn
--D js-es=6
+#-D js-es=6
 
 -debug
 #-dce full

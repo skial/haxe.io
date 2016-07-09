@@ -29,7 +29,7 @@ class ConvertTag extends Component {
 		}
 		
 		var customElements = this.querySelectorAll('[uid]:not(content)');
-		console.log( customElements );
+		//console.log( customElements );
 		pending = max = customElements.length;
 		if (customElements.length > 0) {
 			trace(pending);
@@ -59,7 +59,7 @@ class ConvertTag extends Component {
 			
 		}
 		
-		console.log( toElement );
+		//console.log( toElement );
 		this.parentNode.replaceChild(toElement, this);
 		
 	}

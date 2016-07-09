@@ -32,16 +32,35 @@ class DocumentHeader extends Component {
 	}
 	
 	public override function process() {
-		var link = window.document.querySelectorAll('link[href*="${local.URL.withoutDirectory()}"]')[0];
+		var host:Element = cast window.document.querySelectorAll('link[href*="${local.URL.withoutDirectory()}"]')[0];
+		var add:Node->Void = null;
+		
+		if (host == null) {
+			host = window.document.getElementsByTagName('head')[0];
+			
+		} else if (add == null) {
+			host.insertBefore.bind(_, this);
+			
+		}
+		
+		if (host == null) {
+			add = host.appendChild;
+			host = this.parentElement;
+			
+		} else if (add == null) {
+			add = host.appendChild;
+			
+		}
 		
 		for (insertion in root.querySelectorAll('content:not([is])')) {
 			var point:ContentElement = untyped insertion;
-			var parent = link.parentElement;
+			//var parent = this.parentElement;
 			var children = point.getDistributedNodes();
 			
 			for (child in children) {
 				var childUid = uid( child );
-				var nodelist = parent.querySelectorAll( link.parentElement.nodeName + ' > ' + child.nodeName );
+				//var nodelist = head.querySelectorAll( this.parentElement.nodeName + ' > ' + child.nodeName );
+				var nodelist = host.querySelectorAll( host.nodeName + ' > ' + child.nodeName );
 				
 				var match = false;
 				for (node in nodelist) {
@@ -53,7 +72,8 @@ class DocumentHeader extends Component {
 				
 				if (!match) {
 					var clone = window.document.importNode( child, true );
-					parent.insertBefore(clone, link);
+					//head.insertBefore(clone, this);
+					add( clone );
 					
 				}
 				
@@ -68,12 +88,10 @@ class DocumentHeader extends Component {
 			
 			pending = max = -1;
 			
-			#if !debug
 			for (node in window.document.querySelectorAll( '[uid="${this.getAttribute("uid")}"]' )) {
 				node.parentNode.removeChild( node );
 				
 			}
-			#end
 			
 		}
 	}

@@ -17,7 +17,7 @@ class JsonData extends Element {
 	}
 	
 	public static function processJsonData(e:CustomEvent) {
-		console.log( e );
+		//console.log( e );
 		var stringly = haxe.Json.stringify(e.detail);
 		if (!data.exists(stringly)) data.set(stringly, e.detail);
 	}
@@ -88,7 +88,7 @@ class JsonData extends Element {
 		}
 		
 		var customElements = this.querySelectorAll('[uid]:not(content)');
-		console.log( customElements );
+		//console.log( customElements );
 		pending = max = customElements.length;
 		if (customElements.length > 0) {
 			trace(pending);

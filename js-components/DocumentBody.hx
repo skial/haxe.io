@@ -75,11 +75,9 @@ class DocumentBody extends Component {
 			
 			pending = max = -1;
 			
-			#if !debug
 			var self = window.document.querySelectorAll( '[uid="$_uid"]' );
-			console.log( self );
+			//console.log( self );
 			for (s in self) s.parentNode.removeChild( s );
-			#end
 			
 		}
 		
