@@ -8,14 +8,12 @@ using haxe.io.Path;
 
 class Component extends Element {
 	
-	private static var counter:Int = 0;
-	private static var uidMapping:Map<String,Array<Node>> = new Map();
-	
 	public static function main() {
 		new Component();
 	}
 	
-	private var mutator:MutationObserver;
+	private var max:Int = 0;
+	private var pending:Int = 0;
 	private var local:HTMLDocument;
 	private var htmlPrefix:String = 'hx';
 	private var htmlName:String = '';
@@ -23,16 +21,19 @@ class Component extends Element {
 	private var root:ShadowRoot;
 	private var hash:Hashids = new Hashids();
 	private var _uid:String = '';
+	private var self:Component = null;
 	
 	public function new() {
 		local = window.document.currentScript.ownerDocument;
 		template = cast local.querySelector('template');
+		
 		switch ([template.hasAttribute('data-prefix'), template.hasAttribute('data-name')]) {
 			case [x, true]:
 				if (x) htmlPrefix = template.getAttribute('data-prefix');
 				htmlName = '$htmlPrefix-' + template.getAttribute('data-name');
 				trace( 'registering element <$htmlName>' );
-				window.document.registerElement('$htmlName', {prototype:this});
+				if (self == null) self = this;
+				register();
 				
 			case _:
 				
@@ -40,14 +41,20 @@ class Component extends Element {
 		
 	}
 	
+	public function register() {
+		if (self != null) window.document.registerElement('$htmlName', {prototype:self});
+	}
+	
 	public function uid(node:Node):String {
 		var result = '';
-		if (node.nodeName.indexOf('#text') > -1) {
+		
+		if (node.nodeType == Node.TEXT_NODE) {
 			result = node.textContent;
 			
-		} else {
+		} else if (node.nodeType != Node.COMMENT_NODE) {
 			var ele:Element = untyped node;
-			var stamp = ele.nodeName + [for (a in ele.attributes) if (a.name != 'uid') a.name + a.value].join('') + ele.getElementsByTagName('*').length;
+			var stamp = ele.nodeName + [for (a in ele.attributes) if (a.name != 'uid') a.name + a.value].join('') + ele.querySelectorAll('*').length;
+			trace( stamp );
 			result = hash.encode( [for (i in 0...stamp.length) stamp.charCodeAt(i)] );
 			
 		}
@@ -65,9 +72,6 @@ class Component extends Element {
 		
 	}
 	
-	private var max:Int = 0;
-	private var pending:Int = 0;
-	
 	public function attachedCallback() {
 		var contents = root.querySelectorAll('content');
 		for (i in 0...contents.length) {
@@ -76,7 +80,7 @@ class Component extends Element {
 			trace( content );
 		}
 		
-		var customElements = this.querySelectorAll(':root > [uid]');
+		var customElements = this.querySelectorAll(':root > [uid]:not(content)');
 		console.log( customElements );
 		pending = max = customElements.length;
 		if (customElements.length > 0) {
