@@ -123,10 +123,11 @@ class Controller {
 	private function processHtml(html:String):Void {
 		ipcMain.on('save', save);
 		trace( 'serving from ' + '$cwd/$root'.normalize() );
-		var files = untyped __js__("new {0}", server.Server('$cwd/$root'.normalize()), {headers:{'Content-Security-Policy': 'script-src \'none\';'}} );
+		var files = untyped __js__("new {0}", server.Server)('$cwd/$root'.normalize());
 		var ns = require('http').createServer(function (request, response) {
 			request.addListener('end', function () {
 		      files.serve(request, response);
+					response.setHeader("Content-Security-Policy", "default-src 'self'; script-src 'self'; connect-src 'self'; img-src 'self'; style-src 'self';");
 					
 		  }).resume();
 		});
