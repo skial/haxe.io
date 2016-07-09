@@ -156,7 +156,12 @@ class Controller {
 		browser.loadURL( url );
 	}
 	
-	private function save() {
+	private function save(event:String, arg:String) {
+		if (arg != 'failed') {
+			var html = arg.replace( '\n', '\r\n' );
+			trace( output );
+			
+		}
 		
 	}
 		

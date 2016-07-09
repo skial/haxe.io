@@ -17,24 +17,13 @@ using StringTools;
 
 class Builder {
 	
+	private var max:Int = 2;
+	private var counter:Int = 0;
 	private var electron:Dynamic;
 	private var ipcRenderer:{on:String->Function->Dynamic, once:String->Function->Dynamic, send:String->Rest<Dynamic>->Void};
 	
 	public static function main() {
 		var con:Builder = new Builder();
-		/*trace( 'waiting to finish loading...' );
-		switch (window.document.readyState) {
-			case 'complete':
-				con = new Builder();
-				
-			case _:
-				window.document.addEventListener(
-					'DOMContentLoaded', 
-					function() con = new Builder(),
-					false
-				);
-				
-		}*/
 	}
 	
 	public function new() {
@@ -56,7 +45,9 @@ class Builder {
 			window.document.dispatchEvent( new CustomEvent('DocumentHtmlData', {detail:true, bubbles:true}) );
 			
 		}
-		//clean();
+		
+		counter++;
+		if (counter >= max) save();
 		
 	}
 	
@@ -65,18 +56,8 @@ class Builder {
 		trace( 'processing json' );
 		console.log( data );
 		
-		/*var shadowPoints = window.document.querySelectorAll('content[select]');
-		for (point in shadowPoints) {
-			var content:ContentElement = untyped point;
-			var parent = content.parentNode;
-			var selector = content.getAttribute('select');
-			var matches = window.document.querySelectorAll(selector);
-			for (match in matches) {
-				parent.insertBefore(window.document.importNode(match, true), content);
-				
-			}
-			
-		}*/
+		counter++;
+		if (counter >= max) save();
 		
 	}
 	
@@ -85,6 +66,30 @@ class Builder {
 			link.parentNode.removeChild( link );
 			
 		}
+		
+	}
+	
+	public function save():Void {
+		counter = -1;
+		clean();
+		
+		var node = window.document.doctype;
+		var doctype = node != null ? "<!DOCTYPE "
+				 + node.name
+				 + (node.publicId != null ? ' PUBLIC "' + node.publicId + '"' : '')
+				 + (node.publicId == null && node.systemId != null ? ' SYSTEM' : '') 
+				 + (node.systemId != null ? ' "' + node.systemId + '"' : '')
+				 + '>\n' : '';
+				 
+		var html = window.document.documentElement.outerHTML;
+		if (html != null && html != '<html><head></head><body></body></html>') {
+			ipcRenderer.send('save', doctype + html);
+			
+		} else {
+			ipcRenderer.send('save', 'failed');
+			
+		}
+		
 	}
 	
 }

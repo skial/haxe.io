@@ -1,20 +1,25 @@
-<link rel="import" href="defaults.html" />
-<link rel="import" href="social_meta.html" />
+<!-- web components templates -->
+<link rel="import" href="metas.html" />
+<link rel="import" href="metas.social.html" />
 <link rel="import" href="stylesheets.html" />
 <link rel="import" href="favicon.html" />
-<link rel="import" href="head_scripts.html" />
+<link rel="import" href="scripts.html" />
 <link rel="import" href="header.html" />
 <link rel="import" href="footer.html" />
+<!-- web components that reorder the dom -->
+<link rel="import" href="json.data.html" />
+<link rel="import" href="convert.tag.html" />
+<link rel="import" href="css.selector.html" />
 <link rel="import" href="document.head.html" />
 <link rel="import" href="document.body.html" />
 <template data-prefix="hio" data-name="article">
 	<document-head>
+		<hio-metas></hio-metas>
+		<convert-tag to="title"><css-data select="h1:first-of-type" textContent></css-data> | Haxe.io</convert-tag>
+		<hio-metas.social></hio-metas.social>
 		<hio-stylesheets></hio-stylesheets>
 		<hio-icons></hio-icons>
 		<hio-scripts></hio-scripts>
-		<!--<title>
-			<content select="h1"></content> | Haxe.io
-		</title>-->
 	</document-head>
 	<document-body>
 		<hio-header></hio-header>

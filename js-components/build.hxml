@@ -5,6 +5,7 @@
 -D closure_overwrite
 #--no-traces
 #-debug
+-D js-es=6
 
 --each
 
