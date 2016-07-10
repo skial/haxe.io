@@ -3,6 +3,7 @@ package ;
 import js.html.*;
 import js.Browser.*;
 
+using StringTools;
 using haxe.io.Path;
 
 class ConvertTag extends Component {
@@ -11,7 +12,7 @@ class ConvertTag extends Component {
 		new ConvertTag();
 	}
 	
-	private var to(get, set):String;
+	private var to(get, null):String;
 	private var replacement:Element = null;
 	
 	public function new() {
@@ -22,8 +23,7 @@ class ConvertTag extends Component {
 	
 	public override function processComponent() {
 		replacement = window.document.createElement( to );
-		// TODO figure out why CssSelector suddenly matches converted tags.
-		//replacement.setAttribute('ct:uid', uid);
+		
 		for (child in this.childNodes) {
 			var clone = window.document.importNode( child, true );
 			replacement.appendChild( clone );
@@ -36,10 +36,16 @@ class ConvertTag extends Component {
 		this.parentNode.replaceChild(replacement, this);
 	}
 	
-	private function get_to():String return this.getAttribute('to');
-	private function set_to(v:String):String {
-		this.setAttribute('to', v);
-		return v;
+	private function get_to():String {
+		var result = null;
+		
+		for (attribute in this.attributes) if (attribute.name.startsWith('to:')) {
+			result = attribute.name.split(':')[1];
+			break;
+			
+		}
+		
+		return result;
 	}
 	
 }

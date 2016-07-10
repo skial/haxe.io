@@ -34,11 +34,8 @@ class CssSelector extends ConvertTag {
 	
 	private override function process() {
 		var selector = this.getAttribute('select');
-		// TODO figure out why CssSelector appears to be triggering `process` twice, resulting in me needing to add `ct:uid` attributes to ConvertTag elements.
-		var matches = [for (match in window.document.querySelectorAll(selector)) /*if (!cast (match, Element).hasAttribute('ct:uid'))*/ match];
-		//console.log( matches );
+		var matches = window.document.querySelectorAll(selector);
 		var attributes = this.attributes;
-		//trace( [for( a in this.attributes) a.name => a.value] );
 		var results = [];
 		
 		for (attribute in attributes) {
