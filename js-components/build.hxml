@@ -3,7 +3,7 @@
 #-lib closure
 -D closure_advanced
 -D closure_overwrite
---no-traces
+#--no-traces
 #-debug
 -D js-es=6
 

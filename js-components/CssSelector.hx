@@ -6,7 +6,7 @@ import js.Browser.*;
 using StringTools;
 using haxe.io.Path;
 
-class CssSelector extends Component {
+class CssSelector extends ConvertTag {
 	
 	public static function main() {
 		new CssSelector();
@@ -35,10 +35,10 @@ class CssSelector extends Component {
 	private override function process() {
 		var selector = this.getAttribute('select');
 		// TODO figure out why CssSelector appears to be triggering `process` twice, resulting in me needing to add `ct:uid` attributes to ConvertTag elements.
-		var matches = [for (match in window.document.querySelectorAll(selector)) if (!cast (match, Element).hasAttribute('ct:uid')) match];
+		var matches = [for (match in window.document.querySelectorAll(selector)) /*if (!cast (match, Element).hasAttribute('ct:uid'))*/ match];
 		//console.log( matches );
 		var attributes = this.attributes;
-		trace( [for( a in this.attributes) a.name => a.value] );
+		//trace( [for( a in this.attributes) a.name => a.value] );
 		var results = [];
 		
 		for (attribute in attributes) {
@@ -60,10 +60,31 @@ class CssSelector extends Component {
 			
 		}
 		
-		for (result in results) {
-			this.parentNode.insertBefore(result, this);
+		switch ([this.hasAttribute('+:'), this.hasAttribute(':+')]) {
+			case [true, _]:
+				trace( '+:' );
+				for (result in results) {
+					this.insertBefore(result, this.childNodes[0]);
+					
+				}
+				
+			case [_, true]:
+				trace( ':+' );
+				for (result in results) {
+					this.appendChild( result );
+					
+				}
+				
+			case _:
+				trace( 'default' );
+				for (result in results) {
+					this.appendChild( result );
+					
+				}
+				
 		}
-		
+		console.log( this );
+		processComponent();
 		done();
 		removeSelf();
 		
@@ -86,9 +107,9 @@ class CssSelector extends Component {
 		
 	}
 	
-	private override function removeSelf():Void {
+	/*private override function removeSelf():Void {
 		var self = window.document.querySelectorAll( '[uid="$uid"]' );
 		for (s in self) s.parentNode.removeChild( s );
-	}
+	}*/
 	
 }
