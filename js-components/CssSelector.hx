@@ -2,7 +2,6 @@ package ;
 
 import js.html.*;
 import js.Browser.*;
-import uhx.select.Json;
 
 using StringTools;
 using haxe.io.Path;
@@ -20,40 +19,34 @@ class CssSelector extends Component {
 	}
 	
 	public override function createdCallback() {
-	/*	var node = template.content;
-		var copy = window.document.importNode( node, true );
-		
-		this.setAttribute('uid', uid = stampUid( this ) );
-		root = this.createShadowRoot();
-		root.appendChild( copy );
-		trace( '$htmlName cb called' );*/
 		super.createdCallback();
 		window.document.addEventListener('DocumentHtmlData', process);
 	}
 	
-	/*public override function attachedCallback() {
-		var contents = root.querySelectorAll('content');
-		for (i in 0...contents.length) {
-			var content:ContentElement = untyped contents[i];
-			content.setAttribute('uid', '$_uid.$i' );
-			trace( content );
-		}
-		
-	}*/
+	public override function attachedCallback():Void {
+		stampContents();
+	}
 	
-	public override function processComponent() {
+	private override function removeEvents():Void {
+		window.document.removeEventListener('DocumentHtmlData', process);
+		super.removeEvents();
+	}
+	
+	private override function process() {
 		var selector = this.getAttribute('select');
-		var matches = window.document.querySelectorAll(selector);
+		// TODO figure out why CssSelector appears to be triggering `process` twice, resulting in me needing to add `ct:uid` attributes to ConvertTag elements.
+		var matches = [for (match in window.document.querySelectorAll(selector)) if (!cast (match, Element).hasAttribute('ct:uid')) match];
 		//console.log( matches );
 		var attributes = this.attributes;
 		trace( [for( a in this.attributes) a.name => a.value] );
 		var results = [];
+		
 		for (attribute in attributes) {
 			switch (attribute.name.toLowerCase()) {
 				case _.startsWith('use:') => true:
 					switch (attribute.name.split(':')[1]) {
 						case 'text':
-							for (match in matches) results.push(window.document.createTextNode(match.textContent));
+							results.push(window.document.createTextNode( [for (match in matches) match.textContent].join('') ));
 							
 						case _:
 							
@@ -67,18 +60,12 @@ class CssSelector extends Component {
 			
 		}
 		
-		//console.log( results );
-		
 		for (result in results) {
 			this.parentNode.insertBefore(result, this);
 		}
 		
-		/*this.dispatchEvent( new CustomEvent('DOMCustomElementFinished', {detail:uid, bubbles:true, cancelable:true}) );
-		window.document.removeEventListener('DocumentHtmlData', process);*/
-		
-		/*var self = window.document.querySelectorAll( '[uid="$_uid"]' );
-		//console.log( self );
-		for (s in self) s.parentNode.removeChild( s );*/
+		done();
+		removeSelf();
 		
 		for (attribute in attributes) {
 			switch (attribute.name.toLowerCase()) {
@@ -101,12 +88,7 @@ class CssSelector extends Component {
 	
 	private override function removeSelf():Void {
 		var self = window.document.querySelectorAll( '[uid="$uid"]' );
-		//console.log( self );
 		for (s in self) s.parentNode.removeChild( s );
 	}
-	
-	/*public override function detachedCallback() {
-		window.document.removeEventListener('DocumentHtmlData', process);
-	}*/
 	
 }

@@ -90,6 +90,10 @@ class Component extends Element {
 		
 	}
 	
+	private function registerEvents():Void {
+		for (key in eventMap.keys()) this.addEventListener(key, eventMap.get( key ));
+	}
+	
 	public function attachedCallback():Void {
 		stampContents();
 		
@@ -98,7 +102,7 @@ class Component extends Element {
 		pending = total = customElements.length;
 		if (customElements.length > 0) {
 			trace(pending);
-			for (key in eventMap.keys()) this.addEventListener(key, eventMap.get( key ));
+			registerEvents();
 			
 		} else {
 			process();

@@ -44,6 +44,8 @@ class ConvertTag extends Component {
 	private var replacement:Element = null;
 	public override function processComponent() {
 		replacement = window.document.createElement( to );
+		// TODO figure out why CssSelector suddenly matches converted tags.
+		replacement.setAttribute('ct:uid', uid);
 		for (child in this.childNodes) {
 			var clone = window.document.importNode( child, true );
 			replacement.appendChild( clone );
