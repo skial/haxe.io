@@ -83,7 +83,7 @@ class CssSelector extends ConvertTag {
 				}
 				
 		}
-		console.log( this );
+		
 		processComponent();
 		done();
 		removeSelf();

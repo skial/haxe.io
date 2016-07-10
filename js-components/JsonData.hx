@@ -8,7 +8,7 @@ import haxe.Constraints.Function;
 
 using haxe.io.Path;
 
-class JsonData extends Component {
+class JsonData extends ConvertTag {
 	
 	public static var data:Map<String, Dynamic> = new Map();
 	
@@ -67,17 +67,15 @@ class JsonData extends Component {
 		
 		console.log( results );
 		
-		if (results.length > 0) {
-			done();
-			this.parentNode.insertBefore(window.document.createTextNode(results[0]), this);
-			removeSelf();
+		for (result in results) {
+			this.appendChild( window.document.createTextNode( result ) );
 			
 		}
 		
-	}
-	
-	private override function removeSelf():Void {
-		this.parentNode.removeChild(this);
+		processComponent();
+		done();
+		removeSelf();
+		
 	}
 	
 }
