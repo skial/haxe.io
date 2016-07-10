@@ -30,6 +30,11 @@ class ConvertTag extends Component {
 			
 		}
 		
+		for (attribute in this.attributes) if (attribute.name.startsWith('&')) {
+			replacement.setAttribute( attribute.name.substring(1), attribute.value );
+			
+		}
+		
 	}
 	
 	private override function removeSelf():Void {
