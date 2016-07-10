@@ -17,17 +17,17 @@ class DocumentBody extends Component {
 		
 	}
 	
-	public override function attachedCallback() {
+	/*public override function attachedCallback() {
 		var contents = root.querySelectorAll('content:not([uid])');
 		for (i in 0...contents.length) {
 			var content:ContentElement = untyped contents[i];
-			content.setAttribute('uid', '$_uid.$i' );
+			content.setAttribute('uid', '$uid.$i' );
 			trace( content );
 		}
 		
 		var customElements = this.querySelectorAll(':root > [uid]:not(content)');
 		//console.log( customElements );
-		pending = max = customElements.length;
+		pending = total = customElements.length;
 		if (customElements.length > 0) {
 			trace(pending);
 			this.addEventListener('DOMCustomElementFinished', check);
@@ -36,11 +36,11 @@ class DocumentBody extends Component {
 			process();
 			
 		}
-	}
+	}*/
 	
-	public override function process() {
+	public override function processComponent() {
 		var parent = this.parentElement;
-		var self = window.document.querySelectorAll('[uid="$_uid"]');
+		var self = window.document.querySelectorAll('[uid="$uid"]');
 		var insertionPoints = root.querySelectorAll('content');
 		for (point in insertionPoints) {
 			var content:ContentElement = untyped point;
@@ -68,7 +68,7 @@ class DocumentBody extends Component {
 			
 		}
 		
-		if (max > -1) {
+		/*if (max > -1) {
 			this.removeEventListener('DOMCustomElementFinished', check);
 			trace( 'dispatching DOMCustomElementFinished from $htmlName - $_uid' );
 			this.dispatchEvent( new CustomEvent('DOMCustomElementFinished', {detail:_uid, bubbles:true, cancelable:true}) );
@@ -79,7 +79,7 @@ class DocumentBody extends Component {
 			//console.log( self );
 			for (s in self) s.parentNode.removeChild( s );
 			
-		}
+		}*/
 		
 	}
 	

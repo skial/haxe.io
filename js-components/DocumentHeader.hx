@@ -20,7 +20,7 @@ class DocumentHeader extends Component {
 	
 	public override function attachedCallback() {
 		var customElements = this.querySelectorAll(':root > [uid]:not(content)');
-		pending = max = customElements.length;
+		pending = total = customElements.length;
 		if (customElements.length > 0) {
 			trace(pending);
 			this.addEventListener('DOMCustomElementFinished', check);
@@ -31,7 +31,7 @@ class DocumentHeader extends Component {
 		}
 	}
 	
-	public override function process() {
+	public override function processComponent() {
 		var host:Element = cast window.document.querySelectorAll('link[href*="${local.URL.withoutDirectory()}"]')[0];
 		var add:Node->Void = null;
 		
@@ -58,13 +58,13 @@ class DocumentHeader extends Component {
 			var children = point.getDistributedNodes();
 			
 			for (child in children) {
-				var childUid = uid( child );
+				var childUid = stampUid( child );
 				//var nodelist = head.querySelectorAll( this.parentElement.nodeName + ' > ' + child.nodeName );
 				var nodelist = host.querySelectorAll( host.nodeName + ' > ' + child.nodeName );
 				
 				var match = false;
 				for (node in nodelist) {
-					var nodeUid = uid( node );
+					var nodeUid = stampUid( node );
 					match = nodeUid == childUid;
 					if (match) break;
 					
@@ -81,19 +81,20 @@ class DocumentHeader extends Component {
 			
 		}
 		
-		if (max > -1) {
+		/*if (total > -1) {
 			this.removeEventListener('DOMCustomElementFinished', check);
 			trace( 'dispatching DOMCustomElementFinished from $htmlName - $_uid' );
 			this.dispatchEvent( new CustomEvent('DOMCustomElementFinished', {detail:_uid, bubbles:true, cancelable:true}) );
 			
-			pending = max = -1;
+			pending = total = -1;
 			
 			for (node in window.document.querySelectorAll( '[uid="${this.getAttribute("uid")}"]' )) {
 				node.parentNode.removeChild( node );
 				
 			}
 			
-		}
+		}*/
+		
 	}
 	
 }

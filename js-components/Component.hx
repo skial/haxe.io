@@ -3,6 +3,7 @@ package ;
 import js.html.*;
 import js.Browser.*;
 import uhx.uid.Hashids;
+import haxe.Constraints.Function;
 
 using haxe.io.Path;
 
@@ -12,16 +13,18 @@ class Component extends Element {
 		new Component();
 	}
 	
-	private var max:Int = 0;
+	private var total:Int = 0;
 	private var pending:Int = 0;
-	private var local:HTMLDocument;
-	private var htmlPrefix:String = 'hx';
-	private var htmlName:String = '';
-	private var template:TemplateElement;
+	private var uid:String = '';
 	private var root:ShadowRoot;
-	private var hash:Hashids = new Hashids();
-	private var _uid:String = '';
+	private var local:HTMLDocument;
+	private var htmlName:String = '';
 	private var self:Component = null;
+	private var htmlPrefix:String = 'hx';
+	private var template:TemplateElement;
+	private var hash:Hashids = new Hashids();
+	
+	@:isVar private var eventMap(get, null):Map<String, Function>;
 	
 	public function new() {
 		local = window.document.currentScript.ownerDocument;
@@ -41,11 +44,16 @@ class Component extends Element {
 		
 	}
 	
-	public function register() {
+	private function get_eventMap():Map<String, Function> {
+		if (eventMap == null) eventMap = ['DOMCustomElementFinished' => check];
+		return eventMap;
+	}
+	
+	private function register():Void {
 		if (self != null) window.document.registerElement('$htmlName', {prototype:self});
 	}
 	
-	public function uid(node:Node):String {
+	private function stampUid(node:Node):String {
 		var result = '';
 		
 		if (node.nodeType == Node.TEXT_NODE) {
@@ -62,8 +70,8 @@ class Component extends Element {
 		return result;
 	}
 	
-	public function createdCallback() {
-		this.setAttribute('uid', _uid = uid( this ) );
+	public function createdCallback():Void {
+		this.setAttribute('uid', uid = stampUid( this ) );
 		var node = template.content;
 		
 		root = this.createShadowRoot();
@@ -72,29 +80,35 @@ class Component extends Element {
 		
 	}
 	
-	public function attachedCallback() {
+	private function stampContents():Void {
 		var contents = root.querySelectorAll('content');
 		for (i in 0...contents.length) {
 			var content:ContentElement = untyped contents[i];
-			content.setAttribute('uid', '$_uid.$i' );
+			content.setAttribute('uid', '$uid.$i' );
 			trace( content );
 		}
 		
+	}
+	
+	public function attachedCallback():Void {
+		stampContents();
+		
 		var customElements = this.querySelectorAll(':root > [uid]:not(content)');
 		//console.log( customElements );
-		pending = max = customElements.length;
+		pending = total = customElements.length;
 		if (customElements.length > 0) {
 			trace(pending);
-			this.addEventListener('DOMCustomElementFinished', check);
+			for (key in eventMap.keys()) this.addEventListener(key, eventMap.get( key ));
 			
 		} else {
 			process();
 			
 		}
+		
 	}
 	
-	public function check(?e:CustomEvent) {
-		trace( 'checking $htmlName $pending - $_uid' );
+	private function check(?e:CustomEvent):Void {
+		trace( 'checking $htmlName $pending - $uid' );
 		if (e != null) {
 			trace( e.detail );
 			e.stopPropagation();
@@ -107,11 +121,22 @@ class Component extends Element {
 		}
 	}
 	
-	public function detachedCallback() {
-		this.removeEventListener('DOMCustomElementFinished', check);
+	private function removeEvents():Void {
+		for (key in eventMap.keys()) this.removeEventListener(key, eventMap.get( key ));
 	}
 	
-	public function process() {
+	public function detachedCallback():Void {
+		removeEvents();
+	}
+	
+	private function done():Void {
+		removeEvents();
+		trace( 'dispatching DOMCustomElementFinished from $htmlName - $uid' );
+		this.dispatchEvent( new CustomEvent('DOMCustomElementFinished', {detail:uid, bubbles:true, cancelable:true}) );
+		
+	}
+	
+	private function processComponent():Void {
 		var parent = this.parentElement;
 		var shadowChildren = root.children;
 		
@@ -137,17 +162,25 @@ class Component extends Element {
 			
 		}
 		
-		if (max > -1) {
-			this.removeEventListener('DOMCustomElementFinished', check);
-			trace( 'dispatching DOMCustomElementFinished from $htmlName - $_uid' );
-			this.dispatchEvent( new CustomEvent('DOMCustomElementFinished', {detail:_uid, bubbles:true, cancelable:true}) );
+	}
+	
+	private function process():Void {
+		processComponent();
+		
+		if (total > -1) {
+			done();
 			
-			pending = max = -1;
+			pending = total = -1;
 			
-			var self = window.document.querySelector( '[uid="$_uid"]' );
-			if (self != null) self.parentNode.removeChild( self );
+			removeSelf();
 			
 		}
+		
+	}
+	
+	private function removeSelf():Void {
+		var self = window.document.querySelector( '[uid="$uid"]' );
+		if (self != null) self.parentNode.removeChild( self );
 	}
 	
 }

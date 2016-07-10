@@ -20,7 +20,7 @@ class ConvertTag extends Component {
 		
 	}
 	
-	public override function attachedCallback() {
+	/*public override function attachedCallback() {
 		var contents = root.querySelectorAll('content');
 		for (i in 0...contents.length) {
 			var content:ContentElement = untyped contents[i];
@@ -40,28 +40,33 @@ class ConvertTag extends Component {
 			
 		}
 		
-	}
-	
-	public override function process() {
-		var toElement = window.document.createElement( to );
+	}*/
+	private var replacement:Element = null;
+	public override function processComponent() {
+		replacement = window.document.createElement( to );
 		for (child in this.childNodes) {
 			var clone = window.document.importNode( child, true );
-			toElement.appendChild( clone );
+			replacement.appendChild( clone );
 			
 		}
 		
-		if (max > -1) {
+		/*if (max > -1) {
 			this.removeEventListener('DOMCustomElementFinished', check);
 			trace( 'dispatching DOMCustomElementFinished from $htmlName - $_uid' );
 			this.dispatchEvent( new CustomEvent('DOMCustomElementFinished', {detail:_uid, bubbles:true, cancelable:true}) );
 			
 			pending = max = -1;
 			
-		}
+		}*/
 		
 		//console.log( toElement );
-		this.parentNode.replaceChild(toElement, this);
+		//this.parentNode.replaceChild(toElement, this);
 		
+	}
+	
+	private override function removeSelf():Void {
+		//console.log( toElement );
+		this.parentNode.replaceChild(replacement, this);
 	}
 	
 	private function get_to():String return this.getAttribute('to');
