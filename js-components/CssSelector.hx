@@ -40,6 +40,19 @@ class CssSelector extends ConvertTag {
 		
 		for (attribute in attributes) {
 			switch (attribute.name.toLowerCase()) {
+				case _.startsWith(':') => true if (attribute.value != ''):
+					var _selector = attribute.value;
+					var _matches = [for (match in window.document.querySelectorAll( _selector )) match.textContent];
+					if (_matches.length > 0) {
+						var name = '_' + attribute.name.substring(1);
+						var value = _matches.join(' ');
+						
+						if (this.hasAttribute( name )) value = this.getAttribute( name ) + ' $value';
+						
+						this.setAttribute( name, value );
+						
+					}
+					
 				case _.startsWith('use:') => true:
 					switch (attribute.name.split(':')[1]) {
 						case 'text':
@@ -80,6 +93,7 @@ class CssSelector extends ConvertTag {
 				}
 				
 		}
+
 		
 		processComponent();
 		done();

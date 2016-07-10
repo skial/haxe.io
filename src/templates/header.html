@@ -17,7 +17,7 @@
     </div>
     <div class="hero">
       <css-data select="h1:first-of-type" to:h1 source:remove use:text></css-data>
-      <div class="details">by <a title="@skial" rel="author nofollow" href="//twitter.com/skial">Skial Bainn</a> published on <time pubdate="" datetime=""></time></div>
+      <div class="details">by <a title="@skial" rel="author nofollow" href="//twitter.com/skial">Skial Bainn</a> published on <json-data to:time :pubdate=".published" :datetime=".modified"></json-data></div>
     </div>
   </header>
 </template>

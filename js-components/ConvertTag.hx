@@ -30,7 +30,7 @@ class ConvertTag extends Component {
 			
 		}
 		
-		for (attribute in this.attributes) if (attribute.name.startsWith('&')) {
+		for (attribute in this.attributes) if (attribute.name.startsWith('_')) {
 			replacement.setAttribute( attribute.name.substring(1), attribute.value );
 			
 		}

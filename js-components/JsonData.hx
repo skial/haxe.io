@@ -6,6 +6,7 @@ import uhx.uid.Hashids;
 import uhx.select.Json;
 import haxe.Constraints.Function;
 
+using StringTools;
 using haxe.io.Path;
 
 class JsonData extends ConvertTag {
@@ -61,7 +62,29 @@ class JsonData extends ConvertTag {
 		var results = [];
 		
 		for (key in data.keys()) {
-			results = results.concat( uhx.select.Json.find(data.get( key ), selector) );
+			if (selector != null) results = results.concat( uhx.select.Json.find(data.get( key ), selector) );
+			
+			for (attribute in this.attributes) {
+				switch (attribute.name.toLowerCase()) {
+					case _.startsWith(':') => true if (attribute.value != ''):
+						var _selector = attribute.value;
+						var _matches = [].concat(uhx.select.Json.find(data.get( key ), _selector));
+						if (_matches.length > 0) {
+							var name = '_' + attribute.name.substring(1);
+							var value = _matches.join(' ');
+							
+							if (this.hasAttribute( name )) value = this.getAttribute( name ) + ' $value';
+							
+							this.setAttribute( name, value );
+							
+						}
+						
+					case _:
+						
+				}
+				
+				
+			}
 			
 		}
 		
