@@ -3,7 +3,7 @@ package ;
 import js.html.*;
 import js.Browser.*;
 import uhx.uid.Hashids;
-import uhx.select.Json;
+import uhx.select.JsonQuery;
 import haxe.Constraints.Function;
 
 using StringTools;
@@ -62,14 +62,16 @@ class JsonData extends ConvertTag {
 		var results = [];
 		
 		for (key in data.keys()) {
-			if (selector != null) results = results.concat( uhx.select.Json.find(data.get( key ), selector) );
+			if (selector != null) results = results.concat( uhx.select.JsonQuery.find(data.get( key ), selector) );
 			
 			for (attribute in this.attributes) {
+				trace( attribute.name, attribute.value );
 				switch (attribute.name.toLowerCase()) {
 					case _.startsWith(':') => true if (attribute.value != ''):
 						var _selector = attribute.value;
-						var _matches = [].concat(uhx.select.Json.find(data.get( key ), _selector));
+						var _matches = uhx.select.JsonQuery.find(data.get( key ), _selector);
 						if (_matches.length > 0) {
+							console.log( _matches );
 							var name = '_' + attribute.name.substring(1);
 							var value = _matches.join(' ');
 							
