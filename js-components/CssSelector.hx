@@ -118,9 +118,4 @@ class CssSelector extends ConvertTag {
 		
 	}
 	
-	/*private override function removeSelf():Void {
-		var self = window.document.querySelectorAll( '[uid="$uid"]' );
-		for (s in self) s.parentNode.removeChild( s );
-	}*/
-	
 }

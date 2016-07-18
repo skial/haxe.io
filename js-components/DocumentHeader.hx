@@ -81,20 +81,6 @@ class DocumentHeader extends Component {
 			
 		}
 		
-		/*if (total > -1) {
-			this.removeEventListener('DOMCustomElementFinished', check);
-			trace( 'dispatching DOMCustomElementFinished from $htmlName - $_uid' );
-			this.dispatchEvent( new CustomEvent('DOMCustomElementFinished', {detail:_uid, bubbles:true, cancelable:true}) );
-			
-			pending = total = -1;
-			
-			for (node in window.document.querySelectorAll( '[uid="${this.getAttribute("uid")}"]' )) {
-				node.parentNode.removeChild( node );
-				
-			}
-			
-		}*/
-		
 	}
 	
 }

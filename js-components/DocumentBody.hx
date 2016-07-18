@@ -17,27 +17,6 @@ class DocumentBody extends Component {
 		
 	}
 	
-	/*public override function attachedCallback() {
-		var contents = root.querySelectorAll('content:not([uid])');
-		for (i in 0...contents.length) {
-			var content:ContentElement = untyped contents[i];
-			content.setAttribute('uid', '$uid.$i' );
-			trace( content );
-		}
-		
-		var customElements = this.querySelectorAll(':root > [uid]:not(content)');
-		//console.log( customElements );
-		pending = total = customElements.length;
-		if (customElements.length > 0) {
-			trace(pending);
-			this.addEventListener('DOMCustomElementFinished', check);
-			
-		} else {
-			process();
-			
-		}
-	}*/
-	
 	public override function processComponent() {
 		var parent = this.parentElement;
 		var self = window.document.querySelectorAll('[uid="$uid"]');
@@ -67,19 +46,6 @@ class DocumentBody extends Component {
 			}
 			
 		}
-		
-		/*if (max > -1) {
-			this.removeEventListener('DOMCustomElementFinished', check);
-			trace( 'dispatching DOMCustomElementFinished from $htmlName - $_uid' );
-			this.dispatchEvent( new CustomEvent('DOMCustomElementFinished', {detail:_uid, bubbles:true, cancelable:true}) );
-			
-			pending = max = -1;
-			
-			var self = window.document.querySelectorAll( '[uid="$_uid"]' );
-			//console.log( self );
-			for (s in self) s.parentNode.removeChild( s );
-			
-		}*/
 		
 	}
 	
