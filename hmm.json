@@ -1,0 +1,85 @@
+{
+  "dependencies": [
+    {
+      "name": "closure",
+      "type": "haxelib",
+      "version": ""
+    },
+    {
+      "name": "cmd",
+      "type": "git",
+      "dir": "",
+      "ref": "inheritance_aliases",
+      "url": "https://github.com/skial/cmd/"
+    },
+    {
+      "name": "hxnodejs",
+      "type": "haxelib",
+      "version": ""
+    },
+    {
+      "name": "jete",
+      "type": "git",
+      "dir": "",
+      "ref": "master",
+      "url": "https://github.com/skial/jete"
+    },
+    {
+      "name": "jwenn",
+      "type": "git",
+      "dir": "",
+      "ref": "transfer_uhx",
+      "url": "https://github.com/skial/jwenn"
+    },
+    {
+      "name": "klas",
+      "type": "git",
+      "dir": "",
+      "ref": "GlobalByDefault",
+      "url": "https://github.com/skial/klas"
+    },
+    {
+      "name": "mo",
+      "type": "git",
+      "dir": "",
+      "ref": "markdown_redux",
+      "url": "https://github.com/skial/mo"
+    },
+    {
+      "name": "regle",
+      "type": "git",
+      "dir": "",
+      "ref": "master",
+      "url": "https://github.com/skial/regle"
+    },
+    {
+      "name": "seri",
+      "type": "git",
+      "dir": "",
+      "ref": "master",
+      "url": "https://github.com/skial/seri"
+    },
+    {
+      "name": "thx.core",
+      "type": "haxelib",
+      "version": ""
+    },
+    {
+      "name": "thx.format",
+      "type": "git",
+      "dir": "src",
+      "ref": "master",
+      "url": "https://github.com/fponticelli/thx.format"
+    },
+    {
+      "name": "tink_json",
+      "type": "haxelib",
+      "version": ""
+    },
+    {
+      "name": "unifill",
+      "type": "haxelib",
+      "version": ""
+    }
+  ]
+}
