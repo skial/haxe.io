@@ -36,9 +36,10 @@
     "build:patreon": "patreonscraper.sh",
     "build:patch": "all-html.sh \"bin\"",
     "build:all": "npm-run-all -c build:patreon build:js copy:extras build:index process:index build:patch",
+		"watch:md": "onchange \"./src/**/*.md\" -w -- render.sh {{changed}}",
     "watch:jsmin": "onchange \"./src/js/*.js\" -w -- jsmin.sh {{changed}}",
     "watch:htmlmin": "onchange \"./src/**/*.html\" -w -- htmlmin.sh {{changed}}",
     "watch:cssmin": "onchange \"./src/css/*.css\" -w -- cssmin.sh {{changed}}",
-    "watch": "npm-run-all -p watch:jsmin watch:cssmin watch:htmlmin"
+    "watch": "npm-run-all -p watch:md watch:jsmin watch:cssmin watch:htmlmin"
   }
 }
