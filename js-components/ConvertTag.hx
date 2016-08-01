@@ -12,7 +12,7 @@ class ConvertTag extends Component {
 		new ConvertTag();
 	}
 	
-	private var to(get, null):String;
+	private var to(get, null):Null<String>;
 	private var replacement:Element = null;
 	
 	public function new() {
@@ -22,26 +22,52 @@ class ConvertTag extends Component {
 	}
 	
 	public override function processComponent() {
-		replacement = window.document.createElement( to );
-		
-		for (child in this.childNodes) {
-			var clone = window.document.importNode( child, true );
-			replacement.appendChild( clone );
+		if (to != null) {
+			replacement = window.document.createElement( to );
+			
+			for (child in this.childNodes) {
+				var clone = window.document.importNode( child, true );
+				replacement.appendChild( clone );
+				
+			}
+			for (attribute in this.attributes) if (attribute.name.startsWith('_')) {
+				replacement.setAttribute( attribute.name.substring(1), attribute.value );
+				
+			}
+			
+			cleanNode( this );
+			
+		} else {
+			
+			for (child in this.childNodes) {
+				var clone = window.document.importNode( child, true );
+				this.parentNode.insertBefore( clone, this );
+				
+			}
 			
 		}
 		
-		for (attribute in this.attributes) if (attribute.name.startsWith('_')) {
-			replacement.setAttribute( attribute.name.substring(1), attribute.value );
+	}
+	
+	private function cleanNode(node:Element):Void {
+		for (attribute in node.attributes) if (attribute.name.startsWith('_')) {
+			node.setAttribute( attribute.name.substring(1), attribute.value );
 			
 		}
 		
 	}
 	
 	private override function removeSelf():Void {
-		this.parentNode.replaceChild(replacement, this);
+		if (to != null) {
+			this.parentNode.replaceChild( replacement, this );
+			
+		} else {
+			this.parentNode.removeChild( this );
+			
+		}
 	}
 	
-	private function get_to():String {
+	private function get_to():Null<String> {
 		var result = null;
 		
 		for (attribute in this.attributes) if (attribute.name.startsWith('to:')) {

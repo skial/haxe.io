@@ -3,6 +3,7 @@ package ;
 import js.html.*;
 import js.Browser.*;
 import uhx.uid.Hashids;
+import haxe.DynamicAccess;
 import uhx.select.JsonQuery;
 import haxe.Constraints.Function;
 
@@ -11,7 +12,7 @@ using haxe.io.Path;
 
 class JsonData extends ConvertTag {
 	
-	public static var data:Map<String, Dynamic> = new Map();
+	public static var data:DynamicAccess<Dynamic> = {};
 	
 	public static function main() {
 		window.document.addEventListener('DocumentJsonData', processJsonData);
@@ -57,49 +58,159 @@ class JsonData extends ConvertTag {
 		trace( 'using json data' );
 		console.log( json );
 		
-		var selector = this.getAttribute('select');
-		console.log( selector );
-		var results = [];
+		iterateNode(this, data);
 		
-		for (key in data.keys()) {
-			if (selector != null) results = results.concat( uhx.select.JsonQuery.find(data.get( key ), selector) );
+		processComponent();
+		done();
+		removeSelf();
+		
+	}
+	
+	private function iterateNode(node:Element, data:DynamicAccess<Dynamic>):Void {
+		var results = [];
+		var selector = node.getAttribute('select');
+		
+		console.log( node );
+		console.log( data );
+		console.log( selector );
+		
+		// Find values to be used for this components attribute values.
+		replaceAttributePlaceholders(node, data);
+		var children = [for (child in node.childNodes) window.document.importNode(child, true)];
+		var newChildren = [];
+		
+		if (children.length > 0) {
+			// Find values to be used for this components children.
+			if (selector != null) for (key in data.keys()) for (value in uhx.select.JsonQuery.find(data.get( key ), selector)) results.push(value);
+			console.log( results );
 			
-			for (attribute in this.attributes) {
-				trace( attribute.name, attribute.value );
-				switch (attribute.name.toLowerCase()) {
-					case _.startsWith(':') => true if (attribute.value != ''):
-						var _selector = attribute.value;
-						var _matches = uhx.select.JsonQuery.find(data.get( key ), _selector);
-						if (_matches.length > 0) {
-							console.log( _matches );
-							var name = '_' + attribute.name.substring(1);
-							var value = _matches.join(' ');
+			if (results.length > 0) {
+				var defaultSeparator = (node.hasAttribute('separator')) ? node.getAttribute('separator') : '';
+				
+				for (i in 0...results.length) {
+					var result = results[i];
+					
+					for (child in children) {
+						var clone = window.document.importNode(child, true);
+						if (clone.nodeType == Node.ELEMENT_NODE) iterateNode( cast clone, result );
+						
+						newChildren.push( clone );
+						if (results.length > 1 && clone.nodeType == Node.ELEMENT_NODE) {
+							var separator = defaultSeparator;
+							var checks = ['separator:$i', 'separator:length-${results.length - i}'];
+							if (i == 0) checks.push('separator:first');
+							if (i == results.length - 1) checks.push('separator:last');
+							console.log( node.attributes, checks );
+							for (check in checks) if (node.hasAttribute( check )) {
+								separator = node.getAttribute( check );
+								
+							}
 							
-							if (this.hasAttribute( name )) value = this.getAttribute( name ) + ' $value';
-							
-							this.setAttribute( name, value );
-							
+							newChildren.push( window.document.createTextNode( separator ) );
+						
 						}
 						
-					case _:
+					}
+					
+				}
+									
+			} else {
+				for (child in children) if (child.nodeType == Node.ELEMENT_NODE) {
+					var clone:Element = cast window.document.importNode(child, true);
+					
+					for (attribute in cast (child, Element).attributes) {
+						switch (attribute.name.toLowerCase()) {
+							case _.startsWith(':to') => true:
+								var _selector = attribute.value;
+								var _matches = uhx.select.JsonQuery.find(data, _selector);
+								console.log( _selector );
+								if (_matches.length > 0) {
+									console.log( _matches );
+									clone = cast window.document.createTextNode( _matches.join('') );
+									console.log( clone );
+									
+								}
+							
+							case _:
+								// nout
+								
+						}
 						
+					}
+					
+					if (clone.nodeType == Node.ELEMENT_NODE) replaceAttributePlaceholders( clone, data );
+					
+					console.log( clone );
+					newChildren.push( clone );
+					
 				}
 				
+			}
+			
+		} else {
+			if (selector != null) for (key in data.keys()) for (value in uhx.select.JsonQuery.find(data.get( key ), selector)) results.push(value);
+			
+			if (results.length > 0) {
+				newChildren.push( window.document.createTextNode( results.join('') ) );
 				
 			}
 			
 		}
 		
-		console.log( results );
-		
-		for (result in results) {
-			this.appendChild( window.document.createTextNode( result ) );
+		if (newChildren.length > 0) {
+			node.innerHTML = '';
+			console.log( 'before', node );
+			for (newChild in newChildren) {
+				console.log( newChild );
+				if (newChild.nodeType == Node.ELEMENT_NODE) {
+					cleanNode( cast newChild );
+					
+					var removables = [for (attribute in cast (newChild, Element).attributes) switch (attribute.name.charCodeAt(0)) {
+						case '_'.code, ':'.code: attribute.name;
+						case _: '';
+					}];
+					
+					for (removable in removables) cast (newChild,Element).removeAttribute( removable );
+					
+				}
+				
+				node.appendChild( newChild );
+			
+			}
+			console.log( 'after', node );
 			
 		}
 		
-		processComponent();
-		done();
-		removeSelf();
+	}
+	
+	private function replaceAttributePlaceholders(node:Element, data:Dynamic):Void {
+		console.log( data );
+		console.log( node );
+		for (attribute in node.attributes) {
+			trace( attribute.name, attribute.value );
+			
+			switch (attribute.name.toLowerCase()) {	
+				case !_.startsWith(':to') && _.startsWith(':') => true if (attribute.value != ''):
+					var _selector = attribute.value;
+					var _matches = uhx.select.JsonQuery.find(data, _selector);
+					
+					if (_matches.length > 0) {
+						console.log( _matches );
+						var name = '_' + attribute.name.substring(1);
+						var value = _matches.join(' ');
+						
+						if (node.hasAttribute( name )) value = node.getAttribute( name ) + ' $value';
+						
+						node.setAttribute( name, value );
+						//node.removeAttribute( attribute.name );
+						
+					}
+					
+				case _:
+					
+			}
+			
+		}
 		
 	}
 	
