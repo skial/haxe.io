@@ -70,10 +70,6 @@ class JsonData extends ConvertTag {
 		var results = [];
 		var selector = node.getAttribute('select');
 		
-		console.log( node );
-		console.log( data );
-		console.log( selector );
-		
 		// Find values to be used for this components attribute values.
 		replaceAttributePlaceholders(node, data);
 		var children = [for (child in node.childNodes) window.document.importNode(child, true)];
@@ -82,7 +78,6 @@ class JsonData extends ConvertTag {
 		if (children.length > 0) {
 			// Find values to be used for this components children.
 			if (selector != null) for (key in data.keys()) for (value in uhx.select.JsonQuery.find(data.get( key ), selector)) results.push(value);
-			console.log( results );
 			
 			if (results.length > 0) {
 				var defaultSeparator = (node.hasAttribute('separator')) ? node.getAttribute('separator') : '';
@@ -95,12 +90,14 @@ class JsonData extends ConvertTag {
 						if (clone.nodeType == Node.ELEMENT_NODE) iterateNode( cast clone, result );
 						
 						newChildren.push( clone );
+						
 						if (results.length > 1 && clone.nodeType == Node.ELEMENT_NODE) {
 							var separator = defaultSeparator;
 							var checks = ['separator:$i', 'separator:length-${results.length - i}'];
+							
 							if (i == 0) checks.push('separator:first');
 							if (i == results.length - 1) checks.push('separator:last');
-							console.log( node.attributes, checks );
+							
 							for (check in checks) if (node.hasAttribute( check )) {
 								separator = node.getAttribute( check );
 								
@@ -123,11 +120,10 @@ class JsonData extends ConvertTag {
 							case _.startsWith(':to') => true:
 								var _selector = attribute.value;
 								var _matches = uhx.select.JsonQuery.find(data, _selector);
-								console.log( _selector );
+								
 								if (_matches.length > 0) {
 									console.log( _matches );
 									clone = cast window.document.createTextNode( _matches.join('') );
-									console.log( clone );
 									
 								}
 							
@@ -140,7 +136,6 @@ class JsonData extends ConvertTag {
 					
 					if (clone.nodeType == Node.ELEMENT_NODE) replaceAttributePlaceholders( clone, data );
 					
-					console.log( clone );
 					newChildren.push( clone );
 					
 				}
@@ -159,9 +154,9 @@ class JsonData extends ConvertTag {
 		
 		if (newChildren.length > 0) {
 			node.innerHTML = '';
-			console.log( 'before', node );
+			
 			for (newChild in newChildren) {
-				console.log( newChild );
+				
 				if (newChild.nodeType == Node.ELEMENT_NODE) {
 					cleanNode( cast newChild );
 					
@@ -177,7 +172,7 @@ class JsonData extends ConvertTag {
 				node.appendChild( newChild );
 			
 			}
-			console.log( 'after', node );
+			
 			
 		}
 		

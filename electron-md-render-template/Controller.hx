@@ -304,10 +304,6 @@ class Controller {
 			}
 		];
 		
-		var defaults = [
-			
-		];
-		
 		for (key in paths.keys()) {
 			var object:DynamicAccess<Dynamic> = input;
 			
@@ -341,6 +337,9 @@ class Controller {
 			}
 			
 		}
+		
+		// Move to external file or make available via command line or environment?
+		if (payload.authors.length == 0) payload.authors.push( { display:'Skial Bainn', url:'/twitter.com/skial' } );
 		
 		return payload;
 	}
