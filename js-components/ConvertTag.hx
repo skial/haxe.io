@@ -30,8 +30,10 @@ class ConvertTag extends Component {
 				replacement.appendChild( clone );
 				
 			}
+			
 			for (attribute in this.attributes) if (attribute.name.startsWith('_')) {
-				replacement.setAttribute( attribute.name.substring(1), attribute.value );
+				var name = attribute.name.substring(1);
+				replacement.setAttribute( name, ((this.hasAttribute( name )) ? this.getAttribute( name ) : '') + attribute.value );
 				
 			}
 			
