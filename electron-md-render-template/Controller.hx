@@ -18,8 +18,8 @@ using StringTools;
 using haxe.io.Path;
 
 typedef Payload = {
-	var input:String;
-	var output:String;
+	var input:{raw:String, directory:String, parts:Array<String>, filename:String, extension:String};
+	var output:{raw:String, directory:String, parts:Array<String>, filename:String, extension:String};
 	var template:String;
 	var created:{raw:String, pretty:String};
 	var modified:{raw:String, pretty:String};
@@ -66,8 +66,8 @@ class Controller {
 	private var mdObject:DynamicAccess<Dynamic>;
 	
 	private var payload:Payload = {
-		input:'',
-		output:'',
+		input:{raw:'', directory:'', parts:[], filename:'', extension:''},
+		output:{raw:'', directory:'', parts:[], filename:'', extension:''},
 		template:'',
 		created:{raw:'', pretty:''},
 		modified:{raw:'', pretty:''},
@@ -344,8 +344,18 @@ class Controller {
 		
 		// Move to external file or make available via command line or environment?
 		if (payload.authors.length == 0) payload.authors.push( { display:'Skial Bainn', url:'/twitter.com/skial' } );
-		if (payload.input == '') payload.input = cast this.input;
-		if (payload.output == '') payload.output = cast this.output;
+		if (payload.input.raw == '') payload.input = {
+			raw:this.input, parts:this.input.split('/'), 
+			filename:this.input.withoutDirectory().withoutExtension(), 
+			extension:this.input.extension(),
+			directory:this.input.directory(),
+		};
+		if (payload.output.raw == '') payload.output = {
+			raw:this.output, parts:this.output.split('/'), 
+			filename:this.output.withoutDirectory().withoutExtension(), 
+			extension:this.output.extension(),
+			directory:this.output.directory(),
+		};
 		
 		return payload;
 	}

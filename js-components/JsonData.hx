@@ -184,8 +184,8 @@ class JsonData extends ConvertTag {
 		for (attribute in node.attributes) {
 			trace( attribute.name, attribute.value );
 			
-			switch (attribute.name.toLowerCase()) {	
-				case !_.startsWith(':to') && _.startsWith(':') => true if (attribute.value != ''):
+			switch (attribute.name.toLowerCase()) {
+				case !_.startsWith(':to') && attribute.value.indexOf('{{') == -1 && attribute.value.indexOf('}}') == -1 && _.startsWith(':') => true if (attribute.value != ''):
 					var _selector = attribute.value;
 					var _matches = uhx.select.JsonQuery.find(data, _selector);
 					
@@ -197,9 +197,23 @@ class JsonData extends ConvertTag {
 						if (node.hasAttribute( name )) value = node.getAttribute( name ) + ' $value';
 						
 						node.setAttribute( name, value );
-						//node.removeAttribute( attribute.name );
 						
 					}
+					
+				case !_.startsWith(':to') && attribute.value.indexOf('{{') > -1 && attribute.value.indexOf('}}') > -1 => true:
+					var result = attribute.value;
+					var value = attribute.value;
+					for (i in 0...value.length) if (value.charCodeAt(i) == '{'.code && value.charCodeAt(i+1) == '{'.code) {
+						var _selector = value.substring(i+2, value.indexOf('}}', i+1));
+						var _matches = uhx.select.JsonQuery.find(data, _selector);
+						
+						console.log( _matches );
+						result = result.replace('{{$_selector}}', _matches.join(' '));
+						
+					}
+					
+					var name = '_' + attribute.name.substring(1);
+					node.setAttribute( name, result );
 					
 				case _:
 					

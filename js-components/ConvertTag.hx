@@ -31,10 +31,16 @@ class ConvertTag extends Component {
 				
 			}
 			
-			for (attribute in this.attributes) if (attribute.name.startsWith('_')) {
-				var name = attribute.name.substring(1);
-				replacement.setAttribute( name, ((this.hasAttribute( name )) ? this.getAttribute( name ) : '') + attribute.value );
-				
+			for (attribute in this.attributes) switch attribute.name {
+				case _.startsWith('_') => true:
+					var name = attribute.name.substring(1);
+					replacement.setAttribute( name, ((this.hasAttribute( name )) ? this.getAttribute( name ) : '') + attribute.value );
+					
+				case _.indexOf(':') == -1 && !_.startsWith('_') && _ != 'uid' && _ != 'select' => true:
+					replacement.setAttribute( attribute.name, attribute.value );
+					
+				case _:
+					
 			}
 			
 			cleanNode( this );
