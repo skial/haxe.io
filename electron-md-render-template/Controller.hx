@@ -92,6 +92,9 @@ class Controller {
 		if (script != null) config.webPreferences.preload = '$cwd/$script'.normalize();
 		if (input == null) app.quit();
 		
+		input = input.normalize();
+		output = output.normalize();
+		
 		init();
 	}
 	
@@ -232,7 +235,7 @@ class Controller {
 			
       if (!sys.FileSystem.exists( dirname )) {
 				createDir( dirname, function() {
-					writeFile( dirname, html, 'utf8', function(error) {
+					writeFile( fullPath, html, 'utf8', function(error) {
 						if (error != null) trace( error );
 						trace( 'saved file $dirname successfully.' );
             if (!show) browser.close();
@@ -352,13 +355,13 @@ class Controller {
 		// Move to external file or make available via command line or environment?
 		if (payload.authors.length == 0) payload.authors.push( { display:'Skial Bainn', url:'/twitter.com/skial' } );
 		if (payload.input.raw == '') payload.input = {
-			raw:this.input, parts:this.input.split('/'), 
+			raw:this.input.normalize(), parts:this.input.normalize().split('/'), 
 			filename:this.input.withoutDirectory().withoutExtension(), 
 			extension:this.input.extension(),
 			directory:this.input.directory(),
 		};
 		if (payload.output.raw == '') payload.output = {
-			raw:this.output, parts:this.output.split('/'), 
+			raw:this.output.normalize(), parts:this.output.normalize().split('/'), 
 			filename:this.output.withoutDirectory().withoutExtension(), 
 			extension:this.output.extension(),
 			directory:this.output.directory(),

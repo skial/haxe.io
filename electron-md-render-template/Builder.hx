@@ -31,7 +31,7 @@ class Builder {
 		electron = require('electron');
 		ipcRenderer = electron.ipcRenderer;
 		ipcRenderer.on('html', function(e, d) processHtml( d ));
-		ipcRenderer.on('json', function(e, d) processJson( tink.Json.parse(d) ));
+		ipcRenderer.on('json', function(e, d) {trace(d); processJson( tink.Json.parse(d) );});
 	}
 	
 	public function processHtml(data:String) {
