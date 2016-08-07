@@ -66,7 +66,7 @@ class ScreenGrab {
 				for (key in values.keys()) element.setAttribute( key, values.get( key ) );
 				cast(head,Node).appendChild( element );
 				
-			} else {
+			}/* else {
 				var element = cast(matches[0],DOMElement);
 				if (element.hasAttribute('contents')) element.removeAttribute('contents');
 				if (element.hasAttribute('tag')) element.removeAttribute( 'tag' );
@@ -75,7 +75,7 @@ class ScreenGrab {
 					head.removeChild( matches[i] );
 				}
 				
-			}
+			}*/
 			
 		}
 	}
