@@ -26,7 +26,8 @@
     "onchange": "latest",
     "postcss": "latest",
     "posthtml": "^0.8.7",
-    "posthtml-cli": "^0.2.4"
+    "posthtml-cli": "^0.2.4",
+    "twemoji": "^2.1.0"
   },
   "scripts": {
     "copy:extras": "all-extras.sh \"src\"",
@@ -36,7 +37,7 @@
     "build:patreon": "patreonscraper.sh",
     "build:patch": "all-html.sh \"bin\"",
     "build:all": "npm-run-all -c build:patreon build:js copy:extras build:index process:index build:patch",
-		"watch:md": "onchange \"./src/**/*.md\" -w -- render.sh {{changed}}",
+    "watch:md": "onchange \"./src/**/*.md\" -w -- render.sh {{changed}}",
     "watch:jsmin": "onchange \"./src/js/*.js\" -w -- jsmin.sh {{changed}}",
     "watch:htmlmin": "onchange \"./src/**/*.html\" -w -- htmlmin.sh {{changed}}",
     "watch:cssmin": "onchange \"./src/css/*.css\" -w -- cssmin.sh {{changed}}",

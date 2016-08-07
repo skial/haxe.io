@@ -33,6 +33,7 @@ typedef Payload = {
 class Controller {
 
 	private static var app:Dynamic;
+	private static var twemoji:Dynamic;
 	private static var electron:Dynamic;
 	private static var ipcMain:{on:String->Function->Dynamic};
 
@@ -111,6 +112,7 @@ class Controller {
 			
 		}
 		
+		
 		var index = md.block.ruler.__find__('reference');
 		var original = md.block.ruler.__rules__[index].fn;
 		
@@ -157,6 +159,11 @@ class Controller {
 			
 			return result;
 		});
+		
+		twemoji = require('twemoji');
+		md.renderer.rules.emoji = function(token, idx) {
+			return twemoji.parse(token[idx].content, {ext:'.svg', base:'/twemoji/', folder:'svg/'});
+		};
 
 		readFile('$cwd/$input'.normalize(), {encoding:'utf8'}, function(error, content) {
 			if (error != null) throw error;
@@ -230,7 +237,7 @@ class Controller {
 						trace( 'saved file $dirname successfully.' );
             if (!show) browser.close();
 					} );
-
+					
 				});
 				
 			} else {
