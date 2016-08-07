@@ -1,31 +1,42 @@
 INPUT="$@"
-#echo $INPUT
+echo $INPUT
+INPUT_DIR=${INPUT%/*}
+if [ "$INPUT_DIR" == "$INPUT" ]; then
+	#echo "correcting path"
+	INPUT="${INPUT//\\//}"
+	INPUT_DIR=${INPUT%/*}
+fi
+INPUT_FILE="${INPUT##*/}"
+INPUT_BASE="${INPUT_FILE%%.*}"
+
 STR="${INPUT:3}"
 BIN=./bin$STR
 BIN_DIR=${BIN%/*}
-BIN_BASE="${BIN/$BIN_DIR/}"
-BIN_BASE="${BIN_BASE/.css/}"
+BIN_FILE="${BIN##*/}"
+BIN_BASE="${BIN_FILE%%.*}"
 
 MIN=./min$STR
 MIN_DIR=${MIN%/*}
-MIN_BASE="${MIN/$MIN_DIR/}"
-MIN_BASE="${MIN_BASE/.css/}"
+MIN_FILE="${MIN##*/}"
+MIN_BASE="${MIN_FILE%%.*}"
 
 OPT=./opt$STR
 OPT_DIR=${OPT%/*}
-OPT_BASE="${OPT/$OPT_DIR/}"
-#echo $BASE
-OPT_BASE="${OPT_BASE/.css/}"
-OPT_CRIT=$OPT_DIR$OPT_BASE.crt.css
-OPT_TWIN=$OPT_DIR$OPT_BASE.opt.css
+OPT_FILE="${OPT##*/}"
+OPT_BASE="${OPT_FILE%%.*}"
+OPT_CRIT="$OPT_DIR/$OPT_BASE.crt.css"
+OPT_TWIN="$OPT_DIR/$OPT_BASE.opt.css"
 
+echo "creating directories"
 mkdir -p $BIN_DIR
 mkdir -p $MIN_DIR
 mkdir -p $OPT_DIR
-#cp -u $INPUT $BIN
-#cp -u $BIN $MIN
-#cp $MIN $OPT
 
+echo "running postcss"
 postcss -u autoprefixer --autoprefixer.browsers "> 5% in my stats" --autoprefixer.stats "./browserstats/latest.json" -o $BIN $INPUT
+echo "copying post processed css to min"
+cp -u $BIN $MIN
+echo "running cssnano"
 cssnano $BIN $MIN
-cp $MIN $OPT
+echo "copying from min to opt"
+cp -u $MIN $OPT
