@@ -577,8 +577,8 @@ iframe[src*="eventbrite.com"] {
 }
 
 .community.patreon:hover .button, .community.patreon .button:hover {
-		background-color: #00b780;
-	}
+	background-color: #00b780;
+}
 
 html[class*="/frontpage"] .community.patreon {
 	border-left: none;
@@ -590,6 +590,13 @@ html[class*="/roundups"] .community.patreon {
 	min-height: 15em;
 	border-radius: 4px;
 	text-align: center;
+}
+
+.emoji {
+	height: 1em;
+	width: 1em;
+	margin: 0 .05em 0 .1em;
+	vertical-align: -0.1em;
 }
 
 @media (min-width: 400px) {
