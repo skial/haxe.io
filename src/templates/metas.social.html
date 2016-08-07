@@ -4,17 +4,17 @@
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:site" content="@skial" />
 		<meta name="twitter:creator" content="@skial" />
-		<meta name="twitter:title" content="" />
+		<css-data name="twitter:title" to:meta :content="h1:first-of-type"></css-data>
 		<meta name="twitter:description" content="" />
 		<meta name="twitter:image" content="" />
 		<!-- Google+, Facebook, OpenGraph Meta -->
-		<meta property="og:title" content="" />
-		<meta property="og:image" content="" />
-		<meta property="og:url" content="" />
+		<css-data name="og:title" to:meta :content="h1:first-of-type"></css-data>
+		<json-data to:property="og:image" :content="http://haxe.io/img{{.input .directory}}/{{.input .filename}}/preview.png"></json-data>
+		<json-data to:meta name="og:url" :content="https://haxe.io{{.input .directory}}/{{.input .filename}}/"></json-data>
 		<meta property="og:description" content="" />
 		<meta property="og:type" content="article" />
 		<meta property="og:site_name" content="Haxe.io — News And Information For Haxe Developers" />
-		<json-data to:meta property="og:image:secure_url" :content="https://haxe.io/img/roundups/{{.input .filename}}/preview.png"></json-data>
+		<json-data to:meta property="og:image:secure_url" :content="https://haxe.io/img{{.input .directory}}/{{.input .filename}}/preview.png"></json-data>
 		<meta property="og:image:width" content="1904">
 		<meta property="og:image:height" content="992">
 		<meta property="og:image:type" content="image/png">
