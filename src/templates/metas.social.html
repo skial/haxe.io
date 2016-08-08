@@ -8,9 +8,9 @@
 		<meta name="twitter:description" content="" />
 		<meta name="twitter:image" content="" />
 		<!-- Google+, Facebook, OpenGraph Meta -->
-		<css-data name="og:title" to:meta :content="h1:first-of-type"></css-data>
-		<json-data to:property="og:image" :content="http://haxe.io/img{{.input .directory}}/{{.input .filename}}/preview.png"></json-data>
-		<json-data to:meta name="og:url" :content="https://haxe.io{{.input .directory}}/{{.input .filename}}/"></json-data>
+		<css-data property="og:title" to:meta :content="h1:first-of-type"></css-data>
+		<json-data to:meta property="og:image" :content="http://haxe.io/img{{.input .directory}}/{{.input .filename}}/preview.png"></json-data>
+		<json-data to:meta property="og:url" :content="https://haxe.io{{.input .directory}}/{{.input .filename}}/"></json-data>
 		<meta property="og:description" content="" />
 		<meta property="og:type" content="article" />
 		<meta property="og:site_name" content="Haxe.io — News And Information For Haxe Developers" />
