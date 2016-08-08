@@ -4,6 +4,8 @@ opt/*
 site/*
 patreon/*
 render/*
+js-components/*
+src/js/*
 .haxelib/*
 node_modules/*
 secrets.json
