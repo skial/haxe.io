@@ -58,6 +58,7 @@ class Controller {
 	@alias('i') public var input:String;
 	@alias('o') public var output:String;
 	@alias('s') public var script:String;
+	@alias('b') public var basePaths:Array<String> = [];
 	@alias('md') public var mdPlugins:Array<String> = [];
 	@alias('mdo') public var mdOptions:String = '';
 	
@@ -165,7 +166,7 @@ class Controller {
 		
 		twemoji = require('twemoji');
 		md.renderer.rules.emoji = function(token, idx) {
-			return twemoji.parse(token[idx].content, {ext:'.svg', base:'/twemoji/', folder:'svg/'});
+			return twemoji.parse(token[idx].content, {ext:'.svg', base:'/twemoji/', folder:'svg'});
 		};
 
 		readFile('$cwd/$input'.normalize(), {encoding:'utf8'}, function(error, content) {
@@ -354,17 +355,19 @@ class Controller {
 		
 		// Move to external file or make available via command line or environment?
 		if (payload.authors.length == 0) payload.authors.push( { display:'Skial Bainn', url:'/twitter.com/skial' } );
+		var _modified = this.input;
 		if (payload.input.raw == '') payload.input = {
-			raw:this.input.normalize(), parts:this.input.normalize().split('/'), 
+			raw:this.input.normalize(), parts:[for (part in this.input.normalize().split('/')) if (basePaths.indexOf(part) == -1) part], 
 			filename:this.input.withoutDirectory().withoutExtension(), 
 			extension:this.input.extension(),
-			directory:this.input.directory(),
+			directory:([for (part in basePaths) if (_modified.startsWith(part)) _modified = _modified.replace(part, '')] != null ? _modified : _modified).normalize().directory(),
 		};
+		var _modified = this.output;
 		if (payload.output.raw == '') payload.output = {
-			raw:this.output.normalize(), parts:this.output.normalize().split('/'), 
+			raw:this.output.normalize(), parts:[for (part in this.output.normalize().split('/')) if (basePaths.indexOf(part) == -1) part], 
 			filename:this.output.withoutDirectory().withoutExtension(), 
 			extension:this.output.extension(),
-			directory:this.output.directory(),
+			directory:([for (part in basePaths) if (_modified.startsWith(part)) _modified = _modified.replace(part, '')] != null ? _modified : _modified).normalize().directory(),
 		};
 		
 		return payload;
