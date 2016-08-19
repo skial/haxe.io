@@ -93,7 +93,7 @@ class CommunityPatreon {
 		if (target != null) {
 			var targetEle = window.document.querySelectorAll( target )[0];
 			var builder = locationHandlers.get( match );
-			trace( target, match );
+			console.log( target, match, targetEle );
 			if (targetEle != null) {
 				var index = Math.round(Math.random() * (payload.data.length - 1));
 				trace( 'adding patreon dom', payload.data.length, index, payload.data[index] );

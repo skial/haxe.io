@@ -6,7 +6,8 @@
 		<meta name="twitter:creator" content="@skial" />
 		<css-data name="twitter:title" to:meta :content="h1:first-of-type"></css-data>
 		<meta name="twitter:description" content="" />
-		<meta name="twitter:image" content="" />
+		<!--<meta name="twitter:image" content="" />-->
+		<json-data to:meta name="twitter:image" :content="http://haxe.io/img{{.input .directory}}/{{.input .filename}}/preview.png"></json-data>
 		<!-- Google+, Facebook, OpenGraph Meta -->
 		<css-data property="og:title" to:meta :content="h1:first-of-type"></css-data>
 		<json-data to:meta property="og:image" :content="http://haxe.io/img{{.input .directory}}/{{.input .filename}}/preview.png"></json-data>
