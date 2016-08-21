@@ -40,11 +40,12 @@ class PatreonController {
 		});
 	}
 	
+	public var show:Bool = false;
 	@alias('i') public var input:String;
 	@alias('o') public var output:String;
 	@alias('s') public var script:String;
 	private var cwd = Sys.getCwd();
-	private var config:Dynamic = { webPreferences:{} };
+	private var config:Dynamic = { webPreferences:{javascript:false} };
 	private var payload:PatreonPayload;
 	private var counter:Int = 0;
 	
@@ -80,6 +81,7 @@ class PatreonController {
 	}
 	
 	private function updatePayload(browser:Dynamic, uri:String, event:Dynamic, json:String):Void {
+		trace( 'updating payload', uri, json );
 		for (i in 0...payload.data.length) if (payload.data[i].uri == uri) {
 			trace( uri );
 			payload.data[i] = parse(json);
@@ -87,6 +89,7 @@ class PatreonController {
 		
 		}
 		counter--;
+		trace( counter );
 		browser.close();
 		if (counter < 1) {
 			trace( 'saving $input' );
