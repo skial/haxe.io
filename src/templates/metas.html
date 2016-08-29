@@ -1,6 +1,8 @@
 <template data-prefix="hio" data-name="metas">
 	<document-head>
 		<meta charset="utf-8" />
+		<!-- AWS S3 doesnt allow cps headers to be set and forwarded via cloudfront -->
+		<meta http-equiv="Content-Security-Policy" content="default-src 'self' ; script-src 'self' 'unsafe-inline' *.google-analytics.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; img-src 'self' www.google-analytics.com; font-src 'self' fonts.googleapis.com fonts.gstatic.com; connect-src 'self' ; media-src 'self' ; object-src 'self' ; child-src 'self' ; form-action 'self' ;">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 	</document-head>
 </template>
