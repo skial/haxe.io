@@ -1,0 +1,19 @@
+-lib cmd
+-lib unifill
+-lib hxnodejs
+-lib tink_json
+
+-cp ./
+
+-debug
+#-D cmd-verbose
+
+--each
+
+-main LDController
+-js ../ld/index.js
+
+--next
+
+-main LDScraper
+-js ../ld/scraper.js
