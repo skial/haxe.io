@@ -37,13 +37,19 @@ class LDScraper {
 	public function new() {
 		electron = require('electron');
 		ipcRenderer = electron.ipcRenderer;
-		ipcRenderer.on('payload', function(event, data) {
+		ipcRenderer.once('payload', function(event, data) {
 			framework = data;
 			search();
 		});
-		ipcRenderer.on('entry', function(event, data) {
+		ipcRenderer.once('entry', function(event, data) {
 			trace( data );
-			update( parse(data) );
+			var entry:LDEntry = parse(data);
+			var timeout = null;
+			timeout = setTimeout( function() {
+				clearTimeout( timeout );
+				completeUpdate( entry );
+			}, 1000 );
+			update( entry );
 		});
 	}
 	
@@ -71,7 +77,7 @@ class LDScraper {
 	private function update(entry:LDEntry):Void {
 		console.log( 'updating ${entry.name}' );
 		
-		var links:Array<Element> = cast qsa('.links ul li');
+		var links:Array<Element> = cast qsa('.links ul li a');
 		for (link in links) entry.platforms.push( {url: link.getAttribute('href'), label: link.textContent.toLowerCase()} );
 		console.log( links );
 		
@@ -82,9 +88,8 @@ class LDScraper {
 			
 		}
 		
-		// TODO add backing off strategy into requesting entry pages.
 		// TODO download query page and entry pages for testing, instead of hitting LD hard.
-		/*e*/ntry.type = type;
+		entry.type = type;
 		console.log( entry.type );
 		
 		var authors:Array<Element> = cast qsa('[href*="author"]');
@@ -100,6 +105,10 @@ class LDScraper {
 		console.log( entry );
 		console.log( window.location );
 		
+		completeUpdate( entry );
+	}
+	
+	private function completeUpdate(entry:LDEntry):Void {
 		ipcRenderer.send('' + window.location, stringify( entry ));
 	}
 	

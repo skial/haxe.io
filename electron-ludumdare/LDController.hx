@@ -2,12 +2,16 @@ package ;
 
 import js.Node.*;
 import tink.Json.*;
+import uhx.util.Backoff;
 import unifill.CodePoint;
+import uhx.util.Exponential;
 import tink.json.Representation;
 import haxe.Constraints.Function;
 
 using StringTools;
+using sys.io.File;
 using haxe.io.Path;
+using sys.FileSystem;
 using unifill.Unifill;
 
 // This is a _such_ a bad name for this, its not _safe_ at all ;)
@@ -62,7 +66,7 @@ class LDController {
 	
 	private static var app:Dynamic;
 	private static var electron:Dynamic;
-	private static var ipcMain:{on:String->Function->Dynamic};
+	private static var ipcMain:{on:String->Function->Dynamic, once:String->Function->Dynamic};
 	
 	public static function main() {
 		electron = require('electron');
@@ -70,14 +74,15 @@ class LDController {
 		ipcMain = electron.ipcMain;
 		
 		app.on('window-all-closed', function() {
-		  if (process.platform != 'darwin') {
-		    //app.quit();
-		  }
+			if (process.platform != 'darwin') {
+				//if (Sys.args().indexOf('--wait') == -1) app.quit();
+			}
 		});
 		
 		app.on('ready', function() {
 			var m = new LDController( Sys.args() );
 		} );
+	
 	}
 	
 	
@@ -100,6 +105,12 @@ class LDController {
 	public var frameworks:Array<String> = [];
 	
 	/**
+	Save location.
+	*/
+	@alias
+	public var output:String;
+	
+	/**
 	List of additional scripts to import before the webpage loads.
 	*/
 	@alias
@@ -117,6 +128,10 @@ class LDController {
 	private var index:Int = 0;
 	private var result:LDCompetition;
 	
+	private var delay:Float = 0;
+	private var backoff:Backoff;
+	private var lastInvoked:Float = 0;
+	
 	public function new(args:Array<String>) {
 		@:cmd _;
 		
@@ -132,6 +147,7 @@ class LDController {
 			entries: [],
 			frameworks: frameworks,
 		}
+		if (output == null || output == '') output = '/ld$number/entries.json';
 		
 	}
 	
@@ -195,23 +211,39 @@ class LDController {
 	}
 	
 	private function processEntries():Void {
-		trace( 'processing individual entries' );
+		var now = haxe.Timer.stamp();
+		trace( 'processing individual entries', lastInvoked, now, now - lastInvoked, (now - lastInvoked) > (delay / 1000), (delay/1000) );
 		
-		if (index <= (result.entries.length-1)) {
-			var entry = result.entries[index];
-			trace( 'processing $url${entry.url.toString()}' );
-			trace( config );
-			var browser = untyped __js__('new {0}', electron.BrowserWindow)( config );
-			ipcMain.on('$url${entry.url.toString()}', recieveEntry.bind(browser, entry.url.toString(), _, _));
-			browser.on('closed', function() browser = null );
-			browser.webContents.on( 'did-finish-load', onEntryLoad.bind( browser, entry ) );
-			browser.loadURL( '$url${entry.url.toString()}' );
+		if (lastInvoked == 0) {
+			lastInvoked = now;
+			backoff = new Backoff( new Expo(), delay = 25, result.entries.length );
+			backoff.timeout = 5000;
 			
-			++index;
+			setTimeout( processEntries, cast delay );
 			
-		} else {
-			completeEntries();
+		} else/* if ((now - lastInvoked) > (delay / 1000))*/ {
+			trace( 'delay exceeded' );
 			
+			if (index <= (result.entries.length-1)) {
+				var entry = result.entries[index];
+				trace( 'processing $url${entry.url.toString()}' );
+				trace( config );
+				var browser = untyped __js__('new {0}', electron.BrowserWindow)( config );
+				ipcMain.once('$url${entry.url.toString()}', recieveEntry.bind(browser, entry.url.toString(), _, _));
+				browser.on('closed', function() browser = null );
+				browser.webContents.on( 'did-finish-load', onEntryLoad.bind( browser, entry ) );
+				browser.loadURL( '$url${entry.url.toString()}' );
+				
+				++index;
+				
+				lastInvoked = now;
+				delay = backoff.next().delay;
+				
+			} else {
+				completeEntries();
+				
+			}
+		
 		}
 		
 	}
@@ -224,7 +256,7 @@ class LDController {
 	}
 	
 	private function recieveEntry(browser:Dynamic, url:String, event:String, data:String):Void {
-		trace( url, event );
+		trace( url );
 		var entry:LDEntry = parse( data );
 		var copy = result.entries.copy();
 		
@@ -234,14 +266,41 @@ class LDController {
 		}
 		
 		if (!wait) browser.close();
-		
-		if (index < (result.entries.length-1)) processEntries();
+		trace( 'remaining entries ', index, result.entries.length, index < (result.entries.length) );
+		if (index < result.entries.length) {
+			setTimeout( processEntries, cast delay );
+			
+		} else {
+			completeEntries();
+			
+		}
 		
 	}
 	
 	private function completeEntries():Void {
-		trace( result );
+		trace( result, output, cwd + output );
+		createDirectory( '$cwd/$output'.normalize() );
+		'$cwd/$output'.saveContent( haxe.Json.stringify( result ) );
 		if (!wait) app.quit();
+	}
+	
+	private static function createDirectory(path:String) {
+		if (!path.directory().addTrailingSlash().exists()) {
+			
+			var parts = path.directory().split('/');
+			var missing = [parts.pop()];
+			
+			while (!Path.join( parts ).normalize().exists()) missing.push( parts.pop() );
+			
+			missing.reverse();
+			
+			var directory = Path.join( parts );
+			for (part in missing) {
+				directory = '$directory/$part/'.normalize().replace(' ', '-');
+				if (!directory.exists()) FileSystem.createDirectory( directory );
+			}
+			
+		}
 	}
 	
 }

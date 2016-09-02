@@ -1,4 +1,5 @@
 -lib cmd
+-lib backoff
 -lib unifill
 -lib hxnodejs
 -lib tink_json
@@ -15,5 +16,6 @@
 
 --next
 
+--no-traces
 -main LDScraper
 -js ../ld/scraper.js
