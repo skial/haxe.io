@@ -8,14 +8,18 @@ import js.Node.process;
 import haxe.Serializer;
 import js.node.Crypto.*;
 import haxe.Unserializer;
+import unifill.CodePoint;
 import haxe.ds.StringMap;
 import haxe.DynamicAccess;
 import thx.format.DateFormat;
+import tink.json.Representation;
 import haxe.Constraints.Function;
 
 using Reflect;
 using StringTools;
+using thx.Objects;
 using haxe.io.Path;
+using unifill.Unifill;
 
 typedef Payload = {
 	var input:{raw:String, directory:String, parts:Array<String>, filename:String, extension:String};
@@ -27,6 +31,20 @@ typedef Payload = {
 	var edits:Array<String>;
 	var authors:Array<{display:String, url:String}>;
 	var contributors:Array<{display:String, url:String}>;
+	var extra:DynamicTink;
+}
+
+abstract DynamicTink(Dynamic) from Dynamic {
+	
+	@:to public inline function toTinkJson():Representation<Array<Int>> {
+		var str = haxe.Serializer.run(this);
+		return new Representation( [for (i in 0...str.uLength()) str.uCodePointAt(i).toInt()] );
+	}
+	
+	@:from public static inline function fromTinkJson(r:Representation<Array<Int>>):DynamicTink {
+		return haxe.Unserializer.run( r.get().map(function(i) return CodePoint.fromInt(i).toString()).join('') );
+	}
+	
 }
 
 @:cmd
@@ -54,12 +72,26 @@ class Controller {
 	}
 
   public var show:Bool = false;
-	@alias('r') public var root:String;
-	@alias('i') public var input:String;
-	@alias('o') public var output:String;
-	@alias('s') public var script:String;
-	@alias('b') public var basePaths:Array<String> = [];
+	@alias public var root:String;
+	@alias public var input:String;
+	@alias public var output:String;
+	@alias public var script:String;
+	
+	/**
+	Extra json data to be passed to various custom elements.
+	*/
+	@alias public var json:Array<String> = [];
+	
+	@alias public var basePaths:Array<String> = [];
+	
+	/**
+	Which markdown-it plugins should be loaded.
+	*/
 	@alias('md') public var mdPlugins:Array<String> = [];
+	
+	/**
+	Extra options to be passed to markdown-it plugins.
+	*/
 	@alias('mdo') public var mdOptions:String = '';
 	
 	private var counter:Int = 0;
@@ -77,6 +109,7 @@ class Controller {
 		edits:[],
 		authors:[],
 		contributors:[],
+		extra:{},
 	};
 	
 	private var md:Dynamic;
@@ -100,6 +133,21 @@ class Controller {
 	}
 	
 	private function init() {
+		for (object in json) {
+			if (object.trim().startsWith('{')) {
+				var struct = haxe.Json.parse( object );
+				payload.extra = thx.Objects.combine( cast payload.extra, struct );
+				
+			} else try {
+				payload.extra = thx.Objects.combine( cast payload.extra, haxe.Json.parse( sys.io.File.getContent( object ) ) );
+				
+			} catch (e:Dynamic) {
+				console.log('Unable to load $object');
+				
+			}
+			
+		}
+		
 		md = untyped __js__('new {0}', markdownIt)({ html: true, linkify: true, typographer: true });
 		var options = {};
 		

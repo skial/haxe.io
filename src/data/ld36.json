@@ -1,1 +1,384 @@
-{"ld":36,"entries":[{"author":{"name":"David Durham","url":"/author/d_durham/"},"frameworks":["openfl"],"name":"Steaming","platforms":[{"label":"web (html5)","url":"http://www.daviddurhamgames.com/games/steaming"}],"type":"jam","url":"?action=preview&uid=11520"},{"author":{"name":"yben","url":"/author/yben/"},"frameworks":["haxeflixel","haxe"],"name":"Atlantis","platforms":[{"label":"web","url":"https://yunakigames.itch.io/atlantis"}],"type":"jam","url":"?action=preview&uid=112104"},{"author":{"name":"btwj_","url":"/author/btwj_/"},"frameworks":["haxeflixel","haxe"],"name":"Circuitry","platforms":[{"label":"web","url":"http://btwj.github.io/ld36/index.html"},{"label":"source","url":"http://github.com/btwj/ld36"},{"label":"windows","url":"https://www.dropbox.com/s/44uvjcquyquzqrx/LD36%20Windows.zip?dl=0"}],"type":"compo","url":"?action=preview&uid=90420"},{"author":{"name":"ruthiepee","url":"/author/ruthiepee/"},"frameworks":["haxeflixel","haxe"],"name":"Cultivate","platforms":[{"label":"web (flash)","url":"http://ruthieswebsite.com/cultivate/"},{"label":"source","url":"http://ruthieswebsite.com/cultivate/cultivate.zip"}],"type":"compo","url":"?action=preview&uid=36556"},{"author":{"name":"aschab","url":"/author/aschab/"},"frameworks":["haxeflixel","haxe"],"name":"Dizzy Mayan","platforms":[{"label":"web","url":"http://aschab.com/ludum/36/"},{"label":"windows","url":"https://dl.dropboxusercontent.com/u/59751355/dizzymayan_source.rar"},{"label":"os/x","url":"https://dl.dropboxusercontent.com/u/59751355/dizzymayan_mac.rar"},{"label":"linux","url":"https://dl.dropboxusercontent.com/u/59751355/dizzymayan_linux.rar"},{"label":"source","url":"https://dl.dropboxusercontent.com/u/59751355/dizzymayan_mac.rar"}],"type":"compo","url":"?action=preview&uid=9535"},{"author":{"name":"dkdwrek","url":"/author/dkdwrek/"},"frameworks":["haxeflixel","haxe"],"name":"Father of Time","platforms":[{"label":"web","url":"https://dkdwrek.itch.io/father-of-time"},{"label":"windows","url":"https://www.dropbox.com/s/rnbvjl4qs5r8t2c/FatherOfTime.zip?dl=0"},{"label":"source","url":"https://www.dropbox.com/s/uw99298uxixwyqx/FatherOfTime_source.zip?dl=0"}],"type":"jam","url":"?action=preview&uid=45328"},{"author":{"name":"qzqxq","url":"/author/qzqxq/"},"frameworks":["haxeflixel","haxe"],"name":"Force of Wheel","platforms":[{"label":"web","url":"https://amp.itch.io/force-of-wheel"}],"type":"jam","url":"?action=preview&uid=111356"},{"author":{"name":"Joff","url":"/author/joff/"},"frameworks":["haxeflixel","haxe"],"name":"LD36","platforms":[{"label":"web","url":"https://joffcom.itch.io/ld36"},{"label":"windows","url":"https://joffcom.itch.io/ld36"},{"label":"os/x","url":"https://joffcom.itch.io/ld36"},{"label":"linux","url":"https://joffcom.itch.io/ld36"}],"type":"jam","url":"?action=preview&uid=10348"},{"author":{"name":"Frozen Fractal","url":"/author/thomastc/"},"frameworks":["haxeflixel","haxe"],"name":"Leonardo's Painting Machine","platforms":[{"label":"web (html5)","url":"http://leonardo.frozenfractal.com"},{"label":"source","url":"http://github.com/ttencate/leonardo"}],"type":"compo","url":"?action=preview&uid=7882"},{"author":{"name":"aeveis","url":"/author/aeveis/"},"frameworks":["haxeflixel","haxe"],"name":"No Touch","platforms":[{"label":"web","url":"https://dl.dropboxusercontent.com/u/16325832/ludum_dare36/jam/index.html"},{"label":"itch.io","url":"https://aeveis.itch.io/no-touch"},{"label":"source","url":"https://dl.dropboxusercontent.com/u/16325832/ludum_dare36/NoTouch_by_aeveis.zip"}],"type":"jam","url":"?action=preview&uid=8854"},{"author":{"name":"andromalin","url":"/author/andromalin/"},"frameworks":["haxeflixel","haxe"],"name":"pls get cool","platforms":[{"label":"web","url":"http://andromalin.com/plsgetcool/"}],"type":"jam","url":"?action=preview&uid=113514"},{"author":{"name":"runvs","url":"/author/runvs/"},"frameworks":["haxeflixel","haxe"],"name":"Raiders of the Ancient Technology","platforms":[{"label":"windows","url":"http://gamejolt.com/games/raiders-of-the-ancient-technology/183947"},{"label":"mac","url":"http://gamejolt.com/games/raiders-of-the-ancient-technology/183947"}],"type":"jam","url":"?action=preview&uid=29172"},{"author":{"name":"Sébastien Bernery","url":"/author/sebbernery/"},"frameworks":["haxeflixel","haxe"],"name":"Steam Train Youpi","platforms":[{"label":"web","url":"http://docs.bernery.eu/gamejam/SteamTrainYoupi/"},{"label":"source","url":"https://code.vikindie.fr/Sebastien/Train-LD36/tree/master"}],"type":"compo","url":"?action=preview&uid=484"},{"author":{"name":"Rudenko","url":"/author/rudenko/"},"frameworks":["luxeengine","haxe"],"name":"Four","platforms":[{"label":"web","url":"https://dl.dropboxusercontent.com/u/91798273/LD36/index.html"},{"label":"windows","url":"https://dl.dropboxusercontent.com/u/91798273/LD36/LD36.zip"},{"label":"source","url":"https://github.com/RudenkoArts/ld36"}],"type":"compo","url":"?action=preview&uid=47736"},{"author":{"name":"jeremyfa","url":"/author/jeremyfa/"},"frameworks":["haxe"],"name":"The Machine","platforms":[{"label":"web","url":"http://jeremyfa.com/apps/themachine/"}],"type":"jam","url":"?action=preview&uid=50305"}],"frameworks":["haxe"]}
+{
+  "ld": 36,
+  "entries": [
+    {
+      "author": {
+        "name": "yben",
+        "url": "/author/yben/"
+      },
+      "frameworks": [
+        "haxe",
+        "haxeflixel"
+      ],
+      "name": "Atlantis",
+      "platforms": [
+        {
+          "label": "web",
+          "url": "https://yunakigames.itch.io/atlantis"
+        }
+      ],
+      "type": "jam",
+      "url": "?action=preview&uid=112104"
+    },
+    {
+      "author": {
+        "name": "btwj_",
+        "url": "/author/btwj_/"
+      },
+      "frameworks": [
+        "haxe",
+        "haxeflixel"
+      ],
+      "name": "Circuitry",
+      "platforms": [
+        {
+          "label": "web",
+          "url": "http://btwj.github.io/ld36/index.html"
+        },
+        {
+          "label": "source",
+          "url": "http://github.com/btwj/ld36"
+        },
+        {
+          "label": "windows",
+          "url": "https://www.dropbox.com/s/44uvjcquyquzqrx/LD36%20Windows.zip?dl=0"
+        }
+      ],
+      "type": "compo",
+      "url": "?action=preview&uid=90420"
+    },
+    {
+      "author": {
+        "name": "ruthiepee",
+        "url": "/author/ruthiepee/"
+      },
+      "frameworks": [
+        "haxe",
+        "haxeflixel"
+      ],
+      "name": "Cultivate",
+      "platforms": [
+        {
+          "label": "web (flash)",
+          "url": "http://ruthieswebsite.com/cultivate/"
+        },
+        {
+          "label": "source",
+          "url": "http://ruthieswebsite.com/cultivate/cultivate.zip"
+        }
+      ],
+      "type": "compo",
+      "url": "?action=preview&uid=36556"
+    },
+    {
+      "author": {
+        "name": "aschab",
+        "url": "/author/aschab/"
+      },
+      "frameworks": [
+        "haxe",
+        "haxeflixel"
+      ],
+      "name": "Dizzy Mayan",
+      "platforms": [
+        {
+          "label": "web",
+          "url": "http://aschab.com/ludum/36/"
+        },
+        {
+          "label": "windows",
+          "url": "https://dl.dropboxusercontent.com/u/59751355/dizzymayan_source.rar"
+        },
+        {
+          "label": "os/x",
+          "url": "https://dl.dropboxusercontent.com/u/59751355/dizzymayan_mac.rar"
+        },
+        {
+          "label": "linux",
+          "url": "https://dl.dropboxusercontent.com/u/59751355/dizzymayan_linux.rar"
+        },
+        {
+          "label": "source",
+          "url": "https://dl.dropboxusercontent.com/u/59751355/dizzymayan_mac.rar"
+        }
+      ],
+      "type": "compo",
+      "url": "?action=preview&uid=9535"
+    },
+    {
+      "author": {
+        "name": "dkdwrek",
+        "url": "/author/dkdwrek/"
+      },
+      "frameworks": [
+        "haxe",
+        "haxeflixel"
+      ],
+      "name": "Father of Time",
+      "platforms": [
+        {
+          "label": "web",
+          "url": "https://dkdwrek.itch.io/father-of-time"
+        },
+        {
+          "label": "windows",
+          "url": "https://www.dropbox.com/s/rnbvjl4qs5r8t2c/FatherOfTime.zip?dl=0"
+        },
+        {
+          "label": "source",
+          "url": "https://www.dropbox.com/s/uw99298uxixwyqx/FatherOfTime_source.zip?dl=0"
+        }
+      ],
+      "type": "jam",
+      "url": "?action=preview&uid=45328"
+    },
+    {
+      "author": {
+        "name": "qzqxq",
+        "url": "/author/qzqxq/"
+      },
+      "frameworks": [
+        "haxe",
+        "haxeflixel"
+      ],
+      "name": "Force of Wheel",
+      "platforms": [
+        {
+          "label": "web",
+          "url": "https://amp.itch.io/force-of-wheel"
+        }
+      ],
+      "type": "jam",
+      "url": "?action=preview&uid=111356"
+    },
+    {
+      "author": {
+        "name": "Rudenko",
+        "url": "/author/rudenko/"
+      },
+      "frameworks": [
+        "haxe",
+        "luxeengine"
+      ],
+      "name": "Four",
+      "platforms": [
+        {
+          "label": "web",
+          "url": "https://dl.dropboxusercontent.com/u/91798273/LD36/index.html"
+        },
+        {
+          "label": "windows",
+          "url": "https://dl.dropboxusercontent.com/u/91798273/LD36/LD36.zip"
+        },
+        {
+          "label": "source",
+          "url": "https://github.com/RudenkoArts/ld36"
+        }
+      ],
+      "type": "compo",
+      "url": "?action=preview&uid=47736"
+    },
+    {
+      "author": {
+        "name": "Joff",
+        "url": "/author/joff/"
+      },
+      "frameworks": [
+        "haxe",
+        "haxeflixel"
+      ],
+      "name": "LD36",
+      "platforms": [
+        {
+          "label": "web",
+          "url": "https://joffcom.itch.io/ld36"
+        },
+        {
+          "label": "windows",
+          "url": "https://joffcom.itch.io/ld36"
+        },
+        {
+          "label": "os/x",
+          "url": "https://joffcom.itch.io/ld36"
+        },
+        {
+          "label": "linux",
+          "url": "https://joffcom.itch.io/ld36"
+        }
+      ],
+      "type": "jam",
+      "url": "?action=preview&uid=10348"
+    },
+    {
+      "author": {
+        "name": "Frozen Fractal",
+        "url": "/author/thomastc/"
+      },
+      "frameworks": [
+        "haxe",
+        "haxeflixel"
+      ],
+      "name": "Leonardo's Painting Machine",
+      "platforms": [
+        {
+          "label": "web (html5)",
+          "url": "http://leonardo.frozenfractal.com"
+        },
+        {
+          "label": "source",
+          "url": "http://github.com/ttencate/leonardo"
+        }
+      ],
+      "type": "compo",
+      "url": "?action=preview&uid=7882"
+    },
+    {
+      "author": {
+        "name": "aeveis",
+        "url": "/author/aeveis/"
+      },
+      "frameworks": [
+        "haxe",
+        "haxeflixel"
+      ],
+      "name": "No Touch",
+      "platforms": [
+        {
+          "label": "web",
+          "url": "https://dl.dropboxusercontent.com/u/16325832/ludum_dare36/jam/index.html"
+        },
+        {
+          "label": "itch.io",
+          "url": "https://aeveis.itch.io/no-touch"
+        },
+        {
+          "label": "source",
+          "url": "https://dl.dropboxusercontent.com/u/16325832/ludum_dare36/NoTouch_by_aeveis.zip"
+        }
+      ],
+      "type": "jam",
+      "url": "?action=preview&uid=8854"
+    },
+    {
+      "author": {
+        "name": "andromalin",
+        "url": "/author/andromalin/"
+      },
+      "frameworks": [
+        "haxe",
+        "haxeflixel"
+      ],
+      "name": "pls get cool",
+      "platforms": [
+        {
+          "label": "web",
+          "url": "http://andromalin.com/plsgetcool/"
+        }
+      ],
+      "type": "jam",
+      "url": "?action=preview&uid=113514"
+    },
+    {
+      "author": {
+        "name": "runvs",
+        "url": "/author/runvs/"
+      },
+      "frameworks": [
+        "haxe",
+        "haxeflixel"
+      ],
+      "name": "Raiders of the Ancient Technology",
+      "platforms": [
+        {
+          "label": "windows",
+          "url": "http://gamejolt.com/games/raiders-of-the-ancient-technology/183947"
+        },
+        {
+          "label": "mac",
+          "url": "http://gamejolt.com/games/raiders-of-the-ancient-technology/183947"
+        }
+      ],
+      "type": "jam",
+      "url": "?action=preview&uid=29172"
+    },
+    {
+      "author": {
+        "name": "Sébastien Bernery",
+        "url": "/author/sebbernery/"
+      },
+      "frameworks": [
+        "haxe",
+        "haxeflixel"
+      ],
+      "name": "Steam Train Youpi",
+      "platforms": [
+        {
+          "label": "web",
+          "url": "http://docs.bernery.eu/gamejam/SteamTrainYoupi/"
+        },
+        {
+          "label": "source",
+          "url": "https://code.vikindie.fr/Sebastien/Train-LD36/tree/master"
+        }
+      ],
+      "type": "compo",
+      "url": "?action=preview&uid=484"
+    },
+    {
+      "author": {
+        "name": "jeremyfa",
+        "url": "/author/jeremyfa/"
+      },
+      "frameworks": [
+        "haxe"
+      ],
+      "name": "The Machine",
+      "platforms": [
+        {
+          "label": "web",
+          "url": "http://jeremyfa.com/apps/themachine/"
+        }
+      ],
+      "type": "jam",
+      "url": "?action=preview&uid=50305"
+    },
+    {
+      "author": {
+        "name": "David Durham",
+        "url": "/author/d_durham/"
+      },
+      "frameworks": [
+        "openfl"
+      ],
+      "name": "Steaming",
+      "platforms": [
+        {
+          "label": "web (html5)",
+          "url": "http://www.daviddurhamgames.com/games/steaming"
+        }
+      ],
+      "type": "jam",
+      "url": "?action=preview&uid=11520"
+    }
+  ],
+  "frameworks": [
+    {
+      "framework": "haxe"
+    },
+    {
+      "framework": "openfl"
+    },
+    {
+      "framework": "haxeflixel"
+    },
+    {
+      "framework": "haxepunk"
+    },
+    {
+      "framework": "luxeengine"
+    },
+    {
+      "framework": "snowkit"
+    }
+  ]
+}

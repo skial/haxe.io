@@ -34,7 +34,7 @@ using unifill.Unifill;
 typedef LDCompetition = {
 	var ld:Int;
 	var entries:Array<LDEntry>;
-	var frameworks:Array<String>;
+	var frameworks:Array<{framework:String}>;
 }
 
 typedef LDEntry = {
@@ -87,6 +87,12 @@ class LDController {
 	
 	
 	/**
+	The minimum amount of milliseconds to wait between scraping requests.
+	*/
+	@alias
+	public var delay:Float = 50;
+	
+	/**
 	The lD competition to search.
 	*/
 	@alias
@@ -128,7 +134,6 @@ class LDController {
 	private var index:Int = 0;
 	private var result:LDCompetition;
 	
-	private var delay:Float = 0;
 	private var backoff:Backoff;
 	private var lastInvoked:Float = 0;
 	
@@ -145,7 +150,7 @@ class LDController {
 		result = {
 			ld: number,
 			entries: [],
-			frameworks: frameworks,
+			frameworks: frameworks.map(function(f)return {framework:f}),
 		}
 		if (output == null || output == '') output = '/ld$number/entries.json';
 		
@@ -193,7 +198,7 @@ class LDController {
 			}
 			
 		} else {
-			result.frameworks.remove( framework );
+			result.frameworks.remove( {framework:framework} );
 			
 		}
 		
@@ -216,7 +221,7 @@ class LDController {
 		
 		if (lastInvoked == 0) {
 			lastInvoked = now;
-			backoff = new Backoff( new Expo(), delay = 25, result.entries.length );
+			backoff = new Backoff( new Expo(), delay, result.entries.length );
 			backoff.timeout = 5000;
 			
 			setTimeout( processEntries, cast delay );

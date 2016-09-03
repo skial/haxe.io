@@ -1,6 +1,8 @@
 -lib cmd
 -lib jwenn
+-lib unifill
 -lib hxnodejs
+-lib thx.core
 -lib tink_json
 -lib thx.format
 -debug
