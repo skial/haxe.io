@@ -85,10 +85,11 @@ class JsonData extends ConvertTag {
 				for (i in 0...results.length) {
 					var result = results[i];
 					
+					console.log( children.length );
 					for (child in children) {
 						var clone = window.document.importNode(child, true);
 						if (clone.nodeType == Node.ELEMENT_NODE) iterateNode( cast clone, result );
-						
+						console.log( child, clone.nodeType == Node.ELEMENT_NODE);
 						newChildren.push( clone );
 						
 						if (results.length > 1 && clone.nodeType == Node.ELEMENT_NODE) {
@@ -136,6 +137,12 @@ class JsonData extends ConvertTag {
 					
 					if (clone.nodeType == Node.ELEMENT_NODE) replaceAttributePlaceholders( clone, data );
 					
+					for (child in clone.childNodes) {
+						console.log( child );
+						iterateNode( cast child, data );
+						
+					}
+					
 					newChildren.push( clone );
 					
 				}
@@ -144,6 +151,25 @@ class JsonData extends ConvertTag {
 			
 		} else {
 			if (selector != null) for (key in data.keys()) for (value in uhx.select.JsonQuery.find(data.get( key ), selector)) results.push(value);
+			
+			for (attribute in cast (node, Element).attributes) {
+				switch (attribute.name.toLowerCase()) {
+					case _.startsWith(':to') => true:
+						var _selector = attribute.value;
+						var _matches = uhx.select.JsonQuery.find(data, _selector);
+						
+						if (_matches.length > 0) {
+							console.log( _matches );
+							node.parentNode.replaceChild(cast window.document.createTextNode( _matches.join('') ), node);
+							
+						}
+					
+					case _:
+						// nout
+						
+				}
+				
+			}
 			
 			if (results.length > 0) {
 				newChildren.push( window.document.createTextNode( results.join('') ) );
@@ -188,16 +214,16 @@ class JsonData extends ConvertTag {
 				case !_.startsWith(':to') && attribute.value.indexOf('{{') == -1 && attribute.value.indexOf('}}') == -1 && _.startsWith(':') => true if (attribute.value != ''):
 					var _selector = attribute.value;
 					var _matches = uhx.select.JsonQuery.find(data, _selector);
-					
+					console.log( _selector, _matches );
 					if (_matches.length > 0) {
 						console.log( _matches );
 						var name = '_' + attribute.name.substring(1);
 						var value = _matches.join(' ');
-						
+						console.log( value );
 						if (node.hasAttribute( name )) value = node.getAttribute( name ) + ' $value';
 						
 						node.setAttribute( name, value );
-						
+						console.log( node );
 					}
 					
 				case !_.startsWith(':to') && attribute.value.indexOf('{{') > -1 && attribute.value.indexOf('}}') > -1 => true:
