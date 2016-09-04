@@ -137,8 +137,8 @@ class JsonData extends ConvertTag {
 					
 					if (clone.nodeType == Node.ELEMENT_NODE) replaceAttributePlaceholders( clone, data );
 					
-					for (child in clone.childNodes) {
-						console.log( child );
+					for (child in clone.childNodes)/* if (child.nodeType == Node.ELEMENT_NODE)*/ {
+						console.log( node, child );
 						iterateNode( cast child, data );
 						
 					}
@@ -162,7 +162,16 @@ class JsonData extends ConvertTag {
 							console.log( _matches );
 							node.parentNode.replaceChild(cast window.document.createTextNode( _matches.join('') ), node);
 							
-						}
+						} /*else {
+							var converted = window.document.createElement( attribute.value );
+							for (attribute in cast (node, Element).attributes) {
+								converted.setAttribute(attribute.name, attribute.value);
+								
+							}
+							
+							node.parentNode.replaceChild(converted, node);
+							
+						}*/
 					
 					case _:
 						// nout

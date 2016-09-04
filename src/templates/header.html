@@ -16,13 +16,12 @@
       </a>
     </div>
     <div class="hero">
-      <css-data select="h1:first-of-type" to:h1 source:remove use:text></css-data>
+      <css-data select="section h1:first-of-type" to:h1 source:remove use:text></css-data>
       <div class="details">
 				by 
 				<json-data select=".authors" separator=", " separator:length-2=" and ">
 					<a :title=".display" rel="author nofollow" :href=".url"><span :to=".display"></span></a>
 				</json-data>
-				<!--<a title="@skial" rel="author nofollow" href="//twitter.com/skial">Skial Bainn</a> -->
 				published on 
 				<json-data to:time :pubdate=".published .raw" :datetime=".modified .raw" select=".modified .pretty"></json-data>
 			</div>

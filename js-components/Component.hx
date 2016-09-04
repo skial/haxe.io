@@ -9,6 +9,8 @@ using haxe.io.Path;
 
 class Component extends Element {
 	
+	public static var KnownComponents:Storage = window.sessionStorage;
+	
 	public static function main() {
 		new Component();
 	}
@@ -23,6 +25,7 @@ class Component extends Element {
 	private var htmlPrefix:String = 'hx';
 	private var template:TemplateElement;
 	private var hash:Hashids = new Hashids();
+	private var observer:MutationObserver;
 	
 	@:isVar private var eventMap(get, null):Map<String, Function>;
 	
@@ -30,17 +33,21 @@ class Component extends Element {
 		local = window.document.currentScript.ownerDocument;
 		template = cast local.querySelector('template');
 		
+		observer = new MutationObserver(mutation);
 		switch ([template.hasAttribute('data-prefix'), template.hasAttribute('data-name')]) {
 			case [x, true]:
 				if (x) htmlPrefix = template.getAttribute('data-prefix');
 				htmlName = '$htmlPrefix-' + template.getAttribute('data-name');
 				trace( 'registering element <$htmlName>' );
+				if (KnownComponents.getItem( htmlName ) == null) KnownComponents.setItem( htmlName, htmlName );
 				if (self == null) self = this;
 				register();
 				
 			case _:
 				
 		}
+		
+		console.log( [for (i in 0...KnownComponents.length) KnownComponents.getItem( KnownComponents.key(i) )] );
 		
 	}
 	
@@ -76,6 +83,7 @@ class Component extends Element {
 		
 		root = this.createShadowRoot();
 		root.appendChild( window.document.importNode( node, true ) );
+		observer.observe(node, {childList:true, subtree:true});
 		trace( '$htmlName cb called' );
 		
 	}
@@ -185,6 +193,26 @@ class Component extends Element {
 	private function removeSelf():Void {
 		var self = window.document.querySelector( '[uid="$uid"]' );
 		if (self != null) self.parentNode.removeChild( self );
+	}
+	
+	private function mutation(changes:Array<MutationRecord>, observer:MutationObserver):Void {
+		for (change in changes) switch change.type {
+			case 'attributes':
+				
+			case 'characterData':
+				
+			case 'childList':
+				// The node whose child list changed.
+				var parent = change.target;
+				
+				// I'm only _currently_ interested in added nodes.
+				var newChildren = [for (n in change.addedNodes) n];
+				
+				console.log( parent, newChildren );
+				
+			case _:
+				
+		}
 	}
 	
 }
