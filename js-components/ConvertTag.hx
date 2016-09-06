@@ -36,7 +36,7 @@ class ConvertTag extends Component {
 					var name = attribute.name.substring(1);
 					replacement.setAttribute( name, ((this.hasAttribute( name )) ? this.getAttribute( name ) : '') + attribute.value );
 					
-				case _.indexOf(':') == -1 && !_.startsWith('_') && _ != 'uid' && _ != 'select' => true:
+				case _.indexOf(':') == -1 && !_.startsWith('_') && _ != 'uid' && _ != 'select' && _ != 'to' => true:
 					replacement.setAttribute( attribute.name, attribute.value );
 					
 				case _:
@@ -78,10 +78,17 @@ class ConvertTag extends Component {
 	private function get_to():Null<String> {
 		var result = null;
 		
-		for (attribute in this.attributes) if (attribute.name.startsWith('to:')) {
-			result = attribute.name.split(':')[1];
-			break;
-			
+		for (attribute in this.attributes) switch attribute.name {
+			case _.startsWith('to:') => true:
+				result = attribute.name.split(':')[1];
+				break;
+				
+			case 'to':
+				result = attribute.value;
+				break;
+				
+			case _:
+				
 		}
 		
 		return result;

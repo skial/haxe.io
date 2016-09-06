@@ -56,7 +56,7 @@ class JsonData extends ConvertTag {
 	
 	public function useJsonData(json:Dynamic) {
 		trace( 'using json data' );
-		console.log( json );
+		//console.log( json );
 		
 		iterateNode(this, data);
 		
@@ -66,128 +66,50 @@ class JsonData extends ConvertTag {
 		
 	}
 	
-	private function iterateNode(node:Element, data:DynamicAccess<Dynamic>):Void {
+	private function iterateNode(node:Element, data:DynamicAccess<Dynamic>):Element {
 		var results = [];
 		var selector = node.getAttribute('select');
 		
-		// Find values to be used for this components attribute values.
-		replaceAttributePlaceholders(node, data);
-		var children = [for (child in node.childNodes) window.document.importNode(child, true)];
+		var children = [for (child in node.childNodes) /*window.document.importNode(child, true)*/ child];
 		var newChildren = [];
+		console.log( selector, node, data );
+		// process each attribute, then each child.
+		replaceAttributePlaceholders(node, data);
 		
-		if (children.length > 0) {
-			// Find values to be used for this components children.
-			if (selector != null) for (key in data.keys()) for (value in uhx.select.JsonQuery.find(data.get( key ), selector)) results.push(value);
+		var converted = convertNode( node, data );
+		console.log( node, converted, node != converted );
+		if (node != converted) {
+			return converted;
 			
-			if (results.length > 0) {
-				var defaultSeparator = (node.hasAttribute('separator')) ? node.getAttribute('separator') : '';
+		}
+		
+		if (selector != null && selector != '') {
+			// filter json data based on the selector.
+			var matches = uhx.select.JsonQuery.find(data, selector);
+			
+			if (children.length > 0) for (child in children) {
+				// Pass each child the filtered json data.
+				if (child.nodeType == Node.ELEMENT_NODE) for (match in matches) child = iterateNode( cast child, match );
+				newChildren.push( child );
 				
-				for (i in 0...results.length) {
-					var result = results[i];
-					
-					console.log( children.length );
-					for (child in children) {
-						var clone = window.document.importNode(child, true);
-						if (clone.nodeType == Node.ELEMENT_NODE) iterateNode( cast clone, result );
-						console.log( child, clone.nodeType == Node.ELEMENT_NODE);
-						newChildren.push( clone );
-						
-						if (results.length > 1 && clone.nodeType == Node.ELEMENT_NODE) {
-							var separator = defaultSeparator;
-							var checks = ['separator:$i', 'separator:length-${results.length - i}'];
-							
-							if (i == 0) checks.push('separator:first');
-							if (i == results.length - 1) checks.push('separator:last');
-							
-							for (check in checks) if (node.hasAttribute( check )) {
-								separator = node.getAttribute( check );
-								
-							}
-							
-							newChildren.push( window.document.createTextNode( separator ) );
-						
-						}
-						
-					}
-					
-				}
-									
 			} else {
-				for (child in children) if (child.nodeType == Node.ELEMENT_NODE) {
-					var clone:Element = cast window.document.importNode(child, true);
-					
-					for (attribute in cast (child, Element).attributes) {
-						switch (attribute.name.toLowerCase()) {
-							case _.startsWith(':to') => true:
-								var _selector = attribute.value;
-								var _matches = uhx.select.JsonQuery.find(data, _selector);
-								
-								if (_matches.length > 0) {
-									console.log( _matches );
-									clone = cast window.document.createTextNode( _matches.join('') );
-									
-								}
-							
-							case _:
-								// nout
-								
-						}
-						
-					}
-					
-					if (clone.nodeType == Node.ELEMENT_NODE) replaceAttributePlaceholders( clone, data );
-					
-					for (child in clone.childNodes)/* if (child.nodeType == Node.ELEMENT_NODE)*/ {
-						console.log( node, child );
-						iterateNode( cast child, data );
-						
-					}
-					
-					newChildren.push( clone );
-					
-				}
+				// Append the matches as a TEXT_NODE.
+				newChildren.push( window.document.createTextNode( matches.join(' ') ) );
 				
 			}
 			
 		} else {
-			if (selector != null) for (key in data.keys()) for (value in uhx.select.JsonQuery.find(data.get( key ), selector)) results.push(value);
-			
-			for (attribute in cast (node, Element).attributes) {
-				switch (attribute.name.toLowerCase()) {
-					case _.startsWith(':to') => true:
-						var _selector = attribute.value;
-						var _matches = uhx.select.JsonQuery.find(data, _selector);
-						
-						if (_matches.length > 0) {
-							console.log( _matches );
-							node.parentNode.replaceChild(cast window.document.createTextNode( _matches.join('') ), node);
-							
-						} /*else {
-							var converted = window.document.createElement( attribute.value );
-							for (attribute in cast (node, Element).attributes) {
-								converted.setAttribute(attribute.name, attribute.value);
-								
-							}
-							
-							node.parentNode.replaceChild(converted, node);
-							
-						}*/
-					
-					case _:
-						// nout
-						
-				}
-				
-			}
-			
-			if (results.length > 0) {
-				newChildren.push( window.document.createTextNode( results.join('') ) );
+			if (children.length > 0) for (child in children) {
+				// Pass each child the filtered json data.
+				if (child.nodeType == Node.ELEMENT_NODE) child = iterateNode( cast child, data );
+				newChildren.push( child );
 				
 			}
 			
 		}
 		
-		if (newChildren.length > 0) {
+		if (node.nodeType == Node.ELEMENT_NODE && newChildren.length > 0) {
+			console.log( newChildren );
 			node.innerHTML = '';
 			
 			for (newChild in newChildren) {
@@ -211,44 +133,81 @@ class JsonData extends ConvertTag {
 			
 		}
 		
+		return node;
+		
+	}
+	
+	private function convertNode(node:Element, data:Dynamic):Element {
+		for (attribute in node.attributes) {
+			switch attribute.name {
+				case _.startsWith(':to') => true:
+					var matches = uhx.select.JsonQuery.find(data, attribute.value);
+					var replacement:Node = null;
+					
+					if (matches.length > 0) {
+						replacement = window.document.createTextNode( matches.join(' ') );
+						
+					} else {
+						replacement = window.document.createElement( attribute.value );
+						
+					}
+					
+					if (replacement != null) {
+						console.log( node, node.parentNode, replacement, matches, attribute.value );
+						return cast replacement;
+						
+					}
+					
+					break;
+					
+				case _:
+					
+			}
+		}
+		
+		return node;
 	}
 	
 	private function replaceAttributePlaceholders(node:Element, data:Dynamic):Void {
-		console.log( data );
-		console.log( node );
 		for (attribute in node.attributes) {
-			trace( attribute.name, attribute.value );
-			
-			switch (attribute.name.toLowerCase()) {
-				case !_.startsWith(':to') && attribute.value.indexOf('{{') == -1 && attribute.value.indexOf('}}') == -1 && _.startsWith(':') => true if (attribute.value != ''):
-					var _selector = attribute.value;
-					var _matches = uhx.select.JsonQuery.find(data, _selector);
-					console.log( _selector, _matches );
-					if (_matches.length > 0) {
-						console.log( _matches );
-						var name = '_' + attribute.name.substring(1);
-						var value = _matches.join(' ');
-						console.log( value );
-						if (node.hasAttribute( name )) value = node.getAttribute( name ) + ' $value';
-						
-						node.setAttribute( name, value );
-						console.log( node );
-					}
+			switch attribute.name {
+				case !_.startsWith('to:') && _ != ':to' && _ != 'to' && _ != 'select' => true:
+					var selector = attribute.value;
 					
-				case !_.startsWith(':to') && attribute.value.indexOf('{{') > -1 && attribute.value.indexOf('}}') > -1 => true:
-					var result = attribute.value;
-					var value = attribute.value;
-					for (i in 0...value.length) if (value.charCodeAt(i) == '{'.code && value.charCodeAt(i+1) == '{'.code) {
-						var _selector = value.substring(i+2, value.indexOf('}}', i+1));
-						var _matches = uhx.select.JsonQuery.find(data, _selector);
-						
-						console.log( _matches );
-						result = result.replace('{{$_selector}}', _matches.join(' '));
+					if (selector != null && selector != '') {
+						if (attribute.value.indexOf('{{') > -1) {
+							var name = '_' + attribute.name.substring(1);
+							var result = attribute.value;
+							var value = attribute.value;
+							
+							for (i in 0...value.length) if (value.charCodeAt(i) == '{'.code && value.charCodeAt(i+1) == '{'.code) {
+								var selector = value.substring(i+2, value.indexOf('}}', i+1));
+								var matches = uhx.select.JsonQuery.find(data, selector);
+								
+								result = result.replace('{{$selector}}', matches.join(' '));	// TODO Look into using separator attributes.
+								
+							}
+							
+							if (node.hasAttribute(name)) result = node.getAttribute(name) + result;
+							
+							node.setAttribute(name, result);
+							
+						} else {
+							var matches = uhx.select.JsonQuery.find(data, selector);
+							
+							if (matches.length > 0) {
+								var name = '_' + attribute.name.substring(1);
+								var value = matches.join(' ');	// TODO Look into using separator attributes.
+								
+								if (node.hasAttribute(name)) value = node.getAttribute(name) + value;
+								
+								node.setAttribute(name, value);
+								
+							}
+							
+						}
 						
 					}
-					
-					var name = '_' + attribute.name.substring(1);
-					node.setAttribute( name, result );
 					
 				case _:
 					

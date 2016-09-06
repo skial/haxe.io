@@ -33,7 +33,6 @@ class Component extends Element {
 		local = window.document.currentScript.ownerDocument;
 		template = cast local.querySelector('template');
 		
-		observer = new MutationObserver(mutation);
 		switch ([template.hasAttribute('data-prefix'), template.hasAttribute('data-name')]) {
 			case [x, true]:
 				if (x) htmlPrefix = template.getAttribute('data-prefix');
@@ -83,7 +82,9 @@ class Component extends Element {
 		
 		root = this.createShadowRoot();
 		root.appendChild( window.document.importNode( node, true ) );
-		observer.observe(node, {childList:true, subtree:true});
+		
+		observer = new MutationObserver(mutation);
+		observer.observe(root, {childList:true, subtree:true});
 		trace( '$htmlName cb called' );
 		
 	}
@@ -113,7 +114,7 @@ class Component extends Element {
 			registerEvents();
 			
 		} else {
-			process();
+			window.setTimeout( process, 0 );
 			
 		}
 		
@@ -128,7 +129,7 @@ class Component extends Element {
 		}
 		trace( '$htmlName $pending' );
 		if (pending == 0) {
-			process();
+			window.setTimeout( process, 0 );
 			
 		}
 	}
@@ -143,12 +144,14 @@ class Component extends Element {
 	
 	private function done():Void {
 		removeEvents();
+		observer.disconnect();
 		trace( 'dispatching DOMCustomElementFinished from $htmlName - $uid' );
 		this.dispatchEvent( new CustomEvent('DOMCustomElementFinished', {detail:uid, bubbles:true, cancelable:true}) );
 		
 	}
 	
 	private function processComponent():Void {
+		console.log( this, this.parentElement, this.parentNode );
 		var parent = this.parentElement;
 		var shadowChildren = root.children;
 		
@@ -196,19 +199,28 @@ class Component extends Element {
 	}
 	
 	private function mutation(changes:Array<MutationRecord>, observer:MutationObserver):Void {
+		console.log( 'MUTATION' );
 		for (change in changes) switch change.type {
 			case 'attributes':
 				
 			case 'characterData':
 				
 			case 'childList':
+				console.log( 'CHILD LIST MUTATED', change );
 				// The node whose child list changed.
 				var parent = change.target;
 				
 				// I'm only _currently_ interested in added nodes.
 				var newChildren = [for (n in change.addedNodes) n];
 				
-				console.log( parent, newChildren );
+				var components = newChildren.filter( function(n) return KnownComponents.getItem(n.nodeName) != null );
+				
+				if (components.length > 0) {
+					console.log( 'increasing counters', this, components );
+					total += components.length;
+					pending += components.length;
+					
+				}
 				
 			case _:
 				
