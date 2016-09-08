@@ -38,7 +38,7 @@ class Component extends Element {
 				if (x) htmlPrefix = template.getAttribute('data-prefix');
 				htmlName = '$htmlPrefix-' + template.getAttribute('data-name');
 				trace( 'registering element <$htmlName>' );
-				if (KnownComponents.getItem( htmlName ) == null) KnownComponents.setItem( htmlName, htmlName );
+				if (KnownComponents.getItem( htmlName ) == null) KnownComponents.setItem( htmlName.toLowerCase(), htmlName.toLowerCase() );
 				if (self == null) self = this;
 				register();
 				
