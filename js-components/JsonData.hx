@@ -153,11 +153,12 @@ class JsonData extends ConvertTag {
 		for (attribute in node.attributes) {
 			switch attribute.name {
 				case _.startsWith(':to') => true:
-					var matches = uhx.select.JsonQuery.find(data, attribute.value);
+					var match = processAttribute(attribute.name, attribute.value, data);
+					//var matches = uhx.select.JsonQuery.find(data, attribute.value);
 					var replacement:Element = null;
 					
-					if (matches.length > 0) {
-						replacement = cast window.document.createTextNode( matches.join(' ') );
+					if (match.value != attribute.value) {
+						replacement = cast window.document.createTextNode( match.value );
 						
 					} else {
 						replacement = cast window.document.createElement( attribute.value );
@@ -194,12 +195,10 @@ class JsonData extends ConvertTag {
 					var selector = attribute.value;
 					console.log( window.document.importNode(node, true), data, selector, attribute.value.indexOf('{') > -1 );
 					if (selector != null && selector != '') {
-						if (attribute.value.indexOf('{') > -1) {
+						/*if (attribute.value.indexOf('{') > -1) {
 							var name = '_' + attribute.name.substring(1);
 							var result = attribute.value;
 							var value = attribute.value;
-							
-							
 							var info = attribute.value.trackAndInterpolate('}'.code, ['{'.code => '}'.code], function(s) {
 								var results = uhx.select.JsonQuery.find(data, s);
 								console.log( s, data, results );
@@ -208,14 +207,6 @@ class JsonData extends ConvertTag {
 							
 							console.log( info );
 							result = info.value;
-							
-							/*for (i in 0...value.length) if (value.charCodeAt(i) == '{'.code) {
-								var selector = value.substring(i+2, value.indexOf('}', i+1));
-								var matches = uhx.select.JsonQuery.find(data, selector);
-								console.log( matches );
-								result = result.replace('{$selector}', matches.join(' '));	// TODO Look into using separator attributes.
-								
-							}*/
 							
 							if (node.hasAttribute(name)) result = node.getAttribute(name) + result;
 							
@@ -236,6 +227,15 @@ class JsonData extends ConvertTag {
 								
 							}
 							
+						}*/
+						var result = processAttribute(attribute.name, attribute.value, data);
+						
+						if (result.name != attribute.name) {
+							if (node.hasAttribute(result.name)) result.value = node.getAttribute(result.name) + result.value;
+							
+							node.setAttribute(result.name, result.value);
+							node.removeAttribute( attribute.name );
+							
 						}
 						
 					}
@@ -248,6 +248,47 @@ class JsonData extends ConvertTag {
 		
 	}
 	
+	public function processAttribute(attrName:String, attrValue:String, data:Any):{name:String, value:String} {
+		var result = {name:attrName, value:attrValue};
+		
+		if (attrValue.indexOf('{') > -1) {
+			var name = '_' + attrName.substring(1);
+			var value = attrValue;
+			var info = attrValue.trackAndInterpolate('}'.code, ['{'.code => '}'.code], function(s) {
+				var results = uhx.select.JsonQuery.find(data, s);
+				console.log( s, data, results );
+				return results.length > 0 ? results.join(' ') : s;
+			});
+			
+			console.log( info );
+			result = {name:name, value:info.value};
+			
+			//if (node.hasAttribute(name)) result = node.getAttribute(name) + result;
+			
+			//node.setAttribute(name, result);
+			//node.removeAttribute( attrName );
+			
+		} else {
+			var matches = uhx.select.JsonQuery.find(data, attrValue);
+			console.log( matches, data, attrValue );
+			if (matches.length > 0) {
+				var name = '_' + attrName.substring(1);
+				var value = matches.join(' ');	// TODO Look into using separator attributes.
+				
+				result = {name:name, value:value};
+				//if (node.hasAttribute(name)) value = node.getAttribute(name) + value;
+				
+				//node.setAttribute(name, value);
+				//node.removeAttribute( attrName );
+				
+			}
+			
+		}
+		
+		return result;
+	}
+	
+	/** All these are from an internal project likely never to see the light of day */
 	public static function trackAndConsume(value:String, until:Int, track:IntMap<Int>):String {
 		var result = '';
 		var length = value.length;
