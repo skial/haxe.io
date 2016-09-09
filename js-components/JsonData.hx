@@ -88,34 +88,37 @@ class JsonData extends ConvertTag {
 			
 		}
 		
-		if (!isKnown && node.nodeType == Node.ELEMENT_NODE && selector != null && selector != '') {
-			// filter json data based on the selector.
-			var matches = uhx.select.JsonQuery.find(data, selector);
-			//console.log( selector, matches, children );
-			if (children.length > 0) for (match in matches) for (child in children) {
-				// Pass each child the filtered json data.
-				if (child.nodeType == Node.ELEMENT_NODE) {
-					newChildren.push( cast iterateNode( cast window.document.importNode(child, true), match ) );
-				
+		if (!isKnown) {
+			if (node.nodeType == Node.ELEMENT_NODE && selector != null && selector != '') {
+				// filter json data based on the selector.
+				var matches = uhx.select.JsonQuery.find(data, selector);
+				//console.log( selector, matches, children );
+				if (children.length > 0) for (match in matches) for (child in children) {
+					// Pass each child the filtered json data.
+					if (child.nodeType == Node.ELEMENT_NODE) {
+						newChildren.push( cast iterateNode( cast window.document.importNode(child, true), match ) );
+						
+					} else {
+						newChildren.push( window.document.importNode(child, true) );
+						
+					}
+					
 				} else {
-					newChildren.push( window.document.importNode(child, true) );
+					// Append the matches as a TEXT_NODE.
+					newChildren.push( window.document.createTextNode( matches.join(' ') ) );
 					
 				}
 				
 			} else {
-				// Append the matches as a TEXT_NODE.
-				newChildren.push( window.document.createTextNode( matches.join(' ') ) );
-				
-			}
-			
-		} else {
-			if (children.length > 0) for (child in children) {
-				// Pass each child the filtered json data.
-				if (child.nodeType == Node.ELEMENT_NODE) {
-					newChildren.push( iterateNode( cast window.document.importNode(child, true), data ) );
-					
-				} else {
-					newChildren.push( window.document.importNode(child, true) );
+				if (children.length > 0) for (child in children) {
+					// Pass each child the filtered json data.
+					if (child.nodeType == Node.ELEMENT_NODE) {
+						newChildren.push( iterateNode( cast window.document.importNode(child, true), data ) );
+						
+					} else {
+						newChildren.push( window.document.importNode(child, true) );
+						
+					}
 					
 				}
 				
@@ -166,14 +169,18 @@ class JsonData extends ConvertTag {
 						replacement = cast window.document.createTextNode( match.value );
 						
 					} else {
-						replacement = cast window.document.createElement( attribute.value );
+						//console.log( 'innerhtml', node.innerHTML );
+						replacement = cast window.document.createElement( 'div' );
+						//console.log( '<${attribute.value} ' + [for (a in node.attributes) if (a.name != ':to')'${a.name}="${a.value}"'].join(' ') + '>${node.innerHTML}</${attribute.value}>' );
+						replacement.innerHTML = '<${attribute.value} ' + [for (a in node.attributes) if (a.name != ':to')'${a.name}="${a.value}"'].join(' ') + '>${node.innerHTML}</${attribute.value}>';
+						replacement = cast replacement.firstChild;
 						
 					}
 					
 					if (replacement != null) {
 						//console.log( window.document.importNode(node, true), node.parentNode, replacement, matches, attribute.value );
 						if (replacement.nodeType == Node.ELEMENT_NODE) for (attribute in node.attributes) {
-							if (!replacement.hasAttribute(attribute.name)) {
+							if (attribute.name != ':to' && !replacement.hasAttribute(attribute.name)) {
 								replacement.setAttribute( attribute.name, attribute.value );
 								
 							}
@@ -230,16 +237,16 @@ class JsonData extends ConvertTag {
 			result.name = '_' + attrName.substring(1);
 			var info = result.value.trackAndInterpolate('}'.code, ['{'.code => '}'.code], function(s) {
 				var results = uhx.select.JsonQuery.find(data, s);
-				//console.log( s, data, results );
+				console.log( 'json matches', s, data, results );
 				return results.length > 0 ? results.join(' ') : s;
 			});
 			
-			//console.log( info );
+			console.log( 'inter attr', info );
 			result.value = info.value;
 			
 		} else {
 			var matches = uhx.select.JsonQuery.find(data, attrValue);
-			//console.log( matches, data, attrValue );
+			console.log( 'json matches', matches, data, attrValue );
 			if (matches.length > 0) {
 				result.name = '_' + attrName.substring(1);
 				var value = matches.join(' ');	// TODO Look into using separator attributes.
@@ -249,7 +256,7 @@ class JsonData extends ConvertTag {
 			}
 			
 		}
-		//console.log( result );
+		console.log( 'attr result', result );
 		return result;
 	}
 	
