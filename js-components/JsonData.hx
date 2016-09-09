@@ -39,7 +39,7 @@ class JsonData extends ConvertTag {
 	
 	private override function process() {
 		for (key in data.keys()) {
-			trace( key );
+			//trace( key );
 			useJsonData(data.get(key));
 			
 		}
@@ -70,31 +70,37 @@ class JsonData extends ConvertTag {
 	
 	private function iterateNode(node:Element, data:DynamicAccess<Dynamic>):Element {
 		var results = [];
+		//console.log( window.document.importNode(node, true), data );
 		var selector = node.getAttribute('select');
-		console.log( window.document.importNode(node, true) );
+		//console.log(selector);
+		//console.log( window.document.importNode(node, true) );
 		var children = [for (child in node.childNodes) child];
 		var newChildren = [];
-		console.log( selector, window.document.importNode(node, true), data );
+		//console.log( selector, window.document.importNode(node, true), data );
 		// process each attribute, then each child.
 		replaceAttributePlaceholders(node, data);
-		console.log( window.document.importNode(node, true) );
+		//console.log( window.document.importNode(node, true) );
 		var converted = convertNode( node, data );
-		var isSpecial = false;
+		var isKnown = false;
 		if (node != converted) {
-			node = converted;
-			isSpecial = Component.KnownComponents.getItem(node.nodeName.toLowerCase()) != null;
+			node = cast converted;
+			isKnown = Component.KnownComponents.getItem(node.nodeName.toLowerCase()) != null;
 			
 		}
-		console.log( window.document.importNode(node, true), isSpecial );
 		
-		if (!isSpecial && selector != null && selector != '') {
+		if (!isKnown && node.nodeType == Node.ELEMENT_NODE && selector != null && selector != '') {
 			// filter json data based on the selector.
 			var matches = uhx.select.JsonQuery.find(data, selector);
-			console.log( selector, data, matches );
-			if (children.length > 0) for (child in children) {
+			//console.log( selector, matches, children );
+			if (children.length > 0) for (match in matches) for (child in children) {
 				// Pass each child the filtered json data.
-				if (child.nodeType == Node.ELEMENT_NODE) for (match in matches) child = iterateNode( cast child, match );
-				newChildren.push( child );
+				if (child.nodeType == Node.ELEMENT_NODE) {
+					newChildren.push( cast iterateNode( cast window.document.importNode(child, true), match ) );
+				
+				} else {
+					newChildren.push( window.document.importNode(child, true) );
+					
+				}
 				
 			} else {
 				// Append the matches as a TEXT_NODE.
@@ -105,31 +111,30 @@ class JsonData extends ConvertTag {
 		} else {
 			if (children.length > 0) for (child in children) {
 				// Pass each child the filtered json data.
-				if (child.nodeType == Node.ELEMENT_NODE) child = iterateNode( cast child, data );
-				newChildren.push( child );
+				if (child.nodeType == Node.ELEMENT_NODE) {
+					newChildren.push( iterateNode( cast window.document.importNode(child, true), data ) );
+					
+				} else {
+					newChildren.push( window.document.importNode(child, true) );
+					
+				}
 				
 			}
 			
 		}
 		
-		if (isSpecial) {
-			console.log( window.document.importNode(node, true) );
-			newChildren = children;
-		
-		}
-		
 		// Replace old children with processed children. Only if node is still an element.
 		if (node.nodeType == Node.ELEMENT_NODE && newChildren.length > 0) {
-			console.log( newChildren, window.document.importNode(node, true), isSpecial );
+			//console.log( 'new children', window.document.importNode(node, true), [for (n in newChildren) window.document.importNode(n, true)], isKnown );
 			node.innerHTML = '';
 			
 			for (newChild in newChildren) {
 				
-				if (!isSpecial && newChild.nodeType == Node.ELEMENT_NODE) {
+				if (!isKnown && newChild.nodeType == Node.ELEMENT_NODE) {
 					// This is from the extended class `ConvertTag`.
 					cleanNode( cast newChild );
 					
-					var removables = [for (attribute in cast (newChild, Element).attributes) switch (attribute.name.charCodeAt(0)) {
+					var removables = [for (attribute in cast (newChild, Element).attributes) switch attribute.name.charCodeAt(0) {
 						case '_'.code, ':'.code: attribute.name;
 						case _: '';
 					}];
@@ -144,18 +149,18 @@ class JsonData extends ConvertTag {
 			
 			
 		}
-		
+		//console.log( 'returning node', window.document.importNode(node, true) );
 		return node;
 		
 	}
 	
-	private function convertNode(node:Element, data:Dynamic):Element {
+	private function convertNode(node:Element, data:Dynamic):Node {
+		//console.log( data );
 		for (attribute in node.attributes) {
 			switch attribute.name {
 				case _.startsWith(':to') => true:
-					var match = processAttribute(attribute.name, attribute.value, data);
-					//var matches = uhx.select.JsonQuery.find(data, attribute.value);
 					var replacement:Element = null;
+					var match = processAttribute(attribute.name, attribute.value, data);
 					
 					if (match.value != attribute.value) {
 						replacement = cast window.document.createTextNode( match.value );
@@ -166,7 +171,7 @@ class JsonData extends ConvertTag {
 					}
 					
 					if (replacement != null) {
-						console.log( window.document.importNode(node, true), node.parentNode, replacement, matches, attribute.value );
+						//console.log( window.document.importNode(node, true), node.parentNode, replacement, matches, attribute.value );
 						if (replacement.nodeType == Node.ELEMENT_NODE) for (attribute in node.attributes) {
 							if (!replacement.hasAttribute(attribute.name)) {
 								replacement.setAttribute( attribute.name, attribute.value );
@@ -174,7 +179,8 @@ class JsonData extends ConvertTag {
 							}
 							
 						}
-						return cast replacement;
+						
+						return replacement;
 						
 					}
 					
@@ -189,45 +195,13 @@ class JsonData extends ConvertTag {
 	}
 	
 	private function replaceAttributePlaceholders(node:Element, data:Dynamic):Void {
-		for (attribute in node.attributes) {
+		// Iterate over an array instead of the live attribute list, as updating mid
+		// loop _appears_ to break early.
+		for (attribute in [for (a in node.attributes)a]) {
 			switch attribute.name {
 				case _.startsWith(':') && _ != ':to' => true:
-					var selector = attribute.value;
-					console.log( window.document.importNode(node, true), data, selector, attribute.value.indexOf('{') > -1 );
-					if (selector != null && selector != '') {
-						/*if (attribute.value.indexOf('{') > -1) {
-							var name = '_' + attribute.name.substring(1);
-							var result = attribute.value;
-							var value = attribute.value;
-							var info = attribute.value.trackAndInterpolate('}'.code, ['{'.code => '}'.code], function(s) {
-								var results = uhx.select.JsonQuery.find(data, s);
-								console.log( s, data, results );
-								return results.length > 0 ? results.join(' ') : s;
-							});
-							
-							console.log( info );
-							result = info.value;
-							
-							if (node.hasAttribute(name)) result = node.getAttribute(name) + result;
-							
-							node.setAttribute(name, result);
-							node.removeAttribute( attribute.name );
-							
-						} else {
-							var matches = uhx.select.JsonQuery.find(data, selector);
-							console.log( matches, data, selector );
-							if (matches.length > 0) {
-								var name = '_' + attribute.name.substring(1);
-								var value = matches.join(' ');	// TODO Look into using separator attributes.
-								
-								if (node.hasAttribute(name)) value = node.getAttribute(name) + value;
-								
-								node.setAttribute(name, value);
-								node.removeAttribute( attribute.name );
-								
-							}
-							
-						}*/
+					//console.log( window.document.importNode(node, true), data, attribute.name, attribute.value );
+					if (attribute.value != null && attribute.value != '') {
 						var result = processAttribute(attribute.name, attribute.value, data);
 						
 						if (result.name != attribute.name) {
@@ -241,6 +215,7 @@ class JsonData extends ConvertTag {
 					}
 					
 				case _:
+					//console.log( attribute.name, attribute.value );
 					
 			}
 			
@@ -252,39 +227,29 @@ class JsonData extends ConvertTag {
 		var result = {name:attrName, value:attrValue};
 		
 		if (attrValue.indexOf('{') > -1) {
-			var name = '_' + attrName.substring(1);
-			var value = attrValue;
-			var info = attrValue.trackAndInterpolate('}'.code, ['{'.code => '}'.code], function(s) {
+			result.name = '_' + attrName.substring(1);
+			var info = result.value.trackAndInterpolate('}'.code, ['{'.code => '}'.code], function(s) {
 				var results = uhx.select.JsonQuery.find(data, s);
-				console.log( s, data, results );
+				//console.log( s, data, results );
 				return results.length > 0 ? results.join(' ') : s;
 			});
 			
-			console.log( info );
-			result = {name:name, value:info.value};
-			
-			//if (node.hasAttribute(name)) result = node.getAttribute(name) + result;
-			
-			//node.setAttribute(name, result);
-			//node.removeAttribute( attrName );
+			//console.log( info );
+			result.value = info.value;
 			
 		} else {
 			var matches = uhx.select.JsonQuery.find(data, attrValue);
-			console.log( matches, data, attrValue );
+			//console.log( matches, data, attrValue );
 			if (matches.length > 0) {
-				var name = '_' + attrName.substring(1);
+				result.name = '_' + attrName.substring(1);
 				var value = matches.join(' ');	// TODO Look into using separator attributes.
 				
-				result = {name:name, value:value};
-				//if (node.hasAttribute(name)) value = node.getAttribute(name) + value;
-				
-				//node.setAttribute(name, value);
-				//node.removeAttribute( attrName );
+				result.value = value;
 				
 			}
 			
 		}
-		
+		//console.log( result );
 		return result;
 	}
 	
@@ -380,8 +345,8 @@ class JsonData extends ConvertTag {
 			if (track.exists( character )) {
 				var _char = track.get( character );
 				var _info = value.substr( index + 1 ).trackAndInterpolate( until, track, resolve );
-				console.log( value.substr( index+1) );
-				console.log( value.substr( index + _info.length + 2) );
+				//console.log( value.substr( index+1) );
+				//console.log( value.substr( index + _info.length + 2) );
 				var _value = _info.value;
 				match = true;
 				pos = index += _info.length + 2;
@@ -394,7 +359,7 @@ class JsonData extends ConvertTag {
 			}
 
 		}
-		console.log( value.length, pos, result, match );
+		//console.log( value.length, pos, result, match );
 		return {matched:match, length:pos, value:resolve(result)};
 	}
 	

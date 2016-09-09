@@ -15,10 +15,21 @@
 	<json-data select=".deep .a">
 		<div id="1" :class=":root > .next">
 			<span :select=".deep .a > .{:root > .next}" :to="json-data">
-				<div id="2" :class="{:root .{:root > .next} .next}">
+				<div id="2" :class=":root .{:root > .next} .next">
 					<span :to="{:root .{:root > .next} .{:root .{:root > .next} .next} }"></span>
 				</div>
 			</span>
+		</div>
+	</json-data>
+	<json-data select=".collection">
+		<span :to="*"></span>
+	</json-data>
+	<!-- Nested version -->
+	<json-data select=".collection">
+		<div :a="*" :b="#{*}">
+			<p>
+				<span :to="*"></span>
+			</p>
 		</div>
 	</json-data>
 </body>
