@@ -92,7 +92,8 @@ class JsonData extends ConvertTag {
 			if (node.nodeType == Node.ELEMENT_NODE && selector != null && selector != '') {
 				// filter json data based on the selector.
 				var matches = uhx.select.JsonQuery.find(data, selector);
-				//console.log( selector, matches, children );
+				matches = modifyData( node, matches, data );
+				console.log( selector, matches, children );
 				if (children.length > 0) for (match in matches) for (child in children) {
 					// Pass each child the filtered json data.
 					if (child.nodeType == Node.ELEMENT_NODE) {
@@ -228,6 +229,31 @@ class JsonData extends ConvertTag {
 			
 		}
 		
+	}
+	
+	public function modifyData(node:Element, matches:Array<Dynamic>, data:Dynamic):Array<Dynamic> {
+		for (attribute in node.attributes) switch attribute.name {
+			case _.startsWith('$') => true:
+				//console.log( 'modify data', matches, attribute.name, attribute.value, window.document.importNode(node, true), data );
+				if (attribute.value != null && attribute.value != '') {
+					var result = processAttribute(attribute.name, attribute.value, data);
+					
+					for (match in matches) if ((Type.typeof(match) == TObject)) {
+						var access:DynamicAccess<Any> = match;
+						if (!access.exists(result.name.substring(1))) {
+							access.set( result.name.substring(1), result.value );
+							
+						}
+						
+					}
+					
+				}
+				
+			case _:
+				
+		}
+		
+		return matches;
 	}
 	
 	public function processAttribute(attrName:String, attrValue:String, data:Any):{name:String, value:String} {

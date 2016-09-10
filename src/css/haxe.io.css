@@ -283,11 +283,11 @@ html[class*="/ld"] li a:not([type]):hover {
 	text-decoration: underline;
 }
 
-html[class*="/ld"] li a:not([type])[href*="//ludumdare.com/compo/"] {
+html[class*="/ld"] li a:not([type])[href*="//ludumdare.com/compo/ludum-dare"] {
 	
 }
 
-html[class*="/ld"] li a:not([type])[href*="//ludumdare.com/compo/"]:after {
+html[class*="/ld"] li a:not([type])[href*="//ludumdare.com/compo/ludum-dare"]:after {
 	content: "c";
   /*margin-left: 0.1rem;*/
   /*margin-right: 0.2rem;*/
