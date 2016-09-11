@@ -198,7 +198,7 @@ class LDController {
 			}
 			
 		} else {
-			result.frameworks.remove( {framework:framework} );
+			result.frameworks = result.frameworks.filter( function(f) return f.framework != framework );
 			
 		}
 		
