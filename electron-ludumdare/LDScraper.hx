@@ -64,7 +64,7 @@ class LDScraper {
 			author:{ name:entry.childNodes[entry.childNodes.length -1].textContent, url:'' }, 
 			url: entry.getAttribute('href'),
 			name: entry.querySelectorAll('.title')[0].textContent,
-			type: Compo, platforms: [], frameworks: [framework],
+			type: Compo, platforms: [], links: [], frameworks: [framework],
 		}];
 		
 		console.log( results );
@@ -78,7 +78,7 @@ class LDScraper {
 		console.log( 'updating ${entry.name}' );
 		
 		var links:Array<Element> = cast qsa('.links ul li a');
-		for (link in links) entry.platforms.push( {url: link.getAttribute('href'), label: link.textContent.toLowerCase()} );
+		for (link in links) entry.links.push( {url: link.getAttribute('href'), label: link.textContent.toLowerCase()} );
 		console.log( links );
 		
 		var type = Compo;

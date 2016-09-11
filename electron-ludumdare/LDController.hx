@@ -42,7 +42,8 @@ typedef LDEntry = {
 	var url:SafeValue;
 	var name:SafeValue;
 	var type:LDType;
-	var platforms:Array<LDLink>;
+	var links:Array<LDLink>;
+	var platforms:Array<String>;
 	var frameworks:Array<String>;
 }
 
@@ -59,6 +60,38 @@ typedef LDLink = {
 @:enum abstract LDType(String) from String to String {
 	public var Jam = 'jam';
 	public var Compo = 'compo';
+}
+
+@:enum abstract LDPlatform(String) to String to SafeValue {
+	public var Windows = 'windows';
+	public var Linux = 'linux';
+	public var OSX = 'osx';
+	public var IOS = 'ios';
+	public var Android = 'android';
+	public var Web = 'web';
+	public var Source = 'source';
+	public var GitHub = 'github';
+	public var Bitbucket = 'bitbucket';
+	public var Flash = 'flash';
+	public var HTML5 = 'html5';
+	public var Itchio = 'itch.io';
+	public var Unknown = '_';
+	
+	public static var all:Array<String> = [Windows, Linux, OSX, IOS, Android,
+	Web, Source, GitHub, Bitbucket, Flash, HTML5, Itchio];
+	
+	@:from public static function fromString(v:String):LDPlatform {
+		return switch v.toLowerCase() {
+			case all.indexOf( v ) > -1 => true: cast v;
+			case 'mac', 'os/x': OSX;
+			case 'itch.io': Itchio;
+			case _.indexOf('bitbucket') > -1 => true: Bitbucket;
+			case _.indexOf('github') > -1 => true: GitHub;
+			case _.indexOf('flash') > -1 => true: Flash;
+			case _.indexOf('html5') > -1 => true: HTML5;
+			case _: Unknown;
+		}
+	}
 }
 
 @:cmd
@@ -187,6 +220,8 @@ class LDController {
 		if (entries.length > 0) for (entry in entries) {
 			var exists = [for (e in result.entries) if (e.name == entry.name) e];
 			if (exists.length == 0) {
+				entry.platforms = collectPlatforms( entry.links );
+				
 				result.entries.push( entry );
 				
 			} else {
@@ -213,6 +248,24 @@ class LDController {
 			
 		}
 		
+	}
+	
+	private function collectPlatforms(links:Array<LDLink>):Array<String> {
+		var platforms:Array<String> = [];
+		
+		for (link in links) {
+			for (part in link.label.split(' ')) {
+				var value = LDPlatform.fromString(part);
+				if (value != Unknown && platforms.indexOf( value ) == -1) platforms.push( value );
+				
+			}
+			
+			var extra = LDPlatform.fromString( link.url );
+			if (extra != link.url && extra != Unknown && platforms.indexOf( extra ) == -1) platforms.push( extra );
+			
+		}
+		
+		return platforms;
 	}
 	
 	private function processEntries():Void {
@@ -266,6 +319,7 @@ class LDController {
 		var copy = result.entries.copy();
 		
 		for (i in 0...copy.length) if (copy[i].url == entry.url) {
+			entry.platforms = collectPlatforms( entry.links );
 			result.entries[i] = entry;
 			
 		}
