@@ -40,11 +40,11 @@
 					<json-data select=".framework">
 						<h2><a :id="*" type="text/html" :href="#{*}"><span></span></a><span :to="*"></span></h2>
 						<ul>
-							<span :select=".entries:has([frameworks$='{*}']))" $ld=".extra > .ld" :to="json-data">
+							<span :select=".entries:has([frameworks$='{*}'])" $ld=".extra > .ld" :to="json-data">
 								<li>
-									<span :to="a" :href="http://ludumdare.com/compo/ludum-dare-{.ld}/{:root > .url}?{:root > .type}"><span :to="{:root > .name}"></span></span>
+									<a :href="http://ludumdare.com/compo/ludum-dare-{.ld}/{:root > .url}?{:root > .type}"><span :to="{:root > .name}"></span></a>
 									by
-									<span :to="a" :href="http://ludumdare.com/compo{.author > .url}"><span :to="{.author > .name}"></span></span>.
+									<a :href="http://ludumdare.com/compo{.author > .url}"><span :to="{.author > .name}"></span></a>.
 								</li>
 							</span>
 						</ul>

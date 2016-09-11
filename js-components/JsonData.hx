@@ -94,7 +94,7 @@ class JsonData extends ConvertTag {
 				var matches = uhx.select.JsonQuery.find(data, selector);
 				matches = modifyData( node, matches, data );
 				console.log( selector, matches, children );
-				if (children.length > 0) for (match in matches) for (child in children) {
+				if (matches.length > 0 && children.length > 0) for (match in matches) for (child in children) {
 					// Pass each child the filtered json data.
 					if (child.nodeType == Node.ELEMENT_NODE) {
 						newChildren.push( cast iterateNode( cast window.document.importNode(child, true), match ) );

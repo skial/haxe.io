@@ -280,6 +280,36 @@
     },
     {
       "author": {
+        "name": "Aurel Bílý",
+        "url": "/author/aurel300/"
+      },
+      "frameworks": [
+        "haxe"
+      ],
+      "name": "R. Lastey, archaeologist",
+      "platforms": [
+        {
+          "label": "web (flash .swf)",
+          "url": "http://ludum.thenet.sk/ld36/"
+        },
+        {
+          "label": "source (haxe)",
+          "url": "http://ludum.thenet.sk/ld36/rlastey_src.zip"
+        },
+        {
+          "label": "post-mortem",
+          "url": "http://www.thenet.sk/?game/0013"
+        },
+        {
+          "label": "timelapse",
+          "url": "https://www.youtube.com/watch?v=A-CNBaxUBW8"
+        }
+      ],
+      "type": "jam",
+      "url": "?action=preview&uid=1645"
+    },
+    {
+      "author": {
         "name": "runvs",
         "url": "/author/runvs/"
       },
@@ -344,6 +374,33 @@
     },
     {
       "author": {
+        "name": "chocobyte",
+        "url": "/author/chocobyte/"
+      },
+      "frameworks": [
+        "haxe",
+        "haxeflixel"
+      ],
+      "name": "Wild West Hero",
+      "platforms": [
+        {
+          "label": "web",
+          "url": "https://itch.io/embed-upload/262836?color=333333"
+        },
+        {
+          "label": "windows",
+          "url": "https://chocobyte.itch.io/wild-west-hero"
+        },
+        {
+          "label": "source",
+          "url": "https://github.com/cbyte/LD36"
+        }
+      ],
+      "type": "compo",
+      "url": "?action=preview&uid=17858"
+    },
+    {
+      "author": {
         "name": "David Durham",
         "url": "/author/d_durham/"
       },
@@ -372,13 +429,7 @@
       "framework": "haxeflixel"
     },
     {
-      "framework": "haxepunk"
-    },
-    {
       "framework": "luxeengine"
-    },
-    {
-      "framework": "snowkit"
     }
   ]
 }
