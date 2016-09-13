@@ -134,17 +134,42 @@ class Controller {
 	
 	private function init() {
 		for (object in json) {
+			console.log( json );
+			console.log( payload.extra );
 			if (object.trim().startsWith('{')) {
 				var struct = haxe.Json.parse( object );
-				payload.extra = thx.Objects.combine( cast payload.extra, struct );
+				payload.extra = thx.Objects.assign( cast payload.extra, struct, function(field, oldv, newv) {
+					if ((oldv is Array<Any>) && (newv is Array<Any>)) {
+						for (value in (newv:Array<Any>)) {
+							(oldv:Array<Any>).push( value );
+							
+						}
+						
+						return oldv;
+						
+					}
+					return newv;
+				} );
 				
 			} else try {
-				payload.extra = thx.Objects.combine( cast payload.extra, haxe.Json.parse( sys.io.File.getContent( object ) ) );
+				payload.extra = thx.Objects.assign( cast payload.extra, haxe.Json.parse( sys.io.File.getContent( object ) ), function(field, oldv, newv) {
+					if ((oldv is Array<Any>) && (newv is Array<Any>)) {
+						for (value in (newv:Array<Any>)) {
+							(oldv:Array<Any>).push( value );
+							
+						}
+						
+						return oldv;
+						
+					}
+					return newv;
+				} );
 				
 			} catch (e:Dynamic) {
 				console.log('Unable to load $object');
 				
 			}
+			console.log( payload.extra );
 			
 		}
 		
