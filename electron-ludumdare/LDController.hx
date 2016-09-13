@@ -62,6 +62,24 @@ typedef LDLink = {
 	public var Compo = 'compo';
 }
 
+abstract Framework(String) to String to SafeValue {
+	public inline function new(v) this = v;
+	
+	@:from public static function fromString(v:String):Framework {
+		return new Framework(switch v {
+			case 'openfl': 'OpenFL';
+			case 'haxeflixel': 'HaxeFlixel';
+			case 'haxepunk': 'HaxePunk';
+			case 'snow': 'Snõw';
+			case 'luxeengine': 'Luxe Engine';
+			case _:
+				var bits = v.split('');
+				bits[0] = bits[0].toUpperCase();
+				bits.join('');
+		});
+	}
+}
+
 @:enum abstract LDPlatform(String) to String to SafeValue {
 	public var Windows = 'windows';
 	public var Linux = 'linux';
@@ -84,7 +102,7 @@ typedef LDLink = {
 		return switch v.toLowerCase() {
 			case all.indexOf( v ) > -1 => true: cast v;
 			case 'mac', 'os/x': OSX;
-			case 'itch.io': Itchio;
+			case _.indexOf('itch.io') > -1 => true: Itchio;
 			case _.indexOf('bitbucket') > -1 => true: Bitbucket;
 			case _.indexOf('github') > -1 => true: GitHub;
 			case _.indexOf('flash') > -1 => true: Flash;
@@ -330,6 +348,15 @@ class LDController {
 			setTimeout( processEntries, cast delay );
 			
 		} else {
+			for (framework in result.frameworks) {
+				framework.framework = Framework.fromString(framework.framework);
+				
+			}
+			
+			for (entry in result.entries) for (i in 0...entry.frameworks.length) {
+				entry.frameworks[i] = Framework.fromString(entry.frameworks[i]);
+				
+			}
 			completeEntries();
 			
 		}
