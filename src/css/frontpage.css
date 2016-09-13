@@ -75,7 +75,7 @@ html[class*="/frontpage"] main ul li[id^="link"] {
 	align-items: center;
 }
 
-html[class*="/frontpage"] main ul li[id^="link"]::after {
+/*html[class*="/frontpage"] main ul li[id^="link"]::after {
 	content: url("/svg/external-link.min.svg");
 	position: relative;
 	display: inline-block;
@@ -83,7 +83,7 @@ html[class*="/frontpage"] main ul li[id^="link"]::after {
 	height: 1.5rem;
 	margin-left: 1rem;
 	color: rgba(51 ,51, 51, 1);
-}
+}*/
 
 html[class*="/frontpage"] main li > *:not(h1):not(a) {
 	display: none;
