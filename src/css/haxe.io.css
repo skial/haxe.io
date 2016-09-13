@@ -552,15 +552,18 @@ aside > a {
 	border-style: none;
 }
 
+a.contribute,
 aside > a:hover {
 	color: white;
 }
 
+a.contribute,
 aside > a[href*="next-roundup"] {
 	background-color: rgba(108,198,68,0.8);
 	/*background-color: #52c9f4;*/
 }
 
+a.contribute:hover,
 aside > a[href*="next-roundup"]:hover {
 	background-color: rgba(108,198,68,1);
 	/*background-color: #22baf1;*/

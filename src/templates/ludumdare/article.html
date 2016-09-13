@@ -44,18 +44,18 @@
 							<li><label class="label osx" for="osx" onclick=";">OSX</label></li>
 							<li><label class="label linux" for="linux" onclick=";">Linux</label></li>
 							<li><label class="label windows" for="windows" onclick=";">Win<span class="long">dows</span></label></li>
-							<li><label class="label source" for="source" onclick=";">Source</label></li>
+							<li><label class="label source" for="source" onclick=";">Has Source</label></li>
 						</ul>
 					</div>
-					<a href="https://github.com/skial/haxe.io/issues?labels=next-roundup&amp;page=1&amp;state=open">Add your game</a> 
-					<json-data to:a href="https://github.com/skial/haxe.io/tree/master/" :href=".input .raw">Correct this article</json-data>
+					<a class="contribute" href="https://github.com/skial/haxe.io/issues/334">Add your game</a>
+					<!--<json-data to:a href="https://github.com/skial/haxe.io/tree/master/" :href=".input .raw">Correct this article</json-data>-->
 				</aside>
 				<section class="grid-2-3">
 					<content></content>
 					<json-data select=".framework">
 						<h2><a :id="*" type="text/html" :href="#{*}"><span></span></a><span :to="*"></span></h2>
 						<ul>
-							<span :select=".entries:has([frameworks^='{*}'])" $ld=".extra > .entries + .ld" :to="json-data">
+							<span :select=".entries:has([frameworks$='{*}'])" $ld=".extra > .entries + .ld" :to="json-data">
 								<li :data-platforms="{.platforms}">
 									<a :href="http://ludumdare.com/compo/ludum-dare-{.ld}/{:root > .url}?{:root > .type}"><span :to="{:root > .name}"></span></a>
 									by
