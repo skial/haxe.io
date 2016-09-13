@@ -37,7 +37,7 @@ class Component extends Element {
 			case [x, true]:
 				if (x) htmlPrefix = template.getAttribute('data-prefix');
 				htmlName = '$htmlPrefix-' + template.getAttribute('data-name');
-				trace( 'registering element <$htmlName>' );
+				//trace( 'registering element <$htmlName>' );
 				if (KnownComponents.getItem( htmlName ) == null) KnownComponents.setItem( htmlName.toLowerCase(), htmlName.toLowerCase() );
 				if (self == null) self = this;
 				register();
@@ -68,7 +68,7 @@ class Component extends Element {
 		} else if (node.nodeType != Node.COMMENT_NODE) {
 			var ele:Element = untyped node;
 			var stamp = ele.nodeName + [for (a in ele.attributes) if (a.name != 'uid') a.name + a.value].join('') + ele.querySelectorAll('*').length;
-			trace( stamp );
+			//trace( stamp );
 			result = hash.encode( [for (i in 0...stamp.length) stamp.charCodeAt(i)] );
 			
 		}
@@ -85,7 +85,7 @@ class Component extends Element {
 		
 		observer = new MutationObserver(mutation);
 		observer.observe(root, {childList:true, subtree:true});
-		trace( '$htmlName cb called' );
+		//trace( '$htmlName cb called' );
 		
 	}
 	
@@ -94,7 +94,7 @@ class Component extends Element {
 		for (i in 0...contents.length) {
 			var content:ContentElement = untyped contents[i];
 			content.setAttribute('uid', '$uid.$i' );
-			trace( content );
+			//trace( content );
 		}
 		
 	}
@@ -110,7 +110,7 @@ class Component extends Element {
 		//console.log( customElements );
 		pending = total = customElements.length;
 		if (customElements.length > 0) {
-			trace(pending);
+			//trace(pending);
 			registerEvents();
 			
 		} else {
@@ -121,14 +121,15 @@ class Component extends Element {
 	}
 	
 	private function check(?e:CustomEvent):Void {
-		trace( 'checking $htmlName $pending - $uid' );
+		//trace( 'checking $htmlName $pending - $uid' );
 		if (e != null) {
-			trace( e.detail );
+			//trace( e.detail );
 			e.stopPropagation();
 			--pending;
 		}
-		trace( '$htmlName $pending' );
-		if (pending == 0) {
+		
+		console.log( '$htmlName $pending' );
+		if (pending <= 0) {
 			window.setTimeout( process, 0 );
 			
 		}
@@ -145,7 +146,7 @@ class Component extends Element {
 	private function done():Void {
 		removeEvents();
 		observer.disconnect();
-		trace( 'dispatching DOMCustomElementFinished from $htmlName - $uid' );
+		//trace( 'dispatching DOMCustomElementFinished from $htmlName - $uid' );
 		this.dispatchEvent( new CustomEvent('DOMCustomElementFinished', {detail:uid, bubbles:true, cancelable:true}) );
 		
 	}
@@ -164,12 +165,13 @@ class Component extends Element {
 		}
 		
 		var shadowPoints = root.querySelectorAll('content');
+		
 		for (point in shadowPoints) {
 			var point:ContentElement = untyped point;
 			var cuid = untyped point.getAttribute('uid');
 			var distributedNodes = point.getDistributedNodes();
 			var placeholder = window.document.querySelectorAll('[uid="$cuid"]')[0];
-			trace( placeholder );
+			//trace( placeholder );
 			if (placeholder != null) for (node in distributedNodes) {
 				placeholder.parentElement.insertBefore(window.document.importNode(node, true), placeholder);
 				
@@ -194,12 +196,20 @@ class Component extends Element {
 	}
 	
 	private function removeSelf():Void {
+		/*var contents = root.querySelectorAll('content[uid]');
+		console.log( 'content elements', contents );
+		if (contents.length > 0) for (content in contents) {
+			var matches = window.document.querySelectorAll('[uid]');
+			console.log( matches );
+			
+		}*/
 		var self = window.document.querySelector( '[uid="$uid"]' );
 		if (self != null) self.parentNode.removeChild( self );
 	}
 	
 	private function mutation(changes:Array<MutationRecord>, observer:MutationObserver):Void {
-		console.log( 'MUTATION' );
+		//console.log( 'MUTATION' );
+		//console.log( window.document.importNode( this, true ) );
 		for (change in changes) switch change.type {
 			case 'attributes':
 				
@@ -213,10 +223,10 @@ class Component extends Element {
 				// I'm only _currently_ interested in added nodes.
 				var newChildren = [for (n in change.addedNodes) n];
 				
-				var components = newChildren.filter( function(n) return KnownComponents.getItem(n.nodeName) != null );
+				var components = newChildren.filter( function(n) return KnownComponents.getItem(n.nodeName.toLowerCase()) != null );
 				
 				if (components.length > 0) {
-					console.log( 'increasing counters', this, components );
+					//console.log( 'increasing counters', total, pending, parent, components );
 					total += components.length;
 					pending += components.length;
 					

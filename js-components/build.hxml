@@ -14,16 +14,19 @@
 
 --next 
 
+--no-traces
 -main DocumentHeader
 -js document.head.js
 
 --next
 
+--no-traces
 -main DocumentBody
 -js document.body.js
 
 --next
 
+--no-traces
 -main ConvertTag
 -js convert.tag.js
 
@@ -34,6 +37,7 @@
 
 --next
 
+--no-traces
 -main CssSelector
 -js css.selector.js
 
@@ -44,28 +48,33 @@
 
 --next 
 
+--no-traces
 -main DocumentHeader
 -js ../src/js/document.head.js
 
 --next
 
+--no-traces
 -main DocumentBody
 -js ../src/js/document.body.js
 
 --next
 
 #-debug
+--no-traces
 -main ConvertTag
 -js ../src/js/convert.tag.js
 
 --next
 
 #-debug
+--no-traces
 -main JsonData
 -js ../src/js/json.data.js
 
 --next
 
 #-debug
+--no-traces
 -main CssSelector
 -js ../src/js/css.selector.js

@@ -57,9 +57,6 @@ class JsonData extends ConvertTag {
 	}
 	
 	public function useJsonData(json:Dynamic) {
-		trace( 'using json data' );
-		//console.log( json );
-		
 		iterateNode(this, data);
 		
 		processComponent();
@@ -70,16 +67,12 @@ class JsonData extends ConvertTag {
 	
 	private function iterateNode(node:Element, data:DynamicAccess<Dynamic>):Element {
 		var results = [];
-		//console.log( window.document.importNode(node, true), data );
 		var selector = node.getAttribute('select');
-		//console.log(selector);
-		//console.log( window.document.importNode(node, true) );
 		var children = [for (child in node.childNodes) child];
 		var newChildren = [];
-		//console.log( selector, window.document.importNode(node, true), data );
 		// process each attribute, then each child.
 		replaceAttributePlaceholders(node, data);
-		//console.log( window.document.importNode(node, true) );
+		
 		var converted = convertNode( node, data );
 		var isKnown = false;
 		if (node != converted) {
@@ -93,7 +86,7 @@ class JsonData extends ConvertTag {
 				// filter json data based on the selector.
 				var matches = uhx.select.JsonQuery.find(data, selector);
 				matches = modifyData( node, matches, data );
-				console.log( selector, matches, children );
+				
 				if (matches.length > 0 && children.length > 0) for (match in matches) for (child in children) {
 					// Pass each child the filtered json data.
 					if (child.nodeType == Node.ELEMENT_NODE) {
@@ -129,7 +122,6 @@ class JsonData extends ConvertTag {
 		
 		// Replace old children with processed children. Only if node is still an element.
 		if (node.nodeType == Node.ELEMENT_NODE && newChildren.length > 0) {
-			//console.log( 'new children', window.document.importNode(node, true), [for (n in newChildren) window.document.importNode(n, true)], isKnown );
 			node.innerHTML = '';
 			
 			for (newChild in newChildren) {
@@ -153,13 +145,12 @@ class JsonData extends ConvertTag {
 			
 			
 		}
-		//console.log( 'returning node', window.document.importNode(node, true) );
+		
 		return node;
 		
 	}
 	
 	private function convertNode(node:Element, data:Dynamic):Node {
-		//console.log( data );
 		for (attribute in node.attributes) {
 			switch attribute.name {
 				case _.startsWith(':to') => true:
@@ -170,16 +161,13 @@ class JsonData extends ConvertTag {
 						replacement = cast window.document.createTextNode( match.value );
 						
 					} else {
-						//console.log( 'innerhtml', node.innerHTML );
 						replacement = cast window.document.createElement( 'div' );
-						//console.log( '<${attribute.value} ' + [for (a in node.attributes) if (a.name != ':to')'${a.name}="${a.value}"'].join(' ') + '>${node.innerHTML}</${attribute.value}>' );
 						replacement.innerHTML = '<${attribute.value} ' + [for (a in node.attributes) if (a.name != ':to')'${a.name}="${a.value}"'].join(' ') + '>${node.innerHTML}</${attribute.value}>';
 						replacement = cast replacement.firstChild;
 						
 					}
 					
 					if (replacement != null) {
-						//console.log( window.document.importNode(node, true), node.parentNode, replacement, matches, attribute.value );
 						if (replacement.nodeType == Node.ELEMENT_NODE) for (attribute in node.attributes) {
 							if (attribute.name != ':to' && !replacement.hasAttribute(attribute.name)) {
 								replacement.setAttribute( attribute.name, attribute.value );
@@ -208,7 +196,6 @@ class JsonData extends ConvertTag {
 		for (attribute in [for (a in node.attributes)a]) {
 			switch attribute.name {
 				case _.startsWith(':') && _ != ':to' => true:
-					//console.log( window.document.importNode(node, true), data, attribute.name, attribute.value );
 					if (attribute.value != null && attribute.value != '') {
 						var result = processAttribute(attribute.name, attribute.value, data);
 						
@@ -223,7 +210,7 @@ class JsonData extends ConvertTag {
 					}
 					
 				case _:
-					//console.log( attribute.name, attribute.value );
+					
 					
 			}
 			
@@ -234,7 +221,6 @@ class JsonData extends ConvertTag {
 	public function modifyData(node:Element, matches:Array<Dynamic>, data:Dynamic):Array<Dynamic> {
 		for (attribute in node.attributes) switch attribute.name {
 			case _.startsWith('$') => true:
-				//console.log( 'modify data', matches, attribute.name, attribute.value, window.document.importNode(node, true), data );
 				if (attribute.value != null && attribute.value != '') {
 					var result = processAttribute(attribute.name, attribute.value, data);
 					
@@ -263,16 +249,15 @@ class JsonData extends ConvertTag {
 			result.name = '_' + attrName.substring(1);
 			var info = result.value.trackAndInterpolate('}'.code, ['{'.code => '}'.code], function(s) {
 				var results = uhx.select.JsonQuery.find(data, s);
-				console.log( 'json matches', s, data, results );
+				
 				return results.length > 0 ? results.join(' ') : s;
 			});
 			
-			console.log( 'inter attr', info );
 			result.value = info.value;
 			
 		} else {
 			var matches = uhx.select.JsonQuery.find(data, attrValue);
-			console.log( 'json matches', matches, data, attrValue );
+			
 			if (matches.length > 0) {
 				result.name = '_' + attrName.substring(1);
 				var value = matches.join(' ');	// TODO Look into using separator attributes.
@@ -282,7 +267,7 @@ class JsonData extends ConvertTag {
 			}
 			
 		}
-		console.log( 'attr result', result );
+		
 		return result;
 	}
 	
@@ -378,8 +363,6 @@ class JsonData extends ConvertTag {
 			if (track.exists( character )) {
 				var _char = track.get( character );
 				var _info = value.substr( index + 1 ).trackAndInterpolate( until, track, resolve );
-				//console.log( value.substr( index+1) );
-				//console.log( value.substr( index + _info.length + 2) );
 				var _value = _info.value;
 				match = true;
 				pos = index += _info.length + 2;
@@ -392,7 +375,7 @@ class JsonData extends ConvertTag {
 			}
 
 		}
-		//console.log( value.length, pos, result, match );
+		
 		return {matched:match, length:pos, value:resolve(result)};
 	}
 	

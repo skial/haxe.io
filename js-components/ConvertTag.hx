@@ -46,7 +46,7 @@ class ConvertTag extends Component {
 			cleanNode( this );
 			
 		} else {
-			console.log( this );
+			//console.log( this );
 			for (child in this.childNodes) {
 				var clone = window.document.importNode( child, true );
 				this.parentNode.insertBefore( clone, this );
@@ -58,7 +58,7 @@ class ConvertTag extends Component {
 	}
 	
 	private function cleanNode(node:Element):Void {
-		console.log( window.document.importNode(node, true) );
+		//console.log( window.document.importNode(node, true) );
 		for (attribute in node.attributes) if (attribute.name.startsWith('_')) {
 			node.setAttribute( attribute.name.substring(1), attribute.value );
 			

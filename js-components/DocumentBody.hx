@@ -27,8 +27,8 @@ class DocumentBody extends Component {
 			
 			for (child in distributed) {
 				var nodelist = parent.querySelectorAll( parent.nodeName + ' > ' + child.nodeName );
-				trace( parent.nodeName, child.nodeName, nodelist.length );
-				for (node in nodelist) trace( node );
+				//trace( parent.nodeName, child.nodeName, nodelist.length );
+				//for (node in nodelist) trace( node );
 				
 				var match = false;
 				for (node in nodelist) {
