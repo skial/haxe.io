@@ -19,7 +19,12 @@ class Builder {
 	
 	private var max:Int = 2;
 	private var counter:Int = 0;
+	private var timestamp:Float = 0;
+	private var waitFor:Int = 100;	// wait 100ms.
+	private var maxDuration:Int = 750;	// wait 750ms.
 	private var electron:Dynamic;
+	private var timeoutId:Null<Int>;
+	private var observer:MutationObserver;
 	private var ipcRenderer:{on:String->Function->Dynamic, once:String->Function->Dynamic, send:String->Rest<Dynamic>->Void};
 	
 	public static function main() {
@@ -29,6 +34,10 @@ class Builder {
 	public function new() {
 		trace( 'running script' );
 		electron = require('electron');
+		
+		observer = new MutationObserver(mutation);
+		observer.observe(window.document, {childList:true, subtree:true});
+		
 		ipcRenderer = electron.ipcRenderer;
 		ipcRenderer.on('html', function(e, d) processHtml( d ));
 		ipcRenderer.on('json', function(e, d) {trace(d); processJson( tink.Json.parse(d) );});
@@ -47,7 +56,7 @@ class Builder {
 		}
 		
 		counter++;
-		if (counter >= max) save();
+		if (counter >= max && timeoutId != null) timeoutId = cast setTimeout( preCheck, waitFor );
 		
 	}
 	
@@ -57,7 +66,7 @@ class Builder {
 		console.log( data );
 		
 		counter++;
-		if (counter >= max) save();
+		if (counter >= max && timeoutId != null) timeoutId = cast setTimeout( preCheck, waitFor );
 		
 	}
 	
@@ -69,7 +78,20 @@ class Builder {
 		
 	}
 	
+	public function preCheck():Void {
+		timestamp = haxe.Timer.stamp() - timestamp;
+		if (timestamp < maxDuration) {
+			timeoutId = cast setTimeout( save, waitFor );
+			
+		} else {
+			timeoutId = cast setTimeout( preCheck, waitFor );
+			
+		}
+	}
+	
 	public function save():Void {
+		clearTimeout( cast timeoutId );
+		observer.disconnect();
 		counter = -1;
 		clean();
 		
@@ -90,6 +112,31 @@ class Builder {
 			
 		}
 		
+	}
+	
+	private function mutation(changes:Array<MutationRecord>, observer:MutationObserver):Void {
+		for (change in changes) switch change.type {
+			case 'attributes':
+				
+			case 'characterData':
+				
+			case 'childList':
+				console.log( 'child list mutation update' );
+				if (timeoutId != null) clearTimeout( cast timeoutId );
+				
+				timestamp = haxe.Timer.stamp() - timestamp;
+				
+				if (timestamp < maxDuration) {
+					timeoutId = cast setTimeout( preCheck, waitFor );
+					
+				} else {
+					timeoutId = cast setTimeout( preCheck, waitFor );
+					
+				}
+				
+			case _:
+				
+		}
 	}
 	
 }
