@@ -1,0 +1,63 @@
+{
+	"entries": [
+		{
+      "author": {
+        "name": "lightsoda",
+        "url": "/author/lightsoda/"
+      },
+      "frameworks": [
+        "HaxeFlixel"
+      ],
+      "links": [
+        {
+          "label": "web",
+          "url": "http://keewee.se/ld36/html"
+        },
+        {
+          "label": "windows",
+          "url": "http://keewee.se/ld36/lightsoda-ld36-windows.zip"
+        },
+        {
+          "label": "source",
+          "url": "http://keewee.se/ld36/source.zip"
+        }
+      ],
+      "name": "Spear the sun",
+      "platforms": [
+        "web",
+        "windows",
+        "source"
+      ],
+      "type": "compo",
+      "url": "?action=preview&uid=19698"
+    },
+		{
+      "author": {
+        "name": "runedrake",
+        "url": "/author/runedrake/"
+      },
+      "frameworks": [
+        "HaxeFlixel"
+      ],
+      "links": [
+        {
+          "label": "web",
+          "url": "https://azlen.github.io/LD36/export/html5/bin/"
+        },
+        {
+          "label": "source",
+          "url": "https://github.com/azlen/LD36"
+        }
+      ],
+      "name": "Baba Yaga",
+      "platforms": [
+        "web",
+        "html5",
+        "source",
+				"github"
+      ],
+      "type": "compo",
+      "url": "?action=preview&uid=18078"
+    }
+	]
+}
