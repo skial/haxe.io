@@ -3,12 +3,115 @@
   "entries": [
     {
       "author": {
+        "name": "xWarZonex",
+        "url": "/author/xwarzonex/"
+      },
+      "frameworks": [
+        "Stencyl"
+      ],
+      "links": [
+        {
+          "label": "web",
+          "url": "http://www.stencyl.com/users/index/89259"
+        },
+        {
+          "label": "windows",
+          "url": "https://dl.dropboxusercontent.com/u/275699050/Decent%20Game%20with%20a%20Great%20Soundtrack.swf"
+        },
+        {
+          "label": "soundtrack",
+          "url": "https://soundcloud.com/noobstep-544260267/ancient"
+        },
+        {
+          "label": "source",
+          "url": "https://dl.dropboxusercontent.com/u/275699050/Wheel%20Source.stencyl"
+        }
+      ],
+      "name": "A Decent Game With A Great Soundtrack",
+      "platforms": [
+        "web",
+        "windows",
+        "source"
+      ],
+      "type": "compo",
+      "url": "?action=preview&uid=39237"
+    },
+    {
+      "author": {
+        "name": "Donni11",
+        "url": "/author/donni11/"
+      },
+      "frameworks": [
+        "Stencyl"
+      ],
+      "links": [
+        {
+          "label": "web",
+          "url": "http://www.stencyl.com/game/play/35117"
+        },
+        {
+          "label": "[ recommended ] web fullscreen ( easier to play) ",
+          "url": "http://www.stencyl.com/game/embed/35117"
+        }
+      ],
+      "name": "Candle Dungeons",
+      "platforms": [
+        "web"
+      ],
+      "type": "jam",
+      "url": "?action=preview&uid=44680"
+    },
+    {
+      "author": {
+        "name": "Raiyumi",
+        "url": "/author/raiyumi/"
+      },
+      "frameworks": [
+        "Stencyl"
+      ],
+      "links": [
+        {
+          "label": "web",
+          "url": "https://raiyumi.itch.io/gear-kitty"
+        }
+      ],
+      "name": "Gear Kitty",
+      "platforms": [
+        "web",
+        "itch.io"
+      ],
+      "type": "jam",
+      "url": "?action=preview&uid=25829"
+    },
+    {
+      "author": {
+        "name": "ElBart.37fr",
+        "url": "/author/elbart-37fr/"
+      },
+      "frameworks": [
+        "Stencyl"
+      ],
+      "links": [
+        {
+          "label": "source",
+          "url": "https://www.dropbox.com/s/9wm8ayobd7zaaed/Dragon%20de%20Loire%20v001a.stencyl?dl=0"
+        }
+      ],
+      "name": "Loire Dragon - draft 0.0.1a",
+      "platforms": [
+        "source"
+      ],
+      "type": "jam",
+      "url": "?action=preview&uid=112782"
+    },
+    {
+      "author": {
         "name": "yben",
         "url": "/author/yben/"
       },
       "frameworks": [
-        "haxeflixel",
-        "haxe"
+        "Haxe",
+        "HaxeFlixel"
       ],
       "links": [
         {
@@ -18,7 +121,8 @@
       ],
       "name": "Atlantis",
       "platforms": [
-        "web"
+        "web",
+        "itch.io"
       ],
       "type": "jam",
       "url": "?action=preview&uid=112104"
@@ -29,8 +133,8 @@
         "url": "/author/btwj_/"
       },
       "frameworks": [
-        "haxeflixel",
-        "haxe"
+        "Haxe",
+        "HaxeFlixel"
       ],
       "links": [
         {
@@ -62,8 +166,8 @@
         "url": "/author/ruthiepee/"
       },
       "frameworks": [
-        "haxeflixel",
-        "haxe"
+        "Haxe",
+        "HaxeFlixel"
       ],
       "links": [
         {
@@ -90,8 +194,8 @@
         "url": "/author/aschab/"
       },
       "frameworks": [
-        "haxeflixel",
-        "haxe"
+        "Haxe",
+        "HaxeFlixel"
       ],
       "links": [
         {
@@ -132,8 +236,8 @@
         "url": "/author/dkdwrek/"
       },
       "frameworks": [
-        "haxeflixel",
-        "haxe"
+        "Haxe",
+        "HaxeFlixel"
       ],
       "links": [
         {
@@ -152,6 +256,7 @@
       "name": "Father of Time",
       "platforms": [
         "web",
+        "itch.io",
         "windows",
         "source"
       ],
@@ -164,8 +269,8 @@
         "url": "/author/qzqxq/"
       },
       "frameworks": [
-        "haxeflixel",
-        "haxe"
+        "Haxe",
+        "HaxeFlixel"
       ],
       "links": [
         {
@@ -175,10 +280,44 @@
       ],
       "name": "Force of Wheel",
       "platforms": [
-        "web"
+        "web",
+        "itch.io"
       ],
       "type": "jam",
       "url": "?action=preview&uid=111356"
+    },
+    {
+      "author": {
+        "name": "Rudenko",
+        "url": "/author/rudenko/"
+      },
+      "frameworks": [
+        "Haxe",
+        "Luxe Engine"
+      ],
+      "links": [
+        {
+          "label": "web",
+          "url": "https://dl.dropboxusercontent.com/u/91798273/LD36/index.html"
+        },
+        {
+          "label": "windows",
+          "url": "https://dl.dropboxusercontent.com/u/91798273/LD36/LD36.zip"
+        },
+        {
+          "label": "source",
+          "url": "https://github.com/RudenkoArts/ld36"
+        }
+      ],
+      "name": "Four",
+      "platforms": [
+        "web",
+        "windows",
+        "source",
+        "github"
+      ],
+      "type": "compo",
+      "url": "?action=preview&uid=47736"
     },
     {
       "author": {
@@ -186,8 +325,8 @@
         "url": "/author/joff/"
       },
       "frameworks": [
-        "haxeflixel",
-        "haxe"
+        "Haxe",
+        "HaxeFlixel"
       ],
       "links": [
         {
@@ -210,6 +349,7 @@
       "name": "LD36",
       "platforms": [
         "web",
+        "itch.io",
         "windows",
         "osx",
         "linux"
@@ -223,8 +363,8 @@
         "url": "/author/thomastc/"
       },
       "frameworks": [
-        "haxeflixel",
-        "haxe"
+        "Haxe",
+        "HaxeFlixel"
       ],
       "links": [
         {
@@ -252,8 +392,8 @@
         "url": "/author/aeveis/"
       },
       "frameworks": [
-        "haxeflixel",
-        "haxe"
+        "Haxe",
+        "HaxeFlixel"
       ],
       "links": [
         {
@@ -284,8 +424,8 @@
         "url": "/author/andromalin/"
       },
       "frameworks": [
-        "haxeflixel",
-        "haxe"
+        "Haxe",
+        "HaxeFlixel"
       ],
       "links": [
         {
@@ -302,153 +442,11 @@
     },
     {
       "author": {
-        "name": "runvs",
-        "url": "/author/runvs/"
-      },
-      "frameworks": [
-        "haxeflixel",
-        "haxe"
-      ],
-      "links": [
-        {
-          "label": "windows",
-          "url": "http://gamejolt.com/games/raiders-of-the-ancient-technology/183947"
-        },
-        {
-          "label": "mac",
-          "url": "http://gamejolt.com/games/raiders-of-the-ancient-technology/183947"
-        }
-      ],
-      "name": "Raiders of the Ancient Technology",
-      "platforms": [
-        "windows",
-        "osx"
-      ],
-      "type": "jam",
-      "url": "?action=preview&uid=29172"
-    },
-    {
-      "author": {
-        "name": "Sébastien Bernery",
-        "url": "/author/sebbernery/"
-      },
-      "frameworks": [
-        "haxeflixel",
-        "haxe"
-      ],
-      "links": [
-        {
-          "label": "web",
-          "url": "http://docs.bernery.eu/gamejam/SteamTrainYoupi/"
-        },
-        {
-          "label": "source",
-          "url": "https://code.vikindie.fr/Sebastien/Train-LD36/tree/master"
-        }
-      ],
-      "name": "Steam Train Youpi",
-      "platforms": [
-        "web",
-        "source"
-      ],
-      "type": "compo",
-      "url": "?action=preview&uid=484"
-    },
-    {
-      "author": {
-        "name": "chocobyte",
-        "url": "/author/chocobyte/"
-      },
-      "frameworks": [
-        "haxeflixel",
-        "haxe"
-      ],
-      "links": [
-        {
-          "label": "web",
-          "url": "https://itch.io/embed-upload/262836?color=333333"
-        },
-        {
-          "label": "windows",
-          "url": "https://chocobyte.itch.io/wild-west-hero"
-        },
-        {
-          "label": "source",
-          "url": "https://github.com/cbyte/LD36"
-        }
-      ],
-      "name": "Wild West Hero",
-      "platforms": [
-        "web",
-        "windows",
-        "source",
-        "github"
-      ],
-      "type": "compo",
-      "url": "?action=preview&uid=17858"
-    },
-    {
-      "author": {
-        "name": "David Durham",
-        "url": "/author/d_durham/"
-      },
-      "frameworks": [
-        "openfl"
-      ],
-      "links": [
-        {
-          "label": "web (html5)",
-          "url": "http://www.daviddurhamgames.com/games/steaming"
-        }
-      ],
-      "name": "Steaming",
-      "platforms": [
-        "web",
-        "html5"
-      ],
-      "type": "jam",
-      "url": "?action=preview&uid=11520"
-    },
-    {
-      "author": {
-        "name": "Rudenko",
-        "url": "/author/rudenko/"
-      },
-      "frameworks": [
-        "luxeengine",
-        "haxe"
-      ],
-      "links": [
-        {
-          "label": "web",
-          "url": "https://dl.dropboxusercontent.com/u/91798273/LD36/index.html"
-        },
-        {
-          "label": "windows",
-          "url": "https://dl.dropboxusercontent.com/u/91798273/LD36/LD36.zip"
-        },
-        {
-          "label": "source",
-          "url": "https://github.com/RudenkoArts/ld36"
-        }
-      ],
-      "name": "Four",
-      "platforms": [
-        "web",
-        "windows",
-        "source",
-        "github"
-      ],
-      "type": "compo",
-      "url": "?action=preview&uid=47736"
-    },
-    {
-      "author": {
         "name": "Aurel Bílý",
         "url": "/author/aurel300/"
       },
       "frameworks": [
-        "haxe"
+        "Haxe"
       ],
       "links": [
         {
@@ -479,11 +477,65 @@
     },
     {
       "author": {
+        "name": "runvs",
+        "url": "/author/runvs/"
+      },
+      "frameworks": [
+        "Haxe",
+        "HaxeFlixel"
+      ],
+      "links": [
+        {
+          "label": "windows",
+          "url": "http://gamejolt.com/games/raiders-of-the-ancient-technology/183947"
+        },
+        {
+          "label": "mac",
+          "url": "http://gamejolt.com/games/raiders-of-the-ancient-technology/183947"
+        }
+      ],
+      "name": "Raiders of the Ancient Technology",
+      "platforms": [
+        "windows",
+        "osx"
+      ],
+      "type": "jam",
+      "url": "?action=preview&uid=29172"
+    },
+    {
+      "author": {
+        "name": "Sébastien Bernery",
+        "url": "/author/sebbernery/"
+      },
+      "frameworks": [
+        "Haxe",
+        "HaxeFlixel"
+      ],
+      "links": [
+        {
+          "label": "web",
+          "url": "http://docs.bernery.eu/gamejam/SteamTrainYoupi/"
+        },
+        {
+          "label": "source",
+          "url": "https://code.vikindie.fr/Sebastien/Train-LD36/tree/master"
+        }
+      ],
+      "name": "Steam Train Youpi",
+      "platforms": [
+        "web",
+        "source"
+      ],
+      "type": "compo",
+      "url": "?action=preview&uid=484"
+    },
+    {
+      "author": {
         "name": "jeremyfa",
         "url": "/author/jeremyfa/"
       },
       "frameworks": [
-        "haxe"
+        "Haxe"
       ],
       "links": [
         {
@@ -497,20 +549,79 @@
       ],
       "type": "jam",
       "url": "?action=preview&uid=50305"
+    },
+    {
+      "author": {
+        "name": "chocobyte",
+        "url": "/author/chocobyte/"
+      },
+      "frameworks": [
+        "Haxe",
+        "HaxeFlixel"
+      ],
+      "links": [
+        {
+          "label": "web",
+          "url": "https://itch.io/embed-upload/262836?color=333333"
+        },
+        {
+          "label": "windows",
+          "url": "https://chocobyte.itch.io/wild-west-hero"
+        },
+        {
+          "label": "source",
+          "url": "https://github.com/cbyte/LD36"
+        }
+      ],
+      "name": "Wild West Hero",
+      "platforms": [
+        "web",
+        "itch.io",
+        "windows",
+        "source",
+        "github"
+      ],
+      "type": "compo",
+      "url": "?action=preview&uid=17858"
+    },
+    {
+      "author": {
+        "name": "David Durham",
+        "url": "/author/d_durham/"
+      },
+      "frameworks": [
+        "OpenFL"
+      ],
+      "links": [
+        {
+          "label": "web (html5)",
+          "url": "http://www.daviddurhamgames.com/games/steaming"
+        }
+      ],
+      "name": "Steaming",
+      "platforms": [
+        "web",
+        "html5"
+      ],
+      "type": "jam",
+      "url": "?action=preview&uid=11520"
     }
   ],
   "frameworks": [
     {
-      "framework": "haxe"
+      "framework": "Haxe"
     },
     {
-      "framework": "openfl"
+      "framework": "OpenFL"
     },
     {
-      "framework": "haxeflixel"
+      "framework": "HaxeFlixel"
     },
     {
-      "framework": "luxeengine"
+      "framework": "Luxe Engine"
+    },
+    {
+      "framework": "Stencyl"
     }
   ]
 }
