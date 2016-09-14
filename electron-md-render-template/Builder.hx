@@ -87,9 +87,11 @@ class Builder {
 			timeoutId = cast setTimeout( preCheck, waitFor );
 			
 		}
+		
 	}
 	
 	public function save():Void {
+		// Wait until `maxDuration` has passed of no dom changes before continuing.
 		clearTimeout( cast timeoutId );
 		observer.disconnect();
 		counter = -1;
@@ -121,7 +123,7 @@ class Builder {
 			case 'characterData':
 				
 			case 'childList':
-				console.log( 'child list mutation update' );
+				//console.log( 'child list mutation update' );
 				if (timeoutId != null) clearTimeout( cast timeoutId );
 				
 				timestamp = haxe.Timer.stamp() - timestamp;

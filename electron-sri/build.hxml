@@ -1,0 +1,11 @@
+-lib hxnodejs
+-lib thx.core
+-lib cmd
+-D dce=full
+-cp .
+#--no-traces
+
+--each 
+
+-main SubresourceIntegrity
+-js ../site/subresourceintegrity.js

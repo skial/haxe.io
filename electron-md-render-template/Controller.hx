@@ -53,7 +53,7 @@ class Controller {
 	private static var app:Dynamic;
 	private static var twemoji:Dynamic;
 	private static var electron:Dynamic;
-	private static var ipcMain:{on:String->Function->Dynamic};
+	private static var ipcMain:{on:String->Function->Dynamic, once:String->Function->Dynamic};
 
 	public static function main() {
 		electron = require('electron');
@@ -78,6 +78,14 @@ class Controller {
 	@alias public var script:String;
 	
 	/**
+	Extra scripts to be loaded which extend this scripts abilities.
+	*/
+	@alias('sc')
+	public var scripts:Array<String>;
+	
+	private var completedScripts:Map<String, Bool> = new Map();
+	
+	/**
 	Extra json data to be passed to various custom elements.
 	*/
 	@alias public var json:Array<String> = [];
@@ -85,7 +93,7 @@ class Controller {
 	@alias public var basePaths:Array<String> = [];
 	
 	/**
-	Which markdown-it plugins should be loaded.
+	The markdown-it plugins should be loaded.
 	*/
 	@alias('md') public var mdPlugins:Array<String> = [];
 	
@@ -133,6 +141,16 @@ class Controller {
 	}
 	
 	private function init() {
+		// Load extra scripts in, which are loaded just before the page starts rendering.
+		for (script in scripts) {
+			var name = script.withoutExtension();
+			completedScripts.set( name, false );
+			
+			ipcMain.once( '$name:complete', handleScriptCompletion.bind(_, _, name) );
+			
+		}
+		
+		// Modify the json structure.
 		for (object in json) {
 			console.log( json );
 			console.log( payload.extra );
@@ -173,6 +191,7 @@ class Controller {
 			
 		}
 		
+		// Pass extra options to markdownIt plugins.
 		md = untyped __js__('new {0}', markdownIt)({ html: true, linkify: true, typographer: true });
 		var options = {};
 		
@@ -189,7 +208,7 @@ class Controller {
 			
 		}
 		
-		
+		// Modify the markdownIt `reference` token rule.
 		var index = md.block.ruler.__find__('reference');
 		var original = md.block.ruler.__rules__[index].fn;
 		
@@ -237,11 +256,12 @@ class Controller {
 			return result;
 		});
 		
+		// Add twemoji support to markdownIt
 		twemoji = require('twemoji');
 		md.renderer.rules.emoji = function(token, idx) {
 			return twemoji.parse(token[idx].content, {ext:'.svg', base:'/twemoji/', folder:'svg'});
 		};
-
+		
 		readFile('$cwd/$input'.normalize(), {encoding:'utf8'}, function(error, content) {
 			if (error != null) throw error;
 			var ast = preprocessAst( md.parse( content, mdEnvironment ) );
@@ -250,7 +270,7 @@ class Controller {
 			processHtml( html );
 			
 		});
-
+		
 	}
 
 	private function preprocessAst(ast:Array<Token>):Array<Token> {
@@ -343,6 +363,10 @@ class Controller {
 			}
 			
 		});
+	}
+	
+	private function handleScriptCompletion(event:String, args:Array<String>, name:String):Void {
+		completedScripts.set( name, true );
 	}
 	
 	private function daySuffix(n:Int):String {
