@@ -21,6 +21,13 @@ using thx.Objects;
 using haxe.io.Path;
 using unifill.Unifill;
 
+typedef Data = {
+	var html:String;
+	var payload:Payload;
+	var args:Array<String>;
+	var scripts:Array<String>;
+}
+
 typedef Payload = {
 	var input:{raw:String, directory:String, parts:Array<String>, filename:String, extension:String};
 	var output:{raw:String, directory:String, parts:Array<String>, filename:String, extension:String};
@@ -107,6 +114,15 @@ class Controller {
 	private var config:Dynamic = { webPreferences:{} };
 	private var mdObject:DynamicAccess<Dynamic>;
 	
+	private var timeoutId:Null<Int>;
+	private var timestamp:Float = 0;
+	private var waitFor:Int = 100;	// wait 100ms.
+	private var maxDuration:Int = 750;	// wait 750ms.
+	
+	// General container for transporting data between ipc contexts.
+	private var data:Data;
+	
+	// Information payload.
 	private var payload:Payload = {
 		input:{raw:'', directory:'', parts:[], filename:'', extension:''},
 		output:{raw:'', directory:'', parts:[], filename:'', extension:''},
@@ -141,15 +157,7 @@ class Controller {
 	}
 	
 	private function init() {
-		// Load extra scripts in, which are loaded just before the page starts rendering.
-		for (script in scripts) {
-			var name = script.withoutExtension();
-			completedScripts.set( name, false );
-			
-			ipcMain.once( '$name:complete', handleScriptCompletion.bind(_, _, name) );
-			
-		}
-		
+		data = { scripts:[], payload:payload, html:'', args:Sys.args() };
 		// Modify the json structure.
 		for (object in json) {
 			console.log( json );
@@ -291,7 +299,8 @@ class Controller {
 	}
 	
 	private function processHtml(html:String):Void {
-		ipcMain.on('save', save);
+		ipcMain.once('save', save);
+		
 		trace( 'serving from ' + '$cwd/$root'.normalize() );
 		var files = untyped __js__("new {0}", server.Server)('$cwd/$root'.normalize());
 		var ns = require('http').createServer(function (request, response) {
@@ -309,39 +318,46 @@ class Controller {
 		var webContents = browser.webContents;
 		webContents.send('html', html);
 		webContents.on('did-finish-load', function() {
-			trace( 'page loaded', webContents.getURL() );
+			console.log( 'page loaded', webContents.getURL() );
 			webContents.openDevTools();
-			webContents.send('html', html);
-			webContents.send('json', tink.Json.stringify(generatePayload(mdEnvironment)));
+			
+			data.html = html;
+			data.scripts = scripts;
+			data.payload = generatePayload( mdEnvironment );
+			webContents.send( 'data:payload', tink.Json.stringify( data ) );
+			/*webContents.send( 'scripts:load', haxe.Json.stringify( {scripts:scripts} ) );
+			webContents.send( 'html', html );
+			webContents.send( 'json', tink.Json.stringify(generatePayload(mdEnvironment)) );*/
 		});
 		
 		var url = (input.directory().addTrailingSlash() + mdEnvironment['references']['_TEMPLATE']['href']).replace(root, 'http://localhost:$port').normalize();
-		trace( url );
 		browser.loadURL( url );
 	}
 	
-	private function save(event:String, arg:String) {
+	private function save(event:String, arg:String):Void {
 		if (arg != 'failed') {
 			var html = arg.replace( '\n', '\r\n' );
       var fullPath = '$cwd/$output'.normalize();
       var dirname = '$cwd/${output.directory()}'.normalize().addTrailingSlash();
-      trace( 'saving file to $dirname' );
+      console.log( 'saving file to $dirname' );
 			
       if (!sys.FileSystem.exists( dirname )) {
 				createDir( dirname, function() {
 					writeFile( fullPath, html, 'utf8', function(error) {
-						if (error != null) trace( error );
-						trace( 'saved file $dirname successfully.' );
+						if (error != null) console.log( error );
+						console.log( 'saved file $dirname successfully.' );
             if (!show) browser.close();
+						
 					} );
 					
 				});
 				
 			} else {
 				writeFile( fullPath, html, 'utf8', function(error) {
-					if (error != null) trace( error );
-					trace( 'saved file $fullPath successfully.' );
+					if (error != null) console.log( error );
+					console.log( 'saved file $fullPath successfully.' );
           if (!show) browser.close();
+					
 				} );
 				
 			}
@@ -356,17 +372,14 @@ class Controller {
 				var parts = path.split( '/' );
 				parts.pop();
 				createDir( parts.join( '/' ), cb );
+				
 			} else {
-				trace( 'create directory', error, path );
+				console.log( 'create directory', error, path );
 				cb();
 				
 			}
 			
 		});
-	}
-	
-	private function handleScriptCompletion(event:String, args:Array<String>, name:String):Void {
-		completedScripts.set( name, true );
 	}
 	
 	private function daySuffix(n:Int):String {
