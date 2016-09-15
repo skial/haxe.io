@@ -4,6 +4,7 @@ opt/*
 site/*
 patreon/*
 render/*
+ld/*
 js-components/*
 src/js/*
 .haxelib/*
