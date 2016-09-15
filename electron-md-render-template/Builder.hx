@@ -9,23 +9,30 @@ import haxe.extern.Rest;
 import haxe.Unserializer;
 import haxe.ds.StringMap;
 import haxe.DynamicAccess;
-import js.html.DOMElement;
 import haxe.Constraints.Function;
+import Controller.Data;
 import Controller.Payload;
 
 using StringTools;
+using haxe.io.Path;
 
 class Builder {
 	
+	public static var storage:Storage = window.sessionStorage;
+	
 	private var max:Int = 2;
 	private var counter:Int = 0;
-	private var timestamp:Float = 0;
 	private var waitFor:Int = 100;	// wait 100ms.
-	private var maxDuration:Int = 750;	// wait 750ms.
-	private var electron:Dynamic;
+	private var timestamp:Float = 0;
 	private var timeoutId:Null<Int>;
+	private var maxDuration:Int = 750;	// wait 750ms.
 	private var observer:MutationObserver;
+	
+	private var electron:Dynamic;
 	private var ipcRenderer:{on:String->Function->Dynamic, once:String->Function->Dynamic, send:String->Rest<Dynamic>->Void};
+	
+	private var scripts:Array<String> = [];
+	private var completedScripts:Map<String, Bool> = new Map();
 	
 	public static function main() {
 		var con:Builder = new Builder();
@@ -39,12 +46,20 @@ class Builder {
 		observer.observe(window.document, {childList:true, subtree:true});
 		
 		ipcRenderer = electron.ipcRenderer;
-		ipcRenderer.on('html', function(e, d) processHtml( d ));
-		ipcRenderer.on('json', function(e, d) {trace(d); processJson( tink.Json.parse(d) );});
+		ipcRenderer.once('data:payload', function(event:String, arg:String) {
+			var data:Data = tink.Json.parse( arg );
+			storage.setItem( 'data', arg );
+			
+			scripts = data.scripts;
+			
+			processHtml( data.html );
+			processJson( data.payload );
+			
+		});
 	}
 	
 	public function processHtml(data:String) {
-		trace( 'processing html' );
+		console.log( 'processing html' );
 		var node = window.document.querySelector('#markdown');
 		
 		if (node != null) {
@@ -62,8 +77,7 @@ class Builder {
 	
 	public function processJson(data:Payload) {
 		window.document.dispatchEvent( new CustomEvent('DocumentJsonData', {detail:data, bubbles:true}) );
-		trace( 'processing json' );
-		console.log( data );
+		console.log( 'processing json', data );
 		
 		counter++;
 		if (counter >= max && timeoutId != null) timeoutId = cast setTimeout( preCheck, waitFor );
@@ -80,8 +94,29 @@ class Builder {
 	
 	public function preCheck():Void {
 		timestamp = haxe.Timer.stamp() - timestamp;
+		
 		if (timestamp < maxDuration) {
-			timeoutId = cast setTimeout( save, waitFor );
+			if ([for (k in completedScripts.keys()) k].length == 0) {
+				for (script in scripts) {
+					var name = script.withoutExtension();
+					require( '$__dirname/$script'.normalize() );
+					completedScripts.set( name, false );
+					window.document.addEventListener( '$name:complete', handleScriptCompletion );
+					
+				}
+				
+			} else {
+				var match = true;
+				
+				for (key in completedScripts.keys()) {
+					match = completedScripts.get( key );
+					if (!match) break;
+					
+				}
+				
+				timeoutId = cast setTimeout( save, waitFor );
+				
+			}
 			
 		} else {
 			timeoutId = cast setTimeout( preCheck, waitFor );
@@ -114,6 +149,22 @@ class Builder {
 			
 		}
 		
+	}
+	
+	private function handleScriptCompletion(event:CustomEvent):Void {
+		completedScripts.set( event.detail, true );
+		
+		if (timeoutId != null) clearTimeout( cast timeoutId );
+		
+		timestamp = haxe.Timer.stamp() - timestamp;
+		
+		if (timestamp < maxDuration) {
+			timeoutId = cast setTimeout( preCheck, waitFor );
+			
+		} else {
+			timeoutId = cast setTimeout( preCheck, waitFor );
+			
+		}
 	}
 	
 	private function mutation(changes:Array<MutationRecord>, observer:MutationObserver):Void {
