@@ -5,7 +5,6 @@ import js.Node.*;
 import js.html.*;
 import js.Browser.*;
 import js.Node.process;
-//import electron.main.App;
 
 class FontCharacters {
 	
@@ -38,14 +37,6 @@ class FontCharacters {
 					cast (link[0],DOMElement).setAttribute('href', string);
 					
 				}
-				/*
-				//'<script async="" src="https://www.google-analytics.com/analytics.js"></script>';
-				var head = window.document.getElementsByTagName( 'head' )[0];
-				
-				if (head != null) {
-					var ga = window.document.querySelectorAll( 'head script[src*="google"]');
-					for (_ga in ga) head.removeChild( _ga );
-				}*/
 				
 			} else {
 				trace( 'link length', link.length );
@@ -54,7 +45,6 @@ class FontCharacters {
 			
 		}
 		
-		//require('electron').ipcRenderer.send('font.characters::complete', 'true');
 		window.document.dispatchEvent( new CustomEvent('font.characters:complete', {detail:'font.characters', bubbles:true, cancelable:true}) );
 		
 	}
