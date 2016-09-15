@@ -1,26 +1,31 @@
 package ;
 
 import js.Node.*;
+import js.html.*;
 import js.node.Fs.*;
 import js.Node.process;
 import js.node.Crypto.*;
 import js.Browser.*;
-import js.html.Node;
 import js.node.Url.*;
-import js.html.Element;
 import haxe.Serializer;
 import haxe.extern.Rest;
 import haxe.Unserializer;
 import haxe.ds.StringMap;
 import haxe.DynamicAccess;
-import js.html.DOMElement;
 import js.node.Url.UrlData;
 import haxe.Constraints.Function;
 
 using StringTools;
 using haxe.io.Path;
 
+@:cmd
 class SubresourceIntegrity {
+	
+	/**
+	The base path to load resources from.
+	*/
+	@alias('rs')
+	public var resourcePath:String;
 	
 	private var electron:Dynamic;
 	private var ipcRenderer:{on:String->Function->Dynamic, once:String->Function->Dynamic, send:String->Rest<Dynamic>->Void};
@@ -28,13 +33,18 @@ class SubresourceIntegrity {
 	private var input:String = '';
 	private var counter:Int = 0;
 	
+	private static var data:{args:Array<String>};
+	
 	public static function main() {
-		var sri = new SubresourceIntegrity();
+		data = tink.Json.parse( window.sessionStorage.getItem( 'data' ) );
+		var sri = new SubresourceIntegrity( data.args );
 	}
 	
-	public function new() {
+	public function new(args:Array<String>) {
 		electron = require('electron');
 		ipcRenderer = electron.ipcRenderer;
+		@:cmd _;
+		console.log( args, resourcePath );
 		
 		var nodes = [for (n in window.document.querySelectorAll('link[href], script[src], body [src], meta[content*="ms"]')) n];
 		
@@ -118,20 +128,21 @@ class SubresourceIntegrity {
 		}
 		
 		counter--;
-		
-		if (counter < 1) ipcRenderer.send('version::complete', 'true');
+		if (counter < 1) window.document.dispatchEvent( new CustomEvent('subresourceintegrity:complete', {detail:'subresourceintegrity', bubbles:true, cancelable:true}) );
 	}
 	
 	private function modifiySri(node:DOMElement, event:String, arg:String):Void {
 		node.setAttribute('integrity', 'sha512-$arg');
 		node.setAttribute('crossorigin', 'anonymous');
+		
+		counter--;
+		if (counter < 1) window.document.dispatchEvent( new CustomEvent('subresourceintegrity:complete', {detail:'subresourceintegrity', bubbles:true, cancelable:true}) );
 	}
 	
 	private function hash(event:String, arg:String, encoding:String, cb:String->String->Void):Void {
-		var path = (__dirname + input.directory() + arg).normalize();
-		//trace( path.extension() );
+		var path = (resourcePath + input.directory() + arg).normalize();
 		if (path.extension() == '') path += '/index.html';
-		trace( path );
+		
 		if (hashedPaths.exists(path)) {
 			cb('content::hashed::$arg', hashedPaths.get( path ));
 			
@@ -140,29 +151,23 @@ class SubresourceIntegrity {
 				if (error == null && stats.isFile()) {
 					var hash = createHash('sha512');
 					var stream = createReadStream(path);
+					
 					stream.on('readable', function() {
 						var data = stream.read();
+						
 						if (data != null) {
 							hash.update(data);
 							
 						} else {
 							var digest = hash.digest( encoding );
-							
 							hashedPaths.set( path, digest );
-							//try {
-							//trace( hashedPaths.get( path ));
-								cb('content::hashed::$arg', digest);
-
-							/*} catch (e:Dynamic) {
-								console.log( path, hashedPaths.get( path ), e );
-
-							}*/
+							cb('content::hashed::$arg', digest);
 
 						}
 					});
 					
 				} else {
-					trace( error );
+					console.log( error );
 					cb('content::hashed::$arg', 'failed');
 					
 				}
