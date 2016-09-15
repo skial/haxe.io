@@ -2,17 +2,14 @@ package ;
 
 import thx.Url;
 import js.Node.*;
+import js.html.*;
 import js.Browser.*;
-import js.html.Node;
-import js.html.Element;
-import js.html.DOMElement;
 import js.Node.process;
-import electron.main.App;
+//import electron.main.App;
 
 class FontCharacters {
 	
 	public static function main() {
-		trace( 'loading...' );
 		var fs = new FontCharacters();
 	}
 	
@@ -20,13 +17,9 @@ class FontCharacters {
 		var body = window.document.getElementsByTagName('body')[0];
 		var charList = [];
 		
-		trace( body );
-		
 		if (body != null) {
 			charList = buildList( body );
 			var link = window.document.querySelectorAll( 'head link[href*="fonts.googleapis.com/css"]' );
-			
-			trace( charList );
 			
 			if (link.length > 0) {
 				var url:Url = cast(link[0],DOMElement).getAttribute('href');
@@ -34,7 +27,7 @@ class FontCharacters {
 				if (queryString != null) trace( 'exists', queryString.exist('text') );
 				if (queryString != null && !queryString.exist('text')) {
 					queryString.set( 'text', charList.join('') );
-					trace( 'search', url.search );
+					
 					var search = queryString.toStringWithSymbols('&', '=', function(s)return s);
 					var path = url.pathName + '?$search';
 					var string = (url.isAbsolute) ?
@@ -42,50 +35,27 @@ class FontCharacters {
 			    :
 			      '${path}${url.hasHash?"#"+url.hash:""}';
 						
-					trace( 'search', search );
-					trace( 'path', path );
-					trace( 'thx-core', string );
-					//cast (link[0],DOMElement).setAttribute('href', cast (link[0],DOMElement).getAttribute('href') + '&text=' +charList.join(''));
 					cast (link[0],DOMElement).setAttribute('href', string);
 					
 				}
-				
+				/*
 				//'<script async="" src="https://www.google-analytics.com/analytics.js"></script>';
 				var head = window.document.getElementsByTagName( 'head' )[0];
 				
 				if (head != null) {
 					var ga = window.document.querySelectorAll( 'head script[src*="google"]');
 					for (_ga in ga) head.removeChild( _ga );
-				}
+				}*/
 				
 			} else {
 				trace( 'link length', link.length );
 				
 			}
 			
-			/*trace( 'char list', charList.join('') );
-			var node = window.document.doctype;
-			
-			var doctype = node != null ? "<!DOCTYPE "
-					 + node.name
-					 + (node.publicId != null ? ' PUBLIC "' + node.publicId + '"' : '')
-					 + (node.publicId == null && node.systemId != null ? ' SYSTEM' : '') 
-					 + (node.systemId != null ? ' "' + node.systemId + '"' : '')
-					 + '>\n' : '';
-					 
-			var html = window.document.documentElement.outerHTML;
-			if (html != null && html != '<html><head></head><body></body></html>') {
-				require('electron').ipcRenderer.send('haxeCharacterList', doctype + window.document.documentElement.outerHTML);
-				
-			} else {
-				require('electron').ipcRenderer.send('haxeCharacterList-close', 'true');
-				
-			}*/
-			
-			
 		}
 		
-		require('electron').ipcRenderer.send('font.characters::complete', 'true');
+		//require('electron').ipcRenderer.send('font.characters::complete', 'true');
+		window.document.dispatchEvent( new CustomEvent('font.characters:complete', {detail:'font.characters', bubbles:true, cancelable:true}) );
 		
 	}
 	
