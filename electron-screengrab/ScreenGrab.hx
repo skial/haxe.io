@@ -79,7 +79,6 @@ class ScreenGrab {
 			
 			if (browser.isFocused()) browser.blur();
 			
-			var currentRect:{x:Int, y:Int, with:Int, height:Int} = browser.getBounds();
 			var rect = {x:0, y:0, width:width, height:height};
 			
 			browser.setBounds( rect );
