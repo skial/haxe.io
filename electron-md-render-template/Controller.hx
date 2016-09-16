@@ -22,6 +22,7 @@ using haxe.io.Path;
 using unifill.Unifill;
 
 typedef Data = {
+	var port:Int;
 	var html:String;
 	var payload:Payload;
 	var args:Array<String>;
@@ -157,7 +158,7 @@ class Controller {
 	}
 	
 	private function init() {
-		data = { scripts:[], payload:payload, html:'', args:Sys.args() };
+		data = { scripts:[], payload:payload, html:'', args:Sys.args(), port:port };
 		// Modify the json structure.
 		for (object in json) {
 			console.log( json );
@@ -321,6 +322,7 @@ class Controller {
 			console.log( 'page loaded', webContents.getURL() );
 			webContents.openDevTools();
 			
+			data.port = port;
 			data.html = html;
 			data.scripts = scripts;
 			data.payload = generatePayload( mdEnvironment );
