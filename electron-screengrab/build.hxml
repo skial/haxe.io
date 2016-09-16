@@ -1,9 +1,10 @@
 -lib hxnodejs
 -lib thx.core
+-lib tink_json
 -lib cmd
--D dce=full
+#-D dce=full
 -cp .
---no-traces
+#--no-traces
 
 --each 
 
