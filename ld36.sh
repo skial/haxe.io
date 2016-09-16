@@ -27,7 +27,12 @@ mkdir -p $OPT_DIR
 electron --enable-logging ./render/index.js \
 -md markdown-it-abbr markdown-it-attrs markdown-it-emoji \
 markdown-it-footnote markdown-it-headinganchor \
--s ./render/build.js -r src -i $INPUT -o $BIN_DIR$BIN_BASE/index.html -b src \
+-s ./render/build.js -r src -i $INPUT -o $BIN_DIR$BIN_BASE/index.max.html -b src \
 -j ./src/data/ld36.json ./src/data/ld36.manual.json \
 --scripts ../site/subresourceintegrity.js ../site/font.characters.js ../site/screengrab.js \
--rs bin -w 1920 -h 1080 --show
+-rs bin -w 1920 -h 1080
+
+html-minifier \
+--collapse-boolean-attributes --remove-comments --remove-empty-attributes --remove-redundant-attributes \
+--collapse-whitespace --decode-entities --remove-style-link-type-attributes \
+--remove-script-type-attributes -o $BIN_DIR$BIN_BASE/index.html $BIN_DIR$BIN_BASE/index.max.html
