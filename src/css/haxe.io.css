@@ -694,7 +694,7 @@ html[class*="/roundups"] .community.patreon {
 		max-height: 90vh;
 	}
 	
-	html[class*="/ld"] li a:not([type])[href*="//ludumdare.com/compo/"]:after {
+	html[class*="/ld"] li a:not([type])[href*="//ludumdare.com/compo/ludum-dare"]:after {
 		content: "compo";
 	}
 	
