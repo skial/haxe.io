@@ -275,6 +275,82 @@ article section a:active:not([type]) {
 	border-bottom: 1px solid;
 }
 
+/* Ludum Dare */
+html[class*="/ld"] [name="ld-filter-group"] {
+	display: none;
+}
+
+html[class*="/ld"] .filter {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	padding-left: 0;
+	padding-bottom: 1.5rem;
+	border-bottom: 1px solid rgba(189, 189, 189, 0.6);
+}
+
+html[class*="/ld"] .filter li {
+	display: flex;
+	list-style: none;
+	padding: 0.25rem;
+	justify-content: center;
+}
+
+html[class*="/ld"] .filter li label * {
+	/* see https://stackoverflow.com/a/30170745 */
+	/*display: block;*/
+	/* see : http://stackoverflow.com/a/34810294 */
+	pointer-events: none;
+}
+
+html[class*="/ld"] .filter li label {
+	cursor: pointer;
+	padding: 0.2rem;
+	border-radius: 3px;
+	font-family: monospace;
+	color: rgba(189, 189, 189, 0.6);
+  border: 1px solid rgba(189, 189, 189, 0.6);
+}
+
+html[class*="/ld"] #web:checked ~ article .filter .web {
+	color: #E34C26;
+	border-color: rgba(227, 76, 38, 0.4);
+	background-color: rgba(240, 101, 41, 0.4);
+}
+
+html[class*="/ld"] #osx:checked ~ article .filter .osx {
+	color: rgb(153, 153, 153);
+	border-color: rgba(153, 153, 153, 0.4);
+	background-color: rgba(195, 193, 193, 0.4);
+}
+
+html[class*="/ld"] #linux:checked ~ article .filter .linux {
+	color: rgb(245, 192, 33);
+	border-color: rgba(245, 192, 33, 0.4);
+	background-color: rgba(241, 210, 43, 0.4);
+}
+
+html[class*="/ld"] #windows:checked ~ article .filter .windows {
+	color: rgb(29, 115, 241);
+	border-color: rgba(29, 115, 241, 0.4);
+	background-color: rgba(27, 158, 246, 0.4);
+}
+
+html[class*="/ld"] #source:checked ~ article .filter .source {
+	color: rgb(108, 198, 68);
+	border-color: rgba(108, 198, 68, 0.4);
+	background-color: rgba(108, 198, 68, 0.4);
+}
+
+html[class*="/ld"] #web:checked ~ article section li:not([data-platforms*="web"]),
+html[class*="/ld"] #osx:checked ~ article section li:not([data-platforms*="osx"]),
+html[class*="/ld"] #linux:checked ~ article section li:not([data-platforms*="linux"]),
+html[class*="/ld"] #windows:checked ~ article section li:not([data-platforms*="windows"]),
+html[class*="/ld"] #source:checked ~ article section li:not([data-platforms*="source"]) {
+	opacity: 0.5;
+	text-decoration: line-through;
+}
+
 html[class*="/ld"] li a:not([type]) {
 	border-bottom: none;
 }
@@ -283,11 +359,11 @@ html[class*="/ld"] li a:not([type]):hover {
 	text-decoration: underline;
 }
 
-html[class*="/ld"] li a:not([type])[href*="//ludumdare.com/compo/"] {
+html[class*="/ld"] li a:not([type])[href*="//ludumdare.com/compo/ludum-dare"] {
 	
 }
 
-html[class*="/ld"] li a:not([type])[href*="//ludumdare.com/compo/"]:after {
+html[class*="/ld"] li a:not([type])[href*="//ludumdare.com/compo/ludum-dare"]:after {
 	content: "c";
   /*margin-left: 0.1rem;*/
   /*margin-right: 0.2rem;*/
@@ -419,7 +495,7 @@ html[class*="/videos"] body > div nav + div {
 }
 
 html[class*="/videos"] body > div nav h1,
-aside > nav h1 {
+aside h1 {
 	font-size: 1em;
 	margin: 0;
 	padding-bottom: 0.625em;
@@ -476,15 +552,18 @@ aside > a {
 	border-style: none;
 }
 
+a.contribute,
 aside > a:hover {
 	color: white;
 }
 
+a.contribute,
 aside > a[href*="next-roundup"] {
 	background-color: rgba(108,198,68,0.8);
 	/*background-color: #52c9f4;*/
 }
 
+a.contribute:hover,
 aside > a[href*="next-roundup"]:hover {
 	background-color: rgba(108,198,68,1);
 	/*background-color: #22baf1;*/
@@ -577,8 +656,8 @@ iframe[src*="eventbrite.com"] {
 }
 
 .community.patreon:hover .button, .community.patreon .button:hover {
-		background-color: #00b780;
-	}
+	background-color: #00b780;
+}
 
 html[class*="/frontpage"] .community.patreon {
 	border-left: none;
@@ -590,6 +669,13 @@ html[class*="/roundups"] .community.patreon {
 	min-height: 15em;
 	border-radius: 4px;
 	text-align: center;
+}
+
+.emoji {
+	height: 1em;
+	width: 1em;
+	margin: 0 .05em 0 .1em;
+	vertical-align: -0.1em;
 }
 
 @media (min-width: 400px) {
@@ -608,7 +694,7 @@ html[class*="/roundups"] .community.patreon {
 		max-height: 90vh;
 	}
 	
-	html[class*="/ld"] li a:not([type])[href*="//ludumdare.com/compo/"]:after {
+	html[class*="/ld"] li a:not([type])[href*="//ludumdare.com/compo/ludum-dare"]:after {
 		content: "compo";
 	}
 	

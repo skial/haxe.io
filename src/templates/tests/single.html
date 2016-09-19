@@ -1,0 +1,64 @@
+<html>
+<head>
+	<link rel="import" href="/templates/json.data.html" />
+</head>
+<body>
+	<json-data :hello=".single .value" to="div">Test Json Data</json-data>
+	<json-data :hello="{.single .value}--{.single .value}" to="div">Test Json Data</json-data>
+	<json-data select=".single .value" to:div></json-data>
+	<json-data select=".single .value">
+		<ul>
+			<li><span :to="*"></span></li>
+		</ul>
+	</json-data>
+	<!-- Its a head scratcher -->
+	<json-data select=".deep .a">
+		<div id="1" :class=":root > .next">
+			<span :select=".deep .a > .{:root > .next}" :to="json-data">
+				<div id="2" :class=":root .next">
+					<span :to=":root .{:root .next}"></span>
+				</div>
+			</span>
+		</div>
+	</json-data>
+	<json-data select=".collection">
+		<span :to="*"></span>
+	</json-data>
+	<!-- Nested version using `Array<String>` -->
+	<json-data select=".collection">
+		<div :a="*" :b="#{*}">
+			<p>
+				<span :to="*"></span>
+			</p>
+		</div>
+	</json-data>
+	<!-- Nested version using `Array<{name:String, age:Int}>` -->
+	<ul>
+		<json-data select=".people">
+			<li>
+				<div :id=".age" :class=".name">
+					<p>
+						<span :to="{.name} is {.age} years old."></span>
+					</p>
+				</div>
+			</li>
+		</json-data>
+	</ul>
+	<!-- Round about selector -->
+	<ul>
+		<json-data select=".round .about .selector">
+			<span :to="The value of '.round .about .selector' is '{*}'."></span>
+			<span :to="json-data" :select="{*}">
+				<span :to="{name:{.name}, age:{.age}}"></span>
+				<li>
+					<div :id=".age" :class=".name">
+						<p>
+							<span :to="{.name} is {.age} years old."></span>
+						</p>
+					</div>
+				</li>
+			</span>
+		</json-data>
+	</ul>
+</body>
+</html>

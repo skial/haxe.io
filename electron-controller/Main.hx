@@ -113,7 +113,7 @@ class Main {
 		var ipcMain = require('electron').ipcMain;
 		var server = require('node-static');
 		trace( 'server root => ' + (Sys.getCwd() + '$inputDir').normalize() );
-		var files = untyped __js__("new {0}", server.Server((Sys.getCwd() + '$inputDir').normalize(), {headers:{'Content-Security-Policy': 'script-src \'none\';'}}) );
+		var files = untyped __js__("new {0}", server.Server((Sys.getCwd() + '$inputDir').normalize(), {headers:{"Content-Security-Policy": "script-src 'none';"}}) );
 		
 		var ns = require('http').createServer(function (request, response) {
 			request.addListener('end', function () {

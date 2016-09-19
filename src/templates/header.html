@@ -1,19 +1,31 @@
-<template>
+<template data-prefix="hio" data-name="header">
 	<header class="grid">
-		<div class="grid-1-1">
-			<a href="/" type="image/logo">
-				<svg enable-background="new" viewBox="0 0 320 320">
-					<g>
-						<g id="a" transform="translate(-2,-2)">
-							<path d="m93.7 25.3-68.4 68.3" stroke="#000" stroke-linecap="round" stroke-width="15.6" fill="none"/>
-							<path id="b" d="m52.4 153 36.6-37" transform="translate(2)" stroke="#000" stroke-linecap="round" stroke-width="15.3" fill="none"/>
-							<path d="m271 22.5-246 246" stroke="#000" stroke-linecap="round" stroke-width="14" fill="none"/>
-							<use xlink:href="#b" transform="translate(60,-60)" height="1052.3622" width="744.09448" y="0" x="0"/>
-						</g>
-						<use xlink:href="#a" transform="matrix(-1 0 0 -1 332 331)" height="1052.3622" width="744.09448" y="0" x="0"/>
-					</g>
-				</svg>
-			</a>
-		</div>
-	</header>
+    <div class="grid-1-1">
+      <a type="image/logo" href="/">
+        <svg viewBox="0 0 320 320" enable-background="new">
+          <g>
+            <g id="a" transform="translate(-2,-2)">
+              <path stroke-width="15.6" stroke="#000" d="m93.7 25.3-68.4 68.3" stroke-linecap="round" fill="none"></path>
+              <path stroke-width="15.3" stroke="#000" id="b" d="m52.4 153 36.6-37" stroke-linecap="round" transform="translate(2)" fill="none"></path>
+              <path stroke-width="14" stroke="#000" d="m271 22.5-246 246" stroke-linecap="round" fill="none"></path>
+              <use height="1052.3622" y="0" x="0" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#b" width="744.09448" transform="translate(60,-60)"></use>
+            </g>
+            <use height="1052.3622" y="0" x="0" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#a" width="744.09448" transform="matrix(-1 0 0 -1 332 331)"></use>
+          </g>
+        </svg>
+      </a>
+    </div>
+    <div class="hero">
+      <css-data select="section h1:first-of-type" to:h1 source:remove use:text></css-data>
+      <div class="details">
+				by 
+				<json-data select=".authors" separator=", " separator:length-2=" and ">
+					<a :title=".display" rel="author nofollow" :href=".url"><span :to=".display"></span></a>
+				</json-data>
+				published on 
+				<json-data to:time :pubdate=".published .raw" :datetime=".modified .raw" select=".modified .pretty"></json-data>
+			</div>
+    </div>
+  </header>
 </template>
+<script src="/js/component.js"></script>

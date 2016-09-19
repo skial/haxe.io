@@ -4,7 +4,7 @@ INPUT_DIR=${INPUT%/*}
 #echo $INPUT_DIR
 if [ "$INPUT_DIR" == "$INPUT" ]; then
 	#echo "correcting path"
-	INPUT="${INPUT/\\//}"
+	INPUT="${INPUT//\\//}"
 	INPUT_DIR=${INPUT%/*}
 fi
 #INPUT_BASE="${INPUT/$INPUT_DIR/}"

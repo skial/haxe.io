@@ -1,0 +1,73 @@
+<link rel="import" href="/templates/metas.html" />
+<link rel="import" href="/templates/metas.social.html" />
+<link rel="import" href="/templates/stylesheets.html" />
+<link rel="import" href="/templates/favicon.html" />
+<link rel="import" href="/templates/scripts.html" />
+<link rel="import" href="/templates/header.html" />
+<link rel="import" href="/templates/footer.html" />
+<link rel="import" href="/templates/json.data.html" />
+<link rel="import" href="/templates/convert.tag.html" />
+<link rel="import" href="/templates/css.selector.html" />
+<link rel="import" href="/templates/document.head.html" />
+<link rel="import" href="/templates/document.body.html" />
+<template data-prefix="hio" data-name="ludumdare">
+	<document-head>
+		<hio-metas></hio-metas>
+		<css-data select="section h1:first-of-type" to:title use:text +:> | Haxe.io</css-data>
+		<hio-metas.social></hio-metas.social>
+		<hio-stylesheets></hio-stylesheets>
+		<hio-icons></hio-icons>
+		<hio-scripts></hio-scripts>
+	</document-head>
+	<document-body>
+		<input id="web" type="checkbox" name="ld-filter-group" />
+		<input id="osx" type="checkbox" name="ld-filter-group" />
+		<input id="linux" type="checkbox" name="ld-filter-group" />
+		<input id="windows" type="checkbox" name="ld-filter-group" />
+		<input id="source" type="checkbox" name="ld-filter-group" />
+		<hio-header></hio-header>
+		<article>
+			<div class="grid">
+				<aside class="grid-1-3">
+					<nav>
+						<h1>Table of Contents</h1>
+						<ul>
+							<json-data select=".framework">
+								<li><a :title="*" :href="#{*}"><span :to="*"></span></a></li>
+							</json-data>
+						</ul>
+					</nav>
+					<div>
+						<h1>Filter by</h1>
+						<ul class="filter">
+							<li><label class="label web" for="web" onclick=";">Web</label></li>
+							<li><label class="label osx" for="osx" onclick=";">OSX</label></li>
+							<li><label class="label linux" for="linux" onclick=";">Linux</label></li>
+							<li><label class="label windows" for="windows" onclick=";">Windows</label></li>
+							<li><label class="label source" for="source" onclick=";">Has Source</label></li>
+						</ul>
+					</div>
+					<a class="contribute" href="https://github.com/skial/haxe.io/issues/334">Add your game</a>
+					<!--<json-data to:a href="https://github.com/skial/haxe.io/tree/master/" :href=".input .raw">Correct this article</json-data>-->
+				</aside>
+				<section class="grid-2-3">
+					<content></content>
+					<json-data select=".framework">
+						<h2><a :id="*" type="text/html" :href="#{*}"><span></span></a><span :to="*"></span></h2>
+						<ul>
+							<span :select=".entries:has([frameworks$='{*}'])" $ld=".extra > .entries + .ld" :to="json-data">
+								<li :data-platforms="{.platforms}">
+									<a :href="http://ludumdare.com/compo/ludum-dare-{.ld}/{:root > .url}?{:root > .type}"><span :to="{:root > .name}"></span></a>
+									by
+									<a :href="http://ludumdare.com/compo{.author > .url}"><span :to="{.author > .name}"></span></a>.
+								</li>
+							</span>
+						</ul>
+					</json-data>
+				</section>
+			</div>
+		</article>
+		<hio-footer></hio-footer>
+	</document-body>
+</template>
+<script src="/js/component.js"></script>

@@ -1,0 +1,51 @@
+<!--
+	`<json-data></json-data>` element accepts the following attributes:
+	- `to:[string]`, `to="[string]"`, where `[string]` is the name of the element 
+		you want this element to convert to.
+	- `select="[string]"`, where `[string]` is a css selector which should match
+		against the json payload created by parsing the markdown file. Any match
+		is appended as a text node.
+	- `separator="[string]"`, where `[string]` is any value, which will be used
+		as the **default** separator when a `select=".value"` returns an array.
+	- `separator:[int]="[string]"`, where `[int]` represents an array access and
+		`[string]` is the separator to be used. Does nothing is the access is false.
+	- `separator:length-[int]="[string]"`, where `[int]` is used to represents an Array
+		access from the end of the array and `[string]` is the separator to be used.
+	- `separator:first="[string]"`, `separator:last="[string]"`. Aliases for `separator:0`
+		and `separator:length-1` respectively.
+	- `:[name]="[string]"`, where `[name]` is a valid attribute name and `[string]` is a
+		css selector to match against the json payload. Any match is turned into a
+		string value. The leading colon, `:`, is stripped. If an attribute with the
+		same name exists, its value is appended to the end.
+	
+		
+	```json
+	{article:{title:"Haxe Roundup 366",url:"roundups/366/"}}
+	```
+	
+	```html
+	<json-data to:a href="https://haxe.io/" :href=".article .url" :title=".article .title" select=".article .title"></json-data>
+	```
+	
+	Will get converted to the following.
+	
+	```html
+	<a href="https://haxe.io/roundups/366/" title="Haxe Roundup 366">Haxe Roundup 366</a>
+	```
+	
+	If `<json-data></json-data>` contains any children, the children can have the
+	following attribute:
+	- `:to="[string]"`, where `[string]` is a valid css selector that will attempt
+		to match against the json payload. If the result is not empty, it will be
+		stringified.
+	- `:[name]="[string]"`, where `[name]` is a valid html element name and `[string]`
+		is a css selector to match against the json payload. The result will be stringified.
+		
+	If the parent `<json-data></json-data>` has a `select` attribute that matched
+	against the json payload, its child nodes selectors will be restricted to those
+	matches. If the results are an array, multiple nodes can be created.
+-->
+<template data-prefix="json" data-name="data">
+	<content></content>
+</template>
+<script src="/js/json.data.js"></script>

@@ -1,83 +1,125 @@
 package ;
 
 import js.Node.*;
+import js.node.Fs.*;
+import js.html.*;
 import js.Browser.*;
-import js.html.Node;
-import js.html.Element;
 import haxe.Serializer;
 import haxe.extern.Rest;
 import haxe.Unserializer;
 import haxe.ds.StringMap;
 import haxe.DynamicAccess;
-import js.html.DOMElement;
 import haxe.Constraints.Function;
 
+using StringTools;
 using haxe.io.Path;
 
+@:cmd
 class ScreenGrab {
 	
+	private static var data:{payload:{output:{raw:String, parts:Array<String>}}, port:Int, args:Array<String>};
+	
+	@alias public var width:Int = 1280;
+	@alias public var height:Int = 800;
+	
+	/**
+	The base path to save resources to.
+	*/
+	@alias('rs')
+	public var resourcePath:String;
+	private var dirname:String;
+	
+	private var remote:Dynamic;
 	private var electron:Dynamic;
 	private var ipcRenderer:{on:String->Function->Dynamic, send:String->Rest<Dynamic>->Void};
 	
+	private var browser:Dynamic;
+	
 	public static function main() {
-		var sg = new ScreenGrab();
+		data = tink.Json.parse( window.sessionStorage.getItem( 'data' ) );
+		var sg = new ScreenGrab( data.args );
 	}
 	
-	public function new() {
+	public function new(args:Array<String>) {
 		electron = require('electron');
+		remote = electron.remote;
 		ipcRenderer = electron.ipcRenderer;
 		
-		var tags:Array<Array<Dynamic>> = [];
+		browser = remote.getCurrentWindow();
+		dirname = data.payload.output.parts.slice( 1, data.payload.output.parts.length - 1 ).join('/');
 		
-		ipcRenderer.on('screenshot::complete', function(event:String, arg:String) {
-			var data:{width:Int,height:Int,path:String} = Unserializer.run(arg);
+		@:cmd _;
+		
+		setTimeout( function() {
+			browser.webContents.closeDevTools();
 			
-			if (data != null) {
-				tags.push( [{tag:'meta', name:'twitter:image'}, {name:'twitter:image', content:'https://haxe.io/${data.path}'.normalize()}] );
-				tags.push( [{tag:'meta', property:'og:image'}, {content:'http://haxe.io/${data.path}'.normalize()}] );
-				tags.push( [{tag:'meta', property:"og:image:secure_url"}, {content:'https://haxe.io/${data.path}'.normalize()}] );
-				tags.push( [{tag:'meta', property:'og:image:width'}, {content:'${data.width}'}] );
-				tags.push( [{tag:'meta', property:'og:image:height'}, {content:'${data.height}'}] );
-				tags.push( [{tag:'meta', property:"og:image:type" }, {content:'image/${data.path.extension()}'}] );
-				processTags( tags );
-				
-			}
+			setTimeout( attemptScreenshot, 0 );
 			
-			ipcRenderer.send('screengrab::complete', 'true');
-		});
-		
-		ipcRenderer.send('screenshot::init', '' + window.location);
-		
+		}, 0 );
 		
 	}
 	
-	private function processTags(tags:Array<Array<Dynamic>>):Void {
-		var head = cast window.document.getElementsByTagName( 'head' )[0];
-		
-		for (array in tags) {
-			var keys:DynamicAccess<String> = array[0];
-			var values:DynamicAccess<String> = array[1];
-			var selector = keys.get('tag') + [for(key in keys.keys()) if (key != 'tag') '[$key*="${keys.get(key)}"]'].join('');
-			var matches = window.document.querySelectorAll( selector );
-			trace( 'matches', selector, matches.length );
-			if (matches.length == 0) {
-				var element:DOMElement = window.document.createElement( keys.get('tag') );
-				for (key in keys.keys()) if (key != 'tag') element.setAttribute( key, keys.get( key ) );
-				for (key in values.keys()) element.setAttribute( key, values.get( key ) );
-				cast(head,Node).appendChild( element );
-				
+	private function createDir(path:String, cb:Function):Void {
+		untyped mkdir( path, function(error) {
+			if (error != null) {
+				var parts = path.split( '/' );
+				parts.pop();
+				createDir( parts.join( '/' ), cb );
 			} else {
-				var element = cast(matches[0],DOMElement);
-				if (element.hasAttribute('contents')) element.removeAttribute('contents');
-				if (element.hasAttribute('tag')) element.removeAttribute( 'tag' );
-				for (key in values.keys()) if (key != 'tag') element.setAttribute( key, values.get( key ) );
-				for (i in 1...matches.length) {
-					head.removeChild( matches[i] );
-				}
+				console.log( 'create directory', error, path );
+				cb();
 				
 			}
 			
+		});
+	}
+	
+	private function attemptScreenshot():Void {
+		if (browser != null && browser.webContents != null) {
+			
+			if (browser.isFocused()) browser.blur();
+			
+			var rect = {x:0, y:0, width:width, height:height};
+			
+			browser.setBounds( rect );
+			
+			setTimeout( function () browser.capturePage(rect, function(image) {
+				var path:String = (browser.webContents.getURL():String).replace( 'http://localhost:${data.port}', '' );
+				//var size:{width:Int,height:Int} = image.getSize();
+				var fullPath = Sys.getCwd() + '/$resourcePath/img/$dirname/'.normalize().addTrailingSlash();
+				
+				if (!sys.FileSystem.exists(fullPath)) {
+					createDir( fullPath, function () writeFile( '$fullPath/preview.png', image.toPng(), function(error) {
+						if (error != null) console.log( error );
+						console.log( 'saving preview of ${browser.webContents.getURL()} to $fullPath/preview.png' );
+						finish();
+						
+					}));
+				
+				} else {
+					writeFile( '$fullPath/preview.png', image.toPng(), function(error) {
+						if (error != null) console.log( error );
+						console.log( 'saving preview of ${browser.webContents.getURL()} to $fullPath/preview.png' );
+						finish();
+						
+					});
+					
+				}
+				
+			}), 1000 );	// Have to wait until internal? graphics cache? updates with resized browser.
+			
+		} else {
+			finish();
+			
 		}
+		
+	}
+	
+	private function finish():Void {
+		setTimeout( function() {
+			browser.webContents.openDevTools();
+			window.document.dispatchEvent( new CustomEvent('screengrab:complete', {detail:'screengrab', bubbles:true, cancelable:true}) );
+		}, 200 );
 	}
 	
 }

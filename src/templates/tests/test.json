@@ -1,0 +1,26 @@
+{
+	"single":{
+		"value":"world"
+	},
+	"deep":{
+		"a":{
+			"next":"b",
+			"b":{
+				"next":"c",
+				"c":"123"
+			}
+		}
+	},
+	"collection":[
+		"a1", "a2", "b1", "b2", "c1", "c2"
+	],
+	"people":[
+		{"name":"foo", "age":1},
+		{"name":"bar", "age":2}
+	],
+	"round":{
+		"about":{
+			"selector":".people"
+		}
+	}
+}

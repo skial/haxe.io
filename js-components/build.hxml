@@ -1,0 +1,80 @@
+-lib regle
+-lib jwenn
+#-lib closure
+-D closure_advanced
+-D closure_overwrite
+#--no-traces
+-debug
+-D js-es=6
+
+--each
+
+-main Component
+-js component.js
+
+--next 
+
+--no-traces
+-main DocumentHeader
+-js document.head.js
+
+--next
+
+--no-traces
+-main DocumentBody
+-js document.body.js
+
+--next
+
+--no-traces
+-main ConvertTag
+-js convert.tag.js
+
+--next
+
+-main JsonData
+-js json.data.js
+
+--next
+
+--no-traces
+-main CssSelector
+-js css.selector.js
+
+--next
+
+-main Component
+-js ../src/js/component.js
+
+--next 
+
+--no-traces
+-main DocumentHeader
+-js ../src/js/document.head.js
+
+--next
+
+--no-traces
+-main DocumentBody
+-js ../src/js/document.body.js
+
+--next
+
+#-debug
+--no-traces
+-main ConvertTag
+-js ../src/js/convert.tag.js
+
+--next
+
+#-debug
+--no-traces
+-main JsonData
+-js ../src/js/json.data.js
+
+--next
+
+#-debug
+--no-traces
+-main CssSelector
+-js ../src/js/css.selector.js

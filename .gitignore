@@ -1,5 +1,12 @@
 bin/*
 min/*
 opt/*
+site/*
+patreon/*
+render/*
+ld/*
+js-components/*
+src/js/*
+.haxelib/*
 node_modules/*
 secrets.json

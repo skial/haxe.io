@@ -87,7 +87,7 @@ class Version {
 	}
 
 	private function modifyUrl(node:DOMElement, attr:String, event:String, arg:String):Void {
-		if (arg != 'failed'){
+		if (arg != 'failed') {
 			var value:String = node.getAttribute( attr );
 			var url = parse( value, true, true );
 

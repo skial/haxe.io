@@ -1,0 +1,627 @@
+{
+  "ld": 36,
+  "entries": [
+    {
+      "author": {
+        "name": "xWarZonex",
+        "url": "/author/xwarzonex/"
+      },
+      "frameworks": [
+        "Stencyl"
+      ],
+      "links": [
+        {
+          "label": "web",
+          "url": "http://www.stencyl.com/users/index/89259"
+        },
+        {
+          "label": "windows",
+          "url": "https://dl.dropboxusercontent.com/u/275699050/Decent%20Game%20with%20a%20Great%20Soundtrack.swf"
+        },
+        {
+          "label": "soundtrack",
+          "url": "https://soundcloud.com/noobstep-544260267/ancient"
+        },
+        {
+          "label": "source",
+          "url": "https://dl.dropboxusercontent.com/u/275699050/Wheel%20Source.stencyl"
+        }
+      ],
+      "name": "A Decent Game With A Great Soundtrack",
+      "platforms": [
+        "web",
+        "windows",
+        "source"
+      ],
+      "type": "compo",
+      "url": "?action=preview&uid=39237"
+    },
+    {
+      "author": {
+        "name": "Donni11",
+        "url": "/author/donni11/"
+      },
+      "frameworks": [
+        "Stencyl"
+      ],
+      "links": [
+        {
+          "label": "web",
+          "url": "http://www.stencyl.com/game/play/35117"
+        },
+        {
+          "label": "[ recommended ] web fullscreen ( easier to play) ",
+          "url": "http://www.stencyl.com/game/embed/35117"
+        }
+      ],
+      "name": "Candle Dungeons",
+      "platforms": [
+        "web"
+      ],
+      "type": "jam",
+      "url": "?action=preview&uid=44680"
+    },
+    {
+      "author": {
+        "name": "Raiyumi",
+        "url": "/author/raiyumi/"
+      },
+      "frameworks": [
+        "Stencyl"
+      ],
+      "links": [
+        {
+          "label": "web",
+          "url": "https://raiyumi.itch.io/gear-kitty"
+        }
+      ],
+      "name": "Gear Kitty",
+      "platforms": [
+        "web",
+        "itch.io"
+      ],
+      "type": "jam",
+      "url": "?action=preview&uid=25829"
+    },
+    {
+      "author": {
+        "name": "ElBart.37fr",
+        "url": "/author/elbart-37fr/"
+      },
+      "frameworks": [
+        "Stencyl"
+      ],
+      "links": [
+        {
+          "label": "source",
+          "url": "https://www.dropbox.com/s/9wm8ayobd7zaaed/Dragon%20de%20Loire%20v001a.stencyl?dl=0"
+        }
+      ],
+      "name": "Loire Dragon - draft 0.0.1a",
+      "platforms": [
+        "source"
+      ],
+      "type": "jam",
+      "url": "?action=preview&uid=112782"
+    },
+    {
+      "author": {
+        "name": "yben",
+        "url": "/author/yben/"
+      },
+      "frameworks": [
+        "Haxe",
+        "HaxeFlixel"
+      ],
+      "links": [
+        {
+          "label": "web",
+          "url": "https://yunakigames.itch.io/atlantis"
+        }
+      ],
+      "name": "Atlantis",
+      "platforms": [
+        "web",
+        "itch.io"
+      ],
+      "type": "jam",
+      "url": "?action=preview&uid=112104"
+    },
+    {
+      "author": {
+        "name": "btwj_",
+        "url": "/author/btwj_/"
+      },
+      "frameworks": [
+        "Haxe",
+        "HaxeFlixel"
+      ],
+      "links": [
+        {
+          "label": "web",
+          "url": "http://btwj.github.io/ld36/index.html"
+        },
+        {
+          "label": "source",
+          "url": "http://github.com/btwj/ld36"
+        },
+        {
+          "label": "windows",
+          "url": "https://www.dropbox.com/s/44uvjcquyquzqrx/LD36%20Windows.zip?dl=0"
+        }
+      ],
+      "name": "Circuitry",
+      "platforms": [
+        "web",
+        "github",
+        "source",
+        "windows"
+      ],
+      "type": "compo",
+      "url": "?action=preview&uid=90420"
+    },
+    {
+      "author": {
+        "name": "ruthiepee",
+        "url": "/author/ruthiepee/"
+      },
+      "frameworks": [
+        "Haxe",
+        "HaxeFlixel"
+      ],
+      "links": [
+        {
+          "label": "web (flash)",
+          "url": "http://ruthieswebsite.com/cultivate/"
+        },
+        {
+          "label": "source",
+          "url": "http://ruthieswebsite.com/cultivate/cultivate.zip"
+        }
+      ],
+      "name": "Cultivate",
+      "platforms": [
+        "web",
+        "flash",
+        "source"
+      ],
+      "type": "compo",
+      "url": "?action=preview&uid=36556"
+    },
+    {
+      "author": {
+        "name": "aschab",
+        "url": "/author/aschab/"
+      },
+      "frameworks": [
+        "Haxe",
+        "HaxeFlixel"
+      ],
+      "links": [
+        {
+          "label": "web",
+          "url": "http://aschab.com/ludum/36/"
+        },
+        {
+          "label": "windows",
+          "url": "https://dl.dropboxusercontent.com/u/59751355/dizzymayan_source.rar"
+        },
+        {
+          "label": "os/x",
+          "url": "https://dl.dropboxusercontent.com/u/59751355/dizzymayan_mac.rar"
+        },
+        {
+          "label": "linux",
+          "url": "https://dl.dropboxusercontent.com/u/59751355/dizzymayan_linux.rar"
+        },
+        {
+          "label": "source",
+          "url": "https://dl.dropboxusercontent.com/u/59751355/dizzymayan_mac.rar"
+        }
+      ],
+      "name": "Dizzy Mayan",
+      "platforms": [
+        "web",
+        "windows",
+        "osx",
+        "linux",
+        "source"
+      ],
+      "type": "compo",
+      "url": "?action=preview&uid=9535"
+    },
+    {
+      "author": {
+        "name": "dkdwrek",
+        "url": "/author/dkdwrek/"
+      },
+      "frameworks": [
+        "Haxe",
+        "HaxeFlixel"
+      ],
+      "links": [
+        {
+          "label": "web",
+          "url": "https://dkdwrek.itch.io/father-of-time"
+        },
+        {
+          "label": "windows",
+          "url": "https://www.dropbox.com/s/rnbvjl4qs5r8t2c/FatherOfTime.zip?dl=0"
+        },
+        {
+          "label": "source",
+          "url": "https://www.dropbox.com/s/uw99298uxixwyqx/FatherOfTime_source.zip?dl=0"
+        }
+      ],
+      "name": "Father of Time",
+      "platforms": [
+        "web",
+        "itch.io",
+        "windows",
+        "source"
+      ],
+      "type": "jam",
+      "url": "?action=preview&uid=45328"
+    },
+    {
+      "author": {
+        "name": "qzqxq",
+        "url": "/author/qzqxq/"
+      },
+      "frameworks": [
+        "Haxe",
+        "HaxeFlixel"
+      ],
+      "links": [
+        {
+          "label": "web",
+          "url": "https://amp.itch.io/force-of-wheel"
+        }
+      ],
+      "name": "Force of Wheel",
+      "platforms": [
+        "web",
+        "itch.io"
+      ],
+      "type": "jam",
+      "url": "?action=preview&uid=111356"
+    },
+    {
+      "author": {
+        "name": "Rudenko",
+        "url": "/author/rudenko/"
+      },
+      "frameworks": [
+        "Haxe",
+        "Luxe Engine"
+      ],
+      "links": [
+        {
+          "label": "web",
+          "url": "https://dl.dropboxusercontent.com/u/91798273/LD36/index.html"
+        },
+        {
+          "label": "windows",
+          "url": "https://dl.dropboxusercontent.com/u/91798273/LD36/LD36.zip"
+        },
+        {
+          "label": "source",
+          "url": "https://github.com/RudenkoArts/ld36"
+        }
+      ],
+      "name": "Four",
+      "platforms": [
+        "web",
+        "windows",
+        "source",
+        "github"
+      ],
+      "type": "compo",
+      "url": "?action=preview&uid=47736"
+    },
+    {
+      "author": {
+        "name": "Joff",
+        "url": "/author/joff/"
+      },
+      "frameworks": [
+        "Haxe",
+        "HaxeFlixel"
+      ],
+      "links": [
+        {
+          "label": "web",
+          "url": "https://joffcom.itch.io/ld36"
+        },
+        {
+          "label": "windows",
+          "url": "https://joffcom.itch.io/ld36"
+        },
+        {
+          "label": "os/x",
+          "url": "https://joffcom.itch.io/ld36"
+        },
+        {
+          "label": "linux",
+          "url": "https://joffcom.itch.io/ld36"
+        }
+      ],
+      "name": "LD36",
+      "platforms": [
+        "web",
+        "itch.io",
+        "windows",
+        "osx",
+        "linux"
+      ],
+      "type": "jam",
+      "url": "?action=preview&uid=10348"
+    },
+    {
+      "author": {
+        "name": "Frozen Fractal",
+        "url": "/author/thomastc/"
+      },
+      "frameworks": [
+        "Haxe",
+        "HaxeFlixel"
+      ],
+      "links": [
+        {
+          "label": "web (html5)",
+          "url": "http://leonardo.frozenfractal.com"
+        },
+        {
+          "label": "source",
+          "url": "http://github.com/ttencate/leonardo"
+        }
+      ],
+      "name": "Leonardo's Painting Machine",
+      "platforms": [
+        "web",
+        "html5",
+        "source",
+        "github"
+      ],
+      "type": "compo",
+      "url": "?action=preview&uid=7882"
+    },
+    {
+      "author": {
+        "name": "aeveis",
+        "url": "/author/aeveis/"
+      },
+      "frameworks": [
+        "Haxe",
+        "HaxeFlixel"
+      ],
+      "links": [
+        {
+          "label": "web",
+          "url": "https://dl.dropboxusercontent.com/u/16325832/ludum_dare36/jam/index.html"
+        },
+        {
+          "label": "itch.io",
+          "url": "https://aeveis.itch.io/no-touch"
+        },
+        {
+          "label": "source",
+          "url": "https://dl.dropboxusercontent.com/u/16325832/ludum_dare36/NoTouch_by_aeveis.zip"
+        }
+      ],
+      "name": "No Touch",
+      "platforms": [
+        "web",
+        "itch.io",
+        "source"
+      ],
+      "type": "jam",
+      "url": "?action=preview&uid=8854"
+    },
+    {
+      "author": {
+        "name": "andromalin",
+        "url": "/author/andromalin/"
+      },
+      "frameworks": [
+        "Haxe",
+        "HaxeFlixel"
+      ],
+      "links": [
+        {
+          "label": "web",
+          "url": "http://andromalin.com/plsgetcool/"
+        }
+      ],
+      "name": "pls get cool",
+      "platforms": [
+        "web"
+      ],
+      "type": "jam",
+      "url": "?action=preview&uid=113514"
+    },
+    {
+      "author": {
+        "name": "Aurel Bílý",
+        "url": "/author/aurel300/"
+      },
+      "frameworks": [
+        "Haxe"
+      ],
+      "links": [
+        {
+          "label": "web (flash .swf)",
+          "url": "http://ludum.thenet.sk/ld36/"
+        },
+        {
+          "label": "source (haxe)",
+          "url": "http://ludum.thenet.sk/ld36/rlastey_src.zip"
+        },
+        {
+          "label": "post-mortem",
+          "url": "http://www.thenet.sk/?game/0013"
+        },
+        {
+          "label": "timelapse",
+          "url": "https://www.youtube.com/watch?v=A-CNBaxUBW8"
+        }
+      ],
+      "name": "R. Lastey, archaeologist",
+      "platforms": [
+        "web",
+        "flash",
+        "source"
+      ],
+      "type": "jam",
+      "url": "?action=preview&uid=1645"
+    },
+    {
+      "author": {
+        "name": "runvs",
+        "url": "/author/runvs/"
+      },
+      "frameworks": [
+        "Haxe",
+        "HaxeFlixel"
+      ],
+      "links": [
+        {
+          "label": "windows",
+          "url": "http://gamejolt.com/games/raiders-of-the-ancient-technology/183947"
+        },
+        {
+          "label": "mac",
+          "url": "http://gamejolt.com/games/raiders-of-the-ancient-technology/183947"
+        }
+      ],
+      "name": "Raiders of the Ancient Technology",
+      "platforms": [
+        "windows",
+        "osx"
+      ],
+      "type": "jam",
+      "url": "?action=preview&uid=29172"
+    },
+    {
+      "author": {
+        "name": "Sébastien Bernery",
+        "url": "/author/sebbernery/"
+      },
+      "frameworks": [
+        "Haxe",
+        "HaxeFlixel"
+      ],
+      "links": [
+        {
+          "label": "web",
+          "url": "http://docs.bernery.eu/gamejam/SteamTrainYoupi/"
+        },
+        {
+          "label": "source",
+          "url": "https://code.vikindie.fr/Sebastien/Train-LD36/tree/master"
+        }
+      ],
+      "name": "Steam Train Youpi",
+      "platforms": [
+        "web",
+        "source"
+      ],
+      "type": "compo",
+      "url": "?action=preview&uid=484"
+    },
+    {
+      "author": {
+        "name": "jeremyfa",
+        "url": "/author/jeremyfa/"
+      },
+      "frameworks": [
+        "Haxe"
+      ],
+      "links": [
+        {
+          "label": "web",
+          "url": "http://jeremyfa.com/apps/themachine/"
+        }
+      ],
+      "name": "The Machine",
+      "platforms": [
+        "web"
+      ],
+      "type": "jam",
+      "url": "?action=preview&uid=50305"
+    },
+    {
+      "author": {
+        "name": "chocobyte",
+        "url": "/author/chocobyte/"
+      },
+      "frameworks": [
+        "Haxe",
+        "HaxeFlixel"
+      ],
+      "links": [
+        {
+          "label": "web",
+          "url": "https://itch.io/embed-upload/262836?color=333333"
+        },
+        {
+          "label": "windows",
+          "url": "https://chocobyte.itch.io/wild-west-hero"
+        },
+        {
+          "label": "source",
+          "url": "https://github.com/cbyte/LD36"
+        }
+      ],
+      "name": "Wild West Hero",
+      "platforms": [
+        "web",
+        "itch.io",
+        "windows",
+        "source",
+        "github"
+      ],
+      "type": "compo",
+      "url": "?action=preview&uid=17858"
+    },
+    {
+      "author": {
+        "name": "David Durham",
+        "url": "/author/d_durham/"
+      },
+      "frameworks": [
+        "OpenFL"
+      ],
+      "links": [
+        {
+          "label": "web (html5)",
+          "url": "http://www.daviddurhamgames.com/games/steaming"
+        }
+      ],
+      "name": "Steaming",
+      "platforms": [
+        "web",
+        "html5"
+      ],
+      "type": "jam",
+      "url": "?action=preview&uid=11520"
+    }
+  ],
+  "frameworks": [
+    {
+      "framework": "Haxe"
+    },
+    {
+      "framework": "OpenFL"
+    },
+    {
+      "framework": "HaxeFlixel"
+    },
+    {
+      "framework": "Luxe Engine"
+    },
+    {
+      "framework": "Stencyl"
+    }
+  ]
+}
