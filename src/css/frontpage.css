@@ -273,6 +273,7 @@ html[class*="/frontpage"] .tabs li label {
 #events:checked ~ main li[id^="e"],
 #speaker:checked ~ main li[id^="speaker"],
 #videos:checked ~ main li[id^="noc"], 
+#videos:checked ~ main li[id*="--video"],
 #articles:checked ~ main li[itemtype*="Article"]:not([id^="ld"]) {
 	display: flex;
 }
