@@ -119,7 +119,7 @@ class ScreenGrab {
 		setTimeout( function() {
 			browser.webContents.openDevTools();
 			window.document.dispatchEvent( new CustomEvent('screengrab:complete', {detail:'screengrab', bubbles:true, cancelable:true}) );
-		}, 0 );
+		}, 200 );
 	}
 	
 }
