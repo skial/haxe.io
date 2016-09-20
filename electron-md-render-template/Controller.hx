@@ -37,6 +37,7 @@ typedef Payload = {
 	var modified:{raw:String, pretty:String};
 	var published:{raw:String, pretty:String};
 	var edits:Array<String>;
+	var description:String;
 	var authors:Array<{display:String, url:String}>;
 	var contributors:Array<{display:String, url:String}>;
 	var extra:DynamicTink;
@@ -132,6 +133,7 @@ class Controller {
 		modified:{raw:'', pretty:''},
 		published:{raw:'', pretty:''},
 		edits:[],
+		description: '',
 		authors:[],
 		contributors:[],
 		extra:{},
@@ -416,6 +418,9 @@ class Controller {
 			['references', 'PUBLISHED', 'title'] => function(values) {
 				payload.published.raw = values[0];
 				payload.published.pretty = formattedDate(values[0]);
+			},
+			['references', 'DESCRIPTION', 'title'] => function(values) {
+				payload.description = values[0];
 			},
 			['references', 'AUTHOR'] => function(values:Array<String>) {
 				for (value in values) {
