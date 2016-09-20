@@ -1,6 +1,6 @@
 {
-	"entries": [
-		{
+  "entries": [
+    {
       "author": {
         "name": "lightsoda",
         "url": "/author/lightsoda/"
@@ -31,7 +31,7 @@
       "type": "compo",
       "url": "?action=preview&uid=19698"
     },
-		{
+    {
       "author": {
         "name": "runedrake",
         "url": "/author/runedrake/"
@@ -54,10 +54,42 @@
         "web",
         "html5",
         "source",
-				"github"
+        "github"
       ],
       "type": "compo",
       "url": "?action=preview&uid=18078"
+    },
+    {
+      "author": {
+        "name": "scorched",
+        "url": "/author/scorched/"
+      },
+      "frameworks": [
+        "HaxeFlixel"
+      ],
+      "links": [
+        {
+          "label": "windows",
+          "url": "https://googledrive.com/host/0B2actlkGK6rxQlk0bDRySTVseU0/mr-bigcash-1-0.zip"
+        },
+        {
+          "label": "osx",
+          "url": "https://googledrive.com/host/0B2actlkGK6rxQlk0bDRySTVseU0/mr-bigcash-1-0-mac.zip"
+        },
+        {
+          "label": "linux",
+          "url": "https://googledrive.com/host/0B2actlkGK6rxQlk0bDRySTVseU0/mr-bigcash-1-0-linux64.zip"
+        }
+      ],
+      "name": "Mr. BigCash",
+      "platforms": [
+        "windows",
+        "linux",
+        "osx",
+        "itch.io"
+      ],
+      "type": "jam",
+      "url": "?action=preview&uid=48268"
     }
-	]
+  ]
 }
