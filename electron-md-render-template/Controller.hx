@@ -90,7 +90,7 @@ class Controller {
 	Extra scripts to be loaded which extend this scripts abilities.
 	*/
 	@alias('sc')
-	public var scripts:Array<String>;
+	public var scripts:Array<String> = [];
 	
 	private var completedScripts:Map<String, Bool> = new Map();
 	
@@ -160,7 +160,7 @@ class Controller {
 	}
 	
 	private function init() {
-		data = { scripts:[], payload:payload, html:'', args:Sys.args(), port:port };
+		data = { scripts:[], payload:payload, html:'', args:Sys.args().map(function(a) return a.normalize()), port:port };
 		// Modify the json structure.
 		for (object in json) {
 			console.log( json );
@@ -304,7 +304,7 @@ class Controller {
 	private function processHtml(html:String):Void {
 		ipcMain.once('save', save);
 		
-		trace( 'serving from ' + '$cwd/$root'.normalize() );
+		console.log( 'serving from ' + '$cwd/$root'.normalize() );
 		var files = untyped __js__("new {0}", server.Server)('$cwd/$root'.normalize());
 		var ns = require('http').createServer(function (request, response) {
 			request.addListener('end', function () {
