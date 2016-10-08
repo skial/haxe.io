@@ -1,19 +1,19 @@
-<link rel="import" href="metas.html" />
-<link rel="import" href="metas.social.html" />
-<link rel="import" href="stylesheets.html" />
-<link rel="import" href="favicon.html" />
-<link rel="import" href="scripts.html" />
-<link rel="import" href="header.html" />
-<link rel="import" href="footer.html" />
-<link rel="import" href="json.data.html" />
-<link rel="import" href="convert.tag.html" />
-<link rel="import" href="css.selector.html" />
-<link rel="import" href="document.head.html" />
-<link rel="import" href="document.body.html" />
+<link rel="import" href="/templates/metas.html" />
+<link rel="import" href="/templates/metas.social.html" />
+<link rel="import" href="/templates/stylesheets.html" />
+<link rel="import" href="/templates/favicon.html" />
+<link rel="import" href="/templates/scripts.html" />
+<link rel="import" href="/templates/header.html" />
+<link rel="import" href="/templates/footer.html" />
+<link rel="import" href="/templates/json.data.html" />
+<link rel="import" href="/templates/convert.tag.html" />
+<link rel="import" href="/templates/css.selector.html" />
+<link rel="import" href="/templates/document.head.html" />
+<link rel="import" href="/templates/document.body.html" />
 <template data-prefix="hio" data-name="article">
 	<document-head>
 		<hio-metas></hio-metas>
-		<css-data select="h1:first-of-type" to:title use:text +:> | Haxe.io</css-data>
+		<css-data select="section h1:first-of-type" to:title use:text +:> | Haxe.io</css-data>
 		<hio-metas.social></hio-metas.social>
 		<hio-stylesheets></hio-stylesheets>
 		<hio-icons></hio-icons>
@@ -25,7 +25,7 @@
 			<div class="grid">
 				<aside class="grid-1-3">
 					<a href="https://github.com/skial/haxe.io/issues?labels=next-roundup&amp;page=1&amp;state=open">Suggest a link</a> 
-					<json-data to:a href="https://github.com/skial/haxe.io/tree/master/" :href=".input .raw">Correct this issue</json-data>
+					<json-data to:a :href="https://github.com/skial/haxe.io/tree/master/{.input .raw}">Correct this issue</json-data>
 				</aside>
 				<section class="grid-2-3">
 					<content></content>
