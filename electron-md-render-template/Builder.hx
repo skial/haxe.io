@@ -97,11 +97,14 @@ class Builder {
 		
 		if (timestamp < maxDuration) {
 			if ([for (k in completedScripts.keys()) k].length == 0) {
-				for (script in scripts) {
+				 if (scripts.length > 0) for (script in scripts) {
 					var name = script.withoutExtension();
 					require( '$__dirname/$script'.normalize() );
 					completedScripts.set( name, false );
 					window.document.addEventListener( '$name:complete', handleScriptCompletion );
+					
+				} else {
+					timeoutId = cast setTimeout( save, waitFor );
 					
 				}
 				
@@ -157,14 +160,7 @@ class Builder {
 		if (timeoutId != null) clearTimeout( cast timeoutId );
 		
 		timestamp = haxe.Timer.stamp() - timestamp;
-		
-		if (timestamp < maxDuration) {
-			timeoutId = cast setTimeout( preCheck, waitFor );
-			
-		} else {
-			timeoutId = cast setTimeout( preCheck, waitFor );
-			
-		}
+		timeoutId = cast setTimeout( preCheck, waitFor );
 	}
 	
 	private function mutation(changes:Array<MutationRecord>, observer:MutationObserver):Void {
@@ -174,18 +170,10 @@ class Builder {
 			case 'characterData':
 				
 			case 'childList':
-				//console.log( 'child list mutation update' );
 				if (timeoutId != null) clearTimeout( cast timeoutId );
 				
 				timestamp = haxe.Timer.stamp() - timestamp;
-				
-				if (timestamp < maxDuration) {
-					timeoutId = cast setTimeout( preCheck, waitFor );
-					
-				} else {
-					timeoutId = cast setTimeout( preCheck, waitFor );
-					
-				}
+				timeoutId = cast setTimeout( preCheck, waitFor );
 				
 			case _:
 				
