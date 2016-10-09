@@ -1,6 +1,6 @@
 INPUT="$@"
 INPUT_DIR=${INPUT%/*}
-#echo $INPUT
+echo $INPUT
 #echo $INPUT_DIR
 if [ "$INPUT_DIR" == "$INPUT" ]; then
 	#echo "correcting path"
@@ -62,8 +62,8 @@ cp -u $BIN $MIN
 #electron --enable-logging . --input "//$INPUT" --script ./script.js --outputDir "//$BIN_DIR" --show --scripts linkqueue.js font.characters.js sitemap.js checkmissing.js
 html-minifier \
 --collapse-boolean-attributes --remove-comments --remove-empty-attributes --remove-redundant-attributes \
---collapse-whitespace --preserve-line-breaks --decode-entities --minify-js  --remove-style-link-type-attributes \
---remove-script-type-attributes -o "$MIN" "$BIN"
+--preserve-line-breaks --decode-entities --minify-js --remove-style-link-type-attributes \
+--remove-script-type-attributes --prevent-attributes-escaping -o "$MIN" "$BIN"
 cp $MIN $OPT
 # saving from $OPT to $DIR/$BASE.opt.html and back to $OPT prevents `invalid filename $OPT` error.
 #critical "$MIN" --minify true --base ./min/ --ignore "@font-face" --ignore "fonts.google" --inline > $OPT_CRIT 
@@ -73,6 +73,6 @@ cp $MIN $OPT
 #fi
 html-minifier \
 --collapse-boolean-attributes --remove-comments --remove-empty-attributes --remove-redundant-attributes \
---collapse-whitespace --decode-entities --minify-js  --remove-style-link-type-attributes \
---remove-script-type-attributes --minify-css -o "$OPT" "$OPT_CRIT"
+--decode-entities --minify-js --remove-style-link-type-attributes \
+--remove-script-type-attributes --minify-css --prevent-attributes-escaping -o "$OPT" "$OPT_CRIT"
 #zopfli --i1000 $OPT
