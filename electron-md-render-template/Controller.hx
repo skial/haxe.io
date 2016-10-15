@@ -267,7 +267,37 @@ class Controller {
 			return result;
 		});
 		
-		// Add twemoji support to markdownIt
+		var emojione = require('emojione');
+		var emoji:haxe.DynamicAccess<EmojiData> = require('emojione/emoji.json');
+		var emojies_defs:haxe.DynamicAccess<String> = require('markdown-it-emoji/lib/data/full.json');
+		var emoji_replace = require('markdown-it-emoji/lib/replace');
+		var normalize_opts = require('markdown-it-emoji/lib/normalize_opts');
+		
+		// Populate markdown-it-emoji data with emojione data.
+		for (key in emoji.keys()) {
+			var data = emoji.get( key );
+			var shortcode = data.shortname.substring(1, data.shortname.length-1);
+			var unicode = emojione.convert(data.unicode);
+			
+			emojies_defs.set( shortcode, unicode );
+			if (data.aliases.length > 0) for (alias in data.aliases) {
+				emojies_defs.set( alias.substring(1, alias.length-1), unicode );
+			}
+			
+		}
+		
+		// Rebuild markdown-it-emoji plugin with new shortcodes from the emojione project.
+		var defaults = {
+    	defs: emojies_defs,
+    	shortcuts: require('markdown-it-emoji/lib/data/shortcuts'),
+    	enabled: []
+  	};
+		var opts = normalize_opts(md.utils.assign({}, defaults, {}));
+		
+		// Replace markdown-it-emoji with custom options.
+		md.core.ruler.at('emoji', emoji_replace(md, opts.defs, opts.shortcuts, opts.scanRE, opts.replaceRE) );
+		
+		// Add twemoji support to markdownIt - this replaces short codes only
 		twemoji = require('twemoji');
 		md.renderer.rules.emoji = function(token, idx) {
 			return twemoji.parse(token[idx].content, {ext:'.svg', base:'/twemoji/', folder:'svg'});
@@ -275,6 +305,7 @@ class Controller {
 		
 		readFile('$cwd/$input'.normalize(), {encoding:'utf8'}, function(error, content) {
 			if (error != null) throw error;
+			
 			var ast = preprocessAst( md.parse( content, mdEnvironment ) );
 			var html = md.renderer.render( ast, options, mdEnvironment );
 			console.log( mdEnvironment );
@@ -513,4 +544,16 @@ typedef Token = {
 	var Opening = 1;
 	var SelfClosing = 0;
 	var Closing = -1;
+}
+
+typedef EmojiData = {
+	var unicode:String;
+	var unicode_alternatives:String;
+	var name:String;
+	var shortname:String;
+	var category:String;
+	var emoji_order:String;
+	var aliases:Array<String>;
+	var aliases_ascii:Array<String>;
+	var keywords:Array<String>;
 }
