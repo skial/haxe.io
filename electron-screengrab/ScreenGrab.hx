@@ -75,6 +75,7 @@ class ScreenGrab {
 	}
 	
 	private function attemptScreenshot():Void {
+		console.log( 'attempting to take screenshot' );
 		if (browser != null && browser.webContents != null) {
 			
 			if (browser.isFocused()) browser.blur();
@@ -119,7 +120,7 @@ class ScreenGrab {
 		setTimeout( function() {
 			browser.webContents.openDevTools();
 			window.document.dispatchEvent( new CustomEvent('screengrab:complete', {detail:'screengrab', bubbles:true, cancelable:true}) );
-		}, 200 );
+		}, 350 );
 	}
 	
 }
