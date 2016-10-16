@@ -279,9 +279,9 @@ class Controller {
 			var shortcode = data.shortname.substring(1, data.shortname.length-1);
 			var unicode = emojione.convert(data.unicode);
 			
-			emojies_defs.set( shortcode, unicode );
+			if (!emojies_defs.exists( shortcode )) emojies_defs.set( shortcode, unicode );
 			if (data.aliases.length > 0) for (alias in data.aliases) {
-				emojies_defs.set( alias.substring(1, alias.length-1), unicode );
+				if (!emojies_defs.exists( alias.substring(1, alias.length-1) )) emojies_defs.set( alias.substring(1, alias.length-1), unicode );
 			}
 			
 		}
