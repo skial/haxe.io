@@ -502,7 +502,7 @@ class Controller {
 		}
 		
 		// Move to external file or make available via command line or environment?
-		if (payload.authors.length == 0) payload.authors.push( { display:'Skial Bainn', url:'/twitter.com/skial' } );
+		if (payload.authors.length == 0) payload.authors.push( { display:'Skial Bainn', url:'//twitter.com/skial' } );
 		var _modified = this.input;
 		if (payload.input.raw == '') payload.input = {
 			raw:this.input.normalize(), parts:[for (part in this.input.normalize().split('/')) if (basePaths.indexOf(part) == -1) part], 
