@@ -27,8 +27,6 @@ class SubresourceIntegrity {
 	@alias('rs')
 	public var resourcePath:String;
 	
-	private var electron:Dynamic;
-	private var ipcRenderer:{on:String->Function->Dynamic, once:String->Function->Dynamic, send:String->Rest<Dynamic>->Void};
 	private var hashedPaths:StringMap<String> = new StringMap();
 	private var input:String = '';
 	private var counter:Int = 0;
@@ -41,8 +39,6 @@ class SubresourceIntegrity {
 	}
 	
 	public function new(args:Array<String>) {
-		electron = require('electron');
-		ipcRenderer = electron.ipcRenderer;
 		@:cmd _;
 		console.log( args, resourcePath );
 		

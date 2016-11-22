@@ -5,6 +5,7 @@
 -lib thx.core
 -lib tink_json
 -lib thx.format
+-lib electron
 -debug
 -D js-es=6
 

@@ -9,13 +9,15 @@ import js.html.Element;
 import haxe.extern.Rest;
 import haxe.Constraints.Function;
 
+import electron.renderer.IpcRenderer;
+
 using StringTools;
 
 class LDScraper {
 	
 	private var framework:String;
-	private var electron:Dynamic;
-	private var ipcRenderer:{on:String->Function->Dynamic, once:String->Function->Dynamic, send:String->Rest<Dynamic>->Void};
+	//private var electron:Dynamic;
+	//private var ipcRenderer:{on:String->Function->Dynamic, once:String->Function->Dynamic, send:String->Rest<Dynamic>->Void};
 	
 	public static function main() {
 		var scraper:LDScraper = null;
@@ -35,13 +37,13 @@ class LDScraper {
 	}
 	
 	public function new() {
-		electron = require('electron');
-		ipcRenderer = electron.ipcRenderer;
-		ipcRenderer.once('payload', function(event, data) {
+		//electron = require('electron');
+		//ipcRenderer = electron.ipcRenderer;
+		IpcRenderer.once('payload', function(event, data) {
 			framework = data;
 			search();
 		});
-		ipcRenderer.once('entry', function(event, data) {
+		IpcRenderer.once('entry', function(event, data) {
 			trace( data );
 			var entry:LDEntry = parse(data);
 			var timeout = null;
@@ -70,7 +72,7 @@ class LDScraper {
 		console.log( results );
 		console.log( stringify( {data:(results:Array<LDEntry>)} ) );
 		
-		ipcRenderer.send(framework, stringify( {data:(results:Array<LDEntry>)} ));
+		IpcRenderer.send(framework, stringify( {data:(results:Array<LDEntry>)} ));
 		
 	}
 	
@@ -109,7 +111,7 @@ class LDScraper {
 	}
 	
 	private function completeUpdate(entry:LDEntry):Void {
-		ipcRenderer.send('' + window.location, stringify( entry ));
+		IpcRenderer.send('' + window.location, stringify( entry ));
 	}
 	
 }

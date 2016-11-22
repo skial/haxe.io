@@ -13,6 +13,8 @@ import haxe.Constraints.Function;
 import Controller.Data;
 import Controller.Payload;
 
+import electron.renderer.IpcRenderer;
+
 using StringTools;
 using haxe.io.Path;
 
@@ -28,9 +30,6 @@ class Builder {
 	private var maxDuration:Int = 750;	// wait 750ms.
 	private var observer:MutationObserver;
 	
-	private var electron:Dynamic;
-	private var ipcRenderer:{on:String->Function->Dynamic, once:String->Function->Dynamic, send:String->Rest<Dynamic>->Void};
-	
 	private var scripts:Array<String> = [];
 	private var completedScripts:Map<String, Bool> = new Map();
 	
@@ -40,13 +39,11 @@ class Builder {
 	
 	public function new() {
 		trace( 'running script' );
-		electron = require('electron');
 		
 		observer = new MutationObserver(mutation);
 		observer.observe(window.document, {childList:true, subtree:true});
 		
-		ipcRenderer = electron.ipcRenderer;
-		ipcRenderer.once('data:payload', function(event:String, arg:String) {
+		IpcRenderer.once('data:payload', function(event:String, arg:String) {
 			var data:Data = tink.Json.parse( arg );
 			storage.setItem( 'data', arg );
 			
@@ -145,10 +142,10 @@ class Builder {
 				 
 		var html = window.document.documentElement.outerHTML;
 		if (html != null && html != '<html><head></head><body></body></html>') {
-			ipcRenderer.send('save', doctype + html);
+			IpcRenderer.send('save', doctype + html);
 			
 		} else {
-			ipcRenderer.send('save', 'failed');
+			IpcRenderer.send('save', 'failed');
 			
 		}
 		
