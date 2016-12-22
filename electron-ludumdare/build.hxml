@@ -3,6 +3,7 @@
 -lib unifill
 -lib hxnodejs
 -lib tink_json
+-lib electron
 
 -cp ./
 

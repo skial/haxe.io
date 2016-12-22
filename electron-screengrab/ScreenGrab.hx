@@ -11,6 +11,10 @@ import haxe.ds.StringMap;
 import haxe.DynamicAccess;
 import haxe.Constraints.Function;
 
+import electron.Rectangle;
+import electron.renderer.Remote;
+import electron.main.BrowserWindow;
+
 using StringTools;
 using haxe.io.Path;
 
@@ -29,11 +33,7 @@ class ScreenGrab {
 	public var resourcePath:String;
 	private var dirname:String;
 	
-	private var remote:Dynamic;
-	private var electron:Dynamic;
-	private var ipcRenderer:{on:String->Function->Dynamic, send:String->Rest<Dynamic>->Void};
-	
-	private var browser:Dynamic;
+	private var browser:BrowserWindow;
 	
 	public static function main() {
 		data = tink.Json.parse( window.sessionStorage.getItem( 'data' ) );
@@ -41,11 +41,7 @@ class ScreenGrab {
 	}
 	
 	public function new(args:Array<String>) {
-		electron = require('electron');
-		remote = electron.remote;
-		ipcRenderer = electron.ipcRenderer;
-		
-		browser = remote.getCurrentWindow();
+		browser = Remote.getCurrentWindow();
 		dirname = data.payload.output.parts.slice( 1, data.payload.output.parts.length - 1 ).join('/');
 		
 		@:cmd _;
@@ -80,13 +76,12 @@ class ScreenGrab {
 			
 			if (browser.isFocused()) browser.blur();
 			
-			var rect = {x:0, y:0, width:width, height:height};
+			var rect:Rectangle = {x:0, y:0, width:width, height:height};
 			
 			browser.setBounds( rect );
 			
 			setTimeout( function () browser.capturePage(rect, function(image) {
 				var path:String = (browser.webContents.getURL():String).replace( 'http://localhost:${data.port}', '' );
-				//var size:{width:Int,height:Int} = image.getSize();
 				var fullPath = Sys.getCwd() + '/$resourcePath/img/$dirname/'.normalize().addTrailingSlash();
 				
 				if (!sys.FileSystem.exists(fullPath)) {

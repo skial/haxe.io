@@ -15,6 +15,11 @@ import thx.format.DateFormat;
 import tink.json.Representation;
 import haxe.Constraints.Function;
 
+import electron.main.App;
+import electron.main.IpcMain;
+import electron.main.WebContents;
+import electron.main.BrowserWindow;
+
 using Reflect;
 using StringTools;
 using thx.Objects;
@@ -59,23 +64,16 @@ abstract DynamicTink(Dynamic) from Dynamic {
 @:cmd
 class Controller {
 
-	private static var app:Dynamic;
 	private static var twemoji:Dynamic;
-	private static var electron:Dynamic;
-	private static var ipcMain:{on:String->Function->Dynamic, once:String->Function->Dynamic};
 
 	public static function main() {
-		electron = require('electron');
-		app = electron.app;
-		ipcMain = electron.ipcMain;
-		
-		app.on('ready', function() {
+		App.on('ready', function(_) {
 			var m = new Controller( Sys.args() );
 		} );
 		
-		app.on('window-all-closed', function() {
+		App.on('window-all-closed', function(_) {
 		  if (process.platform != 'darwin') {
-		    app.quit();
+		    App.quit();
 		  }
 		});
 	}
@@ -145,13 +143,13 @@ class Controller {
 	
 	private var server = require('node-static');
 	private var port:Int = 8080;
-	private var browser:Dynamic;
+	private var browser:BrowserWindow;
 	
 	public function new(args:Array<String>) {
 		@:cmd _;
 		
 		if (script != null) config.webPreferences.preload = '$cwd/$script'.normalize();
-		if (input == null) app.quit();
+		if (input == null) App.quit();
 		
 		input = input.normalize();
 		output = output.normalize();
@@ -333,7 +331,7 @@ class Controller {
 	}
 	
 	private function processHtml(html:String):Void {
-		ipcMain.once('save', save);
+		IpcMain.once('save', save);
 		
 		console.log( 'serving from ' + '$cwd/$root'.normalize() );
 		var files = untyped __js__("new {0}", server.Server)('$cwd/$root'.normalize());
@@ -347,9 +345,9 @@ class Controller {
 		ns.listen(0);
 		port = ns.address().port;
 		
-		browser = untyped __js__("new {0}", electron.BrowserWindow)( config );
+		browser = new BrowserWindow( config );
 		browser.on('closed', function() browser = null );
-		var webContents = browser.webContents;
+		var webContents:WebContents = browser.webContents;
 		webContents.send('html', html);
 		webContents.on('did-finish-load', function() {
 			console.log( 'page loaded', webContents.getURL() );

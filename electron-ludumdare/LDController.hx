@@ -8,6 +8,10 @@ import uhx.util.Exponential;
 import tink.json.Representation;
 import haxe.Constraints.Function;
 
+import electron.main.App;
+import electron.main.IpcMain;
+import electron.main.BrowserWindow;
+
 using StringTools;
 using sys.io.File;
 using haxe.io.Path;
@@ -115,22 +119,22 @@ abstract Framework(String) to String to SafeValue {
 @:cmd
 class LDController {
 	
-	private static var app:Dynamic;
-	private static var electron:Dynamic;
-	private static var ipcMain:{on:String->Function->Dynamic, once:String->Function->Dynamic};
+	//private static var app:Dynamic;
+	//private static var electron:Dynamic;
+	//private static var ipcMain:{on:String->Function->Dynamic, once:String->Function->Dynamic};
 	
 	public static function main() {
-		electron = require('electron');
-		app = electron.app;
-		ipcMain = electron.ipcMain;
+		//electron = require('electron');
+		//app = electron.app;
+		//ipcMain = electron.ipcMain;
 		
-		app.on('window-all-closed', function() {
+		App.on('window-all-closed', function(_) {
 			if (process.platform != 'darwin') {
 				//if (Sys.args().indexOf('--wait') == -1) app.quit();
 			}
 		});
 		
-		app.on('ready', function() {
+		App.on('ready', function(_) {
 			var m = new LDController( Sys.args() );
 		} );
 	
@@ -210,7 +214,7 @@ class LDController {
 	private function process():Void {
 		for (framework in frameworks) {
 			var browser = untyped __js__('new {0}', electron.BrowserWindow)( config );
-			ipcMain.on(framework, recieveEntries.bind(browser, framework, _, _));
+			IpcMain.on(framework, recieveEntries.bind(browser, framework, _, _));
 			browser.on('closed', function() browser = null );
 			browser.webContents.on( 'did-finish-load', onFrameworkLoad.bind( browser, framework ) );
 			browser.loadURL( '$url$search' + framework );
@@ -304,8 +308,8 @@ class LDController {
 				var entry = result.entries[index];
 				trace( 'processing $url${entry.url.toString()}' );
 				trace( config );
-				var browser = untyped __js__('new {0}', electron.BrowserWindow)( config );
-				ipcMain.once('$url${entry.url.toString()}', recieveEntry.bind(browser, entry.url.toString(), _, _));
+				var browser = new BrowserWindow( config );
+				IpcMain.once('$url${entry.url.toString()}', recieveEntry.bind(browser, entry.url.toString(), _, _));
 				browser.on('closed', function() browser = null );
 				browser.webContents.on( 'did-finish-load', onEntryLoad.bind( browser, entry ) );
 				browser.loadURL( '$url${entry.url.toString()}' );
@@ -367,7 +371,7 @@ class LDController {
 		trace( result, output, cwd + output );
 		createDirectory( '$cwd/$output'.normalize() );
 		'$cwd/$output'.saveContent( haxe.Json.stringify( result ) );
-		if (!wait) app.quit();
+		if (!wait) App.quit();
 	}
 	
 	private static function createDirectory(path:String) {
