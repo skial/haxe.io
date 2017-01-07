@@ -41,6 +41,7 @@ class LDScraper {
 		//ipcRenderer = electron.ipcRenderer;
 		IpcRenderer.once('payload', function(event, data) {
 			framework = data;
+			console.log( framework );
 			search();
 		});
 		IpcRenderer.once('entry', function(event, data) {
@@ -56,11 +57,14 @@ class LDScraper {
 	}
 	
 	private function qsa(selector:String):Array<Node> {
+		console.log( selector );
 		return [for (n in window.document.querySelectorAll( selector )) n];
 	}
 	
 	private function search():Void {
-		var entries:Array<Element> = cast qsa('.entry.body .ld-post.post .entry.body .preview tr td a');
+		var entries:Array<Element> = cast qsa('.entry.body .preview tr td a');
+		
+		console.log( entries );
 		
 		var results = [for (entry in entries) {
 			author:{ name:entry.childNodes[entry.childNodes.length -1].textContent, url:'' }, 

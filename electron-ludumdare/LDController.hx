@@ -145,7 +145,7 @@ class LDController {
 	The minimum amount of milliseconds to wait between scraping requests.
 	*/
 	@alias
-	public var delay:Float = 50;
+	public var delay:Float = 100;
 	
 	/**
 	The lD competition to search.
@@ -180,7 +180,7 @@ class LDController {
 	
 	public var wait:Bool = false;
 	public var url:String = 'http://ludumdare.com/compo/ludum-dare-';
-	public var search:String = '/?action=preview&q=';
+	public var search:String = '?action=preview&q=';
 	
 	private var cwd = Sys.getCwd();
 	// Browser window config
@@ -209,15 +209,17 @@ class LDController {
 		}
 		if (output == null || output == '') output = '/ld$number/entries.json';
 		
+		trace( url, output );
 	}
 	
 	private function process():Void {
 		for (framework in frameworks) {
-			var browser = untyped __js__('new {0}', electron.BrowserWindow)( config );
+			//var browser = untyped __js__('new {0}', electron.BrowserWindow)( config );
+			var browser = new BrowserWindow( config );
 			IpcMain.on(framework, recieveEntries.bind(browser, framework, _, _));
 			browser.on('closed', function() browser = null );
 			browser.webContents.on( 'did-finish-load', onFrameworkLoad.bind( browser, framework ) );
-			browser.loadURL( '$url$search' + framework );
+			browser.loadURL( '$url$search$framework' );
 			
 		}
 		
@@ -225,10 +227,13 @@ class LDController {
 	
 	private function onFrameworkLoad(browser:Dynamic, framework:String):Void {
 		trace( 'loaded framework scraper', framework );
+		trace( '$url$search$framework' );
 		browser.webContents.openDevTools();
 		browser.webContents.send('payload', framework);
 		
 	}
+	
+	private var unorm = require('unorm');
 	
 	private function recieveEntries(browser:Dynamic, framework:String, event:String, data:String):Void {
 		trace( 'recieved $framework results' );
@@ -240,9 +245,17 @@ class LDController {
 		entries = json.data;
 		
 		if (entries.length > 0) for (entry in entries) {
+			entry.name = unorm.nfkd(entry.name);
+			entry.author.name = unorm.nfkd(entry.author.name);
+			
 			var exists = [for (e in result.entries) if (e.name == entry.name) e];
 			if (exists.length == 0) {
 				entry.platforms = collectPlatforms( entry.links );
+				entry.frameworks.sort( function(a, b) {
+					var ai = result.frameworks.indexOf( {framework:a} );
+					var bi = result.frameworks.indexOf( {framework:b} );
+					return ai-bi;
+				} );
 				
 				result.entries.push( entry );
 				
