@@ -28,7 +28,8 @@
     "postcss": "^5.2.4",
     "posthtml": "^0.8.7",
     "posthtml-cli": "^0.2.7",
-    "twemoji": "^2.2.0"
+    "twemoji": "^2.2.0",
+    "unorm": "^1.4.1"
   },
   "scripts": {
     "copy:extras": "all-extras.sh \"src\"",
