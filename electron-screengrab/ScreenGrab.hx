@@ -49,7 +49,7 @@ class ScreenGrab {
 		setTimeout( function() {
 			browser.webContents.closeDevTools();
 			
-			setTimeout( attemptScreenshot, 0 );
+			setTimeout( attemptScreenshot, 250 );
 			
 		}, 0 );
 		
@@ -102,7 +102,7 @@ class ScreenGrab {
 					
 				}
 				
-			}), 1000 );	// Have to wait until internal? graphics cache? updates with resized browser.
+			}), 500 );	// Have to wait until internal? graphics cache? updates with resized browser.
 			
 		} else {
 			finish();
