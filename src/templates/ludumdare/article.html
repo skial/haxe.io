@@ -5,15 +5,11 @@
 <link rel="import" href="/templates/scripts.html" />
 <link rel="import" href="/templates/header.html" />
 <link rel="import" href="/templates/footer.html" />
-<link rel="import" href="/templates/json.data.html" />
-<link rel="import" href="/templates/convert.tag.html" />
-<link rel="import" href="/templates/css.selector.html" />
-<link rel="import" href="/templates/document.head.html" />
-<link rel="import" href="/templates/document.body.html" />
+<script src="/js/ace.js"></script>
 <template data-prefix="hio" data-name="ludumdare">
 	<document-head>
 		<hio-metas></hio-metas>
-		<css-data select="section h1:first-of-type" to:title use:text +:> | Haxe.io</css-data>
+		<css-data select="section h1:first-of-type" to:title use:text wait +:> | Haxe.io</css-data>
 		<hio-metas.social></hio-metas.social>
 		<hio-stylesheets></hio-stylesheets>
 		<hio-icons></hio-icons>
@@ -26,13 +22,13 @@
 		<input id="windows" type="checkbox" name="ld-filter-group" />
 		<input id="source" type="checkbox" name="ld-filter-group" />
 		<hio-header></hio-header>
-		<article>
+		<article id="ludumdare_article">
 			<div class="grid">
 				<aside class="grid-1-3">
 					<nav>
 						<h1>Table of Contents</h1>
 						<ul>
-							<json-data select=".framework">
+							<json-data select=".framework" each>
 								<li><a :title="*" :href="#{*}"><span :to="*"></span></a></li>
 							</json-data>
 						</ul>
@@ -51,17 +47,19 @@
 					<!--<json-data to:a href="https://github.com/skial/haxe.io/tree/master/" :href=".input .raw">Correct this article</json-data>-->
 				</aside>
 				<section class="grid-2-3">
-					<content></content>
-					<json-data select=".framework">
+					<span id="markdown"></span>
+					<json-data select=".framework" each>
 						<h2><a :id="*" type="text/html" :href="#{*}"><span></span></a><span :to="*"></span></h2>
 						<ul>
-							<span :select=".entries:has([frameworks$='{*}'])" $ld=".extra > .entries + .ld" :to="json-data">
+							<json-data :select=".entries:has([frameworks^='{*}'])" retarget each>
 								<li :data-platforms="{.platforms}">
-									<a :href="http://ludumdare.com/compo/ludum-dare-{.ld}/{:root > .url}?{:root > .type}"><span :to="{:root > .name}"></span></a>
+									<json-data :select=".ld, .entries:has(.author[name='{.author > .name}'])" retarget>
+										<a :href="http://ludumdare.com/compo/ludum-dare-{int:first-child}/{:last-child > .url}?{:last-child > .type}"><span :to="{:last-child > .name}"></span></a>
+									</json-data>
 									by
 									<a :href="http://ludumdare.com/compo{.author > .url}"><span :to="{.author > .name}"></span></a>.
 								</li>
-							</span>
+							</json-data>
 						</ul>
 					</json-data>
 				</section>
