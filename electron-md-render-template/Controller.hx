@@ -161,8 +161,6 @@ class Controller {
 		data = { scripts:[], payload:payload, html:'', args:Sys.args().map(function(a) return a.normalize()), port:port };
 		// Modify the json structure.
 		for (object in json) {
-			console.log( json );
-			console.log( payload.extra );
 			if (object.trim().startsWith('{')) {
 				var struct = haxe.Json.parse( object );
 				payload.extra = thx.Objects.assign( cast payload.extra, struct, function(field, oldv, newv) {
@@ -196,7 +194,6 @@ class Controller {
 				console.log('Unable to load $object');
 				
 			}
-			console.log( payload.extra );
 			
 		}
 		
@@ -306,7 +303,6 @@ class Controller {
 			
 			var ast = preprocessAst( md.parse( content, mdEnvironment ) );
 			var html = md.renderer.render( ast, options, mdEnvironment );
-			console.log( mdEnvironment );
 			processHtml( html );
 			
 		});
@@ -338,7 +334,7 @@ class Controller {
 		var ns = require('http').createServer(function (request, response) {
 			request.addListener('end', function () {
 		      files.serve(request, response);
-					response.setHeader("Content-Security-Policy", "default-src 'self'; script-src http://localhost:*/templates/ http://localhost:*/js/component.js http://localhost:*/js/convert.tag.js http://localhost:*/js/css.selector.js http://localhost:*/js/document.body.js http://localhost:*/js/document.head.js http://localhost:*/js/json.data.js; connect-src 'self'; img-src 'self'; style-src 'self';");
+					response.setHeader("Content-Security-Policy", "default-src 'self'; script-src 'unsafe-inline' http://localhost:*/templates/ http://localhost:*/js/component.js http://localhost:*/js/convert.tag.js http://localhost:*/js/dom.data.js http://localhost:*/js/document.body.js http://localhost:*/js/document.head.js http://localhost:*/js/json.data.js http://localhost:*/js/move.tags.js http://localhost:*/js/ace.js; connect-src 'self'; img-src 'self'; style-src 'self';");
 					
 		  }).resume();
 		});
@@ -347,8 +343,16 @@ class Controller {
 		
 		browser = new BrowserWindow( config );
 		browser.on('closed', function() browser = null );
+		
 		var webContents:WebContents = browser.webContents;
+		
 		webContents.send('html', html);
+		webContents.on('dom-ready', function() {
+			webContents.send( 'templates:wait', '' );
+		});
+		
+		var fixedFuckedUp = false;
+		
 		webContents.on('did-finish-load', function() {
 			console.log( 'page loaded', webContents.getURL() );
 			webContents.openDevTools();
@@ -358,9 +362,14 @@ class Controller {
 			data.scripts = scripts;
 			data.payload = generatePayload( mdEnvironment );
 			webContents.send( 'data:payload', tink.Json.stringify( data ) );
-			/*webContents.send( 'scripts:load', haxe.Json.stringify( {scripts:scripts} ) );
-			webContents.send( 'html', html );
-			webContents.send( 'json', tink.Json.stringify(generatePayload(mdEnvironment)) );*/
+			
+			if (!fixedFuckedUp) {
+				webContents.reload();
+				fixedFuckedUp = true;
+				setTimeout( webContents.send.bind( 'scripts:watch', cast true ), 1000 );
+				
+			}
+			
 		});
 		
 		var url = (input.directory().addTrailingSlash() + mdEnvironment['references']['_TEMPLATE']['href']).replace(root, 'http://localhost:$port').normalize();
@@ -369,7 +378,7 @@ class Controller {
 	
 	private function save(event:String, arg:String):Void {
 		if (arg != 'failed') {
-			var html = arg.replace( '\n', '\r\n' );
+			var html = arg;//arg.replace( '\n', '\r\n' );
       var fullPath = '$cwd/$output'.normalize();
       var dirname = '$cwd/${output.directory()}'.normalize().addTrailingSlash();
       console.log( 'saving file to $dirname' );
@@ -471,7 +480,6 @@ class Controller {
 			for (segment in key) {
 				if (object.exists(segment)) {
 					if (segment == key[key.length - 1]) {
-						console.log( object, segment );
 						var value = object.get( segment );
 						
 						if (Type.typeof(value).match( TObject )) {

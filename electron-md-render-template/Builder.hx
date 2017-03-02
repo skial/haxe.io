@@ -5,13 +5,14 @@ import js.node.Fs;
 import js.html.*;
 import js.Browser.*;
 import haxe.Serializer;
+import Controller.Data;
 import haxe.extern.Rest;
 import haxe.Unserializer;
 import haxe.ds.StringMap;
+import Controller.Payload;
 import haxe.DynamicAccess;
 import haxe.Constraints.Function;
-import Controller.Data;
-import Controller.Payload;
+import uhx.pati.Consts.EventConsts;
 
 import electron.renderer.IpcRenderer;
 
@@ -23,11 +24,10 @@ class Builder {
 	public static var storage:Storage = window.sessionStorage;
 	
 	private var max:Int = 2;
-	private var counter:Int = 0;
 	private var waitFor:Int = 100;	// wait 100ms.
 	private var timestamp:Float = 0;
 	private var timeoutId:Null<Int>;
-	private var maxDuration:Int = 750;	// wait 750ms.
+	private var maxDuration:Int = 1000;	// wait 1000ms.
 	private var observer:MutationObserver;
 	
 	private var scripts:Array<String> = [];
@@ -35,50 +35,42 @@ class Builder {
 	
 	public static function main() {
 		var con:Builder = new Builder();
+		
 	}
 	
 	public function new() {
-		trace( 'running script' );
-		
-		observer = new MutationObserver(mutation);
-		observer.observe(window.document, {childList:true, subtree:true});
-		
 		IpcRenderer.once('data:payload', function(event:String, arg:String) {
 			var data:Data = tink.Json.parse( arg );
+			console.log( data );
 			storage.setItem( 'data', arg );
-			
 			scripts = data.scripts;
 			
 			processHtml( data.html );
 			processJson( data.payload );
 			
 		});
+		
+		IpcRenderer.once('scripts:watch', function(event:String, arg:String) {
+			observer = new MutationObserver(mutation);
+			observer.observe(window.document, {childList:true, subtree:true});
+			
+		});
 	}
 	
 	public function processHtml(data:String) {
-		console.log( 'processing html' );
 		var node = window.document.querySelector('#markdown');
 		
 		if (node != null) {
 			var template:TemplateElement = cast window.document.createElement('template');
 			template.innerHTML = data;
 			node.parentNode.replaceChild( window.document.importNode(template.content, true), node );
-			window.document.dispatchEvent( new CustomEvent('DocumentHtmlData', {detail:true, bubbles:true}) );
 			
 		}
-		
-		counter++;
-		if (counter >= max && timeoutId != null) timeoutId = cast setTimeout( preCheck, waitFor );
 		
 	}
 	
 	public function processJson(data:Payload) {
-		window.document.dispatchEvent( new CustomEvent('DocumentJsonData', {detail:data, bubbles:true}) );
-		console.log( 'processing json', data );
-		
-		counter++;
-		if (counter >= max && timeoutId != null) timeoutId = cast setTimeout( preCheck, waitFor );
-		
+		window.document.dispatchEvent( new CustomEvent(JsonDataRecieved, {detail:data, bubbles:true}) );
 	}
 	
 	public function clean():Void {
@@ -95,10 +87,12 @@ class Builder {
 		if (timestamp < maxDuration) {
 			if ([for (k in completedScripts.keys()) k].length == 0) {
 				 if (scripts.length > 0) for (script in scripts) {
-					var name = script.withoutExtension();
+					var name = script.withoutDirectory().withoutExtension();
+					
 					require( '$__dirname/$script'.normalize() );
 					completedScripts.set( name, false );
-					window.document.addEventListener( '$name:complete', handleScriptCompletion );
+					
+					window.document.addEventListener( '$name:complete', handleScriptCompletion, untyped {once:true} );
 					
 				} else {
 					timeoutId = cast setTimeout( save, waitFor );
@@ -126,10 +120,11 @@ class Builder {
 	}
 	
 	public function save():Void {
+		console.log('saving page');
+		observer.disconnect();
 		// Wait until `maxDuration` has passed of no dom changes before continuing.
 		clearTimeout( cast timeoutId );
-		observer.disconnect();
-		counter = -1;
+		//counter = -1;
 		clean();
 		
 		var node = window.document.doctype;
@@ -141,6 +136,7 @@ class Builder {
 				 + '>\n' : '';
 				 
 		var html = window.document.documentElement.outerHTML;
+		
 		if (html != null && html != '<html><head></head><body></body></html>') {
 			IpcRenderer.send('save', doctype + html);
 			
@@ -161,20 +157,11 @@ class Builder {
 	}
 	
 	private function mutation(changes:Array<MutationRecord>, observer:MutationObserver):Void {
-		for (change in changes) switch change.type {
-			case 'attributes':
-				
-			case 'characterData':
-				
-			case 'childList':
-				if (timeoutId != null) clearTimeout( cast timeoutId );
-				
-				timestamp = haxe.Timer.stamp() - timestamp;
-				timeoutId = cast setTimeout( preCheck, waitFor );
-				
-			case _:
-				
-		}
+		if (timeoutId != null) clearTimeout( cast timeoutId );
+		
+		timestamp = haxe.Timer.stamp() - timestamp;
+		timeoutId = cast setTimeout( preCheck, waitFor );
+		
 	}
 	
 }

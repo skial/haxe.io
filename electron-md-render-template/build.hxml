@@ -6,6 +6,7 @@
 -lib tink_json
 -lib thx.format
 -lib electron
+-lib pati
 -debug
 -D js-es=6
 
