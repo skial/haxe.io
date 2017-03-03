@@ -1,80 +1,29 @@
+-lib pati
 -lib regle
 -lib jwenn
 #-lib closure
--D closure_advanced
+#-D closure_advanced # JsonData breaks with this.
 -D closure_overwrite
 #--no-traces
 -debug
--D js-es=6
+#-D js-es=6
 
 --each
 
--main Component
+-main ACE
+-js ace.js
+
+--next
+
+-main uhx.pati.ConvertTag
 -js component.js
 
---next 
+--next
 
---no-traces
--main DocumentHeader
--js document.head.js
+-main ACE
+-js ../src/js/ace.js
 
 --next
 
---no-traces
--main DocumentBody
--js document.body.js
-
---next
-
---no-traces
--main ConvertTag
--js convert.tag.js
-
---next
-
--main JsonData
--js json.data.js
-
---next
-
---no-traces
--main CssSelector
--js css.selector.js
-
---next
-
--main Component
+-main uhx.pati.ConvertTag
 -js ../src/js/component.js
-
---next 
-
---no-traces
--main DocumentHeader
--js ../src/js/document.head.js
-
---next
-
---no-traces
--main DocumentBody
--js ../src/js/document.body.js
-
---next
-
-#-debug
---no-traces
--main ConvertTag
--js ../src/js/convert.tag.js
-
---next
-
-#-debug
---no-traces
--main JsonData
--js ../src/js/json.data.js
-
---next
-
-#-debug
---no-traces
--main CssSelector
--js ../src/js/css.selector.js
