@@ -25,7 +25,6 @@ electron --enable-logging ./render/index.js \
 -md markdown-it-abbr markdown-it-attrs markdown-it-emoji \
 markdown-it-footnote markdown-it-headinganchor \
 -s ./render/build.js -r src -i $INPUT -o $BIN_DIR$BIN_BASE/index.max.html -b src \
--j ./src/data/ld36.json ./src/data/ld36.manual.json \
 --scripts ../site/subresourceintegrity.js ../site/font.characters.js ../site/screengrab.js \
 -rs opt -w 1920 -h 1080 --show
 
