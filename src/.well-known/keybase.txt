@@ -1,0 +1,55 @@
+==================================================================
+https://keybase.io/skial
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://haxe.io
+  * I am skial (https://keybase.io/skial) on keybase.
+  * I have a public key ASCbzwgT_Xw8auhYQRLlWVsCnrPork6DfIpPgHRWR48Fqgo
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "01209bcf0813fd7c3c6ae8584112e5595b029eb3e8ae4e837c8a4f807456478f05aa0a",
+            "host": "keybase.io",
+            "kid": "01209bcf0813fd7c3c6ae8584112e5595b029eb3e8ae4e837c8a4f807456478f05aa0a",
+            "uid": "38004c585d678b3ef448412db4765219",
+            "username": "skial"
+        },
+        "merkle_root": {
+            "ctime": 1499249216,
+            "hash": "a2dc598372f1f0235c74b8b01a4ac2f545d3dbc396aac1f3cabd10e6396033dc2a18ff32d91fb7d7d9658a95c2dd3a5a46b22cd4e354b0b71baf9fa6441f6e1f",
+            "hash_meta": "881816014499821c0306eb6392d862dbf7b26e46288f23e78fdc5adf9ac97c89",
+            "seqno": 1212109
+        },
+        "service": {
+            "hostname": "haxe.io",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "client": {
+        "name": "keybase.io go client",
+        "version": "1.0.24"
+    },
+    "ctime": 1499249272,
+    "expire_in": 504576000,
+    "prev": "6b34260af7b3ee8347e2c99677c13f626ba263a421e0aa8c4b57b5cabfb55e3a",
+    "seqno": 7,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgm88IE/18PGroWEES5VlbAp6z6K5Og3yKT4B0VkePBaoKp3BheWxvYWTFAzx7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTIwOWJjZjA4MTNmZDdjM2M2YWU4NTg0MTEyZTU1OTViMDI5ZWIzZThhZTRlODM3YzhhNGY4MDc0NTY0NzhmMDVhYTBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwOWJjZjA4MTNmZDdjM2M2YWU4NTg0MTEyZTU1OTViMDI5ZWIzZThhZTRlODM3YzhhNGY4MDc0NTY0NzhmMDVhYTBhIiwidWlkIjoiMzgwMDRjNTg1ZDY3OGIzZWY0NDg0MTJkYjQ3NjUyMTkiLCJ1c2VybmFtZSI6InNraWFsIn0sIm1lcmtsZV9yb290Ijp7ImN0aW1lIjoxNDk5MjQ5MjE2LCJoYXNoIjoiYTJkYzU5ODM3MmYxZjAyMzVjNzRiOGIwMWE0YWMyZjU0NWQzZGJjMzk2YWFjMWYzY2FiZDEwZTYzOTYwMzNkYzJhMThmZjMyZDkxZmI3ZDdkOTY1OGE5NWMyZGQzYTVhNDZiMjJjZDRlMzU0YjBiNzFiYWY5ZmE2NDQxZjZlMWYiLCJoYXNoX21ldGEiOiI4ODE4MTYwMTQ0OTk4MjFjMDMwNmViNjM5MmQ4NjJkYmY3YjI2ZTQ2Mjg4ZjIzZTc4ZmRjNWFkZjlhYzk3Yzg5Iiwic2Vxbm8iOjEyMTIxMDl9LCJzZXJ2aWNlIjp7Imhvc3RuYW1lIjoiaGF4ZS5pbyIsInByb3RvY29sIjoiaHR0cHM6In0sInR5cGUiOiJ3ZWJfc2VydmljZV9iaW5kaW5nIiwidmVyc2lvbiI6MX0sImNsaWVudCI6eyJuYW1lIjoia2V5YmFzZS5pbyBnbyBjbGllbnQiLCJ2ZXJzaW9uIjoiMS4wLjI0In0sImN0aW1lIjoxNDk5MjQ5MjcyLCJleHBpcmVfaW4iOjUwNDU3NjAwMCwicHJldiI6IjZiMzQyNjBhZjdiM2VlODM0N2UyYzk5Njc3YzEzZjYyNmJhMjYzYTQyMWUwYWE4YzRiNTdiNWNhYmZiNTVlM2EiLCJzZXFubyI6NywidGFnIjoic2lnbmF0dXJlIn2jc2lnxEDP6AGiTnrjNAfpWFrLCKVM6fhEM2s1MszDePO+C8yr7VtYFTkB8/skyIHIb0zNjk5FMehFWbGbLGFqax5lCk4CqHNpZ190eXBlIKRoYXNogqR0eXBlCKV2YWx1ZcQggfvdKej2HQ5uvzHzACdiTBnyQ3gEnLhgv0RSaWjY1dujdGFnzQICp3ZlcnNpb24B
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/skial
+
+==================================================================
