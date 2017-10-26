@@ -8,6 +8,29 @@ ld/
 js-components/
 src/js/
 .haxelib/
-node_modules/
-lighthouse/*
+lighthouse/
 secrets.json
+
+# NodeJS specific
+#################
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
