@@ -10,6 +10,7 @@ src/js/
 .haxelib/
 lighthouse/
 secrets.json
+src/data/roundups/
 
 # NodeJS specific
 #################
