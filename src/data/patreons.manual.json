@@ -3,13 +3,13 @@
         {
             "description": null,
             "duration": "per month",
-            "income": 807,
+            "income": 611,
             "keywords": null,
             "links": [
                 "https://www.facebook.com/OpenFL"
             ],
             "name": "OpenFL",
-            "patrons": 43,
+            "patrons": 44,
             "profile": null,
             "summary": "is creating Free Open-Source Software",
             "update": null,
@@ -18,7 +18,7 @@
         {
             "description": null,
             "duration": "per month",
-            "income": 104,
+            "income": 116,
             "keywords": null,
             "links": [
                 "HaxeFlixel"
@@ -33,7 +33,7 @@
         {
             "description": null,
             "duration": "per month",
-            "income": 244,
+            "income": 263,
             "keywords": null,
             "links": [
                 "https://www.facebook.com/haxeui",
@@ -65,13 +65,13 @@
         {
             "description": null,
             "duration": "per month",
-            "income": 47,
+            "income": 50,
             "keywords": null,
             "links": [
                 "https://twitter.com/lewislepton"
             ],
             "name": "Lewis Lepton",
-            "patrons": 12,
+            "patrons": 13,
             "profile": null,
             "summary": "is creating tutorials, code, videos",
             "update": null,
@@ -80,13 +80,13 @@
         {
             "description": null,
             "duration": "per month",
-            "income": 2,
+            "income": 11,
             "keywords": null,
             "links": [
                 "nadako"
             ],
             "name": "Dan Korostelev",
-            "patrons": 2,
+            "patrons": 3,
             "profile": null,
             "summary": "is creating Haxe",
             "update": null,
@@ -137,7 +137,7 @@
         {
             "description": null,
             "duration": "per month",
-            "income": 27,
+            "income": 40,
             "keywords": null,
             "links": [
                 "https://github.com/ericbishton"
@@ -151,13 +151,13 @@
         {
             "description": null,
             "duration": "per month",
-            "income": 24,
+            "income": 30,
             "keywords": null,
             "links": [
                 "https://twitter.com/mayakwd"
             ],
             "name": "Ilya Malanin",
-            "patrons": 3,
+            "patrons": 4,
             "summary": "is creating improvements for Haxe IntelliJ IDEA plugin",
             "update": null,
             "uri": "https://www.patreon.com/mayakwd"
@@ -165,16 +165,30 @@
         {
             "description": null,
             "duration": "per month",
-            "income": 18,
+            "income": 19,
             "keywords": null,
             "links": [
                 "https://twitter.com/matthewswallace"
             ],
             "name": "Matthew Wallace",
-            "patrons": 2,
+            "patrons": 3,
             "summary": "is creating HAXE BY EXAMPLE",
             "update": null,
             "uri": "https://www.patreon.com/haxeexamples"
+        },
+        {
+            "description": null,
+            "duration": "per creation",
+            "income": 28,
+            "keywords": null,
+            "links": [
+                "https://github.com/SlavaRa"
+            ],
+            "name": "Slava Ra",
+            "patrons": 4,
+            "summary": "is creating improvements for FlashDevelop & HaxeDevelop",
+            "update": null,
+            "uri": "https://www.patreon.com/slavara"
         }
     ]
 }
