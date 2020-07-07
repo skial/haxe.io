@@ -9,7 +9,7 @@
     "browserify": "^13.1.0",
     "critical": "github:addyosmani/critical",
     "cssnano": "^3.7.7",
-    "electron": "^1.4.15",
+    "electron": "^9.1.0",
     "electron-prebuilt": "^1.4.3",
     "electron-spawn": "latest",
     "emojione": "^2.2.6",
