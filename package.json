@@ -11,11 +11,27 @@
     "url": "git+https://github.com/skial/haxe.io.git"
   },
   "keywords": [],
-  "author": "",
+  "author": {
+    "name": "skial",
+    "url": "https://haxe.io"
+  },
   "license": "ISC",
   "type": "module",
   "bugs": {
     "url": "https://github.com/skial/haxe.io/issues"
   },
-  "homepage": "https://github.com/skial/haxe.io#readme"
+  "homepage": "https://github.com/skial/haxe.io#readme",
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "@11ty/eleventy-plugin-webc": "^0.11.2",
+    "@picocss/pico": "^2.1.1",
+    "cheerio": "^1.1.2",
+    "markdown-it-abbr": "^2.0.0",
+    "markdown-it-anchor": "^9.2.0",
+    "markdown-it-attrs": "^4.3.1",
+    "markdown-it-emoji": "^3.0.0",
+    "markdown-it-footnote": "^4.0.0",
+    "sass": "^1.97.3",
+    "twemoji": "^14.0.2"
+  }
 }

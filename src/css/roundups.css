@@ -1,0 +1,32 @@
+@media (min-width: 768px) {
+    .grid.col-2 {
+        /*display: grid;*/
+        grid-template-columns: 20% 1fr;
+        grid-template-rows: 1fr;
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+        justify-items: stretch;
+        align-items: stretch;
+    }
+}
+
+.logo {
+    max-width: 5rem;
+}
+
+.hero {
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 6rem;
+}
+
+.hero .details {
+    font-size: .800rem;
+    padding-bottom: 5rem;
+}
+
+.emoji {
+    height: 1rem;
+}

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en" class="/roundups">
+	<head>
+        <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="color-scheme" content="light dark">
+        <link webc:keep rel="stylesheet" href="/css/pico.min.css">
+        <link webc:keep rel="stylesheet" href="/css/roundups.css">
+	</head>
+	<body>
+    </body>
+</html>
+<script webc:type="js">
+    let data = {};
+    data = this.$data;
+    this.renderTemplate(`<hio-roundup>${data.content}</hio-roundup>`, "webc", data)
+    .then(function(str) {
+        return this.renderTemplate(str, "liquid", data);
+    });
+</script>

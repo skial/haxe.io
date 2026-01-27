@@ -1,0 +1,86 @@
+<header class="container">
+    <div class="logo container">
+        <a type="image/logo" href="/">
+        <svg viewBox="0 0 320 320" enable-background="new">
+            <g>
+            <g id="a" transform="translate(-2,-2)">
+                <path stroke-width="15.6" stroke="#000" d="m93.7 25.3-68.4 68.3" stroke-linecap="round" fill="none"></path>
+                <path stroke-width="15.3" stroke="#000" id="b" d="m52.4 153 36.6-37" stroke-linecap="round" transform="translate(2)" fill="none"></path>
+                <path stroke-width="14" stroke="#000" d="m271 22.5-246 246" stroke-linecap="round" fill="none"></path>
+                <use height="1052.3622" y="0" x="0" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#b" width="744.09448" transform="translate(60,-60)"></use>
+            </g>
+            <use height="1052.3622" y="0" x="0" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#a" width="744.09448" transform="matrix(-1 0 0 -1 332 331)"></use>
+            </g>
+        </svg>
+        </a>
+    </div>
+    <div class="hero container">
+        <slot name="title"></slot>
+        {{ payload | inspect }}
+        <div class="details">
+            {%- if payload.authors -%}
+            <span>written by </span>
+            {%- for author in payload.authors -%}
+            {%- if forloop.first != true and forloop.last -%}
+            <span> and </span>
+            {%- endif -%}
+            <a title="{{ author.display }}" rel="author nofollow" href="{{ author.url }}">{{ author.display }}</a>
+            {%- if forloop.last == false and forloop.0index != forloop.length -%}
+            <span>, </span>
+            {%- endif -%}
+            {%- endfor -%}
+            {%- endif -%}
+            
+            {% if payload.contributors %}
+            <span> with contributions from </span>
+            {%- for con in payload.contributors -%}
+            {%- if forloop.first != true and forloop.last -%}
+            <span> and </span>
+            {%- endif -%}
+            <a title="{{ con.display }}" rel="contributor nofollow" href="{{ con.url }}">{{ con.display }}</a>
+            {%- if forloop.last == false and forloop.0index != forloop.length -%}
+            <span>, </span>
+            {%- endif -%}
+            {%- endfor -%}
+            {% endif %}
+            <span>Edited on </span>
+            <time pubdate datetime="{{ page.date | date: '%Y-%M-%d %H:%M:%S'}}">{{ page.date | date: '%A %e%q %B %Y' }}</time>
+        </div>
+    </div>
+</header>
+
+<article>
+    <div class="grid col-2">
+        <aside class="">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="https://github.com/skial/haxe.io/issues?labels=next-roundup&amp;page=1&amp;state=open">Suggest a link</a> 
+                    </li>
+                    <li>
+                        <a href="https://github.com/skial/haxe.io/tree/master/{{ page.inputPath | url }}">Correct this issue</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        <section class="">
+            <slot @raw="content"></slot>
+        </section>
+    </div>
+</article>
+
+<footer class="">
+    <div class="">
+        <svg enable-background="new" viewBox="0 0 320 320">
+            <g>
+                <g id="a" transform="translate(-2,-2)">
+                    <path d="m93.7 25.3-68.4 68.3" stroke="#000" stroke-linecap="round" stroke-width="15.6" fill="none"/>
+                    <path id="b" d="m52.4 153 36.6-37" transform="translate(2)" stroke="#000" stroke-linecap="round" stroke-width="15.3" fill="none"/>
+                    <path d="m271 22.5-246 246" stroke="#000" stroke-linecap="round" stroke-width="14" fill="none"/>
+                    <use xlink:href="#b" transform="translate(60,-60)" height="1052.3622" width="744.09448" y="0" x="0"/>
+                </g>
+                <use xlink:href="#a" transform="matrix(-1 0 0 -1 332 331)" height="1052.3622" width="744.09448" y="0" x="0"/>
+            </g>
+        </svg>
+    </div>
+</footer>
