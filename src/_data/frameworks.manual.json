@@ -1,0 +1,217 @@
+{
+    "frameworks_entries":[
+        {
+            "name": "Haxe",
+            "url": "https://www.haxe.org",
+            "repo": "https://github.com/HaxeFoundation",
+            "showcase": "https://haxe.org/use-cases/",
+            "snippets": "https://code.haxe.org/"
+        },
+        {
+            "name": "OpenFL",
+            "dependencies": [],
+            "url": "https://www.openfl.org/",
+            "repo": "https://github.com/openfl",
+            "showcase": "https://www.openfl.org/showcase/",
+            "logo": "",
+            "social":[
+                "https://twitter.com/open_fl",
+                "https://www.facebook.com/OpenFL/"
+            ],
+            "authors": [
+                "Joshua Granick"
+            ],
+            "target": {
+                "platforms": ["windows", "osx", "linux", "ios", "android", "html5", "flash"],
+                "languages": ["cpp", "javascript"]
+            },
+            "sectors": [
+                "gaming"
+            ]
+        },
+        {
+            "name": "HaxeFlixel",
+            "dependencies": [
+                "OpenFL"
+            ],
+            "url": "https://haxeflixel.com/",
+            "repo": "https://github.com/HaxeFlixel",
+            "showcase": "https://haxeflixel.com/showcase/",
+            "snippets": "https://snippets.haxeflixel.com/",
+            "logo": "",
+            "social":[
+                "https://twitter.com/haxeflixel",
+                "https://www.facebook.com/haxeflixel/"
+            ],
+            "authors": [
+                "@Zaphod"
+            ]
+
+        },
+        {
+            "ignore": true,
+            "name": "HaxePunk",
+            "dependencies": [
+                "OpenFL"
+            ],
+            "url": "https://haxepunk.com/",
+            "repo": "https://github.com/haxepunk",
+            "logo": "",
+            "social":[
+                "https://twitter.com/haxepunk"
+            ],
+            "authors": [
+                "Matt Tuttle", "Ben Morris"
+            ]
+        },
+        {
+            "name": "Stencyl",
+            "dependencies": [
+                "OpenFL"
+            ],
+            "url": "https://www.stencyl.com/",
+            "repo": "https://github.com/Stencyl",
+            "showcase": "https://www.stencyl.com/game/showcaseMobile/",
+            "logo": "",
+            "social":[
+                "http://www.twitter.com/Stencyl",
+                "http://www.facebook.com/stencyl"
+            ],
+            "authors": [
+                "Stencyl, LLC"                
+            ]
+        },
+        {
+            "name": "Kha",
+            "dependencies": [],
+            "url": "https://kha.tech/",
+            "repo": "https://github.com/Kode/Kha",
+            "logo": "",
+            "social":[
+                "https://twitter.com/robdangerous"
+            ],
+            "authors": [
+                "Robert Konrad"
+            ],
+            "target": {
+                "platforms": ["windows", "osx", "linux", "ios", "android", "html5", "webgl", "flash", "tizen", "unity3d", "playstation vita", "xbox 360"],
+                "languages": ["cpp", "csharp", "java", "javascript"]
+            },
+            "sectors": [
+                "gaming", "media"
+            ]
+        },
+        {
+            "name": "Armory",
+            "dependencies": [
+                "Kha"
+            ],
+            "url": "https://armory3d.org/",
+            "repo": "https://github.com/armory3d",
+            "logo": "",
+            "social":[
+                "https://twitter.com/armory3d"
+            ],
+            "authors": [
+                "Lubos Lenco"
+            ]
+        },
+        {
+            "name": "NME",
+            "dependencies": [],
+            "url": "https://github.com/haxenme",
+            "repo": "https://github.com/haxenme",
+            "logo": "",
+            "social":[
+                "https://twitter.com/gamehaxe"
+            ],
+            "authors": [
+                "Hugh Sanderson"
+            ],
+            "target": {
+                "platforms": ["windows", "osx", "linux", "ios", "android", "flash", "webos"],
+                "languages": ["cpp"]
+            },
+            "sectors": [
+                "gaming", "media"
+            ]
+        },
+        {
+            "name": "Heaps",
+            "dependencies": [],
+            "url": "https://heaps.io/",
+            "repo": "https://github.com/HeapsIO/heaps",
+            "snippets": "https://heaps.io/samples/",
+            "logo": "",
+            "social":[
+                "https://twitter.com/gamehaxe"
+            ],
+            "authors": [
+                "Nicolas Cannasse"
+            ],
+            "target": {
+                "platforms": ["windows", "osx", "linux", "ios", "android", "flash", "webgl"],
+                "languages": ["hashlink", "javascript"]
+            },
+            "sectors": [
+                "gaming"
+            ]
+        },
+        {
+            "name": "HaxeUI",
+            "dependencies": [
+                "OpenFL", "Kha", "NME"
+            ],
+            "url": "https://www.haxeui.org/",
+            "repo": "https://github.com/haxeui/",
+            "snippets": "https://www.haxeui.org/explorer/",
+            "logo": "",
+            "social":[
+                "https://twitter.com/IanHarrigan1982",
+                "http://www.facebook.com/haxeui"
+            ],
+            "authors": [
+                "Ian Harrigan"
+            ],
+            "target": {
+                "platforms": ["windows", "osx", "linux", "ios", "android", "flash", "webgl"],
+                "languages": []
+            },
+            "sectors": [
+                "gaming", "ui"
+            ]
+        },
+        {
+            "name": "Tinkerbell",
+            "dependencies": [],
+            "url": "https://haxetink.github.io/#/",
+            "repo": "https://github.com/haxetink",
+            "logo": "",
+            "social":[
+                "https://twitter.com/back2dos"
+            ],
+            "authors": [
+                "Juraj Kirchheim", "Kevin Leung", "Ben Merckx"
+            ],
+            "target": {
+                "platforms": ["windows", "osx", "linux", "ios", "android", "html5", "webgl"],
+                "languages": ["all"]
+            },
+            "sectors": [
+                "web", "routing", "parser", "template", "dev ux"
+            ]
+        }
+    ],
+    "frameworks": [
+        "openfl",
+        "haxeflixel",
+        "haxepunk",
+        "stencyl",
+        "kha",
+        "amormy3d",
+        "nme",
+        "heapsio",
+        "haxeui",
+        "tinkerbell"
+    ]
+}
