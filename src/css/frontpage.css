@@ -1,0 +1,78 @@
+@media (min-width: 768px) {
+    .grid.col-2 {
+        grid-template-columns: 5fr 1fr;
+        grid-template-rows: 1fr;
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+        justify-items: stretch;
+        align-items: stretch;
+    }
+
+    .articles time {
+        text-align: right;
+    }
+}
+
+header h1 {
+    text-align: center;
+}
+
+header .logo {
+    margin: auto;
+}
+
+.logo {
+    max-width: 5rem;
+}
+
+.logo a {
+    color: inherit;
+}
+
+main li {
+    list-style: none;
+}
+
+.articles {
+    padding-left: 0;
+}
+
+.details {
+    font-size: .750rem;
+    display: contents;
+}
+
+.details, .details * {
+    font-style: italic;
+    display: contents;
+}
+
+details > summary > span:last-of-type {
+    display: none;
+}
+
+details[open] > summary > span:first-of-type {
+    display: none;
+}
+
+details[open] > summary > span:last-of-type {
+    display: initial;
+}
+
+
+footer {
+    padding: 2rem;
+}
+
+footer .tools .subtitle {
+    list-style: none;
+    margin-left: -0.8rem;
+}
+
+footer .tools li:not(.subtitle) {
+    font-size: .800rem;
+}
+
+footer .social li {
+    text-transform: capitalize;
+}
