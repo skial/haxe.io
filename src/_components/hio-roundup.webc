@@ -1,53 +1,8 @@
 <header class="container">
-    <div class="logo container">
-        <a type="image/logo" href="/">
-        <svg viewBox="0 0 320 320" enable-background="new">
-            <g>
-            <g id="a" transform="translate(-2,-2)">
-                <path stroke-width="15.6" stroke="currentColor" d="m93.7 25.3-68.4 68.3" stroke-linecap="round" fill="none"></path>
-                <path stroke-width="15.3" stroke="currentColor" id="b" d="m52.4 153 36.6-37" stroke-linecap="round" transform="translate(2)" fill="none"></path>
-                <path stroke-width="14" stroke="currentColor" d="m271 22.5-246 246" stroke-linecap="round" fill="none"></path>
-                <use height="1052.3622" y="0" x="0" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#b" width="744.09448" transform="translate(60,-60)"></use>
-            </g>
-            <use height="1052.3622" y="0" x="0" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#a" width="744.09448" transform="matrix(-1 0 0 -1 332 331)"></use>
-            </g>
-        </svg>
-        </a>
-    </div>
+    {% render "header/logo.html" %}
     <div class="hero container">
         <slot name="title"></slot>
-        {% comment %}
-        {{ payload | inspect }}
-        {% endcomment %}
-        <div class="details">
-            {%- if payload.authors -%}
-            <span>written by </span>
-            {%- for author in payload.authors -%}
-            {%- if forloop.first != true and forloop.last -%}
-            <span> and </span>
-            {%- endif -%}
-            <a title="{{ author.display }}" rel="author nofollow" href="{{ author.url }}">{{ author.display }}</a>
-            {%- if forloop.last == false and forloop.0index != forloop.length -%}
-            <span>, </span>
-            {%- endif -%}
-            {%- endfor -%}
-            {%- endif -%}
-            
-            {% if payload.contributors %}
-            <span> with contributions from </span>
-            {%- for con in payload.contributors -%}
-            {%- if forloop.first != true and forloop.last -%}
-            <span> and </span>
-            {%- endif -%}
-            <a title="{{ con.display }}" rel="contributor nofollow" href="{{ con.url }}">{{ con.display }}</a>
-            {%- if forloop.last == false and forloop.0index != forloop.length -%}
-            <span>, </span>
-            {%- endif -%}
-            {%- endfor -%}
-            {% endif %}
-            <span>Edited on </span>
-            <time pubdate datetime="{{ page.date | date: '%Y-%M-%d %H:%M:%S'}}">{{ page.date | date: '%A %e%q %B %Y' }}</time>
-        </div>
+        {% render "payload/attribution.html", payload: payload, page: page %}
     </div>
 </header>
 
@@ -71,40 +26,4 @@
     </div>
 </article>
 
-<footer>
-    <section class="tools">
-        <h2>Tools</h2>
-        <div class="grid">
-        {% comment %}
-        {{ ["frameworks.manual"] | inspect }}
-        {% endcomment %}
-        {%- if ["frameworks.manual"] -%}
-        {%- assign tools = ["frameworks.manual"].frameworks_entries -%}
-        {%- for tool in tools -%}
-        {%- if tool.ignore -%}
-            {%- continue -%}
-        {%- endif -%}
-            <ul>
-                <li class="subtitle">{{ tool.name }}</li>
-                <li><a href="{{ tool.url }}" target="_blank" rel="noopener">Website</a></li>
-                {%- if tool.showcase -%}
-                <li><a href="{{ tool.showcase }}" target="_blank" rel="noopener">Showcase</a></li>
-                {%- endif -%}
-                {%- if tool.snippets -%}
-                <li><a href="{{ tool.snippets }}" target="_blank" rel="noopener">Snippets</a></li>
-                {%- endif -%}
-            </ul>
-        
-        {%- endfor -%}
-        {%- endif -%}
-        </div>
-    </section>
-    <section class="social">
-        <h2>Social</h2>
-        <ul>
-            {%- for link in social.social_data -%}
-            <li class="{{ link.name }}"><a href="{{ link.uri }}">{{ link.name }}</a></li>
-            {%- endfor -%}
-        </ul>
-    </section>
-</footer>
+{% render "footer.html", tools: ["frameworks.manual"].frameworks_entries, social: social %}

@@ -1,0 +1,32 @@
+{% comment %}
+{{ payload | inspect }}
+{% endcomment %}
+<div class="details">
+    {%- if payload.authors.size > 0 -%}
+    <span>written by </span>
+    {%- for author in payload.authors -%}
+    {%- if forloop.first != true and forloop.last -%}
+    <span> and </span>
+    {%- endif -%}
+    <a title="{{ author.display }}" rel="author nofollow" href="{{ author.url }}">{{ author.display }}</a>
+    {%- if forloop.last == false and forloop.0index != forloop.length -%}
+    <span>, </span>
+    {%- endif -%}
+    {%- endfor -%}
+    {%- endif -%}
+    
+    {% if payload.contributors.size > 0 %}
+    <span> with contributions from </span>
+    {%- for con in payload.contributors -%}
+    {%- if forloop.first != true and forloop.last -%}
+    <span> and </span>
+    {%- endif -%}
+    <a title="{{ con.display }}" rel="contributor nofollow" href="{{ con.url }}">{{ con.display }}</a>
+    {%- if forloop.last == false and forloop.0index != forloop.length -%}
+    <span>, </span>
+    {%- endif -%}
+    {%- endfor -%}
+    {% endif %}
+    <span>Edited on </span>
+    <time pubdate datetime="{{ page.date | date: '%Y-%M-%d %H:%M:%S'}}">{{ page.date | date: '%A %e%q %B %Y' }}</time>
+</div>

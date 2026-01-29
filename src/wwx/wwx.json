@@ -1,4 +1,5 @@
 {
     "date": "Last Modified",
-    "tags": ["wwx", "developer", "interview"]
+    "tags": ["wwx", "developer", "interview"],
+    "layout": "default.html"
 }
