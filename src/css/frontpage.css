@@ -1,11 +1,6 @@
 @media (min-width: 768px) {
     .grid.col-2 {
         grid-template-columns: 5fr 1fr;
-        grid-template-rows: 1fr;
-        grid-column-gap: 20px;
-        grid-row-gap: 20px;
-        justify-items: stretch;
-        align-items: stretch;
     }
 
     .articles time {
@@ -19,14 +14,6 @@ header h1 {
 
 header .logo {
     margin: auto;
-}
-
-.logo {
-    max-width: 5rem;
-}
-
-.logo a {
-    color: inherit;
 }
 
 main li {

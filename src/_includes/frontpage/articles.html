@@ -9,7 +9,7 @@
             <span>written by </span>
             <ul class="people authors">
                 {% for person in post.data.payload.authors %}
-                <li>{{ person.display }}</li>
+                <li>{{ person.display }}{%- if forloop.last == false and forloop.0index != forloop.length -%}, {%- endif -%}</li>
                 {% endfor %}
             </ul>
             {% endif %}

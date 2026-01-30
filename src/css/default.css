@@ -1,0 +1,23 @@
+@media (min-width: 768px) {
+    .grid.col-2 {
+        grid-template-columns: 20% 1fr;
+        grid-template-rows: 1fr;
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+        justify-items: stretch;
+        align-items: stretch;
+    }
+}
+
+.logo {
+    max-width: 5rem;
+}
+
+.logo a {
+    color: inherit;
+}
+
+.hero .details {
+    font-size: .800rem;
+    padding-bottom: 5rem;
+}

@@ -1,0 +1,9 @@
+{%- for person in people -%}
+{%- if forloop.first != true and forloop.last -%}
+<span> and </span>
+{%- endif -%}
+<a title="{{ person.display }}" rel="{{ class }} nofollow" href="{{ person.url }}">{{ person.display }}</a>
+{%- if forloop.last == false and forloop.0index != forloop.length -%}
+<span>, </span>
+{%- endif -%}
+{%- endfor -%}
