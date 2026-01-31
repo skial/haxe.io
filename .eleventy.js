@@ -10,6 +10,7 @@ import webc from '@11ty/eleventy-plugin-webc';
 import fs from "node:fs/promises";
 import path from "node:path";
 import * as sass from "sass";
+import { DateTime } from "luxon";
 
 export default function(config) {
     function dateSort(a, b) {
@@ -35,6 +36,9 @@ export default function(config) {
     // https://www.11ty.dev/docs/copy/#configuration-api-method
     // Doesnt appear to be relative from the input directory. https://github.com/11ty/eleventy/issues/2043#issuecomment-948826977
     config.addPassthroughCopy("src/css");
+    config.addPassthroughCopy("src/img");
+    config.addPassthroughCopy("src/svg");
+    config.addPassthroughCopy("src/twemoji/svg");
     https://www.11ty.dev/docs/copy/#emulate-passthrough-copy-during-serve
     config.setServerPassthroughCopyBehavior("passthrough");
 
@@ -87,6 +91,17 @@ export default function(config) {
 
         return md;
     });
+
+    // https://www.11ty.dev/docs/filters/#asynchronous-filters
+    config.addFilter("minus_months", function (date, amount) {
+        return DateTime
+            .fromJSDate(date)
+            .minus( { months: amount })
+            .toJSDate();
+    })
+    config.addFilter("date_lessthan", function (lhs, rhs) {
+        return lhs < rhs;
+    })
 
     // https://www.11ty.dev/docs/languages/sass/#configuration
     /**
