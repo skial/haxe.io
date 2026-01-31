@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="/frontpage" lang="en">
+<head>
+	<meta charset="utf-8">  
+	<meta content="width=device-width,initial-scale=1" name="viewport">
+	
+	<meta content="summary_large_image" name="twitter:card"> 
+	<meta content="@skial" name="twitter:site">
+	<meta content="@skial" name="twitter:creator"> 
+	<meta content="Haxe.io — News & Information For Haxe Developers" name="twitter:title">
+	<meta name="twitter:description" content="Handpicked news and resources for Haxe, a high level, cross-platform, statically and strongly typed programming language. Find the latest jobs, tutorials, videos, presentations and events covered weekly on the community blog.">
+	<meta content="https://haxe.io/img/skial.jpg" name="twitter:image:src">
+	
+	<meta property="og:title" content="Haxe.io — News & Information For Haxe Developers">
+	<meta property="og:image" content="https://haxe.io/img/skial.jpg">
+	<meta property="og:url" content="https://haxe.io/">
+	<meta property="og:description" content="Handpicked news and resources for Haxe, a high level, cross-platform, statically and strongly typed programming language. Find the latest jobs, tutorials, videos, presentations and events covered weekly on the community blog.">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="Haxe.io — News & Information For Haxe Developers">
+	
+	<meta name="description" content="Handpicked news and resources for Haxe, a high level, cross-platform, statically and strongly typed programming language. Find the latest jobs, tutorials, videos, presentations and events covered weekly on the community blog.">
+	<link title="Haxe.io Feed" rel="alternate" type="application/rss+xml" href="http://blog.skialbainn.com/rss">
+	<link rel="stylesheet" href="/css/pico.min.css">
+	<link rel="stylesheet" href="/css/default.css">
+	<link rel="stylesheet" href="/css/frontpage.css">
+	<title>Haxe.io — News And Information For Haxe Developers</title>
+</head>
+<body>
+	<header class="container">
+		{% render "header/logo.html" %}
+		<h1 class="name">haxe.io</h1>
+	</header>
+	<main class="container">
+		<ul class="articles">
+			<!---- https://www.11ty.dev/docs/collections/#collection-item-data-structure ---->
+			{%- for post in collections.roundups limit:5 -%}
+			{% render "frontpage/articles.html", post: post %}
+			{%- endfor -%}
+			
+			<details class="more roundups container">
+				<summary role="button">Show <span>more</span><span>less</span> roundups</summary>
+				<ul class="articles">
+					{%- for post in collections.roundups offset:5 -%}
+					{% render "frontpage/articles.html", post: post %}
+					{%- endfor -%}
+				</ul>
+			</details>
+		</ul>
+
+		<h1>Releases</h1>
+		<ul class="articles">
+			{%- for post in collections.releases -%}
+			{% render "frontpage/articles.html", post: post %}
+			{%- endfor -%}
+		</ul>
+
+		<h1>Developer Interviews</h1>
+		<ul class="articles">
+			{%- for post in collections.wwx -%}
+			{% render "frontpage/articles.html", post: post %}
+			{%- endfor -%}
+		</ul>
+
+		<h1>Game Jams</h1>
+		<ul class="articles">
+			{%- for post in collections.gamejam -%}
+			{% render "frontpage/articles.html", post: post %}
+			{%- endfor -%}
+		</ul>
+
+		<h1>Videos</h1>
+		<ul class="articles">
+			{%- for post in collections.videos -%}
+			{% render "frontpage/articles.html", post: post %}
+			{%- endfor -%}
+		</ul>
+	</main>
+	{% render "footer.html", tools: ["frameworks.manual"].frameworks_entries, social: social %}
+</body>
+</html>
