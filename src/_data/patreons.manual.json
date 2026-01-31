@@ -1,9 +1,9 @@
 {
-    "data": [
+    "patreon_data": [
         {
             "description": null,
             "duration": "per month",
-            "income": 611,
+            "income": 594,
             "keywords": null,
             "links": [
                 "https://www.facebook.com/OpenFL"
@@ -13,38 +13,38 @@
             "profile": null,
             "summary": "is creating Free Open-Source Software",
             "update": null,
-            "uri": "https://www.patreon.com/openfl?ty=h"
+            "uri": "https://www.patreon.com/openfl"
         },
         {
             "description": null,
             "duration": "per month",
-            "income": 116,
+            "income": 110,
             "keywords": null,
             "links": [
                 "HaxeFlixel"
             ],
             "name": "HaxeFlixel",
-            "patrons": 18,
+            "patrons": 16,
             "profile": null,
             "summary": "is creating An Open Source, Cross-Platform 2D Game Engine",
             "update": null,
-            "uri": "https://www.patreon.com/haxeflixel?ty=h"
+            "uri": "https://www.patreon.com/haxeflixel"
         },
         {
             "description": null,
             "duration": "per month",
-            "income": 263,
+            "income": 262,
             "keywords": null,
             "links": [
                 "https://www.facebook.com/haxeui",
                 "IanHarrigan1982"
             ],
             "name": "HaxeUI",
-            "patrons": 8,
+            "patrons": 7,
             "profile": null,
             "summary": "is creating Open source user interface libraries",
             "update": null,
-            "uri": "https://www.patreon.com/haxeui?ty=h"
+            "uri": "https://www.patreon.com/haxeui"
         },
         {
             "description": null,
@@ -52,41 +52,40 @@
             "income": 29,
             "keywords": null,
             "links": [
-                "https://www.facebook.com/x01010111",
-                "x01010111"
+                "https://www.facebook.com/x01010111"
             ],
             "name": "Will Blanton",
             "patrons": 4,
             "profile": null,
             "summary": "is creating HaxeFlixel Tutorials",
             "update": null,
-            "uri": "https://www.patreon.com/x01010111?ty=h"
+            "uri": "https://www.patreon.com/x01010111"
         },
         {
             "description": null,
             "duration": "per month",
-            "income": 50,
+            "income": 45,
             "keywords": null,
             "links": [
                 "https://twitter.com/lewislepton"
             ],
             "name": "Lewis Lepton",
-            "patrons": 13,
+            "patrons": 11,
             "profile": null,
-            "summary": "is creating tutorials, code, videos",
+            "summary": "is creating art, code, games & videos",
             "update": null,
-            "uri": "https://www.patreon.com/lewislepton?ty=h"
+            "uri": "https://www.patreon.com/lewislepton"
         },
         {
             "description": null,
             "duration": "per month",
-            "income": 11,
+            "income": 14,
             "keywords": null,
             "links": [
-                "nadako"
+                "https://twitter.com/nadako"
             ],
             "name": "Dan Korostelev",
-            "patrons": 3,
+            "patrons": 4,
             "profile": null,
             "summary": "is creating Haxe",
             "update": null,
@@ -110,13 +109,13 @@
         {
             "description": null,
             "duration": "per creation",
-            "income": 0,
+            "income": 40,
             "keywords": null,
             "links": [
-                "mknol"
+                "https://twitter.com/mknol"
             ],
             "name": "Mark",
-            "patrons": 0,
+            "patrons": 4,
             "profile": null,
             "summary": "is creating Code",
             "update": null,
@@ -127,7 +126,9 @@
             "duration": "per month",
             "income": 0,
             "keywords": null,
-            "links": [],
+            "links": [
+                "https://twitter.com/AurelDev"
+            ],
             "name": "Aurel Bílý",
             "patrons": 0,
             "summary": "is creating Haxe games and apps",
@@ -137,7 +138,7 @@
         {
             "description": null,
             "duration": "per month",
-            "income": 40,
+            "income": 41,
             "keywords": null,
             "links": [
                 "https://github.com/ericbishton"
@@ -165,7 +166,7 @@
         {
             "description": null,
             "duration": "per month",
-            "income": 19,
+            "income": 18,
             "keywords": null,
             "links": [
                 "https://twitter.com/matthewswallace"
@@ -189,6 +190,21 @@
             "summary": "is creating improvements for FlashDevelop & HaxeDevelop",
             "update": null,
             "uri": "https://www.patreon.com/slavara"
+        },
+        {
+            "description": null,
+            "duration": "per month",
+            "income": 1607,
+            "keywords": null,
+            "links": [
+                "https://twitter.com/luboslenco",
+                "https://twitter.com/armory3d"
+            ],
+            "name": "Lubos & contributors",
+            "patrons": 141,
+            "summary": "are creating Armory",
+            "update": null,
+            "uri": "https://www.patreon.com/armory"
         }
     ]
 }
