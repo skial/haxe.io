@@ -1,3 +1,9 @@
+[data-theme="light"],
+:root:not([data-theme="dark"]),
+:host:not([data-theme=dark]) {
+    --pico-primary-background: #fffdf9;
+}
+
 @media (min-width: 768px) {
     .grid.col-2 {
         grid-template-columns: 20% 1fr;
