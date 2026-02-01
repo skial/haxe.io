@@ -42,6 +42,11 @@ export default function(config) {
     https://www.11ty.dev/docs/copy/#emulate-passthrough-copy-during-serve
     config.setServerPassthroughCopyBehavior("passthrough");
 
+    // https://www.11ty.dev/docs/ignores/#configuration-api
+    config.ignores.add("@*");
+    config.ignores.add("**/copy_me.*");
+    config.ignores.delete("src/@skial/*");
+
     //https://www.11ty.dev/docs/languages/webc/#installation
     config.addPlugin(RenderPlugin);
     config.addPlugin(webc, {
@@ -297,40 +302,7 @@ export default function(config) {
         });
         
         return roundups;
-        //["wwx", "developer", "interview", "videos","ludumdare", "gamejam", "releases"]
-        /*return collections.getAll().sort( function(a, b) {
-            let an = Number.parseInt(a.page.fileSlug);
-            let bn = Number.parseInt(b.page.fileSlug);
-
-            if (Number.isNaN(an)) {
-                an = 0;
-            }
-            if (Number.isNaN(bn)) {
-                bn = 0;
-            }
-            if (an > 0 && bn > 0 && a.page.inputPath.search(/(wwx|ld)/) == -1 && b.page.inputPath.search(/(wwx|ld)/) == -1) {
-                console.log(a.page.inputPath, b.page.inputPath, bn, an, bn-an);
-                //return bn - an;
-            }
-
-            let ad = a.page.date;
-            let bd = b.page.date;
-
-            if (Object.hasOwn(a.data, "payload")) {
-                ad = (a.data.payload.published ??
-                    (a.data.payload.modified ??
-                    (a.data.payload.created ?? ad)));
-            }
-            if (Object.hasOwn(b.data, "payload")) {
-                bd = (b.data.payload.published ??
-                    (b.data.payload.modified ??
-                    (b.data.payload.created ?? bd)));
-            }
-
-            console.log(a.page.inputPath, b.page.inputPath, a.data.payload, b.data.payload, ad, bd, a.page.date, b.page.date);
-
-            return bd - ad;
-        })*/
+        
     });
     config.addCollection("wwx", async (collections) => {
         let wwx = collections.getFilteredByTag("wwx");
@@ -341,14 +313,9 @@ export default function(config) {
         wwx = wwx.sort( dateSort );
         return wwx;
     });
-    ["gamejam", "releases", "videos"].forEach( function(tag) {
+    ["gamejam", "releases", "videos", "blog"].forEach( function(tag) {
         config.addCollection(tag, async (collections) => {
             return collections.getFilteredByTag(tag).sort( dateSort );
         });
     } );
-    
-    // https://www.11ty.dev/docs/transforms/
-    /*config.addTransform("pre-2026-content", async function (context) {
-        console.log(this.page);
-    });*/
 }
