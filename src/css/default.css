@@ -1,7 +1,9 @@
-[data-theme="light"],
-:root:not([data-theme="dark"]),
-:host:not([data-theme=dark]) {
-    --pico-primary-background: #fffdf9;
+@media only screen and (prefers-color-scheme: light) {
+    [data-theme=light],
+    :root:not([data-theme=dark]),
+    :host(:not([data-theme=dark])) {
+        --pico-background-color: #fffdf9;
+    }
 }
 
 @media (min-width: 768px) {
