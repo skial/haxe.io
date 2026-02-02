@@ -91,7 +91,7 @@ export default function(config) {
         
         // https://github.com/markdown-it/markdown-it-emoji
         md.renderer.rules.emoji = function(token, idx) {
-            return twemoji.parse(token[idx].content);
+            return twemoji.parse(token[idx].content, { base: "https://haxe.io/twemoji/", folder: "svg", ext: ".svg" });
         }
 
         return md;
