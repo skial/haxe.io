@@ -153,7 +153,11 @@ export default function(config) {
         key:"md",
         getData: async function (inputPath) {
             let content = await fs.readFile(inputPath, {encoding: "utf8"});
-            let md = mdit();
+            let md = mdit()
+            .use(md_emoji);
+            md.renderer.rules.emoji = function(token, idx) {
+                return twemoji.parse(token[idx].content, { base: "https://haxe.io/twemoji/", folder: "svg", ext: ".svg" });
+            }
             
             var refdef = {};
             var payload = {
