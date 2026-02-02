@@ -1,0 +1,10 @@
+[
+    {
+      "name": "lua",
+      "tags": ["programming", "language"],
+      "versions": {
+        "svg": ["original", "plain"],
+        "font": []
+      }
+    }
+]

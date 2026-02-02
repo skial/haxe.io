@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+	<head>
+        <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="color-scheme" content="light dark">
+        <link webc:keep rel="stylesheet" href="/css/pico.min.css">
+        <link webc:keep rel="stylesheet" href="/css/default.css">
+	</head>
+	<body>
+        {% render "header.html", page: page, payload: payload %}
+        <main class="container">
+            {{ content }}
+        </main>
+        {% render "footer.html", tools: ["frameworks.manual"].frameworks_entries, social: social %}
+    </body>
+</html>

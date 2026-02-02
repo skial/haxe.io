@@ -1,0 +1,14 @@
+{
+    "social_data":[
+        {
+            "name":"twitter",
+            "svg":"/src/svg/zocial/twitter.svg",
+            "uri":"https://twitter.com/skial"
+        },
+        {
+            "name":"rss",
+            "svg":"/src/svg/zocial/rss.svg",
+            "uri":"http://blog.skialbainn.com/rss"
+        }
+    ]
+}

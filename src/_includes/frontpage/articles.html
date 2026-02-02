@@ -1,0 +1,30 @@
+<li class="{{ post.data.tags | join: ' ' }}" itemtype="http://schema.org/Article" id="{{ post.page.fileSlug | slugify }}" itemscope>
+    <article class="grid col-2">
+        <a title="{{ post.data.title | default: post.page.fileSlug }}" href="{{ post.page.url }}">
+            <h1 itemprop="headline">{{ post.data.payload.title | default: post.page.fileSlug }}</h1>
+        </a>
+        <time datetime="{{ post.data.payload.modified | date: '%Y-%m-%d %H:%M:%S' }}">{{ post.data.payload.modified | date: '%d %b %Y' }}</time>
+        <div class="details">
+            {% if post.data.payload.authors.size > 0 %}
+            <span>written by </span>
+            <ul class="people authors">
+                {% for person in post.data.payload.authors %}
+                <li>{{ person.display }}{%- if forloop.last == false and forloop.0index != forloop.length -%}, {%- endif -%}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% if post.data.payload.contributors.size > 0 %}
+            <span>with contributions from </span>
+            <ul class="people contributors">
+                {% for person in post.data.payload.contributors %}
+                <li>{{ person.display }}{%- if forloop.last == false and forloop.0index != forloop.length -%}, {%- endif -%}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </article>
+    
+    {% comment %}
+    {{ post.data.payload | inspect }}
+    {% endcomment %}
+</li>

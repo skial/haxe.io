@@ -1,0 +1,29 @@
+{
+    "event_data":[
+        {
+            "title": "Haxe US Summit 2018",
+            "url": "https://summit.haxe.org/us/2018/",
+            "dates": {
+                "start": "2018-05-03",
+                "startPretty": "May 3rd",
+                "end": "2018-05-05",
+                "endPretty": "May 5th"
+            },
+            "displayDates":{
+                "end": "2018-05-03"
+            },
+            "location": {
+                "iso3166-1": "us",
+                "city": "Seattle",
+                "name": "The Hilton Seattle Downtown",
+                "url": "https://summit.haxe.org/us/2018/#location"
+            },
+            "social": {
+                "twitter": "https://twitter.com/HaxeSummit"
+            },
+            "tickets": "https://summit.haxe.org/us/2018/#tickets",
+            "schedule": "https://summit.haxe.org/us/2018/#schedule",
+            "sticky": true
+        }
+    ]
+}

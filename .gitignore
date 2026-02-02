@@ -1,16 +1,10 @@
-bin/
-min/
-opt/
-site/
-patreon/
-render/
-ld/
-js-components/
-src/js/
+src/svg/
 .haxelib/
 lighthouse/
 secrets.json
-src/data/roundups/
+
+# 11ty
+_site
 
 # NodeJS specific
 #################

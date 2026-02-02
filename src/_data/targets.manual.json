@@ -1,0 +1,34 @@
+[
+    {
+        "name":"JavaScript",
+        "logo":"/devicon/icons/javascript/javascript-plain.svg"
+    },
+    {
+        "name":"NodeJS",
+        "logo":"/devicon/icons/nodejs/nodejs-plain.svg"
+    },
+    {
+        "name":"Python",
+        "logo":"/devicon/icons/python/python-plain.svg"
+    },
+    {
+        "name":"Java",
+        "logo":"/devicon/icons/java/java-plain.svg"
+    },
+    {
+        "name":"Php",
+        "logo":"/devicon/icons/php/php-plain.svg"
+    },
+    {
+        "name":"C++",
+        "logo":"/devicon/icons/cplusplus/cplusplus-plain.svg"
+    },
+    {
+        "name":"C#",
+        "logo":"/devicon/icons/csharp/csharp-plain.svg"
+    },
+    {
+        "name":"Lua",
+        "logo":"/svg/devicon/icons/lua/lua-plain.svg"
+    }
+]

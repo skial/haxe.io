@@ -1,0 +1,16 @@
+{% comment %}
+{{ payload | inspect }}
+{% endcomment %}
+<div class="details">
+    {%- if payload.authors.size > 0 -%}
+    <span>written by </span>
+    {% render "payload/who.html", people: payload.authors, class: "author" %}
+    {%- endif -%}
+    
+    {% if payload.contributors.size > 0 %}
+    <span> with contributions from </span>
+    {% render "payload/who.html", people: payload.contributors, class: "contributor" %}
+    {% endif %}
+    <span>Edited on </span>
+    <time pubdate datetime="{{ page.date | date: '%Y-%M-%d %H:%M:%S'}}">{{ page.date | date: '%A %e%q %B %Y' }}</time>
+</div>

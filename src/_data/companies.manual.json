@@ -1,0 +1,313 @@
+{
+    "company_entries":[
+        {
+            "name": "Bayer und Preuss",
+            "logo": "/img/companylogos/bayerundpreuss.png",
+            "url": "https://www.bayerundpreuss.com/",
+            "social": [
+                "https://twitter.com/BayerundPreuss"
+            ],
+            "target": {
+                "languages": ["js"],
+                "platforms": [],
+                "frameworks": []
+            },
+            "proof": [
+                "https://haxe.io/roundups/402/#JobOffers%26Bounties"
+            ],
+            "sectors": [
+                "e-learning"
+            ],
+            "products": [],
+            "lastChecked": "23-10-2017"
+        },
+        {
+            "name": "InnoGames",
+            "logo": "/img/companylogos/innogames.svg",
+            "url": "https://www.innogames.com/",
+            "social": [
+                "https://twitter.com/innogames",
+                "https://www.facebook.com/InnoGames"
+            ],
+            "target": {
+                "languages": ["js"],
+                "platforms": [],
+                "frameworks": ["OpenFL"]
+            },
+            "proof": [
+                "https://haxe.io/roundups/404/#JobOffers%26Bounties",
+                "https://app.jobvite.com/Jobvite/Job.aspx?b=nf1lyBwf&o=34&j=oiN65fw0"
+            ],
+            "sectors": [
+                "games"
+            ],
+            "products": [
+                {
+                    "name": "Forge of Empires", 
+                    "frameworks": ["OpenFL"]
+                },
+                {
+                    "name": "Elvenar",
+                    "frameworks": ["OpenFL"]
+                }
+            ],
+            "lastChecked": "23-10-2017"
+        },
+        {
+            "name": "Mail.ru",
+            "logo": "/img/companylogos/mailru.svg",
+            "url": "https://mail.ru/",
+            "social": [
+                "https://twitter.com/mailru"
+            ],
+            "target": {
+                "languages": [],
+                "platforms": ["flash"],
+                "frameworks": []
+            },
+            "proof": [
+                "https://haxe.io/roundups/404/#JobOffers%26Bounties",
+                "https://corp.mail.ru/ru/jobs/vacancy/2531/"
+            ],
+            "sectors": [
+                "games"
+            ],
+            "products": [
+                {
+                    "name": "Armored Warfare: The Armata project"
+                }
+            ],
+            "lastChecked": "23-10-2017"
+        },
+        {
+            "name": "Secret Media",
+            "logo": "/img/companylogos/secretmedia.png",
+            "url": "http://www.secretmedia.com/",
+            "social": [
+                "https://twitter.com/secretmediainc"
+            ],
+            "target": {
+                "languages": ["js"],
+                "platforms": ["nodejs"],
+                "frameworks": []
+            },
+            "proof": [
+                "https://haxe.io/roundups/399/#JobOffers%26Bounties",
+                "https://github.com/skial/haxe.io/issues/407"
+            ],
+            "sectors": [
+                "advertising"
+            ],
+            "products": [],
+            "lastChecked": "23-10-2017"
+        },
+        {
+            "name": "GameSys",
+            "logo": "/img/companylogos/gamesys.png",
+            "url": "http://www.gamesyscorporate.com/",
+            "social": [
+                "https://twitter.com/Gamesys"
+            ],
+            "target": {
+                "languages": ["js"],
+                "platforms": ["nodejs"],
+                "frameworks": []
+            },
+            "proof": [
+                "https://haxe.io/roundups/399/#JobOffers%26Bounties",
+                "https://github.com/skial/haxe.io/issues/421"
+            ],
+            "sectors": [
+                "games", "gambling"
+            ],
+            "products": [],
+            "lastChecked": "23-10-2017"
+        },
+        {
+            "name": "TiVo",
+            "logo": "/img/companylogos/tivo.min.svg",
+            "url": "https://business.tivo.com/",
+            "social": [
+                "https://twitter.com/TiVo",
+                "https://twitter.com/tivoforbusiness"
+            ],
+            "target": {
+                "languages": ["cpp"],
+                "platforms": [],
+                "frameworks": []
+            },
+            "proof": [
+                "https://haxe.org/blog/tivo-using-haxe-to-improve-user-experience-for-millions-of-customers/",
+                "http://www.silexlabs.org/haxe-in-the-enterprise-a-case-study/",
+                "https://www.slideshare.net/SilexLabs/haxe-in-the-enterprise-a-case-study",
+                "https://www.youtube.com/watch?v=o-KV5PlhvBk",
+                "https://haxe.io/roundups/wwx/2015/#tivo-s-activity-library",
+                "https://github.com/TiVo?language=haxe"
+            ],
+            "sectors": [
+                "tv", "dvr"
+            ],
+            "products": [],
+            "lastChecked": "23-10-2017"
+        },
+        {
+            "name": "Mino Monsters",
+            "logo": "/img/companylogos/minomonsters.png",
+            "url": "http://www.minomonsters.com/",
+            "social": [
+                "https://twitter.com/minomonsters",
+                "https://www.facebook.com/MinoMonsters/"
+            ],
+            "target": {
+                "languages": ["cpp"],
+                "platforms": ["ios", "android"],
+                "frameworks": ["OpenFL"]
+            },
+            "proof": [
+                "https://haxe.io/roundups/339/",
+                "https://venturebeat.com/2015/10/08/mino-games-raises-2-2m-and-launches-mino-monsters-2/",
+                "https://github.com/minom"
+            ],
+            "sectors": [
+                "games"
+            ],
+            "products": [],
+            "lastChecked": "23-10-2017"
+        },
+        {
+            "name": "Level Up Labs",
+            "logo": "/img/companylogos/leveluplabs.png",
+            "url": "http://www.leveluplabs.com/",
+            "social": [
+                "https://twitter.com/leveluplabsllc",
+                "https://twitter.com/larsiusprime"
+            ],
+            "target": {
+                "languages": ["cpp"],
+                "platforms": ["windows", "osx", "linux"],
+                "frameworks": ["OpenFL", "HaxeFlixel"]
+            },
+            "proof": [
+                "http://www.fortressofdoors.com/flash-is-dead-long-live-openfl/",
+                "http://www.fortressofdoors.com/defenders-quest-deluxe-launches-today/",
+                "https://github.com/larsiusprime"
+            ],
+            "sectors": [
+                "games"
+            ],
+            "products": [
+                {
+                    "name": "Defender's Quest: Valley of the Forgotten (DX edition)",
+                    "frameworks": ["OpenFL", "HaxeFlixel"]
+                }
+            ],
+            "lastChecked": "23-10-2017"
+        },
+        {
+            "name": "Prezi",
+            "logo": "/img/companylogos/prezi.min.svg",
+            "url": "https://prezi.com/",
+            "social": [
+                "https://twitter.com/prezi",
+                "https://www.facebook.com/prezicom/"
+            ],
+            "target": {
+                "languages": ["js"],
+                "platforms": ["html5"],
+                "frameworks": []
+            },
+            "proof": [
+                "https://engineering.prezi.com/how-and-why-prezi-turned-to-javascript-56e0ca57d135"
+            ],
+            "sectors": [
+                "presentation"
+            ],
+            "products": [],
+            "lastChecked": "23-10-2017"
+        },
+        {
+            "name": "Motion Twin",
+            "logo": "/img/companylogos/motiontwin.png",
+            "url": "http://motion-twin.com/en/",
+            "social": [
+                "https://www.twitter.com/motiontwin",
+                "https://www.facebook.com/motiontwin"
+            ],
+            "target": {
+                "languages": [],
+                "platforms": [],
+                "frameworks": []
+            },
+            "proof": [
+                "http://tech.motion-twin.com/",
+                "https://github.com/motion-twin",
+                "https://en.wikipedia.org/wiki/Motion_Twin"
+            ],
+            "sectors": [
+                "games"
+            ],
+            "products": [],
+            "lastChecked": "23-10-2017"
+        },
+        {
+            "name": "Docler Holding",
+            "logo": "/img/companylogos/doclerholding.jpg",
+            "url": "https://www.doclerholding.com/en/main/",
+            "social": [
+                "https://twitter.com/DoclerHoldingLU",
+                "https://www.facebook.com/DoclerHoldingLU/"
+            ],
+            "target": {
+                "languages": [],
+                "platforms": [],
+                "frameworks": []
+            },
+            "proof": [
+                "https://haxe.io/roundups/400/#NewsandArticles",
+                "https://www.doclerholding.com/en/news/company/1179/",
+                "https://www.facebook.com/DoclerHoldingLU/posts/1040983726009786",
+                "https://fr.slideshare.net/francisbourre/my-10-favorite-haxe-language-features-in-30-mins-64489951"
+            ],
+            "sectors": [
+                "multinational", "film", "venture capital"
+            ],
+            "products": [],
+            "lastChecked": "23-10-2017"
+        },
+        {
+            "name": "Massive Interactive",
+            "logo": "/img/companylogos/massive.png",
+            "url": "https://massive.co/",
+            "social": [
+                "https://twitter.com/Massive_Voice"
+            ],
+            "target": {
+                "languages": [],
+                "platforms": [],
+                "frameworks": []
+            },
+            "proof": [
+                "https://github.com/massiveinteractive"
+            ],
+            "sectors": [
+                "tv", "film"
+            ],
+            "products": [],
+            "lastChecked": "23-10-2017"
+        }
+    ],
+    "companies":[
+        "Bayer und Preuss",
+        "InnoGames",
+        "Mail.ru",
+        "Secret Media",
+        "GameSys",
+        "TiVo",
+        "Mino Monsters",
+        "Level Up Labs",
+        "Prezi",
+        "Motion Twin",
+        "Docler Holding",
+        "Massive Interactive"
+    ]
+}
