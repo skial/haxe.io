@@ -2,7 +2,12 @@
     [data-theme=light],
     :root:not([data-theme=dark]),
     :host(:not([data-theme=dark])) {
-        --pico-background-color: #fffdf9;
+        --pico-background-color: #fffdf9 !important;
+    }
+
+    article {
+        background-color: hsla(47,36%,95%,.8) !important;
+        box-shadow: var(--pico-card-box-shadow);
     }
 }
 
