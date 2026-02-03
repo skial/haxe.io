@@ -2,11 +2,11 @@
 {{ payload | inspect }}
 {% endcomment %}
 
-{%- if post.data.payload.modified -%}
+{%- if payload.modified -%}
     {% assign chosen_date = payload.modified %}
-{%- elsif post.data.payload.published -%}
+{%- elsif payload.published -%}
     {% assign chosen_date = payload.published %}
-{%- elsif post.data.payload.created -%}
+{%- elsif payload.created -%}
     {% assign chosen_date = payload.created %}
 {%- else -%}
     {% assign chosen_date = page.date %}
