@@ -1,9 +1,18 @@
+{%- if post.data.payload.modified -%}
+    {% assign chosen_date = post.data.payload.modified %}
+{%- elsif post.data.payload.published -%}
+    {% assign chosen_date = post.data.payload.published %}
+{%- elsif post.data.payload.created -%}
+    {% assign chosen_date = post.data.payload.created %}
+{%- else -%}
+    {% assign chosen_date = post.date %}
+{%- endif -%}
 <li class="{{ post.data.tags | join: ' ' }}" itemtype="http://schema.org/Article" id="{{ post.page.fileSlug | slugify }}" itemscope>
     <article class="grid col-2">
         <a title="{{ post.data.title | default: post.page.fileSlug }}" href="{{ post.page.url }}">
             <h1 itemprop="headline">{{ post.data.payload.title | default: post.page.fileSlug }}</h1>
         </a>
-        <time datetime="{{ post.data.payload.modified | date: '%Y-%m-%d %H:%M:%S' }}">{{ post.data.payload.modified | date: '%d %b %Y' }}</time>
+        <time datetime="{{ chosen_date | date: '%Y-%m-%d %H:%M:%S' }}">{{ chosen_date | date: '%d %b %Y' }}</time>
         <div class="details">
             {% if post.data.payload.authors.size > 0 %}
             <span>written by </span>
