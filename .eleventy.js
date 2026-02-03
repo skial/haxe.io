@@ -39,6 +39,9 @@ export default function(config) {
     config.addPassthroughCopy("src/img");
     config.addPassthroughCopy("src/svg");
     config.addPassthroughCopy("src/twemoji/svg");
+    config.addPassthroughCopy("src/.well-known");
+    config.addPassthroughCopy("src/robots.txt");
+    config.addPassthroughCopy("src/sitemap.xml");
     https://www.11ty.dev/docs/copy/#emulate-passthrough-copy-during-serve
     config.setServerPassthroughCopyBehavior("passthrough");
 

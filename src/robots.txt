@@ -1,7 +1,67 @@
 User-agent: *
 Disallow: /img/
 Disallow: /css/
+Disallow: /svg/
+Disallow: /favicon/
+Disallow: /twemoji/
 Sitemap: https://www.haxe.io/sitemap.xml
 
 User-agent: Twitterbot
 Allow: /img/
+Disallow: /css/
+Sitemap: https://www.haxe.io/sitemap.xml
+
+User-agent: redditbot
+Allow: /img/
+Disallow: /css/
+Sitemap: https://www.haxe.io/sitemap.xml
+
+User-agent: discordbot
+Allow: /img/
+Disallow: /css/
+Sitemap: https://www.haxe.io/sitemap.xml
+
+User-agent: DuckDuckBot
+Allow: /
+Disallow: /img/
+Disallow: /css/
+Sitemap: https://www.haxe.io/sitemap.xml
+
+User-agent: Googlebot
+Allow: /
+Disallow: /img/
+Disallow: /css/
+Sitemap: https://www.haxe.io/sitemap.xml
+
+User-agent: Googlebot-Image
+Allow: /img/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /img/
+Disallow: /css/
+Sitemap: https://www.haxe.io/sitemap.xml
+
+User-agent: Slurp
+Allow: /
+Disallow: /img/
+Disallow: /css/
+Sitemap: https://www.haxe.io/sitemap.xml
+
+User-agent: Baiduspider
+Allow: /
+Disallow: /img/
+Disallow: /css/
+Sitemap: https://www.haxe.io/sitemap.xml
+
+User-agent: YandexBot
+Allow: /
+Disallow: /img/
+Disallow: /css/
+Sitemap: https://www.haxe.io/sitemap.xml
+
+User-agent: ia_archiver
+Allow: /
+Disallow: /img/
+Disallow: /css/
+Sitemap: https://www.haxe.io/sitemap.xml
