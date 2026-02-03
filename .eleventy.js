@@ -199,19 +199,37 @@ export default function(config) {
 
                     // Single items
                     if (object.references?.DATE) {
-                        payload.created = new Date(object.references.DATE.title);
+                        let timestamp = DateTime.fromISO(object.references.DATE.title);
+                        if (timestamp.isValid) {
+                            payload.created = timestamp.toJSDate();
+                            
+                        } else {
+                            let date = DateTime.fromFormat(object.references.DATE.title, 'ccc. LLLL d, yyyy @ t');
+                            payload.created = date.toJSDate();
+                            
+                        }
                         delete object.references.DATE;
                         
                     }
 
                     if (object.references?.MODIFIED) {
-                        payload.modified = new Date(object.references.MODIFIED.title);
+                        let date = new Date();
+                        let timestamp = Date.parse(object.references.MODIFIED.title);
+                        if (!Number.isNaN(timestamp)) {
+                            date.setTime(timestamp);
+                            payload.modified = date;
+                        }
                         delete object.references.MODIFIED;
                         
                     }
 
                     if (object.references?.PUBLISHED) {
-                        payload.published = new Date(object.references.PUBLISHED.title);
+                        let date = new Date();
+                        let timestamp = Date.parse(object.references.PUBLISHED.title);
+                        if (!Number.isNaN(timestamp)) {
+                            date.setTime(timestamp);
+                            payload.published = date;
+                        }
                         delete object.references.PUBLISHED;
                         
                     }
