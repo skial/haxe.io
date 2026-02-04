@@ -31,54 +31,9 @@
 		<h1 class="name">haxe.io</h1>
 	</header>
 	<main class="container">
-		<h1>Articles</h1>
-		<ul class="articles">
-			{%- for post in collections.blog limit:5 -%}
-			{% render "frontpage/articles.html", post: post %}
-			{%- endfor -%}
-		</ul>
-
-		<h1>Roundups</h1>
 		<ul class="articles">
 			<!---- https://www.11ty.dev/docs/collections/#collection-item-data-structure ---->
-			{%- for post in collections.roundups limit:5 -%}
-			{% render "frontpage/articles.html", post: post %}
-			{%- endfor -%}
-			
-			<details class="more roundups container">
-				<summary role="button">Show <span>more</span><span>less</span> roundups</summary>
-				<ul class="articles">
-					{%- for post in collections.roundups offset:5 -%}
-					{% render "frontpage/articles.html", post: post %}
-					{%- endfor -%}
-				</ul>
-			</details>
-		</ul>
-
-		<h1>Releases</h1>
-		<ul class="articles">
-			{%- for post in collections.releases -%}
-			{% render "frontpage/articles.html", post: post %}
-			{%- endfor -%}
-		</ul>
-
-		<h1>Developer Interviews</h1>
-		<ul class="articles">
-			{%- for post in collections.wwx -%}
-			{% render "frontpage/articles.html", post: post %}
-			{%- endfor -%}
-		</ul>
-
-		<h1>Game Jams</h1>
-		<ul class="articles">
-			{%- for post in collections.gamejam -%}
-			{% render "frontpage/articles.html", post: post %}
-			{%- endfor -%}
-		</ul>
-
-		<h1>Videos</h1>
-		<ul class="articles">
-			{%- for post in collections.videos -%}
+			{%- for post in collections.everything -%}
 			{% render "frontpage/articles.html", post: post %}
 			{%- endfor -%}
 		</ul>
