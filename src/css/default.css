@@ -38,3 +38,20 @@
 .emoji {
     height: 1em;
 }
+
+footer {
+    padding: 2rem;
+}
+
+footer .tools .subtitle {
+    list-style: none;
+    margin-left: -0.8rem;
+}
+
+footer .tools li:not(.subtitle) {
+    font-size: .800rem;
+}
+
+footer .social li {
+    text-transform: capitalize;
+}

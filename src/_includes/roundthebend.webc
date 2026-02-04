@@ -8,6 +8,7 @@
         <link webc:keep rel="stylesheet" href="/css/pico.min.css">
         <link webc:keep rel="stylesheet" href="/css/default.css">
         <link webc:keep rel="stylesheet" href="/css/roundups.css">
+        <title @text="title ?? payload.title"></title>
 	</head>
 	<body>
     </body>
