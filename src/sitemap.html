@@ -20,7 +20,7 @@ eleventyExcludeFromCollections: true
 	{%- endif -%}
 	<url>
 		<loc>https://haxe.io{{ post.page.url | url }}</loc>
-		<lastmod>{{ chosen_date }}</lastmod>
+		<lastmod>{{ chosen_date | date_to_xmlschema }}</lastmod>
 	</url>
 	{%- endfor -%}	
 </urlset>
