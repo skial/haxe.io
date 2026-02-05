@@ -320,11 +320,7 @@ export default function(config) {
 
     // https://www.11ty.dev/docs/collections-api/#example-get-all-sort
     config.addCollection("everything", async (collections) => {
-        return collections.getAll()
-            .filter(function(a) {
-                return a.page.inputPath != './src/404.html' && a.page.inputPath != './src/index.html';
-            })
-            .sort( dateSort );
+        return collections.getAll().sort( dateSort );
     })
     // https://www.11ty.dev/docs/collections/#collection-item-data-structure
     config.addCollection("roundups", async (collections) => {
