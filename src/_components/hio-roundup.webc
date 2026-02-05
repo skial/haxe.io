@@ -25,7 +25,7 @@
             </nav>
         </aside>
         <section class="">
-            {%- if 6month_old_date -%}
+            {%- if is_old -%}
 
             {% assign 1year_old_date = now | minus_months: 12 %}
             {% assign is_real_old = article_date | date_lessthan: 1year_old_date %}
