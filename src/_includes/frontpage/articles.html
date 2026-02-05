@@ -1,9 +1,9 @@
-{%- if post.data.payload.modified -%}
-    {% assign chosen_date = post.data.payload.modified %}
+{%- if post.data.payload.created -%}
+    {% assign chosen_date = post.data.payload.created %}
 {%- elsif post.data.payload.published -%}
     {% assign chosen_date = post.data.payload.published %}
-{%- elsif post.data.payload.created -%}
-    {% assign chosen_date = post.data.payload.created %}
+{%- elsif post.data.payload.modified -%}
+    {% assign chosen_date = post.data.payload.modified %}
 {%- else -%}
     {% assign chosen_date = post.date %}
 {%- endif -%}

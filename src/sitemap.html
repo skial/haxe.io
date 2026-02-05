@@ -1,0 +1,26 @@
+---
+permalink: sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	<url>
+		<loc>https://www.haxe.io/</loc>
+		<changefreq>weekly</changefreq>
+	</url>
+	{%- for post in collections.everything -%}
+	{%- if post.data.payload.created -%}
+		{% assign chosen_date = post.data.payload.created %}
+	{%- elsif post.data.payload.published -%}
+		{% assign chosen_date = post.data.payload.published %}
+	{%- elsif post.data.payload.modified -%}
+		{% assign chosen_date = post.data.payload.modified %}
+	{%- else -%}
+		{% assign chosen_date = post.date %}
+	{%- endif -%}
+	<url>
+		<loc>https://haxe.io{{ post.page.url | url }}</loc>
+		<lastmod>{{ chosen_date | date_to_xmlschema }}</lastmod>
+	</url>
+	{%- endfor -%}	
+</urlset>

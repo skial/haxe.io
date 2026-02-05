@@ -18,14 +18,10 @@ export default function(config) {
         let bd = b.page.date;
 
         if (Object.hasOwn(a.data, "payload")) {
-            ad = (a.data.payload.published ??
-                (a.data.payload.modified ??
-                (a.data.payload.created ?? ad)));
+            ad = a.data.payload.created ?? ad;
         }
         if (Object.hasOwn(b.data, "payload")) {
-            bd = (b.data.payload.published ??
-                (b.data.payload.modified ??
-                (b.data.payload.created ?? bd)));
+            bd = b.data.payload.created ?? bd;
         }
 
         return bd - ad;
@@ -41,14 +37,21 @@ export default function(config) {
     config.addPassthroughCopy("src/twemoji/svg");
     config.addPassthroughCopy("src/.well-known");
     config.addPassthroughCopy("src/robots.txt");
-    config.addPassthroughCopy("src/sitemap.xml");
     https://www.11ty.dev/docs/copy/#emulate-passthrough-copy-during-serve
     config.setServerPassthroughCopyBehavior("passthrough");
 
     // https://www.11ty.dev/docs/ignores/#configuration-api
-    config.ignores.add("@*");
+    // Can not add a glob pattern and then delete a single path
+    // thats included in that glob pattern.
+    config.ignores.add("./src/@andy_li/**");
+    config.ignores.add("./src/@b_garcia/**");
+    config.ignores.add("./src/@chman/**");
+    config.ignores.add("./src/@fponticelli/**");
+    config.ignores.add("./src/@gamehaxe/**");
+    config.ignores.add("./src/@grayhaze/**");
+    config.ignores.add("./src/@ncannasse/**");
+    config.ignores.add("./src/@omgjjd/**");
     config.ignores.add("**/copy_me.*");
-    config.ignores.delete("src/@skial/*");
 
     //https://www.11ty.dev/docs/languages/webc/#installation
     config.addPlugin(RenderPlugin);
@@ -208,7 +211,17 @@ export default function(config) {
                             
                         } else {
                             let date = DateTime.fromFormat(object.references.DATE.title, 'ccc. LLLL d, yyyy @ t');
-                            payload.created = date.toJSDate();
+                            if (date.isValid) {
+                                payload.created = date.toJSDate();
+                            } else {
+                                // Fallback to standard Date
+                                let date = new Date();
+                                let timestamp = Date.parse(object.references.DATE.title);
+                                if (!Number.isNaN(timestamp)) {
+                                    date.setTime(timestamp);
+                                    payload.created = date;
+                                }
+                            }
                             
                         }
                         delete object.references.DATE;
@@ -306,6 +319,9 @@ export default function(config) {
     });
 
     // https://www.11ty.dev/docs/collections-api/#example-get-all-sort
+    config.addCollection("everything", async (collections) => {
+        return collections.getAll().sort( dateSort );
+    })
     // https://www.11ty.dev/docs/collections/#collection-item-data-structure
     config.addCollection("roundups", async (collections) => {
         let roundups = collections.getFilteredByTag("roundups");
