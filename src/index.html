@@ -26,13 +26,50 @@ eleventyExcludeFromCollections: true
 	<link rel="stylesheet" href="/css/pico.min.css">
 	<link rel="stylesheet" href="/css/default.css">
 	<link rel="stylesheet" href="/css/frontpage.css">
+	<style>
+		[name="nav-group"][type="checkbox"] {
+			display: none;
+		}
+		{% for topic in ["frontpage.topics"] %}
+		{% assign keys = topic.rules | object_keys %}
+		{% for key in keys %}
+		#{{ topic.name | slugify }}:checked ~ main > ul > li:not([{{ key }}{{ topic.rules[key] }}]){% if forloop.last == false %}, {% endif %}
+		{%- endfor -%}
+		{% if forloop.last == false %}, {% endif %}
+		{%- endfor -%}
+		{
+			display: none;
+		}
+
+		{% for topic in ["frontpage.topics"] %}
+		{% assign keys = topic.rules | object_keys %}
+		{% for key in keys %}
+		#{{ topic.name | slugify }}:checked ~ main > ul > li[{{ key }}{{ topic.rules[key] }}]{% if forloop.last == false %}, {% endif %}
+		{%- endfor -%}
+		{% if forloop.last == false %}, {% endif %}
+		{%- endfor -%}
+		{
+			display: revert;
+		}
+	</style>
 	<title>Haxe.io — News And Information For Haxe Developers</title>
 </head>
 <body>
+	{% for topic in ["frontpage.topics"] %}
+	<input id="{{ topic.name | slugify }}" type="checkbox" name="nav-group">
+	{% endfor %}
 	<header class="container">
 		{% render "header/logo.html" %}
 		<h1 class="name">haxe.io</h1>
 	</header>
+	<nav>
+		<ul>
+			<li>Filter</li>
+			{% for topic in ["frontpage.topics"] %}
+			<li><label for="{{ topic.name | slugify }}">{{ topic.name }}</label></li>
+			{% endfor %}
+		</ul>
+	</nav>
 	<main class="container">
 		<ul class="articles">
 			<!---- https://www.11ty.dev/docs/collections/#collection-item-data-structure ---->
