@@ -1,9 +1,8 @@
 [
     { "name": "Roundups",   "rules": { "id":"^=\"r\"", "class":"*=\"roundups\"" } },
     { "name": "Ludum Dare", "rules": { "id":"^=\"l\"", "class":"*=\"ludumdare\"" } },
-    { "name": "Releases",   "rules": { "id":"^=\"r\"", "class":"*=\"releases\"" } },
+    { "name": "Releases",   "rules": { "class":"*=\"releases\"" } },
     { "name": "Events",     "rules": { "id":"^=\"e\"", "class":"*=\"events\"" } },
     { "name": "Interviews", "rules": { "id":"^=\"wdi\"", "class":"*=\"interview\"" } },
-    { "name": "Videos",     "rules": { "id":"^=\"v\"", "class":"*=\"video\"" } },
-    { "name": "Articles",   "rules": { "itemtype":"*=\"Article\"" } }
+    { "name": "Videos",     "rules": { "id":"^=\"v\"", "class":"*=\"video\"" } }
 ]
