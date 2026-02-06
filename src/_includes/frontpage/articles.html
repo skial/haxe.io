@@ -1,16 +1,17 @@
-{%- if post.data.payload.created -%}
+{% if post.data.payload.created %}
     {% assign chosen_date = post.data.payload.created %}
-{%- elsif post.data.payload.published -%}
+{% elsif post.data.payload.published %}
     {% assign chosen_date = post.data.payload.published %}
-{%- elsif post.data.payload.modified -%}
+{% elsif post.data.payload.modified %}
     {% assign chosen_date = post.data.payload.modified %}
-{%- else -%}
+{% else %}
     {% assign chosen_date = post.date %}
-{%- endif -%}
+{% endif %}
+{% assign page_title = post.data.payload.title | default: post.page.fileSlug %}
 <li class="{{ post.data.tags | join: ' ' }}" itemtype="http://schema.org/Article" id="{{ post.page.fileSlug | slugify }}" itemscope>
     <article class="grid col-2">
-        <a title="{{ post.data.title | default: post.page.fileSlug }}" href="{{ post.page.url }}">
-            <h1 itemprop="headline">{{ post.data.payload.title | default: post.page.fileSlug }}</h1>
+        <a title="{{ page_title }}" href="{{ post.page.url }}">
+            <h1 itemprop="headline">{{ page_title }}</h1>
         </a>
         <time datetime="{{ chosen_date | date: '%Y-%m-%d %H:%M:%S' }}">{{ chosen_date | date: '%d %b %Y' }}</time>
         <div class="details">
@@ -18,7 +19,7 @@
             <span>written by </span>
             <ul class="people authors">
                 {% for person in post.data.payload.authors %}
-                <li>{{ person.display }}{%- if forloop.last == false and forloop.0index != forloop.length -%}, {%- endif -%}</li>
+                <li>{% if forloop.first != true and forloop.last %}and {% endif %}{{ person.display }}{% if forloop.last == false and forloop.0index != forloop.length %}, {% endif %}</li>
                 {% endfor %}
             </ul>
             {% endif %}
@@ -26,7 +27,7 @@
             <span>with contributions from </span>
             <ul class="people contributors">
                 {% for person in post.data.payload.contributors %}
-                <li>{{ person.display }}{%- if forloop.last == false and forloop.0index != forloop.length -%}, {%- endif -%}</li>
+                <li>{% if forloop.first != true and forloop.last %}and {% endif %}{{ person.display }}{% if forloop.last == false and forloop.0index != forloop.length %}, {% endif %}</li>
                 {% endfor %}
             </ul>
             {% endif %}
