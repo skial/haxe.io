@@ -113,7 +113,10 @@ export default function(config) {
     config.addFilter("date_lessthan", function (lhs, rhs) {
         return lhs < rhs;
     })
-
+    config.addFilter("object_keys", function (object) {
+        return Object.keys(object);
+    });
+    
     // https://www.11ty.dev/docs/languages/sass/#configuration
     /**
      * Not as simple as first thought:
