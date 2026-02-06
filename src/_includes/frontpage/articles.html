@@ -8,7 +8,14 @@
     {% assign chosen_date = post.date %}
 {% endif %}
 {% assign page_title = post.data.payload.title | default: post.page.fileSlug %}
-<li class="{{ post.data.tags | join: ' ' }}" itemtype="http://schema.org/Article" id="{{ post.page.fileSlug | slugify }}" itemscope>
+
+{% assign letters = '' | split: '' %}
+{% for tag in post.data.tags %}
+    {% assign first_letter = tag | slice: 0 %}
+    {% assign letters = letters | concat: first_letter %}
+{% endfor %}
+{% assign page_id = letters | join: '' | append: post.page.fileSlug | slugify %}
+<li class="{{ post.data.tags | join: ' ' }}" itemtype="http://schema.org/Article" id="{{ page_id }}" itemscope>
     <article class="grid col-2">
         <a title="{{ page_title }}" href="{{ post.page.url }}">
             <h1 itemprop="headline">{{ page_title }}</h1>
