@@ -1,14 +1,18 @@
 {
     "social_data":[
         {
-            "name":"twitter",
+            "name":"mastodon",
             "svg":"/src/svg/zocial/twitter.svg",
-            "uri":"https://twitter.com/skial"
+            "uri":"https://mastodon.social/@skial"
+        },
+        {
+            "name":"bluesky",
+            "uri":"https://bsky.app/profile/skialb.bsky.social"
         },
         {
             "name":"rss",
             "svg":"/src/svg/zocial/rss.svg",
-            "uri":"http://blog.skialbainn.com/rss"
+            "uri":"https://blog.skialbainn.com/rss"
         }
     ]
 }
