@@ -27,9 +27,6 @@ eleventyExcludeFromCollections: true
 	<link rel="stylesheet" href="/css/default.css">
 	<link rel="stylesheet" href="/css/frontpage.css">
 	<style>
-		[name="nav-group"][type="checkbox"] {
-			display: none;
-		}
 		{% for topic in ["frontpage.topics"] %}
 		{% assign keys = topic.rules | object_keys %}
 		{%- for key in keys -%}
@@ -75,7 +72,7 @@ eleventyExcludeFromCollections: true
 		<h1 class="name">haxe.io</h1>
 	</header>
 	<nav class="container">
-		<ul>
+		<ul class="container grid">
 			<li>Topics</li>
 			{% for topic in ["frontpage.topics"] %}
 			<li><label for="{{ topic.name | slugify }}" role="button">{{ topic.name }}</label></li>

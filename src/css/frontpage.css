@@ -1,3 +1,9 @@
+@media (width < 768px) {
+    nav > ul > li {
+        padding: 0;
+    }
+}
+
 @media (min-width: 768px) {
     .grid.col-2 {
         grid-template-columns: 5fr 1fr;
@@ -6,6 +12,10 @@
     .articles time {
         text-align: right;
     }
+}
+
+[name="nav-group"][type="checkbox"] {
+    display: none;
 }
 
 header h1 {
