@@ -71,7 +71,13 @@ export default function(config) {
             .set({ html: true, typographer: true, linify: true})
             //https://www.11ty.dev/docs/languages/markdown/#add-your-own-plugins
             .use(md_abbr)
-            .use(md_anchor)
+            .use(md_anchor, {
+                level: [2,3,4],
+                permalink: md_anchor.permalink.headerLink({
+                    safariReaderFix: true, 
+                    class: "header-anchor contrast"
+                })
+            })
             .use(md_attrs)
             .use(md_emoji)
             .use(md_footnote)
