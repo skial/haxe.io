@@ -9,3 +9,12 @@
 article li a code {
     display: initial;
 }
+
+article li blockquote {
+    padding: unset;
+    padding-left: var(--pico-spacing);
+}
+
+article li blockquote p {
+    font-style: italic;
+}
