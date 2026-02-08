@@ -5,3 +5,7 @@
 .hero h1 {
     font-size: 6rem;
 }
+
+article li a code {
+    display: initial;
+}
