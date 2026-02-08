@@ -1,7 +1,7 @@
 [_template]: ../../templates/nature-of-haxe/video.html
 [_author]: https://twitter.com/zionviller "@zionviller"
 [date]: / "2014-08-26 14:37:00"
-[modified]: / "2014-08-27 14:15:00"
+[modified]: / "2026-02-08 17:36:00"
 [“”]: a ""
 # What is<br/> _“The Nature of Code”_?
 
@@ -11,7 +11,7 @@
 > programming strategies and techniques behind computer simulations of
 > natural systems using Haxe and OpenFL.
 
-![youtube](x9U-Du9lazU)
+https://www.youtube.com/watch?v=x9U-Du9lazU
 
 [l1]: http://natureofcode.com "The Nature of Code"
 [l2]: http://www.processing.org/ "Prcessing Programming Language"
