@@ -1,0 +1,45 @@
+[name="platform-filter-group"][type="checkbox"] {
+    display: none;
+}
+
+[for*="input-"] {
+    /*cursor: pointer;*/
+}
+
+#input-linux:checked ~ article section li:not([data-platforms*=linux]),
+#input-osx:checked ~ article section li:not([data-platforms*=osx]),
+#input-source:checked ~ article section li:not([data-platforms*=source]),
+#input-web:checked ~ article section li:not([data-platforms*=web]),
+#input-windows:checked ~ article section li:not([data-platforms*=windows]),
+#input-flash:checked ~ article section li:not([data-platforms*=flash]),
+#input-html5:checked ~ article section li:not([data-platforms*=html5]),
+#input-github:checked ~ article section li:not([data-platforms*=github]),
+#input-itch-io:checked ~ article section li:not([data-platforms*=itch-io])
+{
+  opacity:.3;
+  text-decoration:line-through;
+}
+
+/** these values are taken from `.outline` and `.secondary` classes */
+#input-linux:not(:checked) ~ article label[for="input-linux"],
+#input-osx:not(:checked) ~ article label[for="input-osx"],
+#input-source:not(:checked) ~ article label[for="input-source"],
+#input-web:not(:checked) ~ article label[for="input-web"],
+#input-windows:not(:checked) ~ article label[for="input-windows"],
+#input-flash:not(:checked) ~ article label[for="input-flash"],
+#input-html5:not(:checked) ~ article label[for="input-html5"],
+#input-github:not(:checked) ~ article label[for="input-github"],
+#input-itch-io:not(:checked) ~ article label[for="input-itch-io"]
+{
+    --pico-background-color: transparent;
+    --pico-color: var(--pico-primary);
+    --pico-border-color: var(--pico-primary);
+    --pico-color: var(--pico-secondary);
+    --pico-border-color: var(--pico-secondary);
+}
+
+#input-linux:checked ~ article section li[data-platforms*=linux]
+{
+    opacity:revert;
+    text-decoration:revert;
+}
