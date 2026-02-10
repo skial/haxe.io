@@ -16,11 +16,11 @@
     <div class="grid col-2">
         <aside class="">
             <nav>
-                <div>
+                <div class="toc">
                     <h1>Table of Contents</h1>
                     <slot name="toc"></slot>
                 </div>
-                <div>
+                <div class="platform-filter">
                     <h1>Filter by</h1>
                     <slot name="platform-filter"></slot>
                 </div>
