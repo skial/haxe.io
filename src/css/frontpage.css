@@ -1,17 +1,14 @@
-@media (width < 768px) {
-    nav > ul > li {
-        padding: 0;
-    }
+nav ul {
+    grid-row-gap: 0.2rem;
 }
 
-@media (min-width: 768px) {
-    .grid.col-2 {
-        grid-template-columns: 5fr 1fr;
-    }
+nav > ul > li {
+    padding: 0;
+}
 
-    .articles time {
-        text-align: right;
-    }
+label[for][role="button"] {
+    font-size: 0.8rem;
+    overflow-wrap: normal;
 }
 
 [name="nav-group"][type="checkbox"] {
@@ -72,4 +69,21 @@ footer .tools li:not(.subtitle) {
 
 footer .social li {
     text-transform: capitalize;
+}
+
+@media (min-width: 768px) {
+    .grid.col-2 {
+        grid-template-columns: 5fr 1fr;
+    }
+
+    .articles time {
+        text-align: right;
+    }
+}
+
+@media (min-width: 1024px) {
+    label[for][role="button"] {
+        font-size: 1rem;
+        overflow-wrap: break-word;
+    }
 }
