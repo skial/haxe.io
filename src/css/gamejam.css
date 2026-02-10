@@ -2,8 +2,12 @@
     display: none;
 }
 
-[for*="input-"] {
-    /*cursor: pointer;*/
+label[for*="input-"][role="button"] {
+    font-size: 0.8rem;
+}
+
+.platform-filter li {
+    display: inline-block;
 }
 
 #input-linux:checked ~ article section li:not([data-platforms*=linux]),
@@ -42,4 +46,19 @@
 {
     opacity:revert;
     text-decoration:revert;
+}
+
+.toc ul, .toc ul:first-of-type {
+    margin: initial;
+    padding: unset;
+    padding-left: 2rem;
+}
+
+.toc ul > li {
+    display: list-item;
+    padding: 0.2rem;
+}
+
+.toc ul, .toc ul > li {
+    list-style: square !important;
 }
