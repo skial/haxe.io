@@ -12,6 +12,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import * as sass from "sass";
 import { DateTime } from "luxon";
+import * as pagefind from "pagefind";
 
 export default function(config) {
     function dateSort(a, b) {
@@ -38,7 +39,7 @@ export default function(config) {
     config.addPassthroughCopy("src/twemoji/svg");
     config.addPassthroughCopy("src/.well-known");
     config.addPassthroughCopy("src/robots.txt");
-    https://www.11ty.dev/docs/copy/#emulate-passthrough-copy-during-serve
+    // https://www.11ty.dev/docs/copy/#emulate-passthrough-copy-during-serve
     config.setServerPassthroughCopyBehavior("passthrough");
 
     // https://www.11ty.dev/docs/ignores/#configuration-api
@@ -372,4 +373,18 @@ export default function(config) {
             return collections.getFilteredByTag(tag).sort( dateSort );
         });
     } );
+
+    // https://www.11ty.dev/docs/events/#eleventy-after
+    // https://pagefind.app/docs/node-api/
+    config.on("eleventy.after", async function (directories, results, runMode, outputMode) {
+        const {index} = await pagefind.createIndex();
+
+        await index.addDirectory({
+            path: "_site"
+        });
+
+        await index.writeFiles({
+            outputPath: "_site/pagefind"
+        });
+    });
 }

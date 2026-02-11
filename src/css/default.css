@@ -55,3 +55,33 @@ footer .tools li:not(.subtitle) {
 footer .social li {
     text-transform: capitalize;
 }
+
+.pagefind-ui__form {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    justify-items: stretch;
+    align-items: stretch;
+    box-shadow: none;
+}
+
+.pagefind-ui__search-input {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.pagefind-ui__search-clear {
+    border-top-right-radius: var(--pico-border-radius) !important;
+    border-bottom-right-radius: var(--pico-border-radius) !important;
+}
+
+.pagefind-ui__drawer {
+
+}
+
+.pagefind-ui__result {
+
+}
+
+.pagefind-ui__result-title {
+
+}
