@@ -18,7 +18,8 @@ label[for*="input-"][role="button"] {
 #input-flash:checked ~ article section li:not([data-platforms*=flash]),
 #input-html5:checked ~ article section li:not([data-platforms*=html5]),
 #input-github:checked ~ article section li:not([data-platforms*=github]),
-#input-itch-io:checked ~ article section li:not([data-platforms*=itch-io])
+#input-itch-io:checked ~ article section li:not([data-platforms*=itch-io]),
+#input-android:checked ~ article section li:not([data-platforms*=android])
 {
   opacity:.3;
   text-decoration:line-through;
@@ -33,7 +34,8 @@ label[for*="input-"][role="button"] {
 #input-flash:not(:checked) ~ article label[for="input-flash"],
 #input-html5:not(:checked) ~ article label[for="input-html5"],
 #input-github:not(:checked) ~ article label[for="input-github"],
-#input-itch-io:not(:checked) ~ article label[for="input-itch-io"]
+#input-itch-io:not(:checked) ~ article label[for="input-itch-io"],
+#input-android:not(:checked) ~ article label[for="input-android"]
 {
     --pico-background-color: transparent;
     --pico-color: var(--pico-primary);
