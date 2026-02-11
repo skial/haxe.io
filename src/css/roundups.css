@@ -3,5 +3,30 @@
 }
 
 .hero h1 {
-    font-size: 6rem;
+    font-size: 4rem;
+}
+
+article li a code {
+    display: initial;
+}
+
+article li blockquote {
+    padding: unset;
+    padding-left: var(--pico-spacing);
+}
+
+article li blockquote p {
+    font-style: italic;
+}
+
+@media (min-width: 768px) {
+    .hero h1 {
+        font-size: 5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero h1 {
+        font-size: 6rem;
+    }
 }

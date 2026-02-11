@@ -7,6 +7,7 @@ import md_footnote from 'markdown-it-footnote';
 import twemoji from 'twemoji';
 import { RenderPlugin } from "@11ty/eleventy";
 import webc from '@11ty/eleventy-plugin-webc';
+import embedEverything from 'eleventy-plugin-embed-everything';
 import fs from "node:fs/promises";
 import path from "node:path";
 import * as sass from "sass";
@@ -58,6 +59,9 @@ export default function(config) {
     config.addPlugin(webc, {
         components: "src/_components/**/*.webc"
     });
+    config.addPlugin(embedEverything, {
+        add: ["youtube"]
+    });
     // v4 only
     //config.setHtmlTemplateEngine("webc");
 
@@ -71,7 +75,13 @@ export default function(config) {
             .set({ html: true, typographer: true, linify: true})
             //https://www.11ty.dev/docs/languages/markdown/#add-your-own-plugins
             .use(md_abbr)
-            .use(md_anchor)
+            .use(md_anchor, {
+                level: [2,3,4],
+                permalink: md_anchor.permalink.headerLink({
+                    safariReaderFix: true, 
+                    class: "header-anchor contrast"
+                })
+            })
             .use(md_attrs)
             .use(md_emoji)
             .use(md_footnote)
