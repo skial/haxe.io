@@ -6,7 +6,7 @@
     </div>
 </header>
 
-<article>
+<article data-pagefind-body>
     {% assign current_date = now %}
     {% assign 6month_old_date = now | minus_months: 6 %}
     {% assign article_date = payload.created %}

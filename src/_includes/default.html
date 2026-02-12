@@ -11,7 +11,7 @@
 	</head>
 	<body>
         {% render "header.html", page: page, payload: payload %}
-        <main class="container">
+        <main class="container" data-pagefind-body>
             {{ content }}
         </main>
         {% render "footer.html", tools: ["frameworks.manual"].frameworks_entries, social: social %}

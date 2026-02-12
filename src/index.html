@@ -26,6 +26,7 @@ eleventyExcludeFromCollections: true
 	<link rel="stylesheet" href="/css/pico.min.css">
 	<link rel="stylesheet" href="/css/default.css">
 	<link rel="stylesheet" href="/css/frontpage.css">
+	<script src="/pagefind/pagefind-ui.js"></script>
 	<style>
 		{% for topic in ["frontpage.topics"] %}
 		{% assign keys = topic.rules | object_keys %}
@@ -70,6 +71,7 @@ eleventyExcludeFromCollections: true
 	<header class="container">
 		{% render "header/logo.html" %}
 		<h1 class="name">haxe.io</h1>
+		<div id="search"></div>
 	</header>
 	<nav class="container">
 		<ul class="container grid">
@@ -88,5 +90,15 @@ eleventyExcludeFromCollections: true
 		</ul>
 	</main>
 	{% render "footer.html", tools: ["frameworks.manual"].frameworks_entries, social: social %}
+	<script>
+		window.addEventListener('DOMContentLoaded', (event) => {
+			new PagefindUI({ 
+				element: "#search", 
+				showSubResults: true,
+				sort: { date: "desc" },
+				showImages: false,
+			});
+		});
+	</script>
 </body>
 </html>
