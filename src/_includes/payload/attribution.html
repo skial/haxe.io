@@ -22,5 +22,5 @@
     {% render "payload/who.html", people: payload.contributors, class: "contributor" %}
     {% endif %}
     <span>Edited on </span>
-    <time data-pagefind-index-attrs="datetime" data-pagefind-sort="date[datetime]" datetime="{{ chosen_date | date: '%Y-%M-%d %H:%M:%S'}}">{{ chosen_date | date: '%A %e%q %B %Y' }}</time>
+    <time data-pagefind-index-attrs="datetime" data-pagefind-sort="date[datetime]" datetime="{{ chosen_date | date: '%Y-%m-%d %H:%M:%S'}}">{{ chosen_date | date: '%A %e%q %B %Y' }}</time>
 </div>
