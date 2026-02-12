@@ -56,6 +56,10 @@ footer .social li {
     text-transform: capitalize;
 }
 
+.pagefind-ui__message {
+    margin-top: var(--pico-typography-spacing-vertical);
+}
+
 .pagefind-ui__form {
     display: grid;
     grid-template-columns: 1fr auto;
@@ -67,11 +71,15 @@ footer .social li {
 .pagefind-ui__search-input {
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
+    font-size: 0.8rem;
+    overflow-wrap: normal;
 }
 
 .pagefind-ui__search-clear {
     border-top-right-radius: var(--pico-border-radius) !important;
     border-bottom-right-radius: var(--pico-border-radius) !important;
+    font-size: 0.8rem;
+    overflow-wrap: normal;
 }
 
 .pagefind-ui__drawer {
@@ -79,9 +87,24 @@ footer .social li {
 }
 
 .pagefind-ui__result {
-
+    margin-bottom: 1rem;
+    border-bottom-width: 1px;
+    border-bottom-style: groove;
+    border-bottom-color: var(--pico-color);
 }
 
 .pagefind-ui__result-title {
 
+}
+
+.pagefind-ui__result-nested .pagefind-ui__result-title .pagefind-ui__result-link {
+    --pico-color: var(--pico-secondary);
+    --pico-underline: var(--pico-secondary-underline);
+}
+
+@media (min-width: 1024px) {
+    .pagefind-ui__search-input, .pagefind-ui__search-clear {
+        font-size: 0.8rem;
+        overflow-wrap: normal;
+    }
 }
