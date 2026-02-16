@@ -136,12 +136,14 @@ export default function(config) {
      *  - https://jkc.codes/blog/using-sass-with-eleventy/
      *  - https://11ty.rocks/posts/process-css-with-lightningcss/
      */
-    /*config.addTemplateFormats("scss")
+    config.addTemplateFormats("scss")
     config.addExtension("scss", {
         outputFileExtension: "css",
 
 		// opt-out of Eleventy Layouts
 		useLayouts: false,
+        // and they don't need to be in rss or sitemap feeds.
+        eleventyExcludeFromCollections: true,
 
 		compile: async function (inputContent, inputPath) {
 			let parsed = path.parse(inputPath);
@@ -149,15 +151,17 @@ export default function(config) {
 			if(parsed.name.startsWith("_")) {
 				return;
 			}
-
-			let result = sass.compileString(inputContent, {
+            
+			let result = await sass.compileStringAsync(inputContent, {
 				loadPaths: [
 					parsed.dir || ".",
-					this.config.dir.includes,
-                    "./node_modules/"
-				]
+					this.config.dir.input,
+                    this.config.dir.includes,
+                    "./node_modules",
+				],
+                sourceMap: false
 			});
-
+            
 			// Map dependencies for incremental builds
 			this.addDependencies(inputPath, result.loadedUrls);
 
@@ -165,7 +169,7 @@ export default function(config) {
 				return result.css;
 			};
 		},
-    });*/
+    });
 
     // https://www.11ty.dev/docs/languages/custom/#get-data-and-get-instance-from-input-path
     // https://rknight.me/blog/adding-cooklang-support-to-eleventy-two-ways/
