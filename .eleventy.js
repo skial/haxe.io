@@ -13,7 +13,8 @@ import path, { resolve } from "node:path";
 import * as sass from "sass";
 import { DateTime } from "luxon";
 import * as pagefind from "pagefind";
-import { URL } from 'node:url';
+import browserslist from 'browserslist';
+import { transform, browserslistToTargets } from 'lightningcss';
 
 export default function(config) {
     function dateSort(a, b) {
@@ -163,11 +164,24 @@ export default function(config) {
                         this.config.dir.includes,
                         "./node_modules",
                     ],
+                    // Compressing here squeezes out a few more w/ lightningcss
                     style: 'compressed'
                 });
                 // Map dependencies for incremental builds
                 this.addDependencies(inputPath, result.loadedUrls);
-				return result.css;
+
+                // Minify with lighningcss
+                // From https://11ty.rocks/posts/process-css-with-lightningcss/#autoprefixing-and-minification-with-lightningcss
+                let targets = browserslistToTargets(
+                    browserslist("defaults, not dead, baseline widely available with downstream")
+                );
+                let { code } = await transform({
+                    code: Buffer.from(result.css),
+                    minify: true,
+                    sourceMap: false,
+                    targets: targets,
+                });
+				return code;
 			};
 		},
     });
