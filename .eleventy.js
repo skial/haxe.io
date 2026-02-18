@@ -146,126 +146,30 @@ export default function(config) {
 		// opt-out of Eleventy Layouts
 		useLayouts: false,
         // and they don't need to be in rss or sitemap feeds.
-        eleventyExcludeFromCollections: true,
-
+        //eleventyExcludeFromCollections: true,
+        // inherit liquid syntax so we can use and access data cascade.
+        key: "liquid",
 		compile: async function (inputContent, inputPath) {
 			let parsed = path.parse(inputPath);
 			// Don’t compile file names that start with an underscore
 			if(parsed.name.startsWith("_")) {
 				return;
 			}
-            /**
-             * `options` and `methods` taken from
-             *  https://github.com/blakedarlin/sass-json-importer/blob/main/src/importer.ts#L168
-             *  MIT license
-             */
-            let options = {};
-            let methods = {
-                isValidKey:(key) => /^:?[^$:@]*$/.test(key),
-                isPlainObject:(value) => value !== null && typeof value === 'object' && !Array.isArray(value),
-                toKebabCase(key) {
-                    return key
-                        .replaceAll(/([\da-z])([A-Z])/g, '$1-$2')
-                        .replaceAll(/([A-Z])([A-Z])(?=[a-z])/g, '$1-$2')
-                        .toLowerCase();
-                },
-                processKeys(object, formatter) {
-                    return Object.keys(object)
-                        .filter((key) => methods.isValidKey(key) && object[key] !== '#')
-                        .map((key) => {
-                        const convertedVariableName = options.convertCase
-                            ? methods.toKebabCase(key)
-                            : key;
-                        return formatter(convertedVariableName.replace(':', ''), object[key]);
-                    });
-                },
-                maybeQuoteStrings: (value) => value === '' || /[$%*+,/:@|]/.test(value) ? `'${value}'` : value,
-                resolveWordPressInternalLinks(value) {
-                    const regex = /var:([\w-]+\|[\w-]+(\|[\w-]+)*)/g;
-                    return regex.test(value)
-                        ? value.replaceAll(regex, (match) => {
-                            const processed = match.slice(4).replaceAll('|', '--');
-                            return `var(--wp--${processed})`;
-                        })
-                        : value;
-                },
-                transformJsonToSass(jsonContent) {
-                    return methods.processKeys(jsonContent, (key, value) => `$${key}: ${this.parseValue(value)};`).join('\n');
-                },
-                parseMap(jsonContent) {
-                    return `(${methods.processKeys(jsonContent, (key, value) => {
-                        let mapKey = options.stringifyKeys ? `"${key}"` : key;
-                        return `${mapKey}: ${methods.parseValue(value)}`;
-                    }).join(',')})`;
-                },
-                parseList(list) {
-                    return `(${list.map((value) => methods.parseValue(value)).join(',')})`;
-                },
-                parseValue(value) {
-                    if (Array.isArray(value)) {
-                        return methods.parseList(value);
-                    }
-                    else if (methods.isPlainObject(value)) {
-                        return methods.parseMap(value);
-                    }
-                    const stringValue = value?.toString() ?? '';
-                    const resolvedValue = options.resolveWordPressInternals
-                        ? this.resolveWordPressInternalLinks(stringValue)
-                        : stringValue;
-                    return this.maybeQuoteStrings(resolvedValue);
-                }
-            }
-            let _data = this.config.dir.data;
-            let canon = async function(url, context) {
-                if (!url.endsWith(".json")) return null;
-                console.log( "canon 💣", url );
-                console.log(process.cwd());
-                console.log( _data );
-                let result = path.resolve(
-                    process.cwd(),
-                    'src',
-                    _data,
-                    url
-                );
-
-                if (await !fs.access(result)) {
-                    return null;
-                }
-                
-                return new URL('file://' + result);
-            }
-            let target = async function (canonURL) {
-                console.log("target🎯" , canonURL);
-                let content = await fs.readFile(canonURL.pathname, { encoding: "utf8"});
-                console.log( content );
-                console.log( methods.transformJsonToSass(JSON.parse(content)) );
-                return {
-                    contents: '',
-                    syntax: 'scss'
-                }
-            }
-			let result = await sass.compileStringAsync(inputContent, {
-				loadPaths: [
-					parsed.dir || ".",
-					this.config.dir.input,
-                    this.config.dir.includes,
-                    "./node_modules",
-				],
-                importers: [
-                    //new sass.NodePackageImporter(process.cwd()),
-                    //getJsonImporter({loadPaths:[process.cwd(), 'src', '_data']})
-                    {
-                        canonicalize: canon,
-                        load: target
-                    }
-                ],
-                style: 'compressed'
-			});
-            
-			// Map dependencies for incremental builds
-			this.addDependencies(inputPath, result.loadedUrls);
 
 			return async (data) => {
+                let value = await this.defaultRenderer(data);
+                console.log(value);
+                let result = await sass.compileStringAsync(value, {
+                    loadPaths: [
+                        parsed.dir || ".",
+                        this.config.dir.input,
+                        this.config.dir.includes,
+                        "./node_modules",
+                    ],
+                    style: 'compressed'
+                });
+                // Map dependencies for incremental builds
+                this.addDependencies(inputPath, result.loadedUrls);
 				return result.css;
 			};
 		},
