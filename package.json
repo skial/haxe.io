@@ -24,7 +24,6 @@
   "dependencies": {
     "@11ty/eleventy": "^3.1.2",
     "@11ty/eleventy-plugin-webc": "^0.11.2",
-    "@blakedarlin/sass-json-importer": "^1.2.0",
     "@picocss/pico": "^2.1.1",
     "cheerio": "^1.1.2",
     "eleventy-plugin-embed-everything": "^1.21.1",
@@ -34,7 +33,6 @@
     "markdown-it-emoji": "^3.0.0",
     "markdown-it-footnote": "^4.0.0",
     "sass": "^1.97.3",
-    "sass-extended-importer": "^1.0.1",
     "twemoji": "^14.0.2"
   },
   "devDependencies": {
