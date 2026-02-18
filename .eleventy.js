@@ -13,8 +13,6 @@ import path, { resolve } from "node:path";
 import * as sass from "sass";
 import { DateTime } from "luxon";
 import * as pagefind from "pagefind";
-import * as scssImporter from "sass-extended-importer";
-import getJsonImporter from '@blakedarlin/sass-json-importer';
 import { URL } from 'node:url';
 
 export default function(config) {
