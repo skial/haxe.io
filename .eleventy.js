@@ -158,7 +158,6 @@ export default function(config) {
 
 			return async (data) => {
                 let value = await this.defaultRenderer(data);
-                console.log(value);
                 let result = await sass.compileStringAsync(value, {
                     loadPaths: [
                         parsed.dir || ".",
