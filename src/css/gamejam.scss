@@ -1,0 +1,69 @@
+@use "_core";
+@use "roundups";
+
+[name="platform-filter-group"][type="checkbox"] {
+    display: none;
+}
+
+label[for*="input-"][role="button"] {
+    font-size: 0.8rem;
+}
+
+{% assign filters = '' | split: '' %}
+{% assign keys = gamejam | object_keys %}
+{% for key in keys -%}
+    {% if gamejam[key].entries -%}
+        {% assign entries = gamejam[key].entries -%}
+        {% for entry in entries -%}
+            {% assign filters = filters | concat: entry.platforms -%}
+            {% assign filters = filters | uniq -%}
+        {% endfor -%}
+    {% endif -%}
+{% endfor -%}
+
+.platform-filter li {
+    display: inline-block;
+}
+
+{% for filter in filters %}
+#input-{{ filter | slugify }}:checked ~ article section li:not([data-platforms*="{{ filter | slugify }}"]){% if forloop.last == false %}, {% endif -%}
+{% endfor %}
+{
+  opacity:.3;
+  text-decoration:line-through;
+}
+
+/** these values are taken from `.outline` and `.secondary` classes */
+{% for filter in filters %}
+#input-{{ filter | slugify }}:not(:checked) ~ article label[for*="{{ filter | slugify }}"]{% if forloop.last == false %}, {% endif -%}
+{% endfor %}
+{
+    --pico-background-color: transparent;
+    --pico-color: var(--pico-primary);
+    --pico-border-color: var(--pico-primary);
+    --pico-color: var(--pico-secondary);
+    --pico-border-color: var(--pico-secondary);
+}
+
+#input-linux:checked ~ article section li[data-platforms*=linux]
+{
+    opacity:revert;
+    text-decoration:revert;
+}
+
+.toc {
+    ul, ul:first-of-type {
+        margin: initial;
+        padding: unset;
+        padding-left: 2rem;
+    }
+
+    ul > li {
+        display: list-item;
+        padding: 0.2rem;
+    }
+
+    ul, ul > li {
+        list-style: square !important;
+    }
+}
