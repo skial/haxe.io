@@ -1,60 +1,4 @@
-@media only screen and (prefers-color-scheme: light) {
-    [data-theme=light],
-    :root:not([data-theme=dark]),
-    :host(:not([data-theme=dark])) {
-        --pico-background-color: #fffdf9 !important;
-    }
-
-    article {
-        background-color: hsla(47,36%,95%,.8) !important;
-        box-shadow: var(--pico-card-box-shadow);
-    }
-}
-
-@media (min-width: 768px) {
-    .grid.col-2 {
-        grid-template-columns: 20% 1fr;
-        grid-template-rows: 1fr;
-        grid-column-gap: 20px;
-        grid-row-gap: 20px;
-        justify-items: stretch;
-        align-items: stretch;
-    }
-}
-
-.logo {
-    max-width: 5rem;
-}
-
-.logo a {
-    color: inherit;
-}
-
-.hero .details {
-    font-size: .800rem;
-    padding-bottom: 5rem;
-}
-
-.emoji {
-    height: 1em;
-}
-
-footer {
-    padding: 2rem;
-}
-
-footer .tools .subtitle {
-    list-style: none;
-    margin-left: -0.8rem;
-}
-
-footer .tools li:not(.subtitle) {
-    font-size: .800rem;
-}
-
-footer .social li {
-    text-transform: capitalize;
-}
+@use "_core";
 
 .pagefind-ui__message {
     margin-top: var(--pico-typography-spacing-vertical);
@@ -100,6 +44,12 @@ footer .social li {
 .pagefind-ui__result-nested .pagefind-ui__result-title .pagefind-ui__result-link {
     --pico-color: var(--pico-secondary);
     --pico-underline: var(--pico-secondary-underline);
+}
+
+@media (min-width: 768px) {
+    .grid.col-2 {
+        grid-template-columns: 5fr 1fr;
+    }
 }
 
 @media (min-width: 1024px) {

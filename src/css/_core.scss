@@ -1,10 +1,25 @@
-nav ul {
-    grid-row-gap: 0.2rem;
+@use "@picocss/pico/scss/pico";
+
+@media only screen and (prefers-color-scheme: light) {
+    [data-theme=light],
+    :root:not([data-theme=dark]),
+    :host(:not([data-theme=dark])) {
+        --pico-background-color: #fffdf9 !important;
+    }
+
+    article {
+        background-color: hsla(47,36%,95%,.8) !important;
+        box-shadow: var(--pico-card-box-shadow);
+    }
 }
 
-nav > ul > li {
-    padding-top: 0;
-    padding-bottom: 0;
+nav ul {
+    row-gap: 0.2rem;
+
+    > li {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
 }
 
 label[for][role="button"] {
@@ -16,12 +31,19 @@ label[for][role="button"] {
     display: none;
 }
 
-header h1 {
-    text-align: center;
-}
+header {
+    h1 {
+        text-align: center;
+    }
 
-header .logo {
-    margin: auto;
+    .logo {
+        margin: auto;
+        max-width: 5rem;
+
+        a {
+            color: inherit;
+        }
+    }
 }
 
 main li {
@@ -30,11 +52,6 @@ main li {
 
 .articles {
     padding-left: 0;
-}
-
-.details {
-    font-size: .750rem;
-    display: contents;
 }
 
 .details, .details * {
@@ -54,6 +71,9 @@ details[open] > summary > span:last-of-type {
     display: initial;
 }
 
+.emoji {
+    height: 1em;
+}
 
 footer {
     padding: 2rem;
@@ -74,7 +94,12 @@ footer .social li {
 
 @media (min-width: 768px) {
     .grid.col-2 {
-        grid-template-columns: 5fr 1fr;
+        grid-template-columns: 20% 1fr;
+        grid-template-rows: 1fr;
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+        justify-items: stretch;
+        align-items: stretch;
     }
 
     .articles time {

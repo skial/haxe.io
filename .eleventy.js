@@ -9,10 +9,11 @@ import { RenderPlugin } from "@11ty/eleventy";
 import webc from '@11ty/eleventy-plugin-webc';
 import embedEverything from 'eleventy-plugin-embed-everything';
 import fs from "node:fs/promises";
-import path from "node:path";
+import path, { resolve } from "node:path";
 import * as sass from "sass";
 import { DateTime } from "luxon";
 import * as pagefind from "pagefind";
+import { URL } from 'node:url';
 
 export default function(config) {
     function dateSort(a, b) {
@@ -136,13 +137,16 @@ export default function(config) {
      *  - https://jkc.codes/blog/using-sass-with-eleventy/
      *  - https://11ty.rocks/posts/process-css-with-lightningcss/
      */
-    /*config.addTemplateFormats("scss")
+    config.addTemplateFormats("scss")
     config.addExtension("scss", {
         outputFileExtension: "css",
 
 		// opt-out of Eleventy Layouts
 		useLayouts: false,
-
+        // and they don't need to be in rss or sitemap feeds.
+        //eleventyExcludeFromCollections: true,
+        // inherit liquid syntax so we can use and access data cascade.
+        key: "liquid",
 		compile: async function (inputContent, inputPath) {
 			let parsed = path.parse(inputPath);
 			// Don’t compile file names that start with an underscore
@@ -150,22 +154,23 @@ export default function(config) {
 				return;
 			}
 
-			let result = sass.compileString(inputContent, {
-				loadPaths: [
-					parsed.dir || ".",
-					this.config.dir.includes,
-                    "./node_modules/"
-				]
-			});
-
-			// Map dependencies for incremental builds
-			this.addDependencies(inputPath, result.loadedUrls);
-
 			return async (data) => {
+                let value = await this.defaultRenderer(data);
+                let result = await sass.compileStringAsync(value, {
+                    loadPaths: [
+                        parsed.dir || ".",
+                        this.config.dir.input,
+                        this.config.dir.includes,
+                        "./node_modules",
+                    ],
+                    style: 'compressed'
+                });
+                // Map dependencies for incremental builds
+                this.addDependencies(inputPath, result.loadedUrls);
 				return result.css;
 			};
 		},
-    });*/
+    });
 
     // https://www.11ty.dev/docs/languages/custom/#get-data-and-get-instance-from-input-path
     // https://rknight.me/blog/adding-cooklang-support-to-eleventy-two-ways/
