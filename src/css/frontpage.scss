@@ -1,5 +1,9 @@
 @use "_core";
 
+.pagefind-ui {
+    
+}
+
 .pagefind-ui__message {
     margin-top: var(--pico-typography-spacing-vertical);
 }
@@ -10,6 +14,7 @@
     justify-items: stretch;
     align-items: stretch;
     box-shadow: none;
+    margin-bottom: 0;
 }
 
 .pagefind-ui__search-input {

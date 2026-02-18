@@ -32,18 +32,42 @@ label[for][role="button"] {
 }
 
 header {
+    display: flex;
+    align-content: start;
+    flex-flow: row nowrap;
+    gap: 1rem;
+
     h1 {
         text-align: center;
+        margin-top: auto;
+        margin-bottom: auto;
     }
 
     .logo {
-        margin: auto;
-        max-width: 5rem;
+        margin: 0;
+        min-width: 4rem;
+        max-width: 4rem;
 
         a {
             color: inherit;
         }
     }
+
+    #search {
+        margin-left: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    > :first-child {
+        margin-left: var(--pico-block-spacing-vertical);
+    }
+
+    > :last-child {
+        margin-right: var(--pico-block-spacing-vertical);
+    }
+
 }
 
 main li {

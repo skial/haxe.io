@@ -66,7 +66,7 @@ eleventyExcludeFromCollections: true
 	{% for topic in ["frontpage.topics"] %}
 	<input id="{{ topic.name | slugify }}" type="checkbox" name="nav-group">
 	{% endfor %}
-	<header class="container">
+	<header>
 		{% render "header/logo.html" %}
 		<h1 class="name">haxe.io</h1>
 		<div id="search"></div>
