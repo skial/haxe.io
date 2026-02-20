@@ -5,12 +5,15 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="color-scheme" content="light dark">
-        <link webc:keep rel="stylesheet" href="/css/default.css">
+        <link webc:keep rel="stylesheet" href="/css/search.css">
         <title>{{ title }}</title>
 	</head>
 	<body>
-        {% render "header.html", page: page, payload: payload %}
-        <main class="container" data-pagefind-body>
+        <header>
+            {% render "header/logo.html" %}
+            <h1>haxe.io</h1>
+        </header>
+        <main class="container" data-pagefind-ignore>
             {{ content }}
         </main>
         {% render "footer.html", tools: ["frameworks.manual"].frameworks_entries, social: social %}

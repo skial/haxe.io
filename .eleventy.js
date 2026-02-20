@@ -35,7 +35,6 @@ export default function(config) {
 
     // https://www.11ty.dev/docs/copy/#configuration-api-method
     // Doesnt appear to be relative from the input directory. https://github.com/11ty/eleventy/issues/2043#issuecomment-948826977
-    config.addPassthroughCopy("src/css");
     config.addPassthroughCopy("src/img");
     config.addPassthroughCopy("src/svg");
     config.addPassthroughCopy("src/twemoji/svg");

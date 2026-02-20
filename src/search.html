@@ -1,0 +1,34 @@
+---
+title: Search Haxe.io
+permalink: search.html
+layout: search.results.html
+eleventyExcludeFromCollections: true
+---
+
+<script src="/pagefind/pagefind-ui.js"></script>
+<search id="search"></search>
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        let search = new PagefindUI({ 
+            element: "#search", 
+            showSubResults: true,
+            sort: { date: "desc" },
+            showImages: false,
+            resetStyles: false,
+            autofocus: true
+        });
+        let url = new URL(window.location);
+        let query = new URLSearchParams(url.search);
+        
+        search.triggerSearch(query.get("q"));
+
+        let input = search._pfs.$$.root
+            .querySelectorAll(".pagefind-ui__search-input")[0];
+            
+        input.addEventListener("keyup", () => {
+            query.set("q", input.value);
+            url.search = query;
+            history.pushState({}, '', url);
+        });
+    });
+</script>

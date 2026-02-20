@@ -31,19 +31,8 @@ label[for][role="button"] {
     display: none;
 }
 
-header {
-    h1 {
-        text-align: center;
-    }
-
-    .logo {
-        margin: auto;
-        max-width: 5rem;
-
-        a {
-            color: inherit;
-        }
-    }
+.hero {
+    margin-bottom: 2rem;
 }
 
 main li {
@@ -54,8 +43,12 @@ main li {
     padding-left: 0;
 }
 
-.details, .details * {
+.details, .details *, article > time {
     font-style: italic;
+    font-size: 0.9rem;
+}
+
+.details, .details * {
     display: contents;
 }
 
