@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/skial/haxe.io#readme",
   "dependencies": {
-    "@11ty/eleventy": "^3.1.2",
+    "@11ty/eleventy": "4.0.0-alpha.6",
     "@11ty/eleventy-plugin-webc": "^0.11.2",
     "@picocss/pico": "^2.1.1",
     "browserslist": "^4.28.1",
