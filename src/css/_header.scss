@@ -1,0 +1,53 @@
+header {
+    display: flex;
+    align-content: start;
+    flex-flow: row nowrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+
+    h1 {
+        text-align: center;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+    .logo {
+        margin: 0;
+        min-width: 4rem;
+        max-width: 4rem;
+
+        a {
+            color: inherit;
+        }
+    }
+
+    search {
+        margin-left: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        form {
+            display: flex;
+
+            input[type="search"] {
+                margin: 0;
+            }
+        }
+    }
+
+    > :first-child {
+        margin-left: calc(var(--pico-block-spacing-vertical)*2);
+    }
+
+    > :last-child {
+        margin-right: calc(var(--pico-block-spacing-vertical)*2);
+    }
+
+}
+
+html.frontpage {
+    header {
+        margin-bottom: 4rem;
+    }
+}

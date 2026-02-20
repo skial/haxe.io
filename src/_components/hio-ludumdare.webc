@@ -1,12 +1,10 @@
 <slot name="platform-filter-checkboxes"></slot>
 
-<header class="container">
-    {% render "header/logo.html" %}
-    <div class="hero container">
-        <slot name="title"></slot>
-        {% render "payload/attribution.html", payload: payload, page: page %}
-    </div>
-</header>
+{% render "header.html" %}
+<div class="hero container">
+    <slot name="title"></slot>
+    {% render "payload/attribution.html", payload: payload, page: page %}
+</div>
 
 <article data-pagefind-body>
     {% assign current_date = now %}

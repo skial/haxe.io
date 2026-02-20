@@ -31,43 +31,8 @@ label[for][role="button"] {
     display: none;
 }
 
-header {
-    display: flex;
-    align-content: start;
-    flex-flow: row nowrap;
-    gap: 1rem;
-
-    h1 {
-        text-align: center;
-        margin-top: auto;
-        margin-bottom: auto;
-    }
-
-    .logo {
-        margin: 0;
-        min-width: 4rem;
-        max-width: 4rem;
-
-        a {
-            color: inherit;
-        }
-    }
-
-    #search {
-        margin-left: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    > :first-child {
-        margin-left: var(--pico-block-spacing-vertical);
-    }
-
-    > :last-child {
-        margin-right: var(--pico-block-spacing-vertical);
-    }
-
+.hero {
+    margin-bottom: 2rem;
 }
 
 main li {
@@ -78,8 +43,12 @@ main li {
     padding-left: 0;
 }
 
-.details, .details * {
+.details, .details *, article > time {
     font-style: italic;
+    font-size: 0.9rem;
+}
+
+.details, .details * {
     display: contents;
 }
 
