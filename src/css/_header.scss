@@ -1,9 +1,8 @@
 header {
     display: flex;
     align-content: start;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
     gap: 1rem;
-    margin-bottom: 1rem;
 
     h1 {
         text-align: center;
@@ -22,7 +21,6 @@ header {
     }
 
     search {
-        margin-left: auto;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -41,13 +39,25 @@ header {
     }
 
     > :last-child {
+        margin-left: calc(var(--pico-block-spacing-vertical)*2);
         margin-right: calc(var(--pico-block-spacing-vertical)*2);
     }
 
 }
 
-html.frontpage {
+@media (min-width: 1024px) {
     header {
-        margin-bottom: 4rem;
+        flex-flow: row;
+        margin-bottom: 1rem;
+
+        search {
+            margin-left: auto !important;
+        }
+    }
+
+    html.frontpage {
+        header {
+            margin-bottom: 4rem;
+        }
     }
 }
