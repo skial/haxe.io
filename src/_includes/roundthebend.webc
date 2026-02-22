@@ -14,7 +14,6 @@
 <script webc:type="js">
     export default function(context) {
         let data = {};
-        console.log( data );
         data = context.$data;
         return context.renderTemplate(`<hio-roundup>${data.content}</hio-roundup>`, "webc", data)
         .then(function(str) {
