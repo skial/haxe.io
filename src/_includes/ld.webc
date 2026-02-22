@@ -12,10 +12,12 @@
     </body>
 </html>
 <script webc:type="js">
-    let data = {};
-    data = this.$data;
-    this.renderTemplate(`<hio-ludumdare>${data.content}</hio-ludumdare>`, "webc", data)
-    .then(function(str) {
-        return this.renderTemplate(str, "liquid", data);
-    });
+    export default function(context) {
+        let data = {};
+        data = context.$data;
+        return context.renderTemplate(`<hio-ludumdare>${data.content}</hio-ludumdare>`, "webc", data)
+        .then(function(str) {
+            return context.renderTemplate(str, "liquid", data);
+        });
+    }
 </script>
