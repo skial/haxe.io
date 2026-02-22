@@ -103,7 +103,6 @@ export default function(config) {
                             const headings = ['In case you missed it', 'People & Projects to support', 'Current Proposals & Discussions'];
                             headings.forEach(function(ignore) {
                                 if (b.content.indexOf(ignore) > -1) {
-                                    console.log( a, b );
                                     a.attrSet('data-pagefind-ignore', '');
                                     d?.attrSet('data-pagefind-ignore', '');
                                 }
