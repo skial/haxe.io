@@ -97,10 +97,20 @@ export default function(config) {
                         let a = tokens[i];
                         let b = tokens[i+1];
                         let c = tokens[i+2];
+                        let d = tokens[i+3];
+
+                        if (a.type == 'heading_open') {
+                            const headings = ['In case you missed it', 'People & Projects to support', 'Current Proposals & Discussions'];
+                            headings.forEach(function(ignore) {
+                                if (b.content.indexOf(ignore) > -1) {
+                                    a.attrSet('data-pagefind-ignore', '');
+                                    d?.attrSet('data-pagefind-ignore', '');
+                                }
+                            });
+                        }
 
                         if (a.type == 'heading_open' && a.tag == 'h1' && c.type == 'heading_close') {
                             a.attrSet('slot', 'title');
-                            break;
                         }
                     }
                     return result;
@@ -297,7 +307,7 @@ export default function(config) {
                 let b = tokens[i+1];
                 let c = tokens[i+2];
 
-                if (a.type == 'heading_open' && a.tag == 'h1' && c.type == 'heading_close') {
+                if (a.type == 'heading_open' && a.tag == 'h1' && c.type == 'heading_close' && !payload.title) {
                     payload.title = md.renderInline(b.content.replace(/<br\/>/,':'));
                     break;
                 }
