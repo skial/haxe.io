@@ -75,10 +75,35 @@ permalink: archive.html
 			{% endfor %}
 		</ul>
 	</nav>
-	<main class="container">
-		<ul class="articles">
+	<main class="container">		
 			<!---- https://www.11ty.dev/docs/collections/#collection-item-data-structure ---->
+			{% assign year = '' %}
+			{% assign change_year = false %}
+
 			{%- for post in collections.everything -%}
+			{% if post.data.payload.created %}
+				{% assign chosen_date = post.data.payload.created %}
+			{% elsif post.data.payload.published %}
+				{% assign chosen_date = post.data.payload.published %}
+			{% elsif post.data.payload.modified %}
+				{% assign chosen_date = post.data.payload.modified %}
+			{% else %}
+				{% assign chosen_date = post.date %}
+			{% endif %}
+			{% assign loop_year = chosen_date | date: '%Y' %}
+			{% if year != loop_year %}
+				{% assign year = chosen_date | date: '%Y' %}
+				{% assign change_year = true %}
+			{% endif %}
+
+			{% if change_year %}
+				{% if forloop.first == false %}
+		</ul>
+				{% endif %}
+		<h1>{{ year }}</h1>
+		<ul class="articles">
+				{% assign change_year = false %}
+			{% endif %}
 			{% render "archive/articles.html", post: post %}
 			{%- endfor -%}
 		</ul>

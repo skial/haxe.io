@@ -29,7 +29,7 @@
     {% assign slug = lowercase | slugify %}
     {% assign contributors = contributors | push: slug %}
 {% endfor %}
-<li id="{{ page_id }}" class="{{ post.data.tags | join: ' ' }}" data-authors="{{ authors | join: ' '}}" data-contributors="{{ contributors | join: ' '}}">
+<li id="{{ page_id }}" class="{{ post.data.tags | join: ' ' }}" data-authors="{{ authors | join: ' '}}" data-contributors="{{ contributors | join: ' '}}" data-month="{{ chosen_date | date: '%b' | downcase }}">
     <a title="{{ page_title }}" href="{{ post.page.url }}">{{ page_title }}</a>
-    <time datetime="{{ chosen_date | date: '%Y-%m-%d %H:%M:%S' }}">{{ chosen_date | date: '%d %b %Y' }}</time>
+    <time datetime="{{ chosen_date | date: '%Y-%m-%d %H:%M:%S' }}">{{ chosen_date | date: '%d %b' }}</time>
 </li>
