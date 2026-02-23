@@ -1,0 +1,8 @@
+@use "_core";
+@use "_header";
+
+@media (min-width: 768px) {
+    .grid.col-2 {
+        grid-template-columns: 5fr 1fr;
+    }
+}
