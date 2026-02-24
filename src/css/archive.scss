@@ -1,6 +1,10 @@
 @use "_core";
 @use "_header";
 
+.grid.col-2 {
+        grid-template-columns: 1fr 5fr;
+    }
+
 .articles {
     a {
         font-size: 1.1rem;
@@ -31,14 +35,20 @@
     line-height: 0;
 }
 
-.long {
+[name="nav-group"]:checked ~ main section .year-title
+{
     display: none;
 }
 
+#ludum-dare:checked ~ main section .year-title:has(+ ul > .ludum-dare),
+#releases:checked ~ main section .year-title:has(+ ul > .releases) {
+    display: block;
+}
+
 @media (min-width: 768px) {
-    .grid.col-2 {
+    /*.grid.col-2 {
         grid-template-columns: 5fr 1fr;
-    }
+    }*/
 
     .details, .details * {
         display: initial;
@@ -48,13 +58,5 @@
 @media (min-width: 1024px) {
     article a {
         font-size: 1.2rem;
-    }
-
-    .short {
-        display: none;
-    }
-
-    .long {
-        display: initial;
     }
 }
