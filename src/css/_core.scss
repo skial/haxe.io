@@ -27,7 +27,7 @@ label[for][role="button"] {
     overflow-wrap: normal;
 }
 
-[name="nav-group"][type="checkbox"] {
+[name*="-filter"][type="checkbox"] {
     display: none;
 }
 

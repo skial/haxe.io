@@ -25,41 +25,6 @@ permalink: archive.html
 	<meta name="description" content="Handpicked news and resources for Haxe, a high level, cross-platform, statically and strongly typed programming language. Find the latest jobs, tutorials, videos, presentations and events covered weekly on the community blog.">
 	<link title="Haxe.io Feed" rel="alternate" type="application/rss+xml" href="http://blog.skialbainn.com/rss">
 	<link rel="stylesheet" href="/css/archive.css">
-	<style>
-		{% for topic in ["frontpage.topics"] %}
-		{% assign keys = topic.rules | object_keys %}
-		{%- for key in keys -%}
-		#{{ topic.name | slugify }}:checked ~ main .articles > li:not([{{ key }}{{ topic.rules[key] }}]){% if forloop.last == false %}, {% endif %}
-		{%- endfor -%}
-		{% if forloop.last == false %}, {% endif %}
-		{%- endfor -%}
-		{
-			display: none;
-		}
-
-		/** these values are taken from `.outline` and `.secondary` classes */
-		{%- for topic in ["frontpage.topics"] %}
-		#{{ topic.name | slugify }}:not(:checked) ~ main nav label[for="{{ topic.name | slugify }}"]{% if forloop.last == false %}, {% endif %}
-		{%- endfor -%}
-		{
-			--pico-background-color: transparent;
-			--pico-color: var(--pico-primary);
-			--pico-border-color: var(--pico-primary);
-			--pico-color: var(--pico-secondary);
-  			--pico-border-color: var(--pico-secondary);
-		}
-
-		{%- for topic in ["frontpage.topics"] %}
-		{% assign keys = topic.rules | object_keys %}
-		{%- for key in keys -%}
-		#{{ topic.name | slugify }}:checked ~ main  .articles > li[{{ key }}{{ topic.rules[key] }}]{% if forloop.last == false %}, {% endif %}
-		{%- endfor -%}
-		{% if forloop.last == false %}, {% endif %}
-		{%- endfor -%}
-		{
-			display: flex;
-		}
-	</style>
 	<title>Haxe.io — News And Information For Haxe Developers</title>
 </head>
 <body>
@@ -91,11 +56,11 @@ permalink: archive.html
 	{%- endfor -%}
 
 	{% for topic in ["frontpage.topics"] %}
-	<input id="{{ topic.name | slugify }}" type="checkbox" name="nav-group">
+	<input id="{{ topic.name | slugify }}" type="checkbox" name="topic-filter">
 	{% endfor %}
 
 	{% for year in years %}
-	<input id="{{ year }}" type="checkbox" name="nav-group">
+	<input id="year-{{ year }}" type="checkbox" name="year-filter">
 	{% endfor %}
 
 	{% render "frontpage/header.html" %}
@@ -110,7 +75,7 @@ permalink: archive.html
 
 					<li>Years</li>
 					{% for year in years %}
-					<li><label for="{{ year }}" role="button">{{ year }}</label></li>
+					<li><label for="year-{{ year }}" role="button">{{ year }}</label></li>
 					{% endfor %}
 				</ul>
 			</nav>
@@ -140,7 +105,7 @@ permalink: archive.html
 				{% if forloop.first == false %}
 		</ul>
 				{% endif %}
-		<h1 class="year-title">{{ year }}</h1>
+		<h1 class="year-title year-{{ year }}">{{ year }}</h1>
 		<ul class="articles">
 				{% assign change_year = false %}
 			{% endif %}

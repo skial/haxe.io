@@ -35,7 +35,55 @@
     line-height: 0;
 }
 
-[name="nav-group"]:checked ~ main section :is(.year-title, .articles)
+{% assign years = '' | split: '' %}
+{% assign current_year = '' %}
+{% assign change_year = false %}
+{%- for post in collections.everything -%}
+{% if post.data.payload.created %}
+    {% assign chosen_date = post.data.payload.created %}
+{% elsif post.data.payload.published %}
+    {% assign chosen_date = post.data.payload.published %}
+{% elsif post.data.payload.modified %}
+    {% assign chosen_date = post.data.payload.modified %}
+{% else %}
+    {% assign chosen_date = post.date %}
+{% endif %}
+{% assign loop_year = chosen_date | date: '%Y' %}
+{% if current_year != loop_year %}
+    {% assign current_year = chosen_date | date: '%Y' %}
+    {% assign change_year = true %}
+{% endif %}
+
+{% if change_year %}
+    {% if forloop.first == false %}
+    {% endif %}
+    {% assign years = years | push: current_year %}
+    {% assign change_year = false %}
+{% endif %}
+{%- endfor -%}
+/**
+Rules for filter buttons.
+*/
+/** these values are taken from `.outline` and `.secondary` classes */
+{%- for topic in ["frontpage.topics"] %}
+#{{ topic.name | slugify }}:not(:checked) ~ main nav label[for="{{ topic.name | slugify }}"]{% if forloop.last == false %}, {% endif %}
+{%- endfor -%},
+{% for year in years %}
+#year-{{ year }}:not(:checked) ~ main nav label[for="year-{{ year }}"]{% if forloop.last == false %}, {% endif %}
+{% endfor %}
+{
+    --pico-background-color: transparent;
+    --pico-color: var(--pico-primary);
+    --pico-border-color: var(--pico-primary);
+    --pico-color: var(--pico-secondary);
+    --pico-border-color: var(--pico-secondary);
+}
+
+/**
+Rules to collaspe headers based on selected filters.
+*/
+
+[name="topic-filter"]:checked ~ main section .year-title
 {
     display: none;
 }
@@ -44,13 +92,57 @@
     margin-top: var(--pico-typography-spacing-top);
 }
 
+#year-2025:checked ~ main section h1:not(.year-2025),
+#year-2024:checked ~ main section h1:not(.year-2024) {
+    display: none;
+}
+
+#year-2025:checked ~ main section .articles > li:not([data-year="2025"]),
+#year-2024:checked ~ main section .articles > li:not([data-year="2024"]) {
+    display: none;
+}
+
+#year-2025:checked ~ main section h1.year-2025,
+#year-2024:checked ~ main section h1.year-2024 {
+    display: block;
+}
+
+#year-2025:checked ~ main section .articles > li[data-year="2025"],
+#year-2024:checked ~ main section .articles > li[data-year="2024"] {
+    display: flex;
+}
+
 {% for topic in ["frontpage.topics"] %}
 {% assign name = topic.name | slugify %}
-#{{ name }}:checked ~ main section .year-title:has(+ ul > .{{ name }}),
-#{{ name }}:checked ~ main section .articles:has(> .{{ name }}){% if forloop.last == false %}, {% endif %}
+#{{ name }}:checked ~ main section .year-title:has(+ ul > .{{ name }}){% if forloop.last == false %}, {% endif %}
 {% endfor %}
 {
     display: block;
+}
+
+/**
+Rules to hide entries based the selected filters.
+*/
+{% for topic in ["frontpage.topics"] %}
+{% assign keys = topic.rules | object_keys %}
+{%- for key in keys -%}
+#{{ topic.name | slugify }}:checked ~ main section .articles > li:not([{{ key }}{{ topic.rules[key] }}]){% if forloop.last == false %}, {% endif %}
+{%- endfor -%}
+{% if forloop.last == false %}, {% endif %}
+{%- endfor -%}
+{
+    display: none;
+}
+
+{%- for topic in ["frontpage.topics"] %}
+{% assign keys = topic.rules | object_keys %}
+{%- for key in keys -%}
+#{{ topic.name | slugify }}:checked ~ main .articles > li[{{ key }}{{ topic.rules[key] }}]{% if forloop.last == false %}, {% endif %}
+{%- endfor -%}
+{% if forloop.last == false %}, {% endif %}
+{%- endfor -%}
+{
+    display: flex;
 }
 
 @media (min-width: 768px) {
