@@ -63,9 +63,41 @@ permalink: archive.html
 	<title>Haxe.io — News And Information For Haxe Developers</title>
 </head>
 <body>
+	{% assign years = '' | split: '' %}
+	{% assign current_year = '' %}
+	{% assign change_year = false %}
+	{%- for post in collections.everything -%}
+	{% if post.data.payload.created %}
+		{% assign chosen_date = post.data.payload.created %}
+	{% elsif post.data.payload.published %}
+		{% assign chosen_date = post.data.payload.published %}
+	{% elsif post.data.payload.modified %}
+		{% assign chosen_date = post.data.payload.modified %}
+	{% else %}
+		{% assign chosen_date = post.date %}
+	{% endif %}
+	{% assign loop_year = chosen_date | date: '%Y' %}
+	{% if current_year != loop_year %}
+		{% assign current_year = chosen_date | date: '%Y' %}
+		{% assign change_year = true %}
+	{% endif %}
+
+	{% if change_year %}
+		{% if forloop.first == false %}
+		{% endif %}
+		{% assign years = years | push: current_year %}
+		{% assign change_year = false %}
+	{% endif %}
+	{%- endfor -%}
+
 	{% for topic in ["frontpage.topics"] %}
 	<input id="{{ topic.name | slugify }}" type="checkbox" name="nav-group">
 	{% endfor %}
+
+	{% for year in years %}
+	<input id="{{ year }}" type="checkbox" name="nav-group">
+	{% endfor %}
+
 	{% render "frontpage/header.html" %}
 	<main class="container grid col-2">
 		<aside>
@@ -74,6 +106,11 @@ permalink: archive.html
 					<li>Topics</li>
 					{% for topic in ["frontpage.topics"] %}
 					<li><label for="{{ topic.name | slugify }}" role="button">{{ topic.name }}</label></li>
+					{% endfor %}
+
+					<li>Years</li>
+					{% for year in years %}
+					<li><label for="{{ year }}" role="button">{{ year }}</label></li>
 					{% endfor %}
 				</ul>
 			</nav>
