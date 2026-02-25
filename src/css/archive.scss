@@ -35,13 +35,21 @@
     line-height: 0;
 }
 
-[name="nav-group"]:checked ~ main section .year-title
+[name="nav-group"]:checked ~ main section :is(.year-title, .articles)
 {
     display: none;
 }
 
-#ludum-dare:checked ~ main section .year-title:has(+ ul > .ludum-dare),
-#releases:checked ~ main section .year-title:has(+ ul > .releases) {
+.year-title:first-of-type {
+    margin-top: var(--pico-typography-spacing-top);
+}
+
+{% for topic in ["frontpage.topics"] %}
+{% assign name = topic.name | slugify %}
+#{{ name }}:checked ~ main section .year-title:has(+ ul > .{{ name }}),
+#{{ name }}:checked ~ main section .articles:has(> .{{ name }}){% if forloop.last == false %}, {% endif %}
+{% endfor %}
+{
     display: block;
 }
 
