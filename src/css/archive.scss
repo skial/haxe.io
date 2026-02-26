@@ -79,72 +79,62 @@ Rules for filter buttons.
     --pico-border-color: var(--pico-secondary);
 }
 
-/**
-Rules to collaspe headers based on selected filters.
-*/
-
-[name="topic-filter"]:checked ~ main section .year-title
-{
+#year-2026:checked ~ main section > :not(.year-2026),
+#year-2025:checked ~ main section > :not(.year-2025),
+#year-2016:checked ~ main section > :not(.year-2016),
+#year-2015:checked ~ main section > :not(.year-2015),
+#year-2014:checked ~ main section > :not(.year-2014) {
     display: none;
 }
 
-.year-title:first-of-type {
-    margin-top: var(--pico-typography-spacing-top);
-}
-
-#year-2025:checked ~ main section h1:not(.year-2025),
-#year-2024:checked ~ main section h1:not(.year-2024) {
-    display: none;
-}
-
-#year-2025:checked ~ main section .articles > li:not([data-year="2025"]),
-#year-2024:checked ~ main section .articles > li:not([data-year="2024"]) {
-    display: none;
-}
-
-#year-2025:checked ~ main section h1.year-2025,
-#year-2024:checked ~ main section h1.year-2024 {
+#year-2026:checked ~ main section > .year-2026,
+#year-2025:checked ~ main section > .year-2025,
+#year-2016:checked ~ main section > .year-2016,
+#year-2015:checked ~ main section > .year-2015,
+#year-2014:checked ~ main section > .year-2014 {
     display: block;
 }
 
-#year-2025:checked ~ main section .articles > li[data-year="2025"],
-#year-2024:checked ~ main section .articles > li[data-year="2024"] {
-    display: flex;
-}
-
-{% for topic in ["frontpage.topics"] %}
-{% assign name = topic.name | slugify %}
-#{{ name }}:checked ~ main section .year-title:has(+ ul > .{{ name }}){% if forloop.last == false %}, {% endif %}
-{% endfor %}
-{
-    display: block;
-}
-
-/**
-Rules to hide entries based the selected filters.
-*/
-{% for topic in ["frontpage.topics"] %}
-{% assign keys = topic.rules | object_keys %}
-{%- for key in keys -%}
-#{{ topic.name | slugify }}:checked ~ main section .articles > li:not([{{ key }}{{ topic.rules[key] }}]){% if forloop.last == false %}, {% endif %}
-{%- endfor -%}
-{% if forloop.last == false %}, {% endif %}
-{%- endfor -%}
-{
+/*[name="topic-filter"]:checked ~ main section .year-title {
+    display: none;
+}*/
+/*[name="topic-filter"]:checked ~ [class="year-filter"]:not(:checked) ~ main section > [class*="year-"] {
+    display: none;
+}*/
+#ludum-dare:checked ~ [name="year-filter"]:not(:checked) ~ main section .year-title:not(:has(+ ul > .ludum-dare)) {
     display: none;
 }
 
-{%- for topic in ["frontpage.topics"] %}
-{% assign keys = topic.rules | object_keys %}
-{%- for key in keys -%}
-#{{ topic.name | slugify }}:checked ~ main .articles > li[{{ key }}{{ topic.rules[key] }}]{% if forloop.last == false %}, {% endif %}
-{%- endfor -%}
-{% if forloop.last == false %}, {% endif %}
-{%- endfor -%}
-{
+/* Hide everything not checked. */
+#roundups:checked ~ main section .articles > li:not(.roundups),
+#ludum-dare:checked ~ main section .articles > li:not(.ludum-dare),
+#releases:checked ~ main section .articles > li:not(.releases) {
+    display: none;
+}
+
+/* If multiple checked, they need displaying.  */
+#roundups:checked ~ main section .articles > li.roundups,
+#ludum-dare:checked ~ main section .articles > li.ludum-dare,
+#releases:checked ~ main section .articles > li.releases {
     display: flex;
 }
 
+/* Hide heading if all content hidden */
+/*#roundups:checked ~ main section .year-title:has(+ ul > .roundups),
+#ludum-dare:checked ~ main section .year-title:has(+ ul > .ludum-dare),
+#releases:checked ~ main section .year-title:has(+ ul > .releases) {
+    display: block;
+}*/
+/*#ludum-dare:checked ~ [name="year-filter"]:not(:checked) ~ main section .year-title:has(+ ul > .ludum-dare),*/
+#ludum-dare:checked ~ #year-2016:checked ~ main section h1.year-2016:has(+ ul > .ludum-dare),
+#ludum-dare:checked ~ #year-2015:checked ~ main section h1.year-2015:has(+ ul > .ludum-dare),
+#ludum-dare:checked ~ #year-2014:checked ~ main section h1.year-2014:has(+ ul > .ludum-dare),
+#releases:checked ~ #year-2016:checked ~ main section h1.year-2016:has(+ ul > .releases),
+#releases:checked ~ #year-2015:checked ~ main section h1.year-2015:has(+ ul > .releases),
+#releases:checked ~ #year-2014:checked ~ main section h1.year-2014:has(+ ul > .releases),
+#events:checked ~ #year-2016:checked ~ main section h1.year-2016:has(+ ul > .events) {
+    display: block;
+}
 @media (min-width: 768px) {
     /*.grid.col-2 {
         grid-template-columns: 5fr 1fr;

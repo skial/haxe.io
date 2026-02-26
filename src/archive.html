@@ -106,7 +106,7 @@ permalink: archive.html
 		</ul>
 				{% endif %}
 		<h1 class="year-title year-{{ year }}">{{ year }}</h1>
-		<ul class="articles">
+		<ul class="articles year-{{ year }}">
 				{% assign change_year = false %}
 			{% endif %}
 			{% render "archive/articles.html", post: post %}
