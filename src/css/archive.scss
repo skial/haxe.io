@@ -95,10 +95,16 @@ Rules for filter buttons.
 
 {% for topic in ["frontpage.topics"] %}
 {% assign name = topic.name | slugify %}
-#{{ name }}:checked ~ main section > h1.{{ name }}{% if forloop.last == false%},{% endif %}
-{% endfor %}{
-    display: block;
+#{{ name }}:checked {
+    {% for year in years %}
+    ~ #year-{{ year }}:checked ~ main section > h1.{{ name }}.year-{{ year }}{% if forloop.last == false%},{% endif %}
+    {% endfor %}
+    {
+        display: block;
+    }
+    
 }
+{% endfor %}
 
 {% for topic in ["frontpage.topics"] %}
 {% assign name = topic.name | slugify %}

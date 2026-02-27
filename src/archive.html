@@ -69,7 +69,7 @@ permalink: archive.html
 		endfor
 	%}
 
-	
+	{% comment %}
 	years: {{ years | size }}
 	years_topics: {{ years_topics | size }}
 	{% for year in years %}
@@ -79,6 +79,7 @@ permalink: archive.html
 		<span>topics == {{ years_topics[forloop.index0] }}</span>
 	</div>
 	{% endfor %}
+	{% endcomment %}
 	
 
 	{% for topic in ["frontpage.topics"] %}
