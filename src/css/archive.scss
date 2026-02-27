@@ -35,39 +35,43 @@
     line-height: 0;
 }
 
-{% assign years = '' | split: '' %}
-{% assign current_year = '' %}
-{% assign change_year = false %}
-{%- for post in collections.everything -%}
-{% if post.data.payload.created %}
-    {% assign chosen_date = post.data.payload.created %}
-{% elsif post.data.payload.published %}
-    {% assign chosen_date = post.data.payload.published %}
-{% elsif post.data.payload.modified %}
-    {% assign chosen_date = post.data.payload.modified %}
-{% else %}
-    {% assign chosen_date = post.date %}
-{% endif %}
-{% assign loop_year = chosen_date | date: '%Y' %}
-{% if current_year != loop_year %}
-    {% assign current_year = chosen_date | date: '%Y' %}
-    {% assign change_year = true %}
-{% endif %}
+{% liquid
+    assign years = '' | split: ''
+    assign current_year = ''
+    assign change_year = false
+    for post in collections.everything
+        if post.data.payload.created
+            assign chosen_date = post.data.payload.created
+        elsif post.data.payload.published
+            assign chosen_date = post.data.payload.published
+        elsif post.data.payload.modified
+            assign chosen_date = post.data.payload.modified
+        else
+            assign chosen_date = post.date
+        endif
 
-{% if change_year %}
-    {% if forloop.first == false %}
-    {% endif %}
-    {% assign years = years | push: current_year %}
-    {% assign change_year = false %}
-{% endif %}
-{%- endfor -%}
+        assign loop_year = chosen_date | date: '%Y'
 
-{% assign topics = '' | split: '' %}
-{% for topic in ["frontpage.topics"] %}
-    {% assign name = topic.name | downcase | slugify %}
-    {% assign class = '.' | append: name %}
-    {% assign topics = topics | push: class %}
-{% endfor %}
+        if current_year != loop_year
+            assign current_year = chosen_date | date: '%Y'
+            assign change_year = true
+        endif
+
+        if change_year
+            if forloop.first == false
+            endif
+            assign years = years | push: current_year
+            assign change_year = false
+        endif
+    endfor
+
+    assign topics = '' | split: ''
+    for topic in ["frontpage.topics"]
+        assign name = topic.name | downcase | slugify
+        assign class = '.' | append: name
+        assign topics = topics | push: class
+    endfor
+%}
 /**
 Rules for filter buttons.
 */
@@ -88,7 +92,7 @@ Rules for filter buttons.
 
 {% for topic in ["frontpage.topics"] %}
 {% assign name = topic.name | slugify %}
-#{{ name }}:checked ~ main section > h1:not(.{{ name }}){% if forloop.last == false%},{% endif %}
+#{{ name }}:checked ~ main section > h1{% if forloop.last == false%},{% endif %}
 {% endfor %}{
     display: none;
 }
@@ -96,6 +100,7 @@ Rules for filter buttons.
 {% for topic in ["frontpage.topics"] %}
 {% assign name = topic.name | slugify %}
 #{{ name }}:checked {
+    ~ main section > h1.{{ name }},
     {% for year in years %}
     ~ #year-{{ year }}:checked ~ main section > h1.{{ name }}.year-{{ year }}{% if forloop.last == false%},{% endif %}
     {% endfor %}
