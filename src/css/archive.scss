@@ -139,55 +139,9 @@ Rules for filter buttons.
     display: block;
 }
 
-/* TODO need to still keep headers that dont match a selected filter but contain other selected content. */
-/*{% for topic in ["frontpage.topics"] %}
-{% assign name = topic.name | slugify %}
-#{{ name }}:checked ~ [name="year-filter"]:not(:checked) ~ main section .year-title::has(+ ul > :is({{ topics | join: ','}})){% if forloop.last == false%},{% endif %}
-{% endfor %}
-{
-    display: none;
-}*/
-
-/* Hide everything not checked. */
-/*{% for topic in ["frontpage.topics"] %}
-{% assign name = topic.name | slugify %}*/
-//[name="topic-filter"]:checked ~ [name="year-filter"]:not(:checked) ~ main section {
-    //.year-title/*:not(.{{ name }}),*/,
-    //.articles > li/*:not(.{{ name }})*//*{% if forloop.last == false%},{% endif %}*/
-    /*{
-        display: none;
-    }
+.year-title:first-of-type {
+    margin-top: var(--pico-typography-spacing-top);
 }
-/*{% endfor %}*/
-
-/* If multiple checked, they need displaying.  */
-/*{% for topic in ["frontpage.topics"] %}
-{% assign name = topic.name | slugify %}
-#{{ name }}:checked ~ main section {
-
-    //.year-title.{{ name }},
-    .articles > li.{{ name }}{% if forloop.last == false%},{% endif %}
-    {
-        display: flex;
-    }
-}
-{% endfor %}*/
-
-/* Hide heading if all content hidden */
-/*{% for topic in ["frontpage.topics"] %}
-{% assign name = topic.name | slugify %}
-#{{ name }}:checked {
-    //~ [name="year-filter"]:not(:checked) ~ main section .year-title.{{ name }},
-    {%for year in years %}
-    ~ #year-{{ year }}:checked ~ main section h1.year-{{ year }}{% if forloop.last == false%},{% endif %}
-    {% endfor %}
-    {
-        :has(+ ul > .{{ name }}) {
-            display: block;
-        }
-    }
-}
-{% endfor %}*/
 
 @media (min-width: 768px) {
     /*.grid.col-2 {
