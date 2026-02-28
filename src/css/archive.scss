@@ -1,9 +1,14 @@
 @use "_core";
 @use "_header";
 
-.grid.col-2 {
-        grid-template-columns: 1fr 5fr;
-    }
+aside nav ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.filter-title {
+    flex-basis: 100%;
+}
 
 .articles {
     a {
@@ -144,9 +149,13 @@ Rules for filter buttons.
 }
 
 @media (min-width: 768px) {
-    /*.grid.col-2 {
-        grid-template-columns: 5fr 1fr;
-    }*/
+    .grid.col-2 {
+        grid-template-columns: 1fr 5fr;
+    }
+
+    aside nav ul {
+        display: block
+    }
 
     .details, .details * {
         display: initial;

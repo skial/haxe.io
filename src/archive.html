@@ -95,12 +95,12 @@ permalink: archive.html
 		<aside>
 			<nav class="">
 				<ul class="">
-					<li>Topics</li>
+					<li class="filter-title">Topic</li>
 					{% for topic in ["frontpage.topics"] %}
 					<li><label for="{{ topic.name | slugify }}" role="button">{{ topic.name }}</label></li>
 					{% endfor %}
-
-					<li>Years</li>
+					<br>
+					<li class="filter-title">Year</li>
 					{% for year in years %}
 					<li><label for="year-{{ year }}" role="button">{{ year }}</label></li>
 					{% endfor %}
