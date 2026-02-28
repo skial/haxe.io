@@ -1,8 +1,47 @@
 @use "_core";
 @use "_header";
 
+article a {
+    font-size: 1.1rem;
+}
+
+.details {
+    padding-left: 1rem;
+    display: none;
+}
+
+.details, .details *, time {
+    font-size: 0.8rem;
+}
+
+.details, .details * {
+    line-height: 0;
+}
+
+.long {
+    display: none;
+}
+
 @media (min-width: 768px) {
     .grid.col-2 {
         grid-template-columns: 5fr 1fr;
+    }
+
+    .details, .details * {
+        display: initial;
+    }
+}
+
+@media (min-width: 1024px) {
+    article a {
+        font-size: 1.2rem;
+    }
+
+    .short {
+        display: none;
+    }
+
+    .long {
+        display: initial;
     }
 }

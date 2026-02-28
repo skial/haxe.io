@@ -1,0 +1,169 @@
+@use "_core";
+@use "_header";
+
+aside nav ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.filter-title {
+    flex-basis: 100%;
+}
+
+.articles {
+    a {
+        font-size: 1.1rem;
+    }
+
+    li {
+        display: flex;
+        list-style: circle;
+        align-content: space-between;
+        
+    }
+
+    time {
+        margin-left: auto;
+    }
+}
+
+.details {
+    padding-left: 1rem;
+    display: none;
+}
+
+.details, .details *, time {
+    font-size: 0.8rem;
+}
+
+.details, .details * {
+    line-height: 0;
+}
+
+{% liquid
+    assign years = '' | split: ''
+    assign current_year = ''
+    assign change_year = false
+    for post in collections.everything
+        if post.data.payload.created
+            assign chosen_date = post.data.payload.created
+        elsif post.data.payload.published
+            assign chosen_date = post.data.payload.published
+        elsif post.data.payload.modified
+            assign chosen_date = post.data.payload.modified
+        else
+            assign chosen_date = post.date
+        endif
+
+        assign loop_year = chosen_date | date: '%Y'
+
+        if current_year != loop_year
+            assign current_year = chosen_date | date: '%Y'
+            assign change_year = true
+        endif
+
+        if change_year
+            if forloop.first == false
+            endif
+            assign years = years | push: current_year
+            assign change_year = false
+        endif
+    endfor
+
+    assign topics = '' | split: ''
+    for topic in ["frontpage.topics"]
+        assign name = topic.name | downcase | slugify
+        assign class = '.' | append: name
+        assign topics = topics | push: class
+    endfor
+%}
+/**
+Rules for filter buttons.
+*/
+/** these values are taken from `.outline` and `.secondary` classes */
+{%- for topic in ["frontpage.topics"] %}
+#{{ topic.name | slugify }}:not(:checked) ~ main nav label[for="{{ topic.name | slugify }}"],
+{%- endfor -%}
+{% for year in years %}
+#year-{{ year }}:not(:checked) ~ main nav label[for="year-{{ year }}"]{% if forloop.last == false %}, {% endif %}
+{% endfor %}
+{
+    --pico-background-color: transparent;
+    --pico-color: var(--pico-primary);
+    --pico-border-color: var(--pico-primary);
+    --pico-color: var(--pico-secondary);
+    --pico-border-color: var(--pico-secondary);
+}
+
+{% for topic in ["frontpage.topics"] %}
+{% assign name = topic.name | slugify %}
+#{{ name }}:checked ~ main section > h1{% if forloop.last == false%},{% endif %}
+{% endfor %}{
+    display: none;
+}
+
+{% for topic in ["frontpage.topics"] %}
+{% assign name = topic.name | slugify %}
+#{{ name }}:checked {
+    ~ main section > h1.{{ name }},
+    {% for year in years %}
+    ~ #year-{{ year }}:checked ~ main section > h1.{{ name }}.year-{{ year }}{% if forloop.last == false%},{% endif %}
+    {% endfor %}
+    {
+        display: block;
+    }
+    
+}
+{% endfor %}
+
+{% for topic in ["frontpage.topics"] %}
+{% assign name = topic.name | slugify %}
+#{{ name }}:checked ~ main section > .articles > li:not(.{{ name }}){% if forloop.last == false%},{% endif %}
+{% endfor %}{
+    display: none;
+}
+
+{% for topic in ["frontpage.topics"] %}
+{% assign name = topic.name | slugify %}
+#{{ name }}:checked ~ main section > .articles > li.{{ name }}{% if forloop.last == false%},{% endif %}
+{% endfor %}{
+    display: flex;
+}
+
+{% for year in years %}
+#year-{{ year }}:checked ~ main section > h1:not(.year-{{ year }}),
+#year-{{ year }}:checked ~ main section > ul:not(.year-{{ year }}){% if forloop.last == false%},{% endif %}
+{% endfor %}{
+    display: none;
+}
+
+{% for year in years %}
+#year-{{ year }}:checked ~ main section > h1.year-{{ year }},
+#year-{{ year }}:checked ~ main section > h1.year-{{ year }} + ul{% if forloop.last == false%},{% endif %}
+{% endfor %}{
+    display: block;
+}
+
+.year-title:first-of-type {
+    margin-top: var(--pico-typography-spacing-top);
+}
+
+@media (min-width: 768px) {
+    .grid.col-2 {
+        grid-template-columns: 1fr 5fr;
+    }
+
+    aside nav ul {
+        display: block
+    }
+
+    .details, .details * {
+        display: initial;
+    }
+}
+
+@media (min-width: 1024px) {
+    article a {
+        font-size: 1.2rem;
+    }
+}
