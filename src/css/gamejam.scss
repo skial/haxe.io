@@ -9,17 +9,19 @@ label[for*="input-"][role="button"] {
     font-size: 0.8rem;
 }
 
-{% assign filters = '' | split: '' %}
-{% assign keys = gamejam | object_keys %}
-{% for key in keys -%}
-    {% if gamejam[key].entries -%}
-        {% assign entries = gamejam[key].entries -%}
-        {% for entry in entries -%}
-            {% assign filters = filters | concat: entry.platforms -%}
-            {% assign filters = filters | uniq -%}
-        {% endfor -%}
-    {% endif -%}
-{% endfor -%}
+{% liquid
+    assign filters = '' | split: ''
+    assign keys = gamejam | object_keys
+    for key in keys
+        if gamejam[key].entries
+            assign entries = gamejam[key].entries
+            for entry in entries
+                assign filters = filters | concat: entry.platforms
+                assign filters = filters | uniq
+            endfor
+        endif
+    endfor
+%}
 
 .platform-filter li {
     display: inline-block;
