@@ -4,13 +4,13 @@
     endcomment
 
     if payload.modified
-        assign chosen_date = payload.modifie
+        assign chosen_date = payload.modified
     elsif payload.published
-        assign chosen_date = payload.publishe
+        assign chosen_date = payload.published
     elsif payload.created
-        assign chosen_date = payload.create
+        assign chosen_date = payload.created
     else
-        assign chosen_date = page.dat
+        assign chosen_date = page.date
     endif
 %}
 <div class="details">
