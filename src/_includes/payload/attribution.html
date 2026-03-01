@@ -1,16 +1,18 @@
-{% comment %}
-{{ payload | inspect }}
-{% endcomment %}
+{% liquid
+    comment
+    payload | inspect
+    endcomment
 
-{%- if payload.modified -%}
-    {% assign chosen_date = payload.modified %}
-{%- elsif payload.published -%}
-    {% assign chosen_date = payload.published %}
-{%- elsif payload.created -%}
-    {% assign chosen_date = payload.created %}
-{%- else -%}
-    {% assign chosen_date = page.date %}
-{%- endif -%}
+    if payload.modified
+        assign chosen_date = payload.modified
+    elsif payload.published
+        assign chosen_date = payload.published
+    elsif payload.created
+        assign chosen_date = payload.created
+    else
+        assign chosen_date = page.date
+    endif
+%}
 <div class="details">
     {%- if payload.authors.size > 0 -%}
     <span>written by </span>
