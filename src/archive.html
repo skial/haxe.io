@@ -109,25 +109,29 @@ permalink: archive.html
 		</aside>
 		<section>
 			<!---- https://www.11ty.dev/docs/collections/#collection-item-data-structure ---->
-			{% assign year = '' %}
-			{% assign change_year = false %}
-			{% assign years_index = 0 %}
+			{% liquid
+				assign year = ''
+				assign change_year = false
+				assign years_index = 0
+			%}
 
 			{%- for post in collections.everything -%}
-			{% if post.data.payload.created %}
-				{% assign chosen_date = post.data.payload.created %}
-			{% elsif post.data.payload.published %}
-				{% assign chosen_date = post.data.payload.published %}
-			{% elsif post.data.payload.modified %}
-				{% assign chosen_date = post.data.payload.modified %}
-			{% else %}
-				{% assign chosen_date = post.date %}
-			{% endif %}
-			{% assign loop_year = chosen_date | date: '%Y' %}
-			{% if year != loop_year %}
-				{% assign year = chosen_date | date: '%Y' %}
-				{% assign change_year = true %}
-			{% endif %}
+			{% liquid
+				if post.data.payload.created
+					assign chosen_date = post.data.payload.created
+				elsif post.data.payload.published
+					assign chosen_date = post.data.payload.published
+				elsif post.data.payload.modified
+					assign chosen_date = post.data.payload.modified
+				else
+					assign chosen_date = post.date
+				endif
+				assign loop_year = chosen_date | date: '%Y'
+				if year != loop_year
+					assign year = chosen_date | date: '%Y'
+					assign change_year = true
+			endif
+			%}
 
 			{% if change_year %}
 				{% if forloop.first == false %}

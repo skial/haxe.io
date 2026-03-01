@@ -7,10 +7,12 @@
 </div>
 
 <article data-pagefind-body>
-    {% assign current_date = now %}
-    {% assign 6month_old_date = now | minus_months: 6 %}
-    {% assign article_date = payload.created %}
-    {% assign is_old = article_date | date_lessthan: 6month_old_date %}
+    {% liquid
+        assign current_date = now
+        assign 6month_old_date = now | minus_months: 6
+        assign article_date = payload.created
+        assign is_old = article_date | date_lessthan: 6month_old_date 
+    %}
     <div class="grid col-2">
         <aside class="">
             <nav>
@@ -33,17 +35,17 @@
             </nav>
         </aside>
         <section class="">
-            {%- if is_old -%}
-
-            {% assign 1year_old_date = now | minus_months: 12 %}
-            {% assign is_real_old = article_date | date_lessthan: 1year_old_date %}
-            {%- if is_real_old -%}
-            {% render "warning/1year.html" %}
-            {% else %}
-            {% render "warning/6months.html" %}
-            {% endif %}
-            
-            {% endif %}
+            {%- liquid 
+                if is_old
+                    assign 1year_old_date = now | minus_months: 12
+                    assign is_real_old = article_date | date_lessthan: 1year_old_date
+                    if is_real_old 
+                        render "warning/1year.html"
+                    else
+                        render "warning/6months.html"
+                    endif
+                endif
+            %}
             <slot @raw="content"></slot>
         </section>
     </div>
