@@ -3,7 +3,7 @@ permalink: rss.xml
 eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="UTF-8" ?>
-<rss version="2.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Haxe.io - News about the Haxe Community</title>
         <description>The home of the Haxe Roundups</description>
@@ -19,17 +19,19 @@ eleventyExcludeFromCollections: true
             else
                 assign chosen_date = post.date
             endif
+            assign desc = post.data.payload.description | default: post.page.excerpt | md2txt | default: post.data.description
+            assign uri = "https://haxe.io" | append: post.page.url | url | uri_escape
         -%}
         <item>
-            <title>{{ post.data.payload.title }}</title>
-            <description>{{ post.data.payload.description | default: post.data.description }}</description>
-            <link>https://haxe.io{{ post.page.url | url }}</link>
-            <guid>https://haxe.io{{ post.page.url | url }}</guid>
-            <pubDate>{{ chosen_date | date_to_rfc822 }}</pubDate>
-            {%- for tag in post.data.tags -%}
+            <title>{{ post.data.payload.title | strip_html }}</title>
+            <description>{{ desc | truncate: 200 | xml_escape }}</description>
+            <link>{{ uri }}</link>
+            <guid>{{ uri }}</guid>
+            <pubDate>{{ chosen_date | date_as_rfc822 }}</pubDate>
+            {%- for tag in post.data.tags %}
             <category>{{ tag }}</category>
-            {%- endfor -%}
+            {%- endfor %}
         </item>
-        {%- endfor -%}
+        {% endfor %}
     </channel>
 </rss>
