@@ -16,7 +16,7 @@
             <nav>
                 <ul>
                     <li>
-                        <a href="https://github.com/skial/haxe.io/issues?labels=next-roundup&amp;page=1&amp;state=open">Suggest a link</a> 
+                        <a href="https://github.com/skial/haxe.io/issues?q=is%3Aissue%20state%3Aopen%20label%3Anext-roundup">Suggest a link</a> 
                     </li>
                     <li>
                         <a href="https://github.com/skial/haxe.io/tree/master/{{ page.inputPath | url }}">Correct this issue</a>
