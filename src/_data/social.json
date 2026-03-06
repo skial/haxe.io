@@ -13,7 +13,12 @@
         {
             "name":"rss",
             "svg":"/src/svg/simpleicons/rss.svg",
-            "uri":"https://blog.skialbainn.com/rss"
+            "uri":"/rss.xml"
+        },
+        {
+            "name":"atom",
+            "svg":"/src/svg/simpleicons/rss.svg",
+            "uri":"/atom.xml"
         }
     ]
 }

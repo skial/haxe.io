@@ -1,10 +1,12 @@
 <!doctype html>
 <html lang="en" class="/ld">
 	<head>
-        <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="color-scheme" content="light dark">
+        <link rel="alternate" type="application/atom+xml" href="/atom.xml" />
+        <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
+        <link title="Original Pre 2026 Haxe.io Feed" rel="alternate" type="application/rss+xml" href="http://blog.skialbainn.com/rss" />
         <link webc:keep rel="stylesheet" href="/css/gamejam.css">
         <title @text="title ?? payload.title"></title>
 	</head>

@@ -1,0 +1,59 @@
+---
+permalink: atom.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8" ?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://haxe.io/</id>
+    <title>Haxe.io - News about the Haxe Community</title>
+    <subtitle>The home of the Haxe Roundups</subtitle>
+    <link rel="self" href="https://haxe.io/atom.xml" />
+    <updated>{{ 'now' | date_to_xmlschema }}</updated>
+    <author>
+        <name>{{ pkg.author.name }}</name>
+        <uri>{{ pkg.author.url | url }}</uri>
+    </author>
+    {% for post in collections.everything -%}
+    {%- liquid
+        if post.data.payload.created
+            assign chosen_date = post.data.payload.created
+        elsif post.data.payload.published
+            assign chosen_date = post.data.payload.published
+        elsif post.data.payload.modified
+            assign chosen_date = post.data.payload.modified
+        else
+            assign chosen_date = post.date
+        endif
+        assign desc = post.data.payload.description | default: post.page.excerpt | md2txt | default: post.data.description | default: post.data.payload.title | strip_html
+        assign uri = "https://haxe.io" | append: post.page.url | url | uri_escape
+    -%}
+    <entry>
+        <title>{{ post.data.payload.title | strip_html }}</title>
+        {%- if desc %}
+        <summary>{{ desc | truncate: 200 | xml_escape }}</summary>
+        {%- endif %}
+        <link href="{{ uri }}" />
+        <id>{{ uri }}</id>
+        <updated>{{ chosen_date | date_to_xmlschema }}</updated>
+        {%- if post.data.payload.authors %}
+        {%- for author in post.data.payload.authors %}
+        <author>
+            <name>{{ author.display }}</name>
+            <uri>{{ author.url | url }}</uri>
+        </author>
+        {%- endfor -%}
+        {%- endif %}
+        {%- if post.data.payload.contributors %}
+        {%- for contributor in post.data.payload.contributors %}
+        <contributor>
+            <name>{{ contributor.display }}</name>
+            <uri>{{ contributor.url | url }}</uri>
+        </contributor>
+        {%- endfor %}
+        {%- endif %}
+        {%- for tag in post.data.tags %}
+        <category term="{{ tag }}" />
+        {%- endfor %}
+    </entry>
+    {% endfor %}
+</feed>
