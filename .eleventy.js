@@ -4,6 +4,8 @@ import md_anchor from 'markdown-it-anchor';
 import md_attrs from 'markdown-it-attrs';
 import { full as md_emoji } from 'markdown-it-emoji';
 import md_footnote from 'markdown-it-footnote';
+import md_plainText from 'markdown-it-plain-text';
+import { stripHtml } from "string-strip-html";
 import twemoji from 'twemoji';
 import { RenderPlugin } from "@11ty/eleventy";
 import webc from '@11ty/eleventy-plugin-webc';
@@ -55,6 +57,9 @@ export default function(config) {
     config.ignores.add("./src/@ncannasse/**");
     config.ignores.add("./src/@omgjjd/**");
     config.ignores.add("**/copy_me.*");
+
+    // @see https://jonathanyeong.com/writing/excerpts-with-eleventy/
+    config.setFrontMatterParsingOptions( { excerpt:true } );
 
     //https://www.11ty.dev/docs/languages/webc/#installation
     config.addPlugin(RenderPlugin);
@@ -138,6 +143,21 @@ export default function(config) {
     config.addFilter("object_keys", function (object) {
         return Object.keys(object);
     });
+    // https://jonathanyeong.com/writing/excerpts-with-eleventy/
+    config.addFilter("md", function(content = "") {
+        return mdit({ html:true }).render( content );
+    });
+    config.addFilter("md2txt", function(content = "") {
+        return stripHtml( mdit().use( md_plainText ).render( content ) ).result;
+    });
+    config.addFilter("strip_html", function(content = "") {
+        return stripHtml( content ).result;
+    });
+    config.addFilter("date_as_rfc822", function(date) {
+        return DateTime
+            .fromJSDate(date)
+            .toHTTP();
+    })
     
     // https://www.11ty.dev/docs/languages/sass/#configuration
     /**
