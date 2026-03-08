@@ -158,6 +158,16 @@ export default function(config) {
             .fromJSDate(date)
             .toHTTP();
     })
+    config.addFilter("txt2bin", function(content = "") {
+        let result = "";
+        for (let i = 0; i < content.length; i++) {
+            let codepoint = content.codePointAt(i);
+            let binary = codepoint.toString(2);
+            binary = binary.padStart(8, "0");
+            result += binary;
+        }
+        return result;
+    })
     
     // https://www.11ty.dev/docs/languages/sass/#configuration
     /**

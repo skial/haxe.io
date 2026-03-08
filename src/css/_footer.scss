@@ -1,0 +1,53 @@
+footer {
+    padding: 2rem;
+    margin-top: 4rem;
+    border-top-style: dotted;
+
+    .tools {
+        .subtitle {
+            list-style: none;
+            margin-left: -0.8rem;
+        }
+
+        li:not(.subtitle) {
+            font-size: .800rem;
+        }
+    }
+
+    .social {
+        li {
+            text-transform: capitalize;
+        }
+    }
+
+    form {
+        &::before, &::after {
+            border-width: 3px !important;
+            border-color: rebeccapurple !important;
+        }
+        fieldset {
+            text-align: center;
+
+            legend {
+                text-align: center;
+                font-size: 40%;
+                font-family: 'Courier New', Courier, monospace;
+                letter-spacing: 0.1rem;
+                padding: 0.2rem;
+                margin-top: -1.8rem;
+                margin-left: auto;
+                margin-right: auto;
+                background-color: var(--pico-background-color);
+            }
+        }
+
+    }
+}
+/*
+Cannot figure out how to target the border colour...
+.dotted-divide {
+    &::before, &::after {
+        border-width: 3px !important;
+        border-color: rebeccapurple !important;
+    }
+}*/
