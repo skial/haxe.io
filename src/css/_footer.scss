@@ -16,8 +16,44 @@ footer {
     .social {
         li {
             text-transform: capitalize;
+            margin-left: -1.5rem;
+            &::before {
+                width: 1rem;
+                font-size: 2rem;
+                display: inline-block;
+                margin-right: 0.5rem;
+                filter: invert(75%) sepia(5%) saturate(906%) hue-rotate(183deg) brightness(85%) contrast(83%);
+            }
         }
+
+        /* 
+            Cant use liquid syntax in scss partials.
+            Would be a nice to have feature enabled, not sure how.
+        */
+        .mastodon {
+            //list-style-image: url("/svg/simpleicons/mastodon.svg");
+            list-style-type: none;
+            &::before {
+                content: url("/svg/simpleicons/mastodon.svg");
+            }
+        }
+
+        .bluesky {
+            list-style-image: url("/svg/simpleicons/bluesky.svg");
+        }
+
+        .rss, .atom {
+            list-style-image: url("/svg/simpleicons/rss.svg");
+        }
+        /**
+        {%- for item in social.social_data %}
+        .{{ item.name }} {
+            list-style-image: url("{{ item.svg }}");
+        }
+        {%- endfor %}
+        */
     }
+    
 
     form {
         fieldset {
