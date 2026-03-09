@@ -13,15 +13,6 @@
     }
 }
 
-/*nav ul {
-    row-gap: 0.2rem;
-
-    > li {
-        padding-top: 0;
-        padding-bottom: 0;
-    }
-}*/
-
 label[for][role="button"] {
     font-size: 0.8rem;
     overflow-wrap: normal;
@@ -66,23 +57,6 @@ details[open] > summary > span:last-of-type {
 
 .emoji {
     height: 1em;
-}
-
-footer {
-    padding: 2rem;
-}
-
-footer .tools .subtitle {
-    list-style: none;
-    margin-left: -0.8rem;
-}
-
-footer .tools li:not(.subtitle) {
-    font-size: .800rem;
-}
-
-footer .social li {
-    text-transform: capitalize;
 }
 
 @media (min-width: 768px) {

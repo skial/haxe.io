@@ -1,0 +1,103 @@
+footer {
+    padding: 2rem;
+
+    .tools {
+        .subtitle {
+            list-style: none;
+            margin-left: -0.8rem;
+        }
+
+        li:not(.subtitle) {
+            font-size: .800rem;
+        }
+    }
+    
+    .seperator {
+        border-right-style: double;
+        border-right-width: .2rem;
+        border-right-color: var(--pico-secondary);
+        margin-right: 0.3rem;
+    }
+
+    .social {
+        li {
+            text-transform: capitalize;
+            margin-left: -1.2rem;
+            &::before {
+                width: 1rem;
+                display: inline-block;
+                margin-right: 0.5rem;
+                /**
+                Built using this tool https://codepen.io/sosuke/pen/Pjoqqp
+                Uses `--pic-color` as input value.
+                */
+                filter: invert(89%) sepia(7%) saturate(110%) hue-rotate(174deg) brightness(103%) contrast(90%);
+            }
+        }
+
+        /* 
+            Cant use liquid syntax in scss partials.
+            Would be a nice to have feature enabled, not sure how.
+        */
+        .mastodon {
+            list-style-type: none;
+            &::before {
+                content: url("/svg/simpleicons/mastodon.svg");
+            }
+        }
+
+        .bluesky {
+            list-style-type: none;
+            &::before {
+                content: url("/svg/simpleicons/bluesky.svg");
+            }
+        }
+
+        .rss, .atom {
+            list-style-type: none;
+            &::before {
+                content: url("/svg/simpleicons/rss.svg");
+            }
+        }
+        /**
+        {%- for item in social.social_data %}
+        .{{ item.name }} {
+            list-style-image: url("{{ item.svg }}");
+        }
+        {%- endfor %}
+        */
+    }
+    
+
+    form {
+        fieldset {
+            text-align: center;
+            border-width: 3px;
+            border-top-style: dotted;
+            border-color: var(--pico-secondary);
+
+            legend {
+                text-align: center;
+                font-size: 30%;
+                font-family: 'Courier New', Courier, monospace;
+                letter-spacing: 0.1rem;
+                padding: 0 0.2rem;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+    }
+
+    .copyright {
+        font-size: 0.6rem;
+        margin-left: 0;
+        margin-bottom: 1rem;
+        color: var(--pico-secondary);
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    div:last-of-type {
+        font-size: .8rem;
+    }
+}
