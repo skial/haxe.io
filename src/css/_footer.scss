@@ -13,16 +13,23 @@ footer {
         }
     }
 
+    .seperator {
+        border-right-style: double;
+        border-right-width: .2rem;
+        border-right-color: var(--pico-secondary);
+        margin-right: 0.3rem;
+    }
+
     .social {
         li {
             text-transform: capitalize;
-            margin-left: -1.5rem;
+            margin-left: -1.2rem;
             &::before {
                 width: 1rem;
-                font-size: 2rem;
+                //font-size: 2rem;
                 display: inline-block;
                 margin-right: 0.5rem;
-                filter: invert(75%) sepia(5%) saturate(906%) hue-rotate(183deg) brightness(85%) contrast(83%);
+                filter: invert(89%) sepia(7%) saturate(110%) hue-rotate(174deg) brightness(103%) contrast(90%);
             }
         }
 
@@ -39,11 +46,17 @@ footer {
         }
 
         .bluesky {
-            list-style-image: url("/svg/simpleicons/bluesky.svg");
+            list-style-type: none;
+            &::before {
+                content: url("/svg/simpleicons/bluesky.svg");
+            }
         }
 
         .rss, .atom {
-            list-style-image: url("/svg/simpleicons/rss.svg");
+            list-style-type: none;
+            &::before {
+                content: url("/svg/simpleicons/rss.svg");
+            }
         }
         /**
         {%- for item in social.social_data %}
