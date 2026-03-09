@@ -2,22 +2,22 @@
     "social_data":[
         {
             "name":"mastodon",
-            "svg":"/src/svg/simpleicons/mastodon.svg",
+            "svg":"/svg/simpleicons/mastodon.svg",
             "uri":"https://mastodon.social/@skial"
         },
         {
             "name":"bluesky",
-            "svg":"/src/svg/simpleicons/bluesky.svg",
+            "svg":"/svg/simpleicons/bluesky.svg",
             "uri":"https://bsky.app/profile/skialb.bsky.social"
         },
         {
             "name":"rss",
-            "svg":"/src/svg/simpleicons/rss.svg",
+            "svg":"/svg/simpleicons/rss.svg",
             "uri":"/rss.xml"
         },
         {
             "name":"atom",
-            "svg":"/src/svg/simpleicons/rss.svg",
+            "svg":"/svg/simpleicons/rss.svg",
             "uri":"/atom.xml"
         }
     ]
