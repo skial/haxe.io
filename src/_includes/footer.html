@@ -7,7 +7,7 @@
     <div class="copyright container">
         <span>© 2010–{{ 'now' | date: '%Y' }} Skial Bainn</span>
         <span> | </span>
-        <a href="https://github.com/skial/haxe.io">Site Source</a>
+        <a href="https://github.com/skial/haxe.io" title="The source code of Haxe.io hosted on GitHub">Site Source</a>
     </div>
     {% comment %}
     {{ tools | inspect }}
@@ -24,11 +24,11 @@
         <section>
             <h2>Community</h2>
             <ul>
-                <li><a href="https://community.haxe.org/">Haxe Forum</a></li>
-                <li><a href="https://matrix.to/#/%23haxe:matrix.org">Haxe Matrix</a></li>
-                <li><a href="https://discordapp.com/invite/0uEuWH3spjck73Lo">Haxe Discord</a></li>
-                <li><a href="https://stackoverflow.com/questions/tagged/haxe">Haxe Stack Overflow</a></li>
-                <li><a href="https://github.com/HaxeFoundation">HaxeFoundation GitHub</a></li>
+                <li><a href="https://community.haxe.org/" title="Haxe.org Community Forum">Haxe Forum</a></li>
+                <li><a href="https://matrix.to/#/%23haxe:matrix.org" title="Haxe's Official Matrix Server">Haxe Matrix</a></li>
+                <li><a href="https://discordapp.com/invite/0uEuWH3spjck73Lo" title="Haxe's Official Discord Server">Haxe Discord</a></li>
+                <li><a href="https://stackoverflow.com/questions/tagged/haxe" title="Haxe on Stack Overflow">Haxe Stack Overflow</a></li>
+                <li><a href="https://github.com/HaxeFoundation" title="The HaxeFoundation on GitHub">HaxeFoundation GitHub</a></li>
             </ul>
         </section>
         <section class="tools">
@@ -41,12 +41,12 @@
             {%- endif -%}
                 <ul>
                     <li class="subtitle">{{ tool.name }}</li>
-                    <li><a href="{{ tool.url }}" target="_blank" rel="noopener">Homepage</a></li>
+                    <li><a href="{{ tool.url }}" title="{{ tool.name}}'s Homepage" target="_blank" rel="noopener">Homepage</a></li>
                     {%- if tool.showcase -%}
-                    <li><a href="{{ tool.showcase }}" target="_blank" rel="noopener">Showcase</a></li>
+                    <li><a href="{{ tool.showcase }}" title="{{ tool.name}}'s Showcase" target="_blank" rel="noopener">Showcase</a></li>
                     {%- endif -%}
                     {%- if tool.snippets -%}
-                    <li><a href="{{ tool.snippets }}" target="_blank" rel="noopener">Snippets</a></li>
+                    <li><a href="{{ tool.snippets }}" title="{{ tool.name}}'s Snippets" target="_blank" rel="noopener">Snippets</a></li>
                     {%- endif -%}
                 </ul>
             {%- endfor -%}
