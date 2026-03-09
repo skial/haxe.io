@@ -1,7 +1,6 @@
 footer {
     padding: 2rem;
     margin-top: 4rem;
-    border-top-style: dotted;
 
     .tools {
         .subtitle {
@@ -21,33 +20,22 @@ footer {
     }
 
     form {
-        &::before, &::after {
-            border-width: 3px !important;
-            border-color: rebeccapurple !important;
-        }
         fieldset {
             text-align: center;
+            border-width: 3px;
+            border-top-style: dotted;
+            border-color: var(--pico-secondary);
 
             legend {
                 text-align: center;
-                font-size: 40%;
+                font-size: 30%;
                 font-family: 'Courier New', Courier, monospace;
                 letter-spacing: 0.1rem;
-                padding: 0.2rem;
-                margin-top: -1.8rem;
+                padding: 0 0.2rem;
                 margin-left: auto;
                 margin-right: auto;
-                background-color: var(--pico-background-color);
             }
         }
 
     }
 }
-/*
-Cannot figure out how to target the border colour...
-.dotted-divide {
-    &::before, &::after {
-        border-width: 3px !important;
-        border-color: rebeccapurple !important;
-    }
-}*/

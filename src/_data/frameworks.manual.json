@@ -65,6 +65,51 @@
             ]
         },
         {
+            "name": "HaxeUI",
+            "dependencies": [
+                "OpenFL", "Kha", "NME"
+            ],
+            "url": "https://www.haxeui.org/",
+            "repo": "https://github.com/haxeui/",
+            "snippets": "https://www.haxeui.org/explorer/",
+            "logo": "",
+            "social":[
+                "https://twitter.com/IanHarrigan1982",
+                "http://www.facebook.com/haxeui"
+            ],
+            "authors": [
+                "Ian Harrigan"
+            ],
+            "target": {
+                "platforms": ["windows", "osx", "linux", "ios", "android", "flash", "webgl"],
+                "languages": []
+            },
+            "sectors": [
+                "gaming", "ui"
+            ]
+        },
+        {
+            "name": "Heaps",
+            "dependencies": [],
+            "url": "https://heaps.io/",
+            "repo": "https://github.com/HeapsIO/heaps",
+            "snippets": "https://heaps.io/samples/",
+            "logo": "",
+            "social":[
+                "https://twitter.com/gamehaxe"
+            ],
+            "authors": [
+                "Nicolas Cannasse"
+            ],
+            "target": {
+                "platforms": ["windows", "osx", "linux", "ios", "android", "flash", "webgl"],
+                "languages": ["hashlink", "javascript"]
+            },
+            "sectors": [
+                "gaming"
+            ]
+        },
+        {
             "name": "Stencyl",
             "dependencies": [
                 "OpenFL"
@@ -134,51 +179,6 @@
             },
             "sectors": [
                 "gaming", "media"
-            ]
-        },
-        {
-            "name": "Heaps",
-            "dependencies": [],
-            "url": "https://heaps.io/",
-            "repo": "https://github.com/HeapsIO/heaps",
-            "snippets": "https://heaps.io/samples/",
-            "logo": "",
-            "social":[
-                "https://twitter.com/gamehaxe"
-            ],
-            "authors": [
-                "Nicolas Cannasse"
-            ],
-            "target": {
-                "platforms": ["windows", "osx", "linux", "ios", "android", "flash", "webgl"],
-                "languages": ["hashlink", "javascript"]
-            },
-            "sectors": [
-                "gaming"
-            ]
-        },
-        {
-            "name": "HaxeUI",
-            "dependencies": [
-                "OpenFL", "Kha", "NME"
-            ],
-            "url": "https://www.haxeui.org/",
-            "repo": "https://github.com/haxeui/",
-            "snippets": "https://www.haxeui.org/explorer/",
-            "logo": "",
-            "social":[
-                "https://twitter.com/IanHarrigan1982",
-                "http://www.facebook.com/haxeui"
-            ],
-            "authors": [
-                "Ian Harrigan"
-            ],
-            "target": {
-                "platforms": ["windows", "osx", "linux", "ios", "android", "flash", "webgl"],
-                "languages": []
-            },
-            "sectors": [
-                "gaming", "ui"
             ]
         },
         {
