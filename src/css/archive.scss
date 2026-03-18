@@ -1,10 +1,12 @@
 @use "_core";
+@use "_filter";
 @use "_header";
 @use "_footer";
 
-aside nav ul {
+aside details ul {
     display: flex;
     flex-wrap: wrap;
+    padding-left: 0;
 }
 
 .filter-title {
@@ -83,10 +85,10 @@ Rules for filter buttons.
 */
 /** these values are taken from `.outline` and `.secondary` classes */
 {%- for topic in ["frontpage.topics"] %}
-#{{ topic.name | slugify }}:not(:checked) ~ main nav label[for="{{ topic.name | slugify }}"],
+#{{ topic.name | slugify }}:not(:checked) ~ main details label[for="{{ topic.name | slugify }}"],
 {%- endfor -%}
 {% for year in years %}
-#year-{{ year }}:not(:checked) ~ main nav label[for="year-{{ year }}"]{% if forloop.last == false %}, {% endif %}
+#year-{{ year }}:not(:checked) ~ main details label[for="year-{{ year }}"]{% if forloop.last == false %}, {% endif %}
 {% endfor %}
 {
     --pico-background-color: transparent;
@@ -145,8 +147,8 @@ Rules for filter buttons.
     display: block;
 }
 
-.year-title:first-of-type {
-    margin-top: var(--pico-typography-spacing-top);
+aside details:first-of-type, .year-title:first-of-type {
+    margin-top: 3rem;
 }
 
 @media (min-width: 768px) {
@@ -154,7 +156,7 @@ Rules for filter buttons.
         grid-template-columns: 1fr 5fr;
     }
 
-    aside nav ul {
+    aside details ul {
         display: block
     }
 

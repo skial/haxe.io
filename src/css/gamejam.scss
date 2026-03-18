@@ -1,13 +1,6 @@
 @use "_core";
+@use "_filter";
 @use "roundups";
-
-[name="platform-filter-group"][type="checkbox"] {
-    display: none;
-}
-
-label[for*="input-"][role="button"] {
-    font-size: 0.8rem;
-}
 
 {% liquid
     assign filters = '' | split: ''
@@ -62,7 +55,7 @@ label[for*="input-"][role="button"] {
 
     ul > li {
         display: list-item;
-        padding: 0.2rem;
+        //padding: 0.2rem;
     }
 
     ul, ul > li {
