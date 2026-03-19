@@ -34,6 +34,15 @@ permalink: archive.html
 		assign current_year = ''
 		assign current_topics = '' | split: ''
 		assign change_year = false
+		assign full_months = 'January,February,March,April,May,June,July,August,September,October,November,December' | split: ','
+		assign months = '' | split: ''
+
+		for month in full_months
+			assign as_date_string = "01-" | append: month | append: "-2026"
+			assign as_month = as_date_string | date: "%b" | downcase
+			assign months = months | push: as_month
+		endfor
+		assign months = months | uniq
 
 		for post in collections.everything
 			if post.data.payload.created
@@ -80,7 +89,6 @@ permalink: archive.html
 	</div>
 	{% endfor %}
 	{% endcomment %}
-	
 
 	{% for topic in ["frontpage.topics"] %}
 	<input id="{{ topic.name | slugify }}" type="checkbox" name="topic-filter">
@@ -88,6 +96,10 @@ permalink: archive.html
 
 	{% for year in years %}
 	<input id="year-{{ year }}" type="checkbox" name="year-filter">
+	{% endfor %}
+
+	{% for month in months %}
+	<input id="month-{{ month }}" type="checkbox" name="month-filter">
 	{% endfor %}
 
 	{% render "frontpage/header.html" %}
@@ -106,6 +118,14 @@ permalink: archive.html
 				<ul>
 					{% for year in years %}
 					<li><label for="year-{{ year }}" role="button">{{ year }}</label></li>
+					{% endfor %}
+				</ul>
+			</details>
+			<details>
+				<summary>Select a month</summary>
+				<ul>
+					{% for month in months %}
+					<li><label for="year-{{ month }}" role="button">{{ full_months[forloop.index0] }}</label></li>
 					{% endfor %}
 				</ul>
 			</details>
