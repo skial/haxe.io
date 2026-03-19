@@ -13,15 +13,6 @@
     }
 }
 
-label[for][role="button"] {
-    font-size: 0.8rem;
-    overflow-wrap: normal;
-}
-
-[name*="-filter"][type="checkbox"] {
-    display: none;
-}
-
 .hero {
     margin-bottom: 2rem;
 }
@@ -71,12 +62,5 @@ details[open] > summary > span:last-of-type {
 
     .articles time {
         text-align: right;
-    }
-}
-
-@media (min-width: 1024px) {
-    label[for][role="button"] {
-        font-size: 1rem;
-        overflow-wrap: break-word;
     }
 }

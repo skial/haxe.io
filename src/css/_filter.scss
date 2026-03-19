@@ -1,0 +1,22 @@
+[name*="-filter"][type="checkbox"] {
+    display: none;
+}
+
+label[for][role="button"] {
+    font-size: 0.8rem;
+    overflow-wrap: normal;
+    margin: 0;
+    padding: calc(var(--pico-nav-link-spacing-vertical) - var(--pico-border-width)*2) var(--pico-nav-link-spacing-horizontal);
+}
+
+li:has(label[for][role="button"]) {
+    margin: 0;
+    padding: 0.3rem 0.2rem;
+}
+
+@media (min-width: 1024px) {
+    label[for][role="button"] {
+        //font-size: 1rem;
+        overflow-wrap: break-word;
+    }
+}
