@@ -47,6 +47,16 @@ aside details ul {
     assign years = '' | split: ''
     assign current_year = ''
     assign change_year = false
+    assign full_months = 'January,February,March,April,May,June,July,August,September,October,November,December' | split: ','
+    assign months = '' | split: ''
+
+    for month in full_months
+        assign as_date_string = "01-" | append: month | append: "-2026"
+        assign as_month = as_date_string | date: "%b" | downcase
+        assign months = months | push: as_month
+    endfor
+    assign months = months | uniq
+    
     for post in collections.everything
         if post.data.payload.created
             assign chosen_date = post.data.payload.created
@@ -88,7 +98,10 @@ Rules for filter buttons.
 #{{ topic.name | slugify }}:not(:checked) ~ main details label[for="{{ topic.name | slugify }}"],
 {%- endfor -%}
 {% for year in years %}
-#year-{{ year }}:not(:checked) ~ main details label[for="year-{{ year }}"]{% if forloop.last == false %}, {% endif %}
+#year-{{ year }}:not(:checked) ~ main details label[for="year-{{ year }}"],
+{% endfor %}
+{% for month in months %}
+#month-{{ month }}:not(:checked) ~ main details label[for="month-{{ month }}"]{% if forloop.last == false %}, {% endif %}
 {% endfor %}
 {
     --pico-background-color: transparent;
@@ -145,6 +158,18 @@ Rules for filter buttons.
 #year-{{ year }}:checked ~ main section > h1.year-{{ year }} + ul{% if forloop.last == false%},{% endif %}
 {% endfor %}{
     display: block;
+}
+
+{% for name in months %}
+#month-{{ name }}:checked ~ main section > .articles > li:not([data-month="{{ name }}"]){% if forloop.last == false%},{% endif %}
+{% endfor %}{
+    display: none;
+}
+
+{% for name in months %}
+#month-{{ name }}:checked ~ main section > .articles > li[data-month="{{ name }}"]{% if forloop.last == false%},{% endif %}
+{% endfor %}{
+    display: flex;
 }
 
 aside details:first-of-type, .year-title:first-of-type {
