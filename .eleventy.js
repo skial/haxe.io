@@ -150,9 +150,6 @@ export default function(config) {
     config.addFilter("md2txt", function(content = "") {
         return stripHtml( mdit().use( md_plainText ).render( content ) ).result;
     });
-    config.addFilter("strip_html", function(content = "") {
-        return stripHtml( content ).result;
-    });
     config.addFilter("date_as_rfc822", function(date) {
         return DateTime
             .fromJSDate(date)
@@ -196,6 +193,7 @@ export default function(config) {
 
 			return async (data) => {
                 let value = await this.defaultRenderer(data);
+                //console.log(value);
                 let result = await sass.compileStringAsync(value, {
                     loadPaths: [
                         parsed.dir || ".",
@@ -338,7 +336,7 @@ export default function(config) {
                 let c = tokens[i+2];
 
                 if (a.type == 'heading_open' && a.tag == 'h1' && c.type == 'heading_close' && !payload.title) {
-                    payload.title = md.renderInline(b.content.replace(/<br\/>/,':'));
+                    payload.title = stripHtml( md.renderInline(b.content) ).result;
                     break;
                 }
             }
