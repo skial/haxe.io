@@ -101,16 +101,16 @@ permalink: archive.html
 	</div>
 	{% endfor %}
 
-	{% for topic in ["frontpage.topics"] %}
-	<input id="{{ topic.name | slugify }}" type="checkbox" name="topic-filter">
-	{% endfor %}
-
 	{% for year in years %}
 	<input id="year-{{ year }}" type="checkbox" name="year-filter">
 	{% endfor %}
 
 	{% for month in months %}
 	<input id="month-{{ month }}" type="checkbox" name="month-filter">
+	{% endfor %}
+
+	{% for topic in ["frontpage.topics"] %}
+	<input id="{{ topic.name | slugify }}" type="checkbox" name="topic-filter">
 	{% endfor %}
 
 	{% render "frontpage/header.html" %}
@@ -124,7 +124,7 @@ permalink: archive.html
 					{% endfor %}
 				</ul>
 			</details>
-			<details open>
+			<details>
 				<summary>Select a year</summary>
 				<ul>
 					{% for year in years %}
@@ -172,7 +172,7 @@ permalink: archive.html
 		</ul>
 				{% endif %}
 		<h1 class="year-title year-{{ year }} {{ years_topics[years_index] | split: ',' | join: ' ' }} {{ months_topics[years_index] | split: ',' | join: ' ' }}">{{ year }}</h1>
-		<ul class="articles year-{{ year }}">
+		<ul class="articles year-{{ year }} {{ years_topics[years_index] | split: ',' | join: ' ' }} {{ months_topics[years_index] | split: ',' | join: ' ' }}">
 				{% assign change_year = false %}
 				{% assign years_index = years_index | plus: 1 %}
 			{% endif %}
