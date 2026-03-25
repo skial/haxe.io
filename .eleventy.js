@@ -39,9 +39,11 @@ export default function(config) {
     // Doesnt appear to be relative from the input directory. https://github.com/11ty/eleventy/issues/2043#issuecomment-948826977
     config.addPassthroughCopy("src/img");
     config.addPassthroughCopy("src/svg");
+    config.addPassthroughCopy("src/js");
     config.addPassthroughCopy("src/twemoji/svg");
     config.addPassthroughCopy("src/.well-known");
     config.addPassthroughCopy("src/robots.txt");
+    config.addPassthroughCopy("src/_headers");
     // https://www.11ty.dev/docs/copy/#emulate-passthrough-copy-during-serve
     config.setServerPassthroughCopyBehavior("passthrough");
 
