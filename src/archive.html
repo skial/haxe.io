@@ -32,8 +32,19 @@ permalink: archive.html
 		assign years = '' | split: ''
 		assign years_topics = '' | split: ''
 		assign current_year = ''
-		assign current_topics = '' | split: ''
+		assign years_tracked = '' | split: ''
 		assign change_year = false
+		assign full_months = 'January,February,March,April,May,June,July,August,September,October,November,December' | split: ','
+		assign months = '' | split: ''
+		assign months_tracked = '' | split: ''
+		assign months_topics = '' | split: ''
+
+		for month in full_months
+			assign as_date_string = "01-" | append: month | append: "-2026"
+			assign as_month = as_date_string | date: "%b" | downcase
+			assign months = months | push: as_month
+		endfor
+		assign months = months | uniq
 
 		for post in collections.everything
 			if post.data.payload.created
@@ -46,6 +57,9 @@ permalink: archive.html
 				assign chosen_date = post.date
 			endif
 
+			assign current_month = chosen_date | date: "%b" | downcase
+			assign months_tracked = months_tracked | push: current_month
+
 			if forloop.first
 				assign current_year = chosen_date | date: '%Y'
 			endif
@@ -55,16 +69,21 @@ permalink: archive.html
 			if current_year != loop_year
 				assign change_year = true
 			else
-				assign current_topics = current_topics | concat: post.data.tags 
+				assign years_tracked = years_tracked | concat: post.data.tags 
 			endif
 
 			if change_year or forloop.last
 				assign years = years | push: current_year
-				assign stringify = current_topics | uniq | join: ','
+				assign stringify = years_tracked | uniq | join: ','
 				assign years_topics = years_topics | push: stringify
+
+				assign stringify = months_tracked | uniq | join: ','
+				assign months_topics = months_topics | push: stringify
+
 				assign change_year = false
-				assign current_topics = post.data.tags
+				assign years_tracked = post.data.tags
 				assign current_year = loop_year
+				assign months_tracked = '' | split: ''
 			endif
 		endfor
 	%}
@@ -72,22 +91,27 @@ permalink: archive.html
 	{% comment %}
 	years: {{ years | size }}
 	years_topics: {{ years_topics | size }}
+	months_topics: {{ months_topics | size }}
 	{% for year in years %}
 	<div>
 		<span>index == {{ forloop.index0 }}</span>
 		<span>year == {{ year }}</span>
 		<span>topics == {{ years_topics[forloop.index0] }}</span>
+		<span>months = {{ months_topics[forloop.index0] }}</span>
 	</div>
 	{% endfor %}
 	{% endcomment %}
-	
-
-	{% for topic in ["frontpage.topics"] %}
-	<input id="{{ topic.name | slugify }}" type="checkbox" name="topic-filter">
-	{% endfor %}
 
 	{% for year in years %}
 	<input id="year-{{ year }}" type="checkbox" name="year-filter">
+	{% endfor %}
+
+	{% for month in months %}
+	<input id="month-{{ month }}" type="checkbox" name="month-filter">
+	{% endfor %}
+
+	{% for topic in ["frontpage.topics"] %}
+	<input id="{{ topic.name | slugify }}" type="checkbox" name="topic-filter">
 	{% endfor %}
 
 	{% render "frontpage/header.html" %}
@@ -101,11 +125,19 @@ permalink: archive.html
 					{% endfor %}
 				</ul>
 			</details>
-			<details open>
+			<details>
 				<summary>Select a year</summary>
 				<ul>
 					{% for year in years %}
 					<li><label for="year-{{ year }}" role="button">{{ year }}</label></li>
+					{% endfor %}
+				</ul>
+			</details>
+			<details>
+				<summary>Select a month</summary>
+				<ul>
+					{% for month in months %}
+					<li><label for="month-{{ month }}" role="button">{{ full_months[forloop.index0] }}</label></li>
 					{% endfor %}
 				</ul>
 			</details>
@@ -140,8 +172,8 @@ permalink: archive.html
 				{% if forloop.first == false %}
 		</ul>
 				{% endif %}
-		<h1 class="year-title year-{{ year }} {{ years_topics[years_index] | split: ',' | join: ' ' }}">{{ year }}</h1>
-		<ul class="articles year-{{ year }}">
+		<h1 class="year-title year-{{ year }} {{ years_topics[years_index] | split: ',' | join: ' ' }} {{ months_topics[years_index] | split: ',' | join: ' ' }}">{{ year }}</h1>
+		<ul class="articles year-{{ year }} {{ years_topics[years_index] | split: ',' | join: ' ' }} {{ months_topics[years_index] | split: ',' | join: ' ' }}">
 				{% assign change_year = false %}
 				{% assign years_index = years_index | plus: 1 %}
 			{% endif %}

@@ -45,8 +45,22 @@ aside details ul {
 
 {% liquid
     assign years = '' | split: ''
+    assign years_topics = '' | split: ''
     assign current_year = ''
+    assign years_tracked = '' | split: ''
     assign change_year = false
+    assign full_months = 'January,February,March,April,May,June,July,August,September,October,November,December' | split: ','
+    assign months = '' | split: ''
+    assign months_tracked = '' | split: ''
+    assign months_topics = '' | split: ''
+
+    for month in full_months
+        assign as_date_string = "01-" | append: month | append: "-2026"
+        assign as_month = as_date_string | date: "%b" | downcase
+        assign months = months | push: as_month
+    endfor
+    assign months = months | uniq
+
     for post in collections.everything
         if post.data.payload.created
             assign chosen_date = post.data.payload.created
@@ -58,37 +72,57 @@ aside details ul {
             assign chosen_date = post.date
         endif
 
+        assign current_month = chosen_date | date: "%b" | downcase
+        assign months_tracked = months_tracked | push: current_month
+
+        if forloop.first
+            assign current_year = chosen_date | date: '%Y'
+        endif
+
         assign loop_year = chosen_date | date: '%Y'
 
         if current_year != loop_year
-            assign current_year = chosen_date | date: '%Y'
             assign change_year = true
+        else
+            assign years_tracked = years_tracked | concat: post.data.tags 
         endif
 
-        if change_year
-            if forloop.first == false
-            endif
+        if change_year or forloop.last
             assign years = years | push: current_year
+            assign stringify = years_tracked | uniq | join: ','
+            assign years_topics = years_topics | push: stringify
+
+            assign stringify = months_tracked | uniq | join: ','
+            assign months_topics = months_topics | push: stringify
+
             assign change_year = false
+            assign years_tracked = post.data.tags
+            assign current_year = loop_year
+            assign months_tracked = '' | split: ''
         endif
     endfor
 
     assign topics = '' | split: ''
+    assign class_topics = '' | split: ''
     for topic in ["frontpage.topics"]
         assign name = topic.name | downcase | slugify
+        assign topics = topics | push: name
         assign class = '.' | append: name
-        assign topics = topics | push: class
+        assign class_topics = class_topics | push: class
     endfor
 %}
 /**
-Rules for filter buttons.
+    Rules for the filter buttons.
+    these values are taken from `.outline` and `.secondary` classes 
 */
-/** these values are taken from `.outline` and `.secondary` classes */
-{%- for topic in ["frontpage.topics"] %}
-#{{ topic.name | slugify }}:not(:checked) ~ main details label[for="{{ topic.name | slugify }}"],
+{%- for topic in topics %}
+#{{ topic }}:not(:checked) ~ main details label[for="{{ topic }}"],
 {%- endfor -%}
 {% for year in years %}
-#year-{{ year }}:not(:checked) ~ main details label[for="year-{{ year }}"]{% if forloop.last == false %}, {% endif %}
+#year-{{ year }}:not(:checked) ~ main details label[for="year-{{ year }}"],
+{% endfor %}
+{% for month in months %}
+#month-{{ month }}:not(:checked) ~ main details label[for="month-{{ month }}"]{% if forloop.last == false %}, {% endif %}
 {% endfor %}
 {
     --pico-background-color: transparent;
@@ -98,54 +132,114 @@ Rules for filter buttons.
     --pico-border-color: var(--pico-secondary);
 }
 
-{% for topic in ["frontpage.topics"] %}
-{% assign name = topic.name | slugify %}
-#{{ name }}:checked ~ main section > h1{% if forloop.last == false%},{% endif %}
-{% endfor %}{
-    display: none;
-}
-
-{% for topic in ["frontpage.topics"] %}
-{% assign name = topic.name | slugify %}
-#{{ name }}:checked {
-    ~ main section > h1.{{ name }},
-    {% for year in years %}
-    ~ #year-{{ year }}:checked ~ main section > h1.{{ name }}.year-{{ year }}{% if forloop.last == false%},{% endif %}
-    {% endfor %}
-    {
-        display: block;
-    }
-    
-}
+/* Hide anything not a <h1|ul class="$topic"> */
+{% for name in topics %}
+#{{ name }}:checked ~ main section > :is(h1, ul):not(.{{ name }}),
 {% endfor %}
-
-{% for topic in ["frontpage.topics"] %}
-{% assign name = topic.name | slugify %}
-#{{ name }}:checked ~ main section > .articles > li:not(.{{ name }}){% if forloop.last == false%},{% endif %}
-{% endfor %}{
+/* Hide anything not a <h1|ul class="year-$year"> */
+{% for year in years %}
+#year-{{ year }}:checked ~ main section > :is(h1, ul):not(.year-{{ year }}){% if forloop.last == false%},{% endif %}
+{% endfor %}
+{
     display: none;
 }
 
+
+/* Show <h1|ul class="$topic">, enables multiple selection */
+{% for name in topics %}
+#{{ name }}:checked ~ main section > :is(h1, ul).{{ name }},
+{% endfor %}
+/* Show <h1|ul class="year-$year">, enables multiple selection */
+{% for year in years %}
+#year-{{ year }}:checked ~ main section > :is(h1, ul).year-{{ year }}{% if forloop.last == false%},{% endif %}
+{% endfor %}
+{
+    display: block;
+}
+
+/* Hide anything not <li class="$topic"> */
 {% for topic in ["frontpage.topics"] %}
 {% assign name = topic.name | slugify %}
-#{{ name }}:checked ~ main section > .articles > li.{{ name }}{% if forloop.last == false%},{% endif %}
-{% endfor %}{
+#{{ name }}:checked ~ main section > .articles > li:not(.{{ name }}){% if forloop.last == false %},{% endif %}
+{% endfor %}
+{
+    display: none;
+}
+
+/* Show <li class="$topic", enables multiple selection */
+{% for topic in ["frontpage.topics"] %}
+{% assign name = topic.name | slugify %}
+#{{ name }}:checked ~ main section > .articles > li.{{ name }}{% if forloop.last == false %},{% endif %}
+{% endfor %}
+{
     display: flex;
 }
 
-{% for year in years %}
-#year-{{ year }}:checked ~ main section > h1:not(.year-{{ year }}),
-#year-{{ year }}:checked ~ main section > ul:not(.year-{{ year }}){% if forloop.last == false%},{% endif %}
-{% endfor %}{
+/* Hide anything not <li class="$month"> */
+{% for month in months %}
+#month-{{ month }}:checked ~ main section > .articles > li:not(.{{ month }}){% if forloop.last == false %},{% endif %}
+{% endfor %}
+{
     display: none;
 }
 
-{% for year in years %}
-#year-{{ year }}:checked ~ main section > h1.year-{{ year }},
-#year-{{ year }}:checked ~ main section > h1.year-{{ year }} + ul{% if forloop.last == false%},{% endif %}
-{% endfor %}{
-    display: block;
+/* Show <li class="$month", enables multiple selection */
+{% for month in months %}
+#month-{{ month }}:checked ~ main section > .articles > li.{{ month }}{% if forloop.last == false %},{% endif %}
+{% endfor %}
+{
+    display: flex;
 }
+
+{% for month in months %}
+#month-{{ month }}:checked ~ {
+    {% for topic in topics %}
+    #{{ topic }}:checked ~ {
+        main section > .articles > li:not(.{{ topic }}.{{ month }}) {
+            display: none;
+        }
+    }
+    {% endfor %}
+}
+{% endfor %}
+
+{% for month in months %}
+#month-{{ month }}:checked ~ {
+    {% for topic in topics %}
+    #{{ topic }}:checked ~ {
+        main section > .articles > li.{{ topic }}.{{ month }} {
+            display: flex;
+        }
+    }
+    {% endfor %}
+}
+{% endfor %}
+
+{% for year in years %}
+#year-{{ year }}:checked ~ {
+    {% assign allowed_topics = years_topics[forloop.index0] | split: ',' %}
+    {% for topic in allowed_topics %}
+    #{{ topic }}:checked ~ {
+        main section > :is(h1, ul):not(.{{ topic }}.year-{{ year }}) {
+            display: none;
+        }
+    }
+    {% endfor %}
+}
+{% endfor %}
+
+{% for year in years %}
+#year-{{ year }}:checked ~ {
+    {% assign allowed_topics = years_topics[forloop.index0] | split: ',' %}
+    {% for topic in allowed_topics %}
+    #{{ topic }}:checked ~ {
+        main section > :is(h1, ul).{{ topic }}.year-{{ year }} {
+            display: block;
+        }
+    }
+    {% endfor %}
+}
+{% endfor %}
 
 aside details:first-of-type, .year-title:first-of-type {
     margin-top: 3rem;
