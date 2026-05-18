@@ -1,0 +1,10 @@
+/*
+    X-Frame-Options: SAMEORIGIN
+    Content-Security-Policy: default-src 'self'; script-src 'self' static.cloudflareinsights.com ajax.cloudflare.com 'wasm-unsafe-eval' 'unsafe-inline'; connect-src 'self' cloudflareinsights.com; frame-ancestors 'self'; form-action 'self'; upgrade-insecure-requests
+    Reporting-Endpoints: cf-csp-endpoint="https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report"
+    Content-Security-Policy-Report-Only: report-uri https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report; report-to cf-csp-endpoint
+
+# See https://developers.cloudflare.com/workers/static-assets/headers/#prevent-your-workersdev-urls-showing-in-search-results
+https://:version.:subdomain.workers.dev/*
+    X-Robots-Tag: noindex
+    
