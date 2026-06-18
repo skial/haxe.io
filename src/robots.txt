@@ -4,6 +4,7 @@ Disallow: /css/
 Disallow: /svg/
 Disallow: /favicon/
 Disallow: /twemoji/
+Disallow: /cdn-cgi/
 Sitemap: https://www.haxe.io/sitemap.xml
 
 User-agent: Twitterbot
